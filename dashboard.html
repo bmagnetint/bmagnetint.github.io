@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>B Magnet Investment — Portfolio Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script defer src="app.js"></script>
+  </head>
+  <body class="dashboard-page">
+    <div class="page-shell">
+      <header class="site-header">
+        <div class="brand-mark">
+          <div class="logo-glow-wrapper">
+            <img src="logo.png" alt="B Magnet Investment Logo" class="brand-logo" />
+          </div>
+          <div class="brand-details">
+            <span class="brand-name">B Magnet Investment</span>
+            <span class="brand-tag">Portfolio Management</span>
+          </div>
+        </div>
+        <nav class="site-nav">
+          <a href="#overview">Overview</a>
+          <a href="#plan">Plan</a>
+          <a href="#activity">Activity</a>
+          <a href="index.html" class="btn btn-secondary">Sign Out</a>
+        </nav>
+      </header>
+
+      <section id="overview" class="dashboard-hero">
+        <div class="hero-copy">
+          <span class="eyebrow">
+            <span class="pulse-dot"></span> Live Portfolio Dashboard
+          </span>
+          <h1>Data-driven capital growth and preservation.</h1>
+          <p>
+            Review your allocation strategy, monitor monthly yields, and inspect active holdings with real-time portfolio metrics.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#activity">Inspect Activity ↓</a>
+            <a class="btn btn-secondary" href="#plan">View Strategy</a>
+          </div>
+        </div>
+
+        <div class="dashboard-hero-card">
+          <div class="hero-card-header">
+            <span>Portfolio Snapshot</span>
+            <span class="status-pill">
+              <span class="pulse-dot"></span> Active Strategy
+            </span>
+          </div>
+          
+          <div class="stat-main">
+            <p>Total Net Worth</p>
+            <h2>$1,284,670</h2>
+          </div>
+
+          <div class="stat-grid">
+            <div class="stat-box">
+              <p>Monthly Yield</p>
+              <strong class="positive">+8.4%</strong>
+            </div>
+            <div class="stat-box">
+              <p>Active Holdings</p>
+              <strong>14 Assets</strong>
+            </div>
+          </div>
+
+          <div class="stat-grid">
+            <div class="stat-box">
+              <p>Projected Target</p>
+              <strong class="positive">11.6%</strong>
+            </div>
+            <div class="stat-box">
+              <p>Risk Profile</p>
+              <strong>Moderate</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="plan" class="plan-section">
+        <div class="section-heading">
+          <span class="eyebrow">Strategy & Allocation</span>
+          <h2>Tailored for long-term growth and resilience.</h2>
+        </div>
+        <div class="plan-grid">
+          <article class="plan-card">
+            <h3>Asset Diversification</h3>
+            <p>
+              Balanced allocation across private equity, high-grade bonds, primary real estate, and defensive liquidity buffers.
+            </p>
+          </article>
+          <article class="plan-card">
+            <h3>Automated Rebalancing</h3>
+            <p>
+              Continuous algorithmic checks ensure your portfolio remains aligned with target risk and yield benchmarks.
+            </p>
+          </article>
+          <article class="plan-card">
+            <h3>Direct Advisory</h3>
+            <p>
+              Transparent quarterly reports and direct line access to your dedicated senior investment officer.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="activity" class="dashboard-section">
+        <div class="section-heading">
+          <span class="eyebrow">Analytics & Transactions</span>
+          <h2>Real-time asset mix and recent activity.</h2>
+        </div>
+
+        <div class="dashboard-grid">
+          <div class="overview-panel">
+            <div class="overview-row">
+              <div class="overview-card">
+                <span>Total Portfolio</span>
+                <strong>$1,284,670</strong>
+                <p>+8.4% past 30 days</p>
+              </div>
+              <div class="overview-card">
+                <span>Liquid Cash</span>
+                <strong>$124,800</strong>
+                <p>Ready for deployment</p>
+              </div>
+            </div>
+            <div class="overview-row">
+              <div class="overview-card">
+                <span>Annualized Target</span>
+                <strong>11.6%</strong>
+                <p>On track for Q4</p>
+              </div>
+              <div class="overview-card">
+                <span>Recommended</span>
+                <strong>5 Deals</strong>
+                <p>Curated opportunities</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="chart-panel">
+            <div class="chart-header">
+              <h3>Allocation Breakdown</h3>
+              <p>Asset distribution across equity, bonds, and alternatives.</p>
+            </div>
+            <div class="chart-canvas-wrap">
+              <canvas id="allocationChart" width="400" height="260"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="transaction-section">
+          <div class="transaction-table-wrap">
+            <table class="transaction-table">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Investment Asset</th>
+                  <th>Type</th>
+                  <th>Amount</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="transactionBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <footer class="site-footer">
+        <p>© 2026 B Magnet Investment. Confidential investor interface for bmagnetint.com</p>
+      </footer>
+    </div>
+  </body>
+</html>
