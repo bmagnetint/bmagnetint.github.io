@@ -3,54 +3,70 @@ const allocationData = {
   datasets: [
     {
       data: [42, 18, 16, 12, 12],
-      backgroundColor: ['#05a8a8', '#1e40af', '#059669', '#d97706', '#6366f1'],
-      borderColor: '#ffffff',
-      borderWidth: 3,
-      hoverOffset: 6,
+      backgroundColor: ['#00e5e5', '#3b82f6', '#10b981', '#f59e0b', '#8b5cf6'],
+      borderColor: 'transparent',
+      borderWidth: 2,
+      hoverOffset: 8,
     },
   ],
 };
 
-const allocationChart = new Chart(document.getElementById('allocationChart'), {
-  type: 'doughnut',
-  data: allocationData,
-  options: {
-    responsive: true,
-    maintainAspectRatio: false,
-    cutout: '70%',
-    plugins: {
-      legend: {
-        position: 'bottom',
-        labels: {
-          usePointStyle: true,
-          boxWidth: 10,
-          padding: 20,
-          color: '#475569',
-          font: {
-            family: 'Plus Jakarta Sans',
-            weight: '600',
-            size: 12,
+const chartCtx = document.getElementById('allocationChart');
+let allocationChart = null;
+
+if (chartCtx) {
+  allocationChart = new Chart(chartCtx, {
+    type: 'doughnut',
+    data: allocationData,
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      cutout: '70%',
+      plugins: {
+        legend: {
+          position: 'bottom',
+          labels: {
+            usePointStyle: true,
+            boxWidth: 10,
+            padding: 20,
+            color: document.documentElement.getAttribute('data-theme') === 'dark' ? '#f8fafc' : '#475569',
+            font: {
+              family: 'Plus Jakarta Sans',
+              weight: '600',
+              size: 12,
+            },
           },
         },
-      },
-      tooltip: {
-        backgroundColor: '#0f172a',
-        titleColor: '#ffffff',
-        bodyColor: '#05a8a8',
-        borderColor: 'rgba(5, 168, 168, 0.3)',
-        borderWidth: 1,
-        padding: 12,
-        boxPadding: 6,
-        usePointStyle: true,
-        callbacks: {
-          label: function (context) {
-            return ` ${context.label}: ${context.parsed}%`;
+        tooltip: {
+          backgroundColor: '#0f172a',
+          titleColor: '#ffffff',
+          bodyColor: '#00e5e5',
+          borderColor: 'rgba(0, 229, 225, 0.4)',
+          borderWidth: 1,
+          padding: 12,
+          boxPadding: 6,
+          usePointStyle: true,
+          callbacks: {
+            label: function (context) {
+              return ` ${context.label}: ${context.parsed}%`;
+            },
           },
         },
       },
     },
-  },
-});
+  });
+
+  // Dynamic Theme Adapter for Chart Legend
+  const updateChartTheme = () => {
+    if (!allocationChart) return;
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    allocationChart.options.plugins.legend.labels.color = isDark ? '#f8fafc' : '#475569';
+    allocationChart.update();
+  };
+
+  const observer = new MutationObserver(() => updateChartTheme());
+  observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+}
 
 const transactions = [
   {
@@ -89,10 +105,10 @@ if (transactionBody) {
   transactions.forEach((transaction) => {
     const row = document.createElement('tr');
     row.innerHTML = `
-      <td style="font-weight: 600; color: #0f172a;">${transaction.date}</td>
-      <td style="font-weight: 700; color: #0f172a;">${transaction.investment}</td>
+      <td style="font-weight: 600;">${transaction.date}</td>
+      <td style="font-weight: 700;">${transaction.investment}</td>
       <td>${transaction.type}</td>
-      <td style="font-weight: 700; color: #05a8a8;">${transaction.amount}</td>
+      <td style="font-weight: 700; color: var(--accent-teal);">${transaction.amount}</td>
       <td><span class="status-chip ${transaction.status.toLowerCase()}">${transaction.status}</span></td>
     `;
     transactionBody.appendChild(row);
