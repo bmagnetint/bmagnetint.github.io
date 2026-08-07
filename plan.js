@@ -14,8 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const capital = parseFloat(slider.value);
     capitalDisplay.textContent = `$${capital.toLocaleString()}`;
 
-    // Yield rate logic (13% annual compound rate)
-    const annualRate = 0.13;
+    // Yield rate logic (11.6% annual compound rate)
+    const annualRate = 0.116;
     const endValue = Math.round(capital * Math.pow(1 + annualRate, selectedYears));
     const profit = endValue - capital;
 

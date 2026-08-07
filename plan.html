@@ -58,9 +58,9 @@
           <div style="margin: 20px 0;">
             <label style="display: flex; justify-content: space-between; font-size: 0.9rem; font-weight: 600; margin-bottom: 8px;">
               <span>Initial Capital Allocation</span>
-              <strong id="calcCapitalDisplay" style="color: var(--accent-teal); font-size: 1.1rem;">$250,000</strong>
+              <strong id="calcCapitalDisplay" style="color: var(--accent-teal); font-size: 1.1rem;">$1,000</strong>
             </label>
-            <input type="range" id="capitalSlider" min="50000" max="2000000" step="25000" value="250000" style="width: 100%; cursor: pointer;" />
+            <input type="range" id="capitalSlider" min="500" max="5000" step="100" value="1000" style="width: 100%; cursor: pointer;" />
           </div>
 
           <div style="margin-bottom: 20px;">
@@ -96,10 +96,10 @@
           <!-- Tier 1 -->
           <article class="plan-card" style="display: flex; flex-direction: column; justify-content: space-between;">
             <div>
-              <span class="status-pill" style="margin-bottom: 12px; display: inline-block;">Starter Institutional</span>
-              <h3 style="font-size: 1.5rem; margin-bottom: 8px;">Growth & Preservation</h3>
-              <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 16px;">Minimum Allocation: $50,000</p>
-              <h2 style="font-size: 2.2rem; color: var(--accent-teal); margin-bottom: 16px;">8% - 10% <span style="font-size: 1rem; color: var(--text-muted);">/ Year</span></h2>
+              <span class="status-pill" style="margin-bottom: 12px; display: inline-block;">Starter Micro</span>
+              <h3 style="font-size: 1.5rem; margin-bottom: 8px;">Micro Growth</h3>
+              <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 16px;">Minimum Allocation: $500</p>
+              <h2 style="font-size: 2.2rem; color: var(--accent-teal); margin-bottom: 16px;">6% - 8% <span style="font-size: 1rem; color: var(--text-muted);">/ Year</span></h2>
               <ul style="list-style: none; padding: 0; display: grid; gap: 10px; margin-bottom: 24px; font-size: 0.9rem;">
                 <li>✓ 50% High-Grade Fixed Income</li>
                 <li>✓ 30% Global Equities</li>
@@ -107,16 +107,16 @@
                 <li>✓ Quarterly Dividend Payouts</li>
               </ul>
             </div>
-            <button type="button" class="btn btn-secondary select-tier-btn" data-tier="Growth & Preservation" style="width: 100%;">Select Starter Plan</button>
+            <button type="button" class="btn btn-secondary select-tier-btn" data-tier="Micro Growth ($500)" style="width: 100%;">Select Starter Plan</button>
           </article>
 
           <!-- Tier 2 Featured -->
           <article class="plan-card" style="border: 2px solid var(--accent-teal); transform: scale(1.02); display: flex; flex-direction: column; justify-content: space-between; background: rgba(0, 229, 225, 0.04);">
             <div>
               <span class="status-pill" style="background: var(--accent-teal); color: #060b14; font-weight: 700; margin-bottom: 12px; display: inline-block;">★ Most Popular</span>
-              <h3 style="font-size: 1.5rem; margin-bottom: 8px;">Institutional Core</h3>
-              <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 16px;">Minimum Allocation: $250,000</p>
-              <h2 style="font-size: 2.2rem; color: var(--accent-teal); margin-bottom: 16px;">11.6% - 14% <span style="font-size: 1rem; color: var(--text-muted);">/ Year</span></h2>
+              <h3 style="font-size: 1.5rem; margin-bottom: 8px;">Core Investor</h3>
+              <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 16px;">Minimum Allocation: $1,500</p>
+              <h2 style="font-size: 2.2rem; color: var(--accent-teal); margin-bottom: 16px;">8.4% - 11.6% <span style="font-size: 1rem; color: var(--text-muted);">/ Year</span></h2>
               <ul style="list-style: none; padding: 0; display: grid; gap: 10px; margin-bottom: 24px; font-size: 0.9rem;">
                 <li>✓ 42% Private Equity Growth</li>
                 <li>✓ 26% Commercial Real Estate</li>
@@ -125,16 +125,16 @@
                 <li>✓ Monthly Performance Audits</li>
               </ul>
             </div>
-            <button type="button" class="btn btn-primary select-tier-btn" data-tier="Institutional Core" style="width: 100%;">Select Core Plan</button>
+            <button type="button" class="btn btn-primary select-tier-btn" data-tier="Core Investor ($1,500)" style="width: 100%;">Select Core Plan</button>
           </article>
 
           <!-- Tier 3 -->
           <article class="plan-card" style="display: flex; flex-direction: column; justify-content: space-between;">
             <div>
-              <span class="status-pill" style="background: rgba(96, 165, 250, 0.15); color: #60a5fa; margin-bottom: 12px; display: inline-block;">Sovereign & UHNW</span>
-              <h3 style="font-size: 1.5rem; margin-bottom: 8px;">Bespoke Arbitrage</h3>
-              <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 16px;">Minimum Allocation: $1,000,000</p>
-              <h2 style="font-size: 2.2rem; color: var(--accent-teal); margin-bottom: 16px;">14% - 18% <span style="font-size: 1rem; color: var(--text-muted);">/ Year</span></h2>
+              <span class="status-pill" style="background: rgba(96, 165, 250, 0.15); color: #60a5fa; margin-bottom: 12px; display: inline-block;">Max Yield Tier</span>
+              <h3 style="font-size: 1.5rem; margin-bottom: 8px;">Max Yield Arbitrage</h3>
+              <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 16px;">Minimum Allocation: $5,000</p>
+              <h2 style="font-size: 2.2rem; color: var(--accent-teal); margin-bottom: 16px;">12% - 15% <span style="font-size: 1rem; color: var(--text-muted);">/ Year</span></h2>
               <ul style="list-style: none; padding: 0; display: grid; gap: 10px; margin-bottom: 24px; font-size: 0.9rem;">
                 <li>✓ Direct GTC FX & Institutional Arbitrage</li>
                 <li>✓ Custom Private Equity Placement</li>
@@ -142,7 +142,7 @@
                 <li>✓ 24/7 Priority Execution Desk</li>
               </ul>
             </div>
-            <button type="button" class="btn btn-secondary select-tier-btn" data-tier="Bespoke Arbitrage" style="width: 100%;">Select Sovereign Plan</button>
+            <button type="button" class="btn btn-secondary select-tier-btn" data-tier="Max Yield ($5,000)" style="width: 100%;">Select Max Plan</button>
           </article>
         </div>
       </section>
