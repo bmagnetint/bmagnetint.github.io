@@ -67,29 +67,50 @@ const dbEngine = new InvestorDatabase();
 window.dbEngine = dbEngine;
 
 /* Theme Manager Engine (Icon-Only Light & Dark Mode Switcher) */
+function applyTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  if (document.body) {
+    document.body.setAttribute('data-theme', theme);
+    if (theme === 'dark') {
+      document.body.classList.add('dark-theme');
+    } else {
+      document.body.classList.remove('dark-theme');
+    }
+  }
+
+  const btn = document.getElementById('themeToggleBtn');
+  if (btn) {
+    btn.textContent = theme === 'dark' ? '☀️' : '🌙';
+    btn.setAttribute('title', theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode');
+  }
+}
+
 (function initTheme() {
   const savedTheme = localStorage.getItem('bmagnet_theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  
+  // Apply immediately to html tag
   document.documentElement.setAttribute('data-theme', savedTheme);
 
-  document.addEventListener('DOMContentLoaded', () => {
+  const onReady = () => {
+    applyTheme(savedTheme);
+
     const btn = document.getElementById('themeToggleBtn');
     if (!btn) return;
 
-    const updateBtnUI = (theme) => {
-      btn.textContent = theme === 'dark' ? '☀️' : '🌙';
-      btn.setAttribute('title', theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode');
-    };
-
-    updateBtnUI(document.documentElement.getAttribute('data-theme') || 'light');
-
-    btn.addEventListener('click', () => {
-      const current = document.documentElement.getAttribute('data-theme');
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const current = document.documentElement.getAttribute('data-theme') || 'light';
       const next = current === 'dark' ? 'light' : 'dark';
-      document.documentElement.setAttribute('data-theme', next);
       localStorage.setItem('bmagnet_theme', next);
-      updateBtnUI(next);
+      applyTheme(next);
     });
-  });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', onReady);
+  } else {
+    onReady();
+  }
 })();
 
 /* i18n Multi-Language Translation Engine (English & Arabic RTL) */
@@ -167,17 +188,24 @@ const TRANSLATIONS = {
     }
   };
 
-  document.addEventListener('DOMContentLoaded', () => {
+  const onReady = () => {
     applyLang(localStorage.getItem('bmagnet_lang') || 'en');
 
     const langBtn = document.getElementById('langToggleBtn');
     if (!langBtn) return;
 
-    langBtn.addEventListener('click', () => {
+    langBtn.addEventListener('click', (e) => {
+      e.preventDefault();
       const current = localStorage.getItem('bmagnet_lang') || 'en';
       const next = current === 'ar' ? 'en' : 'ar';
       localStorage.setItem('bmagnet_lang', next);
       applyLang(next);
     });
-  });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', onReady);
+  } else {
+    onReady();
+  }
 })();
