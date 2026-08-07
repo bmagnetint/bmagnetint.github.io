@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const maxEndValue = capital + maxReturn;
 
     if (botsDisplay) botsDisplay.textContent = `${botCount} ${botCount === 1 ? 'Bot' : 'Bots'}`;
-    if (rentDisplay) rentDisplay.textContent = `$${totalRent.toLocaleString()} (3-Mo Contract)`;
+    if (rentDisplay) rentDisplay.textContent = `$${totalRent.toLocaleString()}`;
     if (outlayDisplay) outlayDisplay.textContent = `$${totalOutlay.toLocaleString()}`;
     if (dailyDisplay) dailyDisplay.textContent = `$${minDaily.toLocaleString()} – $${maxDaily.toLocaleString()} / day`;
     if (monthlyDisplay) monthlyDisplay.textContent = `$${minMonthly.toLocaleString()} – $${maxMonthly.toLocaleString()} / mo`;
