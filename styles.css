@@ -38,13 +38,16 @@
 
 body {
   font-family: var(--font-body);
-  background-color: #d3e1e4;
+  background-color: #cbdce0;
   background-image: 
-    radial-gradient(circle at 1px 1px, rgba(23, 42, 78, 0.065) 1.2px, transparent 0),
-    linear-gradient(to right, rgba(23, 42, 78, 0.025) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(23, 42, 78, 0.025) 1px, transparent 1px),
-    linear-gradient(180deg, #d3e1e4 0%, #dae6e8 45%, #e2ecee 100%);
-  background-size: 32px 32px, 64px 64px, 64px 64px, 100% 100%;
+    radial-gradient(circle at 50% 50%, rgba(5, 168, 168, 0.08) 0%, transparent 60%),
+    radial-gradient(circle at 2px 2px, rgba(23, 42, 78, 0.1) 1.5px, transparent 0),
+    linear-gradient(to right, rgba(5, 168, 168, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(5, 168, 168, 0.04) 1px, transparent 1px),
+    linear-gradient(135deg, rgba(23, 42, 78, 0.03) 25%, transparent 25%),
+    linear-gradient(225deg, rgba(23, 42, 78, 0.03) 25%, transparent 25%),
+    linear-gradient(180deg, #cbdce0 0%, #d7e4e7 40%, #e0ebeb 100%);
+  background-size: 100% 100%, 36px 36px, 72px 72px, 72px 72px, 36px 36px, 36px 36px, 100% 100%;
   background-attachment: fixed;
   color: var(--text-primary);
   min-height: 100vh;
@@ -53,7 +56,7 @@ body {
   position: relative;
 }
 
-/* Subtle Soft Ambient Radial Orbs Overlay */
+/* Advanced AI Cybernetic Neural Glow Orbs */
 body::before,
 body::after {
   content: '';
@@ -64,21 +67,29 @@ body::after {
 }
 
 body::before {
-  width: 750px;
-  height: 750px;
-  top: -200px;
-  left: -180px;
-  background: radial-gradient(circle, rgba(5, 168, 168, 0.16) 0%, rgba(23, 42, 78, 0.07) 55%, transparent 80%);
-  filter: blur(120px);
+  width: 800px;
+  height: 800px;
+  top: -220px;
+  left: -200px;
+  background: radial-gradient(circle, rgba(5, 168, 168, 0.2) 0%, rgba(23, 42, 78, 0.1) 50%, transparent 75%);
+  filter: blur(100px);
+  animation: aiGlowPulse 8s ease-in-out infinite alternate;
 }
 
 body::after {
-  width: 850px;
-  height: 850px;
-  bottom: -250px;
-  right: -200px;
-  background: radial-gradient(circle, rgba(23, 42, 78, 0.12) 0%, rgba(5, 168, 168, 0.07) 60%, transparent 80%);
-  filter: blur(140px);
+  width: 900px;
+  height: 900px;
+  bottom: -280px;
+  right: -220px;
+  background: radial-gradient(circle, rgba(23, 42, 78, 0.15) 0%, rgba(5, 168, 168, 0.09) 55%, transparent 75%);
+  filter: blur(120px);
+  animation: aiGlowPulse 10s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes aiGlowPulse {
+  0% { transform: scale(1) translateY(0); opacity: 0.8; }
+  50% { transform: scale(1.06) translateY(-12px); opacity: 1; }
+  100% { transform: scale(0.96) translateY(8px); opacity: 0.85; }
 }
 
 a {
