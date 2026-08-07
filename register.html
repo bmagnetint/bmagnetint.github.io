@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registration Complete — B Magnet International</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: data: 'unsafe-inline' 'unsafe-eval';" />
+    <meta name="description" content="B Magnet International — Investor Registration Complete" />
+    
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800;900&family=Tajawal:wght@700;800&family=Outfit:wght@800;900&family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#0f172a" />
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="register.js"></script>
+  </head>
+  <body class="dashboard-page">
+    <div class="dashboard-shell">
+      <!-- Sidebar Navigation -->
+      <aside class="sidebar">
+        <div class="brand-mark">
+          <div class="logo-glow-wrapper">
+            <img src="logo.png" alt="B Magnet Logo" class="brand-logo" />
+          </div>
+          <div class="brand-details">
+            <span class="brand-name">B Magnet International</span>
+            <span class="brand-tag">Investor Portal</span>
+          </div>
+        </div>
+
+        <nav class="sidebar-nav" style="margin-top: 30px;">
+          <a href="index.html" class="nav-item"><span>🔑</span> Authentication</a>
+          <a href="register.html" class="nav-item active"><span>📝</span> Registration Complete</a>
+          <a href="plan.html" class="nav-item"><span>🤖</span> AI Forex Bot Plans</a>
+          <a href="dashboard.html" class="nav-item"><span>📊</span> Investor Dashboard</a>
+          <a href="payment.html" class="nav-item"><span>💳</span> Crypto Deposit Vault</a>
+        </nav>
+      </aside>
+
+      <!-- Main Content Container -->
+      <main class="main-content">
+        <header class="top-nav">
+          <div class="user-pill">
+            <div class="user-avatar" id="regAvatar">IV</div>
+            <div class="user-info">
+              <strong id="regHeaderName">New Registered Investor</strong>
+              <span id="regHeaderEmail">investor@domain.com</span>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 10px; align-items: center;">
+            <a href="plan.html" class="btn btn-primary">Select Investment Strategy →</a>
+          </div>
+        </header>
+
+        <!-- Main Registration Confirmation Hero -->
+        <section class="dashboard-hero" style="margin-bottom: 30px;">
+          <div class="hero-copy">
+            <span class="eyebrow"><span class="pulse-dot"></span> Account Registration Successful</span>
+            <h1 id="regHeroTitle">Welcome to B Magnet International 🎉</h1>
+            <p>
+              Your investor profile has been registered and verified in our institutional custody vault.
+            </p>
+            <div class="hero-actions" style="margin-top: 24px; display: flex; gap: 12px; flex-wrap: wrap;">
+              <a href="plan.html" class="btn btn-primary">Select Forex Bot Investment Strategy →</a>
+              <a href="dashboard.html" class="btn btn-secondary">Go to Investor Portal Dashboard →</a>
+            </div>
+          </div>
+
+          <!-- Registration Certificate Card -->
+          <div class="dashboard-hero-card">
+            <div class="hero-card-header">
+              <span>Investor Credential Certificate</span>
+              <span class="status-pill" style="background: rgba(5, 150, 105, 0.2); color: #34d399;">✓ Verified & Active</span>
+            </div>
+
+            <div class="stat-main" style="margin: 20px 0;">
+              <p>Registered Investor Name</p>
+              <h2 id="cardRegName" style="color: var(--accent-teal); font-size: 1.8rem; margin: 4px 0;">Alexander Vance</h2>
+              <p id="cardRegEmail" style="color: var(--text-muted); font-size: 0.95rem;">investor@domain.com</p>
+            </div>
+
+            <div class="stat-grid" style="grid-template-columns: 1fr 1fr;">
+              <div class="stat-box">
+                <p>Assigned MT5 Vault ID</p>
+                <strong style="color: var(--accent-gold); font-size: 1.1rem;">BMG-FX-894201</strong>
+              </div>
+              <div class="stat-box">
+                <p>Security Custody</p>
+                <strong class="positive" style="font-size: 1.1rem;">GTC FX Multi-Sig</strong>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Registration Details Breakdown -->
+        <section class="plan-section" style="margin-bottom: 40px;">
+          <div class="dashboard-grid" style="grid-template-columns: 1fr 1fr; gap: 24px;">
+            <!-- Registration Details Card -->
+            <div class="chart-panel">
+              <div class="chart-header">
+                <h3>Registered Account Profile</h3>
+                <p>Institutional verification and allocation summary.</p>
+              </div>
+              <div class="transaction-table-wrap">
+                <table class="transaction-table">
+                  <tbody>
+                    <tr>
+                      <td style="color: var(--text-muted); font-weight: 600;">Investor Name</td>
+                      <td style="font-weight: 700; text-align: right;" id="tblRegName">Alexander Vance</td>
+                    </tr>
+                    <tr>
+                      <td style="color: var(--text-muted); font-weight: 600;">Investor Email</td>
+                      <td style="font-weight: 700; text-align: right;" id="tblRegEmail">investor@domain.com</td>
+                    </tr>
+                    <tr>
+                      <td style="color: var(--text-muted); font-weight: 600;">Account Status</td>
+                      <td style="font-weight: 700; color: #10b981; text-align: right;">Active - Tier 1 Verified</td>
+                    </tr>
+                    <tr>
+                      <td style="color: var(--text-muted); font-weight: 600;">Default Authorized Email</td>
+                      <td style="font-weight: 700; color: var(--accent-teal); text-align: right;">test@bmagnetint.com</td>
+                    </tr>
+                    <tr>
+                      <td style="color: var(--text-muted); font-weight: 600;">Default Authorized Password</td>
+                      <td style="font-weight: 700; color: var(--accent-gold); text-align: right;">bmagnet@123</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Next Steps Guidance Card -->
+            <div class="chart-panel">
+              <div class="chart-header">
+                <h3>Next Steps for Capital Activation</h3>
+                <p>Activate automated Neural Forex EA bots in 2 simple steps.</p>
+              </div>
+              <div style="padding: 10px 0;">
+                <ul style="list-style: none; padding: 0; display: grid; gap: 16px; font-size: 0.9rem;">
+                  <li style="display: flex; gap: 12px; align-items: flex-start;">
+                    <span style="background: var(--accent-teal); color: #060b14; font-weight: 800; border-radius: 50%; width: 28px; height: 28px; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;">1</span>
+                    <div>
+                      <strong>Choose Your AI Forex Bot Plan</strong>
+                      <p style="margin: 4px 0 0 0; font-size: 0.85rem; color: var(--text-muted);">Select from Starter Core ($1,000 - 1 Bot), Core Investor ($3,000 - 3 Bots), or Max Forex ($5,000 - 5 Bots).</p>
+                    </div>
+                  </li>
+                  <li style="display: flex; gap: 12px; align-items: flex-start;">
+                    <span style="background: var(--accent-gold); color: #060b14; font-weight: 800; border-radius: 50%; width: 28px; height: 28px; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;">2</span>
+                    <div>
+                      <strong>Deposit Capital & Rental Fee via Crypto Vault</strong>
+                      <p style="margin: 4px 0 0 0; font-size: 0.85rem; color: var(--text-muted);">Transfer USDT via BEP20 (BNB Smart Chain) or TRC20 (TRON) to start daily algorithmic execution.</p>
+                    </div>
+                  </li>
+                </ul>
+                <div style="margin-top: 24px;">
+                  <a href="plan.html" class="btn btn-primary" style="width: 100%; text-align: center;">Proceed to Select Plan →</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="login-footer" style="margin-top: 40px;">
+          <p>© 2026 B Magnet Investment. All rights reserved. Institutional investor portal.</p>
+        </footer>
+      </main>
+    </div>
+  </body>
+</html>

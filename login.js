@@ -133,31 +133,33 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Registration Form Submission Handler
+  // Registration Form Submission Handler (Only Full Name & Email) -> Redirects to register.html
   if (registerForm) {
     registerForm.addEventListener('submit', (event) => {
       event.preventDefault();
 
       const nameVal = document.getElementById('regName').value.trim();
       const emailVal = document.getElementById('regEmail').value.trim();
-      const passVal = document.getElementById('regPassword').value.trim();
 
-      if (!nameVal || !emailVal || !passVal) {
-        alert('Please fill in all registration fields.');
+      if (!nameVal || !emailVal) {
+        alert('Please fill in both Full Name and Investor Email.');
         return;
       }
 
       const users = getRegisteredUsers();
-      users.push({ name: nameVal, email: emailVal, password: passVal, createdAt: new Date().toISOString() });
+      users.push({ name: nameVal, email: emailVal, createdAt: new Date().toISOString() });
       localStorage.setItem('bmagnet_registered_users', JSON.stringify(users));
+      localStorage.setItem('bmagnet_last_reg_name', nameVal);
+      localStorage.setItem('bmagnet_last_reg_email', emailVal);
 
-      alert(`🎉 Registration Complete!\n\nWelcome ${nameVal}!\nYour account (${emailVal}) is now registered.\n\nYou can now log in with your email and password to access the dashboard.`);
+      const submitBtn = registerForm.querySelector('button[type="submit"]');
+      if (submitBtn) {
+        submitBtn.textContent = 'Redirecting to Confirmation...';
+      }
 
-      // Switch back to Sign In tab and fill registered credentials
-      if (emailInputEl) emailInputEl.value = emailVal;
-      if (passwordInputEl) passwordInputEl.value = passVal;
-
-      if (tabSignInBtn) tabSignInBtn.click();
+      setTimeout(() => {
+        window.location.href = `register.html?name=${encodeURIComponent(nameVal)}&email=${encodeURIComponent(emailVal)}`;
+      }, 400);
     });
   }
 });
