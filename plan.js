@@ -63,9 +63,9 @@ document.addEventListener('DOMContentLoaded', () => {
       let planParam = 'starter';
       let capitalVal = slider ? parseFloat(slider.value) : 1000;
 
-      if (tierName.includes('2,000') || tierName.includes('Core Growth')) {
+      if (tierName.includes('3,000') || tierName.includes('Core Investor')) {
         planParam = 'core';
-        capitalVal = 2000;
+        capitalVal = 3000;
       } else if (tierName.includes('5,000') || tierName.includes('Max')) {
         planParam = 'max';
         capitalVal = 5000;

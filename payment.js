@@ -26,13 +26,13 @@ document.addEventListener('DOMContentLoaded', () => {
   let planTitleStr = "Starter Core AI Bot ($1,000 Deposit)";
 
   if (planType === 'core') {
-    planTitleStr = "Core Investor AI Bot";
-    capital = Math.max(2000, capitalParam);
-    botCount = Math.max(2, Math.floor(capital / 1000));
+    planTitleStr = "Core Investor AI Bot ($3,000 Deposit)";
+    capital = Math.max(3000, capitalParam);
+    botCount = Math.max(3, Math.floor(capital / 1000));
     totalRent = botCount * 300;
     totalOutlay = capital + totalRent;
   } else if (planType === 'max') {
-    planTitleStr = "Max Yield Arbitrage AI Bot";
+    planTitleStr = "Max Yield Arbitrage AI Bot ($5,000 Deposit)";
     capital = Math.max(5000, capitalParam);
     botCount = Math.max(5, Math.floor(capital / 1000));
     totalRent = botCount * 300;
