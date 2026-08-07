@@ -595,6 +595,16 @@ button, input {
   color: #ffffff;
 }
 
+.btn-social-full {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-social-full:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.15);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
 .btn-secondary {
   background: #ffffff;
   color: var(--accent-navy);
