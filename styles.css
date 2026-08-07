@@ -224,13 +224,7 @@ body.dark-theme .apple-icon {
 
 body {
   font-family: var(--font-body);
-  background-color: #c7d9de;
-  background-image: 
-    linear-gradient(to right, rgba(23, 42, 78, 0.045) 1.5px, transparent 1.5px),
-    linear-gradient(to bottom, rgba(23, 42, 78, 0.045) 1.5px, transparent 1.5px),
-    radial-gradient(circle at 50% 0%, rgba(5, 168, 168, 0.14) 0%, transparent 65%),
-    linear-gradient(180deg, #c7d9de 0%, #d4e3e6 45%, #e0ecee 100%);
-  background-size: 96px 96px, 96px 96px, 100% 100%, 100% 100%;
+  background: linear-gradient(180deg, #dbe6e8 0%, #e5eff1 50%, #edf4f5 100%);
   background-attachment: fixed;
   color: var(--text-primary);
   min-height: 100vh;
@@ -239,7 +233,7 @@ body {
   position: relative;
 }
 
-/* Advanced AI Cybernetic Neural Glow Orbs */
+/* Silky Soft Ambient Radial Orbs Overlay */
 body::before,
 body::after {
   content: '';
@@ -252,10 +246,10 @@ body::after {
 body::before {
   width: 900px;
   height: 900px;
-  top: -240px;
+  top: -250px;
   left: -200px;
-  background: radial-gradient(circle, rgba(5, 168, 168, 0.22) 0%, rgba(23, 42, 78, 0.12) 50%, transparent 75%);
-  filter: blur(110px);
+  background: radial-gradient(circle, rgba(5, 168, 168, 0.2) 0%, rgba(23, 42, 78, 0.1) 55%, transparent 75%);
+  filter: blur(120px);
   animation: aiGlowPulse 8s ease-in-out infinite alternate;
 }
 
@@ -264,8 +258,8 @@ body::after {
   height: 1000px;
   bottom: -300px;
   right: -250px;
-  background: radial-gradient(circle, rgba(23, 42, 78, 0.18) 0%, rgba(5, 168, 168, 0.1) 55%, transparent 75%);
-  filter: blur(130px);
+  background: radial-gradient(circle, rgba(23, 42, 78, 0.16) 0%, rgba(5, 168, 168, 0.08) 60%, transparent 75%);
+  filter: blur(140px);
   animation: aiGlowPulse 10s ease-in-out infinite alternate-reverse;
 }
 
