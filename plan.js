@@ -21,26 +21,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
     capitalDisplay.textContent = `$${capital.toLocaleString()}`;
 
-    // 1 Bot per $1,000 deposit (e.g. $1,000 = 1 Bot, $2,000 = 2 Bots, $3,000 = 3 Bots, $4,000 = 4 Bots, $5,000 = 5 Bots)
+    // 1 Bot per $1,000 deposit
     const botCount = Math.max(1, Math.floor(capital / 1000));
     
     // $300 total bot rental fee for 3-Month Contract per bot
     const totalRent = botCount * 300;
     const totalOutlay = capital + totalRent;
 
-    // Monthly Net Profit: $960 / month ($32 / day) per bot
-    const monthlyProfit = botCount * 960;
-    const dailyProfit = Math.round(monthlyProfit / 30);
-    const totalReturn = monthlyProfit * selectedMonths;
-    const endValue = capital + totalReturn;
+    // Daily Profit Range per bot: $10 - $30 / day (Mon - Fri trading, Sat/Sun Off)
+    const minDaily = botCount * 10;
+    const maxDaily = botCount * 30;
+
+    // Trading Days: ~22 days per month (Mon-Fri)
+    const minMonthly = minDaily * 22;
+    const maxMonthly = maxDaily * 22;
+
+    const minReturn = minMonthly * selectedMonths;
+    const maxReturn = maxMonthly * selectedMonths;
+
+    const minEndValue = capital + minReturn;
+    const maxEndValue = capital + maxReturn;
 
     if (botsDisplay) botsDisplay.textContent = `${botCount} ${botCount === 1 ? 'Bot' : 'Bots'}`;
     if (rentDisplay) rentDisplay.textContent = `$${totalRent.toLocaleString()} (3-Mo Contract)`;
     if (outlayDisplay) outlayDisplay.textContent = `$${totalOutlay.toLocaleString()}`;
-    if (dailyDisplay) dailyDisplay.textContent = `$${dailyProfit.toLocaleString()} / day`;
-    if (monthlyDisplay) monthlyDisplay.textContent = `$${monthlyProfit.toLocaleString()} / mo`;
-    returnDisplay.textContent = `+$${totalReturn.toLocaleString()}`;
-    valueDisplay.textContent = `$${endValue.toLocaleString()}`;
+    if (dailyDisplay) dailyDisplay.textContent = `$${minDaily.toLocaleString()} – $${maxDaily.toLocaleString()} / day`;
+    if (monthlyDisplay) monthlyDisplay.textContent = `$${minMonthly.toLocaleString()} – $${maxMonthly.toLocaleString()} / mo`;
+    returnDisplay.textContent = `+$${minReturn.toLocaleString()} – $${maxReturn.toLocaleString()}`;
+    valueDisplay.textContent = `$${minEndValue.toLocaleString()} – $${maxEndValue.toLocaleString()}`;
   }
 
   if (slider) {
