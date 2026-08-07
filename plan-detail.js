@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
     totalRent = botCount * 300;
     monthlyProfit = botCount * 960;
   } else if (planType === 'max' || capitalParam >= 5000) {
-    titleStr = "Max Arbitrage AI Bot Detailed Plan ($5,000 Deposit - 5 Bots)";
+    titleStr = "Max Forex AI Bot Detailed Plan ($5,000 Deposit - 5 Bots)";
     capital = capitalParam >= 5000 ? capitalParam : 5000;
     botCount = Math.max(5, Math.floor(capital / 1000));
     totalRent = botCount * 300;
