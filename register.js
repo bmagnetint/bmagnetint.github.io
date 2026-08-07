@@ -11,14 +11,39 @@ document.addEventListener('DOMContentLoaded', () => {
   const kycSuccessCard = document.getElementById('kycSuccessCard');
   const regHeroTitle = document.getElementById('regHeroTitle');
 
-  // Set hero title: Welcome with investor name
-  if (regHeroTitle) {
-    const nameStr = nameParam.trim() ? nameParam.trim() : 'Investor';
-    regHeroTitle.textContent = `Welcome to B Magnet International, ${nameStr}! 🎉`;
+  const regAvatar = document.getElementById('regAvatar');
+  const sideAgePreview = document.getElementById('sideAgePreview');
+
+  function getInitials(name) {
+    if (!name) return 'AV';
+    const parts = name.trim().split(' ').filter(Boolean);
+    if (parts.length >= 2) {
+      return (parts[0][0] + parts[1][0]).toUpperCase();
+    }
+    return name.slice(0, 2).toUpperCase();
   }
 
-  // Pre-fill full name and email
-  if (kycFullNameInput) kycFullNameInput.value = nameParam;
+  // Update Hero Welcome & Side Passport Card Initials
+  function updateHeroAndPassport(name) {
+    const cleanName = name.trim() ? name.trim() : 'Investor';
+    if (regHeroTitle) {
+      regHeroTitle.textContent = `Welcome to B Magnet International, ${cleanName}! 🎉`;
+    }
+    if (regAvatar) {
+      regAvatar.textContent = getInitials(cleanName);
+    }
+  }
+
+  // Initial Pre-fill
+  if (kycFullNameInput) {
+    kycFullNameInput.value = nameParam;
+    updateHeroAndPassport(nameParam);
+
+    kycFullNameInput.addEventListener('input', () => {
+      updateHeroAndPassport(kycFullNameInput.value);
+    });
+  }
+
   if (kycEmailInput) kycEmailInput.value = emailParam;
 
   // -------------------------------------------------------------
@@ -58,7 +83,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!calDaysGrid) return;
     calDaysGrid.innerHTML = '';
 
-    // Days in selected month
     const daysInMonth = new Date(selectedYear, selectedMonth + 1, 0).getDate();
     if (selectedDay > daysInMonth) selectedDay = daysInMonth;
 
@@ -70,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
       dayBtn.style.borderRadius = '6px';
       dayBtn.style.border = '1px solid rgba(255,255,255,0.1)';
       dayBtn.style.cursor = 'pointer';
-      dayBtn.style.fontWeight = '600';
+      dayBtn.style.fontWeight = '700';
       dayBtn.style.fontSize = '0.85rem';
 
       if (d === selectedDay) {
@@ -111,7 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const age = calculateAge(selectedYear, selectedMonth, selectedDay);
     const isValid18 = age >= 18;
 
-    calSelectedPreview.innerHTML = `${isoDate} (${age} Years Old) ${isValid18 ? '<span style="color:#34d399;">✓ Verified 18+</span>' : '<span style="color:#ef4444;">❌ Under 18</span>'}`;
+    calSelectedPreview.innerHTML = `${isoDate} (${age} Yrs Old) ${isValid18 ? '<span style="color:#34d399; font-weight:800;">✓ Verified 18+</span>' : '<span style="color:#ef4444; font-weight:800;">❌ Under 18</span>'}`;
   }
 
   if (calYearSelect) {
@@ -161,7 +185,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const isoDate = `${selectedYear}-${formattedMonth}-${formattedDay}`;
 
       if (kycDobInput) kycDobInput.value = isoDate;
-      if (dobDisplayText) dobDisplayText.textContent = `📅 ${isoDate} (${age} Yrs Old - 18+ Verified)`;
+      if (dobDisplayText) dobDisplayText.textContent = `📅 ${isoDate} (${age} Yrs - 18+ Verified)`;
+      if (sideAgePreview) sideAgePreview.textContent = `${age} Years Old (Verified 18+)`;
 
       dobCalendarModal.style.display = 'none';
     });
