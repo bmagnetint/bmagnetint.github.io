@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const horizonBtns = document.querySelectorAll('.horizon-btn');
   const selectBtns = document.querySelectorAll('.select-tier-btn');
 
-  let selectedYears = 1;
+  let selectedYears = 0.25;
 
   function calculateYield() {
     if (!slider || !capitalDisplay || !returnDisplay || !valueDisplay) return;
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.addEventListener('click', () => {
       horizonBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      selectedYears = parseInt(btn.getAttribute('data-years') || '1', 10);
+      selectedYears = parseFloat(btn.getAttribute('data-years') || '0.25');
       calculateYield();
     });
   });
