@@ -57,10 +57,10 @@
 
           <div style="margin: 20px 0;">
             <label style="display: flex; justify-content: space-between; font-size: 0.9rem; font-weight: 600; margin-bottom: 8px;">
-              <span>Initial Capital Allocation</span>
+              <span>Initial Capital Allocation ($1,000 = 1 Bot)</span>
               <strong id="calcCapitalDisplay" style="color: var(--accent-teal); font-size: 1.1rem;">$1,000</strong>
             </label>
-            <input type="range" id="capitalSlider" min="1000" max="5000" step="500" value="1000" style="width: 100%; cursor: pointer;" />
+            <input type="range" id="capitalSlider" min="1000" max="5000" step="1000" value="1000" style="width: 100%; cursor: pointer;" />
           </div>
 
           <div style="margin-bottom: 20px;">
@@ -139,7 +139,7 @@
                 <li>✓ Monthly Audited Performance Statements</li>
               </ul>
             </div>
-            <button type="button" class="btn btn-secondary select-tier-btn" data-tier="Starter Core ($1,000)" style="width: 100%;">Select Starter Plan</button>
+            <button type="button" class="btn btn-secondary select-tier-btn" data-tier="Starter Core ($1,000)" onclick="window.location.href='plan-detail.html?plan=starter&capital=1000&months=3'" style="width: 100%;">Select Starter Plan</button>
           </article>
 
           <!-- Tier 2 Featured -->
@@ -160,7 +160,7 @@
                 <li>✓ Monthly Audited Performance Statements</li>
               </ul>
             </div>
-            <button type="button" class="btn btn-primary select-tier-btn" data-tier="Core Investor ($3,000)" style="width: 100%;">Select Core Plan</button>
+            <button type="button" class="btn btn-primary select-tier-btn" data-tier="Core Investor ($3,000)" onclick="window.location.href='plan-detail.html?plan=core&capital=3000&months=3'" style="width: 100%;">Select Core Plan</button>
           </article>
 
           <!-- Tier 3 -->
@@ -181,7 +181,7 @@
                 <li>✓ Monthly Audited Performance Statements</li>
               </ul>
             </div>
-            <button type="button" class="btn btn-secondary select-tier-btn" data-tier="Max Yield ($5,000)" style="width: 100%;">Select Max Plan</button>
+            <button type="button" class="btn btn-secondary select-tier-btn" data-tier="Max Yield ($5,000)" onclick="window.location.href='plan-detail.html?plan=max&capital=5000&months=3'" style="width: 100%;">Select Max Plan</button>
           </article>
         </div>
       </section>
