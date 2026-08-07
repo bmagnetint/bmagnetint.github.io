@@ -33,13 +33,13 @@
 /* Dark Mode Palette Harmonized to Logo Dual-Colors (Royal Navy & Cyan Teal) */
 [data-theme="dark"] {
   color-scheme: dark;
-  --bg-main: #0a1120;
-  --bg-card: rgba(15, 23, 42, 0.88);
-  --bg-card-hover: rgba(23, 37, 66, 0.95);
-  --bg-glass: rgba(15, 23, 42, 0.75);
+  --bg-main: #060b14;
+  --bg-card: rgba(13, 20, 36, 0.92);
+  --bg-card-hover: rgba(20, 32, 58, 0.96);
+  --bg-glass: rgba(13, 20, 36, 0.82);
   
-  --border-light: rgba(30, 58, 138, 0.45);
-  --border-glow: rgba(0, 229, 225, 0.5);
+  --border-light: rgba(30, 58, 138, 0.5);
+  --border-glow: rgba(0, 229, 225, 0.55);
   
   --accent-teal: #00e5e5;
   --accent-blue: #3b82f6;
@@ -52,24 +52,43 @@
   --text-muted: #94a3b8;
   
   --shadow-glow: 0 10px 35px rgba(0, 229, 225, 0.25);
-  --shadow-card: 0 20px 50px -10px rgba(0, 0, 0, 0.5), 0 4px 16px rgba(0, 229, 225, 0.08);
+  --shadow-card: 0 20px 50px -10px rgba(0, 0, 0, 0.6), 0 4px 16px rgba(0, 229, 225, 0.1);
 }
 
 [data-theme="dark"] body {
-  background-color: #0a1120;
+  background-color: #060b14 !important;
   background-image: 
-    radial-gradient(circle at 50% 50%, rgba(0, 229, 225, 0.12) 0%, transparent 60%),
-    radial-gradient(circle at 2px 2px, rgba(0, 229, 225, 0.15) 1.5px, transparent 0),
+    radial-gradient(circle at 50% 50%, rgba(0, 229, 225, 0.14) 0%, transparent 60%),
+    radial-gradient(circle at 2px 2px, rgba(0, 229, 225, 0.16) 1.5px, transparent 0),
     linear-gradient(to right, rgba(0, 229, 225, 0.05) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(0, 229, 225, 0.05) 1px, transparent 1px),
-    linear-gradient(135deg, rgba(27, 54, 93, 0.15) 25%, transparent 25%),
-    linear-gradient(225deg, rgba(27, 54, 93, 0.15) 25%, transparent 25%),
-    linear-gradient(180deg, #070d18 0%, #0a1120 40%, #0e182d 100%);
-  color: var(--text-primary);
+    linear-gradient(135deg, rgba(23, 42, 78, 0.2) 25%, transparent 25%),
+    linear-gradient(225deg, rgba(23, 42, 78, 0.2) 25%, transparent 25%),
+    linear-gradient(180deg, #040810 0%, #060b14 40%, #0a1222 100%) !important;
+  color: #f8fafc !important;
+}
+
+[data-theme="dark"] input {
+  background: rgba(15, 23, 42, 0.8) !important;
+  color: #f8fafc !important;
+  border-color: rgba(51, 65, 85, 0.9) !important;
+}
+
+[data-theme="dark"] input::placeholder {
+  color: #64748b !important;
 }
 
 [data-theme="dark"] .brand-name {
   color: #60a5fa;
+}
+
+[data-theme="dark"] .site-header,
+[data-theme="dark"] .brand-strip {
+  border-bottom-color: #00e5e5 !important;
+}
+
+[data-theme="dark"] .login-card::before {
+  background: #00e5e5 !important;
 }
 
 [data-theme="dark"] .btn-social-icon {
@@ -86,25 +105,27 @@
   fill: #f8fafc;
 }
 
-.theme-toggle-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 16px;
-  border-radius: 20px;
+/* Circular Icon-Only Theme Switcher Button */
+.theme-toggle-icon-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
   background: var(--bg-card);
   border: 1px solid var(--border-light);
   color: var(--text-primary);
-  font-weight: 700;
-  font-size: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
   cursor: pointer;
   box-shadow: var(--shadow-card);
-  transition: all 0.25s ease;
-  backdrop-filter: blur(12px);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  backdrop-filter: blur(14px);
+  outline: none;
 }
 
-.theme-toggle-btn:hover {
-  transform: translateY(-2px);
+.theme-toggle-icon-btn:hover {
+  transform: translateY(-2px) scale(1.08);
   border-color: var(--accent-teal);
   box-shadow: var(--shadow-glow);
 }

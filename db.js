@@ -66,7 +66,7 @@ class InvestorDatabase {
 const dbEngine = new InvestorDatabase();
 window.dbEngine = dbEngine;
 
-/* Theme Manager Engine (Light & Dark Dual-Logo Colors) */
+/* Theme Manager Engine (Icon-Only Light & Dark Mode Switcher) */
 (function initTheme() {
   const savedTheme = localStorage.getItem('bmagnet_theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
   document.documentElement.setAttribute('data-theme', savedTheme);
@@ -76,15 +76,8 @@ window.dbEngine = dbEngine;
     if (!btn) return;
 
     const updateBtnUI = (theme) => {
-      const icon = btn.querySelector('.theme-icon');
-      const label = btn.querySelector('.theme-label');
-      if (theme === 'dark') {
-        if (icon) icon.textContent = '☀️';
-        if (label) label.textContent = 'Light';
-      } else {
-        if (icon) icon.textContent = '🌙';
-        if (label) label.textContent = 'Dark';
-      }
+      btn.textContent = theme === 'dark' ? '☀️' : '🌙';
+      btn.setAttribute('title', theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode');
     };
 
     updateBtnUI(document.documentElement.getAttribute('data-theme') || 'light');
