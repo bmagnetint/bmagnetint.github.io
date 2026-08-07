@@ -127,6 +127,7 @@ if (gtcModal) {
 if (gtcForm) {
   gtcForm.addEventListener('submit', (e) => {
     e.preventDefault();
+    const accountVal = document.getElementById('gtcAccount').value.trim();
     const submitBtn = gtcForm.querySelector('button[type="submit"]');
     if (submitBtn) {
       submitBtn.textContent = 'Authenticating GTC FX Feed...';
@@ -134,10 +135,15 @@ if (gtcForm) {
 
     setTimeout(() => {
       gtcModal.classList.remove('active');
-      alert('✅ GTC FX Global Account #884920 Connected Successfully!\n\nYour live assets, margin reports, and floating P&L feeds are now synchronized with B Magnet International.');
+      const statusPill = document.getElementById('gtcStatusPill');
+      if (statusPill && accountVal) {
+        statusPill.textContent = `🏛️ GTC FX Global Connected (Acc #${accountVal})`;
+      }
+      alert(`✅ GTC FX Global Account #${accountVal || 'Connected'} Successfully!\n\nYour live assets, margin reports, and floating P&L feeds are now synchronized with B Magnet International.`);
       if (submitBtn) {
         submitBtn.textContent = '🔒 Save & Connect GTC Global Account';
       }
+      gtcForm.reset();
     }, 1000);
   });
 }

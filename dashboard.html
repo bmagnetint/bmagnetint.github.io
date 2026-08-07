@@ -106,8 +106,8 @@
         <div class="sync-bar-card" style="margin-bottom: 24px;">
           <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
             <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
-              <span class="status-pill" style="background: rgba(0, 229, 225, 0.15); color: var(--accent-teal); border-color: rgba(0, 229, 225, 0.4);">
-                🏛️ GTC FX Global Connected (Acc #884920)
+              <span id="gtcStatusPill" class="status-pill" style="background: rgba(0, 229, 225, 0.15); color: var(--accent-teal); border-color: rgba(0, 229, 225, 0.4);">
+                🏛️ GTC FX Global Integration
               </span>
               <span style="font-size: 0.85rem; color: var(--text-muted);">Last Sync: Just now</span>
             </div>
@@ -314,11 +314,11 @@
           </div>
           <div class="form-group">
             <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 6px;">GTC FX Account Login</label>
-            <input id="gtcAccount" type="text" value="884920" placeholder="e.g. 884920" required style="width: 100%; padding: 12px; border-radius: 12px; background: var(--bg-main); color: var(--text-primary); border: 1px solid var(--border-light);" />
+            <input id="gtcAccount" type="text" placeholder="Enter GTC FX Account Login ID" required style="width: 100%; padding: 12px; border-radius: 12px; background: var(--bg-main); color: var(--text-primary); border: 1px solid var(--border-light);" />
           </div>
           <div class="form-group">
             <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 6px;">Investor Read-Only Password / API Token</label>
-            <input id="gtcToken" type="password" value="bmagnetgtc2026" placeholder="Read-Only API Password" required style="width: 100%; padding: 12px; border-radius: 12px; background: var(--bg-main); color: var(--text-primary); border: 1px solid var(--border-light);" />
+            <input id="gtcToken" type="password" placeholder="Enter Read-Only API Password / Token" required style="width: 100%; padding: 12px; border-radius: 12px; background: var(--bg-main); color: var(--text-primary); border: 1px solid var(--border-light);" />
           </div>
           <button type="submit" class="btn btn-primary" style="margin-top: 10px;">🔒 Save & Connect GTC Global Account</button>
         </form>
