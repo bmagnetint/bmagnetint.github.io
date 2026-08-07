@@ -99,8 +99,24 @@ const transactions = [
   },
 ];
 
-const transactionBody = document.getElementById('transactionBody');
+const syncApiBtn = document.getElementById('syncApiBtn');
+if (syncApiBtn) {
+  syncApiBtn.addEventListener('click', () => {
+    syncApiBtn.textContent = '🔄 Syncing Regulated API...';
+    syncApiBtn.style.opacity = '0.7';
 
+    setTimeout(() => {
+      syncApiBtn.textContent = '✅ Regulated Data Synced!';
+      syncApiBtn.style.opacity = '1';
+
+      setTimeout(() => {
+        syncApiBtn.textContent = '🔄 Sync Live API Data';
+      }, 2500);
+    }, 1200);
+  });
+}
+
+const transactionBody = document.getElementById('transactionBody');
 if (transactionBody) {
   transactions.forEach((transaction) => {
     const row = document.createElement('tr');

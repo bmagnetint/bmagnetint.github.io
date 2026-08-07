@@ -95,6 +95,106 @@
         </div>
       </section>
 
+      <!-- Regulated Assets & P&L Reports Section -->
+      <section id="pnl-reports" class="dashboard-section" style="margin-top: 30px;">
+        <div class="section-heading">
+          <span class="eyebrow"><span class="pulse-dot"></span> Regulated Sync Engine</span>
+          <h2>Regulated Assets & P&L Reports</h2>
+          <p>Live synchronized performance metrics and audited P&L statement feeds from your regulated brokerage & institutional accounts.</p>
+        </div>
+
+        <div class="sync-bar-card" style="margin-bottom: 24px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <span class="status-pill" style="background: rgba(0, 229, 225, 0.15); color: var(--accent-teal); border-color: rgba(0, 229, 225, 0.4);">
+                🛡️ SEC / FCA Regulated Sync Active
+              </span>
+              <span style="font-size: 0.85rem; color: var(--text-muted);">Last Audited Sync: Just now</span>
+            </div>
+            <button id="syncApiBtn" class="btn btn-secondary" style="padding: 8px 18px; font-size: 0.85rem;" type="button">🔄 Sync Live API Data</button>
+          </div>
+        </div>
+
+        <div class="dashboard-grid" style="margin-bottom: 24px;">
+          <div class="overview-panel">
+            <div class="overview-row">
+              <div class="overview-card">
+                <span>Realized P&L (YTD)</span>
+                <strong style="color: #10b981;">+$148,920</strong>
+                <p>+13.1% Net Profit</p>
+              </div>
+              <div class="overview-card">
+                <span>Unrealized P&L</span>
+                <strong style="color: var(--accent-teal);">+$34,650</strong>
+                <p>+2.7% Open Position</p>
+              </div>
+            </div>
+            <div class="overview-row">
+              <div class="overview-card">
+                <span>Net Asset Value (NAV)</span>
+                <strong>$1,284,670</strong>
+                <p>Audited Assets</p>
+              </div>
+              <div class="overview-card">
+                <span>Regulated Venue</span>
+                <strong style="font-size: 1.05rem;">Institutional Custody</strong>
+                <p>Multi-Sig Encrypted</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="chart-panel">
+            <div class="chart-header">
+              <h3>Regulated Assets P&L Breakdown</h3>
+              <p>Live profit and loss tracking per asset class.</p>
+            </div>
+            <div class="transaction-table-wrap">
+              <table class="transaction-table">
+                <thead>
+                  <tr>
+                    <th>Asset</th>
+                    <th>Venue</th>
+                    <th>Holdings</th>
+                    <th>P&L ($)</th>
+                    <th>P&L (%)</th>
+                  </tr>
+                </thead>
+                <tbody id="pnlTableBody">
+                  <tr>
+                    <td style="font-weight: 700;">Global Equity Growth</td>
+                    <td>Regulated Brokerage</td>
+                    <td>$539,561</td>
+                    <td style="color: #10b981; font-weight: 700;">+$68,400</td>
+                    <td style="color: #10b981; font-weight: 700;">+14.5%</td>
+                  </tr>
+                  <tr>
+                    <td style="font-weight: 700;">High-Grade Fixed Income</td>
+                    <td>Institutional Treasury</td>
+                    <td>$231,240</td>
+                    <td style="color: #10b981; font-weight: 700;">+$18,900</td>
+                    <td style="color: #10b981; font-weight: 700;">+8.9%</td>
+                  </tr>
+                  <tr>
+                    <td style="font-weight: 700;">Commercial Real Estate</td>
+                    <td>Tier-1 Custodian</td>
+                    <td>$205,547</td>
+                    <td style="color: #10b981; font-weight: 700;">+$24,300</td>
+                    <td style="color: #10b981; font-weight: 700;">+13.4%</td>
+                  </tr>
+                  <tr>
+                    <td style="font-weight: 700;">Emerging Markets Tech</td>
+                    <td>Direct Exchange</td>
+                    <td>$154,160</td>
+                    <td style="color: #10b981; font-weight: 700;">+$37,320</td>
+                    <td style="color: #10b981; font-weight: 700;">+31.9%</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="plan" class="plan-section">
         <div class="section-heading">
           <span class="eyebrow">Strategy & Allocation</span>

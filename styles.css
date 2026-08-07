@@ -264,11 +264,19 @@ body.dark-theme .site-footer {
   border-top-color: rgba(30, 58, 138, 0.5) !important;
 }
 
-html[data-theme="dark"] .status-pill,
-body.dark-theme .status-pill {
-  background: rgba(5, 150, 105, 0.2) !important;
-  color: #34d399 !important;
-  border-color: rgba(5, 150, 105, 0.4) !important;
+.sync-bar-card {
+  padding: 18px 24px;
+  border-radius: 20px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  backdrop-filter: blur(16px);
+  box-shadow: var(--shadow-card);
+}
+
+html[data-theme="dark"] .sync-bar-card,
+body.dark-theme .sync-bar-card {
+  background: rgba(13, 20, 36, 0.92) !important;
+  border-color: rgba(30, 58, 138, 0.5) !important;
 }
 
 /* Circular Icon-Only Switcher Buttons */
