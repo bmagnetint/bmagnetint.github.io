@@ -180,6 +180,60 @@
       </footer>
     </div>
 
+    <!-- Detailed Plan View Modal -->
+    <div id="planDetailModal" class="modal-overlay">
+      <div class="modal-card" style="max-width: 650px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+          <h3 style="margin: 0; font-size: 1.35rem; color: var(--text-primary);" id="detailPlanTitle">🎯 Starter Micro AI Bot Plan</h3>
+          <button id="closePlanDetailBtn" type="button" style="background: none; border: none; font-size: 1.5rem; color: var(--text-muted); cursor: pointer;">✕</button>
+        </div>
+
+        <div style="background: rgba(0, 229, 225, 0.06); border: 1px solid rgba(0, 229, 225, 0.3); border-radius: 16px; padding: 18px; margin-bottom: 20px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+            <span style="font-size: 0.9rem; font-weight: 600;">Plan Status</span>
+            <span class="status-pill" style="background: rgba(5, 150, 105, 0.2); color: #34d399;">Ready for Activation</span>
+          </div>
+          <h2 style="font-size: 2rem; color: var(--accent-teal); margin: 0 0 6px 0;" id="detailProfitRate">$360 <span style="font-size: 1rem; color: var(--text-muted);">/ month</span></h2>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Automated AI Neural Arbitrage Bot Execution</p>
+        </div>
+
+        <h4 style="margin: 0 0 12px 0; font-size: 1rem; color: var(--text-primary);">Financial & Capital Allocation Breakdown</h4>
+        <table class="transaction-table" style="margin-bottom: 20px; font-size: 0.85rem;">
+          <tbody>
+            <tr>
+              <td style="color: var(--text-muted);">Capital Deposit</td>
+              <td style="font-weight: 700; text-align: right;" id="detailCapital">$500</td>
+            </tr>
+            <tr>
+              <td style="color: var(--text-muted);">Monthly Bot Rental Fee</td>
+              <td style="font-weight: 700; text-align: right;" id="detailRent">$100 / month</td>
+            </tr>
+            <tr>
+              <td style="color: var(--text-muted);">Minimum Rental Commitment</td>
+              <td style="font-weight: 700; text-align: right;" id="detailHorizon">3 Months</td>
+            </tr>
+            <tr>
+              <td style="color: var(--text-muted);">Total Initial Outlay Required</td>
+              <td style="font-weight: 700; color: var(--accent-gold); text-align: right;" id="detailOutlay">$600 ($500 Deposit + $100 1st Mo Rent)</td>
+            </tr>
+            <tr>
+              <td style="color: var(--text-muted);">Expected Daily Net Return</td>
+              <td style="font-weight: 700; color: var(--accent-teal); text-align: right;" id="detailDaily">$12 / day</td>
+            </tr>
+            <tr>
+              <td style="color: var(--text-muted);">Projected 3-Month Total Return</td>
+              <td style="font-weight: 700; color: #10b981; text-align: right;" id="detailTotalReturn">+$1,080</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div style="display: flex; gap: 12px; margin-top: 10px;">
+          <button id="deployPlanBtn" type="button" class="btn btn-primary" style="flex: 2;">Proceed to Deployment & Payment →</button>
+          <button id="downloadPdfBtn" type="button" class="btn btn-secondary" style="flex: 1;">📄 PDF Prospectus</button>
+        </div>
+      </div>
+    </div>
+
     <!-- Mobile App Bottom Navigation Bar -->
     <nav class="app-bottom-nav">
       <a href="dashboard.html" class="app-nav-item">

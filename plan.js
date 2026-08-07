@@ -11,6 +11,20 @@ document.addEventListener('DOMContentLoaded', () => {
   const horizonBtns = document.querySelectorAll('.horizon-btn');
   const selectBtns = document.querySelectorAll('.select-tier-btn');
 
+  // Detailed Modal Elements
+  const planDetailModal = document.getElementById('planDetailModal');
+  const closePlanDetailBtn = document.getElementById('closePlanDetailBtn');
+  const detailPlanTitle = document.getElementById('detailPlanTitle');
+  const detailProfitRate = document.getElementById('detailProfitRate');
+  const detailCapital = document.getElementById('detailCapital');
+  const detailRent = document.getElementById('detailRent');
+  const detailHorizon = document.getElementById('detailHorizon');
+  const detailOutlay = document.getElementById('detailOutlay');
+  const detailDaily = document.getElementById('detailDaily');
+  const detailTotalReturn = document.getElementById('detailTotalReturn');
+  const deployPlanBtn = document.getElementById('deployPlanBtn');
+  const downloadPdfBtn = document.getElementById('downloadPdfBtn');
+
   let selectedMonths = 3; // Default 3 Months (Min)
 
   function calculateYield() {
@@ -24,13 +38,8 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Bot Rental: $100 / month per bot
     const monthlyRent = botCount * 100;
-
-    // Total Initial Outlay required ($500 Capital Deposit + $100 1st Month Bot Rent = $600 per bot)
     const totalOutlay = capital + monthlyRent;
 
-    // Monthly Profit per Bot:
-    // 1 Bot ($500 Deposit + $100 Rent = $600 Total Outlay) => $360 / mo ($12/day)
-    // 2 Bots ($1,000 Deposit + $200 Rent = $1,200 Total Outlay) => $960 / mo ($32/day)
     let monthlyProfit = 360;
     if (botCount === 1) {
       monthlyProfit = 360;
@@ -42,21 +51,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const totalReturn = monthlyProfit * selectedMonths;
     const endValue = capital + totalReturn;
 
-    if (botsDisplay) {
-      botsDisplay.textContent = `${botCount} ${botCount === 1 ? 'Bot' : 'Bots'}`;
-    }
-    if (rentDisplay) {
-      rentDisplay.textContent = `$${monthlyRent.toLocaleString()} / mo`;
-    }
-    if (outlayDisplay) {
-      outlayDisplay.textContent = `$${totalOutlay.toLocaleString()}`;
-    }
-    if (dailyDisplay) {
-      dailyDisplay.textContent = `$${dailyProfit.toLocaleString()} / day`;
-    }
-    if (monthlyDisplay) {
-      monthlyDisplay.textContent = `$${monthlyProfit.toLocaleString()} / mo`;
-    }
+    if (botsDisplay) botsDisplay.textContent = `${botCount} ${botCount === 1 ? 'Bot' : 'Bots'}`;
+    if (rentDisplay) rentDisplay.textContent = `$${monthlyRent.toLocaleString()} / mo`;
+    if (outlayDisplay) outlayDisplay.textContent = `$${totalOutlay.toLocaleString()}`;
+    if (dailyDisplay) dailyDisplay.textContent = `$${dailyProfit.toLocaleString()} / day`;
+    if (monthlyDisplay) monthlyDisplay.textContent = `$${monthlyProfit.toLocaleString()} / mo`;
     returnDisplay.textContent = `+$${totalReturn.toLocaleString()}`;
     valueDisplay.textContent = `$${endValue.toLocaleString()}`;
   }
@@ -74,12 +73,69 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // Open Detailed Plan View Modal
   selectBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      const tierName = btn.getAttribute('data-tier');
-      alert(`🎯 Plan Selected: ${tierName}\n\nYour portfolio selection has been logged. Your senior advisory officer will contact you to finalize the capital allocation documentation.`);
+      const tierName = btn.getAttribute('data-tier') || 'Starter Micro';
+      let capitalVal = 500;
+      let botRentVal = 100;
+      let monthlyProfitVal = 360;
+      let dailyProfitVal = 12;
+
+      if (tierName.includes('1,500') || tierName.includes('Core')) {
+        capitalVal = 1500;
+        botRentVal = 300;
+        monthlyProfitVal = 1440;
+        dailyProfitVal = 48;
+      } else if (tierName.includes('5,000') || tierName.includes('Max')) {
+        capitalVal = 5000;
+        botRentVal = 1000;
+        monthlyProfitVal = 4800;
+        dailyProfitVal = 160;
+      }
+
+      const totalOutlayVal = capitalVal + botRentVal;
+      const totalReturnVal = monthlyProfitVal * selectedMonths;
+
+      if (detailPlanTitle) detailPlanTitle.textContent = `🎯 Detailed Plan View: ${tierName}`;
+      if (detailProfitRate) detailProfitRate.innerHTML = `$${monthlyProfitVal.toLocaleString()} <span style="font-size: 1rem; color: var(--text-muted);">/ month</span>`;
+      if (detailCapital) detailCapital.textContent = `$${capitalVal.toLocaleString()}`;
+      if (detailRent) detailRent.textContent = `$${botRentVal.toLocaleString()} / month`;
+      if (detailHorizon) detailHorizon.textContent = `${selectedMonths} Months`;
+      if (detailOutlay) detailOutlay.textContent = `$${totalOutlayVal.toLocaleString()} ($${capitalVal.toLocaleString()} Deposit + $${botRentVal.toLocaleString()} 1st Mo Rent)`;
+      if (detailDaily) detailDaily.textContent = `$${dailyProfitVal.toLocaleString()} / day`;
+      if (detailTotalReturn) detailTotalReturn.textContent = `+$${totalReturnVal.toLocaleString()}`;
+
+      if (planDetailModal) planDetailModal.classList.add('active');
     });
   });
+
+  if (closePlanDetailBtn && planDetailModal) {
+    closePlanDetailBtn.addEventListener('click', () => {
+      planDetailModal.classList.remove('active');
+    });
+  }
+
+  if (planDetailModal) {
+    planDetailModal.addEventListener('click', (e) => {
+      if (e.target === planDetailModal) {
+        planDetailModal.classList.remove('active');
+      }
+    });
+  }
+
+  if (deployPlanBtn) {
+    deployPlanBtn.addEventListener('click', () => {
+      alert('🔒 Deployment Initiated!\n\nRedirecting to GTC FX Multi-Sig Payment Vault to deploy your AI Trading Bot instance...');
+      planDetailModal.classList.remove('active');
+    });
+  }
+
+  if (downloadPdfBtn) {
+    downloadPdfBtn.addEventListener('click', () => {
+      alert('📄 Prospectus Downloaded!\n\nB-Magnet-Institutional-AI-Bot-Strategy-Prospectus.pdf has been saved to your downloads.');
+    });
+  }
 
   calculateYield();
 });
