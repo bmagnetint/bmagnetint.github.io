@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detailed Investment Plan View | B Magnet International</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Outfit:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet" />
+
+    <!-- Stylesheets & Scripts -->
+    <link rel="stylesheet" href="styles.css" />
+    <script src="db.js" defer></script>
+    <script src="plan-detail.js" defer></script>
+  </head>
+  <body>
+    <div class="page-shell">
+      <!-- Site Header -->
+      <header class="site-header">
+        <div class="brand-mark">
+          <div class="logo-glow-wrapper">
+            <img src="logo.png" alt="B Magnet Logo" class="brand-logo" />
+          </div>
+          <div class="brand-details">
+            <span class="brand-name" data-i18n="brandName">B Magnet International</span>
+            <span class="brand-tag">Detailed Strategy View</span>
+          </div>
+        </div>
+
+        <nav class="site-nav">
+          <a href="dashboard.html" class="nav-link">Dashboard</a>
+          <a href="plan.html" class="nav-link active">Plans</a>
+          <button id="langToggleBtn" class="lang-toggle-btn" type="button" title="Switch Language (العربية / English)">🌐 AR</button>
+          <button id="themeToggleBtn" class="theme-toggle-icon-btn" type="button" title="Toggle Dark/Light Mode">🌙</button>
+          <a href="index.html" class="btn btn-secondary" data-i18n="signOut">Sign Out</a>
+        </nav>
+      </header>
+
+      <!-- Main Detailed Plan Section -->
+      <section class="dashboard-hero" style="margin-bottom: 30px;">
+        <div class="hero-copy">
+          <span class="eyebrow"><span class="pulse-dot"></span> Active Allocation Specification</span>
+          <h1 id="detailTitle">Starter Micro AI Bot Detailed Plan</h1>
+          <p>
+            Review full capital requirements, monthly bot rental fees, projected yield schedules, and GTC FX multi-sig execution parameters.
+          </p>
+          <div class="hero-actions" style="margin-top: 20px;">
+            <a href="plan.html" class="btn btn-secondary">← Back to All Plans</a>
+            <button id="detailProceedBtn" type="button" class="btn btn-primary">Proceed to Deployment & Payment →</button>
+          </div>
+        </div>
+
+        <!-- Featured Profit Banner Card -->
+        <div class="dashboard-hero-card">
+          <div class="hero-card-header">
+            <span>Portfolio Yield Specification</span>
+            <span class="status-pill" style="background: rgba(5, 150, 105, 0.2); color: #34d399;">Ready for Activation</span>
+          </div>
+
+          <div class="stat-main" style="margin: 20px 0;">
+            <p>Expected Monthly Net Profit</p>
+            <h2 id="detailMonthlyHero" style="color: var(--accent-teal);">$360 <span style="font-size: 1rem; color: var(--text-muted);">/ month</span></h2>
+          </div>
+
+          <div class="stat-grid" style="grid-template-columns: 1fr 1fr;">
+            <div class="stat-box">
+              <p>Daily Net Return</p>
+              <strong id="detailDailyHero" class="positive">$12 / day</strong>
+            </div>
+            <div class="stat-box">
+              <p>Total Initial Outlay</p>
+              <strong id="detailOutlayHero" style="color: var(--accent-gold);">$600</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Financial Breakdown Table & Execution Details -->
+      <section class="plan-section" style="margin-bottom: 40px;">
+        <div class="dashboard-grid" style="grid-template-columns: 1fr 1fr; gap: 24px;">
+          <!-- Financial Table Card -->
+          <div class="chart-panel">
+            <div class="chart-header">
+              <h3>Financial & Capital Allocation Breakdown</h3>
+              <p>Audited deposit, rental fee, and projected return schedule.</p>
+            </div>
+            <div class="transaction-table-wrap">
+              <table class="transaction-table">
+                <tbody>
+                  <tr>
+                    <td style="color: var(--text-muted); font-weight: 600;">Selected Investment Tier</td>
+                    <td style="font-weight: 700; text-align: right;" id="tblTierName">Starter Micro Plan</td>
+                  </tr>
+                  <tr>
+                    <td style="color: var(--text-muted); font-weight: 600;">Base Capital Deposit</td>
+                    <td style="font-weight: 700; text-align: right;" id="tblCapital">$500</td>
+                  </tr>
+                  <tr>
+                    <td style="color: var(--text-muted); font-weight: 600;">Monthly Bot Rental Fee</td>
+                    <td style="font-weight: 700; text-align: right;" id="tblRent">$100 / month</td>
+                  </tr>
+                  <tr>
+                    <td style="color: var(--text-muted); font-weight: 600;">Minimum Commitment Window</td>
+                    <td style="font-weight: 700; text-align: right;" id="tblCommitment">3 Months (Minimum)</td>
+                  </tr>
+                  <tr>
+                    <td style="color: var(--text-muted); font-weight: 600;">Total Initial Outlay Required</td>
+                    <td style="font-weight: 700; color: var(--accent-gold); text-align: right;" id="tblOutlay">$600 ($500 Deposit + $100 1st Mo Rent)</td>
+                  </tr>
+                  <tr>
+                    <td style="color: var(--text-muted); font-weight: 600;">Expected Daily Net Return</td>
+                    <td style="font-weight: 700; color: var(--accent-teal); text-align: right;" id="tblDaily">$12 / day</td>
+                  </tr>
+                  <tr>
+                    <td style="color: var(--text-muted); font-weight: 600;">Projected 3-Month Total Return</td>
+                    <td style="font-weight: 700; color: #10b981; text-align: right;" id="tblReturn">+$1,080</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Execution Strategy Card -->
+          <div class="chart-panel">
+            <div class="chart-header">
+              <h3>AI Bot Execution Parameters</h3>
+              <p>Algorithmic strategy parameters and risk mitigation controls.</p>
+            </div>
+            <div style="padding: 10px 0;">
+              <ul style="list-style: none; padding: 0; display: grid; gap: 14px; font-size: 0.9rem;">
+                <li style="display: flex; gap: 10px; align-items: flex-start;">
+                  <span style="color: var(--accent-teal); font-size: 1.2rem;">🤖</span>
+                  <div>
+                    <strong>Neural Arbitrage v4.2 Algorithm</strong>
+                    <p style="margin: 0; font-size: 0.85rem; color: var(--text-muted);">High-frequency multi-pair statistical arbitrage engine.</p>
+                  </div>
+                </li>
+                <li style="display: flex; gap: 10px; align-items: flex-start;">
+                  <span style="color: var(--accent-teal); font-size: 1.2rem;">🏛️</span>
+                  <div>
+                    <strong>GTC FX Global Multi-Sig Custody</strong>
+                    <p style="margin: 0; font-size: 0.85rem; color: var(--text-muted);">Direct liquidity bridge via MetaTrader 5 institutional vault.</p>
+                  </div>
+                </li>
+                <li style="display: flex; gap: 10px; align-items: flex-start;">
+                  <span style="color: var(--accent-teal); font-size: 1.2rem;">🛡️</span>
+                  <div>
+                    <strong>Automated 2.5% Drawdown Stop-Loss</strong>
+                    <p style="margin: 0; font-size: 0.85rem; color: var(--text-muted);">Capital preservation protocol automatically locks gains daily.</p>
+                  </div>
+                </li>
+              </ul>
+              <div style="margin-top: 24px; display: flex; gap: 12px;">
+                <button id="pdfDownloadBtn" class="btn btn-secondary" style="flex: 1;" type="button">📄 Download PDF Prospectus</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="site-footer">
+        <p>© 2026 B Magnet International. Confidential investor interface for bmagnetint.com</p>
+      </footer>
+    </div>
+
+    <!-- Mobile App Bottom Navigation Bar -->
+    <nav class="app-bottom-nav">
+      <a href="dashboard.html" class="app-nav-item">
+        <span class="nav-icon">📊</span>
+        <span>Overview</span>
+      </a>
+      <a href="plan.html" class="app-nav-item active">
+        <span class="nav-icon">🎯</span>
+        <span>Plan</span>
+      </a>
+      <a href="dashboard.html#activity" class="app-nav-item">
+        <span class="nav-icon">⚡</span>
+        <span>Activity</span>
+      </a>
+      <a href="index.html" class="app-nav-item">
+        <span class="nav-icon">🚪</span>
+        <span>Sign Out</span>
+      </a>
+    </nav>
+  </body>
+</html>

@@ -11,20 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const horizonBtns = document.querySelectorAll('.horizon-btn');
   const selectBtns = document.querySelectorAll('.select-tier-btn');
 
-  // Detailed Modal Elements
-  const planDetailModal = document.getElementById('planDetailModal');
-  const closePlanDetailBtn = document.getElementById('closePlanDetailBtn');
-  const detailPlanTitle = document.getElementById('detailPlanTitle');
-  const detailProfitRate = document.getElementById('detailProfitRate');
-  const detailCapital = document.getElementById('detailCapital');
-  const detailRent = document.getElementById('detailRent');
-  const detailHorizon = document.getElementById('detailHorizon');
-  const detailOutlay = document.getElementById('detailOutlay');
-  const detailDaily = document.getElementById('detailDaily');
-  const detailTotalReturn = document.getElementById('detailTotalReturn');
-  const deployPlanBtn = document.getElementById('deployPlanBtn');
-  const downloadPdfBtn = document.getElementById('downloadPdfBtn');
-
   let selectedMonths = 3; // Default 3 Months (Min)
 
   function calculateYield() {
@@ -73,69 +59,27 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Open Detailed Plan View Modal
+  // Navigate to dedicated plan-detail.html page when a plan is selected
   selectBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       const tierName = btn.getAttribute('data-tier') || 'Starter Micro';
-      let capitalVal = 500;
-      let botRentVal = 100;
-      let monthlyProfitVal = 360;
-      let dailyProfitVal = 12;
+      let planParam = 'starter';
+      let capitalVal = slider ? parseFloat(slider.value) : 500;
 
       if (tierName.includes('1,500') || tierName.includes('Core')) {
-        capitalVal = 1500;
-        botRentVal = 300;
-        monthlyProfitVal = 1440;
-        dailyProfitVal = 48;
+        planParam = 'core';
+        capitalVal = Math.max(1500, capitalVal);
       } else if (tierName.includes('5,000') || tierName.includes('Max')) {
-        capitalVal = 5000;
-        botRentVal = 1000;
-        monthlyProfitVal = 4800;
-        dailyProfitVal = 160;
+        planParam = 'max';
+        capitalVal = Math.max(5000, capitalVal);
+      } else {
+        planParam = 'starter';
+        capitalVal = 500;
       }
 
-      const totalOutlayVal = capitalVal + botRentVal;
-      const totalReturnVal = monthlyProfitVal * selectedMonths;
-
-      if (detailPlanTitle) detailPlanTitle.textContent = `🎯 Detailed Plan View: ${tierName}`;
-      if (detailProfitRate) detailProfitRate.innerHTML = `$${monthlyProfitVal.toLocaleString()} <span style="font-size: 1rem; color: var(--text-muted);">/ month</span>`;
-      if (detailCapital) detailCapital.textContent = `$${capitalVal.toLocaleString()}`;
-      if (detailRent) detailRent.textContent = `$${botRentVal.toLocaleString()} / month`;
-      if (detailHorizon) detailHorizon.textContent = `${selectedMonths} Months`;
-      if (detailOutlay) detailOutlay.textContent = `$${totalOutlayVal.toLocaleString()} ($${capitalVal.toLocaleString()} Deposit + $${botRentVal.toLocaleString()} 1st Mo Rent)`;
-      if (detailDaily) detailDaily.textContent = `$${dailyProfitVal.toLocaleString()} / day`;
-      if (detailTotalReturn) detailTotalReturn.textContent = `+$${totalReturnVal.toLocaleString()}`;
-
-      if (planDetailModal) planDetailModal.classList.add('active');
+      window.location.href = `plan-detail.html?plan=${planParam}&capital=${capitalVal}&months=${selectedMonths}`;
     });
   });
-
-  if (closePlanDetailBtn && planDetailModal) {
-    closePlanDetailBtn.addEventListener('click', () => {
-      planDetailModal.classList.remove('active');
-    });
-  }
-
-  if (planDetailModal) {
-    planDetailModal.addEventListener('click', (e) => {
-      if (e.target === planDetailModal) {
-        planDetailModal.classList.remove('active');
-      }
-    });
-  }
-
-  if (deployPlanBtn) {
-    deployPlanBtn.addEventListener('click', () => {
-      alert('🔒 Deployment Initiated!\n\nRedirecting to GTC FX Multi-Sig Payment Vault to deploy your AI Trading Bot instance...');
-      planDetailModal.classList.remove('active');
-    });
-  }
-
-  if (downloadPdfBtn) {
-    downloadPdfBtn.addEventListener('click', () => {
-      alert('📄 Prospectus Downloaded!\n\nB-Magnet-Institutional-AI-Bot-Strategy-Prospectus.pdf has been saved to your downloads.');
-    });
-  }
 
   calculateYield();
 });
