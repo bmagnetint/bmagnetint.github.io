@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Investment Plans & Strategy | B Magnet International</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Outfit:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet" />
+
+    <!-- Stylesheets & Scripts -->
+    <link rel="stylesheet" href="styles.css" />
+    <script src="db.js" defer></script>
+    <script src="plan.js" defer></script>
+  </head>
+  <body>
+    <div class="page-shell">
+      <!-- Site Header -->
+      <header class="site-header">
+        <div class="brand-mark">
+          <div class="logo-glow-wrapper">
+            <img src="logo.png" alt="B Magnet Logo" class="brand-logo" />
+          </div>
+          <div class="brand-details">
+            <span class="brand-name" data-i18n="brandName">B Magnet International</span>
+            <span class="brand-tag">Investment Strategy</span>
+          </div>
+        </div>
+
+        <nav class="site-nav">
+          <a href="dashboard.html" class="nav-link">Dashboard</a>
+          <a href="plan.html" class="nav-link active">Plans</a>
+          <button id="langToggleBtn" class="lang-toggle-btn" type="button" title="Switch Language (العربية / English)">🌐 AR</button>
+          <button id="themeToggleBtn" class="theme-toggle-icon-btn" type="button" title="Toggle Dark/Light Mode">🌙</button>
+          <a href="index.html" class="btn btn-secondary" data-i18n="signOut">Sign Out</a>
+        </nav>
+      </header>
+
+      <!-- Plan Page Hero -->
+      <section class="dashboard-hero" style="margin-bottom: 40px;">
+        <div class="hero-copy">
+          <span class="eyebrow"><span class="pulse-dot"></span> Institutional Strategy Tiers</span>
+          <h1>Tailored investment plans for maximum yield.</h1>
+          <p>
+            Choose from institutional-grade investment tiers engineered with algorithmic downside protection, multi-asset diversification, and quarterly liquidity windows.
+          </p>
+        </div>
+
+        <!-- Interactive Investment Return Calculator -->
+        <div class="dashboard-hero-card">
+          <div class="hero-card-header">
+            <span>Yield & Growth Calculator</span>
+            <span class="status-pill" style="background: rgba(0, 229, 225, 0.15); color: var(--accent-teal);">⚡ Live Simulation</span>
+          </div>
+
+          <div style="margin: 20px 0;">
+            <label style="display: flex; justify-content: space-between; font-size: 0.9rem; font-weight: 600; margin-bottom: 8px;">
+              <span>Initial Capital Allocation</span>
+              <strong id="calcCapitalDisplay" style="color: var(--accent-teal); font-size: 1.1rem;">$250,000</strong>
+            </label>
+            <input type="range" id="capitalSlider" min="50000" max="2000000" step="25000" value="250000" style="width: 100%; cursor: pointer;" />
+          </div>
+
+          <div style="margin-bottom: 20px;">
+            <label style="display: block; font-size: 0.9rem; font-weight: 600; margin-bottom: 8px;">Investment Horizon</label>
+            <div style="display: flex; gap: 10px;">
+              <button type="button" class="btn btn-secondary horizon-btn active" data-years="1" style="flex: 1; padding: 8px;">1 Year</button>
+              <button type="button" class="btn btn-secondary horizon-btn" data-years="3" style="flex: 1; padding: 8px;">3 Years</button>
+              <button type="button" class="btn btn-secondary horizon-btn" data-years="5" style="flex: 1; padding: 8px;">5 Years</button>
+            </div>
+          </div>
+
+          <div class="stat-grid" style="grid-template-columns: 1fr 1fr;">
+            <div class="stat-box">
+              <p>Projected Total Return</p>
+              <strong id="calcReturnDisplay" class="positive">+$32,500</strong>
+            </div>
+            <div class="stat-box">
+              <p>Estimated End Value</p>
+              <strong id="calcValueDisplay" style="color: var(--accent-teal);">$282,500</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Investment Tier Cards -->
+      <section class="plan-section">
+        <div class="section-heading">
+          <span class="eyebrow">Investment Tiers</span>
+          <h2>Select the portfolio plan aligned with your capital goals.</h2>
+        </div>
+
+        <div class="plan-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;">
+          <!-- Tier 1 -->
+          <article class="plan-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <span class="status-pill" style="margin-bottom: 12px; display: inline-block;">Starter Institutional</span>
+              <h3 style="font-size: 1.5rem; margin-bottom: 8px;">Growth & Preservation</h3>
+              <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 16px;">Minimum Allocation: $50,000</p>
+              <h2 style="font-size: 2.2rem; color: var(--accent-teal); margin-bottom: 16px;">8% - 10% <span style="font-size: 1rem; color: var(--text-muted);">/ Year</span></h2>
+              <ul style="list-style: none; padding: 0; display: grid; gap: 10px; margin-bottom: 24px; font-size: 0.9rem;">
+                <li>✓ 50% High-Grade Fixed Income</li>
+                <li>✓ 30% Global Equities</li>
+                <li>✓ 20% Liquid Reserve Buffer</li>
+                <li>✓ Quarterly Dividend Payouts</li>
+              </ul>
+            </div>
+            <button type="button" class="btn btn-secondary select-tier-btn" data-tier="Growth & Preservation" style="width: 100%;">Select Starter Plan</button>
+          </article>
+
+          <!-- Tier 2 Featured -->
+          <article class="plan-card" style="border: 2px solid var(--accent-teal); transform: scale(1.02); display: flex; flex-direction: column; justify-content: space-between; background: rgba(0, 229, 225, 0.04);">
+            <div>
+              <span class="status-pill" style="background: var(--accent-teal); color: #060b14; font-weight: 700; margin-bottom: 12px; display: inline-block;">★ Most Popular</span>
+              <h3 style="font-size: 1.5rem; margin-bottom: 8px;">Institutional Core</h3>
+              <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 16px;">Minimum Allocation: $250,000</p>
+              <h2 style="font-size: 2.2rem; color: var(--accent-teal); margin-bottom: 16px;">11.6% - 14% <span style="font-size: 1rem; color: var(--text-muted);">/ Year</span></h2>
+              <ul style="list-style: none; padding: 0; display: grid; gap: 10px; margin-bottom: 24px; font-size: 0.9rem;">
+                <li>✓ 42% Private Equity Growth</li>
+                <li>✓ 26% Commercial Real Estate</li>
+                <li>✓ 18% Institutional Bonds</li>
+                <li>✓ Algorithmic Downside Protection</li>
+                <li>✓ Monthly Performance Audits</li>
+              </ul>
+            </div>
+            <button type="button" class="btn btn-primary select-tier-btn" data-tier="Institutional Core" style="width: 100%;">Select Core Plan</button>
+          </article>
+
+          <!-- Tier 3 -->
+          <article class="plan-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <span class="status-pill" style="background: rgba(96, 165, 250, 0.15); color: #60a5fa; margin-bottom: 12px; display: inline-block;">Sovereign & UHNW</span>
+              <h3 style="font-size: 1.5rem; margin-bottom: 8px;">Bespoke Arbitrage</h3>
+              <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 16px;">Minimum Allocation: $1,000,000</p>
+              <h2 style="font-size: 2.2rem; color: var(--accent-teal); margin-bottom: 16px;">14% - 18% <span style="font-size: 1rem; color: var(--text-muted);">/ Year</span></h2>
+              <ul style="list-style: none; padding: 0; display: grid; gap: 10px; margin-bottom: 24px; font-size: 0.9rem;">
+                <li>✓ Direct GTC FX & Institutional Arbitrage</li>
+                <li>✓ Custom Private Equity Placement</li>
+                <li>✓ Dedicated Senior Managing Director</li>
+                <li>✓ 24/7 Priority Execution Desk</li>
+              </ul>
+            </div>
+            <button type="button" class="btn btn-secondary select-tier-btn" data-tier="Bespoke Arbitrage" style="width: 100%;">Select Sovereign Plan</button>
+          </article>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="site-footer">
+        <p>© 2026 B Magnet International. Confidential investor interface for bmagnetint.com</p>
+      </footer>
+    </div>
+
+    <!-- Mobile App Bottom Navigation Bar -->
+    <nav class="app-bottom-nav">
+      <a href="dashboard.html" class="app-nav-item">
+        <span class="nav-icon">📊</span>
+        <span>Overview</span>
+      </a>
+      <a href="plan.html" class="app-nav-item active">
+        <span class="nav-icon">🎯</span>
+        <span>Plan</span>
+      </a>
+      <a href="dashboard.html#activity" class="app-nav-item">
+        <span class="nav-icon">⚡</span>
+        <span>Activity</span>
+      </a>
+      <a href="index.html" class="app-nav-item">
+        <span class="nav-icon">🚪</span>
+        <span>Sign Out</span>
+      </a>
+    </nav>
+  </body>
+</html>
