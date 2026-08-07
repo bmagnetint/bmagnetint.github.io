@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   const urlParams = new URLSearchParams(window.location.search);
   const planType = urlParams.get('plan') || 'starter';
-  const capitalParam = parseFloat(urlParams.get('capital') || '500');
+  const capitalParam = parseFloat(urlParams.get('capital') || '1000');
   const monthsParam = parseInt(urlParams.get('months') || '3', 10);
 
   const detailTitle = document.getElementById('detailTitle');
@@ -19,16 +19,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const pdfDownloadBtn = document.getElementById('pdfDownloadBtn');
 
   // Calculation parameters based on plan selection or custom parameters
-  let titleStr = "Starter Micro AI Bot Detailed Plan";
-  let capital = capitalParam;
-  let botCount = Math.max(1, Math.floor(capital / 500));
+  let titleStr = "Starter Core AI Bot Plan ($1,000 Deposit)";
+  let capital = Math.max(1000, capitalParam);
+  let botCount = Math.max(2, Math.floor(capital / 500));
   let monthlyRent = botCount * 100;
-  let monthlyProfit = 360;
+  let monthlyProfit = botCount * 480;
 
   if (planType === 'core' || capitalParam >= 1500 && capitalParam < 5000) {
     titleStr = "Core Investor AI Bot Detailed Plan";
     capital = capitalParam >= 1500 ? capitalParam : 1500;
-    botCount = Math.max(2, Math.floor(capital / 500));
+    botCount = Math.max(3, Math.floor(capital / 500));
     monthlyRent = botCount * 100;
     monthlyProfit = botCount * 480;
   } else if (planType === 'max' || capitalParam >= 5000) {
@@ -38,12 +38,11 @@ document.addEventListener('DOMContentLoaded', () => {
     monthlyRent = botCount * 100;
     monthlyProfit = botCount * 480;
   } else {
-    // Starter
-    titleStr = "Starter Micro AI Bot Detailed Plan";
-    capital = capitalParam >= 500 ? capitalParam : 500;
-    botCount = Math.max(1, Math.floor(capital / 500));
+    titleStr = "Starter Core AI Bot Detailed Plan ($1,000 Deposit)";
+    capital = Math.max(1000, capitalParam);
+    botCount = Math.max(2, Math.floor(capital / 500));
     monthlyRent = botCount * 100;
-    monthlyProfit = botCount === 1 ? 360 : botCount * 480;
+    monthlyProfit = botCount * 480;
   }
 
   const dailyProfit = Math.round(monthlyProfit / 30);
@@ -57,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (tblTierName) tblTierName.textContent = titleStr;
   if (tblCapital) tblCapital.textContent = `$${capital.toLocaleString()}`;
-  if (tblRent) tblRent.textContent = `$${monthlyRent.toLocaleString()} / month (${botCount} ${botCount === 1 ? 'Bot' : 'Bots'})`;
+  if (tblRent) tblRent.textContent = `$${monthlyRent.toLocaleString()} / month (${botCount} Bots)`;
   if (tblCommitment) tblCommitment.textContent = `${monthsParam} Months`;
   if (tblOutlay) tblOutlay.textContent = `$${totalOutlay.toLocaleString()} ($${capital.toLocaleString()} Deposit + $${monthlyRent.toLocaleString()} 1st Mo Rent)`;
   if (tblDaily) tblDaily.textContent = `$${dailyProfit.toLocaleString()} / day`;

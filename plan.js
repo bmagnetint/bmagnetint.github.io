@@ -16,28 +16,26 @@ document.addEventListener('DOMContentLoaded', () => {
   function calculateYield() {
     if (!slider || !capitalDisplay || !returnDisplay || !valueDisplay) return;
 
-    const capital = parseFloat(slider.value);
+    // Enforce min $1000 deposit
+    let capital = parseFloat(slider.value);
+    if (capital < 1000) capital = 1000;
+
     capitalDisplay.textContent = `$${capital.toLocaleString()}`;
 
-    // Bot allocation: 1 Bot per $500 deposit
-    const botCount = Math.max(1, Math.floor(capital / 500));
+    // Bot allocation: 1 Bot per $500 deposit (e.g. $1000 = 2 Bots)
+    const botCount = Math.max(2, Math.floor(capital / 500));
     
-    // Bot Rental: $100 / month per bot
+    // Bot Rental: $100 / month per bot ($200/mo for 2 bots)
     const monthlyRent = botCount * 100;
     const totalOutlay = capital + monthlyRent;
 
-    let monthlyProfit = 360;
-    if (botCount === 1) {
-      monthlyProfit = 360;
-    } else {
-      monthlyProfit = botCount * 480;
-    }
-
+    // Monthly Profit per Bot: $480/bot for 2+ bots ($960/mo for $1000 deposit)
+    const monthlyProfit = botCount * 480;
     const dailyProfit = Math.round(monthlyProfit / 30);
     const totalReturn = monthlyProfit * selectedMonths;
     const endValue = capital + totalReturn;
 
-    if (botsDisplay) botsDisplay.textContent = `${botCount} ${botCount === 1 ? 'Bot' : 'Bots'}`;
+    if (botsDisplay) botsDisplay.textContent = `${botCount} Bots`;
     if (rentDisplay) rentDisplay.textContent = `$${monthlyRent.toLocaleString()} / mo`;
     if (outlayDisplay) outlayDisplay.textContent = `$${totalOutlay.toLocaleString()}`;
     if (dailyDisplay) dailyDisplay.textContent = `$${dailyProfit.toLocaleString()} / day`;
@@ -62,11 +60,11 @@ document.addEventListener('DOMContentLoaded', () => {
   // Navigate to dedicated plan-detail.html page when a plan is selected
   selectBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      const tierName = btn.getAttribute('data-tier') || 'Starter Micro';
+      const tierName = btn.getAttribute('data-tier') || 'Starter Core';
       let planParam = 'starter';
-      let capitalVal = slider ? parseFloat(slider.value) : 500;
+      let capitalVal = slider ? parseFloat(slider.value) : 1000;
 
-      if (tierName.includes('1,500') || tierName.includes('Core')) {
+      if (tierName.includes('1,500') || tierName.includes('Core') && !tierName.includes('1,000')) {
         planParam = 'core';
         capitalVal = Math.max(1500, capitalVal);
       } else if (tierName.includes('5,000') || tierName.includes('Max')) {
@@ -74,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
         capitalVal = Math.max(5000, capitalVal);
       } else {
         planParam = 'starter';
-        capitalVal = 500;
+        capitalVal = Math.max(1000, capitalVal);
       }
 
       window.location.href = `plan-detail.html?plan=${planParam}&capital=${capitalVal}&months=${selectedMonths}`;

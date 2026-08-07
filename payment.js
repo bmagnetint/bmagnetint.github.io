@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   const urlParams = new URLSearchParams(window.location.search);
   const planType = urlParams.get('plan') || 'starter';
-  const capitalParam = parseFloat(urlParams.get('capital') || '500');
+  const capitalParam = parseFloat(urlParams.get('capital') || '1000');
 
   const payTitle = document.getElementById('payTitle');
   const payAmountDisplay = document.getElementById('payAmountDisplay');
@@ -19,16 +19,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const trc20Addr = document.getElementById('trc20Addr');
   const paymentForm = document.getElementById('paymentForm');
 
-  let capital = capitalParam;
-  let botCount = Math.max(1, Math.floor(capital / 500));
+  let capital = Math.max(1000, capitalParam);
+  let botCount = Math.max(2, Math.floor(capital / 500));
   let monthlyRent = botCount * 100;
   let totalOutlay = capital + monthlyRent;
-  let planTitleStr = "Starter Micro AI Bot";
+  let planTitleStr = "Starter Core AI Bot ($1,000 Deposit)";
 
   if (planType === 'core') {
     planTitleStr = "Core Investor AI Bot";
     capital = Math.max(1500, capitalParam);
-    botCount = Math.max(2, Math.floor(capital / 500));
+    botCount = Math.max(3, Math.floor(capital / 500));
     monthlyRent = botCount * 100;
     totalOutlay = capital + monthlyRent;
   } else if (planType === 'max') {
