@@ -99,18 +99,61 @@ const transactions = [
   },
 ];
 
+const openGtcModalBtn = document.getElementById('openGtcModalBtn');
+const closeGtcModalBtn = document.getElementById('closeGtcModalBtn');
+const gtcModal = document.getElementById('gtcModal');
+const gtcForm = document.getElementById('gtcForm');
+
+if (openGtcModalBtn && gtcModal) {
+  openGtcModalBtn.addEventListener('click', () => {
+    gtcModal.classList.add('active');
+  });
+}
+
+if (closeGtcModalBtn && gtcModal) {
+  closeGtcModalBtn.addEventListener('click', () => {
+    gtcModal.classList.remove('active');
+  });
+}
+
+if (gtcModal) {
+  gtcModal.addEventListener('click', (e) => {
+    if (e.target === gtcModal) {
+      gtcModal.classList.remove('active');
+    }
+  });
+}
+
+if (gtcForm) {
+  gtcForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const submitBtn = gtcForm.querySelector('button[type="submit"]');
+    if (submitBtn) {
+      submitBtn.textContent = 'Authenticating GTC FX Feed...';
+    }
+
+    setTimeout(() => {
+      gtcModal.classList.remove('active');
+      alert('✅ GTC FX Global Account #884920 Connected Successfully!\n\nYour live assets, margin reports, and floating P&L feeds are now synchronized with B Magnet International.');
+      if (submitBtn) {
+        submitBtn.textContent = '🔒 Save & Connect GTC Global Account';
+      }
+    }, 1000);
+  });
+}
+
 const syncApiBtn = document.getElementById('syncApiBtn');
 if (syncApiBtn) {
   syncApiBtn.addEventListener('click', () => {
-    syncApiBtn.textContent = '🔄 Syncing Regulated API...';
+    syncApiBtn.textContent = '🔄 Syncing GTC Feed...';
     syncApiBtn.style.opacity = '0.7';
 
     setTimeout(() => {
-      syncApiBtn.textContent = '✅ Regulated Data Synced!';
+      syncApiBtn.textContent = '✅ GTC Live Synced!';
       syncApiBtn.style.opacity = '1';
 
       setTimeout(() => {
-        syncApiBtn.textContent = '🔄 Sync Live API Data';
+        syncApiBtn.textContent = '🔄 Sync Live GTC Feed';
       }, 2500);
     }, 1200);
   });

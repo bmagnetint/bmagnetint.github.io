@@ -105,13 +105,16 @@
 
         <div class="sync-bar-card" style="margin-bottom: 24px;">
           <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
-            <div style="display: flex; align-items: center; gap: 12px;">
+            <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
               <span class="status-pill" style="background: rgba(0, 229, 225, 0.15); color: var(--accent-teal); border-color: rgba(0, 229, 225, 0.4);">
-                🛡️ SEC / FCA Regulated Sync Active
+                🏛️ GTC FX Global Connected (Acc #884920)
               </span>
-              <span style="font-size: 0.85rem; color: var(--text-muted);">Last Audited Sync: Just now</span>
+              <span style="font-size: 0.85rem; color: var(--text-muted);">Last Sync: Just now</span>
             </div>
-            <button id="syncApiBtn" class="btn btn-secondary" style="padding: 8px 18px; font-size: 0.85rem;" type="button">🔄 Sync Live API Data</button>
+            <div style="display: flex; gap: 10px; align-items: center;">
+              <button id="openGtcModalBtn" class="btn btn-secondary" style="padding: 8px 18px; font-size: 0.85rem;" type="button">⚙️ GTC Account Settings</button>
+              <button id="syncApiBtn" class="btn btn-primary" style="padding: 8px 18px; font-size: 0.85rem;" type="button">🔄 Sync Live GTC Feed</button>
+            </div>
           </div>
         </div>
 
@@ -288,6 +291,38 @@
       <footer class="site-footer">
         <p>© 2026 B Magnet International. Confidential investor interface for bmagnetint.com</p>
       </footer>
+    </div>
+
+    <!-- GTC FX Global Integration Modal -->
+    <div id="gtcModal" class="modal-overlay">
+      <div class="modal-card">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+          <h3 style="margin: 0; font-size: 1.25rem; color: var(--text-primary);">🏛️ GTC FX Global Integration</h3>
+          <button id="closeGtcModalBtn" type="button" style="background: none; border: none; font-size: 1.5rem; color: var(--text-muted); cursor: pointer;">✕</button>
+        </div>
+        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px;">
+          Synchronize your MT4/MT5 live trading accounts, margin reports, and floating P&L directly from GTC FX Global.
+        </p>
+        <form id="gtcForm" style="display: grid; gap: 16px;">
+          <div class="form-group">
+            <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 6px;">GTC Trading Server</label>
+            <select id="gtcServer" style="width: 100%; padding: 12px; border-radius: 12px; background: var(--bg-main); color: var(--text-primary); border: 1px solid var(--border-light);">
+              <option value="GTCFX-Live01">GTCFX-Live01 (MetaTrader 5)</option>
+              <option value="GTCFX-Live02">GTCFX-Live02 (MetaTrader 4)</option>
+              <option value="GTCFX-Institutional">GTCFX-Institutional FIX API</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 6px;">GTC FX Account Login</label>
+            <input id="gtcAccount" type="text" value="884920" placeholder="e.g. 884920" required style="width: 100%; padding: 12px; border-radius: 12px; background: var(--bg-main); color: var(--text-primary); border: 1px solid var(--border-light);" />
+          </div>
+          <div class="form-group">
+            <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 6px;">Investor Read-Only Password / API Token</label>
+            <input id="gtcToken" type="password" value="bmagnetgtc2026" placeholder="Read-Only API Password" required style="width: 100%; padding: 12px; border-radius: 12px; background: var(--bg-main); color: var(--text-primary); border: 1px solid var(--border-light);" />
+          </div>
+          <button type="submit" class="btn btn-primary" style="margin-top: 10px;">🔒 Save & Connect GTC Global Account</button>
+        </form>
+      </div>
     </div>
 
     <!-- Mobile App Bottom Navigation Bar -->
