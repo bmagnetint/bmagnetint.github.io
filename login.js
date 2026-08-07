@@ -87,7 +87,48 @@ document.addEventListener('DOMContentLoaded', () => {
     return regUsers.some(u => u.email.toLowerCase() === cleanEmail && u.password === cleanPass);
   }
 
-  // Social & Passkey buttons MUST NOT navigate to dashboard - force registration
+  // -------------------------------------------------------------
+  // GOOGLE ACCOUNT OAUTH INTEGRATION FLOW
+  // -------------------------------------------------------------
+  const googleAuthModal = document.getElementById('googleAuthModal');
+  const closeGoogleModalBtn = document.getElementById('closeGoogleModalBtn');
+  const googleAccItems = document.querySelectorAll('.google-acc-item');
+
+  if (googleSignInBtn && googleAuthModal) {
+    googleSignInBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      googleAuthModal.style.display = 'flex';
+    });
+  }
+
+  if (closeGoogleModalBtn && googleAuthModal) {
+    closeGoogleModalBtn.addEventListener('click', () => {
+      googleAuthModal.style.display = 'none';
+    });
+  }
+
+  googleAccItems.forEach(item => {
+    item.addEventListener('click', () => {
+      const gName = item.getAttribute('data-name');
+      const gEmail = item.getAttribute('data-email');
+
+      // Save Google integration details into localStorage
+      const users = getRegisteredUsers();
+      users.push({ name: gName, email: gEmail, authProvider: 'Google OAuth 2.0', createdAt: new Date().toISOString() });
+      localStorage.setItem('bmagnet_registered_users', JSON.stringify(users));
+      localStorage.setItem('bmagnet_last_reg_name', gName);
+      localStorage.setItem('bmagnet_last_reg_email', gEmail);
+      localStorage.setItem('bmagnet_google_integrated', 'true');
+
+      if (googleAuthModal) googleAuthModal.style.display = 'none';
+
+      alert(`🌐 Google Account Integrated Successfully!\n\nAuthenticated Google Profile:\nFull Name: ${gName}\nEmail: ${gEmail}\n\nProceeding to complete investor profile...`);
+
+      window.location.href = `register.html?name=${encodeURIComponent(gName)}&email=${encodeURIComponent(gEmail)}`;
+    });
+  });
+
+  // Other social / passkey prompts
   function requireRegistrationPrompt(e, providerName) {
     if (e) {
       e.preventDefault();
@@ -101,10 +142,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (passkeySignInBtn) {
     passkeySignInBtn.addEventListener('click', (e) => requireRegistrationPrompt(e, 'Passkey (Face ID / Touch ID)'));
-  }
-
-  if (googleSignInBtn) {
-    googleSignInBtn.addEventListener('click', (e) => requireRegistrationPrompt(e, 'Google'));
   }
 
   if (appleSignInBtn) {
