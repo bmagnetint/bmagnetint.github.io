@@ -384,20 +384,21 @@ button, input {
 .social-login-wrap {
   display: flex;
   justify-content: center;
-  gap: 16px;
-  margin: 10px 0 4px;
+  align-items: center;
+  gap: 20px;
+  margin: 14px 0 6px;
 }
 
 .btn-social-icon {
-  width: 52px;
-  height: 52px;
+  width: 62px;
+  height: 62px;
   border-radius: 50%;
   background: #ffffff;
-  border: 1px solid rgba(203, 213, 225, 0.9);
+  border: 1px solid rgba(203, 213, 225, 0.95);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.09);
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: pointer;
   outline: none;
@@ -406,7 +407,13 @@ button, input {
 .btn-social-icon:hover {
   transform: translateY(-2px) scale(1.08);
   border-color: var(--accent-teal);
-  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.14);
+  box-shadow: 0 8px 25px rgba(15, 23, 42, 0.15);
+}
+
+.btn-social-icon svg {
+  width: 28px;
+  height: 28px;
+  display: block;
 }
 
 .login-divider {
