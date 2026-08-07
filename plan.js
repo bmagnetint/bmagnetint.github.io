@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   const slider = document.getElementById('capitalSlider');
   const capitalDisplay = document.getElementById('calcCapitalDisplay');
+  const botsDisplay = document.getElementById('calcBotsDisplay');
   const dailyDisplay = document.getElementById('calcDailyDisplay');
   const monthlyDisplay = document.getElementById('calcMonthlyDisplay');
   const returnDisplay = document.getElementById('calcReturnDisplay');
@@ -16,31 +17,30 @@ document.addEventListener('DOMContentLoaded', () => {
     const capital = parseFloat(slider.value);
     capitalDisplay.textContent = `$${capital.toLocaleString()}`;
 
-    // Formula based on user requirements:
-    // $500 Deposit => Daily: $10 - $20/day (Avg $15/day) => $450/month
-    // $1,000 Deposit => Daily: $15 - $25/day (Avg $20/day) => $600/month
+    // Bot multiplication formula based on user requirements:
+    // $500 deposit = 1 Bot => $360 monthly profit ($12/day) => 3 Months = $1,080 profit
+    // $1,000 deposit = 2 Bots => $960 monthly profit ($32/day) => 3 Months = $2,880 profit
+    // Scales linearly for all deposits (1 bot per $500)
     
-    let dailyMin = Math.round(10 + ((capital - 500) / 500) * 5);
-    let dailyMax = Math.round(20 + ((capital - 500) / 500) * 5);
-
-    if (capital < 500) {
-      dailyMin = 10;
-      dailyMax = 20;
+    const botCount = Math.max(1, Math.floor(capital / 500));
+    
+    let monthlyProfit = 360;
+    if (botCount === 1) {
+      monthlyProfit = 360;
+    } else {
+      monthlyProfit = botCount * 480; // 2 bots = $960, 3 bots = $1,440, etc.
     }
 
-    const dailyAvg = (dailyMin + dailyMax) / 2;
-    const monthlyProfit = Math.round(dailyAvg * 30);
+    const dailyProfit = Math.round(monthlyProfit / 30);
+    const months = selectedYears * 12;
+    const totalReturn = Math.round(monthlyProfit * months);
+    const endValue = Math.round(capital + totalReturn);
 
-    // Days according to selected horizon:
-    // 0.25 (3 Months) => 90 days
-    // 0.5 (6 Months) => 180 days
-    // 1.0 (1 Year) => 365 days
-    const totalDays = Math.round(selectedYears * 365);
-    const totalReturn = Math.round(dailyAvg * totalDays);
-    const endValue = capital + totalReturn;
-
+    if (botsDisplay) {
+      botsDisplay.textContent = `${botCount} ${botCount === 1 ? 'Bot' : 'Bots'}`;
+    }
     if (dailyDisplay) {
-      dailyDisplay.textContent = `$${dailyMin} - $${dailyMax} / day`;
+      dailyDisplay.textContent = `$${dailyProfit.toLocaleString()} / day`;
     }
     if (monthlyDisplay) {
       monthlyDisplay.textContent = `$${monthlyProfit.toLocaleString()} / mo`;
