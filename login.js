@@ -77,6 +77,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const cleanEmail = (email || '').trim().toLowerCase();
     const cleanPass = (pass || '').trim();
 
+    if (!cleanEmail || !cleanPass) return false;
+
     if (cleanEmail === VALID_EMAIL.toLowerCase() && cleanPass === VALID_PASS) {
       return true;
     }
@@ -85,35 +87,31 @@ document.addEventListener('DOMContentLoaded', () => {
     return regUsers.some(u => u.email.toLowerCase() === cleanEmail && u.password === cleanPass);
   }
 
-  function handleSocialOrPasskeyClick(providerName) {
-    alert(`📝 Registration Required:\n\nTo sign in with ${providerName}, please complete account registration first.\n\nDirecting you to the "Register Account" tab...`);
+  // Social & Passkey buttons MUST NOT navigate to dashboard - force registration
+  function requireRegistrationPrompt(e, providerName) {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    alert(`📝 Registration Required!\n\nYou cannot log in directly with ${providerName}.\n\nPlease click the "Register Account" tab to create your investor account first.`);
     if (tabRegisterBtn) {
       tabRegisterBtn.click();
     }
   }
 
-  // 🔑 Passkey (Face ID / Touch ID) Authentication Handler -> Prompt Registration
   if (passkeySignInBtn) {
-    passkeySignInBtn.addEventListener('click', () => {
-      handleSocialOrPasskeyClick('Passkey (Face ID / Touch ID)');
-    });
+    passkeySignInBtn.addEventListener('click', (e) => requireRegistrationPrompt(e, 'Passkey (Face ID / Touch ID)'));
   }
 
-  // 🌐 Google Sign In Handler -> Prompt Registration
   if (googleSignInBtn) {
-    googleSignInBtn.addEventListener('click', () => {
-      handleSocialOrPasskeyClick('Google');
-    });
+    googleSignInBtn.addEventListener('click', (e) => requireRegistrationPrompt(e, 'Google'));
   }
 
-  // 🍏 Apple Sign In Handler -> Prompt Registration
   if (appleSignInBtn) {
-    appleSignInBtn.addEventListener('click', () => {
-      handleSocialOrPasskeyClick('Apple');
-    });
+    appleSignInBtn.addEventListener('click', (e) => requireRegistrationPrompt(e, 'Apple'));
   }
 
-  // Sign In Form Submission Handler (Strict validation: credentials or registered account required)
+  // Sign In Form Submission Handler
   if (loginForm) {
     loginForm.addEventListener('submit', (event) => {
       event.preventDefault();
@@ -130,12 +128,12 @@ document.addEventListener('DOMContentLoaded', () => {
           window.location.href = 'dashboard.html';
         }, 400);
       } else {
-        alert(`❌ Access Denied: Invalid Credentials!\n\nYou must register an account first or provide authorized credentials.\n\nDefault Authorized Email: ${VALID_EMAIL}\nDefault Authorized Password: ${VALID_PASS}`);
+        alert(`❌ Access Denied: Invalid Credentials!\n\nYou cannot enter the dashboard without registering an account first or entering authorized credentials.`);
       }
     });
   }
 
-  // Registration Form Submission Handler (Registers user and permits login)
+  // Registration Form Submission Handler
   if (registerForm) {
     registerForm.addEventListener('submit', (event) => {
       event.preventDefault();
@@ -153,9 +151,9 @@ document.addEventListener('DOMContentLoaded', () => {
       users.push({ name: nameVal, email: emailVal, password: passVal, createdAt: new Date().toISOString() });
       localStorage.setItem('bmagnet_registered_users', JSON.stringify(users));
 
-      alert(`🎉 Account Successfully Registered!\n\nWelcome ${nameVal}!\nYour investor account (${emailVal}) is registered.\n\nPlease log in now with your registered email and password to enter the dashboard.`);
+      alert(`🎉 Registration Complete!\n\nWelcome ${nameVal}!\nYour account (${emailVal}) is now registered.\n\nYou can now log in with your email and password to access the dashboard.`);
 
-      // Switch back to Sign In tab and pre-fill registered credentials
+      // Switch back to Sign In tab and fill registered credentials
       if (emailInputEl) emailInputEl.value = emailVal;
       if (passwordInputEl) passwordInputEl.value = passVal;
 
