@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const emailInputEl = document.getElementById('email');
   const passwordInputEl = document.getElementById('password');
 
-  const VALID_EMAIL = "test@bmgnetint.com";
+  const VALID_EMAIL = "test@bmagnetint.com";
   const VALID_PASS = "bmagnet@123";
 
   // Tab Switcher Handler (Sign In vs Register Account)
