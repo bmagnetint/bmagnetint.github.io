@@ -20,29 +20,29 @@ document.addEventListener('DOMContentLoaded', () => {
   const paymentForm = document.getElementById('paymentForm');
 
   let capital = Math.max(1000, capitalParam);
-  let botCount = Math.max(2, Math.floor(capital / 500));
-  let monthlyRent = botCount * 100;
-  let totalOutlay = capital + monthlyRent;
+  let botCount = Math.max(1, Math.floor(capital / 1000));
+  let totalRent = botCount * 300;
+  let totalOutlay = capital + totalRent;
   let planTitleStr = "Starter Core AI Bot ($1,000 Deposit)";
 
   if (planType === 'core') {
     planTitleStr = "Core Investor AI Bot";
-    capital = Math.max(1500, capitalParam);
-    botCount = Math.max(3, Math.floor(capital / 500));
-    monthlyRent = botCount * 100;
-    totalOutlay = capital + monthlyRent;
+    capital = Math.max(2000, capitalParam);
+    botCount = Math.max(2, Math.floor(capital / 1000));
+    totalRent = botCount * 300;
+    totalOutlay = capital + totalRent;
   } else if (planType === 'max') {
     planTitleStr = "Max Yield Arbitrage AI Bot";
     capital = Math.max(5000, capitalParam);
-    botCount = Math.max(10, Math.floor(capital / 500));
-    monthlyRent = botCount * 100;
-    totalOutlay = capital + monthlyRent;
+    botCount = Math.max(5, Math.floor(capital / 1000));
+    totalRent = botCount * 300;
+    totalOutlay = capital + totalRent;
   }
 
   if (payTitle) payTitle.textContent = `${planTitleStr} Payment`;
   if (payAmountDisplay) payAmountDisplay.innerHTML = `$${totalOutlay.toLocaleString()} <span style="font-size: 1rem; color: var(--text-muted);">USDT</span>`;
   if (payCapitalDisplay) payCapitalDisplay.textContent = `$${capital.toLocaleString()} USDT`;
-  if (payRentDisplay) payRentDisplay.textContent = `$${monthlyRent.toLocaleString()} USDT`;
+  if (payRentDisplay) payRentDisplay.textContent = `$${totalRent.toLocaleString()} USDT (3-Mo Rent)`;
 
   // Tab Switching Logic
   if (bep20TabBtn && trc20TabBtn && bep20Panel && trc20Panel) {

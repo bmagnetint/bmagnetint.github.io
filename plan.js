@@ -16,27 +16,26 @@ document.addEventListener('DOMContentLoaded', () => {
   function calculateYield() {
     if (!slider || !capitalDisplay || !returnDisplay || !valueDisplay) return;
 
-    // Enforce min $1000 deposit
     let capital = parseFloat(slider.value);
     if (capital < 1000) capital = 1000;
 
     capitalDisplay.textContent = `$${capital.toLocaleString()}`;
 
-    // Bot allocation: 1 Bot per $500 deposit (e.g. $1000 = 2 Bots)
-    const botCount = Math.max(2, Math.floor(capital / 500));
+    // 1 Bot per $1,000 deposit (e.g. $1,000 = 1 Bot, $2,000 = 2 Bots, $5,000 = 5 Bots)
+    const botCount = Math.max(1, Math.floor(capital / 1000));
     
-    // Bot Rental: $100 / month per bot ($200/mo for 2 bots)
-    const monthlyRent = botCount * 100;
-    const totalOutlay = capital + monthlyRent;
+    // $300 total bot rental fee for 3-Month Contract per bot
+    const totalRent = botCount * 300;
+    const totalOutlay = capital + totalRent;
 
-    // Monthly Profit per Bot: $480/bot for 2+ bots ($960/mo for $1000 deposit)
-    const monthlyProfit = botCount * 480;
+    // Monthly Net Profit: $960 / month ($32 / day) per bot
+    const monthlyProfit = botCount * 960;
     const dailyProfit = Math.round(monthlyProfit / 30);
     const totalReturn = monthlyProfit * selectedMonths;
     const endValue = capital + totalReturn;
 
-    if (botsDisplay) botsDisplay.textContent = `${botCount} Bots`;
-    if (rentDisplay) rentDisplay.textContent = `$${monthlyRent.toLocaleString()} / mo`;
+    if (botsDisplay) botsDisplay.textContent = `${botCount} ${botCount === 1 ? 'Bot' : 'Bots'}`;
+    if (rentDisplay) rentDisplay.textContent = `$${totalRent.toLocaleString()} (3-Mo Contract)`;
     if (outlayDisplay) outlayDisplay.textContent = `$${totalOutlay.toLocaleString()}`;
     if (dailyDisplay) dailyDisplay.textContent = `$${dailyProfit.toLocaleString()} / day`;
     if (monthlyDisplay) monthlyDisplay.textContent = `$${monthlyProfit.toLocaleString()} / mo`;
