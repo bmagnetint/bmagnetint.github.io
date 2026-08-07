@@ -3,11 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Registration Complete — B Magnet International</title>
+    <title>Investor Profile & KYC Registration — B Magnet International</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: data: 'unsafe-inline' 'unsafe-eval';" />
-    <meta name="description" content="B Magnet International — Investor Registration Complete" />
+    <meta name="description" content="B Magnet International — Comprehensive Investor Registration & KYC Verification" />
     
     <link
       href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800;900&family=Tajawal:wght@700;800&family=Outfit:wght@800;900&family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"
@@ -34,7 +34,7 @@
 
         <nav class="sidebar-nav" style="margin-top: 30px;">
           <a href="index.html" class="nav-item"><span>🔑</span> Authentication</a>
-          <a href="register.html" class="nav-item active"><span>📝</span> Registration Complete</a>
+          <a href="register.html" class="nav-item active"><span>📝</span> Investor KYC Registration</a>
           <a href="plan.html" class="nav-item"><span>🤖</span> AI Forex Bot Plans</a>
           <a href="dashboard.html" class="nav-item"><span>📊</span> Investor Dashboard</a>
           <a href="payment.html" class="nav-item"><span>💳</span> Crypto Deposit Vault</a>
@@ -47,119 +47,172 @@
           <div class="user-pill">
             <div class="user-avatar" id="regAvatar">IV</div>
             <div class="user-info">
-              <strong id="regHeaderName">New Registered Investor</strong>
+              <strong id="regHeaderName">New Investor</strong>
               <span id="regHeaderEmail">investor@domain.com</span>
             </div>
           </div>
 
           <div style="display: flex; gap: 10px; align-items: center;">
-            <a href="plan.html" class="btn btn-primary">Select Investment Strategy →</a>
+            <a href="plan.html" class="btn btn-primary">Select Investment Plan →</a>
           </div>
         </header>
 
-        <!-- Main Registration Confirmation Hero -->
+        <!-- Main Registration Form Hero Section -->
         <section class="dashboard-hero" style="margin-bottom: 30px;">
           <div class="hero-copy">
-            <span class="eyebrow"><span class="pulse-dot"></span> Account Registration Successful</span>
-            <h1 id="regHeroTitle">Welcome to B Magnet International 🎉</h1>
+            <span class="eyebrow"><span class="pulse-dot"></span> Institutional KYC Verification (Step 2 of 2)</span>
+            <h1 id="regHeroTitle">Complete Investor Profile Registration</h1>
             <p>
-              Your investor profile has been registered and verified in our institutional custody vault.
+              Please provide your full personal details, contact numbers, jurisdiction region, and investment background to activate your MetaTrader 5 institutional vault.
             </p>
-            <div class="hero-actions" style="margin-top: 24px; display: flex; gap: 12px; flex-wrap: wrap;">
-              <a href="plan.html" class="btn btn-primary">Select Forex Bot Investment Strategy →</a>
-              <a href="dashboard.html" class="btn btn-secondary">Go to Investor Portal Dashboard →</a>
-            </div>
-          </div>
-
-          <!-- Registration Certificate Card -->
-          <div class="dashboard-hero-card">
-            <div class="hero-card-header">
-              <span>Investor Credential Certificate</span>
-              <span class="status-pill" style="background: rgba(5, 150, 105, 0.2); color: #34d399;">✓ Verified & Active</span>
-            </div>
-
-            <div class="stat-main" style="margin: 20px 0;">
-              <p>Registered Investor Name</p>
-              <h2 id="cardRegName" style="color: var(--accent-teal); font-size: 1.8rem; margin: 4px 0;">Alexander Vance</h2>
-              <p id="cardRegEmail" style="color: var(--text-muted); font-size: 0.95rem;">investor@domain.com</p>
-            </div>
-
-            <div class="stat-grid" style="grid-template-columns: 1fr 1fr;">
-              <div class="stat-box">
-                <p>Assigned MT5 Vault ID</p>
-                <strong style="color: var(--accent-gold); font-size: 1.1rem;">BMG-FX-894201</strong>
-              </div>
-              <div class="stat-box">
-                <p>Security Custody</p>
-                <strong class="positive" style="font-size: 1.1rem;">GTC FX Multi-Sig</strong>
-              </div>
-            </div>
           </div>
         </section>
 
-        <!-- Registration Details Breakdown -->
+        <!-- Comprehensive KYC Registration Form -->
         <section class="plan-section" style="margin-bottom: 40px;">
-          <div class="dashboard-grid" style="grid-template-columns: 1fr 1fr; gap: 24px;">
-            <!-- Registration Details Card -->
-            <div class="chart-panel">
-              <div class="chart-header">
-                <h3>Registered Account Profile</h3>
-                <p>Institutional verification and allocation summary.</p>
+          <div class="chart-panel" style="max-width: 900px; margin: 0 auto;">
+            <div class="chart-header" style="margin-bottom: 24px; border-bottom: 1px solid var(--border-light); padding-bottom: 16px;">
+              <h3 style="font-size: 1.4rem;">Institutional Investor Registration Form</h3>
+              <p>All details are strictly encrypted with B Magnet 256-bit multi-sig vault security protocols.</p>
+            </div>
+
+            <form id="fullKycForm">
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+                <!-- Full Name -->
+                <div class="form-group">
+                  <label for="kycFullName" style="font-weight: 600; font-size: 0.9rem;">Full Name *</label>
+                  <input id="kycFullName" type="text" placeholder="e.g. Alexander Vance" required style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid var(--border-light); background: rgba(255,255,255,0.05); color: var(--text-primary);" />
+                </div>
+
+                <!-- Email Address -->
+                <div class="form-group">
+                  <label for="kycEmail" style="font-weight: 600; font-size: 0.9rem;">Email Address *</label>
+                  <input id="kycEmail" type="email" placeholder="investor@domain.com" required style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid var(--border-light); background: rgba(255,255,255,0.05); color: var(--text-primary);" />
+                </div>
               </div>
-              <div class="transaction-table-wrap">
+
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+                <!-- Contact Number -->
+                <div class="form-group">
+                  <label for="kycPhone" style="font-weight: 600; font-size: 0.9rem;">Contact Phone Number *</label>
+                  <input id="kycPhone" type="tel" placeholder="+971 50 123 4567" required style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid var(--border-light); background: rgba(255,255,255,0.05); color: var(--text-primary);" />
+                </div>
+
+                <!-- WhatsApp Number -->
+                <div class="form-group">
+                  <label for="kycWhatsApp" style="font-weight: 600; font-size: 0.9rem;">WhatsApp Number *</label>
+                  <input id="kycWhatsApp" type="tel" placeholder="+971 50 123 4567" required style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid var(--border-light); background: rgba(255,255,255,0.05); color: var(--text-primary);" />
+                </div>
+              </div>
+
+              <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px; margin-bottom: 20px;">
+                <!-- Physical Address -->
+                <div class="form-group">
+                  <label for="kycAddress" style="font-weight: 600; font-size: 0.9rem;">Full Physical / Residential Address *</label>
+                  <input id="kycAddress" type="text" placeholder="Building Name, Street Address, City, Postal Code" required style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid var(--border-light); background: rgba(255,255,255,0.05); color: var(--text-primary);" />
+                </div>
+
+                <!-- Region / Country -->
+                <div class="form-group">
+                  <label for="kycRegion" style="font-weight: 600; font-size: 0.9rem;">Region / Country *</label>
+                  <select id="kycRegion" required style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid var(--border-light); background: rgba(15, 23, 42, 0.9); color: var(--text-primary);">
+                    <option value="">Select Region</option>
+                    <option value="United Arab Emirates (UAE)">United Arab Emirates (UAE)</option>
+                    <option value="Saudi Arabia (KSA)">Saudi Arabia (KSA)</option>
+                    <option value="United Kingdom (UK)">United Kingdom (UK)</option>
+                    <option value="United States (USA)">United States (USA)</option>
+                    <option value="Qatar">Qatar</option>
+                    <option value="Kuwait">Kuwait</option>
+                    <option value="Bahrain">Bahrain</option>
+                    <option value="Oman">Oman</option>
+                    <option value="Singapore">Singapore</option>
+                    <option value="European Union">European Union</option>
+                    <option value="Other International Jurisdiction">Other International Jurisdiction</option>
+                  </select>
+                </div>
+              </div>
+
+              <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-bottom: 28px;">
+                <!-- Date of Birth -->
+                <div class="form-group">
+                  <label for="kycDob" style="font-weight: 600; font-size: 0.9rem;">Date of Birth *</label>
+                  <input id="kycDob" type="date" required style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid var(--border-light); background: rgba(255,255,255,0.05); color: var(--text-primary);" />
+                </div>
+
+                <!-- Investment Experience Years -->
+                <div class="form-group">
+                  <label for="kycExperience" style="font-weight: 600; font-size: 0.9rem;">Investment Experience *</label>
+                  <select id="kycExperience" required style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid var(--border-light); background: rgba(15, 23, 42, 0.9); color: var(--text-primary);">
+                    <option value="">Select Experience</option>
+                    <option value="< 1 Year (Beginner)">Less than 1 Year</option>
+                    <option value="1 – 3 Years (Intermediate)">1 – 3 Years</option>
+                    <option value="3 – 5 Years (Advanced)">3 – 5 Years</option>
+                    <option value="5+ Years (Institutional / Pro)">5+ Years Pro / Institutional</option>
+                  </select>
+                </div>
+
+                <!-- Annual Income Status -->
+                <div class="form-group">
+                  <label for="kycIncome" style="font-weight: 600; font-size: 0.9rem;">Annual Income Status *</label>
+                  <select id="kycIncome" required style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid var(--border-light); background: rgba(15, 23, 42, 0.9); color: var(--text-primary);">
+                    <option value="">Select Income Bracket</option>
+                    <option value="$25,000 – $50,000">$25,000 – $50,000</option>
+                    <option value="$50,000 – $100,000">$50,000 – $100,000</option>
+                    <option value="$100,000 – $250,000">$100,000 – $250,000</option>
+                    <option value="$250,000+ (High Net Worth)">$250,000+ (High Net Worth)</option>
+                  </select>
+                </div>
+              </div>
+
+              <button type="submit" id="submitKycBtn" class="btn btn-primary" style="width: 100%; padding: 16px; font-size: 1.05rem;">Submit Full Registration & Verify Account →</button>
+            </form>
+
+            <!-- Verified Registration Confirmation Card (Hidden by default, shown after form submission) -->
+            <div id="kycSuccessCard" style="display: none; text-align: center; padding: 20px 0;">
+              <div style="font-size: 3rem; margin-bottom: 12px;">🎉</div>
+              <span class="status-pill" style="background: rgba(5, 150, 105, 0.2); color: #34d399; font-size: 1rem; padding: 6px 16px; display: inline-block; margin-bottom: 16px;">✓ Full Investor Registration Verified</span>
+              
+              <h2 style="font-size: 1.8rem; margin-bottom: 8px;" id="succName">Alexander Vance</h2>
+              <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 24px;" id="succEmail">investor@domain.com</p>
+
+              <div class="transaction-table-wrap" style="margin-bottom: 28px; text-align: left;">
                 <table class="transaction-table">
                   <tbody>
                     <tr>
-                      <td style="color: var(--text-muted); font-weight: 600;">Investor Name</td>
-                      <td style="font-weight: 700; text-align: right;" id="tblRegName">Alexander Vance</td>
+                      <td style="color: var(--text-muted); font-weight: 600;">Contact Number</td>
+                      <td style="font-weight: 700; text-align: right;" id="tblSuccPhone">+971 50 123 4567</td>
                     </tr>
                     <tr>
-                      <td style="color: var(--text-muted); font-weight: 600;">Investor Email</td>
-                      <td style="font-weight: 700; text-align: right;" id="tblRegEmail">investor@domain.com</td>
+                      <td style="color: var(--text-muted); font-weight: 600;">WhatsApp Number</td>
+                      <td style="font-weight: 700; text-align: right;" id="tblSuccWhatsApp">+971 50 123 4567</td>
                     </tr>
                     <tr>
-                      <td style="color: var(--text-muted); font-weight: 600;">Account Status</td>
-                      <td style="font-weight: 700; color: #10b981; text-align: right;">Active - Tier 1 Verified</td>
+                      <td style="color: var(--text-muted); font-weight: 600;">Residential Address</td>
+                      <td style="font-weight: 700; text-align: right;" id="tblSuccAddress">Main Boulevard, Dubai</td>
                     </tr>
                     <tr>
-                      <td style="color: var(--text-muted); font-weight: 600;">Default Authorized Email</td>
-                      <td style="font-weight: 700; color: var(--accent-teal); text-align: right;">test@bmagnetint.com</td>
+                      <td style="color: var(--text-muted); font-weight: 600;">Region / Jurisdiction</td>
+                      <td style="font-weight: 700; color: var(--accent-teal); text-align: right;" id="tblSuccRegion">United Arab Emirates (UAE)</td>
                     </tr>
                     <tr>
-                      <td style="color: var(--text-muted); font-weight: 600;">Default Authorized Password</td>
-                      <td style="font-weight: 700; color: var(--accent-gold); text-align: right;">bmagnet@123</td>
+                      <td style="color: var(--text-muted); font-weight: 600;">Date of Birth</td>
+                      <td style="font-weight: 700; text-align: right;" id="tblSuccDob">1990-05-15</td>
+                    </tr>
+                    <tr>
+                      <td style="color: var(--text-muted); font-weight: 600;">Investment Experience</td>
+                      <td style="font-weight: 700; text-align: right;" id="tblSuccExp">3 – 5 Years</td>
+                    </tr>
+                    <tr>
+                      <td style="color: var(--text-muted); font-weight: 600;">Annual Income Status</td>
+                      <td style="font-weight: 700; color: var(--accent-gold); text-align: right;" id="tblSuccIncome">$100,000 – $250,000</td>
                     </tr>
                   </tbody>
                 </table>
               </div>
-            </div>
 
-            <!-- Next Steps Guidance Card -->
-            <div class="chart-panel">
-              <div class="chart-header">
-                <h3>Next Steps for Capital Activation</h3>
-                <p>Activate automated Neural Forex EA bots in 2 simple steps.</p>
-              </div>
-              <div style="padding: 10px 0;">
-                <ul style="list-style: none; padding: 0; display: grid; gap: 16px; font-size: 0.9rem;">
-                  <li style="display: flex; gap: 12px; align-items: flex-start;">
-                    <span style="background: var(--accent-teal); color: #060b14; font-weight: 800; border-radius: 50%; width: 28px; height: 28px; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;">1</span>
-                    <div>
-                      <strong>Choose Your AI Forex Bot Plan</strong>
-                      <p style="margin: 4px 0 0 0; font-size: 0.85rem; color: var(--text-muted);">Select from Starter Core ($1,000 - 1 Bot), Core Investor ($3,000 - 3 Bots), or Max Forex ($5,000 - 5 Bots).</p>
-                    </div>
-                  </li>
-                  <li style="display: flex; gap: 12px; align-items: flex-start;">
-                    <span style="background: var(--accent-gold); color: #060b14; font-weight: 800; border-radius: 50%; width: 28px; height: 28px; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;">2</span>
-                    <div>
-                      <strong>Deposit Capital & Rental Fee via Crypto Vault</strong>
-                      <p style="margin: 4px 0 0 0; font-size: 0.85rem; color: var(--text-muted);">Transfer USDT via BEP20 (BNB Smart Chain) or TRC20 (TRON) to start daily algorithmic execution.</p>
-                    </div>
-                  </li>
-                </ul>
-                <div style="margin-top: 24px;">
-                  <a href="plan.html" class="btn btn-primary" style="width: 100%; text-align: center;">Proceed to Select Plan →</a>
-                </div>
+              <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                <a href="plan.html" class="btn btn-primary" style="padding: 14px 28px;">Proceed to AI Forex Bot Plan Selection →</a>
+                <a href="dashboard.html" class="btn btn-secondary" style="padding: 14px 28px;">Go to Investor Portal Dashboard →</a>
               </div>
             </div>
           </div>
