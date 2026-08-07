@@ -8,17 +8,17 @@
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   
   /* Slightly Darker Slate-Teal Palette Harmonized to Logo */
-  --bg-main: #dce7e9;
-  --bg-card: rgba(255, 255, 255, 0.92);
+  --bg-main: #d3e1e4;
+  --bg-card: rgba(255, 255, 255, 0.94);
   --bg-card-hover: #ffffff;
-  --bg-glass: rgba(255, 255, 255, 0.75);
+  --bg-glass: rgba(255, 255, 255, 0.82);
   
-  --border-light: rgba(185, 205, 212, 0.8);
+  --border-light: rgba(175, 198, 206, 0.85);
   --border-glow: rgba(5, 168, 168, 0.45);
   
   --accent-teal: #058b8b;
   --accent-blue: #1e40af;
-  --accent-navy: #0f172a;
+  --accent-navy: #172a4e;
   --accent-emerald: #059669;
   --accent-gold: #d97706;
   
@@ -38,7 +38,14 @@
 
 body {
   font-family: var(--font-body);
-  background: linear-gradient(180deg, #dce7e9 0%, #e7f0f2 100%);
+  background-color: #d3e1e4;
+  background-image: 
+    radial-gradient(circle at 1px 1px, rgba(23, 42, 78, 0.065) 1.2px, transparent 0),
+    linear-gradient(to right, rgba(23, 42, 78, 0.025) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(23, 42, 78, 0.025) 1px, transparent 1px),
+    linear-gradient(180deg, #d3e1e4 0%, #dae6e8 45%, #e2ecee 100%);
+  background-size: 32px 32px, 64px 64px, 64px 64px, 100% 100%;
+  background-attachment: fixed;
   color: var(--text-primary);
   min-height: 100vh;
   line-height: 1.6;
@@ -46,31 +53,32 @@ body {
   position: relative;
 }
 
-/* Subtle Soft Ambient Glows in Light Background */
+/* Subtle Soft Ambient Radial Orbs Overlay */
 body::before,
 body::after {
   content: '';
   position: fixed;
   border-radius: 50%;
-  filter: blur(140px);
   pointer-events: none;
   z-index: 0;
 }
 
 body::before {
-  width: 650px;
-  height: 650px;
-  top: -180px;
-  left: -150px;
-  background: radial-gradient(circle, rgba(5, 168, 168, 0.14) 0%, rgba(30, 64, 175, 0.05) 70%, transparent 100%);
+  width: 750px;
+  height: 750px;
+  top: -200px;
+  left: -180px;
+  background: radial-gradient(circle, rgba(5, 168, 168, 0.16) 0%, rgba(23, 42, 78, 0.07) 55%, transparent 80%);
+  filter: blur(120px);
 }
 
 body::after {
-  width: 750px;
-  height: 750px;
-  bottom: -200px;
-  right: -150px;
-  background: radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, rgba(5, 168, 168, 0.06) 70%, transparent 100%);
+  width: 850px;
+  height: 850px;
+  bottom: -250px;
+  right: -200px;
+  background: radial-gradient(circle, rgba(23, 42, 78, 0.12) 0%, rgba(5, 168, 168, 0.07) 60%, transparent 80%);
+  filter: blur(140px);
 }
 
 a {
