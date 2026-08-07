@@ -91,3 +91,93 @@ window.dbEngine = dbEngine;
     });
   });
 })();
+
+/* i18n Multi-Language Translation Engine (English & Arabic RTL) */
+const TRANSLATIONS = {
+  en: {
+    brandName: "B MAGNET INTERNATIONAL",
+    brandTagLogin: "Investor Portal",
+    brandTagDash: "Portfolio Management",
+    previewDemo: "Preview Demo →",
+    signOut: "Sign Out",
+    eyebrow: "Secure Investor Access",
+    heroTitle: "Institutional-grade portfolio management.",
+    heroSubtitle: "Welcome back. Access real-time asset tracking, performance metrics, and tailored investment strategies in one unified portal.",
+    feature1Title: "Live Portfolio Analytics",
+    feature1Desc: "Track your full asset allocation and yield projections in real time.",
+    feature2Title: "Downside Protection & Strategy",
+    feature2Desc: "Institutional risk controls tailored to your capital objectives.",
+    authHeader: "Authentication",
+    signInTitle: "Sign In to Portal",
+    emailLabel: "Investor Email",
+    passwordLabel: "Password",
+    signInBtn: "Sign In to Dashboard →",
+    orSignInWith: "OR SIGN IN WITH",
+    footnote: "Contact your advisory officer for credential recovery.",
+    footerCopy: "© 2026 B Magnet Investment. All rights reserved. Secure investor portal.",
+    overview: "Overview",
+    plan: "Plan",
+    activity: "Activity"
+  },
+  ar: {
+    brandName: "بي ماجنت الدولية",
+    brandTagLogin: "بوابة المستثمرين",
+    brandTagDash: "إدارة المحافظ الاستثمارية",
+    previewDemo: "معاينة التجريبية ←",
+    signOut: "تسجيل الخروج",
+    eyebrow: "دخول آمن للمستثمرين",
+    heroTitle: "إدارة محافظ استثمارية بمستوى مؤسسي عالي.",
+    heroSubtitle: "مرحباً بعودتك. تتبع أصولك واستراتيجياتك الاستثمارية في الوقت الفعلي عبر منصة موحدة.",
+    feature1Title: "تحليلات المحفظة المباشرة",
+    feature1Desc: "تتبع توزيع الأصول وتوقعات العوائد مباشرة وبدقة متناهية.",
+    feature2Title: "حماية رأس المال والاستراتيجيات",
+    feature2Desc: "ضوابط مخاطر مؤسسية مصممة خصيصاً لتحقيق أهدافك المالية.",
+    authHeader: "مصادقة الدخول",
+    signInTitle: "تسجيل الدخول إلى البوابة",
+    emailLabel: "البريد الإلكتروني للمستثمر",
+    passwordLabel: "كلمة المرور",
+    signInBtn: "الدخول إلى لوحة التحكم ←",
+    orSignInWith: "أو تسجيل الدخول بواسطة",
+    footnote: "تواصل مع مستشارك المالي لاستعادة بيانات الدخول.",
+    footerCopy: "© ٢٠٢٦ بي ماجنت الاستثمارية. جميع الحقوق محفوظة. بوابة مستثمرين آمنة.",
+    overview: "نظرة عامة",
+    plan: "الخطة الاستثمارية",
+    activity: "النشاطات"
+  }
+};
+
+(function initI18n() {
+  const applyLang = (lang) => {
+    document.documentElement.setAttribute('lang', lang);
+    document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+    
+    const dict = TRANSLATIONS[lang] || TRANSLATIONS.en;
+    
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (dict[key]) {
+        el.textContent = dict[key];
+      }
+    });
+
+    const langBtn = document.getElementById('langToggleBtn');
+    if (langBtn) {
+      langBtn.textContent = lang === 'ar' ? '🌐 EN' : '🌐 AR';
+      langBtn.setAttribute('title', lang === 'ar' ? 'Switch to English' : 'التحويل إلى اللغة العربية');
+    }
+  };
+
+  document.addEventListener('DOMContentLoaded', () => {
+    applyLang(localStorage.getItem('bmagnet_lang') || 'en');
+
+    const langBtn = document.getElementById('langToggleBtn');
+    if (!langBtn) return;
+
+    langBtn.addEventListener('click', () => {
+      const current = localStorage.getItem('bmagnet_lang') || 'en';
+      const next = current === 'ar' ? 'en' : 'ar';
+      localStorage.setItem('bmagnet_lang', next);
+      applyLang(next);
+    });
+  });
+})();

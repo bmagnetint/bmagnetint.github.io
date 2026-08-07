@@ -19,7 +19,7 @@
     <meta property="og:image" content="https://bmagnetint.com/logo.png" />
     
     <link
-      href="https://fonts.googleapis.com/css2?family=Outfit:wght@800;900&family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800;900&family=Tajawal:wght@700;800&family=Outfit:wght@800;900&family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"
       rel="stylesheet"
     />
     <link rel="manifest" href="manifest.json" />
@@ -53,23 +53,24 @@
             <img src="logo.png" alt="B Magnet International Logo" class="brand-logo" />
           </div>
           <div class="brand-details">
-            <span class="brand-name">B Magnet International</span>
-            <span class="brand-tag">Investor Portal</span>
+            <span class="brand-name" data-i18n="brandName">B Magnet International</span>
+            <span class="brand-tag" data-i18n="brandTagLogin">Investor Portal</span>
           </div>
         </div>
-        <div class="header-actions" style="display: flex; gap: 12px; align-items: center;">
+        <div class="header-actions" style="display: flex; gap: 10px; align-items: center;">
+          <button id="langToggleBtn" class="lang-toggle-btn" type="button" title="Switch Language (العربية / English)">🌐 AR</button>
           <button id="themeToggleBtn" class="theme-toggle-icon-btn" type="button" title="Toggle Dark/Light Mode">🌙</button>
-          <a class="btn btn-secondary" href="dashboard.html">Preview Demo →</a>
+          <a class="btn btn-secondary" href="dashboard.html" data-i18n="previewDemo">Preview Demo →</a>
         </div>
       </header>
 
       <section class="login-panel">
         <div class="login-copy">
           <span class="eyebrow">
-            <span class="pulse-dot"></span> Secure Investor Access
+            <span class="pulse-dot"></span> <span data-i18n="eyebrow">Secure Investor Access</span>
           </span>
-          <h1>Institutional-grade portfolio management.</h1>
-          <p>
+          <h1 data-i18n="heroTitle">Institutional-grade portfolio management.</h1>
+          <p data-i18n="heroSubtitle">
             Welcome back. Access real-time asset tracking, performance metrics, and tailored investment strategies in one unified portal.
           </p>
 
@@ -77,15 +78,15 @@
             <div class="feature-card">
               <div class="feature-icon">📈</div>
               <div>
-                <strong>Live Portfolio Analytics</strong>
-                <p>Track your full asset allocation and yield projections in real time.</p>
+                <strong data-i18n="feature1Title">Live Portfolio Analytics</strong>
+                <p data-i18n="feature1Desc">Track your full asset allocation and yield projections in real time.</p>
               </div>
             </div>
             <div class="feature-card">
               <div class="feature-icon">🛡️</div>
               <div>
-                <strong>Downside Protection & Strategy</strong>
-                <p>Institutional risk controls tailored to your capital objectives.</p>
+                <strong data-i18n="feature2Title">Downside Protection & Strategy</strong>
+                <p data-i18n="feature2Desc">Institutional risk controls tailored to your capital objectives.</p>
               </div>
             </div>
           </div>
@@ -93,23 +94,23 @@
 
         <div class="login-card">
           <div class="login-card-header">
-            <span>Authentication</span>
-            <h2>Sign In to Portal</h2>
+            <span data-i18n="authHeader">Authentication</span>
+            <h2 data-i18n="signInTitle">Sign In to Portal</h2>
           </div>
 
           <form id="loginForm" class="login-form">
             <div class="form-group">
-              <label for="email">Investor Email</label>
+              <label for="email" data-i18n="emailLabel">Investor Email</label>
               <input id="email" type="email" placeholder="investor@bmagnetint.com" required />
             </div>
             <div class="form-group">
-              <label for="password">Password</label>
+              <label for="password" data-i18n="passwordLabel">Password</label>
               <input id="password" type="password" placeholder="••••••••••••" required />
             </div>
-            <button class="btn btn-primary" type="submit">Sign In to Dashboard →</button>
+            <button class="btn btn-primary" type="submit" data-i18n="signInBtn">Sign In to Dashboard →</button>
 
             <div class="login-divider">
-              <span>OR SIGN IN WITH</span>
+              <span data-i18n="orSignInWith">OR SIGN IN WITH</span>
             </div>
 
             <div class="social-login-wrap">
@@ -129,7 +130,7 @@
               </button>
             </div>
 
-            <p class="login-footnote">Contact your advisory officer for credential recovery.</p>
+            <p class="login-footnote" data-i18n="footnote">Contact your advisory officer for credential recovery.</p>
           </form>
         </div>
       </section>

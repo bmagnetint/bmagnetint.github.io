@@ -130,6 +130,49 @@
   box-shadow: var(--shadow-glow);
 }
 
+/* Global Language Switcher Button (Globe Icon) */
+.lang-toggle-btn {
+  height: 44px;
+  padding: 0 16px;
+  border-radius: 22px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  color: var(--text-primary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-weight: 800;
+  font-size: 0.88rem;
+  cursor: pointer;
+  box-shadow: var(--shadow-card);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  backdrop-filter: blur(14px);
+  outline: none;
+}
+
+.lang-toggle-btn:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent-teal);
+  box-shadow: var(--shadow-glow);
+}
+
+/* RTL Arabic Direction & Layout Overrides */
+[dir="rtl"] {
+  text-align: right;
+}
+
+[dir="rtl"] .brand-name {
+  font-family: 'Cairo', 'Tajawal', 'Outfit', sans-serif;
+  letter-spacing: 0;
+}
+
+[dir="rtl"] .login-copy,
+[dir="rtl"] .login-card-header,
+[dir="rtl"] .form-group label {
+  text-align: right;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
