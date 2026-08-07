@@ -85,70 +85,35 @@ document.addEventListener('DOMContentLoaded', () => {
     return regUsers.some(u => u.email.toLowerCase() === cleanEmail && u.password === cleanPass);
   }
 
-  // 🔑 Passkey (Face ID / Touch ID) Authentication Handler
+  function handleSocialOrPasskeyClick(providerName) {
+    alert(`📝 Registration Required:\n\nTo sign in with ${providerName}, please complete account registration first.\n\nDirecting you to the "Register Account" tab...`);
+    if (tabRegisterBtn) {
+      tabRegisterBtn.click();
+    }
+  }
+
+  // 🔑 Passkey (Face ID / Touch ID) Authentication Handler -> Prompt Registration
   if (passkeySignInBtn) {
     passkeySignInBtn.addEventListener('click', () => {
-      const currentEmail = emailInputEl ? emailInputEl.value.trim() : '';
-      const currentPass = passwordInputEl ? passwordInputEl.value.trim() : '';
-
-      if (!isValidCredential(currentEmail, currentPass)) {
-        alert(`🔒 Passkey Verification Required:\n\nPlease enter authorized investor credentials to complete biometric authentication.\n\nRequired Email: ${VALID_EMAIL}\nRequired Password: ${VALID_PASS}`);
-        if (emailInputEl) emailInputEl.value = VALID_EMAIL;
-        if (passwordInputEl) passwordInputEl.value = VALID_PASS;
-        return;
-      }
-
-      passkeySignInBtn.innerHTML = `🔑 Authenticating Passkey (Touch ID / Face ID)...`;
-      setTimeout(() => {
-        alert('🔑 Passkey Biometric Verified!\n\nAuthenticated via WebAuthn FIDO2 vault key. Directing to dashboard...');
-        window.location.href = 'dashboard.html';
-      }, 500);
+      handleSocialOrPasskeyClick('Passkey (Face ID / Touch ID)');
     });
   }
 
-  // 🌐 Google Sign In Handler
+  // 🌐 Google Sign In Handler -> Prompt Registration
   if (googleSignInBtn) {
     googleSignInBtn.addEventListener('click', () => {
-      const currentEmail = emailInputEl ? emailInputEl.value.trim() : '';
-      const currentPass = passwordInputEl ? passwordInputEl.value.trim() : '';
-
-      if (!isValidCredential(currentEmail, currentPass)) {
-        if (emailInputEl) emailInputEl.value = VALID_EMAIL;
-        if (passwordInputEl) passwordInputEl.value = VALID_PASS;
-        alert(`🌐 Google OAuth Authentication:\n\nAuthorized investor credentials loaded:\nEmail: ${VALID_EMAIL}\nPassword: ${VALID_PASS}\n\nClick "Sign In to Dashboard →" or retry Google Sign In to enter.`);
-        return;
-      }
-
-      googleSignInBtn.style.opacity = '0.7';
-      setTimeout(() => {
-        alert('🌐 Google OAuth Verified!\n\nAuthenticated as Investor via Google Accounts. Directing to dashboard...');
-        window.location.href = 'dashboard.html';
-      }, 400);
+      handleSocialOrPasskeyClick('Google');
     });
   }
 
-  // 🍏 Apple Sign In Handler
+  // 🍏 Apple Sign In Handler -> Prompt Registration
   if (appleSignInBtn) {
     appleSignInBtn.addEventListener('click', () => {
-      const currentEmail = emailInputEl ? emailInputEl.value.trim() : '';
-      const currentPass = passwordInputEl ? passwordInputEl.value.trim() : '';
-
-      if (!isValidCredential(currentEmail, currentPass)) {
-        if (emailInputEl) emailInputEl.value = VALID_EMAIL;
-        if (passwordInputEl) passwordInputEl.value = VALID_PASS;
-        alert(`🍏 Apple ID Authentication:\n\nAuthorized investor credentials loaded:\nEmail: ${VALID_EMAIL}\nPassword: ${VALID_PASS}\n\nClick "Sign In to Dashboard →" or retry Apple Sign In to enter.`);
-        return;
-      }
-
-      appleSignInBtn.style.opacity = '0.7';
-      setTimeout(() => {
-        alert('🍏 Apple ID Verified!\n\nAuthenticated via Apple Secure Enclave Passkey. Directing to dashboard...');
-        window.location.href = 'dashboard.html';
-      }, 400);
+      handleSocialOrPasskeyClick('Apple');
     });
   }
 
-  // Sign In Form Submission Handler
+  // Sign In Form Submission Handler (Strict validation: credentials or registered account required)
   if (loginForm) {
     loginForm.addEventListener('submit', (event) => {
       event.preventDefault();
@@ -165,12 +130,12 @@ document.addEventListener('DOMContentLoaded', () => {
           window.location.href = 'dashboard.html';
         }, 400);
       } else {
-        alert(`❌ Access Denied: Invalid Credentials!\n\nYou cannot access the dashboard without valid authorized credentials.\n\nAuthorized Investor Email: ${VALID_EMAIL}\nAuthorized Password: ${VALID_PASS}`);
+        alert(`❌ Access Denied: Invalid Credentials!\n\nYou must register an account first or provide authorized credentials.\n\nDefault Authorized Email: ${VALID_EMAIL}\nDefault Authorized Password: ${VALID_PASS}`);
       }
     });
   }
 
-  // Registration Form Submission Handler
+  // Registration Form Submission Handler (Registers user and permits login)
   if (registerForm) {
     registerForm.addEventListener('submit', (event) => {
       event.preventDefault();
@@ -188,7 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
       users.push({ name: nameVal, email: emailVal, password: passVal, createdAt: new Date().toISOString() });
       localStorage.setItem('bmagnet_registered_users', JSON.stringify(users));
 
-      alert(`🎉 Account Successfully Registered!\n\nWelcome ${nameVal}!\nYour investor account (${emailVal}) has been registered.\n\nPlease log in using your email and password to access the portal.`);
+      alert(`🎉 Account Successfully Registered!\n\nWelcome ${nameVal}!\nYour investor account (${emailVal}) is registered.\n\nPlease log in now with your registered email and password to enter the dashboard.`);
 
       // Switch back to Sign In tab and pre-fill registered credentials
       if (emailInputEl) emailInputEl.value = emailVal;
