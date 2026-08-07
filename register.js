@@ -13,23 +13,163 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Set hero title: Welcome with investor name
   if (regHeroTitle) {
-    const firstName = nameParam.trim() ? nameParam.trim() : 'Investor';
-    regHeroTitle.textContent = `Welcome, ${firstName}! 🎉`;
+    const nameStr = nameParam.trim() ? nameParam.trim() : 'Investor';
+    regHeroTitle.textContent = `Welcome to B Magnet International, ${nameStr}! 🎉`;
   }
 
-  // Pre-fill full name and email if available
+  // Pre-fill full name and email
   if (kycFullNameInput) kycFullNameInput.value = nameParam;
   if (kycEmailInput) kycEmailInput.value = emailParam;
 
-  // Set 18+ Date of Birth Maximum Allowed Date (18 Years ago from today)
+  // -------------------------------------------------------------
+  // CUSTOM POP-UP CALENDAR SELECTOR LOGIC
+  // -------------------------------------------------------------
+  const dobTriggerBtn = document.getElementById('dobTriggerBtn');
+  const dobDisplayText = document.getElementById('dobDisplayText');
+  const dobCalendarModal = document.getElementById('dobCalendarModal');
+  const closeDobModalBtn = document.getElementById('closeDobModalBtn');
+  const confirmDobBtn = document.getElementById('confirmDobBtn');
+
+  const calYearSelect = document.getElementById('calYearSelect');
+  const calMonthSelect = document.getElementById('calMonthSelect');
+  const calDaysGrid = document.getElementById('calDaysGrid');
+  const calSelectedPreview = document.getElementById('calSelectedPreview');
+
   const today = new Date();
-  const eighteenYearsAgo = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate());
-  const maxDobStr = eighteenYearsAgo.toISOString().split('T')[0];
-  if (kycDobInput) {
-    kycDobInput.setAttribute('max', maxDobStr);
+  const maxYearAllowed = today.getFullYear() - 18; // 2008 for 2026
+
+  let selectedYear = 1995;
+  let selectedMonth = 5; // June (0-indexed)
+  let selectedDay = 15;
+
+  // Populate Year Dropdown (Restricted to 18+ years ago)
+  if (calYearSelect) {
+    calYearSelect.innerHTML = '';
+    for (let y = maxYearAllowed; y >= 1940; y--) {
+      const opt = document.createElement('option');
+      opt.value = y;
+      opt.textContent = `${y}`;
+      if (y === selectedYear) opt.selected = true;
+      calYearSelect.appendChild(opt);
+    }
   }
 
-  // Handle Full Client Registration Form Submission with 18+ Age Enforcement
+  function renderDaysGrid() {
+    if (!calDaysGrid) return;
+    calDaysGrid.innerHTML = '';
+
+    // Days in selected month
+    const daysInMonth = new Date(selectedYear, selectedMonth + 1, 0).getDate();
+    if (selectedDay > daysInMonth) selectedDay = daysInMonth;
+
+    for (let d = 1; d <= daysInMonth; d++) {
+      const dayBtn = document.createElement('button');
+      dayBtn.type = 'button';
+      dayBtn.textContent = d;
+      dayBtn.style.padding = '8px 4px';
+      dayBtn.style.borderRadius = '6px';
+      dayBtn.style.border = '1px solid rgba(255,255,255,0.1)';
+      dayBtn.style.cursor = 'pointer';
+      dayBtn.style.fontWeight = '600';
+      dayBtn.style.fontSize = '0.85rem';
+
+      if (d === selectedDay) {
+        dayBtn.style.background = 'var(--accent-teal)';
+        dayBtn.style.color = '#060b14';
+        dayBtn.style.borderColor = 'var(--accent-teal)';
+      } else {
+        dayBtn.style.background = '#1e293b';
+        dayBtn.style.color = '#ffffff';
+      }
+
+      dayBtn.addEventListener('click', () => {
+        selectedDay = d;
+        renderDaysGrid();
+        updatePreview();
+      });
+
+      calDaysGrid.appendChild(dayBtn);
+    }
+  }
+
+  function calculateAge(y, m, d) {
+    let age = today.getFullYear() - y;
+    const monthDiff = today.getMonth() - m;
+    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < d)) {
+      age--;
+    }
+    return age;
+  }
+
+  function updatePreview() {
+    if (!calSelectedPreview) return;
+
+    const formattedMonth = String(selectedMonth + 1).padStart(2, '0');
+    const formattedDay = String(selectedDay).padStart(2, '0');
+    const isoDate = `${selectedYear}-${formattedMonth}-${formattedDay}`;
+
+    const age = calculateAge(selectedYear, selectedMonth, selectedDay);
+    const isValid18 = age >= 18;
+
+    calSelectedPreview.innerHTML = `${isoDate} (${age} Years Old) ${isValid18 ? '<span style="color:#34d399;">✓ Verified 18+</span>' : '<span style="color:#ef4444;">❌ Under 18</span>'}`;
+  }
+
+  if (calYearSelect) {
+    calYearSelect.addEventListener('change', () => {
+      selectedYear = parseInt(calYearSelect.value, 10);
+      renderDaysGrid();
+      updatePreview();
+    });
+  }
+
+  if (calMonthSelect) {
+    calMonthSelect.value = selectedMonth;
+    calMonthSelect.addEventListener('change', () => {
+      selectedMonth = parseInt(calMonthSelect.value, 10);
+      renderDaysGrid();
+      updatePreview();
+    });
+  }
+
+  // Open Pop-Up Calendar Modal
+  if (dobTriggerBtn && dobCalendarModal) {
+    dobTriggerBtn.addEventListener('click', () => {
+      renderDaysGrid();
+      updatePreview();
+      dobCalendarModal.style.display = 'flex';
+    });
+  }
+
+  // Close Modal
+  if (closeDobModalBtn && dobCalendarModal) {
+    closeDobModalBtn.addEventListener('click', () => {
+      dobCalendarModal.style.display = 'none';
+    });
+  }
+
+  // Confirm Date Selection
+  if (confirmDobBtn && dobCalendarModal) {
+    confirmDobBtn.addEventListener('click', () => {
+      const age = calculateAge(selectedYear, selectedMonth, selectedDay);
+      if (age < 18) {
+        alert('⛔ Age Restriction:\n\nYou must be at least 18 years old to confirm date of birth.');
+        return;
+      }
+
+      const formattedMonth = String(selectedMonth + 1).padStart(2, '0');
+      const formattedDay = String(selectedDay).padStart(2, '0');
+      const isoDate = `${selectedYear}-${formattedMonth}-${formattedDay}`;
+
+      if (kycDobInput) kycDobInput.value = isoDate;
+      if (dobDisplayText) dobDisplayText.textContent = `📅 ${isoDate} (${age} Yrs Old - 18+ Verified)`;
+
+      dobCalendarModal.style.display = 'none';
+    });
+  }
+
+  // -------------------------------------------------------------
+  // FORM SUBMISSION & 18+ AGE ENFORCEMENT
+  // -------------------------------------------------------------
   if (fullKycForm) {
     fullKycForm.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -40,25 +180,21 @@ document.addEventListener('DOMContentLoaded', () => {
       const whatsapp = document.getElementById('kycWhatsApp').value.trim();
       const address = document.getElementById('kycAddress').value.trim();
       const region = document.getElementById('kycRegion').value;
-      const dob = document.getElementById('kycDob').value;
+      const dob = kycDobInput ? kycDobInput.value : '';
       const experience = document.getElementById('kycExperience').value;
       const income = document.getElementById('kycIncome').value;
 
-      // 18+ Age Validation Check
       if (!dob) {
-        alert('Please select a valid Date of Birth.');
+        alert('Please select your Date of Birth using the calendar button.');
+        if (dobTriggerBtn) dobTriggerBtn.click();
         return;
       }
 
       const birthDate = new Date(dob);
-      let calculatedAge = today.getFullYear() - birthDate.getFullYear();
-      const monthDiff = today.getMonth() - birthDate.getMonth();
-      if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
-        calculatedAge--;
-      }
+      const calculatedAge = calculateAge(birthDate.getFullYear(), birthDate.getMonth(), birthDate.getDate());
 
       if (calculatedAge < 18) {
-        alert(`⛔ Age Requirement Restriction:\n\nYou must be at least 18 years old to register an institutional trading account.\n\nMinimum required birth date: on or before ${maxDobStr}.`);
+        alert(`⛔ Age Requirement Restriction:\n\nYou must be at least 18 years old to register an institutional trading account.`);
         return;
       }
 
