@@ -30,6 +30,85 @@
   --shadow-card: 0 20px 50px -10px rgba(15, 23, 42, 0.1), 0 4px 12px rgba(15, 23, 42, 0.04);
 }
 
+/* Dark Mode Palette Harmonized to Logo Dual-Colors (Royal Navy & Cyan Teal) */
+[data-theme="dark"] {
+  color-scheme: dark;
+  --bg-main: #0a1120;
+  --bg-card: rgba(15, 23, 42, 0.88);
+  --bg-card-hover: rgba(23, 37, 66, 0.95);
+  --bg-glass: rgba(15, 23, 42, 0.75);
+  
+  --border-light: rgba(30, 58, 138, 0.45);
+  --border-glow: rgba(0, 229, 225, 0.5);
+  
+  --accent-teal: #00e5e5;
+  --accent-blue: #3b82f6;
+  --accent-navy: #60a5fa;
+  --accent-emerald: #10b981;
+  --accent-gold: #fbbf24;
+  
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  
+  --shadow-glow: 0 10px 35px rgba(0, 229, 225, 0.25);
+  --shadow-card: 0 20px 50px -10px rgba(0, 0, 0, 0.5), 0 4px 16px rgba(0, 229, 225, 0.08);
+}
+
+[data-theme="dark"] body {
+  background-color: #0a1120;
+  background-image: 
+    radial-gradient(circle at 50% 50%, rgba(0, 229, 225, 0.12) 0%, transparent 60%),
+    radial-gradient(circle at 2px 2px, rgba(0, 229, 225, 0.15) 1.5px, transparent 0),
+    linear-gradient(to right, rgba(0, 229, 225, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 229, 225, 0.05) 1px, transparent 1px),
+    linear-gradient(135deg, rgba(27, 54, 93, 0.15) 25%, transparent 25%),
+    linear-gradient(225deg, rgba(27, 54, 93, 0.15) 25%, transparent 25%),
+    linear-gradient(180deg, #070d18 0%, #0a1120 40%, #0e182d 100%);
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .brand-name {
+  color: #60a5fa;
+}
+
+[data-theme="dark"] .btn-social-icon {
+  background: #1e293b;
+  border-color: rgba(51, 65, 85, 0.9);
+}
+
+[data-theme="dark"] .btn-social-icon:hover {
+  border-color: #00e5e5;
+  box-shadow: 0 8px 25px rgba(0, 229, 225, 0.25);
+}
+
+[data-theme="dark"] .apple-icon {
+  fill: #f8fafc;
+}
+
+.theme-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 20px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  color: var(--text-primary);
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  box-shadow: var(--shadow-card);
+  transition: all 0.25s ease;
+  backdrop-filter: blur(12px);
+}
+
+.theme-toggle-btn:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent-teal);
+  box-shadow: var(--shadow-glow);
+}
+
 * {
   box-sizing: border-box;
   margin: 0;

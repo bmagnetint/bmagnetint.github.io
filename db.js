@@ -65,3 +65,36 @@ class InvestorDatabase {
 
 const dbEngine = new InvestorDatabase();
 window.dbEngine = dbEngine;
+
+/* Theme Manager Engine (Light & Dark Dual-Logo Colors) */
+(function initTheme() {
+  const savedTheme = localStorage.getItem('bmagnet_theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  document.documentElement.setAttribute('data-theme', savedTheme);
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('themeToggleBtn');
+    if (!btn) return;
+
+    const updateBtnUI = (theme) => {
+      const icon = btn.querySelector('.theme-icon');
+      const label = btn.querySelector('.theme-label');
+      if (theme === 'dark') {
+        if (icon) icon.textContent = '☀️';
+        if (label) label.textContent = 'Light';
+      } else {
+        if (icon) icon.textContent = '🌙';
+        if (label) label.textContent = 'Dark';
+      }
+    };
+
+    updateBtnUI(document.documentElement.getAttribute('data-theme') || 'light');
+
+    btn.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('bmagnet_theme', next);
+      updateBtnUI(next);
+    });
+  });
+})();
