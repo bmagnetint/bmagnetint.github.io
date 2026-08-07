@@ -146,7 +146,7 @@ body.dark-theme .apple-icon {
   fill: #f8fafc !important;
 }
 
-/* Circular Icon-Only Theme Switcher Button */
+/* Circular Icon-Only Switcher Buttons */
 .theme-toggle-icon-btn {
   width: 44px;
   height: 44px;
@@ -163,6 +163,8 @@ body.dark-theme .apple-icon {
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   backdrop-filter: blur(14px);
   outline: none;
+  text-decoration: none;
+  line-height: 1;
 }
 
 .theme-toggle-icon-btn:hover {
