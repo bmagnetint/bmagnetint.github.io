@@ -64,11 +64,12 @@
           </div>
 
           <div style="margin-bottom: 20px;">
-            <label style="display: block; font-size: 0.9rem; font-weight: 600; margin-bottom: 8px;">Investment Horizon</label>
-            <div style="display: flex; gap: 10px;">
-              <button type="button" class="btn btn-secondary horizon-btn active" data-years="0.25" style="flex: 1; padding: 8px;">3 Months</button>
-              <button type="button" class="btn btn-secondary horizon-btn" data-years="0.5" style="flex: 1; padding: 8px;">6 Months</button>
-              <button type="button" class="btn btn-secondary horizon-btn" data-years="1" style="flex: 1; padding: 8px;">1 Year</button>
+            <label style="display: block; font-size: 0.9rem; font-weight: 600; margin-bottom: 8px;">Investment Horizon (Min 3 Months)</label>
+            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+              <button type="button" class="btn btn-secondary horizon-btn active" data-months="3" style="flex: 1; padding: 8px; font-size: 0.85rem;">3 Months</button>
+              <button type="button" class="btn btn-secondary horizon-btn" data-months="6" style="flex: 1; padding: 8px; font-size: 0.85rem;">6 Months</button>
+              <button type="button" class="btn btn-secondary horizon-btn" data-months="9" style="flex: 1; padding: 8px; font-size: 0.85rem;">9 Months</button>
+              <button type="button" class="btn btn-secondary horizon-btn" data-months="12" style="flex: 1; padding: 8px; font-size: 0.85rem;">12 Months</button>
             </div>
           </div>
 
@@ -78,18 +79,29 @@
               <strong id="calcBotsDisplay" style="color: var(--accent-teal); font-size: 1.15rem;">1 AI Bot</strong>
             </div>
             <div class="stat-box">
-              <p>Daily Profit</p>
+              <p>Monthly Bot Rent</p>
+              <strong id="calcRentDisplay" style="color: var(--accent-navy); font-size: 1.15rem;">$100 / mo</strong>
+            </div>
+            <div class="stat-box">
+              <p>Total Initial Outlay</p>
+              <strong id="calcOutlayDisplay" style="color: var(--accent-gold); font-size: 1.15rem;">$600</strong>
+            </div>
+          </div>
+
+          <div class="stat-grid" style="grid-template-columns: 1fr 1fr; margin-bottom: 12px;">
+            <div class="stat-box">
+              <p>Daily Net Profit</p>
               <strong id="calcDailyDisplay" style="color: var(--accent-teal); font-size: 1.15rem;">$12 / day</strong>
             </div>
             <div class="stat-box">
-              <p>Monthly Profit</p>
+              <p>Monthly Net Profit</p>
               <strong id="calcMonthlyDisplay" class="positive" style="font-size: 1.15rem;">$360 / mo</strong>
             </div>
           </div>
 
           <div class="stat-grid" style="grid-template-columns: 1fr 1fr;">
             <div class="stat-box">
-              <p>Total Horizon Return</p>
+              <p>Total Horizon Profit</p>
               <strong id="calcReturnDisplay" class="positive" style="font-size: 1.15rem;">+$1,080</strong>
             </div>
             <div class="stat-box">
