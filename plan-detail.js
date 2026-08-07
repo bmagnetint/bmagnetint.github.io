@@ -23,22 +23,22 @@ document.addEventListener('DOMContentLoaded', () => {
   let botCount = Math.max(1, Math.floor(capital / 1000));
   let totalRent = botCount * 300;
   let monthlyProfit = botCount * 960;
-  let titleStr = "Starter Core AI Bot Detailed Plan ($1,000 Deposit)";
+  let titleStr = "Starter Core AI Bot Plan ($1,000 Deposit - 1 Bot)";
 
   if (planType === 'core' || capitalParam >= 2000 && capitalParam < 5000) {
-    titleStr = "Core Investor AI Bot Detailed Plan";
+    titleStr = "Core Growth AI Bot Plan ($2,000 Deposit - 2 Bots)";
     capital = capitalParam >= 2000 ? capitalParam : 2000;
     botCount = Math.max(2, Math.floor(capital / 1000));
     totalRent = botCount * 300;
     monthlyProfit = botCount * 960;
   } else if (planType === 'max' || capitalParam >= 5000) {
-    titleStr = "Max Yield Arbitrage AI Bot Detailed Plan";
+    titleStr = "Max Arbitrage AI Bot Plan ($5,000 Deposit - 5 Bots)";
     capital = capitalParam >= 5000 ? capitalParam : 5000;
     botCount = Math.max(5, Math.floor(capital / 1000));
     totalRent = botCount * 300;
     monthlyProfit = botCount * 960;
   } else {
-    titleStr = "Starter Core AI Bot Detailed Plan ($1,000 Deposit)";
+    titleStr = "Starter Core AI Bot Plan ($1,000 Deposit - 1 Bot)";
     capital = Math.max(1000, capitalParam);
     botCount = Math.max(1, Math.floor(capital / 1000));
     totalRent = botCount * 300;

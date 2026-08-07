@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     capitalDisplay.textContent = `$${capital.toLocaleString()}`;
 
-    // 1 Bot per $1,000 deposit (e.g. $1,000 = 1 Bot, $2,000 = 2 Bots, $5,000 = 5 Bots)
+    // 1 Bot per $1,000 deposit (e.g. $1,000 = 1 Bot, $2,000 = 2 Bots, $3,000 = 3 Bots, $4,000 = 4 Bots, $5,000 = 5 Bots)
     const botCount = Math.max(1, Math.floor(capital / 1000));
     
     // $300 total bot rental fee for 3-Month Contract per bot
@@ -63,15 +63,15 @@ document.addEventListener('DOMContentLoaded', () => {
       let planParam = 'starter';
       let capitalVal = slider ? parseFloat(slider.value) : 1000;
 
-      if (tierName.includes('1,500') || tierName.includes('Core') && !tierName.includes('1,000')) {
+      if (tierName.includes('2,000') || tierName.includes('Core Growth')) {
         planParam = 'core';
-        capitalVal = Math.max(1500, capitalVal);
+        capitalVal = 2000;
       } else if (tierName.includes('5,000') || tierName.includes('Max')) {
         planParam = 'max';
-        capitalVal = Math.max(5000, capitalVal);
+        capitalVal = 5000;
       } else {
         planParam = 'starter';
-        capitalVal = Math.max(1000, capitalVal);
+        capitalVal = 1000;
       }
 
       window.location.href = `plan-detail.html?plan=${planParam}&capital=${capitalVal}&months=${selectedMonths}`;
