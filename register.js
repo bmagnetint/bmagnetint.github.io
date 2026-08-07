@@ -5,25 +5,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const kycFullNameInput = document.getElementById('kycFullName');
   const kycEmailInput = document.getElementById('kycEmail');
-
-  const regHeaderName = document.getElementById('regHeaderName');
-  const regHeaderEmail = document.getElementById('regHeaderEmail');
-  const regAvatar = document.getElementById('regAvatar');
+  const kycDobInput = document.getElementById('kycDob');
 
   const fullKycForm = document.getElementById('fullKycForm');
   const kycSuccessCard = document.getElementById('kycSuccessCard');
+  const regHeroTitle = document.getElementById('regHeroTitle');
+
+  // Set hero title: Welcome with investor name
+  if (regHeroTitle) {
+    const firstName = nameParam.trim() ? nameParam.trim() : 'Investor';
+    regHeroTitle.textContent = `Welcome, ${firstName}! 🎉`;
+  }
 
   // Pre-fill full name and email if available
   if (kycFullNameInput) kycFullNameInput.value = nameParam;
   if (kycEmailInput) kycEmailInput.value = emailParam;
 
-  // Compute initials for header avatar
-  const initials = nameParam.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2) || 'IV';
-  if (regHeaderName) regHeaderName.textContent = nameParam;
-  if (regHeaderEmail) regHeaderEmail.textContent = emailParam;
-  if (regAvatar) regAvatar.textContent = initials;
+  // Set 18+ Date of Birth Maximum Allowed Date (18 Years ago from today)
+  const today = new Date();
+  const eighteenYearsAgo = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate());
+  const maxDobStr = eighteenYearsAgo.toISOString().split('T')[0];
+  if (kycDobInput) {
+    kycDobInput.setAttribute('max', maxDobStr);
+  }
 
-  // Handle Full Client Registration Form Submission
+  // Handle Full Client Registration Form Submission with 18+ Age Enforcement
   if (fullKycForm) {
     fullKycForm.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -38,6 +44,24 @@ document.addEventListener('DOMContentLoaded', () => {
       const experience = document.getElementById('kycExperience').value;
       const income = document.getElementById('kycIncome').value;
 
+      // 18+ Age Validation Check
+      if (!dob) {
+        alert('Please select a valid Date of Birth.');
+        return;
+      }
+
+      const birthDate = new Date(dob);
+      let calculatedAge = today.getFullYear() - birthDate.getFullYear();
+      const monthDiff = today.getMonth() - birthDate.getMonth();
+      if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+        calculatedAge--;
+      }
+
+      if (calculatedAge < 18) {
+        alert(`⛔ Age Requirement Restriction:\n\nYou must be at least 18 years old to register an institutional trading account.\n\nMinimum required birth date: on or before ${maxDobStr}.`);
+        return;
+      }
+
       const profileData = {
         fullName,
         email,
@@ -46,6 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
         address,
         region,
         dob,
+        age: calculatedAge,
         experience,
         income,
         registeredAt: new Date().toISOString()
@@ -73,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (tblSuccWhatsApp) tblSuccWhatsApp.textContent = whatsapp;
       if (tblSuccAddress) tblSuccAddress.textContent = address;
       if (tblSuccRegion) tblSuccRegion.textContent = region;
-      if (tblSuccDob) tblSuccDob.textContent = dob;
+      if (tblSuccDob) tblSuccDob.textContent = `${dob} (${calculatedAge} Years Old - Verified 18+)`;
       if (tblSuccExp) tblSuccExp.textContent = experience;
       if (tblSuccIncome) tblSuccIncome.textContent = income;
 
@@ -81,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
       fullKycForm.style.display = 'none';
       if (kycSuccessCard) kycSuccessCard.style.display = 'block';
 
-      alert(`🎉 Full Registration & KYC Verified!\n\nWelcome to B Magnet International, ${fullName}!\nYour full profile details have been verified.`);
+      alert(`🎉 Full Registration & KYC Verified!\n\nWelcome to B Magnet International, ${fullName}!\nYour profile and age (${calculatedAge} Years Old) have been verified.`);
     });
   }
 });
