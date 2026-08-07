@@ -85,19 +85,24 @@
 
         <!-- Network Selector Buttons -->
         <div style="display: flex; gap: 16px; margin-bottom: 24px; flex-wrap: wrap;">
-          <button id="bep20TabBtn" type="button" class="btn btn-primary network-tab-btn active" style="flex: 1; padding: 14px; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 1rem;">
-            <span>🟡 USDT (BEP20 - BNB Chain)</span>
+          <button id="bep20TabBtn" type="button" class="btn btn-primary network-tab-btn active" style="flex: 1; padding: 14px; display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 1rem;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="#F3BA2F"><path d="M12 0L5.34 3.843l2.67 1.543L12 3.072l3.99 2.314 2.67-1.543L12 0zm0 6.144L8.01 8.458l2.67 1.543L12 9.23l1.32.771 2.67-1.543L12 6.144zM2.67 5.386L0 6.929l6.66 3.843 2.67-1.543L2.67 5.386zm18.66 0l-6.66 3.843 2.67 1.543 6.66-3.843-2.67-1.543zM12 12.302L9.33 10.76 6.66 12.3l5.34 3.086 5.34-3.086-2.67-1.54-2.67 1.542zM2.67 13.072L0 14.614l6.66 3.843 2.67-1.543-6.66-3.842zm18.66 0l-6.66 3.842 2.67 1.543 6.66-3.843-2.67-1.542zm-9.33 6.915l-3.99-2.314-2.67 1.543L12 24l6.66-3.843-2.67-1.543-3.99 2.314z"/></svg>
+            <span>USDT (BEP20 - BNB Chain)</span>
           </button>
-          <button id="trc20TabBtn" type="button" class="btn btn-secondary network-tab-btn" style="flex: 1; padding: 14px; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 1rem;">
-            <span>🔴 USDT (TRC20 - TRON Network)</span>
+          <button id="trc20TabBtn" type="button" class="btn btn-secondary network-tab-btn" style="flex: 1; padding: 14px; display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 1rem;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="#EF0027"><path d="M23.82 7.02l-18.4-5.93c-.45-.14-.92.11-1.07.55l-3.8 11.53c-.15.45.11.92.55 1.07l18.4 5.93c.45.14.92-.11 1.07-.55l3.8-11.53c.15-.45-.11-.92-.55-1.07zm-14.7 9.87l-4.52-1.46 2.68-8.12 9.07 2.92-7.23 6.66z"/></svg>
+            <span>USDT (TRC20 - TRON Network)</span>
           </button>
         </div>
 
         <!-- BEP20 Wallet Panel -->
         <div id="bep20Panel" class="chart-panel" style="margin-bottom: 30px;">
-          <div class="chart-header">
-            <h3>🟡 USDT (BEP20 / BNB Smart Chain) Wallet Address</h3>
-            <p>Send exactly the total payable amount of USDT via BEP20 network.</p>
+          <div class="chart-header" style="display: flex; align-items: center; gap: 10px;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="#F3BA2F"><path d="M12 0L5.34 3.843l2.67 1.543L12 3.072l3.99 2.314 2.67-1.543L12 0zm0 6.144L8.01 8.458l2.67 1.543L12 9.23l1.32.771 2.67-1.543L12 6.144zM2.67 5.386L0 6.929l6.66 3.843 2.67-1.543L2.67 5.386zm18.66 0l-6.66 3.843 2.67 1.543 6.66-3.843-2.67-1.543zM12 12.302L9.33 10.76 6.66 12.3l5.34 3.086 5.34-3.086-2.67-1.54-2.67 1.542zM2.67 13.072L0 14.614l6.66 3.843 2.67-1.543-6.66-3.842zm18.66 0l-6.66 3.842 2.67 1.543 6.66-3.843-2.67-1.542zm-9.33 6.915l-3.99-2.314-2.67 1.543L12 24l6.66-3.843-2.67-1.543-3.99 2.314z"/></svg>
+            <div>
+              <h3>USDT (BEP20 / BNB Smart Chain) Wallet Address</h3>
+              <p>Send exactly the total payable amount of USDT via BEP20 network.</p>
+            </div>
           </div>
 
           <div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: center; margin-top: 16px;">
@@ -117,9 +122,12 @@
 
         <!-- TRC20 Wallet Panel -->
         <div id="trc20Panel" class="chart-panel" style="margin-bottom: 30px; display: none;">
-          <div class="chart-header">
-            <h3>🔴 USDT (TRC20 / TRON Network) Wallet Address</h3>
-            <p>Send exactly the total payable amount of USDT via TRC20 network.</p>
+          <div class="chart-header" style="display: flex; align-items: center; gap: 10px;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="#EF0027"><path d="M23.82 7.02l-18.4-5.93c-.45-.14-.92.11-1.07.55l-3.8 11.53c-.15.45.11.92.55 1.07l18.4 5.93c.45.14.92-.11 1.07-.55l3.8-11.53c.15-.45-.11-.92-.55-1.07zm-14.7 9.87l-4.52-1.46 2.68-8.12 9.07 2.92-7.23 6.66z"/></svg>
+            <div>
+              <h3>USDT (TRC20 / TRON Network) Wallet Address</h3>
+              <p>Send exactly the total payable amount of USDT via TRC20 network.</p>
+            </div>
           </div>
 
           <div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: center; margin-top: 16px;">
