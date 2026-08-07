@@ -809,12 +809,82 @@ button, input {
   }
 }
 
-@media (max-width: 640px) {
-  .site-header, .brand-strip {
-    flex-direction: column;
-    align-items: flex-start;
+/* ==========================================================================
+   MOBILE APP VIEW & NATIVE APP EXPERIENCE (PWA & iOS/Android UI)
+   ========================================================================== */
+
+/* Mobile App Bottom Navigation Bar */
+.app-bottom-nav {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(185, 205, 212, 0.8);
+  box-shadow: 0 -10px 30px rgba(15, 23, 42, 0.08);
+  z-index: 9999;
+  justify-content: space-around;
+  align-items: center;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+.app-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 6px 12px;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.app-nav-item .nav-icon {
+  font-size: 1.25rem;
+}
+
+.app-nav-item:hover,
+.app-nav-item.active {
+  color: var(--accent-teal);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+  body {
+    padding-bottom: 74px; /* Space for bottom app navbar */
   }
-  .stat-grid, .overview-row {
-    grid-template-columns: 1fr;
+  
+  .app-bottom-nav {
+    display: flex;
+  }
+  
+  .site-header .site-nav {
+    display: none; /* Hide top header nav on mobile, use bottom app navbar */
+  }
+  
+  .brand-logo {
+    height: 85px;
+  }
+  
+  .page-shell {
+    padding: 16px 16px 80px;
+  }
+  
+  .dashboard-hero-card,
+  .chart-panel,
+  .login-card {
+    border-radius: 22px;
+    padding: 24px 18px;
   }
 }
+

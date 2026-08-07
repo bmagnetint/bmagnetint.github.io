@@ -10,6 +10,11 @@
       href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;800;900&family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"
       rel="stylesheet"
     />
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#0f172a" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="B Magnet" />
     <link rel="stylesheet" href="styles.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script defer src="app.js"></script>
@@ -177,8 +182,28 @@
       </section>
 
       <footer class="site-footer">
-        <p>© 2026 B Magnet Investment. Confidential investor interface for bmagnetint.com</p>
+        <p>© 2026 B Magnet International. Confidential investor interface for bmagnetint.com</p>
       </footer>
     </div>
+
+    <!-- Mobile App Bottom Navigation Bar -->
+    <nav class="app-bottom-nav">
+      <a href="#overview" class="app-nav-item active">
+        <span class="nav-icon">📊</span>
+        <span>Overview</span>
+      </a>
+      <a href="#plan" class="app-nav-item">
+        <span class="nav-icon">🎯</span>
+        <span>Plan</span>
+      </a>
+      <a href="#activity" class="app-nav-item">
+        <span class="nav-icon">⚡</span>
+        <span>Activity</span>
+      </a>
+      <a href="index.html" class="app-nav-item">
+        <span class="nav-icon">🚪</span>
+        <span>Sign Out</span>
+      </a>
+    </nav>
   </body>
 </html>
