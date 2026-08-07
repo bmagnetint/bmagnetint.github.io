@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (detailProceedBtn) {
     detailProceedBtn.addEventListener('click', () => {
-      alert(`🔒 Deployment Initiated for ${titleStr}!\n\nRedirecting to GTC FX Multi-Sig Payment Vault to deploy your ${botCount} AI Trading Bot instance(s)...`);
+      window.location.href = `payment.html?plan=${planType}&capital=${capital}&months=${monthsParam}`;
     });
   }
 
