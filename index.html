@@ -104,7 +104,15 @@
             </div>
             <div class="form-group">
               <label for="password" data-i18n="passwordLabel">Password</label>
-              <input id="password" type="password" placeholder="••••••••••••" required />
+              <div class="password-input-wrap">
+                <input id="password" type="password" placeholder="••••••••••••" required />
+                <button type="button" id="togglePasswordBtn" class="password-toggle-btn" title="Show/Hide Password">
+                  <svg class="eye-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                </button>
+              </div>
             </div>
             <button class="btn btn-primary" type="submit" data-i18n="signInBtn">Sign In to Dashboard →</button>
 
