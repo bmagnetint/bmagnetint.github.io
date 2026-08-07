@@ -101,10 +101,11 @@ button, input {
   justify-content: space-between;
   align-items: center;
   gap: 20px;
-  padding: 16px 0;
-  margin-bottom: 20px;
+  padding: 16px 0 22px;
+  margin-bottom: 28px;
   position: relative;
   z-index: 10;
+  border-bottom: 2px solid #172a4e;
 }
 
 /* Borderless Highlighted Logo with Soft Light Aura */
@@ -355,7 +356,7 @@ button, input {
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, var(--accent-teal), var(--accent-blue), var(--accent-emerald));
+  background: #172a4e;
 }
 
 .login-card-header {
