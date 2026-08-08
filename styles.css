@@ -1,5 +1,5 @@
 /* ==========================================================================
-   B MAGNET INTERNATIONAL — Single Layout with Floating Layer Architecture
+   B MAGNET INTERNATIONAL — Official Corporate Business & Portal Design System
    Palette: Solid Navy (#0D1F42), Midnight Blue (#071126), Elegant Teal (#00A896), Ice Platinum (#F4F7FB)
    ========================================================================== */
 
@@ -32,7 +32,7 @@
   --slate-900: #0f172a;
   
   /* Surface */
-  --bg-main: #f4f7fb;
+  --bg-main: #f8fafc;
   --bg-card: #ffffff;
   --bg-input: #ffffff;
   --border-navy: rgba(13, 31, 66, 0.1);
@@ -43,7 +43,7 @@
   --radius-sharp: 6px;
   --radius-card: 14px;
   
-  /* Floating Drop Shadows */
+  /* Shadows */
   --shadow-floating-layer: 0 25px 60px -15px rgba(13, 31, 66, 0.12), 0 0 0 1px rgba(13, 31, 66, 0.05);
   --shadow-navy-btn: 0 10px 25px -5px rgba(13, 31, 66, 0.4);
 }
@@ -111,7 +111,787 @@ button, input, select {
 }
 
 /* ==========================================================================
-   SINGLE LAYOUT WITH FLOATING LAYER LOGIN BOX
+   STICKY CORPORATE NAVBAR
+   ========================================================================== */
+
+.biz-navbar {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border-light);
+  transition: all 0.3s ease;
+}
+
+[data-theme="dark"] .biz-navbar {
+  background: rgba(4, 9, 20, 0.88);
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+.biz-nav-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.biz-brand-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.biz-nav-logo {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 12px rgba(0, 168, 150, 0.35));
+}
+
+.biz-brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.biz-brand-name {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: 1.05rem;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  line-height: 1.1;
+}
+
+.biz-brand-sub {
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-teal);
+}
+
+.biz-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.biz-nav-item {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--slate-600);
+  transition: color 0.2s ease;
+}
+
+.biz-nav-item:hover {
+  color: var(--accent-teal);
+}
+
+[data-theme="dark"] .biz-nav-item {
+  color: var(--slate-300);
+}
+
+[data-theme="dark"] .biz-nav-item:hover {
+  color: var(--accent-cyan);
+}
+
+.biz-nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.biz-util-btn {
+  height: 36px;
+  border-radius: var(--radius-sharp);
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  color: var(--text-primary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.78rem;
+  cursor: pointer;
+  padding: 0 10px;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.biz-util-btn:hover {
+  border-color: var(--accent-teal);
+  color: var(--accent-teal);
+}
+
+.biz-nav-login-link {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  padding: 8px 14px;
+}
+
+.biz-nav-login-link:hover {
+  color: var(--accent-teal);
+}
+
+.biz-nav-cta-btn {
+  background: var(--solid-navy);
+  color: #ffffff !important;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 0.86rem;
+  padding: 8px 18px;
+  border-radius: var(--radius-sharp);
+  box-shadow: 0 4px 14px rgba(13, 31, 66, 0.25);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.biz-nav-cta-btn:hover {
+  background: var(--solid-navy-hover);
+  transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   HERO SECTION
+   ========================================================================== */
+
+.biz-hero-section {
+  position: relative;
+  overflow: hidden;
+  padding: 90px 24px 70px;
+  background: linear-gradient(180deg, rgba(7, 17, 38, 0.03) 0%, rgba(0, 168, 150, 0.05) 100%);
+}
+
+[data-theme="dark"] .biz-hero-section {
+  background: linear-gradient(180deg, #071126 0%, #040914 100%);
+}
+
+.biz-hero-mesh {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 10% 20%, rgba(0, 168, 150, 0.15) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(79, 70, 229, 0.12) 0%, transparent 45%);
+  pointer-events: none;
+}
+
+.biz-hero-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 10;
+  text-align: center;
+}
+
+.biz-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0, 168, 150, 0.12);
+  border: 1px solid rgba(0, 168, 150, 0.25);
+  padding: 6px 16px;
+  border-radius: 50px;
+  font-size: 0.74rem;
+  font-weight: 800;
+  color: var(--accent-teal);
+  letter-spacing: 0.12em;
+  margin-bottom: 24px;
+}
+
+.pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent-teal);
+  box-shadow: 0 0 10px var(--accent-teal);
+}
+
+.biz-hero-headline {
+  font-family: var(--font-heading);
+  font-size: clamp(2.4rem, 4.8vw, 3.8rem);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+  margin-bottom: 20px;
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.biz-hero-tagline {
+  font-size: clamp(1rem, 1.3vw, 1.18rem);
+  color: var(--slate-600);
+  max-width: 780px;
+  margin: 0 auto 36px;
+  line-height: 1.6;
+}
+
+[data-theme="dark"] .biz-hero-tagline {
+  color: var(--slate-400);
+}
+
+.biz-hero-cta-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 60px;
+}
+
+.biz-btn-primary {
+  background: var(--solid-navy);
+  color: #ffffff !important;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 0.96rem;
+  padding: 14px 28px;
+  border-radius: var(--radius-sharp);
+  box-shadow: 0 8px 20px rgba(13, 31, 66, 0.35);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+}
+
+.biz-btn-primary:hover {
+  background: var(--solid-navy-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(13, 31, 66, 0.45);
+}
+
+.biz-btn-secondary {
+  background: var(--bg-card);
+  color: var(--text-primary);
+  border: 1.5px solid var(--border-light);
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 0.96rem;
+  padding: 14px 28px;
+  border-radius: var(--radius-sharp);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.biz-btn-secondary:hover {
+  border-color: var(--accent-teal);
+  color: var(--accent-teal);
+  transform: translateY(-2px);
+}
+
+.biz-btn-outline {
+  color: var(--accent-teal);
+  font-weight: 700;
+  font-size: 0.94rem;
+  padding: 14px 20px;
+}
+
+.biz-btn-outline:hover {
+  text-decoration: underline;
+}
+
+/* Metrics Ticker Strip */
+.biz-metrics-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-card);
+  padding: 24px;
+  box-shadow: 0 15px 40px -10px rgba(0, 0, 0, 0.06);
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.biz-metric-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.biz-metric-num {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: var(--text-primary);
+}
+
+.biz-metric-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--slate-500);
+}
+
+.biz-metric-divider {
+  width: 1px;
+  height: 40px;
+  background: var(--border-light);
+  margin: 0 auto;
+}
+
+/* ==========================================================================
+   SECTION COMMON LAYOUTS
+   ========================================================================== */
+
+.biz-section-wrap {
+  padding: 90px 24px;
+}
+
+.biz-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.biz-section-header {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 50px;
+}
+
+.biz-section-eyebrow {
+  font-size: 0.74rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--accent-teal);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.biz-section-title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+  font-weight: 900;
+  letter-spacing: -0.025em;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
+.biz-section-subtitle {
+  font-size: 0.98rem;
+  color: var(--slate-500);
+  line-height: 1.6;
+}
+
+/* Features Grid */
+.biz-features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.biz-feature-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-card);
+  padding: 36px 28px;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+}
+
+.biz-feature-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-teal);
+  box-shadow: 0 20px 40px -15px rgba(0, 168, 150, 0.15);
+}
+
+.biz-feature-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-sharp);
+  background: rgba(0, 168, 150, 0.12);
+  color: var(--accent-teal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.biz-feature-title {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+}
+
+.biz-feature-desc {
+  font-size: 0.88rem;
+  color: var(--slate-500);
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   INTERACTIVE YIELD CALCULATOR
+   ========================================================================== */
+
+.biz-calc-bg {
+  background: linear-gradient(180deg, var(--bg-main) 0%, rgba(13, 31, 66, 0.04) 100%);
+}
+
+.biz-calc-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: var(--bg-card);
+  border: 1.5px solid var(--border-light);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.08);
+}
+
+.biz-calc-left {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.biz-bot-selector-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.biz-bot-btn {
+  background: var(--bg-main);
+  border: 1.5px solid var(--border-light);
+  border-radius: var(--radius-sharp);
+  padding: 16px 14px;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.biz-bot-btn strong {
+  font-size: 1.05rem;
+  color: var(--text-primary);
+}
+
+.biz-bot-btn span {
+  font-size: 0.78rem;
+  color: var(--slate-500);
+}
+
+.biz-bot-btn.active {
+  border-color: var(--accent-teal);
+  background: rgba(0, 168, 150, 0.08);
+}
+
+.biz-bot-btn.active strong {
+  color: var(--accent-teal);
+}
+
+.biz-calc-details-table {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-top: 1px solid var(--border-light);
+  padding-top: 20px;
+}
+
+.biz-calc-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.88rem;
+}
+
+.biz-calc-row span {
+  color: var(--slate-500);
+}
+
+.biz-calc-row strong {
+  color: var(--text-primary);
+}
+
+.biz-calc-right {
+  background: var(--midnight-blue);
+  color: #ffffff;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.biz-calc-yield-box {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  padding: 30px;
+}
+
+.biz-yield-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent-teal);
+  display: block;
+  margin-bottom: 6px;
+}
+
+.biz-yield-value {
+  font-family: var(--font-heading);
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: #ffffff;
+}
+
+.biz-yield-monthly {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: var(--accent-gold);
+}
+
+/* ==========================================================================
+   PRICING & INVESTMENT PLANS
+   ========================================================================== */
+
+.biz-plans-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  align-items: stretch;
+}
+
+.biz-plan-card {
+  background: var(--bg-card);
+  border: 1.5px solid var(--border-light);
+  border-radius: var(--radius-card);
+  padding: 36px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  transition: all 0.25s ease;
+}
+
+.biz-plan-card.featured-plan {
+  border-color: var(--accent-teal);
+  box-shadow: 0 25px 60px -15px rgba(0, 168, 150, 0.25);
+  transform: scale(1.03);
+}
+
+.biz-plan-badge {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 4px 12px;
+  border-radius: 50px;
+  background: var(--slate-100);
+  color: var(--slate-600);
+  margin-bottom: 12px;
+}
+
+.biz-plan-badge.highlight {
+  background: var(--accent-teal);
+  color: #ffffff;
+}
+
+.biz-plan-title {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+
+.biz-plan-price {
+  font-family: var(--font-heading);
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+}
+
+.biz-plan-price span {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--slate-500);
+}
+
+.biz-plan-desc {
+  font-size: 0.85rem;
+  color: var(--slate-500);
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+
+.biz-plan-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 0.86rem;
+  color: var(--text-primary);
+  margin-bottom: 30px;
+  border-top: 1px solid var(--border-light);
+  padding-top: 20px;
+}
+
+/* ==========================================================================
+   SECURITY SECTION
+   ========================================================================== */
+
+.biz-security-bg {
+  background: var(--midnight-blue);
+  color: #ffffff;
+}
+
+.biz-security-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: center;
+}
+
+.biz-security-checkpoints {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.biz-check-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.biz-check-icon {
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+.biz-security-box {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-card);
+  padding: 36px;
+}
+
+.biz-vault-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--accent-teal);
+  letter-spacing: 0.12em;
+  margin-bottom: 20px;
+}
+
+.biz-vault-address-preview {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-sharp);
+  padding: 14px;
+}
+
+.biz-vault-address-preview code {
+  font-family: monospace;
+  font-size: 0.8rem;
+  color: var(--accent-cyan);
+  word-break: break-all;
+}
+
+/* ==========================================================================
+   FINAL CTA & FOOTER
+   ========================================================================== */
+
+.biz-final-cta {
+  padding: 90px 24px;
+  background: linear-gradient(180deg, var(--bg-main) 0%, rgba(0, 168, 150, 0.08) 100%);
+}
+
+.biz-cta-heading {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 3.6vw, 2.8rem);
+  font-weight: 900;
+  color: var(--text-primary);
+  margin-bottom: 14px;
+}
+
+.biz-cta-sub {
+  font-size: 1.05rem;
+  color: var(--slate-500);
+  max-width: 680px;
+  margin: 0 auto 36px;
+}
+
+.biz-footer {
+  background: var(--bg-card);
+  border-top: 1px solid var(--border-light);
+  padding: 60px 24px 30px;
+}
+
+[data-theme="dark"] .biz-footer {
+  background: #040914;
+}
+
+.biz-footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.5fr;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.biz-footer-head {
+  font-family: var(--font-heading);
+  font-size: 0.94rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+}
+
+.biz-footer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 0.84rem;
+  color: var(--slate-500);
+}
+
+.biz-footer-links a:hover {
+  color: var(--accent-teal);
+}
+
+.biz-footer-bottom {
+  border-top: 1px solid var(--border-light);
+  padding-top: 24px;
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--slate-400);
+}
+
+/* ==========================================================================
+   FLOATING LAYER LOGIN CARD STYLES (PRESERVED FOR LOGIN.HTML)
    ========================================================================== */
 
 .floating-layer-body {
@@ -171,7 +951,6 @@ button, input, select {
     linear-gradient(to bottom, rgba(0, 168, 150, 0.04) 1px, transparent 1px);
 }
 
-/* Centered Single Layout Wrapper */
 .floating-layout-wrapper {
   width: 100%;
   max-width: 440px;
@@ -184,7 +963,6 @@ button, input, select {
   z-index: 10;
 }
 
-/* Brand Header on Top Side (No Border/Box) */
 .floating-brand-header {
   text-align: center;
   display: flex;
@@ -233,7 +1011,6 @@ button, input, select {
   display: block;
 }
 
-/* Floating Layer Login Box (Luxury Elevated Monolith) */
 .floating-login-card {
   width: 100%;
   background: var(--bg-card);
@@ -262,7 +1039,6 @@ button, input, select {
   background: linear-gradient(90deg, var(--solid-navy), var(--accent-teal), var(--accent-gold));
 }
 
-/* Card Top Bar: Switcher + Utility Controls */
 .floating-card-top-bar {
   display: flex;
   justify-content: space-between;
@@ -328,7 +1104,6 @@ button, input, select {
   color: var(--accent-teal);
 }
 
-/* Form Header */
 .floating-form-heading {
   margin-top: 2px;
 }
@@ -347,7 +1122,6 @@ button, input, select {
   color: var(--slate-500);
 }
 
-/* Multi-Factor / Passkey & SSO Grid */
 .floating-sso-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -377,7 +1151,6 @@ button, input, select {
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
 }
 
-/* Subtle Divider */
 .floating-divider {
   display: flex;
   align-items: center;
@@ -402,7 +1175,6 @@ button, input, select {
   padding: 0 10px;
 }
 
-/* Floating Label Inputs (Sharp 6px Radius) */
 .floating-form-body {
   display: flex;
   flex-direction: column;
@@ -497,11 +1269,6 @@ html[dir="rtl"] .floating-eye-toggle {
   left: 12px;
 }
 
-.floating-eye-toggle:hover {
-  color: var(--accent-teal);
-}
-
-/* Options Row */
 .floating-options-row {
   display: flex;
   justify-content: space-between;
@@ -537,7 +1304,6 @@ html[dir="rtl"] .floating-eye-toggle {
   text-decoration: underline;
 }
 
-/* Solid Navy-Blue "Authenticate & Enter" Button */
 .btn-navy-authenticate {
   width: 100%;
   height: 50px;
@@ -563,7 +1329,6 @@ html[dir="rtl"] .floating-eye-toggle {
   box-shadow: 0 14px 28px -4px rgba(13, 31, 66, 0.5);
 }
 
-/* Security Badge Strip */
 .floating-security-strip {
   margin-top: 4px;
   padding-top: 14px;
@@ -585,10 +1350,26 @@ html[dir="rtl"] .floating-eye-toggle {
   margin-top: 4px;
 }
 
-/* Mobile Responsive */
-@media (max-width: 480px) {
-  .floating-login-card {
-    padding: 24px 18px 20px;
-    border-radius: 10px;
+/* ==========================================================================
+   MOBILE RESPONSIVENESS
+   ========================================================================== */
+
+@media (max-width: 960px) {
+  .biz-nav-links {
+    display: none;
+  }
+  .biz-features-grid,
+  .biz-plans-grid,
+  .biz-metrics-strip,
+  .biz-security-layout,
+  .biz-calc-card,
+  .biz-footer-grid {
+    grid-template-columns: 1fr;
+  }
+  .biz-plan-card.featured-plan {
+    transform: none;
+  }
+  .biz-metric-divider {
+    display: none;
   }
 }

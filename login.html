@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>B Magnet International — Institutional Investor Portal Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: data: 'unsafe-inline' 'unsafe-eval';" />
+    <meta name="description" content="Secure Asset Management & Institutional Investor Portal. Floating Layer Multi-Sig Vaults." />
+    
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#071126" />
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+  </head>
+  <body class="floating-layer-body">
+    <!-- Immersive Background Geometric Mesh & Glowing Aura -->
+    <div class="floating-mesh-canvas">
+      <div class="floating-ambient-glow glow-top"></div>
+      <div class="floating-ambient-glow glow-bottom"></div>
+      <div class="floating-grid-lines"></div>
+    </div>
+
+    <!-- Centered Single Layout Container -->
+    <div class="floating-layout-wrapper">
+      <!-- Top Brand Header (Clean Borderless Logo & Title) -->
+      <header class="floating-brand-header">
+        <div class="floating-logo-wrap">
+          <a href="index.html">
+            <img src="logo.png" alt="B Magnet International Logo" class="floating-top-logo" />
+          </a>
+        </div>
+        <h1 class="floating-brand-title">B MAGNET INTERNATIONAL</h1>
+        <span class="floating-brand-tag">INSTITUTIONAL INVESTMENT PORTAL</span>
+      </header>
+
+      <!-- Floating Layer Login Box (Elevated Luxury Monolith Card) -->
+      <main class="floating-login-card">
+        <!-- Card Top Bar: Switcher + Language & Theme Controls -->
+        <div class="floating-card-top-bar">
+          <div class="floating-capsule-switcher">
+            <button type="button" id="tabSignInBtn" class="floating-capsule-btn active">
+              Sign In
+            </button>
+            <button type="button" id="tabRegisterBtn" class="floating-capsule-btn">
+              Create Account
+            </button>
+          </div>
+
+          <div class="floating-utility-group">
+            <button id="langToggleBtn" class="floating-icon-btn" title="Toggle Language (EN / العربية)">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="2" y1="12" x2="22" y2="12"></line>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+              </svg>
+              <span id="currentLangLabel">EN</span>
+            </button>
+
+            <button id="themeToggleBtn" class="floating-icon-btn" title="Toggle Dark/Light Mode">
+              <span id="themeIcon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="5"></circle>
+                  <line x1="12" y1="1" x2="12" y2="3"></line>
+                  <line x1="12" y1="21" x2="12" y2="23"></line>
+                  <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                  <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                  <line x1="1" y1="12" x2="3" y2="12"></line>
+                  <line x1="21" y1="12" x2="23" y2="12"></line>
+                  <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                  <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+              </span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Form Heading -->
+        <div class="floating-form-heading">
+          <h2 class="floating-title">Institutional Sign In</h2>
+          <p class="floating-subtitle">
+            Enter your investor credentials to access the multi-sig portfolio vault.
+          </p>
+        </div>
+
+        <!-- Multi-Factor / Passkey & SSO Fast Access -->
+        <div class="floating-sso-grid">
+          <button type="button" id="passkeySignInBtn" class="floating-sso-btn" title="Biometric Passkey (Face ID / Touch ID)">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="8" cy="15" r="4"></circle>
+              <line x1="10.85" y1="12.15" x2="19" y2="4"></line>
+              <line x1="18" y1="5" x2="20" y2="7"></line>
+              <line x1="15" y1="8" x2="17" y2="10"></line>
+            </svg>
+            <span>Passkey</span>
+          </button>
+
+          <button type="button" id="googleSignInBtn" class="floating-sso-btn" title="Google OAuth 2.0">
+            <svg width="16" height="16" viewBox="0 0 24 24">
+              <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+              <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+              <path fill="#FBBC05" d="M5.84 14.1c-.22-.66-.35-1.36-.35-2.1s.13-1.44.35-2.1V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.62z"/>
+              <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+            </svg>
+            <span>Google</span>
+          </button>
+
+          <button type="button" id="appleSignInBtn" class="floating-sso-btn" title="Apple ID">
+            <svg width="16" height="16" viewBox="0 0 170 170" fill="currentColor">
+              <path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.34.13-9.13-1.9-14.34-6.1-3.23-2.64-7.14-7.27-11.73-13.9-6.3-9.13-11.19-19.42-14.65-30.88-3.46-11.47-5.19-22.37-5.19-32.7 0-15.52 4.12-28.18 12.35-37.99 8.23-9.8 18.52-14.77 30.88-14.9 5.37 0 10.88 1.27 16.53 3.82 5.65 2.54 9.68 3.82 12.1 3.82 1.95 0 6.09-1.34 12.41-4.01 6.33-2.68 11.83-3.9 16.52-3.67 9.8.76 17.88 4.54 24.27 11.34-11.45 6.94-17.06 16.73-16.83 29.38.25 9.94 4.12 18.23 11.61 24.87 7.48 6.64 16.27 10.37 26.35 11.19-2.28 6.79-5.32 13.7-9.12 20.73zm-27.23-107.7c0 6.34-2.31 12.37-6.93 18.1-4.63 5.73-10.29 9.38-16.98 10.96-.38-2.67-.57-5.16-.57-7.46 0-6.1 2.45-12.19 7.34-18.27 4.9-6.08 10.63-9.74 17.2-10.98.26 2.41.39 4.96.39 7.65z"/>
+            </svg>
+            <span>Apple</span>
+          </button>
+        </div>
+
+        <!-- Subtle Divider -->
+        <div class="floating-divider">
+          <span>or authenticate with credentials</span>
+        </div>
+
+        <!-- Sign In Form (Floating Labels) -->
+        <form id="loginForm" class="floating-form-body">
+          <div class="floating-input-group">
+            <input
+              id="email"
+              type="email"
+              class="floating-input"
+              placeholder=" "
+              value="test@bmagnetint.com"
+              required
+            />
+            <label for="email" class="floating-label">Work Email / Username</label>
+            <span class="floating-icon">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+            </span>
+          </div>
+
+          <div class="floating-input-group">
+            <input
+              id="password"
+              type="password"
+              class="floating-input"
+              placeholder=" "
+              value="bmagnet@123"
+              required
+            />
+            <label for="password" class="floating-label">Secure Password</label>
+            <button type="button" id="togglePasswordBtn" class="floating-eye-toggle" title="Show/Hide Password">
+              <svg class="eye-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Options Row -->
+          <div class="floating-options-row">
+            <label class="floating-checkbox-label">
+              <input type="checkbox" id="rememberMe" checked class="sharp-checkbox" />
+              <span>Remember Account</span>
+            </label>
+            <a href="register.html" class="floating-forgot-link">Forgot Credentials?</a>
+          </div>
+
+          <!-- Solid Navy-Blue "Authenticate & Enter" Button -->
+          <button type="submit" class="btn-navy-authenticate">
+            <span>Authenticate & Enter</span>
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 8px;">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </button>
+        </form>
+
+        <!-- Register Form (Zero-Shift Symmetrical Alignment) -->
+        <form id="registerForm" class="floating-form-body" style="display: none;">
+          <div class="floating-input-group">
+            <input id="regFullName" type="text" class="floating-input" placeholder=" " value="Alexander Vance" required />
+            <label for="regFullName" class="floating-label">Full Legal Name</label>
+            <span class="floating-icon">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+            </span>
+          </div>
+
+          <div class="floating-input-group">
+            <input id="regEmail" type="email" class="floating-input" placeholder=" " value="alexander.vance@wealth.com" required />
+            <label for="regEmail" class="floating-label">Investor Email Address</label>
+            <span class="floating-icon">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+            </span>
+          </div>
+
+          <div class="floating-options-row">
+            <label class="floating-checkbox-label">
+              <input type="checkbox" checked class="sharp-checkbox" />
+              <span>Agree to Custodial Terms</span>
+            </label>
+            <span style="font-size: 0.8rem; font-weight: 700; color: var(--accent-teal);">Instant KYC</span>
+          </div>
+
+          <button type="submit" class="btn-navy-authenticate">
+            <span>Proceed to Investor Profile →</span>
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 8px;">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </button>
+        </form>
+
+        <!-- Security Badge Strip -->
+        <div class="floating-security-strip">
+          <span>🔒 256-Bit SSL</span>
+          <span>•</span>
+          <span>🏛️ Tier-1 Multi-Sig</span>
+          <span>•</span>
+          <span>⚡ Automated AI Yields</span>
+        </div>
+      </main>
+
+      <!-- Minimal Bottom Footer -->
+      <footer class="floating-footer">
+        <p>© 2026 B Magnet International. Multi-Sig Custodial Vaults & Automated AI Capital Yields. All rights reserved.</p>
+      </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="translations.js"></script>
+    <script src="theme.js"></script>
+    <script src="login.js"></script>
+  </body>
+</html>

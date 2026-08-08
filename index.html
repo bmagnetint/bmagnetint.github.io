@@ -3,11 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>B Magnet International — Institutional Investor Portal</title>
+    <title>B Magnet International — Institutional Asset Management & AI Yield Portals</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: data: 'unsafe-inline' 'unsafe-eval';" />
-    <meta name="description" content="Secure Asset Management & Institutional Investor Portal. Floating Layer Multi-Sig Vaults." />
+    <meta name="description" content="B Magnet International is a premier institutional asset management platform providing segregated multi-sig custody, automated AI Forex yield execution, and transparent capital allocation." />
     
     <link
       href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap"
@@ -15,229 +15,485 @@
     />
     <link rel="stylesheet" href="styles.css" />
     <link rel="manifest" href="manifest.json" />
-    <meta name="theme-color" content="#071126" />
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <meta name="theme-color" content="#0d1f42" />
   </head>
-  <body class="floating-layer-body">
-    <!-- Immersive Background Geometric Mesh & Glowing Aura -->
-    <div class="floating-mesh-canvas">
-      <div class="floating-ambient-glow glow-top"></div>
-      <div class="floating-ambient-glow glow-bottom"></div>
-      <div class="floating-grid-lines"></div>
-    </div>
-
-    <!-- Centered Single Layout Container -->
-    <div class="floating-layout-wrapper">
-      <!-- Top Brand Header (Clean Borderless Logo & Title) -->
-      <header class="floating-brand-header">
-        <div class="floating-logo-wrap">
-          <img src="logo.png" alt="B Magnet International Logo" class="floating-top-logo" />
-        </div>
-        <h1 class="floating-brand-title">B MAGNET INTERNATIONAL</h1>
-        <span class="floating-brand-tag">INSTITUTIONAL INVESTMENT PORTAL</span>
-      </header>
-
-      <!-- Floating Layer Login Box (Elevated Luxury Monolith Card) -->
-      <main class="floating-login-card">
-        <!-- Card Top Bar: Switcher + Language & Theme Controls -->
-        <div class="floating-card-top-bar">
-          <div class="floating-capsule-switcher">
-            <button type="button" id="tabSignInBtn" class="floating-capsule-btn active">
-              Sign In
-            </button>
-            <button type="button" id="tabRegisterBtn" class="floating-capsule-btn">
-              Create Account
-            </button>
+  <body class="corporate-body">
+    <!-- TOP STICKY CORPORATE NAVBAR -->
+    <header class="biz-navbar">
+      <div class="biz-nav-container">
+        <a href="index.html" class="biz-brand-link">
+          <img src="logo.png" alt="B Magnet International Logo" class="biz-nav-logo" />
+          <div class="biz-brand-text">
+            <span class="biz-brand-name">B MAGNET INTERNATIONAL</span>
+            <span class="biz-brand-sub">INSTITUTIONAL ASSET MANAGEMENT</span>
           </div>
+        </a>
 
-          <div class="floating-utility-group">
-            <button id="langToggleBtn" class="floating-icon-btn" title="Toggle Language (EN / العربية)">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10"></circle>
-                <line x1="2" y1="12" x2="22" y2="12"></line>
-                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+        <!-- Desktop Navigation Links -->
+        <nav class="biz-nav-links">
+          <a href="#about" class="biz-nav-item">About Us</a>
+          <a href="#solutions" class="biz-nav-item">Solutions</a>
+          <a href="#calculator" class="biz-nav-item">Yield Calculator</a>
+          <a href="#plans" class="biz-nav-item">Investment Plans</a>
+          <a href="#security" class="biz-nav-item">Security Vaults</a>
+        </nav>
+
+        <!-- Right Utility Actions -->
+        <div class="biz-nav-actions">
+          <button id="langToggleBtn" class="biz-util-btn" title="Toggle Language (EN / العربية)">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="2" y1="12" x2="22" y2="12"></line>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+            </svg>
+            <span id="currentLangLabel">EN</span>
+          </button>
+
+          <button id="themeToggleBtn" class="biz-util-btn" title="Toggle Theme (Dark / Light)">
+            <span id="themeIcon">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
               </svg>
-              <span id="currentLangLabel">EN</span>
-            </button>
+            </span>
+          </button>
 
-            <button id="themeToggleBtn" class="floating-icon-btn" title="Toggle Dark/Light Mode">
-              <span id="themeIcon">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="5"></circle>
-                  <line x1="12" y1="1" x2="12" y2="3"></line>
-                  <line x1="12" y1="21" x2="12" y2="23"></line>
-                  <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                  <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                  <line x1="1" y1="12" x2="3" y2="12"></line>
-                  <line x1="21" y1="12" x2="23" y2="12"></line>
-                  <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                  <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                </svg>
-              </span>
-            </button>
+          <a href="login.html" class="biz-nav-login-link">Sign In</a>
+          <a href="login.html" class="biz-nav-cta-btn">Access Portal →</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- HERO SECTION (Executive Corporate Banner) -->
+    <section class="biz-hero-section">
+      <div class="biz-hero-mesh"></div>
+      <div class="biz-hero-container">
+        <div class="biz-hero-content">
+          <div class="biz-badge-pill">
+            <span class="pulse-dot"></span>
+            <span>MULTI-SIG CUSTODIAL VAULTS • AUTOMATED AI YIELDS</span>
+          </div>
+
+          <h1 class="biz-hero-headline">
+            Institutional Sovereign Wealth & Automated AI Capital Yields.
+          </h1>
+
+          <p class="biz-hero-tagline">
+            B Magnet International provides accredited investors, private family offices, and institutions with segregated Tier-1 multi-sig cold storage, automated MT5 neural trading execution, and transparent daily distributions.
+          </p>
+
+          <div class="biz-hero-cta-group">
+            <a href="login.html" class="biz-btn-primary">
+              <span>Access Investor Portal →</span>
+            </a>
+            <a href="#calculator" class="biz-btn-secondary">
+              <span>Calculate Daily Yields ↓</span>
+            </a>
+            <a href="register.html" class="biz-btn-outline">
+              <span>Open Investor Account</span>
+            </a>
+          </div>
+
+          <!-- Hero Metrics Ticker Strip -->
+          <div class="biz-metrics-strip">
+            <div class="biz-metric-item">
+              <strong class="biz-metric-num">$250M+</strong>
+              <span class="biz-metric-label">Institutional AUM</span>
+            </div>
+            <div class="biz-metric-divider"></div>
+            <div class="biz-metric-item">
+              <strong class="biz-metric-num" style="color: var(--accent-teal);">$10 – $30</strong>
+              <span class="biz-metric-label">Daily Yield / Bot (Mon–Fri)</span>
+            </div>
+            <div class="biz-metric-divider"></div>
+            <div class="biz-metric-item">
+              <strong class="biz-metric-num">2.5%</strong>
+              <span class="biz-metric-label">Downside Stop Protection</span>
+            </div>
+            <div class="biz-metric-divider"></div>
+            <div class="biz-metric-item">
+              <strong class="biz-metric-num">100%</strong>
+              <span class="biz-metric-label">Segregated Tier-1 Custody</span>
+            </div>
           </div>
         </div>
+      </div>
+    </section>
 
-        <!-- Form Heading -->
-        <div class="floating-form-heading">
-          <h2 class="floating-title">Institutional Sign In</h2>
-          <p class="floating-subtitle">
-            Enter your investor credentials to access the multi-sig portfolio vault.
+    <!-- ABOUT SECTION -->
+    <section id="about" class="biz-section-wrap">
+      <div class="biz-container">
+        <div class="biz-section-header">
+          <span class="biz-section-eyebrow">FIDUCIARY EXCELLENCE</span>
+          <h2 class="biz-section-title">Built for Sovereign Wealth & Private Institutions</h2>
+          <p class="biz-section-subtitle">
+            Engineered from the ground up to eliminate trading friction, mitigate market volatility, and deliver predictable daily passive yields into segregated multi-signature vaults.
           </p>
         </div>
 
-        <!-- Multi-Factor / Passkey & SSO Fast Access -->
-        <div class="floating-sso-grid">
-          <button type="button" id="passkeySignInBtn" class="floating-sso-btn" title="Biometric Passkey (Face ID / Touch ID)">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="8" cy="15" r="4"></circle>
-              <line x1="10.85" y1="12.15" x2="19" y2="4"></line>
-              <line x1="18" y1="5" x2="20" y2="7"></line>
-              <line x1="15" y1="8" x2="17" y2="10"></line>
-            </svg>
-            <span>Passkey</span>
-          </button>
-
-          <button type="button" id="googleSignInBtn" class="floating-sso-btn" title="Google OAuth 2.0">
-            <svg width="16" height="16" viewBox="0 0 24 24">
-              <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-              <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-              <path fill="#FBBC05" d="M5.84 14.1c-.22-.66-.35-1.36-.35-2.1s.13-1.44.35-2.1V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.62z"/>
-              <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
-            </svg>
-            <span>Google</span>
-          </button>
-
-          <button type="button" id="appleSignInBtn" class="floating-sso-btn" title="Apple ID">
-            <svg width="16" height="16" viewBox="0 0 170 170" fill="currentColor">
-              <path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.34.13-9.13-1.9-14.34-6.1-3.23-2.64-7.14-7.27-11.73-13.9-6.3-9.13-11.19-19.42-14.65-30.88-3.46-11.47-5.19-22.37-5.19-32.7 0-15.52 4.12-28.18 12.35-37.99 8.23-9.8 18.52-14.77 30.88-14.9 5.37 0 10.88 1.27 16.53 3.82 5.65 2.54 9.68 3.82 12.1 3.82 1.95 0 6.09-1.34 12.41-4.01 6.33-2.68 11.83-3.9 16.52-3.67 9.8.76 17.88 4.54 24.27 11.34-11.45 6.94-17.06 16.73-16.83 29.38.25 9.94 4.12 18.23 11.61 24.87 7.48 6.64 16.27 10.37 26.35 11.19-2.28 6.79-5.32 13.7-9.12 20.73zm-27.23-107.7c0 6.34-2.31 12.37-6.93 18.1-4.63 5.73-10.29 9.38-16.98 10.96-.38-2.67-.57-5.16-.57-7.46 0-6.1 2.45-12.19 7.34-18.27 4.9-6.08 10.63-9.74 17.2-10.98.26 2.41.39 4.96.39 7.65z"/>
-            </svg>
-            <span>Apple</span>
-          </button>
-        </div>
-
-        <!-- Subtle Divider -->
-        <div class="floating-divider">
-          <span>or authenticate with credentials</span>
-        </div>
-
-        <!-- Sign In Form (Floating Labels) -->
-        <form id="loginForm" class="floating-form-body">
-          <div class="floating-input-group">
-            <input
-              id="email"
-              type="email"
-              class="floating-input"
-              placeholder=" "
-              value="test@bmagnetint.com"
-              required
-            />
-            <label for="email" class="floating-label">Work Email / Username</label>
-            <span class="floating-icon">
-              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                <polyline points="22,6 12,13 2,6"></polyline>
+        <div class="biz-features-grid">
+          <div class="biz-feature-card">
+            <div class="biz-feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
               </svg>
-            </span>
+            </div>
+            <h3 class="biz-feature-title">Multi-Sig Cold Vault Custody</h3>
+            <p class="biz-feature-desc">
+              All client capital is held in segregated multi-party computation (MPC) cold vaults with 256-bit cryptographic keys. No single entity holds complete authorization.
+            </p>
           </div>
 
-          <div class="floating-input-group">
-            <input
-              id="password"
-              type="password"
-              class="floating-input"
-              placeholder=" "
-              value="bmagnet@123"
-              required
-            />
-            <label for="password" class="floating-label">Secure Password</label>
-            <button type="button" id="togglePasswordBtn" class="floating-eye-toggle" title="Show/Hide Password">
-              <svg class="eye-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                <circle cx="12" cy="12" r="3"></circle>
+          <div class="biz-feature-card">
+            <div class="biz-feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
               </svg>
-            </button>
+            </div>
+            <h3 class="biz-feature-title">Automated AI Neural Execution</h3>
+            <p class="biz-feature-desc">
+              High-frequency algorithms execute liquidity capture across major FX currency pairs (EUR/USD, GBP/USD, USD/JPY) strictly during Mon–Fri market hours.
+            </p>
           </div>
 
-          <!-- Options Row -->
-          <div class="floating-options-row">
-            <label class="floating-checkbox-label">
-              <input type="checkbox" id="rememberMe" checked class="sharp-checkbox" />
-              <span>Remember Account</span>
+          <div class="biz-feature-card">
+            <div class="biz-feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+            </div>
+            <h3 class="biz-feature-title">2.5% Downside Risk Stops</h3>
+            <p class="biz-feature-desc">
+              Institutional risk protocols enforce hard 2.5% stop-loss thresholds per market cycle, guaranteeing capital preservation under all market shocks.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERACTIVE INVESTMENT & YIELD CALCULATOR -->
+    <section id="calculator" class="biz-section-wrap biz-calc-bg">
+      <div class="biz-container">
+        <div class="biz-section-header">
+          <span class="biz-section-eyebrow">YIELD SIMULATOR</span>
+          <h2 class="biz-section-title">Interactive AI Bot Capital Calculator</h2>
+          <p class="biz-section-subtitle">
+            Simulate your projected daily, monthly, and quarterly net returns based on your allocated AI bot units.
+          </p>
+        </div>
+
+        <div class="biz-calc-card">
+          <div class="biz-calc-left">
+            <label style="display: block; font-size: 0.88rem; font-weight: 800; color: var(--text-primary); margin-bottom: 12px;">
+              Select Number of AI Bot Units:
             </label>
-            <a href="register.html" class="floating-forgot-link">Forgot Credentials?</a>
+            
+            <div class="biz-bot-selector-grid">
+              <button type="button" class="biz-bot-btn active" data-bots="1" data-capital="1000" data-rent="300">
+                <strong>1 Bot</strong>
+                <span>$1,000 Capital</span>
+              </button>
+              <button type="button" class="biz-bot-btn" data-bots="2" data-capital="2000" data-rent="600">
+                <strong>2 Bots</strong>
+                <span>$2,000 Capital</span>
+              </button>
+              <button type="button" class="biz-bot-btn" data-bots="3" data-capital="3000" data-rent="900">
+                <strong>3 Bots</strong>
+                <span>$3,000 Capital</span>
+              </button>
+              <button type="button" class="biz-bot-btn" data-bots="5" data-capital="5000" data-rent="1500">
+                <strong>5 Bots</strong>
+                <span>$5,000 Capital</span>
+              </button>
+            </div>
+
+            <div class="biz-calc-details-table">
+              <div class="biz-calc-row">
+                <span>Base Capital Deposit:</span>
+                <strong id="calcCapital">$1,000 USD</strong>
+              </div>
+              <div class="biz-calc-row">
+                <span>3-Month Bot Rental Fee:</span>
+                <strong id="calcRent">$300 USD (3-Mo Contract)</strong>
+              </div>
+              <div class="biz-calc-row">
+                <span>Total Initial Outlay:</span>
+                <strong id="calcOutlay" style="color: var(--accent-gold); font-size: 1.1rem;">$1,300 USD</strong>
+              </div>
+            </div>
           </div>
 
-          <!-- Solid Navy-Blue "Authenticate & Enter" Button -->
-          <button type="submit" class="btn-navy-authenticate">
-            <span>Authenticate & Enter</span>
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 8px;">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </button>
-        </form>
+          <div class="biz-calc-right">
+            <div class="biz-calc-yield-box">
+              <span class="biz-yield-label">Projected Daily Net Return (Mon–Fri):</span>
+              <div class="biz-yield-value" id="calcDailyReturn">$10 – $30 <span style="font-size: 1rem; color: var(--slate-400);">/ day</span></div>
+              
+              <div style="margin: 16px 0; border-top: 1px solid rgba(255,255,255,0.12);"></div>
 
-        <!-- Register Form (Zero-Shift Symmetrical Alignment) -->
-        <form id="registerForm" class="floating-form-body" style="display: none;">
-          <div class="floating-input-group">
-            <input id="regFullName" type="text" class="floating-input" placeholder=" " value="Alexander Vance" required />
-            <label for="regFullName" class="floating-label">Full Legal Name</label>
-            <span class="floating-icon">
-              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                <circle cx="12" cy="7" r="4"></circle>
-              </svg>
-            </span>
+              <span class="biz-yield-label">Projected Monthly Profit (~22 Trading Days):</span>
+              <div class="biz-yield-monthly" id="calcMonthlyReturn">$220 – $660 <span style="font-size: 1rem; color: var(--slate-400);">/ mo</span></div>
+
+              <a href="login.html" id="calcActionBtn" class="biz-btn-primary" style="width: 100%; margin-top: 24px; text-align: center;">
+                Allocate 1 Bot & Fund via Vault →
+              </a>
+            </div>
           </div>
-
-          <div class="floating-input-group">
-            <input id="regEmail" type="email" class="floating-input" placeholder=" " value="alexander.vance@wealth.com" required />
-            <label for="regEmail" class="floating-label">Investor Email Address</label>
-            <span class="floating-icon">
-              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                <polyline points="22,6 12,13 2,6"></polyline>
-              </svg>
-            </span>
-          </div>
-
-          <div class="floating-options-row">
-            <label class="floating-checkbox-label">
-              <input type="checkbox" checked class="sharp-checkbox" />
-              <span>Agree to Custodial Terms</span>
-            </label>
-            <span style="font-size: 0.8rem; font-weight: 700; color: var(--accent-teal);">Instant KYC</span>
-          </div>
-
-          <button type="submit" class="btn-navy-authenticate">
-            <span>Proceed to Investor Profile →</span>
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 8px;">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </button>
-        </form>
-
-        <!-- Security Badge Strip -->
-        <div class="floating-security-strip">
-          <span>🔒 256-Bit SSL</span>
-          <span>•</span>
-          <span>🏛️ Tier-1 Multi-Sig</span>
-          <span>•</span>
-          <span>⚡ Automated AI Yields</span>
         </div>
-      </main>
+      </div>
+    </section>
 
-      <!-- Minimal Bottom Footer -->
-      <footer class="floating-footer">
-        <p>© 2026 B Magnet International. Multi-Sig Custodial Vaults & Automated AI Capital Yields. All rights reserved.</p>
-      </footer>
-    </div>
+    <!-- PRICING & INVESTMENT PLANS SECTION -->
+    <section id="plans" class="biz-section-wrap">
+      <div class="biz-container">
+        <div class="biz-section-header">
+          <span class="biz-section-eyebrow">PORTFOLIO TIERS</span>
+          <h2 class="biz-section-title">Institutional Investment Plans</h2>
+          <p class="biz-section-subtitle">
+            Transparent allocations with standard 3-month bot rental contracts and segregated multi-sig custody.
+          </p>
+        </div>
 
-    <!-- Scripts -->
+        <div class="biz-plans-grid">
+          <!-- Plan 1 -->
+          <div class="biz-plan-card">
+            <div class="biz-plan-badge">Starter Vault</div>
+            <h3 class="biz-plan-title">1 Bot Unit</h3>
+            <div class="biz-plan-price">$1,000 <span>Deposit</span></div>
+            <p class="biz-plan-desc">Ideal for initial institutional verification and test allocations.</p>
+
+            <ul class="biz-plan-list">
+              <li>✓ <strong>$300</strong> 3-Month Bot Rental Fee</li>
+              <li>✓ <strong>$1,300</strong> Total Initial Outlay</li>
+              <li>✓ <strong>$10 – $30 / day</strong> (Mon–Fri Active)</li>
+              <li>✓ <strong>$220 – $660 / mo</strong> Net Yields</li>
+              <li>✓ FIPS 140-2 Level 3 Multi-Sig Vault</li>
+            </ul>
+
+            <a href="plan-detail.html?plan=starter&capital=1000" class="biz-btn-primary" style="width: 100%;">
+              Select Starter Plan →
+            </a>
+          </div>
+
+          <!-- Plan 2 -->
+          <div class="biz-plan-card featured-plan">
+            <div class="biz-plan-badge highlight">Most Popular</div>
+            <h3 class="biz-plan-title">2 Bot Units</h3>
+            <div class="biz-plan-price">$2,000 <span>Deposit</span></div>
+            <p class="biz-plan-desc">Accelerated capital growth with dual-neural algorithmic hedging.</p>
+
+            <ul class="biz-plan-list">
+              <li>✓ <strong>$600</strong> 3-Month Bot Rental Fee</li>
+              <li>✓ <strong>$2,600</strong> Total Initial Outlay</li>
+              <li>✓ <strong>$20 – $60 / day</strong> (Mon–Fri Active)</li>
+              <li>✓ <strong>$440 – $1,320 / mo</strong> Net Yields</li>
+              <li>✓ Priority On-Chain Settlement</li>
+            </ul>
+
+            <a href="plan-detail.html?plan=growth&capital=2000" class="biz-btn-primary" style="width: 100%;">
+              Select Growth Plan →
+            </a>
+          </div>
+
+          <!-- Plan 3 -->
+          <div class="biz-plan-card">
+            <div class="biz-plan-badge">Alpha Vault</div>
+            <h3 class="biz-plan-title">3 Bot Units</h3>
+            <div class="biz-plan-price">$3,000 <span>Deposit</span></div>
+            <p class="biz-plan-desc">Institutional alpha tier for private family offices & wealth funds.</p>
+
+            <ul class="biz-plan-list">
+              <li>✓ <strong>$900</strong> 3-Month Bot Rental Fee</li>
+              <li>✓ <strong>$3,900</strong> Total Initial Outlay</li>
+              <li>✓ <strong>$30 – $90 / day</strong> (Mon–Fri Active)</li>
+              <li>✓ <strong>$660 – $1,980 / mo</strong> Net Yields</li>
+              <li>✓ Dedicated Risk Officer & 24/7 Desk</li>
+            </ul>
+
+            <a href="plan-detail.html?plan=alpha&capital=3000" class="biz-btn-primary" style="width: 100%;">
+              Select Alpha Plan →
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECURITY & COMPLIANCE -->
+    <section id="security" class="biz-section-wrap biz-security-bg">
+      <div class="biz-container">
+        <div class="biz-security-layout">
+          <div class="biz-security-text">
+            <span class="biz-section-eyebrow" style="color: var(--accent-teal);">BANK-GRADE SECURITY</span>
+            <h2 class="biz-section-title" style="color: #ffffff;">Cryptographic Multi-Signature Cold Storage</h2>
+            <p style="color: var(--slate-400); font-size: 0.95rem; margin-bottom: 24px; line-height: 1.6;">
+              B Magnet International utilizes hardware-grade security modules and multi-party computation protocols to ensure client capital remains inviolable.
+            </p>
+
+            <div class="biz-security-checkpoints">
+              <div class="biz-check-item">
+                <span class="biz-check-icon">🔒</span>
+                <div>
+                  <strong style="color: #ffffff;">FIPS 140-2 Level 3 Compliance</strong>
+                  <p style="color: var(--slate-400); font-size: 0.82rem;">Hardware security modules with tamper-evident physical barriers.</p>
+                </div>
+              </div>
+
+              <div class="biz-check-item">
+                <span class="biz-check-icon">🏛️</span>
+                <div>
+                  <strong style="color: #ffffff;">Tier-1 Segregated Liquidity</strong>
+                  <p style="color: var(--slate-400); font-size: 0.82rem;">Never commingled with proprietary firm operations or third-party liabilities.</p>
+                </div>
+              </div>
+
+              <div class="biz-check-item">
+                <span class="biz-check-icon">⚡</span>
+                <div>
+                  <strong style="color: #ffffff;">Direct USDT BEP20 & TRC20 Settlement</strong>
+                  <p style="color: var(--slate-400); font-size: 0.82rem;">Zero intermediary latency with automated on-chain deposit tracking.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="biz-security-box">
+            <div class="biz-vault-badge">
+              <span class="pulse-dot"></span>
+              <span>LIVE MULTI-SIG VAULT STATUS: OPERATIONAL</span>
+            </div>
+            <div class="biz-vault-address-preview">
+              <span style="font-size: 0.76rem; color: var(--slate-400); display: block; margin-bottom: 4px;">BEP20 Custody Vault Address:</span>
+              <code>0x1C5e0e66DF3dA13f9a86b799c175F78cA54E70d2</code>
+            </div>
+            <div class="biz-vault-address-preview" style="margin-top: 12px;">
+              <span style="font-size: 0.76rem; color: var(--slate-400); display: block; margin-bottom: 4px;">TRC20 Custody Vault Address:</span>
+              <code>TTi1Pp64FkZXAgscRtaN5wTETdYMYq8MwV</code>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL CALL TO ACTION -->
+    <section class="biz-final-cta">
+      <div class="biz-container" style="text-align: center;">
+        <h2 class="biz-cta-heading">Ready to Allocate Institutional Capital?</h2>
+        <p class="biz-cta-sub">
+          Join leading global wealth managers and sovereign investors utilizing B Magnet International's automated AI yield vaults.
+        </p>
+        <div style="display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;">
+          <a href="login.html" class="biz-btn-primary" style="padding: 16px 36px; font-size: 1.05rem;">
+            Access Investor Portal →
+          </a>
+          <a href="register.html" class="biz-btn-secondary" style="padding: 16px 36px; font-size: 1.05rem;">
+            Register Investor Profile
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CORPORATE FOOTER -->
+    <footer class="biz-footer">
+      <div class="biz-container">
+        <div class="biz-footer-grid">
+          <div>
+            <div class="biz-brand-link" style="margin-bottom: 12px;">
+              <img src="logo.png" alt="B Magnet International Logo" class="biz-nav-logo" style="height: 44px;" />
+              <div class="biz-brand-text">
+                <span class="biz-brand-name">B MAGNET INTERNATIONAL</span>
+                <span class="biz-brand-sub">INSTITUTIONAL ASSET MANAGEMENT</span>
+              </div>
+            </div>
+            <p style="font-size: 0.82rem; color: var(--slate-500); max-width: 320px; line-height: 1.6;">
+              Premier institutional capital allocation, multi-sig custodial security, and automated AI Forex yield distribution.
+            </p>
+          </div>
+
+          <div>
+            <h4 class="biz-footer-head">Platform</h4>
+            <ul class="biz-footer-links">
+              <li><a href="login.html">Investor Portal (Sign In)</a></li>
+              <li><a href="register.html">Investor Registration & KYC</a></li>
+              <li><a href="plan.html">Bot Investment Plans</a></li>
+              <li><a href="payment.html">Crypto Deposit Vaults</a></li>
+              <li><a href="dashboard.html">Client Dashboard</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="biz-footer-head">Technology</h4>
+            <ul class="biz-footer-links">
+              <li><a href="#solutions">Automated Neural Execution</a></li>
+              <li><a href="#security">Multi-Sig Cold Custody</a></li>
+              <li><a href="#calculator">Yield Calculator</a></li>
+              <li><a href="#security">2.5% Downside Stops</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="biz-footer-head">Contact & Compliance</h4>
+            <ul class="biz-footer-links">
+              <li><span>Official Investor Support:</span></li>
+              <li><strong style="color: var(--text-primary);">support@bmagnetint.com</strong></li>
+              <li><span style="font-size: 0.78rem; color: var(--slate-500);">Financial Center, DIFC, Dubai</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="biz-footer-bottom">
+          <p>© 2026 B Magnet International. Multi-Sig Custodial Vaults & Automated AI Capital Yields. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Interactive Calculator & Theme Scripts -->
     <script src="translations.js"></script>
     <script src="theme.js"></script>
-    <script src="login.js"></script>
+    <script>
+      // Interactive Calculator Script for Homepage
+      document.addEventListener('DOMContentLoaded', () => {
+        const botBtns = document.querySelectorAll('.biz-bot-btn');
+        const calcCapital = document.getElementById('calcCapital');
+        const calcRent = document.getElementById('calcRent');
+        const calcOutlay = document.getElementById('calcOutlay');
+        const calcDailyReturn = document.getElementById('calcDailyReturn');
+        const calcMonthlyReturn = document.getElementById('calcMonthlyReturn');
+        const calcActionBtn = document.getElementById('calcActionBtn');
+
+        botBtns.forEach(btn => {
+          btn.addEventListener('click', () => {
+            botBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const bots = parseInt(btn.getAttribute('data-bots'), 10);
+            const capital = parseInt(btn.getAttribute('data-capital'), 10);
+            const rent = parseInt(btn.getAttribute('data-rent'), 10);
+            const outlay = capital + rent;
+
+            const minDaily = bots * 10;
+            const maxDaily = bots * 30;
+            const minMonthly = bots * 220;
+            const maxMonthly = bots * 660;
+
+            if (calcCapital) calcCapital.textContent = `$${capital.toLocaleString()} USD`;
+            if (calcRent) calcRent.textContent = `$${rent.toLocaleString()} USD (3-Mo Contract)`;
+            if (calcOutlay) calcOutlay.textContent = `$${outlay.toLocaleString()} USD`;
+            if (calcDailyReturn) calcDailyReturn.innerHTML = `$${minDaily} – $${maxDaily} <span style="font-size: 1rem; color: var(--slate-400);">/ day</span>`;
+            if (calcMonthlyReturn) calcMonthlyReturn.innerHTML = `$${minMonthly} – $${maxMonthly} <span style="font-size: 1rem; color: var(--slate-400);">/ mo</span>`;
+            if (calcActionBtn) {
+              calcActionBtn.textContent = `Allocate ${bots} Bot${bots > 1 ? 's' : ''} & Fund via Vault →`;
+              calcActionBtn.href = `plan-detail.html?plan=${bots === 1 ? 'starter' : bots === 2 ? 'growth' : bots === 3 ? 'alpha' : 'enterprise'}&capital=${capital}`;
+            }
+          });
+        });
+      });
+    </script>
   </body>
 </html>
