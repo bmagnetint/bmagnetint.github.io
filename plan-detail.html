@@ -1,12 +1,146 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="refresh" content="0; url=index.html" />
-    <title>B Magnet International</title>
-    <script>window.location.href = "index.html";</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>B Magnet International — Investment Tier Breakdown</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: data: 'unsafe-inline' 'unsafe-eval';" />
+    <meta name="description" content="Detailed financial breakdown and capital commitment schedule for your selected AI Forex Bot plan." />
+    
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@600;700;800;900&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#0b1b3d" />
   </head>
   <body>
-    <p>Redirecting to <a href="index.html">B Magnet International</a>...</p>
+    <div class="page-shell">
+      <!-- Site Header -->
+      <header class="site-header">
+        <div class="brand-mark">
+          <a href="index.html" class="logo-glow-wrapper">
+            <img src="logo.png" alt="B Magnet International Logo" class="brand-logo" style="height: 54px;" />
+          </a>
+          <div class="brand-details">
+            <span class="brand-name">B MAGNET INTERNATIONAL</span>
+            <span class="brand-tag">INSTITUTIONAL AI FOREX PORTAL</span>
+          </div>
+        </div>
+
+        <nav class="site-nav">
+          <a href="plan.html" class="nav-link">← Change Plan</a>
+          <a href="dashboard.html" class="nav-link">📊 Dashboard</a>
+          <button id="langToggleBtn" class="lang-toggle-btn" title="Switch Language">
+            <span>🌐</span>
+            <span id="currentLangLabel">EN</span>
+          </button>
+          <button id="themeToggleBtn" class="theme-toggle-icon-btn" title="Toggle Theme">
+            <span id="themeIcon">☀️</span>
+          </button>
+        </nav>
+      </header>
+
+      <!-- Hero Header -->
+      <section class="dashboard-hero">
+        <div class="hero-copy">
+          <span class="eyebrow" id="tierDetailPill">Starter Core Portfolio Tier</span>
+          <h1 id="tierDetailTitle">Starter Core (1 AI Bot Strategy)</h1>
+          <p id="tierDetailDesc">
+            Institutional capital allocation configured at <strong>$1,000 per bot</strong> with <strong>$300 3-month rental contract</strong> and dynamic daily returns of <strong>$10 to $30</strong> during Mon–Fri market hours.
+          </p>
+
+          <div class="stat-grid" style="grid-template-columns: 1fr 1fr; margin-top: 24px;">
+            <div class="stat-box">
+              <p>Daily Net Return (Mon–Fri)</p>
+              <strong id="detailDailyHero" style="color: var(--brand-cyan); font-size: 1.3rem;">$10 – $30 / day</strong>
+            </div>
+            <div class="stat-box">
+              <p>Total Initial Outlay</p>
+              <strong id="detailOutlayHero" style="color: var(--brand-gold); font-size: 1.3rem;">$1,300</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Breakdown Table & Execution Details -->
+      <section class="plan-section" style="margin-bottom: 40px;">
+        <div class="stat-grid" style="grid-template-columns: 1.2fr 0.8fr; gap: 24px;">
+          <!-- Financial Table Card -->
+          <div class="chart-panel" style="padding: 28px;">
+            <div style="margin-bottom: 20px;">
+              <h3 style="font-size: 1.2rem; color: var(--brand-navy); margin-bottom: 4px;">Financial & Capital Allocation Breakdown</h3>
+              <p style="font-size: 0.85rem; color: var(--text-muted);">Audited deposit, rental fee, and projected variable yield schedule.</p>
+            </div>
+            <div class="transaction-table-wrap">
+              <table class="transaction-table">
+                <tbody>
+                  <tr>
+                    <td style="color: var(--text-muted); font-weight: 600;">Selected Investment Tier</td>
+                    <td style="font-weight: 800; text-align: right;" id="tblTierName">Starter Core Plan</td>
+                  </tr>
+                  <tr>
+                    <td style="color: var(--text-muted); font-weight: 600;">Base Capital Deposit</td>
+                    <td style="font-weight: 800; text-align: right;" id="tblCapital">$1,000</td>
+                  </tr>
+                  <tr>
+                    <td style="color: var(--text-muted); font-weight: 600;">Bot Rental Fee (3-Month Contract)</td>
+                    <td style="font-weight: 800; text-align: right;" id="tblRent">$300 (3-Mo Contract)</td>
+                  </tr>
+                  <tr>
+                    <td style="color: var(--text-muted); font-weight: 600;">Minimum Commitment Window</td>
+                    <td style="font-weight: 800; text-align: right;" id="tblCommitment">3 Months (Minimum)</td>
+                  </tr>
+                  <tr>
+                    <td style="color: var(--text-muted); font-weight: 600;">Total Initial Outlay Required</td>
+                    <td style="font-weight: 900; color: var(--brand-gold); text-align: right;" id="tblOutlay">$1,300 ($1,000 Deposit + $300 3-Mo Rent)</td>
+                  </tr>
+                  <tr>
+                    <td style="color: var(--text-muted); font-weight: 600;">Active Trading Days</td>
+                    <td style="font-weight: 800; text-align: right;">Mon – Fri (Sat & Sun Off)</td>
+                  </tr>
+                  <tr>
+                    <td style="color: var(--text-muted); font-weight: 600;">Projected Monthly Profit</td>
+                    <td style="font-weight: 800; color: var(--brand-emerald); text-align: right;" id="tblMonthly">$220 – $660 / mo</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Right Action CTA Card -->
+          <div class="chart-panel" style="padding: 28px; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <span class="status-pill" style="margin-bottom: 14px; display: inline-block;">Ready to Fund</span>
+              <h3 style="font-size: 1.3rem; margin-bottom: 10px; color: var(--brand-navy);">Proceed to Crypto Deposit Vault</h3>
+              <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 20px;">
+                Your allocation will be securely deposited via USDT (BEP20 or TRC20). Bot execution begins automatically once 1 confirmation is received on-chain.
+              </p>
+              <div style="background: #f8fafc; border: 1px solid var(--border-light); border-radius: 14px; padding: 14px; margin-bottom: 20px; font-size: 0.85rem;">
+                🔒 <strong>Institutional Multi-Sig Custody</strong><br />
+                All funds are segregated in GTC FX multi-sig vaults with 2.5% stop-loss downside mitigation.
+              </div>
+            </div>
+
+            <button id="proceedToPaymentBtn" class="btn btn-primary" style="width: 100%; font-size: 1rem; font-weight: 800; padding: 14px;">
+              Fund & Activate Strategy via Crypto Vault →
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="site-footer">
+        <p>© 2026 B Magnet International. Multi-Sig Custodial Vaults & AI Forex Trading. All rights reserved.</p>
+      </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="translations.js"></script>
+    <script src="theme.js"></script>
+    <script src="plan-detail.js"></script>
   </body>
 </html>

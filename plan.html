@@ -1,12 +1,215 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="refresh" content="0; url=index.html" />
-    <title>B Magnet International</title>
-    <script>window.location.href = "index.html";</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>B Magnet International — AI Forex Bot Plans & Calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: data: 'unsafe-inline' 'unsafe-eval';" />
+    <meta name="description" content="Explore institutional AI Forex Bot plans and calculate your variable daily and monthly returns." />
+    
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@600;700;800;900&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#0b1b3d" />
   </head>
   <body>
-    <p>Redirecting to <a href="index.html">B Magnet International</a>...</p>
+    <div class="page-shell">
+      <!-- Site Header -->
+      <header class="site-header">
+        <div class="brand-mark">
+          <a href="index.html" class="logo-glow-wrapper">
+            <img src="logo.png" alt="B Magnet International Logo" class="brand-logo" style="height: 54px;" />
+          </a>
+          <div class="brand-details">
+            <span class="brand-name">B MAGNET INTERNATIONAL</span>
+            <span class="brand-tag">INSTITUTIONAL AI FOREX PORTAL</span>
+          </div>
+        </div>
+
+        <nav class="site-nav">
+          <a href="dashboard.html" class="nav-link">📊 Dashboard</a>
+          <a href="plan.html" class="nav-link active">🤖 Bot Plans</a>
+          <a href="payment.html" class="nav-link">💳 Crypto Vault</a>
+          <button id="langToggleBtn" class="lang-toggle-btn" title="Switch Language">
+            <span>🌐</span>
+            <span id="currentLangLabel">EN</span>
+          </button>
+          <button id="themeToggleBtn" class="theme-toggle-icon-btn" title="Toggle Theme">
+            <span id="themeIcon">☀️</span>
+          </button>
+        </nav>
+      </header>
+
+      <!-- Hero Banner -->
+      <section class="dashboard-hero">
+        <div class="hero-copy">
+          <span class="eyebrow">
+            <span class="pulse-dot"></span>
+            Algorithmic Forex Bot Strategies
+          </span>
+          <h1>Institutional Neural AI Bot Allocation</h1>
+          <p>
+            Choose your automated capital tier. Capital allocation is calibrated at <strong>$1,000 per 1 AI Bot</strong> with a <strong>$300 3-month rental contract</strong> and dynamic variable returns of <strong>$10 to $30 daily</strong> during active Mon–Fri market hours.
+          </p>
+        </div>
+      </section>
+
+      <!-- Interactive Calculator Section -->
+      <section class="plan-section" style="margin-bottom: 40px;">
+        <div class="section-heading" style="margin-bottom: 20px;">
+          <span class="eyebrow">Interactive Projections</span>
+          <h2>Calculate your projected bot yields & capital horizon.</h2>
+        </div>
+
+        <div class="chart-panel" style="padding: 32px;">
+          <div style="margin-bottom: 24px;">
+            <label style="display: flex; justify-content: space-between; font-weight: 700; margin-bottom: 8px; font-size: 0.95rem;">
+              <span>Initial Capital Allocation ($1,000 = 1 Bot)</span>
+              <strong id="calcCapitalDisplay" style="color: var(--brand-cyan); font-size: 1.15rem;">$1,000</strong>
+            </label>
+            <input type="range" id="capitalSlider" min="1000" max="5000" step="1000" value="1000" style="width: 100%; cursor: pointer;" />
+          </div>
+
+          <div style="margin-bottom: 24px;">
+            <label style="display: block; font-size: 0.9rem; font-weight: 700; margin-bottom: 8px; color: var(--brand-navy);">Investment Horizon (Min 3 Months)</label>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+              <button type="button" class="btn btn-secondary horizon-btn active" data-months="3" style="flex: 1; padding: 10px; font-size: 0.88rem;">3 Months</button>
+              <button type="button" class="btn btn-secondary horizon-btn" data-months="6" style="flex: 1; padding: 10px; font-size: 0.88rem;">6 Months</button>
+              <button type="button" class="btn btn-secondary horizon-btn" data-months="9" style="flex: 1; padding: 10px; font-size: 0.88rem;">9 Months</button>
+              <button type="button" class="btn btn-secondary horizon-btn" data-months="12" style="flex: 1; padding: 10px; font-size: 0.88rem;">12 Months</button>
+            </div>
+          </div>
+
+          <div class="stat-grid" style="grid-template-columns: 1fr 1fr 1fr; margin-bottom: 14px;">
+            <div class="stat-box">
+              <p>AI Bots Active</p>
+              <strong id="calcBotsDisplay" style="color: var(--brand-cyan); font-size: 1.25rem;">1 AI Bot</strong>
+            </div>
+            <div class="stat-box">
+              <p>3-Month Bot Rent</p>
+              <strong id="calcRentDisplay" style="color: var(--brand-navy); font-size: 1.25rem;">$300</strong>
+            </div>
+            <div class="stat-box">
+              <p>Total Initial Outlay</p>
+              <strong id="calcOutlayDisplay" style="color: var(--brand-gold); font-size: 1.25rem;">$1,300</strong>
+            </div>
+          </div>
+
+          <div class="stat-grid" style="grid-template-columns: 1fr 1fr; margin-bottom: 14px;">
+            <div class="stat-box">
+              <p>Daily Profit Range (Mon–Fri)</p>
+              <strong id="calcDailyDisplay" style="color: var(--brand-cyan); font-size: 1.25rem;">$10 – $30 / day</strong>
+            </div>
+            <div class="stat-box">
+              <p>Est. Monthly Profit</p>
+              <strong id="calcMonthlyDisplay" style="color: var(--brand-emerald); font-size: 1.25rem;">$220 – $660 / mo</strong>
+            </div>
+          </div>
+
+          <div class="stat-grid" style="grid-template-columns: 1fr 1fr;">
+            <div class="stat-box">
+              <p>Total Horizon Profit (3-Mo)</p>
+              <strong id="calcReturnDisplay" style="color: var(--brand-emerald); font-size: 1.25rem;">+$660 – $1,980</strong>
+            </div>
+            <div class="stat-box">
+              <p>Estimated End Value</p>
+              <strong id="calcValueDisplay" style="color: var(--brand-cyan); font-size: 1.25rem;">$1,660 – $2,980</strong>
+            </div>
+          </div>
+
+          <p style="font-size: 0.82rem; color: var(--text-muted); margin-top: 14px; text-align: center;">
+            ⚡ Forex Market Trading Hours: Mon – Fri active neural execution. Sat & Sun markets closed.
+          </p>
+        </div>
+      </section>
+
+      <!-- Investment Tier Cards -->
+      <section class="plan-section">
+        <div class="section-heading" style="margin-bottom: 20px;">
+          <span class="eyebrow">Tier Architecture</span>
+          <h2>Select your customized portfolio strategy.</h2>
+        </div>
+
+        <div class="plan-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;">
+          <!-- Tier 1 -->
+          <article class="plan-card" style="display: flex; flex-direction: column; justify-content: space-between; padding: 32px;">
+            <div>
+              <span class="status-pill" style="margin-bottom: 12px; display: inline-block;">Starter Tier</span>
+              <h3 style="font-size: 1.5rem; margin-bottom: 8px;">Starter Core (1 Bot)</h3>
+              <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 16px;">Capital Deposit: $1,000</p>
+              <h2 style="font-size: 2.2rem; color: var(--brand-cyan); margin-bottom: 16px;">$10 – $30 <span style="font-size: 1rem; color: var(--text-muted);">/ Day</span></h2>
+              <ul style="list-style: none; padding: 0; display: grid; gap: 10px; margin-bottom: 24px; font-size: 0.9rem;">
+                <li>✓ 1 Active Neural Forex AI Bot</li>
+                <li>✓ $300 Bot Rent for 3-Month Contract</li>
+                <li>✓ $10 – $30 Variable Daily Profit</li>
+                <li>✓ Mon – Fri Execution (Sat & Sun Off)</li>
+                <li>✓ Direct GTC FX Institutional Multi-Sig Vault</li>
+                <li>✓ Algorithmic 2.5% Downside Stop-Loss Protection</li>
+              </ul>
+            </div>
+            <a href="plan-detail.html?plan=starter&capital=1000" class="btn btn-primary" style="width: 100%;">
+              Select Starter Core Plan →
+            </a>
+          </article>
+
+          <!-- Tier 2 -->
+          <article class="plan-card" style="display: flex; flex-direction: column; justify-content: space-between; padding: 32px; border-color: var(--brand-cyan) !important;">
+            <div>
+              <span class="status-pill" style="margin-bottom: 12px; display: inline-block; background: rgba(217, 119, 6, 0.1) !important; color: var(--brand-gold) !important; border-color: rgba(217, 119, 6, 0.3) !important;">Most Popular</span>
+              <h3 style="font-size: 1.5rem; margin-bottom: 8px;">Growth Strategy (2 Bots)</h3>
+              <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 16px;">Capital Deposit: $2,000</p>
+              <h2 style="font-size: 2.2rem; color: var(--brand-cyan); margin-bottom: 16px;">$20 – $60 <span style="font-size: 1rem; color: var(--text-muted);">/ Day</span></h2>
+              <ul style="list-style: none; padding: 0; display: grid; gap: 10px; margin-bottom: 24px; font-size: 0.9rem;">
+                <li>✓ 2 Active Neural Forex AI Bots</li>
+                <li>✓ $600 Bot Rent for 3-Month Contract</li>
+                <li>✓ $20 – $60 Variable Daily Profit</li>
+                <li>✓ Mon – Fri Execution (Sat & Sun Off)</li>
+                <li>✓ Direct GTC FX Institutional Multi-Sig Vault</li>
+                <li>✓ Priority Automated Capital Rebalancing</li>
+              </ul>
+            </div>
+            <a href="plan-detail.html?plan=growth&capital=2000" class="btn btn-primary" style="width: 100%;">
+              Select Growth Strategy Plan →
+            </a>
+          </article>
+
+          <!-- Tier 3 -->
+          <article class="plan-card" style="display: flex; flex-direction: column; justify-content: space-between; padding: 32px;">
+            <div>
+              <span class="status-pill" style="margin-bottom: 12px; display: inline-block;">Alpha Tier</span>
+              <h3 style="font-size: 1.5rem; margin-bottom: 8px;">Institutional Alpha (3 Bots)</h3>
+              <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 16px;">Capital Deposit: $3,000</p>
+              <h2 style="font-size: 2.2rem; color: var(--brand-cyan); margin-bottom: 16px;">$30 – $90 <span style="font-size: 1rem; color: var(--text-muted);">/ Day</span></h2>
+              <ul style="list-style: none; padding: 0; display: grid; gap: 10px; margin-bottom: 24px; font-size: 0.9rem;">
+                <li>✓ 3 Active Neural Forex AI Bots</li>
+                <li>✓ $900 Bot Rent for 3-Month Contract</li>
+                <li>✓ $30 – $90 Variable Daily Profit</li>
+                <li>✓ Mon – Fri Execution (Sat & Sun Off)</li>
+                <li>✓ Institutional Multi-Sig Cold Vault Custody</li>
+                <li>✓ Dedicated Risk Officer & 24/7 VIP Desk</li>
+              </ul>
+            </div>
+            <a href="plan-detail.html?plan=alpha&capital=3000" class="btn btn-primary" style="width: 100%;">
+              Select Institutional Alpha Plan →
+            </a>
+          </article>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="site-footer">
+        <p>© 2026 B Magnet International. Multi-Sig Custodial Vaults & AI Forex Trading. All rights reserved.</p>
+      </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="translations.js"></script>
+    <script src="theme.js"></script>
+    <script src="plan.js"></script>
   </body>
 </html>

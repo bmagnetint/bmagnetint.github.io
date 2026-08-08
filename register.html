@@ -1,12 +1,314 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="refresh" content="0; url=index.html" />
-    <title>B Magnet International</title>
-    <script>window.location.href = "index.html";</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>B Magnet International — Investor Profile & KYC</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: data: 'unsafe-inline' 'unsafe-eval';" />
+    <meta name="description" content="Complete your institutional investor registration and KYC onboarding." />
+    
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@600;700;800;900&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#0b1b3d" />
   </head>
-  <body>
-    <p>Redirecting to <a href="index.html">B Magnet International</a>...</p>
+  <body class="login-page">
+    <div class="page-shell reg-wrapper">
+      <!-- Site Header -->
+      <header class="site-header">
+        <div class="brand-mark">
+          <a href="index.html" class="logo-glow-wrapper">
+            <img src="logo.png" alt="B Magnet International Logo" class="brand-logo" style="height: 54px;" />
+          </a>
+          <div class="brand-details">
+            <span class="brand-name">B MAGNET INTERNATIONAL</span>
+            <span class="brand-tag">INSTITUTIONAL AI FOREX PORTAL</span>
+          </div>
+        </div>
+
+        <div class="site-nav">
+          <a href="index.html" class="nav-link">← Return to Login</a>
+          <button id="langToggleBtn" class="lang-toggle-btn" title="Switch Language">
+            <span>🌐</span>
+            <span id="currentLangLabel">EN</span>
+          </button>
+          <button id="themeToggleBtn" class="theme-toggle-icon-btn" title="Toggle Theme">
+            <span id="themeIcon">☀️</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- Step Progress Bar -->
+      <div class="progress-steps-bar" style="display: flex; justify-content: center; gap: 16px; margin-bottom: 32px; flex-wrap: wrap;">
+        <div class="step-pill completed">
+          <span class="step-number" style="background: var(--brand-emerald); color: #fff;">✓</span>
+          <span>1. Credentials Authorization</span>
+        </div>
+        <div class="step-pill active">
+          <span class="step-number" style="background: var(--brand-cyan); color: #fff;">2</span>
+          <span>2. Full Investor Profile & KYC</span>
+        </div>
+        <div class="step-pill">
+          <span class="step-number">3</span>
+          <span>3. AI Bot Strategy Activation</span>
+        </div>
+      </div>
+
+      <!-- Hero Welcome Banner -->
+      <section class="reg-hero-banner">
+        <div class="eyebrow" style="margin-bottom: 12px;">
+          <span class="pulse-dot"></span>
+          <span id="welcomeEyebrow">INSTITUTIONAL INVESTOR ONBOARDING</span>
+        </div>
+        <h1 id="welcomeInvestorTitle" style="font-size: clamp(1.8rem, 3.2vw, 2.6rem); color: var(--brand-navy); margin-bottom: 10px;">
+          Welcome, <span id="welcomeInvestorName" style="color: var(--brand-cyan);">Valued Investor</span>
+        </h1>
+        <p id="welcomeSubtitle" style="color: var(--text-secondary); max-width: 680px; margin: 0 auto; font-size: 1rem;">
+          Please complete your 9 official client verification details below to configure your high-yield automated AI Forex bot portfolio.
+        </p>
+      </section>
+
+      <!-- Two-Column Form and Live Passport Card -->
+      <main class="reg-grid-layout">
+        <!-- Left: Form Inputs -->
+        <section class="reg-form-card">
+          <form id="fullKycForm">
+            <!-- Group 1 -->
+            <div style="margin-bottom: 24px;">
+              <h3 class="form-section-title">👤 1. Investor Identity Details</h3>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                <div>
+                  <label for="kycFullName" style="display: block; font-size: 0.85rem; font-weight: 700; color: var(--brand-navy); margin-bottom: 6px;">Full Legal Name</label>
+                  <input type="text" id="kycFullName" placeholder="e.g. Alexander Vance" required />
+                </div>
+                <div>
+                  <label for="kycEmail" style="display: block; font-size: 0.85rem; font-weight: 700; color: var(--brand-navy); margin-bottom: 6px;">Investor Email</label>
+                  <input type="email" id="kycEmail" placeholder="alexander.vance@wealth.com" required />
+                </div>
+              </div>
+            </div>
+
+            <!-- Group 2 -->
+            <div style="margin-bottom: 24px;">
+              <h3 class="form-section-title">📞 2. Direct Contact Channels</h3>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                <div>
+                  <label for="kycPhone" style="display: block; font-size: 0.85rem; font-weight: 700; color: var(--brand-navy); margin-bottom: 6px;">Primary Phone Number</label>
+                  <div style="display: flex; gap: 8px;">
+                    <select id="kycPhoneCode" style="width: 110px; flex-shrink: 0; padding: 12px 8px !important;">
+                      <option value="+1">🇺🇸 +1</option>
+                      <option value="+44">🇬🇧 +44</option>
+                      <option value="+971" selected>🇦🇪 +971</option>
+                      <option value="+966">🇸🇦 +966</option>
+                      <option value="+41">🇨🇭 +41</option>
+                      <option value="+49">🇩🇪 +49</option>
+                      <option value="+65">🇸🇬 +65</option>
+                      <option value="+91">🇮🇳 +91</option>
+                    </select>
+                    <input type="tel" id="kycPhone" placeholder="50 123 4567" required />
+                  </div>
+                </div>
+                <div>
+                  <label for="kycWhatsApp" style="display: block; font-size: 0.85rem; font-weight: 700; color: var(--brand-navy); margin-bottom: 6px;">WhatsApp VIP Number</label>
+                  <input type="tel" id="kycWhatsApp" placeholder="+971 50 123 4567" required />
+                </div>
+              </div>
+            </div>
+
+            <!-- Group 3 -->
+            <div style="margin-bottom: 24px;">
+              <h3 class="form-section-title">📍 3. Domicile & Age Verification</h3>
+              <div style="margin-bottom: 16px;">
+                <label for="kycAddress" style="display: block; font-size: 0.85rem; font-weight: 700; color: var(--brand-navy); margin-bottom: 6px;">Residential / Physical Address</label>
+                <input type="text" id="kycAddress" placeholder="Suite 402, Financial Tower, DIFC, Dubai" required />
+              </div>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                <div>
+                  <label for="kycRegion" style="display: block; font-size: 0.85rem; font-weight: 700; color: var(--brand-navy); margin-bottom: 6px;">Country / Jurisdiction Region</label>
+                  <select id="kycRegion" required>
+                    <option value="" disabled selected>-- Select Official Region --</option>
+                    <option value="UAE">🇦🇪 United Arab Emirates</option>
+                    <option value="Saudi Arabia">🇸🇦 Saudi Arabia</option>
+                    <option value="Switzerland">🇨🇭 Switzerland</option>
+                    <option value="United Kingdom">🇬🇧 United Kingdom</option>
+                    <option value="United States">🇺🇸 United States</option>
+                    <option value="Singapore">🇸🇬 Singapore</option>
+                    <option value="Germany">🇩🇪 Germany</option>
+                    <option value="Qatar">🇶🇦 Qatar</option>
+                    <option value="Bahrain">🇧🇭 Bahrain</option>
+                    <option value="Oman">🇴🇲 Oman</option>
+                    <option value="Kuwait">🇰🇼 Kuwait</option>
+                    <option value="Other">🌐 Global International</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="kycDobInput" style="display: block; font-size: 0.85rem; font-weight: 700; color: var(--brand-navy); margin-bottom: 6px;">
+                    Date of Birth (Strictly 18+ Required)
+                  </label>
+                  <div style="display: flex; gap: 8px;">
+                    <input type="text" id="kycDobInput" placeholder="Click to Select (18+)" readonly required style="cursor: pointer; background: #ffffff;" />
+                    <button type="button" id="openDobCalendarBtn" class="btn btn-secondary" style="padding: 12px 16px; flex-shrink: 0;" title="Open Calendar">
+                      📅
+                    </button>
+                  </div>
+                  <span id="dobAgeStatus" style="display: block; font-size: 0.78rem; font-weight: 700; margin-top: 4px; color: var(--text-muted);">
+                    Must be 18 years or older to trade.
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Group 4 -->
+            <div style="margin-bottom: 28px;">
+              <h3 class="form-section-title">💼 4. Experience & Capital Capacity</h3>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                <div>
+                  <label for="kycExperience" style="display: block; font-size: 0.85rem; font-weight: 700; color: var(--brand-navy); margin-bottom: 6px;">Trading Experience Level</label>
+                  <select id="kycExperience" required>
+                    <option value="Beginner">Beginner (100% Automated Bots)</option>
+                    <option value="Intermediate">Intermediate (1–3 Years Forex)</option>
+                    <option value="Advanced">Advanced (3–5 Years Institutional)</option>
+                    <option value="Professional" selected>Professional / Accredited Fund</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="kycIncome" style="display: block; font-size: 0.85rem; font-weight: 700; color: var(--brand-navy); margin-bottom: 6px;">Annual Income / Net Worth Range</label>
+                  <select id="kycIncome" required>
+                    <option value="$50,000 - $100,000">$50,000 – $100,000 USD</option>
+                    <option value="$100,000 - $250,000" selected>$100,000 – $250,000 USD</option>
+                    <option value="$250,000 - $500,000">$250,000 – $500,000 USD</option>
+                    <option value="$500,000 - $1,000,000+">$500,000 – $1,000,000+ USD</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%; font-size: 1.05rem; font-weight: 800; padding: 15px;">
+              Save & Activate AI Bot Portfolio Strategy →
+            </button>
+          </form>
+        </section>
+
+        <!-- Right: Live Investor Passport Card -->
+        <aside class="reg-passport-card" style="position: sticky; top: 24px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <span class="status-pill">
+              <span class="pulse-dot"></span> Verified Passport
+            </span>
+            <span style="font-size: 0.78rem; font-weight: 700; color: var(--text-muted);">ID: <span id="passportId">BMG-FX-894201</span></span>
+          </div>
+
+          <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--border-light);">
+            <div id="passportAvatar" style="width: 58px; height: 58px; border-radius: 50%; background: linear-gradient(135deg, var(--brand-navy), var(--brand-cyan)); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; font-weight: 900; box-shadow: var(--shadow-glow);">
+              AV
+            </div>
+            <div>
+              <strong id="passportName" style="display: block; font-size: 1.15rem; color: var(--brand-navy);">Alexander Vance</strong>
+              <span id="passportEmail" style="font-size: 0.82rem; color: var(--text-muted);">alexander.vance@wealth.com</span>
+            </div>
+          </div>
+
+          <div style="display: grid; gap: 12px; font-size: 0.88rem; margin-bottom: 24px;">
+            <div style="display: flex; justify-content: space-between;">
+              <span style="color: var(--text-muted);">Jurisdiction:</span>
+              <strong id="passportRegion">United Arab Emirates</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between;">
+              <span style="color: var(--text-muted);">DOB & Age:</span>
+              <strong id="passportDob">15 May 1988 (38 yrs)</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between;">
+              <span style="color: var(--text-muted);">Experience:</span>
+              <strong id="passportExp">Professional / Accredited</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between;">
+              <span style="color: var(--text-muted);">Default Tier:</span>
+              <strong style="color: var(--brand-cyan);">Starter (1 Bot — $1,000)</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between;">
+              <span style="color: var(--text-muted);">Bot Rent:</span>
+              <strong style="color: var(--brand-gold);">$300 (3-Mo Contract)</strong>
+            </div>
+          </div>
+
+          <div style="background: #f8fafc; border: 1px solid var(--border-light); border-radius: 14px; padding: 14px; font-size: 0.82rem; color: var(--text-secondary); line-height: 1.5;">
+            🛡️ <strong>GTC FX Custodial Agreement</strong><br />
+            Once registered, your allocation routes directly to automated MT5 neural trading bots with real-time daily returns ($10 – $30 / day).
+          </div>
+        </aside>
+      </main>
+
+      <footer class="site-footer">
+        <p>© 2026 B Magnet International. Multi-Sig Custodial Vaults & AI Forex Trading. All rights reserved.</p>
+      </footer>
+    </div>
+
+    <!-- Custom Pop-up Calendar Modal (Strict 18+ Verification) -->
+    <div id="dobCalendarModal" class="modal-overlay" style="display: none;">
+      <div class="modal-card" style="max-width: 440px; text-align: center;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+          <strong style="font-size: 1.1rem; color: var(--brand-navy);">📅 Select Date of Birth (18+ Required)</strong>
+          <button type="button" id="closeCalendarModalBtn" style="background: none; border: none; font-size: 1.2rem; cursor: pointer; color: var(--text-muted);">✕</button>
+        </div>
+
+        <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 16px;">
+          Trading regulations require investors to be at least 18 years of age.
+        </p>
+
+        <!-- Selector Controls -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px;">
+          <div>
+            <label style="display: block; font-size: 0.75rem; font-weight: 700; color: var(--text-muted); margin-bottom: 4px;">Birth Year</label>
+            <select id="calYearSelect" style="padding: 10px !important;">
+              <!-- Generated via JS up to 18 years ago -->
+            </select>
+          </div>
+          <div>
+            <label style="display: block; font-size: 0.75rem; font-weight: 700; color: var(--text-muted); margin-bottom: 4px;">Birth Month</label>
+            <select id="calMonthSelect" style="padding: 10px !important;">
+              <option value="0">January</option>
+              <option value="1">February</option>
+              <option value="2">March</option>
+              <option value="3">April</option>
+              <option value="4" selected>May</option>
+              <option value="5">June</option>
+              <option value="6">July</option>
+              <option value="7">August</option>
+              <option value="8">September</option>
+              <option value="9">October</option>
+              <option value="10">November</option>
+              <option value="11">December</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Days Grid -->
+        <div style="margin-bottom: 16px;">
+          <label style="display: block; font-size: 0.75rem; font-weight: 700; color: var(--text-muted); margin-bottom: 8px;">Select Day</label>
+          <div id="calDaysGrid" style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; max-height: 180px; overflow-y: auto; padding: 4px;">
+            <!-- Days injected via JS -->
+          </div>
+        </div>
+
+        <div style="background: #f8fafc; border: 1px solid var(--border-light); border-radius: 12px; padding: 10px; margin-bottom: 16px; font-size: 0.85rem;">
+          Selected: <strong id="calSelectedPreview" style="color: var(--brand-cyan);">15 May 1988</strong> 
+          (<span id="calAgePreview" style="font-weight: 700; color: var(--brand-emerald);">38 Years Old — Verified 18+</span>)
+        </div>
+
+        <button type="button" id="confirmDobBtn" class="btn btn-primary" style="width: 100%;">
+          Confirm Date of Birth & Apply
+        </button>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="translations.js"></script>
+    <script src="theme.js"></script>
+    <script src="register.js"></script>
   </body>
 </html>
