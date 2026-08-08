@@ -1,5 +1,6 @@
 /* ==========================================================================
-   B MAGNET INTERNATIONAL — Swiss FinTech & Private Banking Design System
+   B MAGNET INTERNATIONAL — Official Logo-Harmonized Institutional Design System
+   Dual-Tone Royal Midnight Navy (#0B1B3D) & Algorithmic Cyan-Teal (#00A3A6 / #00C4C7)
    ========================================================================== */
 
 :root {
@@ -7,44 +8,61 @@
   --font-heading: 'Plus Jakarta Sans', 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   
-  /* Arctic Porcelain & Swiss FinTech Light Palette */
-  --bg-main: #f4f6fb;
+  /* Logo Harmonized Brand Palette */
+  --bg-main: #f8fafc;
+  --bg-canvas: #edf2f7;
   --bg-card: #ffffff;
   --bg-card-hover: #f8fafc;
-  --bg-glass: rgba(255, 255, 255, 0.94);
+  --bg-glass: rgba(255, 255, 255, 0.95);
+  
+  /* Brand Navy & Electric Teal */
+  --brand-navy: #0b1b3d;
+  --brand-navy-light: #162a56;
+  --brand-cyan: #00a3a6;
+  --brand-cyan-light: #00c4c7;
+  --brand-cyan-glow: rgba(0, 163, 166, 0.35);
+  --brand-gold: #d97706;
+  --brand-emerald: #059669;
+  
+  /* Aliases */
+  --accent-primary: #0b1b3d;
+  --accent-teal: #00a3a6;
+  --accent-blue: #1d4ed8;
+  --accent-emerald: #059669;
+  --accent-gold: #d97706;
+  --accent-navy: #0b1b3d;
   
   --border-light: #e2e8f0;
   --border-subtle: #cbd5e1;
-  --border-glow: rgba(29, 78, 216, 0.35);
+  --border-brand: rgba(0, 163, 166, 0.3);
+  --border-navy: rgba(11, 27, 61, 0.12);
   
-  --accent-primary: #1d4ed8;
-  --accent-sapphire: #2563eb;
-  --accent-teal: #0284c7;
-  --accent-emerald: #059669;
-  --accent-mint: #10b981;
-  --accent-gold: #d97706;
-  --accent-navy: #0f172a;
-  
-  --text-primary: #0f172a;
+  --text-primary: #0b1b3d;
   --text-secondary: #334155;
   --text-muted: #64748b;
   
-  --shadow-glow: 0 10px 30px rgba(29, 78, 216, 0.15);
-  --shadow-card: 0 20px 45px -12px rgba(15, 23, 42, 0.08), 0 0 0 1px rgba(226, 232, 240, 0.8);
-  --shadow-elevated: 0 25px 60px -15px rgba(15, 23, 42, 0.12), 0 0 0 1px rgba(226, 232, 240, 0.9);
+  --shadow-glow: 0 10px 30px rgba(0, 163, 166, 0.18);
+  --shadow-card: 0 14px 34px -8px rgba(11, 27, 61, 0.08), 0 0 0 1px rgba(11, 27, 61, 0.05);
+  --shadow-elevated: 0 24px 50px -12px rgba(11, 27, 61, 0.14), 0 0 0 1px rgba(0, 163, 166, 0.2);
 }
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
 }
 
 body {
-  background-color: #f4f6fb;
+  background-color: var(--bg-main);
   background-image: 
-    radial-gradient(circle at 10% 15%, rgba(37, 99, 235, 0.06) 0%, transparent 45%),
-    radial-gradient(circle at 90% 85%, rgba(16, 185, 129, 0.05) 0%, transparent 45%),
+    radial-gradient(circle at 8% 12%, rgba(0, 163, 166, 0.08) 0%, transparent 45%),
+    radial-gradient(circle at 92% 88%, rgba(11, 27, 61, 0.06) 0%, transparent 45%),
     radial-gradient(circle at 50% 50%, rgba(217, 119, 6, 0.03) 0%, transparent 50%);
   background-attachment: fixed;
   color: var(--text-primary);
@@ -68,13 +86,13 @@ button, input, select {
 .page-shell {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 28px 24px 70px;
+  padding: 24px 20px 80px;
   position: relative;
   z-index: 1;
 }
 
 /* ==========================================================================
-   SITE HEADER & BRAND BAR
+   SITE HEADER & BRAND BAR (DESKTOP & MOBILE RESPONSIVE)
    ========================================================================== */
 
 .site-header,
@@ -82,22 +100,22 @@ button, input, select {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 20px;
-  padding: 16px 28px;
-  margin-bottom: 32px;
-  background: rgba(255, 255, 255, 0.9);
+  gap: 16px;
+  padding: 14px 24px;
+  margin-bottom: 28px;
+  background: rgba(255, 255, 255, 0.94);
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(226, 232, 240, 0.9);
-  border-radius: 24px;
-  box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.05);
+  border: 1px solid var(--border-navy);
+  border-radius: 20px;
+  box-shadow: var(--shadow-card);
   position: relative;
-  z-index: 10;
+  z-index: 100;
 }
 
 .brand-mark {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 14px;
 }
 
 .logo-glow-wrapper {
@@ -108,10 +126,10 @@ button, input, select {
 }
 
 .brand-logo {
-  height: 48px;
+  height: 44px;
   width: auto;
   object-fit: contain;
-  filter: drop-shadow(0 4px 12px rgba(37, 99, 235, 0.2));
+  filter: drop-shadow(0 4px 10px rgba(0, 163, 166, 0.25));
   transition: transform 0.3s ease;
 }
 
@@ -127,38 +145,39 @@ button, input, select {
 .brand-name {
   font-family: var(--font-heading);
   font-weight: 900;
-  font-size: 1.35rem;
+  font-size: 1.25rem;
   letter-spacing: -0.02em;
-  color: var(--accent-navy);
+  color: var(--brand-navy);
 }
 
 .brand-tag {
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: var(--accent-teal);
+  color: var(--brand-cyan);
 }
 
 .site-nav {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 16px;
+  flex-wrap: wrap;
 }
 
 .site-nav a.nav-link {
   font-weight: 700;
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   color: var(--text-secondary);
-  padding: 8px 16px;
-  border-radius: 12px;
+  padding: 8px 14px;
+  border-radius: 10px;
   transition: all 0.2s ease;
 }
 
 .site-nav a.nav-link:hover,
 .site-nav a.nav-link.active {
-  color: var(--accent-primary);
-  background: rgba(37, 99, 235, 0.08);
+  color: var(--brand-navy);
+  background: rgba(0, 163, 166, 0.1);
 }
 
 /* ==========================================================================
@@ -169,49 +188,50 @@ button, input, select {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 13px 26px;
-  border-radius: 14px;
+  padding: 12px 24px;
+  border-radius: 12px;
   font-family: var(--font-heading);
   font-weight: 800;
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   cursor: pointer;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   border: none;
   outline: none;
   letter-spacing: 0.01em;
+  min-height: 44px;
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #1d4ed8 0%, #0284c7 50%, #059669 100%);
+  background: linear-gradient(135deg, var(--brand-navy) 0%, #162a56 50%, var(--brand-cyan) 100%);
   color: #ffffff !important;
-  box-shadow: 0 10px 25px -5px rgba(29, 78, 216, 0.35);
+  box-shadow: 0 8px 20px -4px rgba(11, 27, 61, 0.3);
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 14px 30px -5px rgba(29, 78, 216, 0.45);
+  box-shadow: 0 12px 26px -4px rgba(0, 163, 166, 0.4);
   color: #ffffff !important;
 }
 
 .btn-secondary {
   background: #ffffff;
-  color: var(--accent-navy) !important;
+  color: var(--brand-navy) !important;
   border: 1px solid var(--border-subtle);
-  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+  box-shadow: 0 2px 8px rgba(11, 27, 61, 0.04);
 }
 
 .btn-secondary:hover {
   background: #f8fafc;
-  border-color: var(--accent-primary);
-  color: var(--accent-primary) !important;
+  border-color: var(--brand-cyan);
+  color: var(--brand-cyan) !important;
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+  box-shadow: 0 6px 16px rgba(11, 27, 61, 0.08);
 }
 
 .theme-toggle-icon-btn,
 .lang-toggle-btn {
-  height: 42px;
-  border-radius: 14px;
+  height: 40px;
+  border-radius: 12px;
   background: #ffffff;
   border: 1px solid var(--border-light);
   color: var(--text-primary);
@@ -219,9 +239,9 @@ button, input, select {
   align-items: center;
   justify-content: center;
   font-weight: 800;
-  font-size: 0.88rem;
+  font-size: 0.85rem;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+  box-shadow: 0 2px 8px rgba(11, 27, 61, 0.04);
   transition: all 0.2s ease;
   padding: 0 14px;
 }
@@ -229,7 +249,7 @@ button, input, select {
 .theme-toggle-icon-btn:hover,
 .lang-toggle-btn:hover {
   transform: translateY(-2px);
-  border-color: var(--accent-primary);
+  border-color: var(--brand-cyan);
   box-shadow: var(--shadow-glow);
 }
 
@@ -250,9 +270,9 @@ button, input, select {
 .reg-form-card,
 .reg-passport-card {
   background: #ffffff !important;
-  border: 1px solid rgba(226, 232, 240, 0.95) !important;
+  border: 1px solid var(--border-navy) !important;
   color: var(--text-primary) !important;
-  border-radius: 24px !important;
+  border-radius: 20px !important;
   box-shadow: var(--shadow-card) !important;
   position: relative;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
@@ -261,13 +281,13 @@ button, input, select {
 .plan-card:hover,
 .stat-card:hover,
 .feature-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-3px);
   box-shadow: var(--shadow-elevated) !important;
-  border-color: rgba(37, 99, 235, 0.3) !important;
+  border-color: var(--brand-cyan) !important;
 }
 
 h1, h2, h3, h4, strong {
-  color: var(--text-primary) !important;
+  color: var(--brand-navy) !important;
   font-family: var(--font-heading);
 }
 
@@ -276,7 +296,7 @@ p, span, td, th {
 }
 
 /* ==========================================================================
-   FORM INPUTS & SELECTION CONTROLS
+   FORM INPUTS & SELECTION CONTROLS (IOS AUTO-ZOOM PREVENTED: 16PX)
    ========================================================================== */
 
 input[type="text"],
@@ -288,25 +308,26 @@ select,
 .custom-input,
 .custom-select {
   width: 100%;
-  padding: 14px 18px !important;
-  border-radius: 14px !important;
+  padding: 13px 16px !important;
+  border-radius: 12px !important;
   border: 1.5px solid #cbd5e1 !important;
   background: #ffffff !important;
-  color: #0f172a !important;
+  color: var(--brand-navy) !important;
   font-family: var(--font-body) !important;
-  font-size: 0.95rem !important;
+  font-size: 16px !important; /* Prevents auto-zoom on iOS mobile browsers */
   font-weight: 600 !important;
   outline: none !important;
   transition: all 0.2s ease !important;
-  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.02) !important;
+  box-shadow: 0 1px 4px rgba(11, 27, 61, 0.02) !important;
+  min-height: 48px;
 }
 
 input:focus,
 select:focus,
 .custom-input:focus,
 .custom-select:focus {
-  border-color: var(--accent-primary) !important;
-  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12) !important;
+  border-color: var(--brand-cyan) !important;
+  box-shadow: 0 0 0 3px rgba(0, 163, 166, 0.18) !important;
 }
 
 input::placeholder {
@@ -316,38 +337,38 @@ input::placeholder {
 
 select option {
   background: #ffffff !important;
-  color: #0f172a !important;
+  color: var(--brand-navy) !important;
   font-weight: 600 !important;
-  padding: 12px !important;
+  padding: 10px !important;
 }
 
 /* ==========================================================================
-   STATUS BADGES & ACCENTS
+   STATUS BADGES & HERO HEADERS
    ========================================================================== */
 
 .status-pill {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 6px 16px;
+  gap: 6px;
+  padding: 5px 14px;
   border-radius: 30px;
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   font-weight: 800;
   font-family: var(--font-heading);
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  background: rgba(5, 150, 105, 0.08) !important;
-  border: 1px solid rgba(5, 150, 105, 0.25) !important;
-  color: var(--accent-emerald) !important;
+  background: rgba(0, 163, 166, 0.1) !important;
+  border: 1px solid rgba(0, 163, 166, 0.3) !important;
+  color: var(--brand-cyan) !important;
 }
 
 .pulse-dot {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
-  background: var(--accent-emerald);
+  background: var(--brand-cyan);
   display: inline-block;
-  box-shadow: 0 0 10px var(--accent-emerald);
+  box-shadow: 0 0 8px var(--brand-cyan);
   animation: pulseLight 2s infinite ease-in-out;
 }
 
@@ -360,33 +381,29 @@ select option {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 6px 18px;
+  padding: 5px 16px;
   border-radius: 30px;
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   font-weight: 800;
   font-family: var(--font-heading);
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  background: rgba(37, 99, 235, 0.08);
-  border: 1px solid rgba(37, 99, 235, 0.25);
-  color: var(--accent-primary);
-  margin-bottom: 16px;
+  background: rgba(11, 27, 61, 0.06);
+  border: 1px solid rgba(11, 27, 61, 0.15);
+  color: var(--brand-navy);
+  margin-bottom: 14px;
 }
-
-/* ==========================================================================
-   HERO HEADERS & SECTIONS
-   ========================================================================== */
 
 .dashboard-hero,
 .reg-hero-banner {
   background: #ffffff !important;
-  border: 1px solid rgba(226, 232, 240, 0.95) !important;
-  border-radius: 28px !important;
-  padding: 44px 36px !important;
+  border: 1px solid var(--border-navy) !important;
+  border-radius: 24px !important;
+  padding: 36px 28px !important;
   box-shadow: var(--shadow-card) !important;
   position: relative;
   overflow: hidden;
-  margin-bottom: 36px;
+  margin-bottom: 30px;
 }
 
 .dashboard-hero::before,
@@ -397,114 +414,116 @@ select option {
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, #1d4ed8, #059669, #d97706);
+  background: linear-gradient(90deg, var(--brand-navy), var(--brand-cyan), var(--brand-gold));
 }
 
 .hero-copy h1 {
-  font-size: clamp(2rem, 3.2vw, 2.8rem);
+  font-size: clamp(1.75rem, 3.2vw, 2.5rem);
   font-weight: 900;
   letter-spacing: -0.03em;
-  color: var(--accent-navy);
-  margin-bottom: 14px;
+  color: var(--brand-navy);
+  margin-bottom: 12px;
 }
 
 .hero-copy p {
   color: var(--text-secondary);
-  font-size: 1.05rem;
+  font-size: 1rem;
   line-height: 1.6;
 }
 
 /* ==========================================================================
-   STAT GRIDS & TABLES
+   STAT GRIDS & FINANCIAL DATA TABLES
    ========================================================================== */
 
 .stat-grid {
   display: grid;
-  gap: 16px;
+  gap: 14px;
 }
 
 .stat-box {
-  padding: 20px 24px;
-  border-radius: 18px !important;
+  padding: 18px 20px;
+  border-radius: 16px !important;
   background: #ffffff !important;
-  border: 1px solid #e2e8f0 !important;
+  border: 1px solid var(--border-light) !important;
 }
 
 .stat-box p {
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: var(--text-muted);
-  margin-bottom: 6px;
+  margin-bottom: 4px;
 }
 
 .stat-box strong {
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   font-weight: 900;
-  color: var(--accent-navy);
+  color: var(--brand-navy);
 }
 
-/* Range Slider */
-input[type="range"] {
-  -webkit-appearance: none;
-  appearance: none;
-  height: 10px;
-  border-radius: 5px;
-  background: linear-gradient(90deg, #1d4ed8, #059669);
-  outline: none;
-  border: none !important;
-  padding: 0 !important;
+/* Scrollable Financial Tables on Mobile */
+.table-responsive-wrapper,
+.transaction-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 16px;
+  border: 1px solid var(--border-light);
 }
 
-input[type="range"]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  background: #ffffff;
-  border: 3px solid #1d4ed8;
-  box-shadow: 0 4px 12px rgba(29, 78, 216, 0.4);
-  cursor: pointer;
-  transition: transform 0.15s ease;
-}
-
-input[type="range"]::-webkit-slider-thumb:hover {
-  transform: scale(1.15);
-}
-
-/* Financial Tables */
 .transaction-table {
   width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
+  min-width: 540px; /* Ensures table readable on small mobile screens */
+  border-collapse: collapse;
 }
 
 .transaction-table th {
   background: #f8fafc;
-  padding: 14px 20px;
-  font-size: 0.8rem;
+  padding: 12px 16px;
+  font-size: 0.78rem;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: var(--text-muted);
   border-bottom: 1px solid #e2e8f0;
+  text-align: left;
 }
 
 .transaction-table td {
-  padding: 18px 20px;
+  padding: 14px 16px;
   border-bottom: 1px solid #f1f5f9;
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
 }
 
 .transaction-table tr:last-child td {
   border-bottom: none;
 }
 
-.transaction-table tr:hover td {
-  background: #f8fafc;
+/* Range Slider */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 8px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, var(--brand-navy), var(--brand-cyan));
+  outline: none;
+  border: none !important;
+  padding: 0 !important;
+  min-height: auto;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 3px solid var(--brand-navy);
+  box-shadow: 0 2px 8px rgba(11, 27, 61, 0.35);
+  cursor: pointer;
 }
 
 /* ==========================================================================
@@ -518,17 +537,10 @@ input[type="range"]::-webkit-slider-thumb:hover {
 
 .login-panel {
   display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap: 48px;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 40px;
   align-items: center;
-  margin-top: 30px;
-}
-
-@media (max-width: 960px) {
-  .login-panel {
-    grid-template-columns: 1fr;
-    gap: 32px;
-  }
+  margin-top: 24px;
 }
 
 .btn-social-full {
@@ -537,16 +549,16 @@ input[type="range"]::-webkit-slider-thumb:hover {
 
 .btn-social-full:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
+  box-shadow: 0 4px 14px rgba(11, 27, 61, 0.08);
 }
 
 .login-divider {
   display: flex;
   align-items: center;
   text-align: center;
-  margin: 18px 0;
+  margin: 16px 0;
   color: var(--text-muted);
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   font-weight: 800;
   letter-spacing: 0.08em;
 }
@@ -559,7 +571,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
 }
 
 .login-divider span {
-  padding: 0 14px;
+  padding: 0 12px;
 }
 
 .password-input-wrap {
@@ -571,7 +583,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
 
 .password-toggle-btn {
   position: absolute;
-  right: 14px;
+  right: 12px;
   background: none;
   border: none;
   cursor: pointer;
@@ -579,17 +591,114 @@ input[type="range"]::-webkit-slider-thumb:hover {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 8px;
 }
 
-.password-toggle-btn:hover {
-  color: var(--accent-primary);
-}
-
-/* Footer */
 .login-footer,
 .site-footer {
-  margin-top: 50px;
+  margin-top: 40px;
   text-align: center;
   color: #64748b;
-  font-size: 0.85rem;
+  font-size: 0.82rem;
+}
+
+/* ==========================================================================
+   MOBILE RESPONSIVENESS OVERHAUL (TABLETS & SMARTPHONES)
+   ========================================================================== */
+
+@media (max-width: 992px) {
+  .login-panel,
+  .reg-grid-layout {
+    grid-template-columns: 1fr !important;
+    gap: 28px !important;
+  }
+
+  .site-header {
+    padding: 14px 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-shell {
+    padding: 16px 14px 70px;
+  }
+
+  .site-header,
+  .brand-strip {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 14px 16px;
+    border-radius: 16px;
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+
+  .site-nav {
+    width: 100%;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .site-nav a.nav-link {
+    padding: 6px 10px;
+    font-size: 0.85rem;
+  }
+
+  .dashboard-hero,
+  .reg-hero-banner {
+    padding: 24px 18px !important;
+    border-radius: 18px !important;
+    margin-bottom: 20px !important;
+  }
+
+  .reg-form-card,
+  .login-card,
+  .reg-passport-card {
+    padding: 22px 18px !important;
+    border-radius: 18px !important;
+  }
+
+  /* Force 1-Column for Form Field Pairs on Mobile */
+  #fullKycForm div[style*="grid-template-columns"] {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+    margin-bottom: 16px !important;
+  }
+
+  .stat-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .brand-logo {
+    height: 38px;
+  }
+
+  .brand-name {
+    font-size: 1.15rem;
+  }
+
+  .btn {
+    width: 100%;
+    padding: 13px 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-copy h1 {
+    font-size: 1.5rem !important;
+  }
+
+  .brand-tag {
+    font-size: 0.68rem;
+  }
+
+  .progress-steps-bar {
+    gap: 8px !important;
+    margin-bottom: 20px !important;
+  }
+
+  .step-pill {
+    padding: 6px 12px !important;
+    font-size: 0.75rem !important;
+  }
 }
