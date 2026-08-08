@@ -21,18 +21,18 @@
     <style>
       :root {
         --reg-bg: #f8fafc;
-        --reg-card-bg: #ffffff;
-        --reg-border: #e2e8f0;
-        --reg-glow-teal: rgba(8, 145, 178, 0.15);
+        --reg-card-bg: rgba(255, 255, 255, 0.94);
+        --reg-border: rgba(0, 163, 166, 0.25);
+        --reg-glow-teal: rgba(0, 163, 166, 0.18);
         --reg-glow-gold: rgba(217, 119, 6, 0.15);
       }
       
       body.reg-new-look {
         background: #f8fafc;
         background-image: 
-          radial-gradient(circle at 10% 20%, rgba(8, 145, 178, 0.05) 0%, transparent 40%),
-          radial-gradient(circle at 90% 80%, rgba(217, 119, 6, 0.04) 0%, transparent 40%);
-        color: #0f172a;
+          radial-gradient(circle at 10% 20%, rgba(0, 163, 166, 0.08) 0%, transparent 40%),
+          radial-gradient(circle at 90% 80%, rgba(11, 27, 61, 0.06) 0%, transparent 40%);
+        color: var(--brand-navy);
         font-family: var(--font-body);
         min-height: 100vh;
       }
@@ -62,22 +62,22 @@
         font-weight: 700;
         font-family: var(--font-heading);
         background: #ffffff;
-        border: 1px solid #e2e8f0;
+        border: 1px solid var(--border-light);
         color: #64748b;
-        box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+        box-shadow: 0 2px 8px rgba(11, 27, 61, 0.04);
       }
 
       .step-pill.completed {
-        background: rgba(16, 185, 129, 0.1);
-        border-color: rgba(16, 185, 129, 0.3);
-        color: #059669;
+        background: rgba(5, 150, 105, 0.1);
+        border-color: rgba(5, 150, 105, 0.3);
+        color: var(--brand-emerald);
       }
 
       .step-pill.active {
         background: #ffffff;
-        border-color: var(--accent-teal);
-        color: var(--accent-teal);
-        box-shadow: 0 4px 16px rgba(8, 145, 178, 0.15);
+        border-color: var(--brand-cyan);
+        color: var(--brand-navy);
+        box-shadow: 0 4px 16px rgba(0, 163, 166, 0.2);
       }
 
       .step-number {
@@ -94,19 +94,21 @@
       }
 
       .step-pill.active .step-number {
-        background: var(--accent-teal);
+        background: var(--brand-cyan);
         color: #ffffff;
       }
 
       /* Hero Welcome Banner */
       .reg-hero-banner {
-        background: #ffffff;
-        border: 1px solid #e2e8f0;
-        border-radius: 24px;
+        background: var(--bg-card);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        border: 1px solid var(--reg-border);
+        border-radius: 28px;
         padding: 40px 30px;
         text-align: center;
-        margin-bottom: 40px;
-        box-shadow: 0 12px 36px rgba(15, 23, 42, 0.06);
+        margin-bottom: 36px;
+        box-shadow: var(--shadow-card);
         position: relative;
         overflow: hidden;
       }
@@ -117,8 +119,8 @@
         top: 0;
         left: 0;
         right: 0;
-        height: 3px;
-        background: linear-gradient(90deg, var(--accent-teal), var(--accent-gold), var(--accent-teal));
+        height: 4px;
+        background: linear-gradient(90deg, var(--brand-navy), var(--brand-cyan), var(--brand-gold));
       }
 
       /* Two Column Layout */
@@ -137,11 +139,12 @@
 
       /* Form Card */
       .reg-form-card {
-        background: #ffffff;
-        border: 1px solid #e2e8f0;
+        background: var(--bg-card);
+        backdrop-filter: blur(20px);
+        border: 1px solid var(--reg-border);
         border-radius: 24px;
         padding: 36px;
-        box-shadow: 0 12px 36px rgba(15, 23, 42, 0.06);
+        box-shadow: var(--shadow-card);
       }
 
       .form-section-title {
@@ -151,7 +154,7 @@
         font-family: var(--font-heading);
         font-size: 1.1rem;
         font-weight: 800;
-        color: var(--accent-teal);
+        color: var(--brand-cyan);
         margin-bottom: 18px;
         padding-bottom: 8px;
         border-bottom: 1px solid #f1f5f9;
