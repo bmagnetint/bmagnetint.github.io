@@ -192,19 +192,22 @@ button, input, select {
 }
 
 /* ==========================================================================
-   GTC FX / GTCgo SIGNATURE LOGIN LAYOUT (SPLIT HERO & AUTH)
+   GTC FX / GTCgo SIGNATURE LOGIN LAYOUT (STABLE ZERO-SHIFT GEOMETRY)
    ========================================================================== */
 
 .gtcgo-layout {
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
   gap: 40px;
-  align-items: center;
+  align-items: stretch;
   margin-top: 10px;
 }
 
 .gtcgo-hero-panel {
   padding-right: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .gtcgo-hero-badge {
@@ -276,15 +279,19 @@ button, input, select {
   flex-shrink: 0;
 }
 
-/* GTCgo Auth Card */
+/* GTCgo Auth Card — ROCK SOLID FIXED STABLE GEOMETRY */
 .gtcgo-auth-card {
   background: #ffffff;
   border: 1px solid var(--border-navy);
   border-radius: 28px;
-  padding: 40px 36px;
+  padding: 38px 36px 32px;
   box-shadow: var(--shadow-card);
   position: relative;
   overflow: hidden;
+  min-height: 670px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .gtcgo-auth-card::before {
@@ -300,14 +307,14 @@ button, input, select {
 .gtc-tab-bar {
   display: flex;
   border-bottom: 2px solid var(--border-light);
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
 .gtc-tab-btn {
   flex: 1;
-  padding: 13px;
+  padding: 12px;
   font-weight: 800;
-  font-size: 1rem;
+  font-size: 0.98rem;
   font-family: var(--font-heading);
   border: none;
   background: none;
@@ -329,17 +336,17 @@ button, input, select {
   background: #f8fafc;
   border: 1.5px solid var(--border-subtle);
   color: var(--gtc-navy);
-  padding: 13px;
+  padding: 12px;
   border-radius: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
   font-weight: 700;
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   cursor: pointer;
   transition: all 0.2s ease;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .gtc-passkey-btn:hover {
@@ -350,8 +357,8 @@ button, input, select {
 
 .gtc-social-row {
   display: flex;
-  gap: 12px;
-  margin-bottom: 20px;
+  gap: 10px;
+  margin-bottom: 16px;
 }
 
 .gtc-social-btn {
@@ -359,7 +366,7 @@ button, input, select {
   background: #ffffff;
   border: 1.5px solid var(--border-subtle);
   color: var(--gtc-navy);
-  padding: 11px;
+  padding: 10px;
   border-radius: 14px;
   display: flex;
   align-items: center;
@@ -377,6 +384,21 @@ button, input, select {
   box-shadow: 0 4px 12px rgba(13, 31, 66, 0.06);
 }
 
+/* Forms Equal Height Container — NO JUMPING OR SIZE SHIFT */
+.forms-viewport {
+  min-height: 290px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.login-form {
+  min-height: 290px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 /* Form Inputs */
 input[type="text"],
 input[type="email"],
@@ -387,7 +409,7 @@ select,
 .custom-input,
 .custom-select {
   width: 100%;
-  padding: 14px 18px !important;
+  padding: 13px 16px !important;
   border-radius: 14px !important;
   border: 1.5px solid #cbd5e1 !important;
   background: #ffffff !important;
@@ -398,7 +420,7 @@ select,
   outline: none !important;
   transition: all 0.2s ease !important;
   box-shadow: 0 1px 4px rgba(13, 31, 66, 0.02) !important;
-  min-height: 50px;
+  min-height: 48px;
 }
 
 input:focus,
@@ -718,9 +740,9 @@ input[type="range"]::-webkit-slider-thumb:hover {
   display: flex;
   align-items: center;
   text-align: center;
-  margin: 18px 0;
+  margin: 14px 0;
   color: var(--text-muted);
-  font-size: 0.76rem;
+  font-size: 0.74rem;
   font-weight: 800;
   letter-spacing: 0.08em;
 }
@@ -733,7 +755,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
 }
 
 .login-divider span {
-  padding: 0 12px;
+  padding: 0 10px;
 }
 
 .password-input-wrap {
@@ -818,5 +840,6 @@ input[type="range"]::-webkit-slider-thumb:hover {
   .gtcgo-auth-card {
     padding: 28px 20px;
     border-radius: 22px;
+    min-height: auto;
   }
 }

@@ -124,125 +124,136 @@
           </div>
         </section>
 
-        <!-- Right Column: GTCgo Client Auth Card -->
+        <!-- Right Column: GTCgo Client Auth Card (Rock-Solid Zero Size Change) -->
         <aside class="gtcgo-auth-card">
-          <div style="text-align: center; margin-bottom: 20px;">
-            <h2 style="font-size: 1.5rem; color: var(--gtc-navy); margin-bottom: 4px;">Client Portal Login</h2>
-            <p style="font-size: 0.88rem; color: var(--text-secondary);">Sign in to manage your AI Forex Bot portfolio</p>
-          </div>
-
-          <!-- GTC Tab Switcher -->
-          <div class="gtc-tab-bar">
-            <button type="button" id="tabSignInBtn" class="gtc-tab-btn active">
-              Sign In
-            </button>
-            <button type="button" id="tabRegisterBtn" class="gtc-tab-btn">
-              Register Account
-            </button>
-          </div>
-
-          <!-- Fast Biometric & Social Sign-In -->
+          <!-- Top Section -->
           <div>
-            <button type="button" id="passkeySignInBtn" class="gtc-passkey-btn">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="8" cy="15" r="4"></circle>
-                <line x1="10.85" y1="12.15" x2="19" y2="4"></line>
-                <line x1="18" y1="5" x2="20" y2="7"></line>
-                <line x1="15" y1="8" x2="17" y2="10"></line>
-              </svg>
-              <span>Fast Passkey Access (Face ID / Touch ID)</span>
-            </button>
-
-            <div class="gtc-social-row">
-              <button type="button" id="googleSignInBtn" class="gtc-social-btn">
-                <svg width="18" height="18" viewBox="0 0 24 24">
-                  <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-                  <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-                  <path fill="#FBBC05" d="M5.84 14.1c-.22-.66-.35-1.36-.35-2.1s.13-1.44.35-2.1V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.62z"/>
-                  <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
-                </svg>
-                <span>Google</span>
-              </button>
-
-              <button type="button" id="appleSignInBtn" class="gtc-social-btn">
-                <svg width="18" height="18" viewBox="0 0 170 170" fill="currentColor">
-                  <path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.34.13-9.13-1.9-14.34-6.1-3.23-2.64-7.14-7.27-11.73-13.9-6.3-9.13-11.19-19.42-14.65-30.88-3.46-11.47-5.19-22.37-5.19-32.7 0-15.52 4.12-28.18 12.35-37.99 8.23-9.8 18.52-14.77 30.88-14.9 5.37 0 10.88 1.27 16.53 3.82 5.65 2.54 9.68 3.82 12.1 3.82 1.95 0 6.09-1.34 12.41-4.01 6.33-2.68 11.83-3.9 16.52-3.67 9.8.76 17.88 4.54 24.27 11.34-11.45 6.94-17.06 16.73-16.83 29.38.25 9.94 4.12 18.23 11.61 24.87 7.48 6.64 16.27 10.37 26.35 11.19-2.28 6.79-5.32 13.7-9.12 20.73zm-27.23-107.7c0 6.34-2.31 12.37-6.93 18.1-4.63 5.73-10.29 9.38-16.98 10.96-.38-2.67-.57-5.16-.57-7.46 0-6.1 2.45-12.19 7.34-18.27 4.9-6.08 10.63-9.74 17.2-10.98.26 2.41.39 4.96.39 7.65z"/>
-                </svg>
-                <span>Apple ID</span>
-              </button>
-            </div>
-          </div>
-
-          <div class="login-divider">
-            <span>OR WITH EMAIL & PASSWORD</span>
-          </div>
-
-          <!-- Sign In Form -->
-          <form id="loginForm" class="login-form" style="display: block;">
-            <div style="margin-bottom: 16px;">
-              <label for="email" style="display: block; font-weight: 700; font-size: 0.85rem; margin-bottom: 6px; color: var(--gtc-navy);">
-                Investor Email Address
-              </label>
-              <input id="email" type="email" placeholder="test@bmagnetint.com" required />
+            <div style="text-align: center; margin-bottom: 16px;">
+              <h2 style="font-size: 1.45rem; color: var(--gtc-navy); margin-bottom: 2px;">Client Portal Login</h2>
+              <p style="font-size: 0.86rem; color: var(--text-secondary);">Sign in to manage your AI Forex Bot portfolio</p>
             </div>
 
-            <div style="margin-bottom: 20px;">
-              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-                <label for="password" style="font-weight: 700; font-size: 0.85rem; color: var(--gtc-navy);">
-                  Trading Password
-                </label>
-                <a href="register.html" style="font-size: 0.78rem; color: var(--gtc-teal); font-weight: 700;">Forgot Password?</a>
-              </div>
-              <div class="password-input-wrap">
-                <input id="password" type="password" placeholder="••••••••••••" required />
-                <button type="button" id="togglePasswordBtn" class="password-toggle-btn" title="Show / Hide Password">
-                  <svg class="eye-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                    <circle cx="12" cy="12" r="3"></circle>
+            <!-- GTC Tab Switcher -->
+            <div class="gtc-tab-bar">
+              <button type="button" id="tabSignInBtn" class="gtc-tab-btn active">
+                Access Portal
+              </button>
+              <button type="button" id="tabRegisterBtn" class="gtc-tab-btn">
+                Register Account
+              </button>
+            </div>
+
+            <!-- Fast Biometric & Social Sign-In -->
+            <div>
+              <button type="button" id="passkeySignInBtn" class="gtc-passkey-btn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="8" cy="15" r="4"></circle>
+                  <line x1="10.85" y1="12.15" x2="19" y2="4"></line>
+                  <line x1="18" y1="5" x2="20" y2="7"></line>
+                  <line x1="15" y1="8" x2="17" y2="10"></line>
+                </svg>
+                <span>Fast Passkey Access (Face ID / Touch ID)</span>
+              </button>
+
+              <div class="gtc-social-row">
+                <button type="button" id="googleSignInBtn" class="gtc-social-btn">
+                  <svg width="18" height="18" viewBox="0 0 24 24">
+                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                    <path fill="#FBBC05" d="M5.84 14.1c-.22-.66-.35-1.36-.35-2.1s.13-1.44.35-2.1V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.62z"/>
+                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
                   </svg>
+                  <span>Google</span>
+                </button>
+
+                <button type="button" id="appleSignInBtn" class="gtc-social-btn">
+                  <svg width="18" height="18" viewBox="0 0 170 170" fill="currentColor">
+                    <path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.34.13-9.13-1.9-14.34-6.1-3.23-2.64-7.14-7.27-11.73-13.9-6.3-9.13-11.19-19.42-14.65-30.88-3.46-11.47-5.19-22.37-5.19-32.7 0-15.52 4.12-28.18 12.35-37.99 8.23-9.8 18.52-14.77 30.88-14.9 5.37 0 10.88 1.27 16.53 3.82 5.65 2.54 9.68 3.82 12.1 3.82 1.95 0 6.09-1.34 12.41-4.01 6.33-2.68 11.83-3.9 16.52-3.67 9.8.76 17.88 4.54 24.27 11.34-11.45 6.94-17.06 16.73-16.83 29.38.25 9.94 4.12 18.23 11.61 24.87 7.48 6.64 16.27 10.37 26.35 11.19-2.28 6.79-5.32 13.7-9.12 20.73zm-27.23-107.7c0 6.34-2.31 12.37-6.93 18.1-4.63 5.73-10.29 9.38-16.98 10.96-.38-2.67-.57-5.16-.57-7.46 0-6.1 2.45-12.19 7.34-18.27 4.9-6.08 10.63-9.74 17.2-10.98.26 2.41.39 4.96.39 7.65z"/>
+                  </svg>
+                  <span>Apple ID</span>
                 </button>
               </div>
             </div>
 
-            <button type="submit" class="btn btn-primary" style="width: 100%; font-size: 1rem; font-weight: 800;">
-              Sign In to GTC Trading Portal →
-            </button>
-
-            <div style="margin-top: 14px; text-align: center; font-size: 0.82rem; color: var(--text-muted); background: #f8fafc; padding: 10px; border-radius: 12px; border: 1px solid var(--border-light);">
-              Official Test Login: <strong style="color: var(--gtc-navy);">test@bmagnetint.com</strong> | <strong style="color: var(--gtc-navy);">bmagnet@123</strong>
+            <div class="login-divider">
+              <span>OR WITH INVESTOR CREDENTIALS</span>
             </div>
-          </form>
+          </div>
 
-          <!-- Register Form -->
-          <form id="registerForm" class="login-form" style="display: none;">
-            <div style="margin-bottom: 16px;">
-              <label for="regFullName" style="display: block; font-weight: 700; font-size: 0.85rem; margin-bottom: 6px; color: var(--gtc-navy);">
-                Full Legal Name
-              </label>
-              <input id="regFullName" type="text" placeholder="e.g. Alexander Vance" required />
-            </div>
+          <!-- Forms Equal Height Container -->
+          <div class="forms-viewport">
+            <!-- Sign In Form -->
+            <form id="loginForm" class="login-form" style="display: flex;">
+              <div>
+                <div style="margin-bottom: 12px;">
+                  <label for="email" style="display: block; font-weight: 700; font-size: 0.82rem; margin-bottom: 4px; color: var(--gtc-navy);">
+                    Investor Email Address
+                  </label>
+                  <input id="email" type="email" placeholder="test@bmagnetint.com" required />
+                </div>
 
-            <div style="margin-bottom: 16px;">
-              <label for="regEmail" style="display: block; font-weight: 700; font-size: 0.85rem; margin-bottom: 6px; color: var(--gtc-navy);">
-                Investor Email Address
-              </label>
-              <input id="regEmail" type="email" placeholder="alexander.vance@wealth.com" required />
-            </div>
+                <div style="margin-bottom: 14px;">
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                    <label for="password" style="font-weight: 700; font-size: 0.82rem; color: var(--gtc-navy);">
+                      Trading Password
+                    </label>
+                    <a href="register.html" style="font-size: 0.76rem; color: var(--gtc-teal); font-weight: 700;">Forgot Password?</a>
+                  </div>
+                  <div class="password-input-wrap">
+                    <input id="password" type="password" placeholder="••••••••••••" required />
+                    <button type="button" id="togglePasswordBtn" class="password-toggle-btn" title="Show / Hide Password">
+                      <svg class="eye-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
 
-            <div style="margin-bottom: 20px;">
-              <label for="regPassword" style="display: block; font-weight: 700; font-size: 0.85rem; margin-bottom: 6px; color: var(--gtc-navy);">
-                Create Trading Password
-              </label>
-              <input id="regPassword" type="password" placeholder="Create secure password" required />
-            </div>
+              <div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; font-size: 0.96rem; font-weight: 800;">
+                  Sign In to GTC Trading Portal →
+                </button>
 
-            <button type="submit" class="btn btn-primary" style="width: 100%; font-size: 1rem; font-weight: 800;">
-              Continue to KYC Profile →
-            </button>
-          </form>
+                <div style="margin-top: 10px; text-align: center; font-size: 0.78rem; color: var(--text-muted); background: #f8fafc; padding: 8px; border-radius: 10px; border: 1px solid var(--border-light);">
+                  Test Login: <strong style="color: var(--gtc-navy);">test@bmagnetint.com</strong> | <strong style="color: var(--gtc-navy);">bmagnet@123</strong>
+                </div>
+              </div>
+            </form>
+
+            <!-- Register Form (Exactly Equal Height Structure) -->
+            <form id="registerForm" class="login-form" style="display: none;">
+              <div>
+                <div style="margin-bottom: 12px;">
+                  <label for="regFullName" style="display: block; font-weight: 700; font-size: 0.82rem; margin-bottom: 4px; color: var(--gtc-navy);">
+                    Full Legal Name
+                  </label>
+                  <input id="regFullName" type="text" placeholder="e.g. Alexander Vance" required />
+                </div>
+
+                <div style="margin-bottom: 14px;">
+                  <label for="regEmail" style="display: block; font-weight: 700; font-size: 0.82rem; margin-bottom: 4px; color: var(--gtc-navy);">
+                    Investor Email Address
+                  </label>
+                  <input id="regEmail" type="email" placeholder="alexander.vance@wealth.com" required />
+                </div>
+              </div>
+
+              <div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; font-size: 0.96rem; font-weight: 800;">
+                  Continue to KYC Profile →
+                </button>
+
+                <div style="margin-top: 10px; text-align: center; font-size: 0.78rem; color: var(--text-muted); background: #f8fafc; padding: 8px; border-radius: 10px; border: 1px solid var(--border-light);">
+                  Instant Onboarding: <strong style="color: var(--gtc-teal);">Verified 18+ Investor Access</strong>
+                </div>
+              </div>
+            </form>
+          </div>
 
           <!-- Security Footer Strip -->
-          <div style="margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--border-light); display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 0.76rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">
+          <div style="margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--border-light); display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 0.74rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">
             🔒 256-Bit SSL Encrypted | Segregated Tier-1 Vaults
           </div>
         </aside>
