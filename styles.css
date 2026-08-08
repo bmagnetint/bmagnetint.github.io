@@ -1,6 +1,6 @@
 /* ==========================================================================
-   B MAGNET INTERNATIONAL — Minimalist SaaS Split-Screen Architecture
-   Palette: Solid Indigo (#4338CA), Deep Charcoal/Navy (#0A1128), Clean Off-White (#F8FAFC), Teal (#00A896)
+   B MAGNET INTERNATIONAL — High-Security Investor Portal Architecture
+   Theme: Deep Midnight Blue (#071126), Solid Navy (#0D1F42), Slate Grey (#64748B), Sharp 6px Radii
    ========================================================================== */
 
 :root {
@@ -8,44 +8,43 @@
   --font-heading: 'Plus Jakarta Sans', 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   
-  /* Brand Palette */
-  --brand-navy: #0a1128;
-  --brand-navy-dark: #060b18;
-  --brand-indigo: #4338ca;
-  --brand-indigo-hover: #3730a3;
-  --brand-indigo-light: #4f46e5;
-  --brand-teal: #00a896;
-  --brand-cyan: #00a896;
-  --brand-gold: #d4af37;
-  --brand-emerald: #059669;
+  /* High-Security Corporate Palette */
+  --midnight-blue: #071126;
+  --midnight-blue-card: #0b1938;
+  --solid-navy: #0d1f42;
+  --solid-navy-hover: #07142d;
+  --solid-navy-light: #162f65;
+  --accent-teal: #00a896;
+  --accent-cyan: #00c4b4;
+  --accent-indigo: #4f46e5;
+  --accent-gold: #d4af37;
+  --accent-emerald: #059669;
   
-  /* Surface Colors */
+  /* Slate Grey Accents */
+  --slate-50: #f8fafc;
+  --slate-100: #f1f5f9;
+  --slate-200: #e2e8f0;
+  --slate-300: #cbd5e1;
+  --slate-400: #94a3b8;
+  --slate-500: #64748b;
+  --slate-600: #475569;
+  --slate-700: #334155;
+  --slate-800: #1e293b;
+  --slate-900: #0f172a;
+  
+  /* Surface */
   --bg-main: #f8fafc;
-  --bg-canvas: #f1f5f9;
   --bg-card: #ffffff;
   --bg-input: #ffffff;
   
-  /* Borders */
-  --border-light: #e2e8f0;
-  --border-subtle: #cbd5e1;
-  --border-navy: rgba(10, 17, 40, 0.1);
-  --border-brand: rgba(67, 56, 202, 0.3);
-  
-  /* Typography */
-  --text-primary: #0f172a;
-  --text-secondary: #334155;
-  --text-muted: #64748b;
+  /* Sharp 6px Radius Standard */
+  --radius-sharp: 6px;
+  --radius-card: 10px;
   
   /* Shadows */
-  --shadow-soft: 0 4px 20px -2px rgba(0, 0, 0, 0.05), 0 2px 6px -1px rgba(0, 0, 0, 0.03);
-  --shadow-card: 0 20px 40px -15px rgba(0, 0, 0, 0.07), 0 0 0 1px rgba(0, 0, 0, 0.04);
-  --shadow-indigo: 0 10px 25px -5px rgba(67, 56, 202, 0.35);
-  
-  /* Radii */
-  --radius-sm: 6px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
-  --radius-xl: 16px;
+  --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.05);
+  --shadow-card: 0 20px 40px -15px rgba(7, 17, 38, 0.08), 0 0 0 1px rgba(7, 17, 38, 0.04);
+  --shadow-navy-btn: 0 10px 25px -5px rgba(13, 31, 66, 0.4);
 }
 
 /* ==========================================================================
@@ -54,20 +53,21 @@
 
 [data-theme="dark"] {
   color-scheme: dark;
-  --bg-main: #060b18;
-  --bg-canvas: #040810;
-  --bg-card: #0b1528;
-  --bg-input: #081020;
+  --bg-main: #040914;
+  --bg-card: #091326;
+  --bg-input: #060d1d;
   
-  --border-light: rgba(255, 255, 255, 0.1);
-  --border-subtle: rgba(255, 255, 255, 0.15);
-  --border-navy: rgba(67, 56, 202, 0.25);
+  --slate-100: #0d1a33;
+  --slate-200: rgba(255, 255, 255, 0.12);
+  --slate-300: rgba(255, 255, 255, 0.18);
+  --slate-400: #94a3b8;
+  --slate-700: #cbd5e1;
+  --slate-900: #ffffff;
   
-  --text-primary: #ffffff;
-  --text-secondary: #94a3b8;
-  --text-muted: #64748b;
+  --solid-navy: #162f65;
+  --solid-navy-hover: #1e3d82;
   
-  --shadow-card: 0 20px 40px -15px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.08);
+  --shadow-card: 0 20px 40px -15px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.08);
 }
 
 * {
@@ -85,7 +85,7 @@ html {
 
 body {
   background-color: var(--bg-main);
-  color: var(--text-primary);
+  color: var(--slate-900);
   font-family: var(--font-body);
   min-height: 100vh;
   line-height: 1.6;
@@ -105,26 +105,26 @@ button, input, select {
 }
 
 /* ==========================================================================
-   MINIMALIST SAAS SPLIT-SCREEN LAYOUT
+   HIGH-SECURITY SPLIT-SCREEN LAYOUT
    ========================================================================== */
 
-.saas-split-body {
+.investor-split-body {
   min-height: 100vh;
   display: flex;
   align-items: stretch;
   background-color: var(--bg-main);
 }
 
-.saas-split-container {
+.investor-split-container {
   display: grid;
   grid-template-columns: 46% 54%;
   width: 100%;
   min-height: 100vh;
 }
 
-/* LEFT SIDE: BRAND PANEL */
-.saas-brand-panel {
-  background-color: #0a1128;
+/* LEFT SIDE: HIGH-END CORPORATE BRAND PANEL */
+.investor-brand-panel {
+  background-color: var(--midnight-blue);
   color: #ffffff;
   position: relative;
   overflow: hidden;
@@ -135,35 +135,37 @@ button, input, select {
   z-index: 1;
 }
 
-.saas-mesh-gradient-bg {
+.network-graph-mesh {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   background: 
-    radial-gradient(circle at 15% 20%, rgba(67, 56, 202, 0.45) 0%, transparent 50%),
-    radial-gradient(circle at 85% 85%, rgba(0, 168, 150, 0.35) 0%, transparent 55%),
-    radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.12) 0%, transparent 60%);
+    radial-gradient(circle at 15% 15%, rgba(0, 168, 150, 0.25) 0%, transparent 50%),
+    radial-gradient(circle at 85% 85%, rgba(79, 70, 229, 0.25) 0%, transparent 55%),
+    radial-gradient(circle at 50% 50%, rgba(13, 31, 66, 0.8) 0%, transparent 70%);
   pointer-events: none;
   z-index: -1;
 }
 
-.saas-grid-pattern {
+.network-svg-nodes {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-size: 32px 32px;
-  background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  top: -10%;
+  left: -10%;
+  width: 120%;
+  height: 120%;
+  opacity: 0.65;
   pointer-events: none;
-  z-index: -1;
+  animation: pulseMesh 12s ease-in-out infinite alternate;
 }
 
-.saas-panel-content {
+@keyframes pulseMesh {
+  0% { transform: scale(1) rotate(0deg); }
+  100% { transform: scale(1.05) rotate(1.5deg); }
+}
+
+.brand-panel-content {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -171,31 +173,34 @@ button, input, select {
   gap: 36px;
 }
 
-.saas-brand-header {
+.corporate-brand-header {
   display: flex;
   align-items: center;
   gap: 14px;
 }
 
-.saas-logo-badge {
-  width: 48px;
-  height: 48px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: var(--radius-md);
+.metallic-logo-badge {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.03));
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: var(--radius-sharp);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 6px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(10px);
 }
 
-.saas-brand-logo {
+.sleek-metallic-logo {
   height: 36px;
   width: auto;
   object-fit: contain;
+  filter: drop-shadow(0 2px 8px rgba(0, 168, 150, 0.3));
 }
 
-.saas-brand-title {
+.corporate-brand-title {
   font-family: var(--font-heading);
   font-size: 1.15rem;
   font-weight: 900;
@@ -204,156 +209,176 @@ button, input, select {
   margin-bottom: 2px;
 }
 
-.saas-brand-badge {
+.corporate-brand-badge {
   font-size: 0.68rem;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.14em;
-  color: var(--brand-teal);
+  color: var(--accent-teal);
   display: block;
 }
 
-.saas-hero-copy {
+.corporate-hero-text {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 12px;
 }
 
-.saas-main-heading {
-  font-family: var(--font-heading);
-  font-size: clamp(1.8rem, 2.5vw, 2.3rem);
+.corporate-security-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.72rem;
   font-weight: 800;
-  line-height: 1.25;
+  letter-spacing: 0.1em;
+  color: var(--accent-teal);
+  text-transform: uppercase;
+}
+
+.security-dot-pulse {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent-teal);
+  box-shadow: 0 0 10px var(--accent-teal);
+}
+
+.corporate-main-heading {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 2.8vw, 2.6rem);
+  font-weight: 900;
+  line-height: 1.15;
   color: #ffffff;
   letter-spacing: -0.03em;
 }
 
-.saas-main-tagline {
+.corporate-main-tagline {
   font-size: 0.95rem;
-  color: #94a3b8;
+  color: var(--slate-400);
   line-height: 1.6;
   max-width: 440px;
 }
 
-.saas-pillars-list {
+.corporate-pillars {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 16px;
 }
 
-.saas-pillar-item {
+.pillar-row {
   display: flex;
   align-items: flex-start;
   gap: 14px;
 }
 
-.saas-pillar-icon {
+.pillar-icon-box {
   width: 36px;
   height: 36px;
-  border-radius: var(--radius-md);
-  background: rgba(67, 56, 202, 0.25);
-  border: 1px solid rgba(67, 56, 202, 0.4);
-  color: #818cf8;
+  border-radius: var(--radius-sharp);
+  background: rgba(0, 168, 150, 0.15);
+  border: 1px solid rgba(0, 168, 150, 0.3);
+  color: var(--accent-teal);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
 }
 
-.saas-pillar-item strong {
+.pillar-row strong {
   display: block;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   color: #ffffff;
   margin-bottom: 2px;
+  font-weight: 700;
 }
 
-.saas-pillar-item p {
+.pillar-row p {
   font-size: 0.8rem;
-  color: #94a3b8;
+  color: var(--slate-400);
   line-height: 1.4;
 }
 
-.saas-panel-footer {
+.corporate-footer-strip {
   display: flex;
   align-items: center;
   gap: 10px;
   font-size: 0.76rem;
   font-weight: 700;
-  color: #64748b;
-  padding-top: 20px;
+  color: var(--slate-400);
+  padding-top: 18px;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.saas-cert-badge {
-  color: #cbd5e1;
-}
-
-/* RIGHT SIDE: LOGIN CARD PANEL */
-.saas-card-panel {
+/* RIGHT SIDE: PRISTINE CRISP WHITE INTERFACE CARD */
+.investor-card-panel {
   background: var(--bg-card);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 48px 32px;
+  padding: 48px 36px;
   position: relative;
   transition: background-color 0.3s ease;
 }
 
-.saas-card-container {
+.investor-card-wrapper {
   width: 100%;
   max-width: 420px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 16px;
 }
 
-/* Card Top Bar (Switcher + Actions) */
-.saas-card-top-bar {
+/* Top Utility Bar */
+.investor-top-bar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 12px;
 }
 
-.saas-capsule-switcher {
+.investor-capsule-switcher {
   display: flex;
-  background: var(--bg-canvas);
+  background: var(--slate-100);
   padding: 3px;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sharp);
+  border: 1px solid var(--slate-200);
 }
 
-.saas-capsule-btn {
+.investor-capsule-btn {
   padding: 6px 14px;
-  border-radius: var(--radius-sm);
+  border-radius: 4px;
   font-family: var(--font-heading);
   font-weight: 700;
-  font-size: 0.84rem;
+  font-size: 0.82rem;
   border: none;
   background: transparent;
-  color: var(--text-muted);
+  color: var(--slate-500);
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
-.saas-capsule-btn.active {
+.investor-capsule-btn.active {
   background: var(--bg-card);
-  color: var(--brand-indigo);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  color: var(--solid-navy);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
 }
 
-.saas-utility-actions {
+[data-theme="dark"] .investor-capsule-btn.active {
+  color: #ffffff;
+}
+
+.investor-utility-group {
   display: flex;
   gap: 8px;
 }
 
-.saas-icon-btn {
+.investor-icon-btn {
   height: 32px;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-sharp);
   background: var(--bg-card);
-  border: 1px solid var(--border-light);
-  color: var(--text-primary);
+  border: 1px solid var(--slate-200);
+  color: var(--slate-700);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -364,276 +389,274 @@ button, input, select {
   transition: all 0.2s ease;
 }
 
-.saas-icon-btn:hover {
-  border-color: var(--brand-indigo);
-  color: var(--brand-indigo);
+.investor-icon-btn:hover {
+  border-color: var(--solid-navy);
+  color: var(--solid-navy);
 }
 
-/* Header */
-.saas-card-header {
-  margin-top: 4px;
+/* Form Header */
+.investor-form-header {
+  margin-top: 2px;
 }
 
-.saas-card-title {
+.investor-heading {
   font-family: var(--font-heading);
   font-size: 1.65rem;
-  font-weight: 800;
-  color: var(--text-primary);
-  letter-spacing: -0.02em;
+  font-weight: 900;
+  color: var(--slate-900);
+  letter-spacing: -0.025em;
   margin-bottom: 4px;
 }
 
-.saas-card-subtitle {
-  font-size: 0.88rem;
-  color: var(--text-secondary);
+.investor-subheading {
+  font-size: 0.86rem;
+  color: var(--slate-500);
 }
 
-/* SSO Single Click Grid */
-.saas-sso-grid {
+/* Multi-Factor Authentication & SSO Row */
+.mfa-sso-container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
 }
 
-.saas-sso-btn {
-  height: 42px;
-  border-radius: var(--radius-md);
-  border: 1.5px solid var(--border-light);
+.mfa-auth-btn {
+  height: 40px;
+  border-radius: var(--radius-sharp);
+  border: 1.5px solid var(--slate-200);
   background: var(--bg-card);
-  color: var(--text-primary);
+  color: var(--slate-800);
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 6px;
   font-weight: 700;
-  font-size: 0.84rem;
+  font-size: 0.8rem;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
-.saas-sso-btn:hover {
-  border-color: var(--brand-indigo);
+[data-theme="dark"] .mfa-auth-btn {
+  color: #ffffff;
+}
+
+.mfa-auth-btn:hover {
+  border-color: var(--solid-navy);
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
 }
 
 /* Subtle Divider */
-.saas-divider {
+.investor-divider {
   display: flex;
   align-items: center;
   text-align: center;
   margin: 4px 0;
-  color: var(--text-muted);
-  font-size: 0.74rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
+  color: var(--slate-400);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
-.saas-divider::before,
-.saas-divider::after {
+.investor-divider::before,
+.investor-divider::after {
   content: '';
   flex: 1;
-  border-bottom: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--slate-200);
 }
 
-.saas-divider span {
+.investor-divider span {
   padding: 0 10px;
 }
 
-/* Floating Label Inputs */
-.saas-form-body {
+/* Floating Label Inputs with Sharp 6px Radius */
+.investor-form-element {
   display: flex;
   flex-direction: column;
   gap: 14px;
   width: 100%;
 }
 
-.saas-floating-group {
+.floating-input-container {
   position: relative;
   width: 100%;
 }
 
-.saas-floating-input {
+.floating-field {
   width: 100%;
   height: 52px;
   padding: 20px 42px 6px 42px !important;
-  border-radius: var(--radius-md) !important;
-  border: 1.5px solid var(--border-light) !important;
+  border-radius: var(--radius-sharp) !important;
+  border: 1.5px solid var(--slate-200) !important;
   background: var(--bg-input) !important;
-  color: var(--text-primary) !important;
+  color: var(--slate-900) !important;
   font-size: 0.94rem !important;
   font-weight: 600 !important;
   outline: none !important;
   transition: all 0.2s ease !important;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02) !important;
+  box-shadow: var(--shadow-subtle) !important;
 }
 
-.saas-floating-input:focus {
-  border-color: var(--brand-indigo) !important;
-  box-shadow: 0 0 0 3px rgba(67, 56, 202, 0.15) !important;
+.floating-field:focus {
+  border-color: var(--solid-navy) !important;
+  box-shadow: 0 0 0 3px rgba(13, 31, 66, 0.12) !important;
 }
 
-.saas-floating-label {
+[data-theme="dark"] .floating-field:focus {
+  border-color: var(--accent-teal) !important;
+  box-shadow: 0 0 0 3px rgba(0, 168, 150, 0.2) !important;
+}
+
+.floating-label-text {
   position: absolute;
   top: 15px;
   left: 42px;
   font-size: 0.85rem;
   font-weight: 600;
-  color: var(--text-muted);
+  color: var(--slate-500);
   pointer-events: none;
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-html[dir="rtl"] .saas-floating-label {
+html[dir="rtl"] .floating-label-text {
   left: auto;
   right: 42px;
 }
 
-.saas-floating-input:focus ~ .saas-floating-label,
-.saas-floating-input:not(:placeholder-shown) ~ .saas-floating-label {
+.floating-field:focus ~ .floating-label-text,
+.floating-field:not(:placeholder-shown) ~ .floating-label-text {
   top: 6px;
   font-size: 0.68rem;
   font-weight: 800;
-  color: var(--brand-indigo);
+  color: var(--solid-navy);
   text-transform: uppercase;
   letter-spacing: 0.06em;
 }
 
-.saas-input-icon {
+[data-theme="dark"] .floating-field:focus ~ .floating-label-text,
+[data-theme="dark"] .floating-field:not(:placeholder-shown) ~ .floating-label-text {
+  color: var(--accent-teal);
+}
+
+.field-icon-left {
   position: absolute;
   left: 14px;
   top: 50%;
   transform: translateY(-50%);
-  color: var(--text-muted);
+  color: var(--slate-400);
   display: flex;
   align-items: center;
   pointer-events: none;
 }
 
-html[dir="rtl"] .saas-input-icon {
+html[dir="rtl"] .field-icon-left {
   left: auto;
   right: 14px;
 }
 
-.saas-password-toggle {
+.password-reveal-btn {
   position: absolute;
   right: 12px;
   top: 50%;
   transform: translateY(-50%);
   background: none;
   border: none;
-  color: var(--text-muted);
+  color: var(--slate-400);
   cursor: pointer;
   padding: 6px;
   display: flex;
   align-items: center;
 }
 
-html[dir="rtl"] .saas-password-toggle {
+html[dir="rtl"] .password-reveal-btn {
   right: auto;
   left: 12px;
 }
 
-.saas-password-toggle:hover {
-  color: var(--brand-indigo);
+.password-reveal-btn:hover {
+  color: var(--solid-navy);
 }
 
-/* Remember Me & Forgot Password */
-.saas-form-options {
+/* Remember Account & Discreet Forgot Link */
+.investor-options-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-size: 0.82rem;
 }
 
-.saas-checkbox-label {
+.remember-account-toggle {
   display: inline-flex;
   align-items: center;
   gap: 6px;
   cursor: pointer;
-  color: var(--text-secondary);
+  color: var(--slate-600);
   font-weight: 600;
 }
 
-.saas-checkbox {
+.sharp-checkbox {
   width: 16px;
   height: 16px;
-  border-radius: var(--radius-sm);
-  accent-color: var(--brand-indigo);
+  border-radius: 3px;
+  accent-color: var(--solid-navy);
   cursor: pointer;
 }
 
-.saas-forgot-link {
-  color: var(--brand-indigo);
+.discreet-forgot-link {
+  color: var(--slate-500);
   font-weight: 700;
 }
 
-.saas-forgot-link:hover {
+.discreet-forgot-link:hover {
+  color: var(--solid-navy);
   text-decoration: underline;
 }
 
-/* Prominent Primary Solid Indigo Sign In Button */
-.saas-btn-indigo {
+/* Bold Solid Navy-Blue "Authenticate & Enter" Button (6px Radius) */
+.btn-navy-authenticate {
   width: 100%;
-  height: 48px;
-  background: var(--brand-indigo);
+  height: 50px;
+  background: var(--solid-navy);
   color: #ffffff !important;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-sharp);
   font-family: var(--font-heading);
   font-weight: 800;
-  font-size: 0.95rem;
+  font-size: 0.96rem;
   border: none;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: var(--shadow-indigo);
+  box-shadow: var(--shadow-navy-btn);
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   margin-top: 4px;
 }
 
-.saas-btn-indigo:hover {
-  background: var(--brand-indigo-hover);
+.btn-navy-authenticate:hover {
+  background: var(--solid-navy-hover);
   transform: translateY(-1px);
-  box-shadow: 0 12px 25px -4px rgba(67, 56, 202, 0.45);
+  box-shadow: 0 14px 28px -4px rgba(13, 31, 66, 0.5);
 }
 
-.saas-btn-passkey {
-  width: 100%;
-  height: 42px;
-  background: var(--bg-card);
-  border: 1.5px solid var(--border-light);
-  border-radius: var(--radius-md);
-  color: var(--text-primary);
-  font-weight: 700;
-  font-size: 0.84rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.saas-btn-passkey:hover {
-  border-color: var(--brand-indigo);
-  background: rgba(67, 56, 202, 0.04);
-}
-
-.saas-card-footer {
+.investor-card-footer {
   text-align: center;
   font-size: 0.84rem;
-  color: var(--text-secondary);
+  color: var(--slate-500);
   margin-top: 8px;
 }
 
-.saas-footer-accent {
-  color: var(--brand-indigo);
+.investor-footer-link {
+  color: var(--solid-navy);
   font-weight: 700;
   margin-left: 4px;
 }
 
-.saas-footer-accent:hover {
+[data-theme="dark"] .investor-footer-link {
+  color: var(--accent-teal);
+}
+
+.investor-footer-link:hover {
   text-decoration: underline;
 }
 
@@ -659,8 +682,8 @@ html[dir="rtl"] .saas-password-toggle {
   background: var(--bg-card);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid var(--border-navy);
-  border-radius: 20px;
+  border: 1px solid var(--slate-200);
+  border-radius: var(--radius-card);
   box-shadow: var(--shadow-card);
   position: relative;
   z-index: 100;
@@ -684,7 +707,7 @@ html[dir="rtl"] .saas-password-toggle {
   font-weight: 900;
   font-size: 1.35rem;
   letter-spacing: -0.02em;
-  color: var(--text-primary);
+  color: var(--slate-900);
 }
 
 .brand-tag {
@@ -692,7 +715,7 @@ html[dir="rtl"] .saas-password-toggle {
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: var(--brand-teal);
+  color: var(--accent-teal);
 }
 
 .site-nav {
@@ -705,49 +728,47 @@ html[dir="rtl"] .saas-password-toggle {
 .site-nav a.nav-link {
   font-weight: 700;
   font-size: 0.92rem;
-  color: var(--text-secondary);
+  color: var(--slate-600);
   padding: 8px 16px;
-  border-radius: 12px;
+  border-radius: var(--radius-sharp);
   transition: all 0.2s ease;
 }
 
 .site-nav a.nav-link:hover,
 .site-nav a.nav-link.active {
-  color: var(--text-primary);
-  background: rgba(0, 168, 150, 0.12);
+  color: var(--solid-navy);
+  background: rgba(0, 168, 150, 0.1);
 }
 
 .theme-toggle-icon-btn,
 .lang-toggle-btn {
-  height: 38px;
-  border-radius: 12px;
+  height: 36px;
+  border-radius: var(--radius-sharp);
   background: var(--bg-card);
-  border: 1px solid var(--border-subtle);
-  color: var(--text-primary);
+  border: 1px solid var(--slate-200);
+  color: var(--slate-900);
   display: inline-flex;
   align-items: center;
   justify-content: center;
   font-weight: 800;
   font-size: 0.82rem;
   cursor: pointer;
-  box-shadow: 0 2px 8px rgba(13, 31, 66, 0.04);
-  transition: all 0.2s ease;
   padding: 0 14px;
+  transition: all 0.2s ease;
 }
 
 .theme-toggle-icon-btn:hover,
 .lang-toggle-btn:hover {
-  border-color: var(--brand-teal);
-  box-shadow: 0 10px 30px rgba(0, 168, 150, 0.18);
-  color: var(--brand-teal);
+  border-color: var(--solid-navy);
+  color: var(--solid-navy);
 }
 
 /* Cards & Panels */
 .dashboard-hero,
 .reg-hero-banner {
   background: var(--bg-card) !important;
-  border: 1px solid var(--border-navy) !important;
-  border-radius: 24px !important;
+  border: 1px solid var(--slate-200) !important;
+  border-radius: var(--radius-card) !important;
   box-shadow: var(--shadow-card) !important;
   position: relative;
   overflow: hidden;
@@ -761,7 +782,7 @@ html[dir="rtl"] .saas-password-toggle {
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, var(--brand-navy), var(--brand-teal), var(--brand-gold));
+  background: linear-gradient(90deg, var(--solid-navy), var(--accent-teal), var(--accent-gold));
 }
 
 .plan-card,
@@ -772,8 +793,8 @@ html[dir="rtl"] .saas-password-toggle {
 .reg-form-card,
 .reg-passport-card {
   background: var(--bg-card) !important;
-  border: 1px solid var(--border-navy) !important;
-  border-radius: 24px !important;
+  border: 1px solid var(--slate-200) !important;
+  border-radius: var(--radius-card) !important;
   box-shadow: var(--shadow-card) !important;
   position: relative;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
@@ -784,7 +805,7 @@ html[dir="rtl"] .saas-password-toggle {
 .feature-card:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-card) !important;
-  border-color: var(--brand-teal) !important;
+  border-color: var(--accent-teal) !important;
 }
 
 .reg-grid-layout {
@@ -817,13 +838,13 @@ html[dir="rtl"] .saas-password-toggle {
   font-weight: 700;
   font-size: 0.85rem;
   background: var(--bg-card);
-  border: 1px solid var(--border-light);
-  color: var(--text-muted);
+  border: 1px solid var(--slate-200);
+  color: var(--slate-500);
 }
 
 .step-pill.active {
-  border-color: var(--brand-teal);
-  color: var(--text-primary);
+  border-color: var(--accent-teal);
+  color: var(--slate-900);
   box-shadow: 0 4px 12px rgba(0, 168, 150, 0.12);
 }
 
@@ -836,17 +857,17 @@ html[dir="rtl"] .saas-password-toggle {
   justify-content: center;
   font-size: 0.75rem;
   font-weight: 800;
-  background: #e2e8f0;
-  color: var(--text-muted);
+  background: var(--slate-200);
+  color: var(--slate-500);
 }
 
 .pulse-dot {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--brand-teal);
+  background: var(--accent-teal);
   display: inline-block;
-  box-shadow: 0 0 10px var(--brand-teal);
+  box-shadow: 0 0 10px var(--accent-teal);
 }
 
 .status-pill {
@@ -854,25 +875,25 @@ html[dir="rtl"] .saas-password-toggle {
   align-items: center;
   gap: 6px;
   padding: 4px 12px;
-  border-radius: 12px;
+  border-radius: var(--radius-sharp);
   font-size: 0.76rem;
   font-weight: 800;
   background: rgba(0, 168, 150, 0.1);
-  color: var(--brand-teal);
+  color: var(--accent-teal);
   border: 1px solid rgba(0, 168, 150, 0.2);
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--brand-navy) 0%, var(--brand-indigo) 50%, var(--brand-teal) 100%);
+  background: var(--solid-navy);
   color: #ffffff !important;
   padding: 13px 26px;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-sharp);
   font-family: var(--font-heading);
   font-weight: 800;
   font-size: 0.95rem;
   border: none;
   cursor: pointer;
-  box-shadow: var(--shadow-indigo);
+  box-shadow: var(--shadow-navy-btn);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -880,10 +901,10 @@ html[dir="rtl"] .saas-password-toggle {
 
 .btn-secondary {
   background: var(--bg-card);
-  color: var(--text-primary) !important;
-  border: 1px solid var(--border-subtle);
+  color: var(--slate-900) !important;
+  border: 1px solid var(--slate-200);
   padding: 13px 26px;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-sharp);
   font-family: var(--font-heading);
   font-weight: 800;
   font-size: 0.95rem;
@@ -897,7 +918,7 @@ html[dir="rtl"] .saas-password-toggle {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(10, 17, 40, 0.7);
+  background: rgba(7, 17, 38, 0.75);
   backdrop-filter: blur(8px);
   z-index: 9999;
   display: flex;
@@ -908,8 +929,8 @@ html[dir="rtl"] .saas-password-toggle {
 
 .modal-card {
   background: var(--bg-card);
-  border: 1px solid var(--border-light);
-  border-radius: 20px;
+  border: 1px solid var(--slate-200);
+  border-radius: var(--radius-card);
   padding: 32px;
   width: 100%;
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
@@ -918,19 +939,19 @@ html[dir="rtl"] .saas-password-toggle {
 .site-footer {
   text-align: center;
   font-size: 0.8rem;
-  color: var(--text-muted);
+  color: var(--slate-500);
   padding: 20px 0;
 }
 
-/* Responsive Split-Screen Layout */
+/* Responsive Split-Screen */
 @media (max-width: 992px) {
-  .saas-split-container {
+  .investor-split-container {
     grid-template-columns: 1fr;
   }
-  .saas-brand-panel {
+  .investor-brand-panel {
     padding: 40px 24px;
   }
-  .saas-card-panel {
+  .investor-card-panel {
     padding: 40px 20px;
   }
   .reg-grid-layout {
