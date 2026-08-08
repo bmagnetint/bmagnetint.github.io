@@ -41,7 +41,7 @@
           </a>
 
           <button id="langToggleBtn" class="lang-toggle-btn" title="Switch Language">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px;">
               <circle cx="12" cy="12" r="10"></circle>
               <line x1="2" y1="12" x2="22" y2="12"></line>
               <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
@@ -68,14 +68,14 @@
       </header>
 
       <!-- Step Progress Bar -->
-      <div class="progress-steps-bar" style="display: flex; justify-content: center; gap: 16px; margin-bottom: 32px; flex-wrap: wrap;">
+      <div class="progress-steps-bar" style="display: flex; justify-content: center; gap: 16px; margin-bottom: 28px; flex-wrap: wrap;">
         <div class="step-pill completed">
           <span class="step-number" style="background: var(--brand-emerald); color: #fff;">✓</span>
           <span>1. Credentials Authorization</span>
         </div>
         <div class="step-pill active">
-          <span class="step-number" style="background: var(--brand-cyan); color: #fff;">2</span>
-          <span>2. Full Investor Profile & KYC</span>
+          <span class="step-number" style="background: var(--brand-teal); color: #fff;">2</span>
+          <span>2. Full Investor Profile</span>
         </div>
         <div class="step-pill">
           <span class="step-number">3</span>
@@ -83,59 +83,59 @@
         </div>
       </div>
 
-      <!-- Hero Welcome Banner -->
-      <section class="reg-hero-banner">
-        <div class="eyebrow" style="margin-bottom: 12px;">
+      <!-- Clean Header Banner -->
+      <section class="reg-hero-banner" style="padding: 28px 32px; margin-bottom: 24px;">
+        <div class="eyebrow" style="margin-bottom: 8px;">
           <span class="pulse-dot"></span>
-          <span id="welcomeEyebrow">INSTITUTIONAL INVESTOR ONBOARDING</span>
+          <span>INSTITUTIONAL INVESTOR ONBOARDING</span>
         </div>
-        <h1 id="welcomeInvestorTitle" style="font-size: clamp(1.8rem, 3.2vw, 2.6rem); color: var(--brand-navy); margin-bottom: 10px;">
-          Welcome, <span id="welcomeInvestorName" style="color: var(--brand-cyan);">Valued Investor</span>
+        <h1 id="welcomeInvestorTitle" style="font-size: clamp(1.6rem, 2.8vw, 2.2rem); color: var(--brand-navy); margin-bottom: 6px;">
+          Welcome, <span id="welcomeInvestorName" style="color: var(--brand-teal);">Valued Investor</span>
         </h1>
-        <p id="welcomeSubtitle" style="color: var(--text-secondary); max-width: 680px; margin: 0 auto; font-size: 1rem;">
-          Please complete your 9 official client verification details below to configure your high-yield automated AI Forex bot portfolio.
+        <p id="welcomeSubtitle" style="color: var(--text-secondary); max-width: 680px; font-size: 0.95rem;">
+          Complete your investor details below to configure your high-yield automated AI Forex bot portfolio.
         </p>
       </section>
 
-      <!-- Two-Column Form and Live Passport Card -->
+      <!-- Perfectly Aligned 2-Column Layout -->
       <main class="reg-grid-layout">
-        <!-- Left: Form Inputs -->
+        <!-- Left: Clean Form -->
         <section class="reg-form-card">
-          <form id="fullKycForm">
-            <!-- Group 1 -->
-            <div style="margin-bottom: 24px;">
-              <h3 class="form-section-title">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 6px;">
+          <form id="fullKycForm" style="display: flex; flex-direction: column; gap: 20px;">
+            <!-- Group 1: Identity -->
+            <div>
+              <h3 style="font-size: 1.05rem; color: var(--brand-navy); margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                   <circle cx="12" cy="7" r="4"></circle>
                 </svg>
                 <span>1. Investor Identity Details</span>
               </h3>
-              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
                 <div>
-                  <label for="kycFullName" style="display: block; font-size: 0.85rem; font-weight: 700; color: var(--brand-navy); margin-bottom: 6px;">Full Legal Name</label>
+                  <label for="kycFullName" style="display: block; font-size: 0.82rem; font-weight: 700; color: var(--brand-navy); margin-bottom: 6px;">Full Legal Name</label>
                   <input type="text" id="kycFullName" placeholder="e.g. Alexander Vance" required />
                 </div>
                 <div>
-                  <label for="kycEmail" style="display: block; font-size: 0.85rem; font-weight: 700; color: var(--brand-navy); margin-bottom: 6px;">Investor Email</label>
+                  <label for="kycEmail" style="display: block; font-size: 0.82rem; font-weight: 700; color: var(--brand-navy); margin-bottom: 6px;">Investor Email Address</label>
                   <input type="email" id="kycEmail" placeholder="alexander.vance@wealth.com" required />
                 </div>
               </div>
             </div>
 
-            <!-- Group 2 -->
-            <div style="margin-bottom: 24px;">
-              <h3 class="form-section-title">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 6px;">
+            <!-- Group 2: Contact Channels -->
+            <div>
+              <h3 style="font-size: 1.05rem; color: var(--brand-navy); margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
                 </svg>
-                <span>2. Direct Contact Channels</span>
+                <span>2. Contact Channels</span>
               </h3>
-              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
                 <div>
-                  <label for="kycPhone" style="display: block; font-size: 0.85rem; font-weight: 700; color: var(--brand-navy); margin-bottom: 6px;">Primary Phone Number</label>
+                  <label for="kycPhone" style="display: block; font-size: 0.82rem; font-weight: 700; color: var(--brand-navy); margin-bottom: 6px;">Phone Number</label>
                   <div style="display: flex; gap: 8px;">
-                    <select id="kycPhoneCode" style="width: 110px; flex-shrink: 0; padding: 12px 8px !important;">
+                    <select id="kycPhoneCode" style="width: 100px; flex-shrink: 0; padding: 12px 6px !important;">
                       <option value="+1">🇺🇸 +1</option>
                       <option value="+44">🇬🇧 +44</option>
                       <option value="+971" selected>🇦🇪 +971</option>
@@ -149,31 +149,30 @@
                   </div>
                 </div>
                 <div>
-                  <label for="kycWhatsApp" style="display: block; font-size: 0.85rem; font-weight: 700; color: var(--brand-navy); margin-bottom: 6px;">WhatsApp VIP Number</label>
+                  <label for="kycWhatsApp" style="display: block; font-size: 0.82rem; font-weight: 700; color: var(--brand-navy); margin-bottom: 6px;">WhatsApp VIP Number</label>
                   <input type="tel" id="kycWhatsApp" placeholder="+971 50 123 4567" required />
                 </div>
               </div>
             </div>
 
-            <!-- Group 3 -->
-            <div style="margin-bottom: 24px;">
-              <h3 class="form-section-title">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 6px;">
+            <!-- Group 3: Jurisdiction & Date of Birth -->
+            <div>
+              <h3 style="font-size: 1.05rem; color: var(--brand-navy); margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                   <circle cx="12" cy="10" r="3"></circle>
                 </svg>
-                <span>3. Domicile & Age Verification</span>
+                <span>3. Jurisdiction & Date of Birth</span>
               </h3>
-              <div style="margin-bottom: 16px;">
-                <label for="kycAddress" style="display: block; font-size: 0.85rem; font-weight: 700; color: var(--brand-navy); margin-bottom: 6px;">Residential / Physical Address</label>
-                <input type="text" id="kycAddress" placeholder="Suite 402, Financial Tower, DIFC, Dubai" required />
-              </div>
-              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px;">
                 <div>
-                  <label for="kycRegion" style="display: block; font-size: 0.85rem; font-weight: 700; color: var(--brand-navy); margin-bottom: 6px;">Country / Jurisdiction Region</label>
+                  <label for="kycAddress" style="display: block; font-size: 0.82rem; font-weight: 700; color: var(--brand-navy); margin-bottom: 6px;">Physical / Residential Address</label>
+                  <input type="text" id="kycAddress" placeholder="Financial Center, DIFC, Dubai" required />
+                </div>
+                <div>
+                  <label for="kycRegion" style="display: block; font-size: 0.82rem; font-weight: 700; color: var(--brand-navy); margin-bottom: 6px;">Country Region</label>
                   <select id="kycRegion" required>
-                    <option value="" disabled selected>-- Select Official Region --</option>
-                    <option value="UAE">🇦🇪 United Arab Emirates</option>
+                    <option value="UAE" selected>🇦🇪 United Arab Emirates</option>
                     <option value="Saudi Arabia">🇸🇦 Saudi Arabia</option>
                     <option value="Switzerland">🇨🇭 Switzerland</option>
                     <option value="United Kingdom">🇬🇧 United Kingdom</option>
@@ -187,49 +186,44 @@
                     <option value="Other">🌐 Global International</option>
                   </select>
                 </div>
-                <div>
-                  <label for="kycDobInput" style="display: block; font-size: 0.85rem; font-weight: 700; color: var(--brand-navy); margin-bottom: 6px;">
-                    Date of Birth
-                  </label>
-                  <div style="display: flex; gap: 8px;">
-                    <input type="text" id="kycDobInput" placeholder="Click to Select Date of Birth" readonly required style="cursor: pointer; background: #ffffff;" />
-                    <button type="button" id="openDobCalendarBtn" class="btn btn-secondary" style="padding: 12px 16px; flex-shrink: 0; display: flex; align-items: center;" title="Open Calendar">
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                        <line x1="16" y1="2" x2="16" y2="6"></line>
-                        <line x1="8" y1="2" x2="8" y2="6"></line>
-                        <line x1="3" y1="10" x2="21" y2="10"></line>
-                      </svg>
-                    </button>
-                  </div>
-                  <span id="dobAgeStatus" style="display: block; font-size: 0.78rem; font-weight: 700; margin-top: 4px; color: var(--text-muted);">
-                    Official verified date of birth.
-                  </span>
+              </div>
+              <div>
+                <label for="kycDobInput" style="display: block; font-size: 0.82rem; font-weight: 700; color: var(--brand-navy); margin-bottom: 6px;">Date of Birth</label>
+                <div style="display: flex; gap: 8px;">
+                  <input type="text" id="kycDobInput" placeholder="Click to Select Date of Birth" value="1988-05-15" readonly required style="cursor: pointer; background: #ffffff;" />
+                  <button type="button" id="openDobCalendarBtn" class="btn btn-secondary" style="padding: 12px 16px; flex-shrink: 0; display: flex; align-items: center;" title="Open Calendar">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                      <line x1="16" y1="2" x2="16" y2="6"></line>
+                      <line x1="8" y1="2" x2="8" y2="6"></line>
+                      <line x1="3" y1="10" x2="21" y2="10"></line>
+                    </svg>
+                  </button>
                 </div>
               </div>
             </div>
 
-            <!-- Group 4 -->
-            <div style="margin-bottom: 28px;">
-              <h3 class="form-section-title">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 6px;">
+            <!-- Group 4: Investment Capacity -->
+            <div>
+              <h3 style="font-size: 1.05rem; color: var(--brand-navy); margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
                   <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
                 </svg>
-                <span>4. Experience & Capital Capacity</span>
+                <span>4. Investment Capacity</span>
               </h3>
-              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
                 <div>
-                  <label for="kycExperience" style="display: block; font-size: 0.85rem; font-weight: 700; color: var(--brand-navy); margin-bottom: 6px;">Trading Experience Level</label>
+                  <label for="kycExperience" style="display: block; font-size: 0.82rem; font-weight: 700; color: var(--brand-navy); margin-bottom: 6px;">Investment Experience</label>
                   <select id="kycExperience" required>
-                    <option value="Beginner">Beginner (100% Automated Bots)</option>
-                    <option value="Intermediate">Intermediate (1–3 Years Forex)</option>
-                    <option value="Advanced">Advanced (3–5 Years Institutional)</option>
-                    <option value="Professional" selected>Professional / Accredited Fund</option>
+                    <option value="Beginner">Beginner (100% Automated)</option>
+                    <option value="Intermediate">Intermediate (1–3 Years)</option>
+                    <option value="Advanced">Advanced (3–5 Years)</option>
+                    <option value="Professional" selected>Professional / Accredited</option>
                   </select>
                 </div>
                 <div>
-                  <label for="kycIncome" style="display: block; font-size: 0.85rem; font-weight: 700; color: var(--brand-navy); margin-bottom: 6px;">Annual Income / Net Worth Range</label>
+                  <label for="kycIncome" style="display: block; font-size: 0.82rem; font-weight: 700; color: var(--brand-navy); margin-bottom: 6px;">Annual Investment Capital</label>
                   <select id="kycIncome" required>
                     <option value="$50,000 - $100,000">$50,000 – $100,000 USD</option>
                     <option value="$100,000 - $250,000" selected>$100,000 – $250,000 USD</option>
@@ -240,69 +234,73 @@
               </div>
             </div>
 
-            <button type="submit" class="btn btn-primary" style="width: 100%; font-size: 1.05rem; font-weight: 800; padding: 15px;">
+            <!-- Perfectly Aligned Submit Button -->
+            <button type="submit" class="btn btn-primary" style="width: 100%; font-size: 1rem; font-weight: 800; padding: 15px; margin-top: 8px;">
               Save & Activate AI Bot Portfolio Strategy →
             </button>
           </form>
         </section>
 
         <!-- Right: Live Investor Passport Card -->
-        <aside class="reg-passport-card" style="position: sticky; top: 24px;">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-            <span class="status-pill">
-              <span class="pulse-dot"></span> Verified Passport
-            </span>
-            <span style="font-size: 0.78rem; font-weight: 700; color: var(--text-muted);">ID: <span id="passportId">BMG-FX-894201</span></span>
+        <aside class="reg-passport-card">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+              <span class="status-pill">
+                <span class="pulse-dot"></span> Verified Passport
+              </span>
+              <span style="font-size: 0.78rem; font-weight: 700; color: var(--text-muted);">ID: <span id="passportId">BMG-FX-894201</span></span>
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--border-light);">
+              <div id="passportAvatar" style="width: 54px; height: 54px; border-radius: 50%; background: linear-gradient(135deg, var(--brand-navy), var(--brand-teal)); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; font-weight: 900; box-shadow: var(--shadow-glow);">
+                AV
+              </div>
+              <div>
+                <strong id="passportName" style="display: block; font-size: 1.1rem; color: var(--brand-navy);">Alexander Vance</strong>
+                <span id="passportEmail" style="font-size: 0.82rem; color: var(--text-muted);">alexander.vance@wealth.com</span>
+              </div>
+            </div>
+
+            <div style="display: grid; gap: 12px; font-size: 0.88rem;">
+              <div style="display: flex; justify-content: space-between;">
+                <span style="color: var(--text-muted);">Jurisdiction:</span>
+                <strong id="passportRegion">United Arab Emirates</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between;">
+                <span style="color: var(--text-muted);">Date of Birth:</span>
+                <strong id="passportDob">15 May 1988 (38 yrs)</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between;">
+                <span style="color: var(--text-muted);">Experience:</span>
+                <strong id="passportExp">Professional / Accredited</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between;">
+                <span style="color: var(--text-muted);">Default Tier:</span>
+                <strong style="color: var(--brand-teal);">Starter (1 Bot — $1,000)</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between;">
+                <span style="color: var(--text-muted);">Bot Rent:</span>
+                <strong style="color: var(--brand-gold);">$300 (3-Mo Contract)</strong>
+              </div>
+            </div>
           </div>
 
-          <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--border-light);">
-            <div id="passportAvatar" style="width: 58px; height: 58px; border-radius: 50%; background: linear-gradient(135deg, var(--brand-navy), var(--brand-cyan)); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; font-weight: 900; box-shadow: var(--shadow-glow);">
-              AV
-            </div>
-            <div>
-              <strong id="passportName" style="display: block; font-size: 1.15rem; color: var(--brand-navy);">Alexander Vance</strong>
-              <span id="passportEmail" style="font-size: 0.82rem; color: var(--text-muted);">alexander.vance@wealth.com</span>
-            </div>
-          </div>
-
-          <div style="display: grid; gap: 12px; font-size: 0.88rem; margin-bottom: 24px;">
-            <div style="display: flex; justify-content: space-between;">
-              <span style="color: var(--text-muted);">Jurisdiction:</span>
-              <strong id="passportRegion">United Arab Emirates</strong>
-            </div>
-            <div style="display: flex; justify-content: space-between;">
-              <span style="color: var(--text-muted);">DOB & Age:</span>
-              <strong id="passportDob">15 May 1988 (38 yrs)</strong>
-            </div>
-            <div style="display: flex; justify-content: space-between;">
-              <span style="color: var(--text-muted);">Experience:</span>
-              <strong id="passportExp">Professional / Accredited</strong>
-            </div>
-            <div style="display: flex; justify-content: space-between;">
-              <span style="color: var(--text-muted);">Default Tier:</span>
-              <strong style="color: var(--brand-cyan);">Starter (1 Bot — $1,000)</strong>
-            </div>
-            <div style="display: flex; justify-content: space-between;">
-              <span style="color: var(--text-muted);">Bot Rent:</span>
-              <strong style="color: var(--brand-gold);">$300 (3-Mo Contract)</strong>
-            </div>
-          </div>
-
-          <div style="background: #f8fafc; border: 1px solid var(--border-light); border-radius: 14px; padding: 14px; font-size: 0.82rem; color: var(--text-secondary); line-height: 1.5;">
-            🛡️ <strong>GTC FX Custodial Agreement</strong><br />
-            Once registered, your allocation routes directly to automated MT5 neural trading bots with real-time daily returns ($10 – $30 / day).
+          <div style="background: #f8fafc; border: 1px solid var(--border-light); border-radius: 14px; padding: 14px; font-size: 0.82rem; color: var(--text-secondary); line-height: 1.5; margin-top: 20px;">
+            🔒 <strong>Tier-1 Multi-Sig Protection</strong><br />
+            Automated capital allocation with real-time daily profit distribution ($10 – $30 / day).
           </div>
         </aside>
       </main>
 
-      <footer class="site-footer">
-        <p>© 2026 B Magnet International. Multi-Sig Custodial Vaults & AI Forex Trading. All rights reserved.</p>
+      <!-- Minimal Clean Footer -->
+      <footer class="site-footer" style="margin-top: 30px;">
+        <p>© 2026 B Magnet International. Multi-Sig Custodial Vaults & AI Capital Allocation. All rights reserved.</p>
       </footer>
     </div>
 
     <!-- Custom Pop-up Calendar Modal -->
     <div id="dobCalendarModal" class="modal-overlay" style="display: none;">
-      <div class="modal-card" style="max-width: 440px; text-align: center;">
+      <div class="modal-card" style="max-width: 420px; text-align: center;">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
           <strong style="font-size: 1.1rem; color: var(--brand-navy); display: inline-flex; align-items: center; gap: 8px;">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -316,16 +314,11 @@
           <button type="button" id="closeCalendarModalBtn" style="background: none; border: none; font-size: 1.2rem; cursor: pointer; color: var(--text-muted);">✕</button>
         </div>
 
-        <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 16px;">
-          Select your official date of birth using the calendar controls below.
-        </p>
-
-        <!-- Selector Controls -->
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px;">
           <div>
             <label style="display: block; font-size: 0.75rem; font-weight: 700; color: var(--text-muted); margin-bottom: 4px;">Birth Year</label>
             <select id="calYearSelect" style="padding: 10px !important;">
-              <!-- Generated via JS -->
+              <!-- Injected by JS -->
             </select>
           </div>
           <div>
@@ -347,17 +340,15 @@
           </div>
         </div>
 
-        <!-- Days Grid -->
         <div style="margin-bottom: 16px;">
           <label style="display: block; font-size: 0.75rem; font-weight: 700; color: var(--text-muted); margin-bottom: 8px;">Select Day</label>
           <div id="calDaysGrid" style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; max-height: 180px; overflow-y: auto; padding: 4px;">
-            <!-- Days injected via JS -->
+            <!-- Injected by JS -->
           </div>
         </div>
 
         <div style="background: #f8fafc; border: 1px solid var(--border-light); border-radius: 12px; padding: 10px; margin-bottom: 16px; font-size: 0.85rem;">
-          Selected: <strong id="calSelectedPreview" style="color: var(--brand-cyan);">15 May 1988</strong> 
-          (<span id="calAgePreview" style="font-weight: 700; color: var(--brand-emerald);">38 Years Old — Verified</span>)
+          Selected: <strong id="calSelectedPreview" style="color: var(--brand-teal);">15 May 1988 (38 Years Old)</strong>
         </div>
 
         <button type="button" id="confirmDobBtn" class="btn btn-primary" style="width: 100%;">

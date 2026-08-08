@@ -112,10 +112,28 @@ button, input, select {
   box-sizing: border-box;
 }
 
+input, select {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1.5px solid var(--border-subtle);
+  background: var(--bg-input);
+  color: var(--text-primary);
+  font-size: 0.92rem;
+  font-weight: 600;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+input:focus, select:focus {
+  border-color: var(--brand-teal);
+  box-shadow: 0 0 0 3px rgba(0, 168, 150, 0.18);
+}
+
 .page-shell {
-  max-width: 1280px;
+  max-width: 1240px;
   margin: 0 auto;
-  padding: 24px 20px 80px;
+  padding: 24px 20px 60px;
   position: relative;
   z-index: 1;
 }
@@ -362,7 +380,7 @@ html[dir="rtl"] .input-suffix-toggle {
   width: 100%;
 }
 
-/* Primary Action Button (Strictly Aligned Full Width) */
+/* Primary Action Button */
 .btn-monolith-primary {
   width: 100% !important;
   background: linear-gradient(135deg, var(--brand-navy) 0%, var(--brand-navy-light) 50%, var(--brand-teal) 100%);
@@ -458,7 +476,7 @@ html[dir="rtl"] .input-suffix-toggle {
   width: 100%;
 }
 
-/* Utility Bar (Theme and Language Alignment) */
+/* Utility Bar */
 .login-utility-bar {
   display: flex;
   align-items: center;
@@ -466,6 +484,72 @@ html[dir="rtl"] .input-suffix-toggle {
   gap: 12px;
   margin-top: 18px;
   width: 100%;
+}
+
+/* ==========================================================================
+   REGISTRATION & KYC 2-COLUMN GRID (STREAMLINED & ALIGNED)
+   ========================================================================== */
+
+.reg-grid-layout {
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr;
+  gap: 24px;
+  align-items: start;
+  width: 100%;
+}
+
+.reg-form-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-navy);
+  border-radius: 24px;
+  padding: 32px 30px;
+  box-shadow: var(--shadow-card);
+  position: relative;
+}
+
+.reg-passport-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-navy);
+  border-radius: 24px;
+  padding: 30px 26px;
+  box-shadow: var(--shadow-card);
+  position: sticky;
+  top: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.step-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  color: var(--text-muted);
+}
+
+.step-pill.active {
+  border-color: var(--brand-teal);
+  color: var(--text-primary);
+  box-shadow: 0 4px 12px rgba(0, 168, 150, 0.12);
+}
+
+.step-pill .step-number {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 800;
+  background: #e2e8f0;
+  color: var(--text-muted);
 }
 
 /* ==========================================================================
@@ -478,7 +562,7 @@ html[dir="rtl"] .input-suffix-toggle {
   align-items: center;
   gap: 16px;
   padding: 16px 28px;
-  margin-bottom: 28px;
+  margin-bottom: 24px;
   background: var(--bg-card);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -570,12 +654,10 @@ html[dir="rtl"] .input-suffix-toggle {
 .reg-hero-banner {
   background: var(--bg-card) !important;
   border: 1px solid var(--border-navy) !important;
-  border-radius: 28px !important;
-  padding: 40px 32px !important;
+  border-radius: 24px !important;
   box-shadow: var(--shadow-card) !important;
   position: relative;
   overflow: hidden;
-  margin-bottom: 32px;
 }
 
 .dashboard-hero::before,
@@ -593,9 +675,7 @@ html[dir="rtl"] .input-suffix-toggle {
 .stat-card,
 .feature-card,
 .chart-panel,
-.stat-box,
-.reg-form-card,
-.reg-passport-card {
+.stat-box {
   background: var(--bg-card) !important;
   border: 1px solid var(--border-navy) !important;
   border-radius: 24px !important;
@@ -621,55 +701,60 @@ p, span, td, th {
   color: var(--text-secondary);
 }
 
-/* Stat Grid & Tables */
-.stat-grid {
-  display: grid;
-  gap: 16px;
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--brand-teal);
+  display: inline-block;
+  box-shadow: 0 0 10px var(--brand-teal);
 }
 
-.stat-box {
-  padding: 20px 22px;
-  border-radius: 18px !important;
-}
-
-.table-responsive-wrapper,
-.transaction-table-wrap {
-  width: 100%;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  border-radius: 18px;
-  border: 1px solid var(--border-light);
-  background: var(--bg-card);
-}
-
-.transaction-table {
-  width: 100%;
-  min-width: 540px;
-  border-collapse: collapse;
-}
-
-.transaction-table th {
-  background: rgba(0, 168, 150, 0.05);
-  padding: 14px 18px;
-  font-size: 0.8rem;
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.76rem;
   font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--text-muted);
-  border-bottom: 1px solid var(--border-light);
-  text-align: left;
+  background: rgba(0, 168, 150, 0.1);
+  color: var(--brand-teal);
+  border: 1px solid rgba(0, 168, 150, 0.2);
 }
 
-html[dir="rtl"] .transaction-table th {
-  text-align: right;
+.btn-primary {
+  background: linear-gradient(135deg, var(--brand-navy) 0%, var(--brand-navy-light) 50%, var(--brand-teal) 100%);
+  color: #ffffff !important;
+  padding: 13px 26px;
+  border-radius: 14px;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 0.95rem;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 10px 25px -5px rgba(13, 31, 66, 0.3);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
-.transaction-table td {
-  padding: 16px 18px;
-  border-bottom: 1px solid var(--border-light);
-  font-weight: 600;
-  font-size: 0.92rem;
-  color: var(--text-primary);
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px -5px rgba(0, 168, 150, 0.35);
+}
+
+.btn-secondary {
+  background: var(--bg-card);
+  color: var(--text-primary) !important;
+  border: 1px solid var(--border-subtle);
+  padding: 13px 26px;
+  border-radius: 14px;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 0.95rem;
+  cursor: pointer;
 }
 
 /* Modal Overlay */
@@ -697,41 +782,24 @@ html[dir="rtl"] .transaction-table th {
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
 }
 
-.pulse-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--brand-teal);
-  display: inline-block;
-  box-shadow: 0 0 10px var(--brand-teal);
+/* Footer */
+.site-footer {
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  padding: 20px 0;
 }
 
-.btn-primary {
-  background: linear-gradient(135deg, var(--brand-navy) 0%, var(--brand-navy-light) 50%, var(--brand-teal) 100%);
-  color: #ffffff !important;
-  padding: 13px 26px;
-  border-radius: 14px;
-  font-family: var(--font-heading);
-  font-weight: 800;
-  font-size: 0.95rem;
-  border: none;
-  cursor: pointer;
-  box-shadow: 0 10px 25px -5px rgba(13, 31, 66, 0.3);
+/* Responsive */
+@media (max-width: 900px) {
+  .reg-grid-layout {
+    grid-template-columns: 1fr;
+  }
+  .reg-passport-card {
+    position: static;
+  }
 }
 
-.btn-secondary {
-  background: var(--bg-card);
-  color: var(--text-primary) !important;
-  border: 1px solid var(--border-subtle);
-  padding: 13px 26px;
-  border-radius: 14px;
-  font-family: var(--font-heading);
-  font-weight: 800;
-  font-size: 0.95rem;
-  cursor: pointer;
-}
-
-/* Mobile Responsive */
 @media (max-width: 768px) {
   .login-monolith-card {
     padding: 26px 20px 22px;
