@@ -327,6 +327,8 @@ button, input, select {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  min-height: 520px;
+  justify-content: flex-start;
 }
 
 /* Top Utility Bar */
@@ -476,6 +478,7 @@ button, input, select {
   flex-direction: column;
   gap: 14px;
   width: 100%;
+  min-height: 250px;
 }
 
 .floating-input-container {

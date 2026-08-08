@@ -271,7 +271,7 @@
             </button>
           </form>
 
-          <!-- Register Form (Toggled via Capsule Switcher) -->
+          <!-- Register Form (Toggled via Capsule Switcher - Zero Height Shift) -->
           <form id="registerForm" class="investor-form-element" style="display: none;">
             <div class="floating-input-container">
               <input id="regFullName" type="text" class="floating-field" placeholder=" " value="Alexander Vance" required />
@@ -295,8 +295,21 @@
               </span>
             </div>
 
+            <!-- Symmetrical Options Row (Exact Match with LoginForm) -->
+            <div class="investor-options-row">
+              <label class="remember-account-toggle">
+                <input type="checkbox" checked class="sharp-checkbox" />
+                <span>Agree to Custodial Terms</span>
+              </label>
+              <span style="font-size: 0.8rem; font-weight: 700; color: var(--accent-teal);">Instant KYC</span>
+            </div>
+
             <button type="submit" class="btn-navy-authenticate">
               <span>Proceed to Investor Profile →</span>
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 8px;">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
             </button>
           </form>
 
