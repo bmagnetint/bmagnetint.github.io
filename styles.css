@@ -11,9 +11,9 @@
   /* Brand Luxury Palette */
   --bg-main: #f8fafc;
   --bg-canvas: #f1f5f9;
-  --bg-card: rgba(255, 255, 255, 0.94);
+  --bg-card: rgba(255, 255, 255, 0.96);
   --bg-card-hover: #ffffff;
-  --bg-glass: rgba(255, 255, 255, 0.88);
+  --bg-glass: rgba(255, 255, 255, 0.92);
   
   /* Dual-Tone Brand Colors */
   --brand-navy: #0b1b3d;
@@ -43,8 +43,8 @@
   --text-muted: #64748b;
   
   --shadow-glow: 0 10px 30px rgba(0, 163, 166, 0.2);
-  --shadow-card: 0 20px 45px -12px rgba(11, 27, 61, 0.07), 0 0 0 1px rgba(11, 27, 61, 0.05);
-  --shadow-elevated: 0 28px 60px -15px rgba(11, 27, 61, 0.12), 0 0 0 1px rgba(0, 163, 166, 0.25);
+  --shadow-card: 0 20px 50px -15px rgba(11, 27, 61, 0.09), 0 0 0 1px rgba(11, 27, 61, 0.06);
+  --shadow-elevated: 0 30px 65px -15px rgba(11, 27, 61, 0.15), 0 0 0 1px rgba(0, 163, 166, 0.3);
 }
 
 * {
@@ -62,8 +62,8 @@ html {
 body {
   background-color: var(--bg-main);
   background-image: 
-    radial-gradient(circle at 10% 15%, rgba(0, 163, 166, 0.09) 0%, transparent 45%),
-    radial-gradient(circle at 90% 85%, rgba(11, 27, 61, 0.08) 0%, transparent 45%),
+    radial-gradient(circle at 12% 15%, rgba(0, 163, 166, 0.1) 0%, transparent 45%),
+    radial-gradient(circle at 88% 85%, rgba(11, 27, 61, 0.08) 0%, transparent 45%),
     radial-gradient(circle at 50% 50%, rgba(217, 119, 6, 0.03) 0%, transparent 50%);
   background-attachment: fixed;
   color: var(--text-primary);
@@ -89,7 +89,7 @@ body::before {
   height: 750px;
   top: -200px;
   left: -150px;
-  background: radial-gradient(circle, rgba(0, 163, 166, 0.12) 0%, rgba(11, 27, 61, 0.04) 55%, transparent 75%);
+  background: radial-gradient(circle, rgba(0, 163, 166, 0.14) 0%, rgba(11, 27, 61, 0.04) 55%, transparent 75%);
   filter: blur(100px);
   animation: floatAmbient 12s ease-in-out infinite alternate;
 }
@@ -99,7 +99,7 @@ body::after {
   height: 850px;
   bottom: -250px;
   right: -200px;
-  background: radial-gradient(circle, rgba(11, 27, 61, 0.08) 0%, rgba(0, 163, 166, 0.06) 60%, transparent 75%);
+  background: radial-gradient(circle, rgba(11, 27, 61, 0.1) 0%, rgba(0, 163, 166, 0.08) 60%, transparent 75%);
   filter: blur(120px);
   animation: floatAmbient 14s ease-in-out infinite alternate-reverse;
 }
@@ -123,100 +123,193 @@ button, input, select {
 .page-shell {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 28px 24px 80px;
+  padding: 24px 20px 80px;
   position: relative;
   z-index: 1;
 }
 
 /* ==========================================================================
-   ELEGANT FROSTED GLASS HEADER & BRAND BAR
+   NEW ARCHITECTURAL VAULT LOGIN CARD (CENTERED LUXURY MODEL)
    ========================================================================== */
 
-.site-header,
-.brand-strip {
+.vault-login-wrapper {
+  min-height: calc(100vh - 120px);
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
-  gap: 16px;
-  padding: 16px 28px;
-  margin-bottom: 32px;
+  justify-content: center;
+  padding: 20px 0;
+  position: relative;
+  z-index: 10;
+}
+
+.vault-login-card {
+  width: 100%;
+  max-width: 520px;
   background: var(--bg-card);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid var(--border-light);
-  border-radius: 24px;
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid rgba(226, 232, 240, 0.95);
+  border-radius: 32px;
+  padding: 44px 38px;
   box-shadow: var(--shadow-card);
   position: relative;
-  z-index: 100;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.brand-mark {
-  display: flex;
-  align-items: center;
-  gap: 16px;
+.vault-login-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, var(--brand-navy) 0%, var(--brand-cyan) 50%, var(--brand-gold) 100%);
 }
 
-.logo-glow-wrapper {
-  position: relative;
+.vault-brand-header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.vault-logo-wrap {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  margin-bottom: 14px;
 }
 
-.brand-logo {
-  height: 48px;
+.vault-brand-logo {
+  height: 68px;
   width: auto;
   object-fit: contain;
-  filter: drop-shadow(0 4px 12px rgba(0, 163, 166, 0.3));
+  filter: drop-shadow(0 6px 18px rgba(0, 163, 166, 0.35));
   transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-.brand-logo:hover {
-  transform: scale(1.08) rotate(1deg);
+.vault-brand-logo:hover {
+  transform: scale(1.06);
 }
 
-.brand-details {
-  display: flex;
-  flex-direction: column;
-}
-
-.brand-name {
+.vault-title {
   font-family: var(--font-heading);
+  font-size: 1.45rem;
   font-weight: 900;
-  font-size: 1.35rem;
-  letter-spacing: -0.025em;
+  letter-spacing: -0.02em;
   color: var(--brand-navy);
+  margin-bottom: 4px;
 }
 
-.brand-tag {
-  font-size: 0.75rem;
+.vault-tag {
+  font-size: 0.76rem;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   color: var(--brand-cyan);
+  display: block;
 }
 
-.site-nav {
+/* Capsule Segmented Tab Switcher */
+.capsule-tab-switch {
+  display: flex;
+  background: #f1f5f9;
+  padding: 6px;
+  border-radius: 18px;
+  border: 1px solid var(--border-light);
+  margin-bottom: 24px;
+}
+
+.capsule-tab-btn {
+  flex: 1;
+  padding: 10px 16px;
+  border-radius: 14px;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 0.92rem;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.capsule-tab-btn.active {
+  background: #ffffff;
+  color: var(--brand-navy);
+  box-shadow: 0 4px 14px rgba(11, 27, 61, 0.08);
+}
+
+/* Biometric & Social Suite */
+.biometric-passkey-btn {
+  width: 100%;
+  background: #ffffff;
+  border: 1.5px solid var(--border-subtle);
+  color: var(--brand-navy);
+  padding: 14px;
+  border-radius: 16px;
   display: flex;
   align-items: center;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-
-.site-nav a.nav-link {
+  justify-content: center;
+  gap: 10px;
   font-weight: 700;
   font-size: 0.92rem;
-  color: var(--text-secondary);
-  padding: 8px 16px;
-  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(11, 27, 61, 0.04);
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.site-nav a.nav-link:hover,
-.site-nav a.nav-link.active {
+.biometric-passkey-btn:hover {
+  border-color: var(--brand-cyan);
+  color: var(--brand-cyan);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 163, 166, 0.15);
+}
+
+.social-split-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.social-pill-btn {
+  background: #ffffff;
+  border: 1.5px solid var(--border-subtle);
   color: var(--brand-navy);
-  background: rgba(0, 163, 166, 0.1);
-  transform: translateY(-1px);
+  padding: 12px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.social-pill-btn:hover {
+  border-color: var(--brand-cyan);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(11, 27, 61, 0.08);
+}
+
+/* Vault Security Strip */
+.vault-security-strip {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
 /* ==========================================================================
@@ -227,8 +320,8 @@ button, input, select {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 13px 26px;
-  border-radius: 14px;
+  padding: 14px 28px;
+  border-radius: 16px;
   font-family: var(--font-heading);
   font-weight: 800;
   font-size: 0.95rem;
@@ -237,7 +330,7 @@ button, input, select {
   border: none;
   outline: none;
   letter-spacing: 0.01em;
-  min-height: 48px;
+  min-height: 50px;
   position: relative;
   overflow: hidden;
 }
@@ -252,10 +345,6 @@ button, input, select {
   transform: translateY(-2px);
   box-shadow: 0 14px 30px -5px rgba(0, 163, 166, 0.45);
   color: #ffffff !important;
-}
-
-.btn-primary:active {
-  transform: translateY(0);
 }
 
 .btn-secondary {
@@ -361,7 +450,7 @@ select,
   background: #ffffff !important;
   color: var(--brand-navy) !important;
   font-family: var(--font-body) !important;
-  font-size: 16px !important; /* Prevents auto-zoom on iOS mobile browsers */
+  font-size: 16px !important;
   font-weight: 600 !important;
   outline: none !important;
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
@@ -510,7 +599,6 @@ select option {
   color: var(--brand-navy);
 }
 
-/* Scrollable Financial Tables on Mobile */
 .table-responsive-wrapper,
 .transaction-table-wrap {
   width: 100%;
@@ -523,7 +611,7 @@ select option {
 
 .transaction-table {
   width: 100%;
-  min-width: 540px; /* Ensures table readable on small mobile screens */
+  min-width: 540px;
   border-collapse: collapse;
 }
 
@@ -580,39 +668,13 @@ input[type="range"]::-webkit-slider-thumb:hover {
   transform: scale(1.15);
 }
 
-/* ==========================================================================
-   LOGIN & REGISTRATION SPECIFICS
-   ========================================================================== */
-
-.login-shell {
-  width: min(1120px, 100%);
-  margin: 0 auto;
-}
-
-.login-panel {
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 40px;
-  align-items: center;
-  margin-top: 24px;
-}
-
-.btn-social-full {
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.btn-social-full:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(11, 27, 61, 0.08);
-}
-
 .login-divider {
   display: flex;
   align-items: center;
   text-align: center;
-  margin: 18px 0;
+  margin: 20px 0;
   color: var(--text-muted);
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   font-weight: 800;
   letter-spacing: 0.08em;
 }
@@ -648,6 +710,86 @@ input[type="range"]::-webkit-slider-thumb:hover {
   padding: 8px;
 }
 
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 28px;
+  margin-bottom: 32px;
+  background: var(--bg-card);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--border-light);
+  border-radius: 24px;
+  box-shadow: var(--shadow-card);
+  position: relative;
+  z-index: 100;
+}
+
+.brand-mark {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.logo-glow-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brand-logo {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 12px rgba(0, 163, 166, 0.3));
+}
+
+.brand-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-name {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: 1.35rem;
+  letter-spacing: -0.025em;
+  color: var(--brand-navy);
+}
+
+.brand-tag {
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--brand-cyan);
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.site-nav a.nav-link {
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  padding: 8px 16px;
+  border-radius: 12px;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.site-nav a.nav-link:hover,
+.site-nav a.nav-link.active {
+  color: var(--brand-navy);
+  background: rgba(0, 163, 166, 0.1);
+}
+
 .login-footer,
 .site-footer {
   margin-top: 40px;
@@ -656,29 +798,38 @@ input[type="range"]::-webkit-slider-thumb:hover {
   font-size: 0.85rem;
 }
 
-/* ==========================================================================
-   MOBILE RESPONSIVENESS OVERHAUL (TABLETS & SMARTPHONES)
-   ========================================================================== */
-
-@media (max-width: 992px) {
-  .login-panel,
-  .reg-grid-layout {
-    grid-template-columns: 1fr !important;
-    gap: 28px !important;
-  }
-
-  .site-header {
-    padding: 14px 20px;
-  }
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(11, 27, 61, 0.7);
+  backdrop-filter: blur(8px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
 }
 
+.modal-card {
+  background: #ffffff;
+  border: 1px solid var(--border-light);
+  border-radius: 28px;
+  padding: 32px;
+  width: 100%;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
+}
+
+/* Mobile Responsive */
 @media (max-width: 768px) {
   .page-shell {
     padding: 16px 14px 70px;
   }
 
-  .site-header,
-  .brand-strip {
+  .site-header {
     flex-direction: column;
     align-items: flex-start;
     padding: 14px 18px;
@@ -687,72 +838,16 @@ input[type="range"]::-webkit-slider-thumb:hover {
     margin-bottom: 20px;
   }
 
-  .site-nav {
-    width: 100%;
-    justify-content: space-between;
-    gap: 8px;
+  .vault-login-card {
+    padding: 32px 20px;
+    border-radius: 24px;
   }
 
-  .site-nav a.nav-link {
-    padding: 6px 12px;
-    font-size: 0.85rem;
+  .vault-brand-logo {
+    height: 56px;
   }
 
-  .dashboard-hero,
-  .reg-hero-banner {
-    padding: 24px 18px !important;
-    border-radius: 20px !important;
-    margin-bottom: 20px !important;
-  }
-
-  .reg-form-card,
-  .login-card,
-  .reg-passport-card {
-    padding: 24px 18px !important;
-    border-radius: 20px !important;
-  }
-
-  /* Force 1-Column for Form Field Pairs on Mobile */
-  #fullKycForm div[style*="grid-template-columns"] {
-    grid-template-columns: 1fr !important;
-    gap: 14px !important;
-    margin-bottom: 16px !important;
-  }
-
-  .stat-grid {
-    grid-template-columns: 1fr !important;
-  }
-
-  .brand-logo {
-    height: 40px;
-  }
-
-  .brand-name {
-    font-size: 1.2rem;
-  }
-
-  .btn {
-    width: 100%;
-    padding: 14px 20px;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero-copy h1 {
-    font-size: 1.55rem !important;
-  }
-
-  .brand-tag {
-    font-size: 0.7rem;
-  }
-
-  .progress-steps-bar {
-    gap: 8px !important;
-    margin-bottom: 20px !important;
-  }
-
-  .step-pill {
-    padding: 6px 14px !important;
-    font-size: 0.78rem !important;
+  .vault-title {
+    font-size: 1.25rem;
   }
 }

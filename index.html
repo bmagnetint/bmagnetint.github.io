@@ -18,126 +18,96 @@
     <meta name="theme-color" content="#0b1b3d" />
     <script src="https://accounts.google.com/gsi/client" async defer></script>
   </head>
-  <body class="login-page">
-    <div class="page-shell login-shell">
-      <!-- Top Brand Header Bar -->
-      <header class="site-header">
-        <div class="brand-mark">
-          <div class="logo-glow-wrapper">
-            <img src="logo.png" alt="B Magnet International Logo" class="brand-logo" style="height: 54px;" />
-          </div>
-          <div class="brand-details">
-            <span class="brand-name">B MAGNET INTERNATIONAL</span>
-            <span class="brand-tag">INSTITUTIONAL AI FOREX PORTAL</span>
-          </div>
+  <body>
+    <div class="page-shell">
+      <!-- Top Utility Header -->
+      <header class="site-header" style="max-width: 520px; margin: 0 auto 24px; padding: 12px 20px; border-radius: 20px;">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span class="pulse-dot"></span>
+          <span style="font-size: 0.78rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; color: var(--brand-cyan);">
+            Multi-Sig Vault Live
+          </span>
         </div>
 
-        <div class="site-nav">
-          <button id="langToggleBtn" class="lang-toggle-btn" title="Switch Language">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <button id="langToggleBtn" class="lang-toggle-btn" title="Switch Language" style="height: 38px; padding: 0 12px; font-size: 0.8rem;">
             <span>🌐</span>
             <span id="currentLangLabel">EN</span>
           </button>
-          <button id="themeToggleBtn" class="theme-toggle-icon-btn" title="Toggle Theme">
+          <button id="themeToggleBtn" class="theme-toggle-icon-btn" title="Toggle Theme" style="height: 38px; width: 38px; font-size: 0.9rem;">
             <span id="themeIcon">☀️</span>
           </button>
         </div>
       </header>
 
-      <!-- Main Login Split Panel -->
-      <main class="login-panel">
-        <!-- Left Showcase Side -->
-        <section class="login-copy">
-          <div class="eyebrow" style="margin-bottom: 18px;">
-            <span class="pulse-dot"></span>
-            <span>Verified Institutional Access</span>
+      <!-- Centered Architectural Vault Login Model -->
+      <main class="vault-login-wrapper">
+        <section class="vault-login-card">
+          <!-- Bigger Highlighted Logo & Title -->
+          <div class="vault-brand-header">
+            <div class="vault-logo-wrap">
+              <img src="logo.png" alt="B Magnet International Logo" class="vault-brand-logo" />
+            </div>
+            <h1 class="vault-title">B MAGNET INTERNATIONAL</h1>
+            <span class="vault-tag">INSTITUTIONAL AI FOREX PORTAL</span>
           </div>
 
-          <h1 style="font-size: clamp(2rem, 3.8vw, 3.2rem); line-height: 1.15; margin-bottom: 20px;">
-            Next-Gen Algorithmic <span style="background: linear-gradient(135deg, var(--brand-navy) 0%, var(--brand-cyan) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Forex Wealth</span> & Liquidity Vault
-          </h1>
-
-          <p style="font-size: 1.05rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 28px;">
-            Welcome to B Magnet International. Connect your investor credentials to access real-time neural bot trading yields, multi-sig asset protection, and automated portfolio execution.
-          </p>
-
-          <!-- Feature Cards Grid -->
-          <div class="login-features" style="display: grid; gap: 16px;">
-            <div class="feature-card">
-              <div class="feature-icon" style="width: 44px; height: 44px; border-radius: 12px; background: rgba(0, 163, 166, 0.1); color: var(--brand-cyan); display: flex; align-items: center; justify-content: center; font-size: 1.25rem;">📊</div>
-              <div>
-                <strong style="font-size: 1rem; color: var(--brand-navy);">Live Portfolio Yield Engine</strong>
-                <p style="font-size: 0.88rem; color: var(--text-muted); margin: 0;">Track audited daily yields ($10 – $30 / day per bot) with Mon–Fri market execution.</p>
-              </div>
-            </div>
-
-            <div class="feature-card">
-              <div class="feature-icon" style="width: 44px; height: 44px; border-radius: 12px; background: rgba(11, 27, 61, 0.08); color: var(--brand-navy); display: flex; align-items: center; justify-content: center; font-size: 1.25rem;">🛡️</div>
-              <div>
-                <strong style="font-size: 1rem; color: var(--brand-navy);">Multi-Sig Custody & Protection</strong>
-                <p style="font-size: 0.88rem; color: var(--text-muted); margin: 0;">256-bit SSL encrypted GTC FX liquidity with strict 2.5% algorithmic downside controls.</p>
-              </div>
-            </div>
-
-            <div class="feature-card">
-              <div class="feature-icon" style="width: 44px; height: 44px; border-radius: 12px; background: rgba(217, 119, 6, 0.1); color: var(--brand-gold); display: flex; align-items: center; justify-content: center; font-size: 1.25rem;">⚡</div>
-              <div>
-                <strong style="font-size: 1rem; color: var(--brand-navy);">$1,000 Capital = 1 AI Bot Model</strong>
-                <p style="font-size: 0.88rem; color: var(--text-muted); margin: 0;">Transparent pricing with $300 3-month rental contract per neural bot unit.</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Right Modern Glass Portal Card -->
-        <section class="login-card">
-          <!-- Auth Mode Tab Switcher -->
-          <div style="display: flex; border-bottom: 2px solid var(--border-light); margin-bottom: 24px;">
-            <button type="button" id="tabSignInBtn" class="auth-tab-btn active" style="flex: 1; padding: 14px; font-weight: 800; border: none; background: none; color: var(--brand-cyan); border-bottom: 2px solid var(--brand-cyan); cursor: pointer; font-size: 1.05rem; font-family: var(--font-heading);">Sign In</button>
-            <button type="button" id="tabRegisterBtn" class="auth-tab-btn" style="flex: 1; padding: 14px; font-weight: 800; border: none; background: none; color: var(--text-muted); border-bottom: 2px solid transparent; cursor: pointer; font-size: 1.05rem; font-family: var(--font-heading);">Register Account</button>
-          </div>
-
-          <!-- Fast Biometric & Social Auth Suite -->
-          <div style="display: grid; gap: 12px; margin-bottom: 24px;">
-            <button type="button" id="passkeySignInBtn" class="btn-social-full" style="background: #f8fafc; border: 1.5px solid var(--border-subtle); color: var(--brand-navy); padding: 13px; border-radius: 14px; display: flex; align-items: center; justify-content: center; gap: 10px; font-weight: 700; cursor: pointer;">
-              <span style="font-size: 1.2rem;">🔑</span>
-              <span>Continue with Passkey (Face ID / Touch ID)</span>
+          <!-- Capsule Segmented Pill Tab Switcher -->
+          <div class="capsule-tab-switch">
+            <button type="button" id="tabSignInBtn" class="capsule-tab-btn active">
+              🔐 Access Portal
             </button>
-            
-            <div style="display: flex; gap: 12px;">
-              <button type="button" id="googleSignInBtn" class="btn-social-full" style="flex: 1; background: #ffffff; border: 1.5px solid var(--border-subtle); color: var(--brand-navy); padding: 12px; border-radius: 14px; display: flex; align-items: center; justify-content: center; gap: 10px; font-weight: 700; cursor: pointer;">
-                <svg width="20" height="20" viewBox="0 0 24 24">
+            <button type="button" id="tabRegisterBtn" class="capsule-tab-btn">
+              📝 Register Account
+            </button>
+          </div>
+
+          <!-- Fast Biometric & Social Access Suite -->
+          <div style="margin-bottom: 20px;">
+            <button type="button" id="passkeySignInBtn" class="biometric-passkey-btn">
+              <span style="font-size: 1.15rem;">🔑</span>
+              <span>Fast Passkey Access (Face ID / Touch ID)</span>
+            </button>
+
+            <div class="social-split-grid">
+              <button type="button" id="googleSignInBtn" class="social-pill-btn">
+                <svg width="18" height="18" viewBox="0 0 24 24">
                   <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
                   <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
                   <path fill="#FBBC05" d="M5.84 14.1c-.22-.66-.35-1.36-.35-2.1s.13-1.44.35-2.1V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.62z"/>
                   <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
                 </svg>
-                <span>Google</span>
+                <span>Google Account</span>
               </button>
 
-              <button type="button" id="appleSignInBtn" class="btn-social-full" style="flex: 1; background: #ffffff; border: 1.5px solid var(--border-subtle); color: var(--brand-navy); padding: 12px; border-radius: 14px; display: flex; align-items: center; justify-content: center; gap: 10px; font-weight: 700; cursor: pointer;">
-                <svg width="20" height="20" viewBox="0 0 170 170" fill="currentColor">
+              <button type="button" id="appleSignInBtn" class="social-pill-btn">
+                <svg width="18" height="18" viewBox="0 0 170 170" fill="currentColor">
                   <path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.34.13-9.13-1.9-14.34-6.1-3.23-2.64-7.14-7.27-11.73-13.9-6.3-9.13-11.19-19.42-14.65-30.88-3.46-11.47-5.19-22.37-5.19-32.7 0-15.52 4.12-28.18 12.35-37.99 8.23-9.8 18.52-14.77 30.88-14.9 5.37 0 10.88 1.27 16.53 3.82 5.65 2.54 9.68 3.82 12.1 3.82 1.95 0 6.09-1.34 12.41-4.01 6.33-2.68 11.83-3.9 16.52-3.67 9.8.76 17.88 4.54 24.27 11.34-11.45 6.94-17.06 16.73-16.83 29.38.25 9.94 4.12 18.23 11.61 24.87 7.48 6.64 16.27 10.37 26.35 11.19-2.28 6.79-5.32 13.7-9.12 20.73zm-27.23-107.7c0 6.34-2.31 12.37-6.93 18.1-4.63 5.73-10.29 9.38-16.98 10.96-.38-2.67-.57-5.16-.57-7.46 0-6.1 2.45-12.19 7.34-18.27 4.9-6.08 10.63-9.74 17.2-10.98.26 2.41.39 4.96.39 7.65z"/>
                 </svg>
-                <span>Apple</span>
+                <span>Apple ID</span>
               </button>
             </div>
           </div>
 
-          <div class="login-divider" style="margin-bottom: 24px;">
-            <span>OR WITH INVESTOR EMAIL</span>
+          <div class="login-divider">
+            <span>OR WITH INVESTOR CREDENTIALS</span>
           </div>
 
           <!-- Sign In Form -->
           <form id="loginForm" class="login-form" style="display: block;">
-            <div style="margin-bottom: 18px;">
-              <label for="email" style="display: block; font-weight: 700; font-size: 0.88rem; margin-bottom: 8px; color: var(--brand-navy);">Investor Email</label>
+            <div style="margin-bottom: 16px;">
+              <label for="email" style="display: block; font-weight: 700; font-size: 0.85rem; margin-bottom: 6px; color: var(--brand-navy);">
+                ✉️ Investor Email
+              </label>
               <input id="email" type="email" placeholder="test@bmagnetint.com" required />
             </div>
 
-            <div style="margin-bottom: 24px;">
-              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-                <label for="password" style="font-weight: 700; font-size: 0.88rem; color: var(--brand-navy);">Password</label>
-                <span style="font-size: 0.8rem; color: var(--brand-cyan); font-weight: 600; cursor: pointer;">Forgot Password?</span>
+            <div style="margin-bottom: 22px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                <label for="password" style="font-weight: 700; font-size: 0.85rem; color: var(--brand-navy);">
+                  🔒 Password
+                </label>
+                <span style="font-size: 0.78rem; color: var(--brand-cyan); font-weight: 700; cursor: pointer;">Forgot Password?</span>
               </div>
               <div class="password-input-wrap">
                 <input id="password" type="password" placeholder="••••••••••••" required />
@@ -151,23 +121,27 @@
             </div>
 
             <button type="submit" class="btn btn-primary" style="width: 100%; font-size: 1rem; font-weight: 800;">
-              Authorize & Enter Portal →
+              Authorize & Access Vault →
             </button>
 
-            <div style="margin-top: 16px; text-align: center; font-size: 0.82rem; color: var(--text-muted);">
-              Demo Credentials: <strong>test@bmagnetint.com</strong> / <strong>bmagnet@123</strong>
+            <div style="margin-top: 14px; text-align: center; font-size: 0.8rem; color: var(--text-muted);">
+              Demo Login: <strong style="color: var(--brand-navy);">test@bmagnetint.com</strong> / <strong style="color: var(--brand-navy);">bmagnet@123</strong>
             </div>
           </form>
 
-          <!-- Fast Registration Forward Form -->
+          <!-- Register Form -->
           <form id="registerForm" class="login-form" style="display: none;">
-            <div style="margin-bottom: 18px;">
-              <label for="regFullName" style="display: block; font-weight: 700; font-size: 0.88rem; margin-bottom: 8px; color: var(--brand-navy);">Full Legal Name</label>
+            <div style="margin-bottom: 16px;">
+              <label for="regFullName" style="display: block; font-weight: 700; font-size: 0.85rem; margin-bottom: 6px; color: var(--brand-navy);">
+                👤 Full Legal Name
+              </label>
               <input id="regFullName" type="text" placeholder="e.g. Alexander Vance" required />
             </div>
 
-            <div style="margin-bottom: 24px;">
-              <label for="regEmail" style="display: block; font-weight: 700; font-size: 0.88rem; margin-bottom: 8px; color: var(--brand-navy);">Investor Email</label>
+            <div style="margin-bottom: 22px;">
+              <label for="regEmail" style="display: block; font-weight: 700; font-size: 0.85rem; margin-bottom: 6px; color: var(--brand-navy);">
+                ✉️ Investor Email
+              </label>
               <input id="regEmail" type="email" placeholder="alexander.vance@wealth.com" required />
             </div>
 
@@ -175,6 +149,15 @@
               Proceed to Full Investor Profile & KYC →
             </button>
           </form>
+
+          <!-- Security Strip -->
+          <div class="vault-security-strip">
+            <span>🔒 256-Bit SSL</span>
+            <span>•</span>
+            <span>GTC FX Multi-Sig Custody</span>
+            <span>•</span>
+            <span>Mon–Fri Trading Desk</span>
+          </div>
         </section>
       </main>
 
