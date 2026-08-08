@@ -99,11 +99,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (d === selectedDay) {
         dayBtn.style.background = 'var(--accent-teal)';
-        dayBtn.style.color = '#060b14';
+        dayBtn.style.color = '#ffffff';
         dayBtn.style.borderColor = 'var(--accent-teal)';
       } else {
-        dayBtn.style.background = '#1e293b';
-        dayBtn.style.color = '#ffffff';
+        dayBtn.style.background = '#f1f5f9';
+        dayBtn.style.color = '#0f172a';
       }
 
       dayBtn.addEventListener('click', () => {

@@ -14,25 +14,25 @@
       rel="stylesheet"
     />
     <link rel="manifest" href="manifest.json" />
-    <meta name="theme-color" content="#060b14" />
+    <meta name="theme-color" content="#f8fafc" />
     <link rel="stylesheet" href="styles.css" />
     <script defer src="register.js"></script>
     
     <style>
       :root {
-        --reg-bg: #060b14;
-        --reg-card-bg: rgba(15, 23, 42, 0.75);
-        --reg-border: rgba(0, 229, 225, 0.25);
-        --reg-glow-teal: rgba(0, 229, 225, 0.15);
-        --reg-glow-gold: rgba(245, 158, 11, 0.15);
+        --reg-bg: #f8fafc;
+        --reg-card-bg: #ffffff;
+        --reg-border: #e2e8f0;
+        --reg-glow-teal: rgba(8, 145, 178, 0.15);
+        --reg-glow-gold: rgba(217, 119, 6, 0.15);
       }
       
       body.reg-new-look {
-        background: var(--reg-bg);
+        background: #f8fafc;
         background-image: 
-          radial-gradient(circle at 10% 20%, rgba(0, 229, 225, 0.08) 0%, transparent 40%),
-          radial-gradient(circle at 90% 80%, rgba(245, 158, 11, 0.06) 0%, transparent 40%);
-        color: #f8fafc;
+          radial-gradient(circle at 10% 20%, rgba(8, 145, 178, 0.05) 0%, transparent 40%),
+          radial-gradient(circle at 90% 80%, rgba(217, 119, 6, 0.04) 0%, transparent 40%);
+        color: #0f172a;
         font-family: var(--font-body);
         min-height: 100vh;
       }
@@ -61,22 +61,23 @@
         font-size: 0.85rem;
         font-weight: 700;
         font-family: var(--font-heading);
-        background: rgba(255, 255, 255, 0.04);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        color: #94a3b8;
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        color: #64748b;
+        box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
       }
 
       .step-pill.completed {
-        background: rgba(16, 185, 129, 0.12);
+        background: rgba(16, 185, 129, 0.1);
         border-color: rgba(16, 185, 129, 0.3);
-        color: #34d399;
+        color: #059669;
       }
 
       .step-pill.active {
-        background: linear-gradient(135deg, rgba(0, 229, 225, 0.15) 0%, rgba(245, 158, 11, 0.15) 100%);
+        background: #ffffff;
         border-color: var(--accent-teal);
-        color: #ffffff;
-        box-shadow: 0 0 20px rgba(0, 229, 225, 0.2);
+        color: var(--accent-teal);
+        box-shadow: 0 4px 16px rgba(8, 145, 178, 0.15);
       }
 
       .step-number {
@@ -88,24 +89,24 @@
         justify-content: center;
         font-size: 0.75rem;
         font-weight: 800;
-        background: rgba(255, 255, 255, 0.15);
+        background: #f1f5f9;
+        color: #475569;
       }
 
       .step-pill.active .step-number {
         background: var(--accent-teal);
-        color: #060b14;
+        color: #ffffff;
       }
 
       /* Hero Welcome Banner */
       .reg-hero-banner {
-        background: linear-gradient(135deg, rgba(15, 23, 42, 0.85) 0%, rgba(30, 41, 59, 0.85) 100%);
-        backdrop-filter: blur(20px);
-        border: 1px solid rgba(0, 229, 225, 0.3);
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
         border-radius: 24px;
         padding: 40px 30px;
         text-align: center;
         margin-bottom: 40px;
-        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 12px 36px rgba(15, 23, 42, 0.06);
         position: relative;
         overflow: hidden;
       }
@@ -134,14 +135,13 @@
         }
       }
 
-      /* Glassmorphic Form Card */
+      /* Form Card */
       .reg-form-card {
-        background: var(--reg-card-bg);
-        backdrop-filter: blur(16px);
-        border: 1px solid var(--reg-border);
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
         border-radius: 24px;
         padding: 36px;
-        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+        box-shadow: 0 12px 36px rgba(15, 23, 42, 0.06);
       }
 
       .form-section-title {
@@ -154,14 +154,14 @@
         color: var(--accent-teal);
         margin-bottom: 18px;
         padding-bottom: 8px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        border-bottom: 1px solid #f1f5f9;
       }
 
       .custom-field-label {
         font-family: var(--font-heading);
         font-weight: 700;
         font-size: 0.88rem;
-        color: #e2e8f0;
+        color: #1e293b;
         display: block;
         margin-bottom: 8px;
       }
@@ -170,9 +170,9 @@
         width: 100%;
         padding: 14px 18px;
         border-radius: 14px;
-        border: 1px solid rgba(0, 229, 225, 0.25);
-        background: rgba(15, 23, 42, 0.85);
-        color: #ffffff;
+        border: 1px solid #cbd5e1;
+        background: #ffffff;
+        color: #0f172a;
         font-family: var(--font-body);
         font-size: 0.95rem;
         font-weight: 600;
@@ -182,24 +182,22 @@
 
       .custom-input:focus, .custom-select:focus {
         border-color: var(--accent-teal);
-        box-shadow: 0 0 18px rgba(0, 229, 225, 0.25);
-        background: rgba(15, 23, 42, 0.95);
+        box-shadow: 0 0 0 3px rgba(8, 145, 178, 0.15);
       }
 
       .custom-select option {
-        background: #0f172a;
-        color: #ffffff;
+        background: #ffffff;
+        color: #0f172a;
         padding: 12px;
       }
 
       /* Live Investor Passport Preview Side-Card */
       .reg-passport-card {
-        background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.9) 100%);
-        backdrop-filter: blur(16px);
-        border: 1px solid rgba(245, 158, 11, 0.3);
+        background: #ffffff;
+        border: 1px solid rgba(217, 119, 6, 0.35);
         border-radius: 24px;
         padding: 30px;
-        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+        box-shadow: 0 12px 36px rgba(15, 23, 42, 0.06);
         position: sticky;
         top: 30px;
       }
@@ -210,7 +208,7 @@
         align-items: center;
         margin-bottom: 20px;
         padding-bottom: 14px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        border-bottom: 1px solid #f1f5f9;
       }
 
       .passport-avatar-box {
@@ -218,13 +216,13 @@
         height: 60px;
         border-radius: 18px;
         background: linear-gradient(135deg, var(--accent-teal) 0%, var(--accent-blue) 100%);
-        color: #060b14;
+        color: #ffffff;
         font-size: 1.5rem;
         font-weight: 900;
         display: flex;
         align-items: center;
         justify-content: center;
-        box-shadow: 0 6px 16px rgba(0, 229, 225, 0.3);
+        box-shadow: 0 6px 16px rgba(8, 145, 178, 0.25);
       }
     </style>
   </head>
@@ -237,7 +235,7 @@
             <img src="logo.png" alt="B Magnet Logo" class="brand-logo" style="width: 48px; height: 48px; object-fit: contain;" />
           </div>
           <div class="brand-details">
-            <span class="brand-name" style="font-family: var(--font-heading); font-size: 1.4rem; font-weight: 900; color: #ffffff; display: block; letter-spacing: -0.02em;">B Magnet International</span>
+            <span class="brand-name" style="font-family: var(--font-heading); font-size: 1.4rem; font-weight: 900; color: #0f172a; display: block; letter-spacing: -0.02em;">B Magnet International</span>
             <span class="brand-tag" style="font-size: 0.8rem; color: var(--accent-teal); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;">Institutional Onboarding Vault</span>
           </div>
         </div>
@@ -261,13 +259,13 @@
 
       <!-- Hero Welcome Section -->
       <section class="reg-hero-banner">
-        <span style="display: inline-flex; align-items: center; gap: 8px; background: rgba(245, 158, 11, 0.15); border: 1px solid rgba(245, 158, 11, 0.4); color: var(--accent-gold); padding: 6px 18px; border-radius: 20px; font-size: 0.82rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 16px;">
+        <span style="display: inline-flex; align-items: center; gap: 8px; background: rgba(217, 119, 6, 0.1); border: 1px solid rgba(217, 119, 6, 0.3); color: var(--accent-gold); padding: 6px 18px; border-radius: 20px; font-size: 0.82rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 16px;">
           <span class="pulse-dot" style="background: var(--accent-gold);"></span> ✦ VERIFIED INVESTOR PORTAL
         </span>
-        <h1 id="regHeroTitle" style="font-family: var(--font-heading); font-size: 2.6rem; font-weight: 900; color: #ffffff; margin-bottom: 12px; letter-spacing: -0.03em;">
+        <h1 id="regHeroTitle" style="font-family: var(--font-heading); font-size: 2.6rem; font-weight: 900; color: #0f172a; margin-bottom: 12px; letter-spacing: -0.03em;">
           Welcome to B Magnet International 🎉
         </h1>
-        <p style="max-width: 720px; margin: 0 auto; color: #94a3b8; font-size: 1.05rem; line-height: 1.6;">
+        <p style="max-width: 720px; margin: 0 auto; color: #64748b; font-size: 1.05rem; line-height: 1.6;">
           Complete your verified institutional investor profile below to activate your MetaTrader 5 multi-sig custody vault and automated Forex AI bots.
         </p>
       </section>
@@ -344,9 +342,9 @@
               <div>
                 <label for="dobTriggerBtn" class="custom-field-label">Date of Birth (18+) *</label>
                 <div style="position: relative;">
-                  <button type="button" id="dobTriggerBtn" class="custom-input" style="color: #34d399; font-weight: 700; text-align: left; cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: rgba(0, 229, 225, 0.08); border-color: rgba(0, 229, 225, 0.4);">
+                  <button type="button" id="dobTriggerBtn" class="custom-input" style="color: #059669; font-weight: 700; text-align: left; cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: rgba(5, 150, 105, 0.06); border-color: rgba(5, 150, 105, 0.4);">
                     <span id="dobDisplayText">📅 Select Date</span>
-                    <span style="font-size: 0.75rem; color: var(--accent-gold); background: rgba(245, 158, 11, 0.15); padding: 3px 8px; border-radius: 6px;">Calendar ▾</span>
+                    <span style="font-size: 0.75rem; color: var(--accent-gold); background: rgba(217, 119, 6, 0.12); padding: 3px 8px; border-radius: 6px;">Calendar ▾</span>
                   </button>
                   <input type="hidden" id="kycDob" required />
                 </div>
@@ -383,40 +381,40 @@
           <!-- Verified Registration Confirmation View (Shown after submit) -->
           <div id="kycSuccessCard" style="display: none; text-align: center; padding: 20px 0;">
             <div style="font-size: 3.5rem; margin-bottom: 12px;">🎉</div>
-            <span class="status-pill" style="background: rgba(16, 185, 129, 0.2); color: #34d399; font-size: 1.05rem; padding: 8px 20px; border-radius: 20px; font-weight: 800; display: inline-block; margin-bottom: 18px;">✓ Full Investor Registration Verified</span>
+            <span class="status-pill" style="background: rgba(16, 185, 129, 0.15); color: #059669; font-size: 1.05rem; padding: 8px 20px; border-radius: 20px; font-weight: 800; display: inline-block; margin-bottom: 18px;">✓ Full Investor Registration Verified</span>
             
-            <h2 style="font-size: 2rem; margin-bottom: 6px; color: #ffffff;" id="succName">Alexander Vance</h2>
-            <p style="color: var(--text-muted); font-size: 1rem; margin-bottom: 28px;" id="succEmail">investor@domain.com</p>
+            <h2 style="font-size: 2rem; margin-bottom: 6px; color: #0f172a;" id="succName">Alexander Vance</h2>
+            <p style="color: #64748b; font-size: 1rem; margin-bottom: 28px;" id="succEmail">investor@domain.com</p>
 
-            <div class="transaction-table-wrap" style="margin-bottom: 30px; text-align: left;">
+            <div class="transaction-table-wrap" style="margin-bottom: 30px; text-align: left; background: #f8fafc; border: 1px solid #e2e8f0;">
               <table class="transaction-table">
                 <tbody>
                   <tr>
-                    <td style="color: var(--text-muted); font-weight: 600;">Contact Phone</td>
-                    <td style="font-weight: 700; text-align: right;" id="tblSuccPhone">+971 50 123 4567</td>
+                    <td style="color: #64748b; font-weight: 600;">Contact Phone</td>
+                    <td style="font-weight: 700; text-align: right; color: #0f172a;" id="tblSuccPhone">+971 50 123 4567</td>
                   </tr>
                   <tr>
-                    <td style="color: var(--text-muted); font-weight: 600;">WhatsApp Number</td>
-                    <td style="font-weight: 700; text-align: right;" id="tblSuccWhatsApp">+971 50 123 4567</td>
+                    <td style="color: #64748b; font-weight: 600;">WhatsApp Number</td>
+                    <td style="font-weight: 700; text-align: right; color: #0f172a;" id="tblSuccWhatsApp">+971 50 123 4567</td>
                   </tr>
                   <tr>
-                    <td style="color: var(--text-muted); font-weight: 600;">Residential Address</td>
-                    <td style="font-weight: 700; text-align: right;" id="tblSuccAddress">Main Boulevard, Dubai</td>
+                    <td style="color: #64748b; font-weight: 600;">Residential Address</td>
+                    <td style="font-weight: 700; text-align: right; color: #0f172a;" id="tblSuccAddress">Main Boulevard, Dubai</td>
                   </tr>
                   <tr>
-                    <td style="color: var(--text-muted); font-weight: 600;">Jurisdiction Region</td>
+                    <td style="color: #64748b; font-weight: 600;">Jurisdiction Region</td>
                     <td style="font-weight: 700; color: var(--accent-teal); text-align: right;" id="tblSuccRegion">United Arab Emirates (UAE)</td>
                   </tr>
                   <tr>
-                    <td style="color: var(--text-muted); font-weight: 600;">Date of Birth</td>
-                    <td style="font-weight: 700; text-align: right;" id="tblSuccDob">1995-06-15 (Verified 18+)</td>
+                    <td style="color: #64748b; font-weight: 600;">Date of Birth</td>
+                    <td style="font-weight: 700; text-align: right; color: #0f172a;" id="tblSuccDob">1995-06-15 (Verified 18+)</td>
                   </tr>
                   <tr>
-                    <td style="color: var(--text-muted); font-weight: 600;">Investment Experience</td>
-                    <td style="font-weight: 700; text-align: right;" id="tblSuccExp">3 – 5 Years</td>
+                    <td style="color: #64748b; font-weight: 600;">Investment Experience</td>
+                    <td style="font-weight: 700; text-align: right; color: #0f172a;" id="tblSuccExp">3 – 5 Years</td>
                   </tr>
                   <tr>
-                    <td style="color: var(--text-muted); font-weight: 600;">Annual Income Bracket</td>
+                    <td style="color: #64748b; font-weight: 600;">Annual Income Bracket</td>
                     <td style="font-weight: 700; color: var(--accent-gold); text-align: right;" id="tblSuccIncome">$100,000 – $250,000</td>
                   </tr>
                 </tbody>
@@ -435,7 +433,7 @@
           <div class="passport-header">
             <div>
               <span style="font-size: 0.75rem; color: var(--accent-teal); text-transform: uppercase; font-weight: 800; letter-spacing: 0.08em; display: block;">Live Investor Passport</span>
-              <strong style="font-size: 1.1rem; color: #ffffff;">Verification Status</strong>
+              <strong style="font-size: 1.1rem; color: #0f172a;">Verification Status</strong>
             </div>
             <div class="passport-avatar-box" id="regAvatar">
               AV
@@ -443,32 +441,32 @@
           </div>
 
           <div style="margin-bottom: 24px;">
-            <p style="font-size: 0.8rem; color: #94a3b8; margin: 0 0 4px 0;">Assigned MetaTrader 5 Vault ID</p>
+            <p style="font-size: 0.8rem; color: #64748b; margin: 0 0 4px 0;">Assigned MetaTrader 5 Vault ID</p>
             <h3 style="font-family: var(--font-heading); color: var(--accent-gold); font-size: 1.35rem; margin: 0;">BMG-FX-894201</h3>
           </div>
 
           <div style="display: grid; gap: 14px; margin-bottom: 28px; font-size: 0.9rem;">
-            <div style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 8px;">
-              <span style="color: #94a3b8;">Custody Protocol</span>
-              <strong style="color: #34d399;">GTC FX Multi-Sig</strong>
+            <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #f1f5f9; padding-bottom: 8px;">
+              <span style="color: #64748b;">Custody Protocol</span>
+              <strong style="color: #059669;">GTC FX Multi-Sig</strong>
             </div>
-            <div style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 8px;">
-              <span style="color: #94a3b8;">Encryption Vault</span>
-              <strong style="color: #ffffff;">256-Bit SSL</strong>
+            <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #f1f5f9; padding-bottom: 8px;">
+              <span style="color: #64748b;">Encryption Vault</span>
+              <strong style="color: #0f172a;">256-Bit SSL</strong>
             </div>
-            <div style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 8px;">
-              <span style="color: #94a3b8;">Age Verification</span>
-              <strong style="color: #34d399;" id="sideAgePreview">18+ Required</strong>
+            <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #f1f5f9; padding-bottom: 8px;">
+              <span style="color: #64748b;">Age Verification</span>
+              <strong style="color: #059669;" id="sideAgePreview">18+ Required</strong>
             </div>
             <div style="display: flex; justify-content: space-between;">
-              <span style="color: #94a3b8;">Capital Allocation</span>
+              <span style="color: #64748b;">Capital Allocation</span>
               <strong style="color: var(--accent-teal);">Ready for Bot Select</strong>
             </div>
           </div>
 
-          <div style="background: rgba(0, 229, 225, 0.08); border: 1px solid rgba(0, 229, 225, 0.25); border-radius: 14px; padding: 16px; text-align: center;">
-            <span style="font-size: 0.85rem; color: var(--text-muted); display: block; margin-bottom: 6px;">Need Assistance?</span>
-            <span style="font-size: 0.9rem; font-weight: 700; color: #ffffff;">24/7 Senior Advisory Desk Available</span>
+          <div style="background: rgba(8, 145, 178, 0.06); border: 1px solid rgba(8, 145, 178, 0.2); border-radius: 14px; padding: 16px; text-align: center;">
+            <span style="font-size: 0.85rem; color: #64748b; display: block; margin-bottom: 6px;">Need Assistance?</span>
+            <span style="font-size: 0.9rem; font-weight: 700; color: #0f172a;">24/7 Senior Advisory Desk Available</span>
           </div>
         </div>
       </div>
@@ -480,26 +478,26 @@
     </div>
 
     <!-- Custom Date of Birth Pop-Up Calendar Modal -->
-    <div id="dobCalendarModal" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(10px); z-index: 9999; align-items: center; justify-content: center; padding: 20px;">
-      <div style="background: #0f172a; border: 1px solid rgba(0, 229, 225, 0.4); border-radius: 24px; width: 100%; max-width: 440px; padding: 28px; box-shadow: 0 24px 60px rgba(0,0,0,0.8); color: #ffffff; position: relative;">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 14px;">
+    <div id="dobCalendarModal" style="display: none; position: fixed; inset: 0; background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(8px); z-index: 9999; align-items: center; justify-content: center; padding: 20px;">
+      <div style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 24px; width: 100%; max-width: 440px; padding: 28px; box-shadow: 0 24px 60px rgba(15, 23, 42, 0.2); color: #0f172a; position: relative;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid #f1f5f9; padding-bottom: 14px;">
           <h3 style="margin: 0; font-size: 1.25rem; color: var(--accent-teal); font-family: var(--font-heading); font-weight: 800;">📅 Select Date of Birth (18+)</h3>
-          <button type="button" id="closeDobModalBtn" style="background: none; border: none; color: #94a3b8; font-size: 1.8rem; cursor: pointer; line-height: 1;">&times;</button>
+          <button type="button" id="closeDobModalBtn" style="background: none; border: none; color: #64748b; font-size: 1.8rem; cursor: pointer; line-height: 1;">&times;</button>
         </div>
 
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px;">
           <!-- Year Selector (Strictly 18+ Years Ago) -->
           <div>
-            <label style="font-size: 0.8rem; color: #94a3b8; display: block; margin-bottom: 6px; font-weight: 600;">Select Year *</label>
-            <select id="calYearSelect" style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid rgba(0, 229, 225, 0.3); background: #1e293b; color: #ffffff; font-weight: 700;">
+            <label style="font-size: 0.8rem; color: #64748b; display: block; margin-bottom: 6px; font-weight: 600;">Select Year *</label>
+            <select id="calYearSelect" style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #cbd5e1; background: #f8fafc; color: #0f172a; font-weight: 700;">
               <!-- Populated dynamically -->
             </select>
           </div>
 
           <!-- Month Selector -->
           <div>
-            <label style="font-size: 0.8rem; color: #94a3b8; display: block; margin-bottom: 6px; font-weight: 600;">Select Month *</label>
-            <select id="calMonthSelect" style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid rgba(0, 229, 225, 0.3); background: #1e293b; color: #ffffff; font-weight: 700;">
+            <label style="font-size: 0.8rem; color: #64748b; display: block; margin-bottom: 6px; font-weight: 600;">Select Month *</label>
+            <select id="calMonthSelect" style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #cbd5e1; background: #f8fafc; color: #0f172a; font-weight: 700;">
               <option value="0">January</option>
               <option value="1">February</option>
               <option value="2">March</option>
@@ -518,16 +516,16 @@
 
         <!-- Day Selection Grid -->
         <div style="margin-bottom: 20px;">
-          <label style="font-size: 0.8rem; color: #94a3b8; display: block; margin-bottom: 8px; font-weight: 600;">Select Day *</label>
+          <label style="font-size: 0.8rem; color: #64748b; display: block; margin-bottom: 8px; font-weight: 600;">Select Day *</label>
           <div id="calDaysGrid" style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; text-align: center;">
             <!-- Populated dynamically -->
           </div>
         </div>
 
         <!-- Selected Age Preview -->
-        <div style="background: rgba(0, 229, 225, 0.08); border: 1px solid rgba(0, 229, 225, 0.25); border-radius: 12px; padding: 14px; text-align: center; margin-bottom: 24px;">
-          <span style="font-size: 0.85rem; color: #94a3b8; display: block; margin-bottom: 4px;">Selected Birth Date & Calculated Age:</span>
-          <strong id="calSelectedPreview" style="color: #34d399; font-size: 1.15rem;">1995-06-15 (31 Years Old)</strong>
+        <div style="background: rgba(8, 145, 178, 0.08); border: 1px solid rgba(8, 145, 178, 0.25); border-radius: 12px; padding: 14px; text-align: center; margin-bottom: 24px;">
+          <span style="font-size: 0.85rem; color: #64748b; display: block; margin-bottom: 4px;">Selected Birth Date & Calculated Age:</span>
+          <strong id="calSelectedPreview" style="color: #059669; font-size: 1.15rem;">1995-06-15 (31 Years Old)</strong>
         </div>
 
         <button type="button" id="confirmDobBtn" class="btn btn-primary" style="width: 100%; padding: 14px; border-radius: 12px; font-weight: 800;">Confirm Date of Birth ✓</button>

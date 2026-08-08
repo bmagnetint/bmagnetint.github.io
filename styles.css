@@ -1,5 +1,5 @@
 /* ==========================================================================
-   B MAGNET INVESTMENT — Modern Luxury Light Design System
+   B MAGNET INVESTMENT — Modern Luxury Light Design System (Default)
    ========================================================================== */
 
 :root {
@@ -7,18 +7,19 @@
   --font-heading: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   
-  /* Slightly Darker Slate-Teal Palette Harmonized to Logo */
-  --bg-main: #d3e1e4;
-  --bg-card: rgba(255, 255, 255, 0.94);
-  --bg-card-hover: #ffffff;
-  --bg-glass: rgba(255, 255, 255, 0.82);
+  /* Crisp Modern Luxury Light Palette */
+  --bg-main: #f8fafc;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f1f5f9;
+  --bg-glass: rgba(255, 255, 255, 0.92);
   
-  --border-light: rgba(175, 198, 206, 0.85);
-  --border-glow: rgba(5, 168, 168, 0.45);
+  --border-light: #e2e8f0;
+  --border-subtle: #cbd5e1;
+  --border-glow: rgba(8, 145, 178, 0.35);
   
-  --accent-teal: #058b8b;
-  --accent-blue: #1e40af;
-  --accent-navy: #172a4e;
+  --accent-teal: #0891b2;
+  --accent-blue: #2563eb;
+  --accent-navy: #0f172a;
   --accent-emerald: #059669;
   --accent-gold: #d97706;
   
@@ -26,11 +27,54 @@
   --text-secondary: #334155;
   --text-muted: #64748b;
   
-  --shadow-glow: 0 10px 30px rgba(5, 168, 168, 0.16);
-  --shadow-card: 0 20px 50px -10px rgba(15, 23, 42, 0.1), 0 4px 12px rgba(15, 23, 42, 0.04);
+  --shadow-glow: 0 10px 30px rgba(8, 145, 178, 0.12);
+  --shadow-card: 0 12px 36px -4px rgba(15, 23, 42, 0.08), 0 4px 12px rgba(15, 23, 42, 0.04);
 }
 
-/* Dark Mode Palette Harmonized to Logo Dual-Colors (Royal Navy & Cyan Teal) */
+body {
+  background-color: #f8fafc !important;
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(8, 145, 178, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(217, 119, 6, 0.04) 0%, transparent 40%);
+  color: #0f172a !important;
+  font-family: var(--font-body);
+}
+
+.login-card,
+.feature-card,
+.dashboard-hero-card,
+.stat-card,
+.stat-box,
+.plan-card,
+.overview-card,
+.chart-panel,
+.transaction-table-wrap,
+.table-card {
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  color: #0f172a !important;
+  box-shadow: var(--shadow-card) !important;
+}
+
+h1, h2, h3, h4, strong, .brand-name {
+  color: #0f172a !important;
+}
+
+p, span, td {
+  color: #334155;
+}
+
+input, select {
+  background: #ffffff !important;
+  color: #0f172a !important;
+  border: 1px solid #cbd5e1 !important;
+}
+
+input::placeholder {
+  color: #94a3b8 !important;
+}
+
+/* Optional Dark Mode when explicitly enabled */
 html[data-theme="dark"],
 body[data-theme="dark"],
 body.dark-theme {
@@ -52,9 +96,6 @@ body.dark-theme {
   --text-primary: #f8fafc;
   --text-secondary: #cbd5e1;
   --text-muted: #94a3b8;
-  
-  --shadow-glow: 0 10px 35px rgba(0, 229, 225, 0.25);
-  --shadow-card: 0 20px 50px -10px rgba(0, 0, 0, 0.6), 0 4px 16px rgba(0, 229, 225, 0.1);
 }
 
 html[data-theme="dark"] body,
@@ -64,86 +105,8 @@ body.dark-theme {
   background-image: 
     radial-gradient(circle at 50% 50%, rgba(0, 229, 225, 0.14) 0%, transparent 60%),
     radial-gradient(circle at 2px 2px, rgba(0, 229, 225, 0.16) 1.5px, transparent 0),
-    linear-gradient(to right, rgba(0, 229, 225, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0, 229, 225, 0.05) 1px, transparent 1px),
-    linear-gradient(135deg, rgba(23, 42, 78, 0.2) 25%, transparent 25%),
-    linear-gradient(225deg, rgba(23, 42, 78, 0.2) 25%, transparent 25%),
     linear-gradient(180deg, #040810 0%, #060b14 40%, #0a1222 100%) !important;
   color: #f8fafc !important;
-}
-
-html[data-theme="dark"] .login-card,
-html[data-theme="dark"] .feature-card,
-html[data-theme="dark"] .dashboard-hero-card,
-html[data-theme="dark"] .stat-card,
-html[data-theme="dark"] .table-card,
-body.dark-theme .login-card,
-body.dark-theme .feature-card,
-body.dark-theme .dashboard-hero-card,
-body.dark-theme .stat-card,
-body.dark-theme .table-card {
-  background: rgba(13, 20, 36, 0.92) !important;
-  border-color: rgba(30, 58, 138, 0.6) !important;
-  color: #f8fafc !important;
-}
-
-html[data-theme="dark"] h1,
-html[data-theme="dark"] h2,
-html[data-theme="dark"] h3,
-html[data-theme="dark"] strong,
-html[data-theme="dark"] .brand-name,
-body.dark-theme h1,
-body.dark-theme h2,
-body.dark-theme h3,
-body.dark-theme strong,
-body.dark-theme .brand-name {
-  color: #f8fafc !important;
-}
-
-html[data-theme="dark"] p,
-body.dark-theme p {
-  color: #cbd5e1 !important;
-}
-
-html[data-theme="dark"] input,
-body.dark-theme input {
-  background: rgba(15, 23, 42, 0.85) !important;
-  color: #f8fafc !important;
-  border-color: rgba(0, 229, 225, 0.4) !important;
-}
-
-html[data-theme="dark"] input::placeholder,
-body.dark-theme input::placeholder {
-  color: #64748b !important;
-}
-
-html[data-theme="dark"] .site-header,
-html[data-theme="dark"] .brand-strip,
-body.dark-theme .site-header,
-body.dark-theme .brand-strip {
-  border-bottom-color: #00e5e5 !important;
-}
-
-html[data-theme="dark"] .login-card::before,
-body.dark-theme .login-card::before {
-  background: #00e5e5 !important;
-}
-
-html[data-theme="dark"] .btn-social-icon,
-body.dark-theme .btn-social-icon {
-  background: #1e293b !important;
-  border-color: rgba(51, 65, 85, 0.9) !important;
-}
-
-html[data-theme="dark"] .btn-social-icon:hover,
-body.dark-theme .btn-social-icon:hover {
-  border-color: #00e5e5 !important;
-  box-shadow: 0 8px 25px rgba(0, 229, 225, 0.25) !important;
-}
-
-html[data-theme="dark"] .apple-icon,
-body.dark-theme .apple-icon {
-  fill: #f8fafc !important;
 }
 
 /* Comprehensive Dashboard Dark Mode Overrides */
