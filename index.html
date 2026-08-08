@@ -3,226 +3,163 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>B Magnet Investment — Investor Portal</title>
+    <title>B Magnet International — Under Maintenance</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: data: 'unsafe-inline' 'unsafe-eval';" />
-    <meta name="description" content="B Magnet International — Institutional-grade portfolio management, live investment tracking, and asset allocation portal." />
-    <meta name="keywords" content="B Magnet International, bmagnetint, bmagnetint.com, investment portal, portfolio management, asset allocation" />
-    <link rel="canonical" href="https://bmagnetint.com/" />
-    
-    <!-- Open Graph / Google Preview -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://bmagnetint.com/" />
-    <meta property="og:title" content="B Magnet International — Investor Portal" />
-    <meta property="og:description" content="Access real-time asset tracking, performance metrics, and tailored investment strategies in one unified portal." />
-    <meta property="og:image" content="https://bmagnetint.com/logo.png" />
+    <meta name="description" content="B Magnet International — Platform Under Scheduled Maintenance." />
     
     <link
-      href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800;900&family=Tajawal:wght@700;800&family=Outfit:wght@800;900&family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
     <link rel="manifest" href="manifest.json" />
     <meta name="theme-color" content="#f8fafc" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <meta name="apple-mobile-web-app-title" content="B Magnet" />
-    <!-- Schema.org Organization Structured Data for Verification -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "B Magnet International",
-      "url": "https://bmagnetint.com",
-      "logo": "https://bmagnetint.com/logo.png",
-      "description": "Institutional-grade portfolio management, asset allocation, and investor portal.",
-      "sameAs": [
-        "https://bmagnetint-8f2c9.web.app"
-      ]
-    }
-    </script>
-    <link rel="stylesheet" href="styles.css" />
-    <script defer src="db.js"></script>
-    <script defer src="login.js"></script>
+    
+    <style>
+      :root {
+        --brand-navy: #0b1b3d;
+        --brand-cyan: #00a3a6;
+        --text-muted: #64748b;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: #f8fafc;
+        background-image: 
+          radial-gradient(circle at 10% 20%, rgba(0, 163, 166, 0.08) 0%, transparent 45%),
+          radial-gradient(circle at 90% 80%, rgba(11, 27, 61, 0.06) 0%, transparent 45%);
+        color: var(--brand-navy);
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        text-align: center;
+      }
+
+      .maintenance-card {
+        background: #ffffff;
+        border: 1px solid rgba(11, 27, 61, 0.1);
+        border-radius: 28px;
+        padding: 48px 36px;
+        max-width: 580px;
+        width: 100%;
+        box-shadow: 0 20px 45px -12px rgba(11, 27, 61, 0.08), 0 0 0 1px rgba(0, 163, 166, 0.15);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .maintenance-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, #0b1b3d, #00a3a6, #d97706);
+      }
+
+      .brand-logo {
+        height: 64px;
+        width: auto;
+        margin-bottom: 20px;
+        filter: drop-shadow(0 4px 12px rgba(0, 163, 166, 0.25));
+      }
+
+      .status-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 18px;
+        border-radius: 30px;
+        font-size: 0.8rem;
+        font-weight: 800;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        background: rgba(0, 163, 166, 0.1);
+        border: 1px solid rgba(0, 163, 166, 0.3);
+        color: var(--brand-cyan);
+        margin-bottom: 20px;
+      }
+
+      .pulse-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--brand-cyan);
+        display: inline-block;
+        box-shadow: 0 0 10px var(--brand-cyan);
+        animation: pulse 2s infinite ease-in-out;
+      }
+
+      @keyframes pulse {
+        0%, 100% { opacity: 1; transform: scale(1); }
+        50% { opacity: 0.4; transform: scale(1.3); }
+      }
+
+      h1 {
+        font-family: 'Plus Jakarta Sans', 'Outfit', sans-serif;
+        font-size: 2rem;
+        font-weight: 900;
+        color: var(--brand-navy);
+        margin-bottom: 12px;
+        letter-spacing: -0.02em;
+      }
+
+      p {
+        color: #475569;
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 28px;
+      }
+
+      .info-box {
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-radius: 16px;
+        padding: 16px 20px;
+        font-size: 0.88rem;
+        color: #64748b;
+        margin-bottom: 24px;
+      }
+
+      .footer-note {
+        font-size: 0.8rem;
+        color: #94a3b8;
+      }
+    </style>
   </head>
-  <body class="login-page">
-    <main class="login-shell">
-      <header class="brand-strip">
-        <div class="brand-mark">
-          <div class="logo-glow-wrapper">
-            <img src="logo.png" alt="B Magnet International Logo" class="brand-logo" />
-          </div>
-          <div class="brand-details">
-            <span class="brand-name" data-i18n="brandName">B Magnet International</span>
-            <span class="brand-tag" data-i18n="brandTagLogin">Investor Portal</span>
-          </div>
-        </div>
-        <div class="header-actions" style="display: flex; gap: 10px; align-items: center;">
-          <button id="langToggleBtn" class="lang-toggle-btn" type="button" title="Switch Language (العربية / English)">🌐 AR</button>
-          <button id="themeToggleBtn" class="theme-toggle-icon-btn" type="button" title="Toggle Dark/Light Mode">🌙</button>
-        </div>
-      </header>
+  <body>
+    <div class="maintenance-card">
+      <img src="logo.png" alt="B Magnet International" class="brand-logo" />
+      
+      <div>
+        <span class="status-badge">
+          <span class="pulse-dot"></span> System Upgrade In Progress
+        </span>
+      </div>
 
-      <section class="login-panel">
-        <div class="login-copy">
-          <span class="eyebrow">
-            <span class="pulse-dot"></span> <span data-i18n="eyebrow">Secure Investor Access</span>
-          </span>
-          <h1 data-i18n="heroTitle">Institutional-grade portfolio management.</h1>
-          <p data-i18n="heroSubtitle">
-            Welcome back. Access real-time asset tracking, performance metrics, and tailored investment strategies in one unified portal.
-          </p>
+      <h1>B Magnet International</h1>
+      <p>
+        Our institutional investor portal is currently undergoing scheduled infrastructure upgrades and multi-sig vault maintenance. Full services will resume shortly.
+      </p>
 
-          <div class="login-features">
-            <div class="feature-card">
-              <div class="feature-icon">📈</div>
-              <div>
-                <strong data-i18n="feature1Title">Live Portfolio Analytics</strong>
-                <p data-i18n="feature1Desc">Track your full asset allocation and yield projections in real time.</p>
-              </div>
-            </div>
-            <div class="feature-card">
-              <div class="feature-icon">🛡️</div>
-              <div>
-                <strong data-i18n="feature2Title">Downside Protection & Strategy</strong>
-                <p data-i18n="feature2Desc">Institutional risk controls tailored to your capital objectives.</p>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="info-box">
+        <strong>🔒 Security Protocols Active</strong><br />
+        All custodial assets and automated trading bots continue to operate normally with 256-bit multi-sig protection.
+      </div>
 
-        <div class="login-card">
-          <!-- Auth Mode Tab Switcher -->
-          <div style="display: flex; border-bottom: 2px solid var(--border-light); margin-bottom: 24px;">
-            <button type="button" id="tabSignInBtn" class="auth-tab-btn active" style="flex: 1; padding: 14px; font-weight: 800; border: none; background: none; color: var(--accent-primary); border-bottom: 2px solid var(--accent-primary); cursor: pointer; font-size: 1.05rem; font-family: var(--font-heading);">Sign In</button>
-            <button type="button" id="tabRegisterBtn" class="auth-tab-btn" style="flex: 1; padding: 14px; font-weight: 800; border: none; background: none; color: var(--text-muted); border-bottom: 2px solid transparent; cursor: pointer; font-size: 1.05rem; font-family: var(--font-heading);">Register Account</button>
-          </div>
-
-          <!-- Fast Biometric & Social Auth Suite -->
-          <div style="display: grid; gap: 12px; margin-bottom: 24px;">
-            <button type="button" id="passkeySignInBtn" class="btn-social-full" style="background: #f8fafc; border: 1.5px solid #cbd5e1; color: var(--text-primary); padding: 14px; border-radius: 14px; display: flex; align-items: center; justify-content: center; gap: 10px; font-weight: 700; cursor: pointer; box-shadow: 0 2px 6px rgba(15,23,42,0.03);">
-              <span style="font-size: 1.2rem;">🔑</span>
-              <span>Continue with Passkey (Face ID / Touch ID)</span>
-            </button>
-            
-            <div style="display: flex; gap: 12px;">
-              <button type="button" id="googleSignInBtn" class="btn-social-full" style="flex: 1; background: #ffffff; border: 1.5px solid #cbd5e1; color: var(--text-primary); padding: 12px; border-radius: 14px; display: flex; align-items: center; justify-content: center; gap: 10px; font-weight: 700; cursor: pointer; box-shadow: 0 2px 6px rgba(15,23,42,0.03);">
-                <svg width="20" height="20" viewBox="0 0 24 24">
-                  <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-                  <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-                  <path fill="#FBBC05" d="M5.84 14.1c-.22-.66-.35-1.36-.35-2.1s.13-1.44.35-2.1V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.62z"/>
-                  <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
-                </svg>
-                <span>Google</span>
-              </button>
-
-              <button type="button" id="appleSignInBtn" class="btn-social-full" style="flex: 1; background: #ffffff; border: 1.5px solid #cbd5e1; color: var(--text-primary); padding: 12px; border-radius: 14px; display: flex; align-items: center; justify-content: center; gap: 10px; font-weight: 700; cursor: pointer; box-shadow: 0 2px 6px rgba(15,23,42,0.03);">
-                <svg width="20" height="20" viewBox="0 0 170 170" fill="currentColor">
-                  <path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.34.13-9.13-1.9-14.34-6.1-3.23-2.64-7.14-7.27-11.73-13.9-6.3-9.13-11.19-19.42-14.65-30.88-3.46-11.47-5.19-22.37-5.19-32.7 0-15.52 4.12-28.18 12.35-37.99 8.23-9.8 18.52-14.77 30.88-14.9 5.37 0 10.88 1.27 16.53 3.82 5.65 2.54 9.68 3.82 12.1 3.82 1.95 0 6.09-1.34 12.41-4.01 6.33-2.68 11.83-3.9 16.52-3.67 9.8.76 17.88 4.54 24.27 11.34-11.45 6.94-17.06 16.73-16.83 29.38.25 9.94 4.12 18.23 11.61 24.87 7.48 6.64 16.27 10.37 26.35 11.19-2.28 6.79-5.32 13.7-9.12 20.73zm-27.23-107.7c0 6.34-2.31 12.37-6.93 18.1-4.63 5.73-10.29 9.38-16.98 10.96-.38-2.67-.57-5.16-.57-7.46 0-6.1 2.45-12.19 7.34-18.27 4.9-6.08 10.63-9.74 17.2-10.98.26 2.41.39 4.96.39 7.65z"/>
-                </svg>
-                <span>Apple</span>
-              </button>
-            </div>
-          </div>
-
-          <div class="login-divider" style="margin-bottom: 24px;">
-            <span data-i18n="orSignInWith">OR WITH EMAIL</span>
-          </div>
-
-          <!-- Sign In Form -->
-          <form id="loginForm" class="login-form">
-            <div class="form-group">
-              <label for="email" data-i18n="emailLabel">Investor Email</label>
-              <input id="email" type="email" placeholder="test@bmagnetint.com" required />
-            </div>
-            <div class="form-group">
-              <label for="password" data-i18n="passwordLabel">Password</label>
-              <div class="password-input-wrap">
-                <input id="password" type="password" placeholder="••••••••••••" required />
-                <button type="button" id="togglePasswordBtn" class="password-toggle-btn" title="Show/Hide Password">
-                  <svg class="eye-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                    <circle cx="12" cy="12" r="3"></circle>
-                  </svg>
-                </button>
-              </div>
-            </div>
-            <button class="btn btn-primary" type="submit" data-i18n="signInBtn" style="width: 100%; padding: 14px;">Sign In to Dashboard →</button>
-          </form>
-
-          <!-- Registration Form (Hidden by default) -->
-          <form id="registerForm" class="login-form" style="display: none;">
-            <div class="form-group">
-              <label for="regName">Full Name</label>
-              <input id="regName" type="text" placeholder="e.g. Alexander Vance" required />
-            </div>
-            <div class="form-group">
-              <label for="regEmail">Investor Email</label>
-              <input id="regEmail" type="email" placeholder="investor@domain.com" required />
-            </div>
-            <button class="btn btn-primary" type="submit" style="width: 100%; padding: 14px;">Complete Registration →</button>
-          </form>
-
-          <p class="login-footnote" style="margin-top: 16px; text-align: center; font-size: 0.8rem; color: var(--text-muted);">Protected by B Magnet 256-bit Multi-Sig Vault Encryption.</p>
-        </div>
-      </section>
-
-      <footer class="login-footer">
-        <p>© 2026 B Magnet Investment. All rights reserved. Secure investor portal.</p>
-      </footer>
-    </main>
-
-    <!-- Google Identity Services SDK -->
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
-
-    <!-- Google Account Integration OAuth Modal -->
-    <div id="googleAuthModal" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); z-index: 9999; align-items: center; justify-content: center; padding: 20px;">
-      <div style="background: #ffffff; color: #1f2937; border-radius: 20px; width: 100%; max-width: 440px; padding: 32px; box-shadow: 0 24px 60px rgba(0,0,0,0.5); position: relative; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
-        
-        <!-- Header -->
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-          <div style="display: flex; align-items: center; gap: 10px;">
-            <svg width="24" height="24" viewBox="0 0 24 24">
-              <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-              <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-              <path fill="#FBBC05" d="M5.84 14.1c-.22-.66-.35-1.36-.35-2.1s.13-1.44.35-2.1V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.62z"/>
-              <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
-            </svg>
-            <span style="font-size: 1.15rem; font-weight: 700; color: #202124;">Google Account Integration</span>
-          </div>
-          <button type="button" id="closeGoogleModalBtn" style="background: none; border: none; color: #5f6368; font-size: 1.6rem; cursor: pointer; line-height: 1;">&times;</button>
-        </div>
-
-        <p style="font-size: 0.95rem; color: #3c4043; margin-bottom: 20px; line-height: 1.4;">
-          Select a Google Account to integrate and authenticate with <strong>bmagnetint.com</strong>:
-        </p>
-
-        <!-- Google Accounts List -->
-        <div style="display: grid; gap: 12px; margin-bottom: 24px;">
-          <!-- Account 1 -->
-          <div class="google-acc-item" data-name="Alexander Vance" data-email="alexander.vance@gmail.com" style="display: flex; align-items: center; gap: 14px; padding: 14px 16px; border: 1px solid #dadce0; border-radius: 12px; cursor: pointer; transition: all 0.2s ease; background: #ffffff;">
-            <div style="width: 42px; height: 42px; border-radius: 50%; background: #1a73e8; color: #ffffff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.1rem;">A</div>
-            <div style="flex: 1;">
-              <strong style="display: block; font-size: 0.95rem; color: #202124;">Alexander Vance</strong>
-              <span style="font-size: 0.82rem; color: #5f6368;">alexander.vance@gmail.com</span>
-            </div>
-            <span style="font-size: 0.8rem; color: #1a73e8; font-weight: 600;">Connect →</span>
-          </div>
-
-          <!-- Account 2 -->
-          <div class="google-acc-item" data-name="Hanaan Junaid" data-email="hanaan.junaid@bmagnetint.com" style="display: flex; align-items: center; gap: 14px; padding: 14px 16px; border: 1px solid #dadce0; border-radius: 12px; cursor: pointer; transition: all 0.2s ease; background: #ffffff;">
-            <div style="width: 42px; height: 42px; border-radius: 50%; background: #ea4335; color: #ffffff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.1rem;">H</div>
-            <div style="flex: 1;">
-              <strong style="display: block; font-size: 0.95rem; color: #202124;">Hanaan Junaid</strong>
-              <span style="font-size: 0.82rem; color: #5f6368;">hanaan.junaid@bmagnetint.com</span>
-            </div>
-            <span style="font-size: 0.8rem; color: #1a73e8; font-weight: 600;">Connect →</span>
-          </div>
-        </div>
-
-        <div style="text-align: center; border-top: 1px solid #e8eaed; padding-top: 16px;">
-          <p style="font-size: 0.78rem; color: #70757a; margin: 0; line-height: 1.4;">To continue, Google will securely share your verified name, email address, and OAuth authentication token with B Magnet International.</p>
-        </div>
+      <div class="footer-note">
+        <p style="margin: 0;">For urgent institutional investor inquiries: <strong>support@bmagnetint.com</strong></p>
+        <p style="margin-top: 6px; font-size: 0.75rem;">© 2026 B Magnet Investment. All rights reserved.</p>
       </div>
     </div>
   </body>
