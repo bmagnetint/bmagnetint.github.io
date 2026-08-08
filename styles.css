@@ -1,6 +1,6 @@
 /* ==========================================================================
-   B MAGNET INTERNATIONAL — Official GTC FX & GTCgo Institutional Design System
-   Exact GTC FX Color Palette: Royal Midnight Navy (#0D1F42), GTC Cyan-Teal (#00A896), Ice Platinum (#F4F7FB) & Gold (#D4AF37)
+   B MAGNET INTERNATIONAL — Sovereign Luxury FinTech & Private Banking System
+   Palette: Royal Midnight Navy (#0D1F42), Elegant Teal (#00A896), Ice Platinum (#F4F7FB) & Gold (#D4AF37)
    ========================================================================== */
 
 :root {
@@ -8,49 +8,36 @@
   --font-heading: 'Plus Jakarta Sans', 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   
-  /* GTC FX & GTCgo Authentic Colors */
-  --gtc-navy: #0d1f42;
-  --gtc-navy-dark: #071329;
-  --gtc-navy-light: #162f65;
-  --gtc-teal: #00a896;
-  --gtc-cyan: #00b4d8;
-  --gtc-teal-glow: rgba(0, 168, 150, 0.25);
-  --gtc-gold: #d4af37;
-  --gtc-emerald: #059669;
+  /* Brand Palette */
+  --brand-navy: #0d1f42;
+  --brand-navy-dark: #071329;
+  --brand-navy-light: #162f65;
+  --brand-teal: #00a896;
+  --brand-cyan: #00a896;
+  --brand-teal-light: #00c4b4;
+  --brand-gold: #d4af37;
+  --brand-emerald: #059669;
   
-  /* Canvas & Surface Colors */
+  /* Surface Colors */
   --bg-main: #f4f7fb;
   --bg-canvas: #edf2f8;
   --bg-card: #ffffff;
-  --bg-card-hover: #f8fafc;
   --bg-input: #ffffff;
   
-  /* Semantic Aliases */
-  --accent-primary: #0d1f42;
-  --accent-teal: #00a896;
-  --accent-blue: #162f65;
-  --accent-emerald: #059669;
-  --accent-gold: #d4af37;
-  --accent-navy: #0d1f42;
-  --brand-navy: #0d1f42;
-  --brand-cyan: #00a896;
-  --brand-gold: #d4af37;
-  --brand-emerald: #00a896;
-  
-  /* Refined Institutional Borders */
+  /* Borders */
   --border-light: #e2e8f0;
   --border-subtle: #cbd5e1;
-  --border-brand: rgba(0, 168, 150, 0.3);
   --border-navy: rgba(13, 31, 66, 0.12);
+  --border-brand: rgba(0, 168, 150, 0.35);
   
-  /* High-Contrast Typography Colors */
+  /* Typography */
   --text-primary: #0d1f42;
   --text-secondary: #334155;
   --text-muted: #64748b;
   
-  /* Soft Luxury Shadows */
+  /* Shadows */
   --shadow-glow: 0 10px 30px rgba(0, 168, 150, 0.18);
-  --shadow-card: 0 16px 40px -10px rgba(13, 31, 66, 0.08), 0 0 0 1px rgba(13, 31, 66, 0.05);
+  --shadow-card: 0 20px 50px -12px rgba(13, 31, 66, 0.09), 0 0 0 1px rgba(13, 31, 66, 0.05);
   --shadow-elevated: 0 25px 60px -12px rgba(13, 31, 66, 0.14), 0 0 0 1px rgba(0, 168, 150, 0.25);
 }
 
@@ -70,8 +57,8 @@ html {
 body {
   background-color: var(--bg-main);
   background-image: 
-    radial-gradient(circle at 10% 15%, rgba(0, 168, 150, 0.08) 0%, transparent 45%),
-    radial-gradient(circle at 90% 85%, rgba(13, 31, 66, 0.07) 0%, transparent 45%),
+    radial-gradient(circle at 15% 15%, rgba(0, 168, 150, 0.08) 0%, transparent 45%),
+    radial-gradient(circle at 85% 85%, rgba(13, 31, 66, 0.07) 0%, transparent 45%),
     radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.03) 0%, transparent 50%);
   background-attachment: fixed;
   color: var(--text-primary);
@@ -101,11 +88,320 @@ button, input, select {
 }
 
 /* ==========================================================================
-   HEADER & BRAND BAR (GTCgo STYLE)
+   CENTERED LUXURY MONOLITH LOGIN ARCHITECTURE
    ========================================================================== */
 
-.site-header,
-.brand-strip {
+.login-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 24px 16px;
+}
+
+.login-viewport {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-brand-bar {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.login-brand-logo-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.login-monolith-logo {
+  height: 62px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 6px 16px rgba(13, 31, 66, 0.18));
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.login-monolith-logo:hover {
+  transform: scale(1.06);
+}
+
+.login-brand-heading {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  color: var(--brand-navy);
+  margin-bottom: 2px;
+}
+
+.login-brand-sub {
+  font-size: 0.74rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--brand-teal);
+  display: block;
+}
+
+/* Monolith Card (Fixed Zero-Shift Dimension) */
+.login-monolith-card {
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid var(--border-navy);
+  border-radius: 28px;
+  padding: 34px 32px 28px;
+  box-shadow: var(--shadow-card);
+  position: relative;
+  overflow: hidden;
+  min-height: 580px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.login-monolith-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--brand-navy), var(--brand-teal), var(--brand-gold));
+}
+
+/* Capsule Switcher */
+.monolith-pill-switcher {
+  display: flex;
+  background: #f1f5f9;
+  padding: 5px;
+  border-radius: 16px;
+  border: 1px solid var(--border-light);
+  margin-bottom: 20px;
+}
+
+.monolith-pill-btn {
+  flex: 1;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 0.92rem;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.monolith-pill-btn.active {
+  background: #ffffff;
+  color: var(--brand-navy);
+  box-shadow: 0 4px 14px rgba(13, 31, 66, 0.08);
+}
+
+/* Equal Height Viewport */
+.monolith-forms-viewport {
+  min-height: 380px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.monolith-form {
+  min-height: 380px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.form-fields-group {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.monolith-input-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.monolith-label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--brand-navy);
+  margin-bottom: 6px;
+}
+
+.monolith-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.input-prefix-icon {
+  position: absolute;
+  left: 14px;
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+}
+
+.monolith-input-wrap input {
+  width: 100%;
+  padding: 13px 44px 13px 42px !important;
+  border-radius: 14px !important;
+  border: 1.5px solid #cbd5e1 !important;
+  background: #ffffff !important;
+  color: var(--brand-navy) !important;
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  outline: none !important;
+  transition: all 0.2s ease !important;
+  box-shadow: 0 1px 4px rgba(13, 31, 66, 0.02) !important;
+  min-height: 48px;
+}
+
+.monolith-input-wrap input:focus {
+  border-color: var(--brand-teal) !important;
+  box-shadow: 0 0 0 4px rgba(0, 168, 150, 0.18) !important;
+}
+
+.input-suffix-toggle {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  color: #94a3b8;
+  cursor: pointer;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+}
+
+.input-suffix-toggle:hover {
+  color: var(--brand-teal);
+}
+
+.forgot-pass-link {
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--brand-teal);
+}
+
+.forgot-pass-link:hover {
+  text-decoration: underline;
+}
+
+/* Primary Action Button */
+.btn-monolith-primary {
+  width: 100%;
+  background: linear-gradient(135deg, var(--brand-navy) 0%, var(--brand-navy-light) 50%, var(--brand-teal) 100%);
+  color: #ffffff !important;
+  padding: 14px;
+  border-radius: 14px;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 0.98rem;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 10px 25px -5px rgba(13, 31, 66, 0.3);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  min-height: 48px;
+}
+
+.btn-monolith-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px -5px rgba(0, 168, 150, 0.35);
+}
+
+/* Divider & Social Suite */
+.monolith-divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 16px 0;
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+}
+
+.monolith-divider::before,
+.monolith-divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.monolith-divider span {
+  padding: 0 10px;
+}
+
+.monolith-social-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+}
+
+.monolith-social-btn {
+  background: #ffffff;
+  border: 1.5px solid var(--border-subtle);
+  color: var(--brand-navy);
+  padding: 10px 8px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-weight: 700;
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.monolith-social-btn:hover {
+  border-color: var(--brand-teal);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(13, 31, 66, 0.06);
+}
+
+/* Security Strip */
+.monolith-security-strip {
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+/* Utility Bar */
+.login-utility-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+/* ==========================================================================
+   GLOBAL SITE HEADER & INNER PAGES
+   ========================================================================== */
+
+.site-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -128,29 +424,11 @@ button, input, select {
   gap: 16px;
 }
 
-.logo-glow-wrapper {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 4px;
-}
-
 .brand-logo {
   height: 52px;
   width: auto;
   object-fit: contain;
   filter: drop-shadow(0 4px 12px rgba(13, 31, 66, 0.15));
-  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.brand-logo:hover {
-  transform: scale(1.06);
-}
-
-.brand-details {
-  display: flex;
-  flex-direction: column;
 }
 
 .brand-name {
@@ -158,7 +436,7 @@ button, input, select {
   font-weight: 900;
   font-size: 1.35rem;
   letter-spacing: -0.02em;
-  color: var(--gtc-navy);
+  color: var(--brand-navy);
 }
 
 .brand-tag {
@@ -166,7 +444,7 @@ button, input, select {
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: var(--gtc-teal);
+  color: var(--brand-teal);
 }
 
 .site-nav {
@@ -187,311 +465,14 @@ button, input, select {
 
 .site-nav a.nav-link:hover,
 .site-nav a.nav-link.active {
-  color: var(--gtc-navy);
+  color: var(--brand-navy);
   background: rgba(0, 168, 150, 0.1);
-}
-
-/* ==========================================================================
-   GTC FX / GTCgo SIGNATURE LOGIN LAYOUT (STABLE ZERO-SHIFT GEOMETRY)
-   ========================================================================== */
-
-.gtcgo-layout {
-  display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap: 40px;
-  align-items: stretch;
-  margin-top: 10px;
-}
-
-.gtcgo-hero-panel {
-  padding-right: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.gtcgo-hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 16px;
-  border-radius: 30px;
-  font-size: 0.8rem;
-  font-weight: 800;
-  font-family: var(--font-heading);
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  background: rgba(0, 168, 150, 0.1);
-  border: 1px solid rgba(0, 168, 150, 0.25);
-  color: var(--gtc-teal);
-  margin-bottom: 20px;
-}
-
-.gtcgo-hero-title {
-  font-size: clamp(2.1rem, 3.8vw, 3.2rem);
-  font-weight: 900;
-  line-height: 1.15;
-  letter-spacing: -0.03em;
-  color: var(--gtc-navy);
-  margin-bottom: 18px;
-}
-
-.gtcgo-hero-sub {
-  font-size: 1.05rem;
-  line-height: 1.6;
-  color: var(--text-secondary);
-  margin-bottom: 28px;
-}
-
-/* GTCgo Feature Badges Grid */
-.gtcgo-feature-grid {
-  display: grid;
-  gap: 14px;
-}
-
-.gtcgo-feature-card {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 16px 20px;
-  border-radius: 18px;
-  background: #ffffff;
-  border: 1px solid var(--border-navy);
-  box-shadow: 0 4px 16px rgba(13, 31, 66, 0.03);
-  transition: all 0.25s ease;
-}
-
-.gtcgo-feature-card:hover {
-  transform: translateX(4px);
-  border-color: var(--gtc-teal);
-  box-shadow: var(--shadow-card);
-}
-
-.gtcgo-feature-icon {
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-  background: rgba(0, 168, 150, 0.1);
-  color: var(--gtc-teal);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-/* GTCgo Auth Card — ROCK SOLID FIXED STABLE GEOMETRY */
-.gtcgo-auth-card {
-  background: #ffffff;
-  border: 1px solid var(--border-navy);
-  border-radius: 28px;
-  padding: 38px 36px 32px;
-  box-shadow: var(--shadow-card);
-  position: relative;
-  overflow: hidden;
-  min-height: 670px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.gtcgo-auth-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, var(--gtc-navy), var(--gtc-teal), var(--gtc-gold));
-}
-
-.gtc-tab-bar {
-  display: flex;
-  border-bottom: 2px solid var(--border-light);
-  margin-bottom: 20px;
-}
-
-.gtc-tab-btn {
-  flex: 1;
-  padding: 12px;
-  font-weight: 800;
-  font-size: 0.98rem;
-  font-family: var(--font-heading);
-  border: none;
-  background: none;
-  color: var(--text-muted);
-  border-bottom: 2px solid transparent;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  text-align: center;
-}
-
-.gtc-tab-btn.active {
-  color: var(--gtc-teal);
-  border-bottom-color: var(--gtc-teal);
-}
-
-/* Fast Passkey & Social Suite */
-.gtc-passkey-btn {
-  width: 100%;
-  background: #f8fafc;
-  border: 1.5px solid var(--border-subtle);
-  color: var(--gtc-navy);
-  padding: 12px;
-  border-radius: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  font-weight: 700;
-  font-size: 0.9rem;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  margin-bottom: 10px;
-}
-
-.gtc-passkey-btn:hover {
-  border-color: var(--gtc-teal);
-  color: var(--gtc-teal);
-  box-shadow: 0 4px 14px rgba(0, 168, 150, 0.12);
-}
-
-.gtc-social-row {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 16px;
-}
-
-.gtc-social-btn {
-  flex: 1;
-  background: #ffffff;
-  border: 1.5px solid var(--border-subtle);
-  color: var(--gtc-navy);
-  padding: 10px;
-  border-radius: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  font-weight: 700;
-  font-size: 0.88rem;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.gtc-social-btn:hover {
-  border-color: var(--gtc-teal);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(13, 31, 66, 0.06);
-}
-
-/* Forms Equal Height Container — NO JUMPING OR SIZE SHIFT */
-.forms-viewport {
-  min-height: 290px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.login-form {
-  min-height: 290px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-/* Form Inputs */
-input[type="text"],
-input[type="email"],
-input[type="password"],
-input[type="tel"],
-input[type="date"],
-select,
-.custom-input,
-.custom-select {
-  width: 100%;
-  padding: 13px 16px !important;
-  border-radius: 14px !important;
-  border: 1.5px solid #cbd5e1 !important;
-  background: #ffffff !important;
-  color: var(--gtc-navy) !important;
-  font-family: var(--font-body) !important;
-  font-size: 16px !important;
-  font-weight: 600 !important;
-  outline: none !important;
-  transition: all 0.2s ease !important;
-  box-shadow: 0 1px 4px rgba(13, 31, 66, 0.02) !important;
-  min-height: 48px;
-}
-
-input:focus,
-select:focus,
-.custom-input:focus,
-.custom-select:focus {
-  border-color: var(--gtc-teal) !important;
-  box-shadow: 0 0 0 4px rgba(0, 168, 150, 0.18) !important;
-}
-
-input::placeholder {
-  color: #94a3b8 !important;
-  font-weight: 500 !important;
-}
-
-select option {
-  background: #ffffff !important;
-  color: var(--gtc-navy) !important;
-  font-weight: 600 !important;
-  padding: 12px !important;
-}
-
-/* GTC Primary Buttons */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 13px 26px;
-  border-radius: 14px;
-  font-family: var(--font-heading);
-  font-weight: 800;
-  font-size: 0.95rem;
-  cursor: pointer;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  border: none;
-  outline: none;
-  letter-spacing: 0.01em;
-  min-height: 48px;
-}
-
-.btn-primary {
-  background: linear-gradient(135deg, var(--gtc-navy) 0%, var(--gtc-navy-light) 50%, var(--gtc-teal) 100%);
-  color: #ffffff !important;
-  box-shadow: 0 10px 25px -5px rgba(13, 31, 66, 0.3);
-}
-
-.btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 14px 30px -5px rgba(0, 168, 150, 0.35);
-  color: #ffffff !important;
-}
-
-.btn-secondary {
-  background: #ffffff;
-  color: var(--gtc-navy) !important;
-  border: 1px solid var(--border-subtle);
-  box-shadow: 0 3px 10px rgba(13, 31, 66, 0.04);
-}
-
-.btn-secondary:hover {
-  background: #f8fafc;
-  border-color: var(--gtc-teal);
-  color: var(--gtc-teal) !important;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(13, 31, 66, 0.08);
 }
 
 .theme-toggle-icon-btn,
 .lang-toggle-btn {
-  height: 42px;
-  border-radius: 14px;
+  height: 38px;
+  border-radius: 12px;
   background: #ffffff;
   border: 1px solid var(--border-light);
   color: var(--text-primary);
@@ -499,108 +480,20 @@ select option {
   align-items: center;
   justify-content: center;
   font-weight: 800;
-  font-size: 0.88rem;
+  font-size: 0.82rem;
   cursor: pointer;
   box-shadow: 0 2px 8px rgba(13, 31, 66, 0.04);
   transition: all 0.2s ease;
-  padding: 0 16px;
+  padding: 0 12px;
 }
 
 .theme-toggle-icon-btn:hover,
 .lang-toggle-btn:hover {
-  transform: translateY(-2px);
-  border-color: var(--gtc-teal);
+  border-color: var(--brand-teal);
   box-shadow: var(--shadow-glow);
 }
 
 /* Cards & Panels */
-.login-card,
-.feature-card,
-.dashboard-hero-card,
-.stat-card,
-.stat-box,
-.plan-card,
-.overview-card,
-.chart-panel,
-.transaction-table-wrap,
-.table-card,
-.reg-form-card,
-.reg-passport-card {
-  background: var(--bg-card) !important;
-  border: 1px solid var(--border-navy) !important;
-  color: var(--text-primary) !important;
-  border-radius: 24px !important;
-  box-shadow: var(--shadow-card) !important;
-  position: relative;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.plan-card:hover,
-.stat-card:hover,
-.feature-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-elevated) !important;
-  border-color: var(--gtc-teal) !important;
-}
-
-h1, h2, h3, h4, strong {
-  color: var(--gtc-navy) !important;
-  font-family: var(--font-heading);
-}
-
-p, span, td, th {
-  color: var(--text-secondary);
-}
-
-/* Status Pill & Pulse Dot */
-.status-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 16px;
-  border-radius: 30px;
-  font-size: 0.8rem;
-  font-weight: 800;
-  font-family: var(--font-heading);
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  background: rgba(0, 168, 150, 0.1) !important;
-  border: 1px solid rgba(0, 168, 150, 0.3) !important;
-  color: var(--gtc-teal) !important;
-}
-
-.pulse-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--gtc-teal);
-  display: inline-block;
-  box-shadow: 0 0 10px var(--gtc-teal);
-  animation: pulseLight 2s infinite ease-in-out;
-}
-
-@keyframes pulseLight {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.4; transform: scale(1.3); }
-}
-
-.eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 18px;
-  border-radius: 30px;
-  font-size: 0.8rem;
-  font-weight: 800;
-  font-family: var(--font-heading);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  background: rgba(13, 31, 66, 0.06);
-  border: 1px solid rgba(13, 31, 66, 0.15);
-  color: var(--gtc-navy);
-  margin-bottom: 16px;
-}
-
 .dashboard-hero,
 .reg-hero-banner {
   background: #ffffff !important;
@@ -621,21 +514,30 @@ p, span, td, th {
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, var(--gtc-navy), var(--gtc-teal), var(--gtc-gold));
+  background: linear-gradient(90deg, var(--brand-navy), var(--brand-teal), var(--brand-gold));
 }
 
-.hero-copy h1 {
-  font-size: clamp(1.85rem, 3.5vw, 2.7rem);
-  font-weight: 900;
-  letter-spacing: -0.035em;
-  color: var(--gtc-navy);
-  margin-bottom: 12px;
+.plan-card,
+.stat-card,
+.feature-card,
+.chart-panel,
+.stat-box,
+.reg-form-card,
+.reg-passport-card {
+  background: #ffffff !important;
+  border: 1px solid var(--border-navy) !important;
+  border-radius: 24px !important;
+  box-shadow: var(--shadow-card) !important;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.hero-copy p {
-  color: var(--text-secondary);
-  font-size: 1.05rem;
-  line-height: 1.6;
+.plan-card:hover,
+.stat-card:hover,
+.feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-elevated) !important;
+  border-color: var(--brand-teal) !important;
 }
 
 /* Stat Grid & Tables */
@@ -647,23 +549,6 @@ p, span, td, th {
 .stat-box {
   padding: 20px 22px;
   border-radius: 18px !important;
-  background: #ffffff !important;
-  border: 1px solid var(--border-light) !important;
-}
-
-.stat-box p {
-  font-size: 0.8rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--text-muted);
-  margin-bottom: 6px;
-}
-
-.stat-box strong {
-  font-size: 1.35rem;
-  font-weight: 900;
-  color: var(--gtc-navy);
 }
 
 .table-responsive-wrapper,
@@ -699,95 +584,7 @@ p, span, td, th {
   border-bottom: 1px solid #f1f5f9;
   font-weight: 600;
   font-size: 0.92rem;
-  color: var(--gtc-navy);
-}
-
-.transaction-table tr:last-child td {
-  border-bottom: none;
-}
-
-/* Range Slider */
-input[type="range"] {
-  -webkit-appearance: none;
-  appearance: none;
-  height: 8px;
-  border-radius: 4px;
-  background: linear-gradient(90deg, var(--gtc-navy), var(--gtc-teal));
-  outline: none;
-  border: none !important;
-  padding: 0 !important;
-  min-height: auto;
-}
-
-input[type="range"]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  background: #ffffff;
-  border: 3px solid var(--gtc-navy);
-  box-shadow: 0 4px 12px rgba(13, 31, 66, 0.35);
-  cursor: pointer;
-  transition: transform 0.15s ease;
-}
-
-input[type="range"]::-webkit-slider-thumb:hover {
-  transform: scale(1.15);
-}
-
-.login-divider {
-  display: flex;
-  align-items: center;
-  text-align: center;
-  margin: 14px 0;
-  color: var(--text-muted);
-  font-size: 0.74rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-}
-
-.login-divider::before,
-.login-divider::after {
-  content: '';
-  flex: 1;
-  border-bottom: 1px solid var(--border-light);
-}
-
-.login-divider span {
-  padding: 0 10px;
-}
-
-.password-input-wrap {
-  position: relative;
-  display: flex;
-  align-items: center;
-  width: 100%;
-}
-
-.password-toggle-btn {
-  position: absolute;
-  right: 14px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: #64748b;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 8px;
-}
-
-.password-toggle-btn:hover {
-  color: var(--gtc-teal);
-}
-
-.login-footer,
-.site-footer {
-  margin-top: 40px;
-  text-align: center;
-  color: #64748b;
-  font-size: 0.85rem;
+  color: var(--brand-navy);
 }
 
 /* Modal Overlay */
@@ -815,31 +612,44 @@ input[type="range"]::-webkit-slider-thumb:hover {
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
 }
 
-/* Mobile Responsive */
-@media (max-width: 960px) {
-  .gtcgo-layout {
-    grid-template-columns: 1fr;
-    gap: 32px;
-  }
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--brand-teal);
+  display: inline-block;
+  box-shadow: 0 0 10px var(--brand-teal);
 }
 
+.btn-primary {
+  background: linear-gradient(135deg, var(--brand-navy) 0%, var(--brand-navy-light) 50%, var(--brand-teal) 100%);
+  color: #ffffff !important;
+  padding: 13px 26px;
+  border-radius: 14px;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 0.95rem;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 10px 25px -5px rgba(13, 31, 66, 0.3);
+}
+
+.btn-secondary {
+  background: #ffffff;
+  color: var(--brand-navy) !important;
+  border: 1px solid var(--border-subtle);
+  padding: 13px 26px;
+  border-radius: 14px;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+/* Mobile Responsive */
 @media (max-width: 768px) {
-  .page-shell {
-    padding: 16px 14px 70px;
-  }
-
-  .site-header {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 14px 18px;
-    border-radius: 18px;
-    gap: 14px;
-    margin-bottom: 20px;
-  }
-
-  .gtcgo-auth-card {
-    padding: 28px 20px;
+  .login-monolith-card {
+    padding: 28px 20px 24px;
     border-radius: 22px;
-    min-height: auto;
   }
 }
