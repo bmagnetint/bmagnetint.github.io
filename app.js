@@ -1,181 +1,108 @@
-const allocationData = {
-  labels: ['Equities', 'Bonds', 'Real Estate', 'Cash', 'Alternatives'],
-  datasets: [
-    {
-      data: [42, 18, 16, 12, 12],
-      backgroundColor: ['#00e5e5', '#3b82f6', '#10b981', '#f59e0b', '#8b5cf6'],
-      borderColor: 'transparent',
-      borderWidth: 2,
-      hoverOffset: 8,
-    },
-  ],
-};
+/* ==========================================================================
+   B MAGNET INTERNATIONAL & GTC FX — Main Portal Logic & Interactions
+   ========================================================================== */
 
-const chartCtx = document.getElementById('allocationChart');
-let allocationChart = null;
+document.addEventListener('DOMContentLoaded', () => {
+  // 1. Tab Switching (Sign In vs Register)
+  const tabSignInBtn = document.getElementById('tabSignInBtn');
+  const tabRegisterBtn = document.getElementById('tabRegisterBtn');
+  const loginForm = document.getElementById('loginForm');
+  const registerForm = document.getElementById('registerForm');
 
-if (chartCtx) {
-  allocationChart = new Chart(chartCtx, {
-    type: 'doughnut',
-    data: allocationData,
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      cutout: '70%',
-      plugins: {
-        legend: {
-          position: 'bottom',
-          labels: {
-            usePointStyle: true,
-            boxWidth: 10,
-            padding: 20,
-            color: document.documentElement.getAttribute('data-theme') === 'dark' ? '#f8fafc' : '#475569',
-            font: {
-              family: 'Plus Jakarta Sans',
-              weight: '600',
-              size: 12,
-            },
-          },
-        },
-        tooltip: {
-          backgroundColor: '#0f172a',
-          titleColor: '#ffffff',
-          bodyColor: '#00e5e5',
-          borderColor: 'rgba(0, 229, 225, 0.4)',
-          borderWidth: 1,
-          padding: 12,
-          boxPadding: 6,
-          usePointStyle: true,
-          callbacks: {
-            label: function (context) {
-              return ` ${context.label}: ${context.parsed}%`;
-            },
-          },
-        },
-      },
-    },
-  });
+  if (tabSignInBtn && tabRegisterBtn && loginForm && registerForm) {
+    tabSignInBtn.addEventListener('click', () => {
+      tabSignInBtn.classList.add('active');
+      tabRegisterBtn.classList.remove('active');
+      loginForm.style.display = 'block';
+      registerForm.style.display = 'none';
+    });
 
-  // Dynamic Theme Adapter for Chart Legend
-  const updateChartTheme = () => {
-    if (!allocationChart) return;
-    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    allocationChart.options.plugins.legend.labels.color = isDark ? '#f8fafc' : '#475569';
-    allocationChart.update();
-  };
+    tabRegisterBtn.addEventListener('click', () => {
+      tabRegisterBtn.classList.add('active');
+      tabSignInBtn.classList.remove('active');
+      loginForm.style.display = 'none';
+      registerForm.style.display = 'block';
+    });
+  }
 
-  const observer = new MutationObserver(() => updateChartTheme());
-  observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
-}
+  // 2. Password Visibility Toggle
+  const togglePasswordBtn = document.getElementById('togglePasswordBtn');
+  const passwordInput = document.getElementById('password');
 
-const transactions = [
-  {
-    date: '2026-08-01',
-    investment: 'Global Equity Growth Fund',
-    type: 'Purchase',
-    amount: '$75,000',
-    status: 'Completed',
-  },
-  {
-    date: '2026-07-23',
-    investment: 'High-Grade Fixed Income',
-    type: 'Allocation',
-    amount: '$45,000',
-    status: 'Completed',
-  },
-  {
-    date: '2026-07-14',
-    investment: 'Commercial Real Estate Trust',
-    type: 'Review',
-    amount: '$24,000',
-    status: 'Pending',
-  },
-  {
-    date: '2026-07-09',
-    investment: 'Emerging Markets Tech',
-    type: 'Rebalance',
-    amount: '$18,500',
-    status: 'Completed',
-  },
-];
+  if (togglePasswordBtn && passwordInput) {
+    togglePasswordBtn.addEventListener('click', () => {
+      const isPassword = passwordInput.getAttribute('type') === 'password';
+      passwordInput.setAttribute('type', isPassword ? 'text' : 'password');
+      togglePasswordBtn.style.color = isPassword ? 'var(--gtc-teal)' : '#64748b';
+    });
+  }
 
-const openGtcModalBtn = document.getElementById('openGtcModalBtn');
-const closeGtcModalBtn = document.getElementById('closeGtcModalBtn');
-const gtcModal = document.getElementById('gtcModal');
-const gtcForm = document.getElementById('gtcForm');
+  // 3. Login Authentication Logic
+  if (loginForm) {
+    loginForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const emailVal = document.getElementById('email').value.trim();
+      const passVal = document.getElementById('password').value.trim();
+      const submitBtn = loginForm.querySelector('button[type="submit"]');
 
-if (openGtcModalBtn && gtcModal) {
-  openGtcModalBtn.addEventListener('click', () => {
-    gtcModal.classList.add('active');
-  });
-}
-
-if (closeGtcModalBtn && gtcModal) {
-  closeGtcModalBtn.addEventListener('click', () => {
-    gtcModal.classList.remove('active');
-  });
-}
-
-if (gtcModal) {
-  gtcModal.addEventListener('click', (e) => {
-    if (e.target === gtcModal) {
-      gtcModal.classList.remove('active');
-    }
-  });
-}
-
-if (gtcForm) {
-  gtcForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const accountVal = document.getElementById('gtcAccount').value.trim();
-    const submitBtn = gtcForm.querySelector('button[type="submit"]');
-    if (submitBtn) {
-      submitBtn.textContent = 'Authenticating GTC FX Feed...';
-    }
-
-    setTimeout(() => {
-      gtcModal.classList.remove('active');
-      const statusPill = document.getElementById('gtcStatusPill');
-      if (statusPill && accountVal) {
-        statusPill.textContent = `🏛️ GTC FX Global Connected (Acc #${accountVal})`;
-      }
-      alert(`✅ GTC FX Global Account #${accountVal || 'Connected'} Successfully!\n\nYour live assets, margin reports, and floating P&L feeds are now synchronized with B Magnet International.`);
       if (submitBtn) {
-        submitBtn.textContent = '🔒 Save & Connect GTC Global Account';
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = 'Authenticating GTC FX Vault...';
       }
-      gtcForm.reset();
-    }, 1000);
-  });
-}
-
-const syncApiBtn = document.getElementById('syncApiBtn');
-if (syncApiBtn) {
-  syncApiBtn.addEventListener('click', () => {
-    syncApiBtn.textContent = '🔄 Syncing GTC Feed...';
-    syncApiBtn.style.opacity = '0.7';
-
-    setTimeout(() => {
-      syncApiBtn.textContent = '✅ GTC Live Synced!';
-      syncApiBtn.style.opacity = '1';
 
       setTimeout(() => {
-        syncApiBtn.textContent = '🔄 Sync Live GTC Feed';
-      }, 2500);
-    }, 1200);
-  });
-}
+        // Successful login
+        localStorage.setItem('bmagnet_auth', 'true');
+        localStorage.setItem('bmagnet_email', emailVal || 'test@bmagnetint.com');
+        window.location.href = 'dashboard.html';
+      }, 700);
+    });
+  }
 
-const transactionBody = document.getElementById('transactionBody');
-if (transactionBody) {
-  transactions.forEach((transaction) => {
-    const row = document.createElement('tr');
-    row.innerHTML = `
-      <td style="font-weight: 600;">${transaction.date}</td>
-      <td style="font-weight: 700;">${transaction.investment}</td>
-      <td>${transaction.type}</td>
-      <td style="font-weight: 700; color: var(--accent-teal);">${transaction.amount}</td>
-      <td><span class="status-chip ${transaction.status.toLowerCase()}">${transaction.status}</span></td>
-    `;
-    transactionBody.appendChild(row);
-  });
-}
+  // 4. Register Quick Submission
+  if (registerForm) {
+    registerForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const regName = document.getElementById('regFullName').value.trim();
+      const regEmail = document.getElementById('regEmail').value.trim();
+
+      localStorage.setItem('bmagnet_kyc_name', regName || 'Alexander Vance');
+      localStorage.setItem('bmagnet_kyc_email', regEmail || 'alexander.vance@wealth.com');
+      window.location.href = 'register.html';
+    });
+  }
+
+  // 5. Fast Passkey Access
+  const passkeyBtn = document.getElementById('passkeySignInBtn');
+  if (passkeyBtn) {
+    passkeyBtn.addEventListener('click', () => {
+      passkeyBtn.innerHTML = '<span>Scanning Face ID / Touch ID...</span>';
+      setTimeout(() => {
+        passkeyBtn.innerHTML = '<span>✅ Biometric Authorized!</span>';
+        setTimeout(() => {
+          localStorage.setItem('bmagnet_auth', 'true');
+          window.location.href = 'dashboard.html';
+        }, 500);
+      }, 900);
+    });
+  }
+
+  // 6. Social Sign-In (Google / Apple)
+  const googleBtn = document.getElementById('googleSignInBtn');
+  if (googleBtn) {
+    googleBtn.addEventListener('click', () => {
+      localStorage.setItem('bmagnet_auth', 'true');
+      localStorage.setItem('bmagnet_email', 'investor@gmail.com');
+      window.location.href = 'dashboard.html';
+    });
+  }
+
+  const appleBtn = document.getElementById('appleSignInBtn');
+  if (appleBtn) {
+    appleBtn.addEventListener('click', () => {
+      localStorage.setItem('bmagnet_auth', 'true');
+      localStorage.setItem('bmagnet_email', 'investor@icloud.com');
+      window.location.href = 'dashboard.html';
+    });
+  }
+});
