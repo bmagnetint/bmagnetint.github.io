@@ -19,27 +19,17 @@ document.addEventListener('DOMContentLoaded', () => {
   if (tabSignInBtn && tabRegisterBtn && loginForm && registerForm) {
     tabSignInBtn.addEventListener('click', () => {
       tabSignInBtn.classList.add('active');
-      tabSignInBtn.style.color = 'var(--accent-teal)';
-      tabSignInBtn.style.borderBottomColor = 'var(--accent-teal)';
-
       tabRegisterBtn.classList.remove('active');
-      tabRegisterBtn.style.color = 'var(--text-muted)';
-      tabRegisterBtn.style.borderBottomColor = 'transparent';
 
-      loginForm.style.display = 'block';
+      loginForm.style.display = 'flex';
       registerForm.style.display = 'none';
     });
 
     tabRegisterBtn.addEventListener('click', () => {
       tabRegisterBtn.classList.add('active');
-      tabRegisterBtn.style.color = 'var(--accent-teal)';
-      tabRegisterBtn.style.borderBottomColor = 'var(--accent-teal)';
-
       tabSignInBtn.classList.remove('active');
-      tabSignInBtn.style.color = 'var(--text-muted)';
-      tabSignInBtn.style.borderBottomColor = 'transparent';
 
-      registerForm.style.display = 'block';
+      registerForm.style.display = 'flex';
       loginForm.style.display = 'none';
     });
   }
