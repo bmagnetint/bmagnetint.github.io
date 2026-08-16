@@ -8,8 +8,7 @@
   
   <!-- Fonts & Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400;500;600;700;800;900&family=Cairo:wght@400;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Saira+Condensed:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
   
   <!-- Android PWA, iOS Safari & Play Store Manifest -->
@@ -29,7 +28,7 @@
   <!-- Google Identity Services (Sign-In with Google) -->
   <script src="https://accounts.google.com/gsi/client" async defer></script>
   
-  <link rel="stylesheet" href="style.css?v=0406">
+  <link rel="stylesheet" href="style.css?v=1211">
 </head>
 <body class="theme-dark">
 
@@ -646,7 +645,6 @@
               <div class="setting-info">
                 <div class="setting-name-row">
                   <span class="setting-name font-bold" id="txtAdminPanelTitle">Admin Panel</span>
-                  <span class="badge-lock-code">CODE: 9633</span>
                 </div>
                 <div class="setting-sub" id="txtAdminPanelSub">Customer CRM, active bot passes, wallet ledger & Google Sheets sync</div>
               </div>
@@ -850,34 +848,26 @@
         </div>
       </div>
 
-      <!-- Bottom Mobile Navigation Bar (iOS Model Glassy Dock with App Icon Squircles) -->
-      <nav class="bottom-nav ios-dock">
+      <!-- Bottom Mobile Navigation Bar (Full Glass Transparent Dock) -->
+      <nav class="bottom-nav">
         <button class="nav-item active" data-view="explore" onclick="window.botHubApp.switchView('explore')" title="Explore Marketplace">
-          <div class="ios-dock-squircle ios-icon-safari">
-            <span class="material-symbols-rounded ios-icon-symbol">explore</span>
-          </div>
+          <span class="material-symbols-rounded nav-icon">explore</span>
           <span class="nav-label">Explore</span>
         </button>
 
         <button class="nav-item" data-view="subscriptions" onclick="window.botHubApp.switchView('subscriptions')" title="My Bots & Passes">
-          <div class="ios-dock-squircle ios-icon-bots">
-            <span class="material-symbols-rounded ios-icon-symbol">bolt</span>
-            <span class="ios-badge-pill" id="navBadgeSubCount">1</span>
-          </div>
+          <span class="material-symbols-rounded nav-icon">bolt</span>
           <span class="nav-label">My Bots</span>
+          <span class="nav-badge" id="navBadgeSubCount">1</span>
         </button>
 
         <button class="nav-item" data-view="creator" onclick="window.botHubApp.switchView('creator')" title="Market & Creator Hub">
-          <div class="ios-dock-squircle ios-icon-market">
-            <span class="material-symbols-rounded ios-icon-symbol">storefront</span>
-          </div>
+          <span class="material-symbols-rounded nav-icon">storefront</span>
           <span class="nav-label">Market</span>
         </button>
 
         <button class="nav-item" data-view="settings" onclick="window.botHubApp.switchView('settings')" title="Account & Settings">
-          <div class="ios-dock-squircle ios-icon-account">
-            <span class="material-symbols-rounded ios-icon-symbol">manage_accounts</span>
-          </div>
+          <span class="material-symbols-rounded nav-icon">manage_accounts</span>
           <span class="nav-label">Account</span>
         </button>
       </nav>
@@ -1630,6 +1620,6 @@
 
   <!-- App Scripts -->
   <script src="qrcode.js"></script>
-  <script src="app.js?v=0406"></script>
+  <script src="app.js?v=1211"></script>
 </body>
 </html>
