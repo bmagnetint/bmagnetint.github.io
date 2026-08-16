@@ -24,7 +24,7 @@
   <!-- Google Identity Services (Sign-In with Google) -->
   <script src="https://accounts.google.com/gsi/client" async defer></script>
   
-  <link rel="stylesheet" href="style.css?v=2.7">
+  <link rel="stylesheet" href="style.css?v=2.8">
 </head>
 <body class="theme-dark">
 
@@ -131,10 +131,29 @@
           <div class="auth-screen-slide active" id="authWelcomeScreen">
             <div class="welcome-screen-inner">
               
+              <!-- Welcome Top Utilities (Language Switch & Dark/Light Toggle) -->
+              <div class="welcome-top-bar">
+                <!-- Language Switcher: EN | عربي -->
+                <div class="lang-switch-pill" id="welcomeLangSwitch">
+                  <button type="button" class="lang-btn active" id="langBtnEn" onclick="window.botHubApp.setAppLanguage('en')">
+                    <span>EN</span>
+                  </button>
+                  <button type="button" class="lang-btn" id="langBtnAr" onclick="window.botHubApp.setAppLanguage('ar')">
+                    <span>عربي</span>
+                  </button>
+                </div>
+
+                <!-- Dark / Light Theme Toggle -->
+                <button type="button" class="theme-toggle-pill" id="welcomeThemeToggle" onclick="window.botHubApp.toggleTheme()" title="Toggle Dark / Light Mode">
+                  <span class="material-symbols-rounded theme-icon" id="welcomeThemeIcon">dark_mode</span>
+                  <span class="theme-label" id="welcomeThemeLabel">Dark</span>
+                </button>
+              </div>
+
               <!-- Top Greeting -->
               <div class="welcome-header">
-                <h1 class="welcome-title">HELLO</h1>
-                <p class="welcome-subtitle">Sign in to access your automated trading passes</p>
+                <h1 class="welcome-title" id="txtWelcomeTitle">HELLO</h1>
+                <p class="welcome-subtitle" id="txtWelcomeSubtitle">Sign in to access your automated trading passes</p>
               </div>
 
               <!-- Center Logo Display (Frameless, Large B-Magnet Official Logo) -->
@@ -145,10 +164,10 @@
               <!-- Bottom Buttons on Screen 1 -->
               <div class="welcome-actions">
                 <button type="button" class="btn-clean-navy" onclick="window.botHubApp.showSignInScreen()">
-                  <span>Sign In</span>
+                  <span id="txtSignInBtn">Sign In</span>
                 </button>
                 <button type="button" class="btn-clean-white" onclick="window.botHubApp.handleGoogleLogin()">
-                  <span>Sign Up</span>
+                  <span id="txtSignUpBtn">Sign Up</span>
                 </button>
               </div>
 
@@ -172,7 +191,7 @@
                     <span class="bot-status-dot-live"></span>
                     <span class="bot-badge-label font-mono">B-MAGNET GOLD HUNTER EA</span>
                   </div>
-                  <h2 class="signin-bot-title">Institutional MT5 Automated Trading</h2>
+                  <h2 class="signin-bot-title" id="txtSigninBotTitle">Institutional MT5 Automated Trading</h2>
                   <div class="signin-bot-tags-row">
                     <span class="signin-bot-chip">✨ 89.4% Win Rate</span>
                     <span class="signin-bot-chip">⚡ 24/5 Auto Gold</span>
@@ -185,24 +204,24 @@
               <div class="signin-white-sheet">
                 <div class="signin-clean-form">
                   
-                  <!-- Email Field -->
+                  <!-- Account Identifier Field -->
                   <div class="signin-input-wrapper">
-                    <input type="text" id="loginEmailInput" class="signin-clean-input" placeholder="Email" value="hanaan.trader@gmail.com" autocomplete="off" onkeydown="if(event.key==='Enter') window.botHubApp.handleCleanSignIn();">
+                    <input type="text" id="loginEmailInput" class="signin-clean-input" placeholder="Account ID / Username" value="hanaan.trader@gmail.com" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-lpignore="true" data-form-type="other" onkeydown="if(event.key==='Enter') window.botHubApp.handleCleanSignIn();">
                   </div>
 
-                  <!-- Password Field (Masked with secure text-security to avoid browser HTTP security warning) -->
+                  <!-- Access Passcode Field (Masked with secure text-security, decoupled from browser password warnings) -->
                   <div class="signin-input-wrapper">
-                    <input type="text" id="loginOtpInput" class="signin-clean-input secure-auth-input" placeholder="Password" value="8492" autocomplete="off" onkeydown="if(event.key==='Enter') window.botHubApp.handleCleanSignIn();">
+                    <input type="text" id="loginOtpInput" class="signin-clean-input secure-auth-input" placeholder="Passcode PIN" value="8492" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-lpignore="true" data-form-type="other" onkeydown="if(event.key==='Enter') window.botHubApp.handleCleanSignIn();">
                   </div>
 
                   <!-- Sign In Button (Navy Blue Pill) -->
                   <button type="button" class="btn-clean-navy btn-signin-block" id="loginMainSubmitBtn" onclick="window.botHubApp.handleCleanSignIn();">
-                    <span>Sign In</span>
+                    <span id="txtSigninSubmitBtn">Sign In</span>
                   </button>
 
-                  <!-- Forgot password? -->
+                  <!-- Quick Demo Access Key Recovery -->
                   <div class="signin-forgot-row">
-                    <a href="#" class="signin-forgot-link" onclick="event.preventDefault(); window.botHubApp.fillDemoCredentials();">Forgot password?</a>
+                    <a href="#" class="signin-forgot-link" id="txtForgotPwd" onclick="event.preventDefault(); window.botHubApp.fillDemoCredentials();">Forgot passcode?</a>
                   </div>
 
                   <!-- Google Sign In Only (Facebook Removed) -->
@@ -214,7 +233,7 @@
                         <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"/>
                         <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"/>
                       </svg>
-                      <span>Sign In with Google</span>
+                      <span id="txtGoogleSignIn">Sign In with Google</span>
                     </button>
                   </div>
 
@@ -229,7 +248,7 @@
 
                   <!-- Don't have an account? Sign Up -->
                   <div class="signin-footer-row">
-                    <span>Don't have an account? <a href="#" class="signin-signup-link" onclick="event.preventDefault(); window.botHubApp.handleGoogleLogin();">Sign Up</a></span>
+                    <span><span id="txtNoAccount">Don't have an account?</span> <a href="#" class="signin-signup-link" id="txtSignUpLink" onclick="event.preventDefault(); window.botHubApp.handleGoogleLogin();">Sign Up</a></span>
                   </div>
 
                 </div>
@@ -254,6 +273,16 @@
         </div>
 
         <div class="header-right">
+          <!-- Quick Header Language & Theme Controls -->
+          <div class="header-controls-group">
+            <button type="button" class="header-icon-pill-btn" onclick="window.botHubApp.toggleLanguage()" title="Switch Language (EN / AR)" id="headerLangToggleBtn">
+              <span id="headerLangText">AR</span>
+            </button>
+            <button type="button" class="header-icon-pill-btn" onclick="window.botHubApp.toggleTheme()" title="Toggle Dark/Light Mode" id="headerThemeToggleBtn">
+              <span class="material-symbols-rounded" id="headerThemeIcon" style="font-size: 16px;">dark_mode</span>
+            </button>
+          </div>
+
           <!-- Compact Corner Wallet Asset with Logged-in User Name -->
           <button class="wallet-compact-corner-btn" id="openTopupBtn" onclick="window.botHubApp.openTopupModal()" title="BEP-20 Wallet & Account">
             <span class="user-avatar-mini">
@@ -301,47 +330,23 @@
             <!-- Rendered by JavaScript -->
           </div>
 
-          <!-- Bottom: Premium Distinct GTCfx Broker Registration Card -->
+          <!-- GTCfx Broker Account Registration (Simple & Clean) -->
           <div class="gtcfx-broker-banner">
-            <div class="gbb-glow-bg"></div>
-            
             <div class="gbb-top-row">
               <div class="gbb-brand">
                 <div class="gbb-logo-icon">
                   <span class="material-symbols-rounded">candlestick_chart</span>
                 </div>
                 <div class="gbb-brand-text">
-                  <span class="gbb-badge"><span class="gbb-live-dot"></span> RECOMMENDED BROKER</span>
-                  <h3 class="gbb-headline">GTCfx MetaTrader 5 Account</h3>
+                  <h3 class="gbb-headline">Register GTCfx Account</h3>
+                  <p class="gbb-sub-clean">Recommended MT5 broker for B-Magnet Gold EA</p>
                 </div>
               </div>
-              <span class="gbb-tag-gold">0.0 Raw Spreads</span>
+              <a href="https://web.mygtc.app/login/register?ref=Y8JMgpna" target="_blank" rel="noopener noreferrer" class="gbb-btn-simple">
+                <span>Register</span>
+                <span class="material-symbols-rounded" style="font-size: 15px;">open_in_new</span>
+              </a>
             </div>
-
-            <p class="gbb-description">
-              Connect your B-Magnet EAs directly to <strong>GTCfx MT5</strong> for zero commission on Gold (XAUUSD), ultra-low latency server execution, and instant cryptographic license approval.
-            </p>
-
-            <div class="gbb-features-row">
-              <div class="gbb-feat-item">
-                <span class="material-symbols-rounded gbb-feat-icon">check_circle</span>
-                <span>Raw Gold Spreads (0.0)</span>
-              </div>
-              <div class="gbb-feat-item">
-                <span class="material-symbols-rounded gbb-feat-icon">check_circle</span>
-                <span>Zero EA Restrictions</span>
-              </div>
-              <div class="gbb-feat-item">
-                <span class="material-symbols-rounded gbb-feat-icon">check_circle</span>
-                <span>Live & Demo Support</span>
-              </div>
-            </div>
-
-            <a href="https://web.mygtc.app/login/register?ref=Y8JMgpna" target="_blank" rel="noopener noreferrer" class="gbb-action-btn">
-              <span class="material-symbols-rounded">person_add</span>
-              <span>Open GTCfx MT5 Account</span>
-              <span class="material-symbols-rounded" style="font-size: 16px;">arrow_forward</span>
-            </a>
           </div>
         </section>
 
@@ -550,30 +555,23 @@
             </div>
           </div>
 
-          <!-- GTCfx Broker Account Registration Card -->
+          <!-- GTCfx Broker Account Registration (Simple & Clean) -->
           <div class="gtcfx-referral-card">
-            <div class="gtcfx-card-header">
+            <div class="gtcfx-simple-row">
               <div class="gtcfx-brand-col">
                 <div class="gtcfx-icon-box">
                   <span class="material-symbols-rounded">show_chart</span>
                 </div>
                 <div>
                   <h4 class="gtcfx-title">Register GTCfx Account</h4>
-                  <span class="gtcfx-subtitle">Official Recommended MT5 Broker</span>
+                  <span class="gtcfx-subtitle">Recommended MT5 trading account</span>
                 </div>
               </div>
-              <span class="gtcfx-tag">MT5 Broker</span>
+              <a href="https://web.mygtc.app/login/register?ref=Y8JMgpna" target="_blank" rel="noopener noreferrer" class="btn-gtcfx-simple-pill">
+                <span>Register</span>
+                <span class="material-symbols-rounded" style="font-size: 15px;">open_in_new</span>
+              </a>
             </div>
-            
-            <p class="gtcfx-desc">
-              Create your live or demo MT5 trading account on <strong>GTCfx</strong> for raw spreads, zero commission on Gold (XAUUSD), and instant EA whitelist approval.
-            </p>
-
-            <a href="https://web.mygtc.app/login/register?ref=Y8JMgpna" target="_blank" rel="noopener noreferrer" class="btn-gtcfx-action">
-              <span class="material-symbols-rounded">person_add</span>
-              <span>Register GTCfx Account</span>
-              <span class="material-symbols-rounded" style="font-size: 16px;">open_in_new</span>
-            </a>
           </div>
 
           <!-- Settings Groups -->
@@ -598,6 +596,24 @@
               <div class="setting-info">
                 <div class="setting-name">Display Currency</div>
                 <div class="setting-sub" id="activeCurrencyDisplay">USDT (BEP-20) / USD ($)</div>
+              </div>
+              <span class="material-symbols-rounded chevron">chevron_right</span>
+            </div>
+
+            <div class="setting-item" onclick="window.botHubApp.toggleTheme()">
+              <div class="setting-icon-box text-warning"><span class="material-symbols-rounded" id="accountThemeSettingIcon">dark_mode</span></div>
+              <div class="setting-info">
+                <div class="setting-name">App Theme Mode</div>
+                <div class="setting-sub" id="activeThemeDisplay">Light Mode</div>
+              </div>
+              <span class="material-symbols-rounded chevron">chevron_right</span>
+            </div>
+
+            <div class="setting-item" onclick="window.botHubApp.toggleLanguage()">
+              <div class="setting-icon-box text-cyan"><span class="material-symbols-rounded">language</span></div>
+              <div class="setting-info">
+                <div class="setting-name">Language / اللغة</div>
+                <div class="setting-sub" id="activeLangDisplay">English (EN)</div>
               </div>
               <span class="material-symbols-rounded chevron">chevron_right</span>
             </div>
@@ -637,16 +653,22 @@
         <section class="view-panel" id="viewDatabase">
           <div class="db-header-banner">
             <div class="db-banner-top">
-              <div class="db-brand-icon">
-                <span class="material-symbols-rounded">table_chart</span>
-              </div>
-              <div>
-                <div class="db-pill-status">
-                  <span class="pulse-dot" style="background: #10B981;"></span>
-                  <span>Google Account Database Live</span>
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <div class="db-brand-icon">
+                  <span class="material-symbols-rounded">table_chart</span>
                 </div>
-                <h2 class="db-title">Customer CRM & Bot Registry</h2>
+                <div>
+                  <div class="db-pill-status">
+                    <span class="pulse-dot" style="background: #10B981;"></span>
+                    <span>Admin Master Session Active</span>
+                  </div>
+                  <h2 class="db-title">Customer CRM & Bot Registry</h2>
+                </div>
               </div>
+              <button type="button" class="btn-lock-crm-pill" onclick="window.botHubApp.lockAdminCrm()" title="Lock CRM Security Gate">
+                <span class="material-symbols-rounded" style="font-size: 15px;">lock</span>
+                <span>Lock CRM</span>
+              </button>
             </div>
             <p class="db-subtitle">Real-time database of customer phone numbers, wallet balances, active bot subscriptions, GTCfx MT5 terminals, and expiry countdowns.</p>
 
@@ -1444,6 +1466,56 @@
   </div>
 
   <!-- ======================================================== -->
+  <!-- MODAL: MASTER ADMIN CRM LOCK SECURITY GATE (PIN: 9633)   -->
+  <!-- ======================================================== -->
+  <div class="modal-backdrop" id="crmAdminLockModal">
+    <div class="modal-dialog-card admin-lock-card" onclick="event.stopPropagation()">
+      <div class="admin-lock-shield-icon">
+        <span class="material-symbols-rounded">shield_lock</span>
+      </div>
+
+      <div class="dialog-badge-chip" style="background: rgba(239, 68, 68, 0.12); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.25);">
+        <span class="pulse-dot" style="background: #ef4444;"></span>
+        <span>MASTER ADMIN RESTRICTED</span>
+      </div>
+
+      <h3 class="dialog-title" id="txtAdminLockTitle" style="margin-top: 6px;">CRM Access Locked</h3>
+      <p class="dialog-desc" id="txtAdminLockDesc">This section contains private customer records, MT5 accounts, and wallet balances. Enter the 4-digit Master Security Passcode to unlock.</p>
+
+      <!-- PIN Display / Digits Input Box -->
+      <div class="admin-pin-wrapper">
+        <input type="password" id="crmAdminPinInput" class="admin-pin-input font-mono" placeholder="••••" maxlength="4" autocomplete="off" inputmode="numeric" onkeydown="if(event.key==='Enter') window.botHubApp.verifyAdminLockCode();">
+      </div>
+
+      <!-- Quick Touch Keypad for Mobile -->
+      <div class="admin-numpad-grid">
+        <button type="button" class="num-btn" onclick="window.botHubApp.appendAdminPin('1')">1</button>
+        <button type="button" class="num-btn" onclick="window.botHubApp.appendAdminPin('2')">2</button>
+        <button type="button" class="num-btn" onclick="window.botHubApp.appendAdminPin('3')">3</button>
+        <button type="button" class="num-btn" onclick="window.botHubApp.appendAdminPin('4')">4</button>
+        <button type="button" class="num-btn" onclick="window.botHubApp.appendAdminPin('5')">5</button>
+        <button type="button" class="num-btn" onclick="window.botHubApp.appendAdminPin('6')">6</button>
+        <button type="button" class="num-btn" onclick="window.botHubApp.appendAdminPin('7')">7</button>
+        <button type="button" class="num-btn" onclick="window.botHubApp.appendAdminPin('8')">8</button>
+        <button type="button" class="num-btn" onclick="window.botHubApp.appendAdminPin('9')">9</button>
+        <button type="button" class="num-btn num-btn-action" onclick="window.botHubApp.clearAdminPin()">C</button>
+        <button type="button" class="num-btn" onclick="window.botHubApp.appendAdminPin('0')">0</button>
+        <button type="button" class="num-btn num-btn-action" onclick="window.botHubApp.backspaceAdminPin()">⌫</button>
+      </div>
+
+      <div class="dialog-actions-row" style="margin-top: 16px;">
+        <button type="button" class="btn-clean-white dialog-btn-cancel" onclick="window.botHubApp.cancelAdminLockGate()">
+          <span>Cancel</span>
+        </button>
+        <button type="button" class="btn-clean-navy btn-admin-unlock" onclick="window.botHubApp.verifyAdminLockCode()">
+          <span class="material-symbols-rounded">lock_open</span>
+          <span id="txtAdminUnlockBtn">Unlock CRM</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================== -->
   <!-- MODAL: LOGOUT CONFIRMATION POPUP                        -->
   <!-- ======================================================== -->
   <div class="modal-backdrop" id="logoutConfirmModal">
@@ -1483,6 +1555,6 @@
 
   <!-- App Scripts -->
   <script src="qrcode.js"></script>
-  <script src="app.js?v=2.7"></script>
+  <script src="app.js?v=2.8"></script>
 </body>
 </html>

@@ -1,11 +1,42 @@
 /**
  * ==============================================================================
  * B-BOT PRO - GOOGLE CLIENT CONFIGURATION
- * Paste your Google OAuth Client ID below:
- * Example: const GOOGLE_CLIENT_ID = "1234567890-abcdef.apps.googleusercontent.com";
  * ==============================================================================
  */
 const GOOGLE_CLIENT_ID = "193074652385-prup7faehlgodh890o06ehfaujblvvni.apps.googleusercontent.com";
+
+const TRANSLATIONS = {
+  en: {
+    welcomeTitle: 'HELLO',
+    welcomeSub: 'Sign in to access your automated trading passes',
+    signInBtn: 'Sign In',
+    signUpBtn: 'Sign Up',
+    signinBotTitle: 'Institutional MT5 Automated Trading',
+    emailPlaceholder: 'Account ID / Username',
+    passwordPlaceholder: 'Passcode PIN',
+    forgotPwd: 'Forgot passcode?',
+    googleSignIn: 'Sign In with Google',
+    noAccount: "Don't have an account?",
+    signUpLink: 'Sign Up',
+    themeDark: 'Dark',
+    themeLight: 'Light'
+  },
+  ar: {
+    welcomeTitle: 'مرحباً بك',
+    welcomeSub: 'سجّل الدخول للوصول إلى اشتراكات وتراخيص التداول الآلي',
+    signInBtn: 'تسجيل الدخول',
+    signUpBtn: 'إنشاء حساب جديد',
+    signinBotTitle: 'تداول الذهب الآلي عبر منصة MT5 المؤسسية',
+    emailPlaceholder: 'اسم المستخدم أو المعرف',
+    passwordPlaceholder: 'رمز الدخول السريع',
+    forgotPwd: 'استعادة رمز الدخول؟',
+    googleSignIn: 'الدخول باستخدام Google',
+    noAccount: 'ليس لديك حساب بعد؟',
+    signUpLink: 'إنشاء حساب',
+    themeDark: 'داكن',
+    themeLight: 'فاتح'
+  }
+};
 
 class BotHubApp {
   constructor() {
@@ -27,16 +58,21 @@ class BotHubApp {
       defaultMt5Account: '8849201',
       activeCurrency: 'USDT',
       isFullscreen: false,
-      lastPaymentResult: null
+      lastPaymentResult: null,
+      isAdminUnlocked: false,
+      theme: localStorage.getItem('b_bot_theme') || 'light',
+      lang: localStorage.getItem('b_bot_lang') || 'en'
     };
 
     this.init();
   }
 
   async init() {
+    this.calibratePlatformAndResolution();
     this.updateClock();
     setInterval(() => this.updateClock(), 10000);
 
+    this.initThemeAndLanguage();
     this.setupEventListeners();
     await this.initAuth();
     await this.fetchData();
@@ -53,6 +89,183 @@ class BotHubApp {
   }
 
   // -------------------------------------------------------------
+  // AUTOMATIC BROWSER & PLATFORM CALIBRATION ENGINE
+  // -------------------------------------------------------------
+  calibratePlatformAndResolution() {
+    const ua = navigator.userAgent || '';
+    const platform = navigator.platform || '';
+    
+    // 1. Detect Operating System & Form Factor
+    const isIOS = /iPad|iPhone|iPod/.test(ua) || (platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    const isAndroid = /Android/.test(ua);
+    const isWindows = /Windows/i.test(ua);
+    const isMac = /Macintosh|MacIntel/i.test(ua) && !isIOS;
+    const isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+
+    // 2. Detect Browser Engine
+    const isSafari = /^((?!chrome|android).)*safari/i.test(ua);
+    const isChrome = /Chrome|CriOS/i.test(ua) && !/Edge|Edg/i.test(ua);
+    const isEdge = /Edg/i.test(ua);
+    const isFirefox = /Firefox|FxiOS/i.test(ua);
+
+    // 3. Apply semantic classes to root document
+    const root = document.documentElement;
+
+    root.classList.remove(
+      'platform-ios', 'platform-android', 'platform-windows', 'platform-mac',
+      'device-mobile', 'device-tablet', 'device-desktop',
+      'browser-safari', 'browser-chrome', 'browser-edge', 'browser-firefox',
+      'touch-device', 'no-touch'
+    );
+
+    if (isIOS) root.classList.add('platform-ios');
+    else if (isAndroid) root.classList.add('platform-android');
+    else if (isWindows) root.classList.add('platform-windows');
+    else if (isMac) root.classList.add('platform-mac');
+
+    if (isTouch) root.classList.add('touch-device');
+    else root.classList.add('no-touch');
+
+    if (isSafari) root.classList.add('browser-safari');
+    else if (isChrome) root.classList.add('browser-chrome');
+    else if (isEdge) root.classList.add('browser-edge');
+    else if (isFirefox) root.classList.add('browser-firefox');
+
+    // 4. Dynamic Viewport Geometry & Resolution Calibration
+    const updateViewportGeometry = () => {
+      const w = window.innerWidth;
+      const h = window.innerHeight;
+
+      // Dynamic CSS variables for bulletproof mobile height
+      root.style.setProperty('--vh', `${h * 0.01}px`);
+      root.style.setProperty('--vw', `${w * 0.01}px`);
+
+      root.classList.remove('mode-mobile', 'mode-tablet', 'mode-desktop', 'device-mobile', 'device-tablet', 'device-desktop');
+
+      if (w <= 560) {
+        root.classList.add('mode-mobile', 'device-mobile');
+      } else if (w <= 960) {
+        root.classList.add('mode-tablet', 'device-tablet');
+      } else {
+        root.classList.add('mode-desktop', 'device-desktop');
+      }
+    };
+
+    updateViewportGeometry();
+    window.addEventListener('resize', updateViewportGeometry, { passive: true });
+    window.addEventListener('orientationchange', () => setTimeout(updateViewportGeometry, 100), { passive: true });
+
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener('resize', updateViewportGeometry, { passive: true });
+    }
+  }
+
+  // -------------------------------------------------------------
+  // THEME (DARK / LIGHT) & LANGUAGE (EN / AR) SYSTEM
+  // -------------------------------------------------------------
+  initThemeAndLanguage() {
+    this.applyTheme(this.state.theme);
+    this.setAppLanguage(this.state.lang);
+  }
+
+  toggleTheme() {
+    const newTheme = this.state.theme === 'dark' ? 'light' : 'dark';
+    this.applyTheme(newTheme);
+  }
+
+  applyTheme(theme) {
+    this.state.theme = theme;
+    localStorage.setItem('b_bot_theme', theme);
+    
+    const welcomeIcon = document.getElementById('welcomeThemeIcon');
+    const welcomeLabel = document.getElementById('welcomeThemeLabel');
+    const headerIcon = document.getElementById('headerThemeIcon');
+    const accountIcon = document.getElementById('accountThemeSettingIcon');
+    const accountDisplay = document.getElementById('activeThemeDisplay');
+
+    if (theme === 'dark') {
+      document.body.classList.add('theme-dark');
+      if (welcomeIcon) welcomeIcon.textContent = 'light_mode';
+      if (headerIcon) headerIcon.textContent = 'light_mode';
+      if (accountIcon) accountIcon.textContent = 'light_mode';
+      if (welcomeLabel) welcomeLabel.textContent = this.state.lang === 'ar' ? 'فاتح' : 'Light';
+      if (accountDisplay) accountDisplay.textContent = this.state.lang === 'ar' ? 'الوضع الداكن (مفعل)' : 'Dark Mode (Active)';
+    } else {
+      document.body.classList.remove('theme-dark');
+      if (welcomeIcon) welcomeIcon.textContent = 'dark_mode';
+      if (headerIcon) headerIcon.textContent = 'dark_mode';
+      if (accountIcon) accountIcon.textContent = 'dark_mode';
+      if (welcomeLabel) welcomeLabel.textContent = this.state.lang === 'ar' ? 'داكن' : 'Dark';
+      if (accountDisplay) accountDisplay.textContent = this.state.lang === 'ar' ? 'الوضع الفاتح (مفعل)' : 'Light Mode (Active)';
+    }
+  }
+
+  toggleLanguage() {
+    const newLang = this.state.lang === 'ar' ? 'en' : 'ar';
+    this.setAppLanguage(newLang);
+  }
+
+  setAppLanguage(lang) {
+    this.state.lang = lang;
+    localStorage.setItem('b_bot_lang', lang);
+
+    const btnEn = document.getElementById('langBtnEn');
+    const btnAr = document.getElementById('langBtnAr');
+    const headerLangText = document.getElementById('headerLangText');
+    const activeLangDisplay = document.getElementById('activeLangDisplay');
+
+    if (lang === 'ar') {
+      document.documentElement.setAttribute('dir', 'rtl');
+      document.documentElement.setAttribute('lang', 'ar');
+      if (btnAr) btnAr.classList.add('active');
+      if (btnEn) btnEn.classList.remove('active');
+      if (headerLangText) headerLangText.textContent = 'EN';
+      if (activeLangDisplay) activeLangDisplay.textContent = 'العربية (AR)';
+    } else {
+      document.documentElement.setAttribute('dir', 'ltr');
+      document.documentElement.setAttribute('lang', 'en');
+      if (btnEn) btnEn.classList.add('active');
+      if (btnAr) btnAr.classList.remove('active');
+      if (headerLangText) headerLangText.textContent = 'عربي';
+      if (activeLangDisplay) activeLangDisplay.textContent = 'English (EN)';
+    }
+
+    const t = TRANSLATIONS[lang] || TRANSLATIONS.en;
+    const txtWelcomeTitle = document.getElementById('txtWelcomeTitle');
+    const txtWelcomeSubtitle = document.getElementById('txtWelcomeSubtitle');
+    const txtSignInBtn = document.getElementById('txtSignInBtn');
+    const txtSignUpBtn = document.getElementById('txtSignUpBtn');
+    const txtSigninBotTitle = document.getElementById('txtSigninBotTitle');
+    const txtSigninSubmitBtn = document.getElementById('txtSigninSubmitBtn');
+    const txtForgotPwd = document.getElementById('txtForgotPwd');
+    const txtGoogleSignIn = document.getElementById('txtGoogleSignIn');
+    const txtNoAccount = document.getElementById('txtNoAccount');
+    const txtSignUpLink = document.getElementById('txtSignUpLink');
+    const loginEmailInput = document.getElementById('loginEmailInput');
+    const loginOtpInput = document.getElementById('loginOtpInput');
+    const themeLabel = document.getElementById('welcomeThemeLabel');
+    const brandSub = document.getElementById('brandSubtitle');
+
+    if (txtWelcomeTitle) txtWelcomeTitle.textContent = t.welcomeTitle;
+    if (txtWelcomeSubtitle) txtWelcomeSubtitle.textContent = t.welcomeSub;
+    if (txtSignInBtn) txtSignInBtn.textContent = t.signInBtn;
+    if (txtSignUpBtn) txtSignUpBtn.textContent = t.signUpBtn;
+    if (txtSigninBotTitle) txtSigninBotTitle.textContent = t.signinBotTitle;
+    if (txtSigninSubmitBtn) txtSigninSubmitBtn.textContent = t.signInBtn;
+    if (txtForgotPwd) txtForgotPwd.textContent = t.forgotPwd;
+    if (txtGoogleSignIn) txtGoogleSignIn.textContent = t.googleSignIn;
+    if (txtNoAccount) txtNoAccount.textContent = t.noAccount;
+    if (txtSignUpLink) txtSignUpLink.textContent = t.signUpLink;
+    if (loginEmailInput) loginEmailInput.placeholder = t.emailPlaceholder;
+    if (loginOtpInput) loginOtpInput.placeholder = t.passwordPlaceholder;
+    if (brandSub) brandSub.textContent = lang === 'ar' ? 'بوتات التداول والتسويق الآلي' : 'Trading & Marketing Bots';
+
+    if (themeLabel) {
+      themeLabel.textContent = this.state.theme === 'dark' 
+        ? (lang === 'ar' ? 'فاتح' : 'Light') 
+        : (lang === 'ar' ? 'داكن' : 'Dark');
+    }
+  }
   // MOBILE NUMBER AUTHENTICATION (REQUIRED FIRST)
   // -------------------------------------------------------------
   async initAuth() {
@@ -472,6 +685,18 @@ class BotHubApp {
   }
 
   setupEventListeners() {
+    // Dynamic Scroll Minification for Header, Live Ticker Bar & Bottom Dock
+    const mainContent = document.getElementById('mainContent');
+    if (mainContent) {
+      mainContent.addEventListener('scroll', () => {
+        if (mainContent.scrollTop > 20) {
+          document.body.classList.add('header-minimized', 'dock-minimized');
+        } else {
+          document.body.classList.remove('header-minimized', 'dock-minimized');
+        }
+      }, { passive: true });
+    }
+
     // Search input
     const searchInput = document.getElementById('botSearchInput');
     const clearBtn = document.getElementById('clearSearchBtn');
@@ -653,7 +878,15 @@ class BotHubApp {
   // -------------------------------------------------------------
   // VIEW SWITCHER
   // -------------------------------------------------------------
+  // VIEW SWITCHER & ADMIN CRM LOCK GATE (PASSCODE: 9633)
+  // -------------------------------------------------------------
   switchView(viewName) {
+    // 🔐 Security Gate: Require Master Admin Passcode 9633 for CRM Database
+    if (viewName === 'database' && !this.state.isAdminUnlocked) {
+      this.promptAdminCrmLock();
+      return;
+    }
+
     const panels = {
       'explore': 'viewExplore',
       'subscriptions': 'viewSubscriptions',
@@ -682,6 +915,74 @@ class BotHubApp {
       const mainContent = document.getElementById('mainContent');
       if (mainContent) mainContent.scrollTop = 0;
     }
+  }
+
+  // -------------------------------------------------------------
+  // MASTER ADMIN CRM PASSCODE LOCK METHODS (CODE: 9633)
+  // -------------------------------------------------------------
+  promptAdminCrmLock() {
+    const modal = document.getElementById('crmAdminLockModal');
+    const input = document.getElementById('crmAdminPinInput');
+    if (input) input.value = '';
+    if (modal) {
+      modal.classList.add('active');
+      setTimeout(() => { if (input) input.focus(); }, 200);
+    }
+  }
+
+  appendAdminPin(digit) {
+    const input = document.getElementById('crmAdminPinInput');
+    if (input && input.value.length < 4) {
+      input.value += digit;
+      if (input.value.length === 4) {
+        setTimeout(() => this.verifyAdminLockCode(), 120);
+      }
+    }
+  }
+
+  clearAdminPin() {
+    const input = document.getElementById('crmAdminPinInput');
+    if (input) input.value = '';
+  }
+
+  backspaceAdminPin() {
+    const input = document.getElementById('crmAdminPinInput');
+    if (input && input.value.length > 0) {
+      input.value = input.value.slice(0, -1);
+    }
+  }
+
+  verifyAdminLockCode() {
+    const input = document.getElementById('crmAdminPinInput');
+    const enteredPin = (input ? input.value : '').trim();
+
+    if (enteredPin === '9633') {
+      this.state.isAdminUnlocked = true;
+      this.closeModal('crmAdminLockModal');
+      this.showToast('🔓 Master Admin Access Granted! Welcome to CRM.', 'success');
+      this.switchView('database');
+    } else {
+      if (input) {
+        input.value = '';
+        input.classList.add('shake-anim');
+        setTimeout(() => input.classList.remove('shake-anim'), 500);
+      }
+      this.showToast('❌ Access Denied: Incorrect Admin Lock Code', 'danger');
+    }
+  }
+
+  cancelAdminLockGate() {
+    this.closeModal('crmAdminLockModal');
+    const activePanel = document.querySelector('.view-panel.active');
+    if (!activePanel || activePanel.id === 'viewDatabase') {
+      this.switchView('explore');
+    }
+  }
+
+  lockAdminCrm() {
+    this.state.isAdminUnlocked = false;
+    this.showToast('🔒 CRM Database Re-locked for Security', 'info');
+    this.switchView('explore');
   }
 
   // -------------------------------------------------------------
