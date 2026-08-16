@@ -28,7 +28,7 @@
   <!-- Google Identity Services (Sign-In with Google) -->
   <script src="https://accounts.google.com/gsi/client" async defer></script>
   
-  <link rel="stylesheet" href="style.css?v=4006">
+  <link rel="stylesheet" href="style.css?v=9407">
 </head>
 <body class="theme-dark">
 
@@ -542,13 +542,33 @@
             </div>
           </div>
 
-          <!-- User Profile Card -->
-          <div class="profile-card">
+          <!-- User Profile Card (Clickable to open Account Settings) -->
+          <div class="profile-card profile-card-interactive" onclick="window.botHubApp.openProfileDetailsModal()" title="Click to view & edit Account Details">
             <div class="profile-avatar" id="profileAvatarText">H</div>
             <div class="profile-info">
-              <h3 class="profile-name" id="profileDisplayName">Hanaan</h3>
+              <div class="profile-name-row">
+                <h3 class="profile-name" id="profileDisplayName">Hanaan</h3>
+                <span class="profile-uid-pill" id="profileDisplayUid">ID: BM-98214</span>
+              </div>
               <p class="profile-email" id="profileDisplayPhone">+91 94950 97786</p>
               <span class="profile-tier-badge">Active B-Magnet Trader</span>
+            </div>
+            <div class="profile-card-chevron">
+              <span class="material-symbols-rounded">edit_note</span>
+            </div>
+          </div>
+
+          <!-- Account Identity & Information Group -->
+          <div class="settings-group">
+            <h4 class="settings-group-title">Account Identity & Information</h4>
+
+            <div class="setting-item" onclick="window.botHubApp.openProfileDetailsModal()">
+              <div class="setting-icon-box text-cyan"><span class="material-symbols-rounded">badge</span></div>
+              <div class="setting-info">
+                <div class="setting-name">Personal Details & User ID</div>
+                <div class="setting-sub">User ID, phone number, email address & contact info</div>
+              </div>
+              <span class="material-symbols-rounded chevron">chevron_right</span>
             </div>
           </div>
 
@@ -897,6 +917,213 @@
           <span class="material-symbols-rounded" style="font-size: 18px;">logout</span>
           <span>Log Out</span>
         </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- MODAL: ACCOUNT & PROFILE DETAILS (USER ID, PHONE, EMAIL) -->
+  <!-- ======================================================== -->
+  <div class="modal-backdrop" id="profileDetailsModal" onclick="if(event.target === this) window.botHubApp.closeModal('profileDetailsModal')">
+    <div class="modal-sheet profile-detail-sheet" onclick="event.stopPropagation()">
+      <div class="sheet-handle"></div>
+      <div class="modal-header">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <div class="header-modal-icon-badge text-cyan">
+            <span class="material-symbols-rounded">badge</span>
+          </div>
+          <div>
+            <h3 class="modal-title" id="txtProfileModalTitle">Account & Profile Settings</h3>
+            <p class="modal-subtitle" id="txtProfileModalSub">Manage your identity, phone number, email and trader ID</p>
+          </div>
+        </div>
+        <button class="modal-close-btn" onclick="window.botHubApp.closeModal('profileDetailsModal')">
+          <span class="material-symbols-rounded">close</span>
+        </button>
+      </div>
+      
+      <div class="modal-body" style="padding-bottom: 24px;">
+        
+        <!-- User Identity Capsule Card -->
+        <div class="profile-modal-capsule">
+          <div class="pmc-avatar-wrapper">
+            <input type="file" id="profilePicInput" accept="image/*" style="display:none;" onchange="window.botHubApp.handleProfilePhotoUpload(event)">
+            <div class="pmc-avatar" id="pmcAvatarBig" onclick="document.getElementById('profilePicInput').click()" title="Click to upload profile photo">H</div>
+            <button type="button" class="pmc-avatar-edit-btn" onclick="document.getElementById('profilePicInput').click()" title="Change Profile Picture">
+              <span class="material-symbols-rounded">photo_camera</span>
+            </button>
+            <div class="pmc-verified-badge" title="Verified Trader">
+              <span class="material-symbols-rounded">verified</span>
+            </div>
+          </div>
+          <div class="pmc-details">
+            <div class="pmc-name-row">
+              <h4 class="pmc-name" id="pmcDisplayName">Hanaan</h4>
+              <span class="pmc-tier-pill">VIP Trader</span>
+            </div>
+            <div class="pmc-id-row">
+              <span class="pmc-id-label">Trader ID:</span>
+              <span class="pmc-id-val font-mono" id="pmcUserIdDisplay">BM-98214</span>
+              <button type="button" class="btn-copy-mini" onclick="window.botHubApp.copyUserId()" title="Copy User ID">
+                <span class="material-symbols-rounded">content_copy</span>
+              </button>
+            </div>
+            <div class="pmc-meta-row">
+              <span class="pulse-dot" style="background:#10b981; width:6px; height:6px;"></span>
+              <span class="pmc-meta-text">Session Active &bull; GTCfx Connected</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Profile Picture Action Toolbar -->
+        <div class="profile-avatar-actions-bar">
+          <button type="button" class="btn-avatar-action" onclick="document.getElementById('profilePicInput').click()">
+            <span class="material-symbols-rounded">upload</span>
+            <span>Upload Photo</span>
+          </button>
+          <button type="button" class="btn-avatar-action" onclick="window.botHubApp.togglePresetAvatarSelector()">
+            <span class="material-symbols-rounded">sentiment_satisfied</span>
+            <span>Choose Icon</span>
+          </button>
+          <button type="button" class="btn-avatar-action btn-avatar-danger" id="btnRemoveAvatar" onclick="window.botHubApp.removeProfilePhoto()">
+            <span class="material-symbols-rounded">delete_outline</span>
+            <span>Remove</span>
+          </button>
+        </div>
+
+        <!-- Preset Avatar Tray (Collapsible) -->
+        <div class="preset-avatar-tray" id="presetAvatarTray" style="display:none;">
+          <div class="pat-title">Select Trader Avatar Icon</div>
+          <div class="pat-grid">
+            <button type="button" class="pat-item" onclick="window.botHubApp.setPresetAvatar('🤖')" title="Robot EA">🤖</button>
+            <button type="button" class="pat-item" onclick="window.botHubApp.setPresetAvatar('⚡')" title="Gold Lightning">⚡</button>
+            <button type="button" class="pat-item" onclick="window.botHubApp.setPresetAvatar('🦁')" title="Lion Trader">🦁</button>
+            <button type="button" class="pat-item" onclick="window.botHubApp.setPresetAvatar('🚀')" title="Rocket Scalper">🚀</button>
+            <button type="button" class="pat-item" onclick="window.botHubApp.setPresetAvatar('👑')" title="VIP Crown">👑</button>
+            <button type="button" class="pat-item" onclick="window.botHubApp.setPresetAvatar('🕶️')" title="Pro Trader">🕶️</button>
+            <button type="button" class="pat-item" onclick="window.botHubApp.setPresetAvatar('💎')" title="Diamond Hands">💎</button>
+            <button type="button" class="pat-item" onclick="window.botHubApp.setPresetAvatar('🦅')" title="Eagle Hunter">🦅</button>
+            <button type="button" class="pat-item" onclick="window.botHubApp.setPresetAvatar('📈')" title="Bull Market">📈</button>
+          </div>
+        </div>
+
+        <!-- Personal Information Form Fields -->
+        <div class="profile-form-group">
+          <h4 class="profile-form-section-title">Personal Credentials</h4>
+
+          <!-- User ID Field -->
+          <div class="profile-field-card">
+            <div class="pfc-icon-col">
+              <span class="material-symbols-rounded">fingerprint</span>
+            </div>
+            <div class="pfc-content-col">
+              <label class="pfc-label">Unique User / Trader ID</label>
+              <div class="pfc-input-row">
+                <input type="text" id="inputProfileUserId" class="pfc-input font-mono" value="BM-98214" readonly>
+                <button type="button" class="pfc-action-btn" onclick="window.botHubApp.copyUserId()">
+                  <span class="material-symbols-rounded">content_copy</span>
+                  <span>Copy</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Full Name Field -->
+          <div class="profile-field-card">
+            <div class="pfc-icon-col">
+              <span class="material-symbols-rounded">person</span>
+            </div>
+            <div class="pfc-content-col">
+              <label class="pfc-label" for="inputProfileName">Full Name / Display Name</label>
+              <input type="text" id="inputProfileName" class="pfc-input" placeholder="Your Name" value="Hanaan">
+            </div>
+          </div>
+
+          <!-- Phone Number Field -->
+          <div class="profile-field-card">
+            <div class="pfc-icon-col">
+              <span class="material-symbols-rounded">call</span>
+            </div>
+            <div class="pfc-content-col">
+              <div style="display:flex; justify-content:space-between; align-items:center;">
+                <label class="pfc-label" for="inputProfilePhone">Registered Phone Number</label>
+                <span class="pfc-verified-tag"><span class="material-symbols-rounded">verified</span> Verified</span>
+              </div>
+              <input type="tel" id="inputProfilePhone" class="pfc-input" placeholder="+91 94950 97786" value="+91 94950 97786">
+            </div>
+          </div>
+
+          <!-- Email ID Field -->
+          <div class="profile-field-card">
+            <div class="pfc-icon-col">
+              <span class="material-symbols-rounded">mail</span>
+            </div>
+            <div class="pfc-content-col">
+              <div style="display:flex; justify-content:space-between; align-items:center;">
+                <label class="pfc-label" for="inputProfileEmail">Email Address</label>
+                <span class="pfc-verified-tag"><span class="material-symbols-rounded">verified</span> Verified</span>
+              </div>
+              <input type="email" id="inputProfileEmail" class="pfc-input" placeholder="hanaan@bmagnet.ai" value="hanaan@bmagnet.ai">
+            </div>
+          </div>
+
+          <!-- Telegram Alerts Handle -->
+          <div class="profile-field-card">
+            <div class="pfc-icon-col">
+              <span class="material-symbols-rounded">send</span>
+            </div>
+            <div class="pfc-content-col">
+              <label class="pfc-label" for="inputProfileTelegram">Telegram Handle (For Signal Alerts)</label>
+              <input type="text" id="inputProfileTelegram" class="pfc-input" placeholder="@your_telegram" value="@B_Magnet_Gold_bot">
+            </div>
+          </div>
+
+          <!-- Default MT5 Trading Account -->
+          <div class="profile-field-card">
+            <div class="pfc-icon-col">
+              <span class="material-symbols-rounded">candlestick_chart</span>
+            </div>
+            <div class="pfc-content-col">
+              <div style="display:flex; justify-content:space-between; align-items:center;">
+                <label class="pfc-label" for="inputProfileMt5">Default GTCfx MT5 Account</label>
+                <span class="pfc-broker-tag">GTC Global Trade</span>
+              </div>
+              <input type="text" id="inputProfileMt5" class="pfc-input font-mono" placeholder="8849201" value="8849201">
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Security & Device Info Box -->
+        <div class="profile-security-box">
+          <div class="psb-header">
+            <span class="material-symbols-rounded text-emerald">security</span>
+            <span class="psb-title">Security & Device Session</span>
+          </div>
+          <div class="psb-items">
+            <div class="psb-item">
+              <span class="psb-k">2-Factor Authentication:</span>
+              <span class="psb-v text-emerald"><span class="material-symbols-rounded" style="font-size:13px;">check_circle</span> Enabled (OTP)</span>
+            </div>
+            <div class="psb-item">
+              <span class="psb-k">Active Session Platform:</span>
+              <span class="psb-v font-mono">B-Bot Pro PWA / iOS</span>
+            </div>
+            <div class="psb-item">
+              <span class="psb-k">USDT BEP-20 Wallet:</span>
+              <span class="psb-v text-cyan font-mono" id="pmcWalletBalance">250.00 USDT</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="profile-modal-actions">
+          <button type="button" class="btn-save-profile" onclick="window.botHubApp.saveProfileDetails()">
+            <span class="material-symbols-rounded">save</span>
+            <span>Save Profile Changes</span>
+          </button>
+        </div>
+
       </div>
     </div>
   </div>
@@ -1620,6 +1847,6 @@
 
   <!-- App Scripts -->
   <script src="qrcode.js"></script>
-  <script src="app.js?v=4006"></script>
+  <script src="app.js?v=9407"></script>
 </body>
 </html>

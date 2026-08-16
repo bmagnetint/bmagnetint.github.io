@@ -706,14 +706,117 @@ class BotHubApp {
     const userPhoneText = document.getElementById('headerUserPhoneText');
     const logoutBtn = document.getElementById('logoutBtn');
 
+    const displayName = user.name || (user.email ? user.email.split('@')[0] : 'Hanaan');
+    const displayPhone = user.phone || user.fullPhone || user.email || '+91 94950 97786';
+    const displayUid = user.userId || user.id || 'BM-98214';
+    const initial = (displayName.charAt(0) || 'H').toUpperCase();
+
     if (userPhoneText) {
-      const displayName = user.name || (user.email ? user.email.split('@')[0] : 'Trader');
       userPhoneText.textContent = displayName;
     }
     if (logoutBtn) logoutBtn.style.display = 'inline-flex';
 
+    // Update Account Settings Profile Card
+    const pName = document.getElementById('profileDisplayName');
+    const pPhone = document.getElementById('profileDisplayPhone');
+    const pAvatar = document.getElementById('profileAvatarText');
+    const pUid = document.getElementById('profileDisplayUid');
+
+    if (pName) pName.textContent = displayName;
+    if (pPhone) pPhone.textContent = displayPhone;
+    if (pAvatar) pAvatar.textContent = initial;
+    if (pUid) pUid.textContent = `ID: ${displayUid}`;
+
     // 📲 Display PWA Download/Install to Home Screen Badge
     setTimeout(() => this.checkPwaInstallBanner(), 400);
+  }
+
+  // -------------------------------------------------------------
+  // PROFILE DETAILS & ACCOUNT SETTINGS (USER ID, PHONE, EMAIL)
+  // -------------------------------------------------------------
+  openProfileDetailsModal() {
+    const user = this.state.currentUser || {};
+    const displayName = user.name || 'Hanaan';
+    const displayPhone = user.phone || user.fullPhone || '+91 94950 97786';
+    const displayEmail = user.email || 'hanaan@bmagnet.ai';
+    const displayUid = user.userId || user.id || 'BM-98214';
+    const displayTelegram = user.telegram || '@B_Magnet_Gold_bot';
+    const displayMt5 = user.gtcfxMt5Account || '8849201';
+    const initial = (displayName.charAt(0) || 'H').toUpperCase();
+
+    const pmcAvatarBig = document.getElementById('pmcAvatarBig');
+    const pmcDisplayName = document.getElementById('pmcDisplayName');
+    const pmcUserIdDisplay = document.getElementById('pmcUserIdDisplay');
+    const inputProfileUserId = document.getElementById('inputProfileUserId');
+    const inputProfileName = document.getElementById('inputProfileName');
+    const inputProfilePhone = document.getElementById('inputProfilePhone');
+    const inputProfileEmail = document.getElementById('inputProfileEmail');
+    const inputProfileTelegram = document.getElementById('inputProfileTelegram');
+    const inputProfileMt5 = document.getElementById('inputProfileMt5');
+    const pmcWalletBalance = document.getElementById('pmcWalletBalance');
+
+    if (pmcAvatarBig) pmcAvatarBig.textContent = initial;
+    if (pmcDisplayName) pmcDisplayName.textContent = displayName;
+    if (pmcUserIdDisplay) pmcUserIdDisplay.textContent = displayUid;
+    if (inputProfileUserId) inputProfileUserId.value = displayUid;
+    if (inputProfileName) inputProfileName.value = displayName;
+    if (inputProfilePhone) inputProfilePhone.value = displayPhone;
+    if (inputProfileEmail) inputProfileEmail.value = displayEmail;
+    if (inputProfileTelegram) inputProfileTelegram.value = displayTelegram;
+    if (inputProfileMt5) inputProfileMt5.value = displayMt5;
+
+    if (pmcWalletBalance) {
+      const bal = this.state.wallet ? Number(this.state.wallet.balance).toFixed(2) : '250.00';
+      pmcWalletBalance.textContent = `${bal} USDT`;
+    }
+
+    this.openModal('profileDetailsModal');
+  }
+
+  saveProfileDetails() {
+    const inputName = document.getElementById('inputProfileName');
+    const inputPhone = document.getElementById('inputProfilePhone');
+    const inputEmail = document.getElementById('inputProfileEmail');
+    const inputTelegram = document.getElementById('inputProfileTelegram');
+    const inputMt5 = document.getElementById('inputProfileMt5');
+
+    const name = inputName ? inputName.value.trim() : 'Hanaan';
+    const phone = inputPhone ? inputPhone.value.trim() : '+91 94950 97786';
+    const email = inputEmail ? inputEmail.value.trim() : 'hanaan@bmagnet.ai';
+    const telegram = inputTelegram ? inputTelegram.value.trim() : '@B_Magnet_Gold_bot';
+    const gtcfxMt5 = inputMt5 ? inputMt5.value.trim() : '8849201';
+
+    if (!this.state.currentUser) {
+      this.state.currentUser = { isLoggedIn: true, userId: 'BM-98214' };
+    }
+
+    this.state.currentUser.name = name;
+    this.state.currentUser.phone = phone;
+    this.state.currentUser.fullPhone = phone;
+    this.state.currentUser.email = email;
+    this.state.currentUser.telegram = telegram;
+    this.state.currentUser.gtcfxMt5Account = gtcfxMt5;
+
+    localStorage.setItem('b_bot_auth_user', JSON.stringify(this.state.currentUser));
+
+    // Update UI elements immediately
+    this.applyLoggedInUI(this.state.currentUser);
+
+    this.closeModal('profileDetailsModal');
+    this.showToast('✅ Account profile updated successfully!', 'success');
+  }
+
+  copyUserId() {
+    const uid = (this.state.currentUser && (this.state.currentUser.userId || this.state.currentUser.id)) || 'BM-98214';
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(uid).then(() => {
+        this.showToast(`📋 Trader ID ${uid} copied to clipboard!`, 'info');
+      }).catch(() => {
+        this.showToast(`Trader ID: ${uid}`, 'info');
+      });
+    } else {
+      this.showToast(`Trader ID: ${uid}`, 'info');
+    }
   }
 
   // -------------------------------------------------------------
