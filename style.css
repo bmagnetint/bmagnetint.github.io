@@ -50,6 +50,117 @@
   --shadow-glow-teal: 0 0 24px rgba(0, 168, 150, 0.2);
 }
 
+body.theme-dark, .theme-dark, [data-theme="dark"] {
+  --bg-app: #070b14;
+  --bg-frame: #0e1422;
+  --surface-card: #131b2e;
+  --surface-elevated: #18223a;
+  --surface-highlight: #1d2946;
+  
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-medium: rgba(0, 168, 150, 0.35);
+  --border-active: #00a896;
+
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+}
+
+body.theme-dark .modal-sheet,
+.theme-dark .modal-sheet {
+  background: #0e1422 !important;
+  color: #f8fafc !important;
+  border: 1px solid rgba(0, 168, 150, 0.35) !important;
+}
+
+body.theme-dark .modal-header,
+.theme-dark .modal-header {
+  background: #0e1422 !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #ffffff !important;
+}
+
+body.theme-dark .modal-title,
+.theme-dark .modal-title {
+  color: #ffffff !important;
+}
+
+body.theme-dark .modal-subtitle,
+.theme-dark .modal-subtitle {
+  color: #94a3b8 !important;
+}
+
+body.theme-dark .modal-body,
+.theme-dark .modal-body {
+  background: #0e1422 !important;
+  color: #f8fafc !important;
+}
+
+body.theme-dark .modal-body h1,
+body.theme-dark .modal-body h2,
+body.theme-dark .modal-body h3,
+body.theme-dark .modal-body h4,
+body.theme-dark .modal-body h5,
+body.theme-dark .modal-body h6,
+body.theme-dark .modal-body strong {
+  color: #ffffff !important;
+}
+
+body.theme-dark .modal-body p,
+body.theme-dark .modal-body span {
+  color: #cbd5e1;
+}
+
+body.theme-dark .modal-body label {
+  color: #94a3b8 !important;
+}
+
+body.theme-dark .form-input,
+body.theme-dark .form-select,
+body.theme-dark .form-textarea,
+.theme-dark .form-input,
+.theme-dark .form-select,
+.theme-dark .form-textarea {
+  background: #131b2e !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.12) !important;
+  color: #ffffff !important;
+}
+
+body.theme-dark .plan-card-option,
+.theme-dark .plan-card-option {
+  background: #131b2e !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+body.theme-dark .plan-card-option:hover,
+.theme-dark .plan-card-option:hover {
+  border-color: rgba(0, 168, 150, 0.5) !important;
+  background: #18223a !important;
+}
+
+body.theme-dark .plan-card-option.selected,
+.theme-dark .plan-card-option.selected {
+  border-color: var(--brand-teal) !important;
+  background: rgba(0, 168, 150, 0.15) !important;
+}
+
+body.theme-dark .plan-name,
+.theme-dark .plan-name {
+  color: #ffffff !important;
+}
+
+body.theme-dark .digital-wallet-box,
+.theme-dark .digital-wallet-box {
+  background: #131b2e !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+}
+
+body.theme-dark .checkout-summary-card,
+.theme-dark .checkout-summary-card {
+  background: rgba(0, 0, 0, 0.4) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
 /* Reset & Base */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -77,6 +188,31 @@ body {
   display: flex;
   justify-content: center;
   align-items: stretch;
+}
+
+/* Arabic (RTL) Typography & Direction Styling */
+[dir="rtl"], body.lang-ar {
+  font-family: 'Cairo', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  letter-spacing: 0px !important;
+}
+
+[dir="rtl"] .bot-title,
+[dir="rtl"] .panel-title,
+[dir="rtl"] .brand-title,
+[dir="rtl"] .pwa-title,
+[dir="rtl"] .modal-title {
+  font-family: 'Cairo', sans-serif;
+  font-weight: 800;
+  letter-spacing: 0;
+}
+
+[dir="rtl"] .ticker-marquee {
+  direction: ltr;
+}
+
+[dir="rtl"] .font-mono {
+  direction: ltr;
+  display: inline-block;
 }
 
 /* App Viewport Wrapper (Auto-calibrated for all screens, OS & resolutions) */
@@ -133,6 +269,58 @@ body {
     border-left: none !important;
     border-right: none !important;
     box-shadow: none !important;
+  }
+}
+
+/* Narrow Mobile & iPhone Safari Screen Calibration (< 420px) */
+@media (max-width: 420px) {
+  .app-header {
+    padding-left: max(10px, env(safe-area-inset-left, 10px));
+    padding-right: max(10px, env(safe-area-inset-right, 10px));
+    gap: 6px;
+  }
+  .brand-title {
+    font-size: 14.5px;
+    gap: 4px;
+  }
+  .header-bmagnet-logo {
+    width: 26px;
+    height: 26px;
+  }
+  .header-left {
+    gap: 6px;
+  }
+  .header-right {
+    gap: 4px;
+  }
+  .header-icon-pill-btn {
+    height: 26px;
+    min-width: 26px;
+    padding: 0 5px;
+    font-size: 10px;
+  }
+  .wallet-compact-corner-btn {
+    padding: 2.5px 6px 2.5px 4px;
+    gap: 4px;
+  }
+  .wallet-user-title {
+    max-width: 46px;
+  }
+  .wallet-user-amt {
+    font-size: 10px;
+  }
+  .bottom-nav {
+    padding-left: max(4px, env(safe-area-inset-left, 4px));
+    padding-right: max(4px, env(safe-area-inset-right, 4px));
+  }
+  .nav-item {
+    padding: 2px 2px;
+  }
+  .nav-label {
+    font-size: 9.5px;
+  }
+  .nav-icon {
+    font-size: 20px;
   }
 }
 
@@ -195,13 +383,33 @@ body {
   background: rgba(100, 116, 139, 0.6);
 }
 
-/* Platform-Specific: iOS WebKit Kinetic Momentum & Notch Tuning */
+/* Platform-Specific: iOS WebKit Kinetic Momentum, Viewport & Notch Tuning */
 .platform-ios {
   -webkit-touch-callout: none;
+  -webkit-text-size-adjust: 100%;
 }
 
 .platform-ios .app-content {
   -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: contain;
+}
+
+.platform-ios .modal-backdrop {
+  -webkit-overflow-scrolling: touch;
+}
+
+.platform-ios .app-header,
+.platform-ios .bottom-nav {
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+
+.platform-ios input,
+.platform-ios button,
+.platform-ios select,
+.platform-ios textarea {
+  font-size: 16px;
+  -webkit-appearance: none;
 }
 
 /* Platform-Specific: Android Font Rendering & Touch Optimization */
@@ -215,15 +423,16 @@ body {
 
 /* Locked Header (Safe from Mobile Screen Notch & Dynamic Island) */
 .app-header {
-  min-height: calc(56px + env(safe-area-inset-top, 0px));
-  padding-top: max(12px, env(safe-area-inset-top, 12px));
-  padding-bottom: 10px;
-  padding-left: max(16px, env(safe-area-inset-left, 16px));
-  padding-right: max(16px, env(safe-area-inset-right, 16px));
+  min-height: calc(52px + env(safe-area-inset-top, 0px));
+  padding-top: max(10px, env(safe-area-inset-top, 10px));
+  padding-bottom: 8px;
+  padding-left: max(12px, env(safe-area-inset-left, 12px));
+  padding-right: max(12px, env(safe-area-inset-right, 12px));
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(255, 255, 255, 0.94);
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1.5px solid rgba(255, 255, 255, 0.95);
@@ -231,26 +440,28 @@ body {
   flex-shrink: 0;
   position: relative;
   z-index: 100;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Scroll-Minimized Compact Header */
 body.header-minimized .app-header {
-  min-height: calc(44px + env(safe-area-inset-top, 0px));
-  padding-top: max(7px, env(safe-area-inset-top, 7px));
-  padding-bottom: 6px;
+  min-height: calc(42px + env(safe-area-inset-top, 0px));
+  padding-top: max(6px, env(safe-area-inset-top, 6px));
+  padding-bottom: 5px;
   box-shadow: 0 6px 20px rgba(25, 39, 80, 0.08);
 }
 
 .header-left {
   display: flex;
   align-items: center;
-  gap: 10px;
-  transition: all 0.3s ease;
+  gap: 8px;
+  min-width: 0;
+  flex-shrink: 1;
+  transition: all 0.25s ease;
 }
 
 body.header-minimized .header-left {
-  gap: 7px;
+  gap: 6px;
 }
 
 .brand-logo {
@@ -262,14 +473,15 @@ body.header-minimized .header-left {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
 
 .header-bmagnet-logo {
-  width: 32px;
-  height: 32px;
+  width: 30px;
+  height: 30px;
   object-fit: contain;
   display: block;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body.header-minimized .header-bmagnet-logo {
@@ -278,46 +490,48 @@ body.header-minimized .header-bmagnet-logo {
 }
 
 .brand-title {
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 800;
-  letter-spacing: -0.4px;
+  letter-spacing: -0.3px;
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
   color: #192750;
-  transition: all 0.3s ease;
+  white-space: nowrap;
+  transition: all 0.25s ease;
 }
 
 body.header-minimized .brand-title {
-  font-size: 14px;
-  gap: 5px;
+  font-size: 13.5px;
+  gap: 4px;
 }
 
 .brand-badge {
-  font-size: 9px;
+  font-size: 8.5px;
   font-weight: 800;
   background: #192750;
   color: #ffffff;
-  padding: 1px 6px;
+  padding: 1px 5px;
   border-radius: 4px;
-  letter-spacing: 0.5px;
-  transition: all 0.3s ease;
+  letter-spacing: 0.4px;
+  transition: all 0.25s ease;
 }
 
 body.header-minimized .brand-badge {
   font-size: 7.5px;
-  padding: 0.5px 4px;
+  padding: 0.5px 3.5px;
 }
 
 .brand-sub {
-  font-size: 11px;
+  font-size: 10.5px;
   color: #64748b;
   display: block;
-  margin-top: -3px;
-  transition: all 0.25s ease;
-  max-height: 18px;
+  margin-top: -2px;
+  transition: all 0.2s ease;
+  max-height: 16px;
   opacity: 1;
   overflow: hidden;
+  white-space: nowrap;
 }
 
 body.header-minimized .brand-sub {
@@ -330,26 +544,27 @@ body.header-minimized .brand-sub {
 .header-right {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
+  flex-shrink: 0;
 }
 
 .wallet-compact-corner-btn {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   background: rgba(255, 255, 255, 0.92);
   border: 1.5px solid rgba(255, 255, 255, 0.95);
-  padding: 4px 10px 4px 6px;
+  padding: 3px 8px 3px 5px;
   border-radius: var(--radius-full);
   color: #192750;
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 4px 14px rgba(25, 39, 80, 0.06);
 }
 
 body.header-minimized .wallet-compact-corner-btn {
-  padding: 2.5px 8px 2.5px 4px;
-  gap: 6px;
+  padding: 2px 6px 2px 4px;
+  gap: 4px;
 }
 
 .wallet-compact-corner-btn:hover {
@@ -360,16 +575,14 @@ body.header-minimized .wallet-compact-corner-btn {
 }
 
 .user-avatar-mini {
-  width: 26px;
-  height: 26px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
   background: rgba(0, 168, 150, 0.12);
   border: 1px solid rgba(0, 168, 150, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #00a896;
-  font-size: 16px;
   flex-shrink: 0;
 }
 
@@ -377,19 +590,20 @@ body.header-minimized .wallet-compact-corner-btn {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 1px;
+  gap: 0;
   text-align: left;
+  line-height: 1.15;
 }
 
 .wallet-user-title {
   font-size: 10px;
-  font-weight: 700;
-  color: #192750;
-  max-width: 90px;
+  font-weight: 800;
+  color: #64748b;
+  max-width: 65px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  line-height: 1.1;
+  display: block;
 }
 
 .wallet-user-amt {
@@ -397,6 +611,7 @@ body.header-minimized .wallet-compact-corner-btn {
   font-weight: 800;
   color: #00a896;
   line-height: 1.1;
+  display: block;
 }
 
 .wallet-badge-btn {
@@ -606,10 +821,10 @@ body.header-minimized .live-ticker-container {
   height: 0;
 }
 
-/* View Panels */
+/* View Panels (Scroll clearance for bottom dock & iPhone Home Bar) */
 .view-panel {
   display: none;
-  padding: 16px 20px 90px;
+  padding: 14px 16px calc(96px + env(safe-area-inset-bottom, 14px));
   animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -1681,27 +1896,31 @@ body.header-minimized .live-ticker-container {
   text-transform: uppercase;
 }
 
-/* Bottom Navigation Bar */
+/* Bottom Navigation Bar (Optimized for iPhone Safari, Android & Desktop) */
 .bottom-nav {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  height: calc(64px + env(safe-area-inset-bottom, 0px));
-  background: rgba(255, 255, 255, 0.94);
+  height: auto;
+  min-height: calc(58px + env(safe-area-inset-bottom, 0px));
+  background: rgba(255, 255, 255, 0.96);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border-top: 1.5px solid rgba(255, 255, 255, 0.95);
+  border-top: 1px solid rgba(203, 213, 225, 0.85);
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding: 4px 10px max(10px, env(safe-area-inset-bottom, 10px));
+  padding: 4px 6px max(10px, env(safe-area-inset-bottom, 10px));
   z-index: 100;
-  box-shadow: 0 -4px 20px rgba(25, 39, 80, 0.05);
-  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 -4px 20px rgba(25, 39, 80, 0.06);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
 }
 
 .nav-item {
+  flex: 1;
   background: transparent;
   border: none;
   display: flex;
@@ -1711,9 +1930,12 @@ body.header-minimized .live-ticker-container {
   color: #64748b;
   cursor: pointer;
   position: relative;
-  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
-  padding: 4px 10px;
-  border-radius: 14px;
+  min-height: 44px;
+  padding: 2px 4px;
+  border-radius: 12px;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .nav-item.active {
@@ -1722,17 +1944,19 @@ body.header-minimized .live-ticker-container {
 
 .nav-icon {
   font-size: 22px;
-  transition: transform 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+  line-height: 1;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .nav-label {
-  font-size: 10px;
+  font-size: 10.5px;
   font-weight: 700;
+  line-height: 1.2;
   margin-top: 2px;
   max-height: 16px;
   opacity: 1;
   transform: translateY(0);
-  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   overflow: hidden;
   white-space: nowrap;
 }
@@ -1741,8 +1965,8 @@ body.header-minimized .live-ticker-container {
 /* SCROLL MINIMIZED DOCK: HIDE LABELS, SHOW ICONS & SHRINK  */
 /* ======================================================== */
 body.dock-minimized .bottom-nav {
-  height: calc(44px + env(safe-area-inset-bottom, 0px));
-  padding-bottom: max(3px, env(safe-area-inset-bottom, 3px));
+  min-height: calc(44px + env(safe-area-inset-bottom, 0px));
+  padding-bottom: max(6px, env(safe-area-inset-bottom, 6px));
   padding-top: 2px;
   background: rgba(255, 255, 255, 0.97);
   box-shadow: 0 -2px 16px rgba(25, 39, 80, 0.1);
@@ -1763,11 +1987,11 @@ body.dock-minimized .nav-label {
 
 body.dock-minimized .nav-icon {
   font-size: 24px;
-  transform: scale(1.08);
+  transform: scale(1.06);
 }
 
 body.dock-minimized .nav-item {
-  padding: 5px 14px;
+  padding: 4px 8px;
 }
 
 body.dock-minimized .nav-item.active {
@@ -4941,6 +5165,244 @@ body.theme-dark .header-icon-pill-btn {
 body.theme-dark .header-icon-pill-btn:hover {
   border-color: #00f2fe;
   color: #00f2fe;
+}
+
+/* ==========================================================================
+   PWA WEB APP HOME SCREEN FLOATING BOTTOM BADGE
+   ========================================================================== */
+.pwa-install-banner {
+  position: absolute;
+  bottom: calc(68px + env(safe-area-inset-bottom, 10px));
+  left: 12px;
+  right: 12px;
+  max-width: 456px;
+  margin: 0 auto;
+  background: linear-gradient(135deg, rgba(16, 28, 54, 0.97) 0%, rgba(30, 41, 59, 0.97) 100%);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1.5px solid rgba(0, 242, 254, 0.45);
+  border-radius: 18px;
+  padding: 9px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.35), 0 0 20px rgba(0, 242, 254, 0.16);
+  animation: slideUpBadge 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 105;
+  transition: bottom 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s ease;
+}
+
+@keyframes slideUpBadge {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+body.dock-minimized .pwa-install-banner {
+  bottom: calc(52px + env(safe-area-inset-bottom, 6px));
+}
+
+.pwa-banner-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.pwa-app-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: #0f172a;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.pwa-app-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.pwa-text-col {
+  min-width: 0;
+}
+
+.pwa-title-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pwa-title {
+  font-size: 12.5px;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pwa-chip {
+  font-size: 9px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #00a896, #0284c7);
+  color: #ffffff;
+  padding: 1px 5px;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+}
+
+.pwa-subtitle {
+  font-size: 10.5px;
+  color: #94a3b8;
+  margin: 2px 0 0 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pwa-actions-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.btn-pwa-install {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: linear-gradient(135deg, #00f2fe 0%, #00a896 100%);
+  color: #061124 !important;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 11.5px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 3px 10px rgba(0, 242, 254, 0.35);
+  transition: all 0.2s ease;
+}
+
+.btn-pwa-install:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 14px rgba(0, 242, 254, 0.5);
+}
+
+.btn-pwa-dismiss {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: #94a3b8;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+}
+
+.btn-pwa-dismiss:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+.btn-pwa-dismiss .material-symbols-rounded {
+  font-size: 15px;
+}
+
+/* iOS Guide Modal */
+.pwa-guide-card {
+  max-width: 380px !important;
+}
+
+.pwa-guide-icon-box {
+  width: 58px;
+  height: 58px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(2, 132, 199, 0.15), rgba(0, 242, 254, 0.2));
+  border: 1.5px solid rgba(2, 132, 199, 0.35);
+  color: #0284c7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.pwa-guide-icon-box .material-symbols-rounded {
+  font-size: 32px;
+  color: #0284c7;
+}
+
+.ios-install-steps-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  margin-top: 14px;
+  text-align: left;
+}
+
+.ios-step-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 10px 12px;
+}
+
+body.theme-dark .ios-step-item {
+  background: #141f36;
+  border-color: rgba(51, 65, 85, 0.8);
+}
+
+.ios-step-num {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #0284c7;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.ios-step-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.ios-step-info strong {
+  font-size: 12px;
+  color: #0f172a;
+}
+
+body.theme-dark .ios-step-info strong {
+  color: #ffffff;
+}
+
+.ios-step-info span {
+  font-size: 11px;
+  color: #64748b;
+  line-height: 1.4;
+}
+
+body.theme-dark .ios-step-info span {
+  color: #94a3b8;
 }
 
 /* ==========================================================================

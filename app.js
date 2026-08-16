@@ -19,7 +19,83 @@ const TRANSLATIONS = {
     noAccount: "Don't have an account?",
     signUpLink: 'Sign Up',
     themeDark: 'Dark',
-    themeLight: 'Light'
+    themeLight: 'Light',
+    pwaTitle: 'Install B-Bot Pro App',
+    pwaSub: 'Add to Home Screen for fast 1-tap access',
+    pwaBtn: 'Install',
+    settingPwaTitle: 'Install App to Home Screen',
+    settingPwaSub: 'Download B-Bot Pro as a web app on your device',
+    brandTitle: 'B-Magnet',
+    brandSub: 'Trading & Marketing Bots',
+    navExplore: 'Explore',
+    navBots: 'My Bots',
+    navDb: 'Database',
+    navAccount: 'Account',
+    liveTickerTag: 'LIVE',
+    exploreTitle: 'Verified Trading Bots & Plans',
+    exploreCountSuffix: 'Plans',
+    searchPlaceholder: 'Search bots, strategies, ROI, Gold scalpers...',
+    catAll: 'All',
+    catGold: 'Gold Hunter',
+    catScalper: 'Scalper',
+    catInst: 'Institutional',
+    catAi: 'AI Powered',
+    metricWinRate: 'Win Rate',
+    metricRoi: 'Monthly ROI',
+    metricDd: 'Max DD',
+    metricPf: 'Profit Factor',
+    gtcfxTitle: 'Register GTCfx Account',
+    gtcfxSub: 'Recommended MT5 broker for B-Magnet Gold EA',
+    gtcfxBtn: 'Register',
+    subsTitle: 'My Bot Subscriptions',
+    subsSub: 'Manage licenses, MT5 account binding & active status',
+    addBotBtn: 'Add Bot',
+    statActiveBots: 'Active Bot',
+    statMonthlyCost: 'Monthly Cost',
+    statMt5: 'GTCfx MT5',
+    creatorTitle: 'Creator & Marketing Hub',
+    creatorSub: 'Monetize your EAs & earn 20% affiliate commissions',
+    creatorMrrLabel: 'Monthly Recurring Revenue (MRR)',
+    creatorSubscribers: 'Subscribers',
+    creatorActiveBots: 'Active Bots',
+    creatorAvailablePayout: 'Available Payout',
+    btnPayout: 'Request Instant Payout',
+    affiliateTitle: 'Affiliate Referral Program',
+    affiliateDesc: 'Earn 20% recurring commission for every user who subscribes with your link.',
+    dbTitle: 'Customer CRM & Bot Registry',
+    dbSub: 'Real-time database of customer phone numbers, wallet balances, active bot subscriptions, GTCfx MT5 terminals, and expiry countdowns.',
+    dbStatus: 'Admin Master Session Active',
+    btnLockCrm: 'Lock CRM',
+    thCustomer: 'Customer',
+    thBot: 'Bot Name',
+    thPlan: 'Plan Tier',
+    thKey: 'License Key',
+    thMt5: 'GTCfx MT5 #',
+    thExpiry: 'Expiry Date',
+    thStatus: 'Status',
+    accountTitle: 'Connected Wallet & Account',
+    accountSub: 'BEP-20 Wallet & Connected User ID',
+    groupAlerts: 'Integrations & Alerts',
+    groupPrefs: 'Preferences & Security',
+    settingTelegram: 'Telegram Trade Push Alerts',
+    settingCurrency: 'Display Currency',
+    settingTheme: 'App Theme Mode',
+    settingLang: 'Language / اللغة',
+    settingReset: 'Reset Demo State',
+    settingResetSub: 'Restore original demo bots, subscriptions & invoices',
+    settingLogout: 'Logout Account',
+    adminLockTitle: 'CRM Access Locked',
+    adminLockDesc: 'This section contains private customer records, MT5 accounts, and wallet balances. Enter the 4-digit Master Security Passcode to unlock.',
+    adminUnlockBtn: 'Unlock CRM',
+    iosGuideTitle: 'Add B-Bot Pro to Home Screen',
+    iosGuideDesc: 'Install B-Bot Pro on your phone for full-screen trading, faster alerts, and instant 1-tap launch.',
+    iosStep1Title: 'Tap the Share Button',
+    iosStep1Desc: 'Tap the Share icon in your Safari bottom navigation bar.',
+    iosStep2Title: 'Select "Add to Home Screen"',
+    iosStep2Desc: 'Scroll down the action list and tap Add to Home Screen.',
+    iosStep3Title: 'Tap "Add" in Top Right',
+    iosStep3Desc: 'Confirm and tap Add to place the official B-Bot Pro icon on your home screen!',
+    btnGotIt: 'Got It, Thanks!'
   },
   ar: {
     welcomeTitle: 'مرحباً بك',
@@ -34,7 +110,83 @@ const TRANSLATIONS = {
     noAccount: 'ليس لديك حساب بعد؟',
     signUpLink: 'إنشاء حساب',
     themeDark: 'داكن',
-    themeLight: 'فاتح'
+    themeLight: 'فاتح',
+    pwaTitle: 'تثبيت تطبيق B-Bot Pro',
+    pwaSub: 'أضف التطبيق للشاشة الرئيسية للوصول السريع وبملء الشاشة',
+    pwaBtn: 'تثبيت',
+    settingPwaTitle: 'تثبيت التطبيق على الشاشة الرئيسية',
+    settingPwaSub: 'حمّل B-Bot Pro كتطبيق ويب على جهازك',
+    brandTitle: 'بي ماغنيت',
+    brandSub: 'بوتات التداول والتسويق الآلي',
+    navExplore: 'استكشاف',
+    navBots: 'اشتراكاتي',
+    navDb: 'العملاء',
+    navAccount: 'حسابي',
+    liveTickerTag: 'مباشر',
+    exploreTitle: 'البوتات وخطط التداول المعتمدة',
+    exploreCountSuffix: 'خطط',
+    searchPlaceholder: 'ابحث عن استراتيجيات الذهب، نسبة الربح، نوع البوت...',
+    catAll: 'الكل',
+    catGold: 'تداول الذهب',
+    catScalper: 'سكالبينج',
+    catInst: 'مؤسسي',
+    catAi: 'ذكاء اصطناعي',
+    metricWinRate: 'نسبة الفوز',
+    metricRoi: 'العائد الشهري',
+    metricDd: 'أقصى تراجع',
+    metricPf: 'مُعامل الربح',
+    gtcfxTitle: 'تسجيل حساب GTCfx',
+    gtcfxSub: 'وسيط MT5 الموصى به لبوت B-Magnet للذهب',
+    gtcfxBtn: 'تسجيل',
+    subsTitle: 'اشتراكات وتراخيص التداول',
+    subsSub: 'إدارة التراخيص وربط حسابات MT5 وحالة التشغيل',
+    addBotBtn: 'إضافة بوت',
+    statActiveBots: 'بوت نشط',
+    statMonthlyCost: 'التكلفة الشهرية',
+    statMt5: 'حسابات MT5',
+    creatorTitle: 'مركز المطورين والتسويق',
+    creatorSub: 'اربح 20% عمولات شهرية متكررة من تسويق البوتات',
+    creatorMrrLabel: 'الإيرادات الشهرية المتكررة (MRR)',
+    creatorSubscribers: 'المشتركون',
+    creatorActiveBots: 'البوتات النشطة',
+    creatorAvailablePayout: 'الأرباح المتاحة للسحب',
+    btnPayout: 'طلب سحب فوري للأرباح',
+    affiliateTitle: 'برنامج التسويق والعمولات',
+    affiliateDesc: 'اربح 20% عمولة متكررة عن كل مستخدم يشترك من خلال رابطك الخاص.',
+    dbTitle: 'سجل العملاء وإدارة التراخيص',
+    dbSub: 'قاعدة بيانات فورية لأرقام العملاء، أرصدة المحفظة، حسابات MT5، وتواريخ انتهاء التراخيص.',
+    dbStatus: 'جلسة الأدمن الماستر نشطة',
+    btnLockCrm: 'قفل CRM',
+    thCustomer: 'العميل',
+    thBot: 'اسم البوت',
+    thPlan: 'الخطة',
+    thKey: 'مفتاح الترخيص',
+    thMt5: 'حساب MT5',
+    thExpiry: 'تاريخ الانتهاء',
+    thStatus: 'الحالة',
+    accountTitle: 'إدارة الحساب والمحفظة',
+    accountSub: 'محفظة BEP-20 ومعرف المستخدم المتصل',
+    groupAlerts: 'التنبيهات والربط',
+    groupPrefs: 'التفضيلات والأمان',
+    settingTelegram: 'تنبيهات صفقات تيليجرام',
+    settingCurrency: 'عملة العرض',
+    settingTheme: 'مظهر التطبيق',
+    settingLang: 'اللغة / Language',
+    settingReset: 'إعادة ضبط البيانات التجريبية',
+    settingResetSub: 'استعادة البوتات التجريبية الأصلية والاشتراكات',
+    settingLogout: 'تسجيل الخروج',
+    adminLockTitle: 'قفل الوصول إلى CRM',
+    adminLockDesc: 'هذا القسم يحتوي على سجلات العملاء وحسابات MT5 والأرصدة. أدخل رمز الأمان الماستر المكون من 4 أرقام لفتح القفل.',
+    adminUnlockBtn: 'فتح CRM',
+    iosGuideTitle: 'إضافة B-Bot Pro للشاشة الرئيسية',
+    iosGuideDesc: 'قم بتثبيت B-Bot Pro على هاتفك لتداول بملء الشاشة، وتنبيهات أسرع، وفتح فوري بلمسة واحدة.',
+    iosStep1Title: 'اضغط على زر المشاركة',
+    iosStep1Desc: 'اضغط على أيقونة المشاركة في شريط أدوات سفاري بالأسفل.',
+    iosStep2Title: 'اختر "إضافة إلى الصفحة الرئيسية"',
+    iosStep2Desc: 'مرر للأسفل واضغط على خيار إضافة إلى الصفحة الرئيسية.',
+    iosStep3Title: 'اضغط على "إضافة" في الأعلى',
+    iosStep3Desc: 'أكّد التثبيت لتظهر أيقونة B-Bot Pro الرسمية على شاشتك الرئيسية فوراً!',
+    btnGotIt: 'تم، شكراً!'
   }
 };
 
@@ -86,6 +238,22 @@ class BotHubApp {
         });
       });
     }
+
+    // PWA Install Prompt Handler
+    this.deferredPwaPrompt = null;
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      this.deferredPwaPrompt = e;
+      if (this.state.currentUser) {
+        this.checkPwaInstallBanner();
+      }
+    });
+
+    window.addEventListener('appinstalled', () => {
+      this.deferredPwaPrompt = null;
+      this.dismissPwaBanner();
+      this.showToast('🎉 B-Bot Pro is now installed on your Home Screen!', 'success');
+    });
   }
 
   // -------------------------------------------------------------
@@ -108,28 +276,39 @@ class BotHubApp {
     const isEdge = /Edg/i.test(ua);
     const isFirefox = /Firefox|FxiOS/i.test(ua);
 
-    // 3. Apply semantic classes to root document
+    // 3. Apply semantic classes to root document & body
     const root = document.documentElement;
+    const body = document.body;
 
-    root.classList.remove(
+    const classNamesToRemove = [
       'platform-ios', 'platform-android', 'platform-windows', 'platform-mac',
       'device-mobile', 'device-tablet', 'device-desktop',
+      'mode-mobile', 'mode-tablet', 'mode-desktop',
       'browser-safari', 'browser-chrome', 'browser-edge', 'browser-firefox',
       'touch-device', 'no-touch'
-    );
+    ];
 
-    if (isIOS) root.classList.add('platform-ios');
-    else if (isAndroid) root.classList.add('platform-android');
-    else if (isWindows) root.classList.add('platform-windows');
-    else if (isMac) root.classList.add('platform-mac');
+    root.classList.remove(...classNamesToRemove);
+    if (body) body.classList.remove(...classNamesToRemove);
 
-    if (isTouch) root.classList.add('touch-device');
-    else root.classList.add('no-touch');
+    const activeClasses = [];
+    if (isIOS) activeClasses.push('platform-ios');
+    else if (isAndroid) activeClasses.push('platform-android');
+    else if (isWindows) activeClasses.push('platform-windows');
+    else if (isMac) activeClasses.push('platform-mac');
 
-    if (isSafari) root.classList.add('browser-safari');
-    else if (isChrome) root.classList.add('browser-chrome');
-    else if (isEdge) root.classList.add('browser-edge');
-    else if (isFirefox) root.classList.add('browser-firefox');
+    if (isTouch) activeClasses.push('touch-device');
+    else activeClasses.push('no-touch');
+
+    if (isSafari) activeClasses.push('browser-safari');
+    else if (isChrome) activeClasses.push('browser-chrome');
+    else if (isEdge) activeClasses.push('browser-edge');
+    else if (isFirefox) activeClasses.push('browser-firefox');
+
+    activeClasses.forEach(cls => {
+      root.classList.add(cls);
+      if (body) body.classList.add(cls);
+    });
 
     // 4. Dynamic Viewport Geometry & Resolution Calibration
     const updateViewportGeometry = () => {
@@ -140,15 +319,23 @@ class BotHubApp {
       root.style.setProperty('--vh', `${h * 0.01}px`);
       root.style.setProperty('--vw', `${w * 0.01}px`);
 
-      root.classList.remove('mode-mobile', 'mode-tablet', 'mode-desktop', 'device-mobile', 'device-tablet', 'device-desktop');
+      const modeClasses = ['mode-mobile', 'mode-tablet', 'mode-desktop', 'device-mobile', 'device-tablet', 'device-desktop'];
+      root.classList.remove(...modeClasses);
+      if (body) body.classList.remove(...modeClasses);
 
+      let currentMode = [];
       if (w <= 560) {
-        root.classList.add('mode-mobile', 'device-mobile');
+        currentMode = ['mode-mobile', 'device-mobile'];
       } else if (w <= 960) {
-        root.classList.add('mode-tablet', 'device-tablet');
+        currentMode = ['mode-tablet', 'device-tablet'];
       } else {
-        root.classList.add('mode-desktop', 'device-desktop');
+        currentMode = ['mode-desktop', 'device-desktop'];
       }
+
+      currentMode.forEach(cls => {
+        root.classList.add(cls);
+        if (body) body.classList.add(cls);
+      });
     };
 
     updateViewportGeometry();
@@ -217,6 +404,8 @@ class BotHubApp {
     if (lang === 'ar') {
       document.documentElement.setAttribute('dir', 'rtl');
       document.documentElement.setAttribute('lang', 'ar');
+      document.body.classList.add('lang-ar');
+      document.body.classList.remove('lang-en');
       if (btnAr) btnAr.classList.add('active');
       if (btnEn) btnEn.classList.remove('active');
       if (headerLangText) headerLangText.textContent = 'EN';
@@ -224,6 +413,8 @@ class BotHubApp {
     } else {
       document.documentElement.setAttribute('dir', 'ltr');
       document.documentElement.setAttribute('lang', 'en');
+      document.body.classList.add('lang-en');
+      document.body.classList.remove('lang-ar');
       if (btnEn) btnEn.classList.add('active');
       if (btnAr) btnAr.classList.remove('active');
       if (headerLangText) headerLangText.textContent = 'عربي';
@@ -231,6 +422,8 @@ class BotHubApp {
     }
 
     const t = TRANSLATIONS[lang] || TRANSLATIONS.en;
+    
+    // Auth & Welcome
     const txtWelcomeTitle = document.getElementById('txtWelcomeTitle');
     const txtWelcomeSubtitle = document.getElementById('txtWelcomeSubtitle');
     const txtSignInBtn = document.getElementById('txtSignInBtn');
@@ -258,12 +451,140 @@ class BotHubApp {
     if (txtSignUpLink) txtSignUpLink.textContent = t.signUpLink;
     if (loginEmailInput) loginEmailInput.placeholder = t.emailPlaceholder;
     if (loginOtpInput) loginOtpInput.placeholder = t.passwordPlaceholder;
-    if (brandSub) brandSub.textContent = lang === 'ar' ? 'بوتات التداول والتسويق الآلي' : 'Trading & Marketing Bots';
+    if (brandSub) brandSub.textContent = t.brandSub;
+
+    // Bottom Navigation Dock
+    const navItems = document.querySelectorAll('.bottom-nav .nav-item');
+    navItems.forEach(item => {
+      const view = item.getAttribute('data-view');
+      const labelEl = item.querySelector('.nav-label');
+      if (labelEl) {
+        if (view === 'explore') labelEl.textContent = t.navExplore;
+        else if (view === 'subscriptions') labelEl.textContent = t.navBots;
+        else if (view === 'database') labelEl.textContent = t.navDb;
+        else if (view === 'settings') labelEl.textContent = t.navAccount;
+      }
+    });
+
+    // Explore Search Input & Filter Chips
+    const searchInput = document.getElementById('botSearchInput');
+    if (searchInput) searchInput.placeholder = t.searchPlaceholder;
+
+    const chipAll = document.querySelector('.chip[data-category="all"]');
+    const chipGold = document.querySelector('.chip[data-category="gold"]');
+    const chipScalp = document.querySelector('.chip[data-category="scalp"]');
+    const chipInst = document.querySelector('.chip[data-category="institutional"]');
+    const chipAi = document.querySelector('.chip[data-category="ai"]');
+    if (chipAll) chipAll.textContent = t.catAll;
+    if (chipGold) chipGold.textContent = t.catGold;
+    if (chipScalp) chipScalp.textContent = t.catScalper;
+    if (chipInst) chipInst.textContent = t.catInst;
+    if (chipAi) chipAi.textContent = t.catAi;
+
+    // GTCfx Cards
+    const gtcfxTitles = document.querySelectorAll('.gbb-title-clean, .gtc-clean-title');
+    gtcfxTitles.forEach(el => el.textContent = t.gtcfxTitle);
+    const gtcfxSubs = document.querySelectorAll('.gbb-sub-clean, .gtc-clean-sub');
+    gtcfxSubs.forEach(el => el.textContent = t.gtcfxSub);
+    const gtcfxBtns = document.querySelectorAll('.gbb-btn-simple span:first-child, .gtc-clean-btn span:first-child');
+    gtcfxBtns.forEach(el => el.textContent = t.gtcfxBtn);
+
+    // PWA Install Elements
+    const pwaTitle = document.getElementById('pwaTitleText');
+    const pwaSub = document.getElementById('pwaSubText');
+    const pwaBtn = document.getElementById('pwaBtnText');
+    const settingPwaTitle = document.getElementById('settingPwaTitle');
+    const settingPwaSub = document.getElementById('settingPwaSub');
+    if (pwaTitle && t.pwaTitle) pwaTitle.textContent = t.pwaTitle;
+    if (pwaSub && t.pwaSub) pwaSub.textContent = t.pwaSub;
+    if (pwaBtn && t.pwaBtn) pwaBtn.textContent = t.pwaBtn;
+    if (settingPwaTitle && t.settingPwaTitle) settingPwaTitle.textContent = t.settingPwaTitle;
+    if (settingPwaSub && t.settingPwaSub) settingPwaSub.textContent = t.settingPwaSub;
+
+    // Subscriptions Panel Header
+    const subPanelTitle = document.querySelector('#viewSubscriptions .panel-title');
+    const subPanelSub = document.querySelector('#viewSubscriptions .panel-subtitle');
+    const subAddBtnText = document.querySelector('#viewSubscriptions .btn-add-bot-cute span:last-child');
+    if (subPanelTitle) subPanelTitle.textContent = t.subsTitle;
+    if (subPanelSub) subPanelSub.textContent = t.subsSub;
+    if (subAddBtnText) subAddBtnText.textContent = t.addBotBtn;
+
+    // Subscriptions Stats
+    const subStatLabels = document.querySelectorAll('#viewSubscriptions .sub-stat-lbl');
+    if (subStatLabels.length >= 3) {
+      subStatLabels[0].textContent = t.statActiveBots;
+      subStatLabels[1].textContent = t.statMonthlyCost;
+      subStatLabels[2].textContent = t.statMt5;
+    }
+
+    // CRM Admin Database Header
+    const crmTitle = document.querySelector('#viewDatabase .database-title');
+    const crmSub = document.querySelector('#viewDatabase .database-sub');
+    const crmStatus = document.querySelector('#viewDatabase .database-status-pill');
+    const crmLockBtn = document.getElementById('btnLockAdminCrm');
+    if (crmTitle) crmTitle.textContent = t.dbTitle;
+    if (crmSub) crmSub.textContent = t.dbSub;
+    if (crmStatus) crmStatus.innerHTML = `<span class="live-dot-green"></span> ${t.dbStatus}`;
+    if (crmLockBtn) crmLockBtn.innerHTML = `<span class="material-symbols-rounded">lock</span> ${t.btnLockCrm}`;
+
+    // Admin PIN Lock Modal
+    const adminLockTitleEl = document.querySelector('#crmAdminLockModal .admin-lock-title');
+    const adminLockDescEl = document.querySelector('#crmAdminLockModal .admin-lock-desc');
+    const adminUnlockBtnEl = document.querySelector('#crmAdminLockModal .btn-admin-unlock');
+    if (adminLockTitleEl) adminLockTitleEl.textContent = t.adminLockTitle;
+    if (adminLockDescEl) adminLockDescEl.textContent = t.adminLockDesc;
+    if (adminUnlockBtnEl) adminUnlockBtnEl.innerHTML = `<span class="material-symbols-rounded">lock_open</span> ${t.adminUnlockBtn}`;
+
+    // iOS Guide Modal
+    const iosGuideTitleEl = document.querySelector('#pwaIosGuideModal .pwa-ios-modal-header h3');
+    const iosGuideDescEl = document.querySelector('#pwaIosGuideModal .pwa-ios-modal-header p');
+    const iosGotItBtnEl = document.querySelector('#pwaIosGuideModal .btn-ios-guide-close');
+    if (iosGuideTitleEl) iosGuideTitleEl.textContent = t.iosGuideTitle;
+    if (iosGuideDescEl) iosGuideDescEl.textContent = t.iosGuideDesc;
+    if (iosGotItBtnEl) iosGotItBtnEl.textContent = t.btnGotIt;
+
+    // Account / Settings View
+    const accPanelTitle = document.querySelector('#viewSettings .panel-title');
+    const accPanelSub = document.querySelector('#viewSettings .panel-subtitle');
+    if (accPanelTitle) accPanelTitle.textContent = t.accountTitle;
+    if (accPanelSub) accPanelSub.textContent = t.accountSub;
+
+    // Settings Groups
+    const groupTitles = document.querySelectorAll('#viewSettings .settings-group-title');
+    if (groupTitles.length >= 2) {
+      groupTitles[0].textContent = t.groupAlerts;
+      groupTitles[1].textContent = t.groupPrefs;
+    }
+
+    // Setting Labels
+    const settingLabels = document.querySelectorAll('#viewSettings .setting-label');
+    settingLabels.forEach(lbl => {
+      const text = lbl.textContent.trim();
+      if (text.includes('Telegram') || text.includes('تيليجرام')) lbl.textContent = t.settingTelegram;
+      else if (text.includes('Currency') || text.includes('العملة') || text.includes('العرض')) lbl.textContent = t.settingCurrency;
+      else if (text.includes('Theme') || text.includes('المظهر') || text.includes('الداكن')) lbl.textContent = t.settingTheme;
+      else if (text.includes('Language') || text.includes('اللغة')) lbl.textContent = t.settingLang;
+      else if (text.includes('Reset') || text.includes('إعادة ضبط')) lbl.textContent = t.settingReset;
+    });
+
+    const logoutBtnText = document.querySelector('#viewSettings .btn-danger span:last-child');
+    if (logoutBtnText) logoutBtnText.textContent = t.settingLogout;
 
     if (themeLabel) {
       themeLabel.textContent = this.state.theme === 'dark' 
         ? (lang === 'ar' ? 'فاتح' : 'Light') 
         : (lang === 'ar' ? 'داكن' : 'Dark');
+    }
+
+    // Re-render all dynamic content in the chosen language
+    if (this.state.bots && this.state.bots.length > 0) {
+      this.renderBotsGrid();
+      this.renderSubscriptions();
+      this.renderCreatorHub();
+      this.renderBilling();
+      if (this.state.isAdminUnlocked) {
+        this.fetchAdminDatabase();
+      }
     }
   }
   // MOBILE NUMBER AUTHENTICATION (REQUIRED FIRST)
@@ -373,6 +694,50 @@ class BotHubApp {
       userPhoneText.textContent = displayName;
     }
     if (logoutBtn) logoutBtn.style.display = 'inline-flex';
+
+    // 📲 Display PWA Download/Install to Home Screen Badge
+    setTimeout(() => this.checkPwaInstallBanner(), 400);
+  }
+
+  // -------------------------------------------------------------
+  // PWA HOME SCREEN DOWNLOAD & INSTALL BADGE SYSTEM
+  // -------------------------------------------------------------
+  checkPwaInstallBanner() {
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+    if (isStandalone) return;
+    if (sessionStorage.getItem('b_pwa_banner_dismissed') === 'true') return;
+
+    const banner = document.getElementById('pwaInstallBanner');
+    if (banner) {
+      banner.style.display = 'flex';
+    }
+  }
+
+  dismissPwaBanner() {
+    const banner = document.getElementById('pwaInstallBanner');
+    if (banner) banner.style.display = 'none';
+    sessionStorage.setItem('b_pwa_banner_dismissed', 'true');
+  }
+
+  async installPwaApp() {
+    // 1. Android / Chrome / Edge native beforeinstallprompt
+    if (this.deferredPwaPrompt) {
+      try {
+        this.deferredPwaPrompt.prompt();
+        const { outcome } = await this.deferredPwaPrompt.userChoice;
+        if (outcome === 'accepted') {
+          this.showToast('🎉 B-Bot Pro App added to your Home Screen!', 'success');
+          this.dismissPwaBanner();
+        }
+        this.deferredPwaPrompt = null;
+        return;
+      } catch (err) {
+        console.log('Install prompt error:', err);
+      }
+    }
+
+    // 2. iOS / Safari or general guide modal
+    this.openModal('pwaIosGuideModal');
   }
 
   async handleGoogleLogin() {
@@ -1094,27 +1459,42 @@ class BotHubApp {
       return;
     }
 
+    const isAr = this.state.lang === 'ar';
+    const t = TRANSLATIONS[this.state.lang] || TRANSLATIONS.en;
+
     container.innerHTML = filtered.map(bot => {
       const isSubscribed = (this.state.subscriptions || []).some(s => s.botId === bot.id);
       
-      let priceBadgeText = '100 USDT / 1M';
-      let subDesc = '30 Days Pass • 18-23% ROI';
-      let btnLabel = 'Subscribe $100 • 1 Month Pass';
+      let priceBadgeText = isAr ? '100 USDT / شهر' : '100 USDT / 1M';
+      let subDesc = isAr ? 'تصريح 30 يوماً • عائد 18-23%' : '30 Days Pass • 18-23% ROI';
+      let btnLabel = isAr ? 'اشتراك 100$ • تصريح شهر' : 'Subscribe $100 • 1 Month Pass';
 
       if (bot.id.includes('trial')) {
-        priceBadgeText = '10 USDT / 2 Days';
-        subDesc = '2-Day Live Test Pass • Instant MT5';
-        btnLabel = 'Start 2-Day Trial • $10';
+        priceBadgeText = isAr ? '10 USDT / يومين' : '10 USDT / 2 Days';
+        subDesc = isAr ? 'اختبار حي لمدة يومين • ربط MT5 فوري' : '2-Day Live Test Pass • Instant MT5';
+        btnLabel = isAr ? 'بدء تجربة يومين • 10$' : 'Start 2-Day Trial • $10';
       } else if (bot.id.includes('3m')) {
-        priceBadgeText = '250 USDT / 3M';
-        subDesc = '90 Days Pass • Save $50';
-        btnLabel = 'Subscribe $250 • 3 Months Pass';
+        priceBadgeText = isAr ? '250 USDT / 3 أشهر' : '250 USDT / 3M';
+        subDesc = isAr ? 'تصريح 90 يوماً • وفر 50$' : '90 Days Pass • Save $50';
+        btnLabel = isAr ? 'اشتراك 250$ • تصريح 3 أشهر' : 'Subscribe $250 • 3 Months Pass';
       } else if (bot.id.includes('1y')) {
-        priceBadgeText = '900 USDT / 1Y';
-        subDesc = '365 Days VIP Pass • Save $300';
-        btnLabel = 'Subscribe $900 • 1 Year VIP Pass';
-      } else if (bot.plans && bot.plans['1month']) {
-        priceBadgeText = `${bot.plans['1month'].price} USDT / 1M`;
+        priceBadgeText = isAr ? '900 USDT / سنة VIP' : '900 USDT / 1Y';
+        subDesc = isAr ? 'تصريح 365 يوماً VIP • وفر 300$' : '365 Days VIP Pass • Save $300';
+        btnLabel = isAr ? 'اشتراك 900$ • تصريح سنوي VIP' : 'Subscribe $900 • 1 Year VIP Pass';
+      }
+
+      // Arabic Taglines & Category
+      let displayTagline = bot.tagline;
+      let displayCategory = bot.category;
+      if (isAr) {
+        if (bot.id.includes('1m')) displayTagline = 'بوت سكالبينج مؤسسي عالي التردد لاختراقات الذهب XAUUSD في جلستي لندن ونيويورك.';
+        else if (bot.id.includes('3m')) displayTagline = 'خطة تداول متوسطة المدى لاقتناص موجات واتجاهات الذهب الكبرى بدقة عالية.';
+        else if (bot.id.includes('1y')) displayTagline = 'تصريح تداول مؤسسي سنوي كامل مع دعم استراتيجي وتحديثات وإعدادات VIP.';
+        else if (bot.id.includes('trial')) displayTagline = 'اختبار كفاءة وسرعة البوت على حسابك الحقيقي أو التجريبي لمدة يومين كاملين.';
+
+        if (displayCategory === 'Gold Hunter') displayCategory = 'تداول الذهب';
+        else if (displayCategory === 'Scalper') displayCategory = 'سكالبينج';
+        else if (displayCategory === 'Institutional') displayCategory = 'مؤسسي';
       }
 
       const roiDisplay = typeof bot.monthlyRoi === 'string' ? `${bot.monthlyRoi}%` : `${bot.monthlyRoi}%`;
@@ -1131,32 +1511,32 @@ class BotHubApp {
               </div>
               <div>
                 <h4 class="bot-title">${bot.name}</h4>
-                <span class="bot-creator">${bot.creator} • ${bot.category}</span>
+                <span class="bot-creator">${bot.creator} • ${displayCategory}</span>
               </div>
             </div>
             <span class="bot-badge-tag" style="background: ${bot.color}15; color: ${bot.color}; border: 1px solid ${bot.color}35;">
-              ${bot.badge || 'Verified'}
+              ${isAr ? 'معتمد' : (bot.badge || 'Verified')}
             </span>
           </div>
 
-          <p class="bot-tagline">${bot.tagline}</p>
+          <p class="bot-tagline">${displayTagline}</p>
 
           <div class="bot-metrics-row">
             <div class="bot-metric-item">
               <div class="bot-metric-num text-success">${bot.winRate}%</div>
-              <div class="bot-metric-label">Win Rate</div>
+              <div class="bot-metric-label">${t.metricWinRate}</div>
             </div>
             <div class="bot-metric-item">
               <div class="bot-metric-num text-cyan">${roiDisplay}</div>
-              <div class="bot-metric-label">Monthly ROI</div>
+              <div class="bot-metric-label">${t.metricRoi}</div>
             </div>
             <div class="bot-metric-item">
               <div class="bot-metric-num text-amber">${ddDisplay}</div>
-              <div class="bot-metric-label">Max DD</div>
+              <div class="bot-metric-label">${t.metricDd}</div>
             </div>
             <div class="bot-metric-item">
               <div class="bot-metric-num" style="color: #00a896;">${pfDisplay}</div>
-              <div class="bot-metric-label">Profit Factor</div>
+              <div class="bot-metric-label">${t.metricPf}</div>
             </div>
           </div>
 
@@ -1176,7 +1556,7 @@ class BotHubApp {
             ${isSubscribed ? `
               <button class="btn-subscribe-long btn-subscribed-active" onclick="event.stopPropagation(); window.botHubApp.openSubscribeModal('${bot.id}')">
                 <span class="material-symbols-rounded">add_circle</span>
-                <span>Active • Buy for Another MT5</span>
+                <span>${isAr ? 'نشط • شراء لحساب MT5 آخر' : 'Active • Buy for Another MT5'}</span>
               </button>
             ` : `
               <button class="btn-subscribe-long" onclick="event.stopPropagation(); window.botHubApp.openSubscribeModal('${bot.id}')">
@@ -1909,13 +2289,15 @@ Hello, here are my subscription and license details. Please verify my GTCfx MT5 
     const container = document.getElementById('subscriptionsListContainer');
     if (!container) return;
 
+    const isAr = this.state.lang === 'ar';
+
     if (this.state.subscriptions.length === 0) {
       container.innerHTML = `
         <div style="text-align: center; padding: 40px 20px; color: var(--text-muted); background: var(--surface-card); border: 1px solid var(--border-subtle); border-radius: 20px;">
           <span class="material-symbols-rounded" style="font-size: 48px; margin-bottom: 8px; color: var(--brand-cyan);">bolt</span>
-          <h4>No Active Subscriptions</h4>
-          <p style="font-size: 12px; margin: 4px 0 16px;">Explore our marketplace and subscribe to automated MT5 EAs or Signal Copiers.</p>
-          <button class="btn-primary btn-sm" onclick="window.botHubApp.switchView('explore')">Explore Bots</button>
+          <h4>${isAr ? 'لا توجد اشتراكات نشطة بعد' : 'No Active Subscriptions'}</h4>
+          <p style="font-size: 12px; margin: 4px 0 16px;">${isAr ? 'تصفح المتجر واشترك في أحد بوتات MT5 الآلية للذهب أو ناسخ الصفقات.' : 'Explore our marketplace and subscribe to automated MT5 EAs or Signal Copiers.'}</p>
+          <button class="btn-primary btn-sm" onclick="window.botHubApp.switchView('explore')">${isAr ? 'استكشاف البوتات' : 'Explore Bots'}</button>
         </div>
       `;
       return;
@@ -1931,7 +2313,7 @@ Hello, here are my subscription and license details. Please verify my GTCfx MT5 
               <h4 class="sub-name">${sub.botName}</h4>
               <span style="font-size: 11px; color: var(--text-muted);">${sub.planName} • ${Number(sub.price).toFixed(2)} USDT (BEP-20)</span>
             </div>
-            <span class="sub-status-active">🟢 Active</span>
+            <span class="sub-status-active">${isAr ? '🟢 نشط' : '🟢 Active'}</span>
           </div>
 
           <!-- Attached GTCfx MT5 Account Banner -->
@@ -1941,18 +2323,18 @@ Hello, here are my subscription and license details. Please verify my GTCfx MT5 
                 <span class="material-symbols-rounded" style="font-size: 18px;">link</span>
               </div>
               <div>
-                <span class="bga-label">ATTACHED TRADING ACCOUNT</span>
+                <span class="bga-label">${isAr ? 'حساب التداول المربوط' : 'ATTACHED TRADING ACCOUNT'}</span>
                 <div class="bga-account-row">
                   <strong class="bga-account font-mono">GTCfx MT5 #${gtcfxAcc}</strong>
                 </div>
               </div>
             </div>
-            <span class="bga-lock-tag">🔒 Account-Locked</span>
+            <span class="bga-lock-tag">${isAr ? '🔒 مقفل على هذا الحساب' : '🔒 Account-Locked'}</span>
           </div>
 
           <div class="license-box">
             <div>
-              <span style="font-size: 10px; color: var(--text-muted); display: block; font-weight: 800;">LICENSE KEY (LOCKED TO GTCFX #${gtcfxAcc})</span>
+              <span style="font-size: 10px; color: var(--text-muted); display: block; font-weight: 800;">${isAr ? `مفتاح الترخيص (مقفل على GTCFX #${gtcfxAcc})` : `LICENSE KEY (LOCKED TO GTCFX #${gtcfxAcc})`}</span>
               <span class="license-key-text font-mono">${sub.licenseKey}</span>
             </div>
             <button class="btn-copy-license" onclick="window.botHubApp.copyText('${sub.licenseKey}', 'License Key copied!')" title="Copy Key">
@@ -1961,27 +2343,27 @@ Hello, here are my subscription and license details. Please verify my GTCfx MT5 
           </div>
 
           <div class="sub-meta-row">
-            <span>Broker: <strong style="color: #fbbf24;">GTCfx</strong> (MT5 #${gtcfxAcc})</span>
-            <span>Paid via: <strong>${sub.paymentMethod || 'USDT (BEP-20)'}</strong></span>
+            <span>${isAr ? 'الوسيط:' : 'Broker:'} <strong style="color: #fbbf24;">GTCfx</strong> (MT5 #${gtcfxAcc})</span>
+            <span>${isAr ? 'طريقة الدفع:' : 'Paid via:'} <strong>${sub.paymentMethod || 'USDT (BEP-20)'}</strong></span>
           </div>
 
           <div style="background: rgba(0,0,0,0.25); padding: 8px 12px; border-radius: 8px; margin-bottom: 14px; font-size: 11px; display: flex; align-items: center; gap: 8px;">
             <span class="pulse-dot"></span>
-            <span style="color: var(--text-secondary);">${sub.lastSignal || `EA Armed & Whitelisted for GTCfx MT5 #${gtcfxAcc}`}</span>
+            <span style="color: var(--text-secondary);">${isAr ? `البوت جاهز ومصرح له بالعمل على حساب GTCfx MT5 #${gtcfxAcc}` : (sub.lastSignal || `EA Armed & Whitelisted for GTCfx MT5 #${gtcfxAcc}`)}</span>
           </div>
 
           <div class="sub-actions-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
             <button class="btn-sm btn-whatsapp" style="padding: 8px 8px; font-size: 11px;" onclick="window.botHubApp.sendSubscriptionToWhatsApp('${sub.id}')">
-              <span class="material-symbols-rounded" style="font-size: 15px;">chat</span> WhatsApp
+              <span class="material-symbols-rounded" style="font-size: 15px;">chat</span> ${isAr ? 'واتساب' : 'WhatsApp'}
             </button>
             <button class="btn-sm btn-outline" style="padding: 8px 6px; font-size: 11px;" onclick="window.botHubApp.openLicenseSetupModal('${sub.id}')">
-              <span class="material-symbols-rounded" style="font-size: 15px;">terminal</span> GTCfx MT5
+              <span class="material-symbols-rounded" style="font-size: 15px;">terminal</span> ${isAr ? 'إعداد MT5' : 'GTCfx MT5'}
             </button>
             <button class="btn-sm btn-key-gen-small" style="padding: 8px 6px; font-size: 11px;" onclick="window.botHubApp.openLicenseGeneratorForSub('${sub.id}')">
-              <span class="material-symbols-rounded" style="font-size: 15px;">key</span> Key Gen
+              <span class="material-symbols-rounded" style="font-size: 15px;">key</span> ${isAr ? 'توليد المفتاح' : 'Key Gen'}
             </button>
             <button class="btn-sm btn-primary" style="padding: 8px 6px; font-size: 11px; background: linear-gradient(135deg, #0284c7 0%, #00a896 100%);" onclick="window.botHubApp.openSubscribeModal('${sub.botId}', '${sub.planKey}')" title="Purchase the same plan again for another MT5 account">
-              <span class="material-symbols-rounded" style="font-size: 15px;">add_circle</span> Buy Again
+              <span class="material-symbols-rounded" style="font-size: 15px;">add_circle</span> ${isAr ? 'شراء لحساب آخر' : 'Buy Again'}
             </button>
           </div>
         </div>
@@ -2136,9 +2518,13 @@ Hello, here are my subscription and license details. Please verify my GTCfx MT5 
   // -------------------------------------------------------------
   // 5. CREATOR STUDIO & AFFILIATE HUB
   // -------------------------------------------------------------
+  // 7. CREATOR STUDIO & AFFILIATE HUB
+  // -------------------------------------------------------------
   renderCreatorHub() {
     const creator = this.state.creator;
     if (!creator) return;
+    const isAr = this.state.lang === 'ar';
+    const t = TRANSLATIONS[this.state.lang] || TRANSLATIONS.en;
 
     const mrrEl = document.getElementById('creatorMrr');
     if (mrrEl) mrrEl.textContent = `$${(creator.mrr || 4820).toFixed(2)}`;
@@ -2152,16 +2538,31 @@ Hello, here are my subscription and license details. Please verify my GTCfx MT5 
     const payoutEl = document.getElementById('creatorPayoutBalance');
     if (payoutEl) payoutEl.textContent = `$${(creator.payoutBalance || 3480).toFixed(2)}`;
 
+    // Update Headings and Labels
+    const creatorTitle = document.querySelector('#viewCreator .panel-title');
+    const creatorSub = document.querySelector('#viewCreator .panel-subtitle');
+    const mrrLabel = document.querySelector('#viewCreator .rev-label');
+    const payoutBtn = document.querySelector('#viewCreator .btn-payout');
+    const affTitle = document.querySelector('#viewCreator .affiliate-title');
+    const affDesc = document.querySelector('#viewCreator .affiliate-desc');
+
+    if (creatorTitle) creatorTitle.textContent = t.creatorTitle;
+    if (creatorSub) creatorSub.textContent = t.creatorSub;
+    if (mrrLabel) mrrLabel.textContent = t.creatorMrrLabel;
+    if (payoutBtn) payoutBtn.innerHTML = `<span class="material-symbols-rounded">payments</span> ${t.btnPayout}`;
+    if (affTitle) affTitle.textContent = t.affiliateTitle;
+    if (affDesc) affDesc.innerHTML = isAr ? 'اربح <strong>20% عمولة متكررة</strong> عن كل مستخدم يشترك عبر رابطك الخاص.' : 'Earn <strong>20% recurring commission</strong> for every user who subscribes with your link.';
+
     const publishedList = document.getElementById('publishedBotsList');
     if (publishedList && creator.publishedBots) {
       publishedList.innerHTML = creator.publishedBots.map(bot => `
         <div style="background: var(--surface-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 14px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center;">
           <div>
             <h4 style="font-size: 14px; font-weight: 700;">${bot.name}</h4>
-            <span style="font-size: 11px; color: var(--text-muted);">${bot.subscribers} Active Subscribers • $${bot.monthlyRevenue.toFixed(2)}/mo</span>
+            <span style="font-size: 11px; color: var(--text-muted);">${bot.subscribers} ${isAr ? 'مشترك نشط' : 'Active Subscribers'} • $${bot.monthlyRevenue.toFixed(2)}/${isAr ? 'شهرياً' : 'mo'}</span>
           </div>
           <span style="font-size: 10px; font-weight: 700; background: var(--color-success-bg); color: var(--color-success); padding: 3px 8px; border-radius: 20px;">
-            ${bot.status}
+            ${isAr ? 'نشط' : bot.status}
           </span>
         </div>
       `).join('');
@@ -2172,7 +2573,7 @@ Hello, here are my subscription and license details. Please verify my GTCfx MT5 
     const input = document.getElementById('affiliateLinkInput');
     if (input) {
       navigator.clipboard.writeText(input.value);
-      this.showToast('Affiliate referral link copied! Earn 20% on every subscriber.', 'success');
+      this.showToast(this.state.lang === 'ar' ? 'تم نسخ رابط الإحالة! ستحصل على 20% عمولة عن كل مشترك.' : 'Affiliate referral link copied! Earn 20% on every subscriber.', 'success');
     }
   }
 
@@ -2452,6 +2853,7 @@ Hello, here are my subscription and license details. Please verify my GTCfx MT5 
     const customers = data.customers || [];
     const subscriptions = data.subscriptions || [];
     const notifications = data.notifications || [];
+    const isAr = this.state.lang === 'ar';
 
     // Top KPIs
     const kpiCust = document.getElementById('dbKpiCustomers');
@@ -2462,7 +2864,7 @@ Hello, here are my subscription and license details. Please verify my GTCfx MT5 
     if (kpiCust) kpiCust.textContent = stats.totalCustomers || customers.length || '1';
     if (kpiSubs) kpiSubs.textContent = stats.activeSubscriptions || subscriptions.length || '2';
     if (kpiRev) kpiRev.textContent = `${(stats.totalRevenueUsdt || 370).toFixed(2)} USDT`;
-    if (kpiMt5) kpiMt5.textContent = `${subscriptions.length} Whitelisted`;
+    if (kpiMt5) kpiMt5.textContent = `${subscriptions.length} ${isAr ? 'مصرح' : 'Whitelisted'}`;
 
     // Saved webhook in input
     const webhookInput = document.getElementById('googleSheetWebhookInput');
@@ -2487,19 +2889,19 @@ Hello, here are my subscription and license details. Please verify my GTCfx MT5 
     const custTbody = document.getElementById('crmCustomersTbody');
     if (custTbody) {
       if (customers.length === 0) {
-        custTbody.innerHTML = '<tr><td colspan="6" style="text-align:center; color: var(--text-muted);">No customer logins recorded yet.</td></tr>';
+        custTbody.innerHTML = `<tr><td colspan="6" style="text-align:center; color: var(--text-muted);">${isAr ? 'لا توجد سجلات دخول عملاء بعد.' : 'No customer logins recorded yet.'}</td></tr>`;
       } else {
         custTbody.innerHTML = customers.map(c => `
           <tr>
             <td>
               <strong style="color: #fff;">${c.phone}</strong>
-              <span style="display:block; font-size:10px; color:var(--text-muted);">${c.name || 'Trader'}</span>
+              <span style="display:block; font-size:10px; color:var(--text-muted);">${c.name || (isAr ? 'متداول' : 'Trader')}</span>
             </td>
             <td class="font-mono font-bold" style="color: #10B981;">${Number(c.walletBalance || 0).toFixed(2)} USDT</td>
             <td><span class="badge-featured" style="font-size:9px; padding:2px 6px;">${c.activeBots || (c.subscriptions ? c.subscriptions.length : 0)} EA</span></td>
             <td class="font-mono">${Number(c.totalSpent || 0).toFixed(2)} USDT</td>
             <td class="font-mono" style="color: #fbbf24;">#${c.gtcfxMt5Account || '8849201'}</td>
-            <td style="font-size: 10px; color: var(--text-muted);">${new Date(c.lastLoginAt || c.registeredAt || Date.now()).toLocaleString()}</td>
+            <td style="font-size: 10px; color: var(--text-muted);">${new Date(c.lastLoginAt || c.registeredAt || Date.now()).toLocaleString(isAr ? 'ar-SA' : 'en-US')}</td>
           </tr>
         `).join('');
       }
@@ -2509,21 +2911,21 @@ Hello, here are my subscription and license details. Please verify my GTCfx MT5 
     const subTbody = document.getElementById('crmSubscriptionsTbody');
     if (subTbody) {
       if (subscriptions.length === 0) {
-        subTbody.innerHTML = '<tr><td colspan="7" style="text-align:center; color: var(--text-muted);">No active bot subscriptions.</td></tr>';
+        subTbody.innerHTML = `<tr><td colspan="7" style="text-align:center; color: var(--text-muted);">${isAr ? 'لا توجد اشتراكات نشطة.' : 'No active bot subscriptions.'}</td></tr>`;
       } else {
         const now = Date.now();
         subTbody.innerHTML = subscriptions.map(s => {
           const expTime = new Date(s.expiresDate).getTime();
           const daysLeft = Math.ceil((expTime - now) / (1000 * 60 * 60 * 24));
           let badgeClass = 'badge-days-left';
-          let badgeText = `${daysLeft} Days Left`;
+          let badgeText = isAr ? `باقي ${daysLeft} يوم` : `${daysLeft} Days Left`;
 
           if (daysLeft <= 0) {
             badgeClass = 'badge-days-expired';
-            badgeText = 'Expired';
+            badgeText = isAr ? 'منتهي' : 'Expired';
           } else if (daysLeft <= 5) {
             badgeClass = 'badge-days-warning';
-            badgeText = `⚠️ ${daysLeft} Days Left`;
+            badgeText = isAr ? `⚠️ باقي ${daysLeft} يوم` : `⚠️ ${daysLeft} Days Left`;
           }
 
           return `
@@ -2533,7 +2935,7 @@ Hello, here are my subscription and license details. Please verify my GTCfx MT5 
               <td><span class="badge-tag">${s.planName}</span></td>
               <td class="font-mono font-xs" style="color: var(--brand-cyan);">${s.licenseKey}</td>
               <td class="font-mono" style="color: #fbbf24;">#${s.gtcfxMt5Account || s.mt5Account || '8849201'}</td>
-              <td style="font-size: 10px;">${new Date(s.expiresDate).toLocaleDateString()}</td>
+              <td style="font-size: 10px;">${new Date(s.expiresDate).toLocaleDateString(isAr ? 'ar-SA' : 'en-US')}</td>
               <td><span class="${badgeClass}">${badgeText}</span></td>
             </tr>
           `;
@@ -2545,7 +2947,7 @@ Hello, here are my subscription and license details. Please verify my GTCfx MT5 
     const timeline = document.getElementById('crmAuditTimeline');
     if (timeline) {
       if (notifications.length === 0) {
-        timeline.innerHTML = '<div style="text-align:center; color: var(--text-muted); padding: 12px;">No activity logged yet.</div>';
+        timeline.innerHTML = `<div style="text-align:center; color: var(--text-muted); padding: 12px;">${isAr ? 'لا يوجد نشاط مسجل بعد.' : 'No activity logged yet.'}</div>`;
       } else {
         timeline.innerHTML = notifications.slice(0, 10).map(n => {
           let icon = 'notifications';

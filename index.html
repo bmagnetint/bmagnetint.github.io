@@ -9,7 +9,7 @@
   <!-- Fonts & Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
   
   <!-- Android PWA & Play Store Manifest -->
@@ -24,7 +24,7 @@
   <!-- Google Identity Services (Sign-In with Google) -->
   <script src="https://accounts.google.com/gsi/client" async defer></script>
   
-  <link rel="stylesheet" href="style.css?v=2.8">
+  <link rel="stylesheet" href="style.css?v=2.9">
 </head>
 <body class="theme-dark">
 
@@ -591,6 +591,15 @@
           <div class="settings-group">
             <h4 class="settings-group-title">Preferences & Security</h4>
 
+            <div class="setting-item" onclick="window.botHubApp.installPwaApp()">
+              <div class="setting-icon-box text-cyan"><span class="material-symbols-rounded">install_mobile</span></div>
+              <div class="setting-info">
+                <div class="setting-name" id="settingPwaTitle">Install App to Home Screen</div>
+                <div class="setting-sub" id="settingPwaSub">Download B-Bot Pro as a web app on your device</div>
+              </div>
+              <span class="material-symbols-rounded chevron">chevron_right</span>
+            </div>
+
             <div class="setting-item" onclick="window.botHubApp.showCurrencySelector()">
               <div class="setting-icon-box text-success"><span class="material-symbols-rounded">currency_exchange</span></div>
               <div class="setting-info">
@@ -790,6 +799,33 @@
         </section>
 
       </main>
+
+      <!-- ======================================================== -->
+      <!-- PWA INSTALL TO HOME SCREEN FLOATING BADGE (BOTTOM SIDE)  -->
+      <!-- ======================================================== -->
+      <div class="pwa-install-banner pwa-bottom-badge" id="pwaInstallBanner" style="display: none;">
+        <div class="pwa-banner-left">
+          <div class="pwa-app-icon">
+            <img src="images/b-magnet-logo.png" alt="B-Bot Pro">
+          </div>
+          <div class="pwa-text-col">
+            <div class="pwa-title-row">
+              <h4 class="pwa-title" id="pwaTitleText">Install B-Bot Pro App</h4>
+              <span class="pwa-chip">PWA</span>
+            </div>
+            <p class="pwa-subtitle" id="pwaSubText">Add to Home Screen for fast 1-tap access</p>
+          </div>
+        </div>
+        <div class="pwa-actions-right">
+          <button type="button" class="btn-pwa-install" onclick="window.botHubApp.installPwaApp()">
+            <span class="material-symbols-rounded">download_for_offline</span>
+            <span id="pwaBtnText">Install</span>
+          </button>
+          <button type="button" class="btn-pwa-dismiss" onclick="window.botHubApp.dismissPwaBanner()" title="Dismiss">
+            <span class="material-symbols-rounded">close</span>
+          </button>
+        </div>
+      </div>
 
       <!-- Bottom Mobile Navigation Bar -->
       <nav class="bottom-nav">
@@ -1516,6 +1552,55 @@
   </div>
 
   <!-- ======================================================== -->
+  <!-- MODAL: IOS / SAFARI ADD TO HOME SCREEN GUIDE             -->
+  <!-- ======================================================== -->
+  <div class="modal-backdrop" id="pwaIosGuideModal">
+    <div class="modal-dialog-card pwa-guide-card" onclick="event.stopPropagation()">
+      <div class="pwa-guide-icon-box">
+        <span class="material-symbols-rounded">phone_iphone</span>
+      </div>
+
+      <div class="dialog-badge-chip" style="background: rgba(2, 132, 199, 0.12); color: #0284c7; border: 1px solid rgba(2, 132, 199, 0.3);">
+        <span class="pulse-dot" style="background: #0284c7;"></span>
+        <span>WEB APP HOME SCREEN INSTALL</span>
+      </div>
+
+      <h3 class="dialog-title" style="margin-top: 6px;">Add B-Bot Pro to Home Screen</h3>
+      <p class="dialog-desc">Install B-Bot Pro on your phone for full-screen trading, faster alerts, and instant 1-tap launch.</p>
+
+      <div class="ios-install-steps-list">
+        <div class="ios-step-item">
+          <div class="ios-step-num">1</div>
+          <div class="ios-step-info">
+            <strong>Tap the Share Button</strong>
+            <span>Tap the <strong>Share</strong> icon <span class="material-symbols-rounded" style="font-size: 16px; vertical-align: middle; color: #0284c7;">ios_share</span> in your Safari bottom navigation bar.</span>
+          </div>
+        </div>
+
+        <div class="ios-step-item">
+          <div class="ios-step-num">2</div>
+          <div class="ios-step-info">
+            <strong>Select "Add to Home Screen"</strong>
+            <span>Scroll down the action list and tap <strong>Add to Home Screen</strong> <span class="material-symbols-rounded" style="font-size: 16px; vertical-align: middle; color: #00a896;">add_box</span>.</span>
+          </div>
+        </div>
+
+        <div class="ios-step-item">
+          <div class="ios-step-num">3</div>
+          <div class="ios-step-info">
+            <strong>Tap "Add" in Top Right</strong>
+            <span>Confirm and tap <strong>Add</strong> to place the official B-Bot Pro icon on your home screen!</span>
+          </div>
+        </div>
+      </div>
+
+      <button type="button" class="btn-clean-navy" style="margin-top: 16px; width: 100%;" onclick="window.botHubApp.closeModal('pwaIosGuideModal')">
+        <span>Got It, Thanks!</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ======================================================== -->
   <!-- MODAL: LOGOUT CONFIRMATION POPUP                        -->
   <!-- ======================================================== -->
   <div class="modal-backdrop" id="logoutConfirmModal">
@@ -1555,6 +1640,6 @@
 
   <!-- App Scripts -->
   <script src="qrcode.js"></script>
-  <script src="app.js?v=2.8"></script>
+  <script src="app.js?v=2.9"></script>
 </body>
 </html>
