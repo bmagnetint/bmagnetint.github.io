@@ -12,10 +12,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
   
-  <!-- Android PWA & Play Store Manifest -->
+  <!-- Android PWA, iOS Safari & Play Store Manifest -->
   <link rel="manifest" href="/manifest.json">
   <link rel="icon" type="image/png" sizes="64x64" href="/favicon.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/appstore-images/ios/180.png">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="apple-touch-icon-precomposed" sizes="180x180" href="/apple-touch-icon-precomposed.png">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -24,7 +29,7 @@
   <!-- Google Identity Services (Sign-In with Google) -->
   <script src="https://accounts.google.com/gsi/client" async defer></script>
   
-  <link rel="stylesheet" href="style.css?v=5210">
+  <link rel="stylesheet" href="style.css?v=6807">
 </head>
 <body class="theme-dark">
 
@@ -158,7 +163,7 @@
 
               <!-- Center Logo Display (Frameless, Large B-Magnet Official Logo) -->
               <div class="welcome-logo-center-wrapper">
-                <img src="images/b-magnet-logo.png" alt="B-Magnet - Perfect business solutions" class="bmagnet-hero-logo-img">
+                <img src="images/b-magnet-emblem.png" alt="B-Magnet" class="bmagnet-hero-logo-img">
               </div>
 
               <!-- Bottom Buttons on Screen 1 -->
@@ -263,12 +268,8 @@
       <!-- App Header -->
       <header class="app-header">
         <div class="header-left">
-          <div class="brand-logo">
-            <img src="images/b-magnet-logo.png" alt="B-Magnet" class="header-bmagnet-logo">
-          </div>
-          <div class="brand-info">
-            <h1 class="brand-title">B-Magnet <span class="brand-badge">PRO</span></h1>
-            <span class="brand-sub" id="brandSubtitle">Trading & Marketing Bots</span>
+          <div class="brand-logo-prominent">
+            <img src="images/b-magnet-emblem.png" alt="B-Magnet" class="header-bmagnet-logo-prominent">
           </div>
         </div>
 
@@ -796,7 +797,7 @@
       <div class="pwa-install-banner pwa-bottom-badge" id="pwaInstallBanner" style="display: none;">
         <div class="pwa-banner-left">
           <div class="pwa-app-icon">
-            <img src="images/b-magnet-logo.png" alt="B-Bot Pro">
+            <img src="images/b-magnet-emblem.png" alt="B-Bot Pro">
           </div>
           <div class="pwa-text-col">
             <div class="pwa-title-row">
@@ -1595,6 +1596,6 @@
 
   <!-- App Scripts -->
   <script src="qrcode.js"></script>
-  <script src="app.js?v=5210"></script>
+  <script src="app.js?v=6807"></script>
 </body>
 </html>
