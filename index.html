@@ -24,7 +24,7 @@
   <!-- Google Identity Services (Sign-In with Google) -->
   <script src="https://accounts.google.com/gsi/client" async defer></script>
   
-  <link rel="stylesheet" href="style.css?v=2.6">
+  <link rel="stylesheet" href="style.css?v=2.7">
 </head>
 <body class="theme-dark">
 
@@ -183,20 +183,20 @@
 
               <!-- Bottom Curved Pure-White Sheet (Right Image) -->
               <div class="signin-white-sheet">
-                <form class="signin-clean-form" onsubmit="event.preventDefault(); window.botHubApp.handleCleanSignIn();">
+                <div class="signin-clean-form">
                   
                   <!-- Email Field -->
                   <div class="signin-input-wrapper">
-                    <input type="email" id="loginEmailInput" class="signin-clean-input" placeholder="Email" value="hanaan.trader@gmail.com" required autocomplete="email">
+                    <input type="text" id="loginEmailInput" class="signin-clean-input" placeholder="Email" value="hanaan.trader@gmail.com" autocomplete="off" onkeydown="if(event.key==='Enter') window.botHubApp.handleCleanSignIn();">
                   </div>
 
-                  <!-- Password Field -->
+                  <!-- Password Field (Masked with secure text-security to avoid browser HTTP security warning) -->
                   <div class="signin-input-wrapper">
-                    <input type="password" id="loginOtpInput" class="signin-clean-input" placeholder="Password" value="8492" required>
+                    <input type="text" id="loginOtpInput" class="signin-clean-input secure-auth-input" placeholder="Password" value="8492" autocomplete="off" onkeydown="if(event.key==='Enter') window.botHubApp.handleCleanSignIn();">
                   </div>
 
                   <!-- Sign In Button (Navy Blue Pill) -->
-                  <button type="submit" class="btn-clean-navy btn-signin-block" id="loginMainSubmitBtn">
+                  <button type="button" class="btn-clean-navy btn-signin-block" id="loginMainSubmitBtn" onclick="window.botHubApp.handleCleanSignIn();">
                     <span>Sign In</span>
                   </button>
 
@@ -232,7 +232,7 @@
                     <span>Don't have an account? <a href="#" class="signin-signup-link" onclick="event.preventDefault(); window.botHubApp.handleGoogleLogin();">Sign Up</a></span>
                   </div>
 
-                </form>
+                </div>
               </div>
 
             </div>
@@ -612,8 +612,16 @@
             </div>
           </div>
 
-          <!-- Account Sign Out / Switch User -->
+          <!-- Account Session & Log Out Badge Card -->
           <div class="settings-logout-card">
+            <div class="slc-header">
+              <div class="slc-user-badge">
+                <span class="pulse-dot" style="background: #10b981; width: 6px; height: 6px;"></span>
+                <span>Active Account Session</span>
+              </div>
+              <span class="slc-device-tag">Signed In</span>
+            </div>
+            
             <button type="button" class="btn-logout-full" onclick="window.botHubApp.handleLogout()" id="accountLogoutBtn">
               <span class="material-symbols-rounded">logout</span>
               <span>Log Out / Switch Account</span>
@@ -796,9 +804,34 @@
 
 
   <!-- ======================================================== -->
+  <!-- MODAL: LOGOUT CONFIRMATION POPUP                         -->
+  <!-- ======================================================== -->
+  <div class="modal-backdrop modal-dialog-mode" id="logoutConfirmModal">
+    <div class="modal-dialog-card logout-dialog-card" onclick="event.stopPropagation()">
+      <div class="dialog-icon-wrapper dialog-icon-danger">
+        <span class="material-symbols-rounded">logout</span>
+      </div>
+      <div class="dialog-badge-chip">SESSION SECURITY</div>
+      <h3 class="dialog-title">Log Out of B-Magnet?</h3>
+      <p class="dialog-desc">
+        Are you sure you want to end your active session? You will return to the welcome screen and can sign in anytime.
+      </p>
+      <div class="dialog-actions-row">
+        <button type="button" class="dialog-btn-cancel" onclick="window.botHubApp.closeModal('logoutConfirmModal')">
+          Stay Signed In
+        </button>
+        <button type="button" class="dialog-btn-danger" onclick="window.botHubApp.confirmLogout()">
+          <span class="material-symbols-rounded" style="font-size: 18px;">logout</span>
+          <span>Log Out</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================== -->
   <!-- MODAL: PURCHASE BOT PLAN / ADDITIONAL MT5 LICENSE        -->
   <!-- ======================================================== -->
-  <div class="modal-backdrop" id="purchaseAdditionalModal">
+  <div class="modal-backdrop" id="purchaseAdditionalModal" onclick="if(event.target === this) window.botHubApp.closeModal('purchaseAdditionalModal')">
     <div class="modal-sheet checkout-sheet">
       <div class="sheet-handle"></div>
       <div class="modal-header">
@@ -1437,7 +1470,7 @@
           <button type="button" class="btn-cancel-modal" onclick="window.botHubApp.closeModal('logoutConfirmModal')">
             Cancel
           </button>
-          <button type="button" class="btn-logout-confirm" onclick="window.botHubApp.confirmLogoutAction()">
+          <button type="button" class="btn-logout-confirm" onclick="window.botHubApp.confirmLogout()">
             Sign Out
           </button>
         </div>
@@ -1450,6 +1483,6 @@
 
   <!-- App Scripts -->
   <script src="qrcode.js"></script>
-  <script src="app.js?v=2.6"></script>
+  <script src="app.js?v=2.7"></script>
 </body>
 </html>

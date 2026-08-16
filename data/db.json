@@ -199,6 +199,44 @@
   ],
   "userSubscriptions": [
     {
+      "id": "sub_1786891617_1206",
+      "customerPhone": "+91 94950 43030",
+      "botId": "bot_bmagnet_1y",
+      "botName": "B-Magnet Gold Hunter EA (1 Year VIP Pass)",
+      "planKey": "trial",
+      "planName": "2-Day Starter Trial",
+      "price": 10.0,
+      "status": "Active",
+      "startDate": "2026-08-16T14:46:57Z",
+      "expiresDate": "2026-08-18T14:46:57Z",
+      "licenseKey": "BM8-8849202-20260818-785C893F",
+      "broker": "GTCfx",
+      "gtcfxMt5Account": "8849202",
+      "mt5Account": "8849202",
+      "autoRenew": true,
+      "paymentMethod": "USDT (BEP-20 Wallet)",
+      "lastSignal": "XAUUSD (Gold) EA Armed on GTCfx MT5 #8849202"
+    },
+    {
+      "id": "sub_1786891239_8337",
+      "customerPhone": "+91 94950 43030",
+      "botId": "bot_bmagnet_1m",
+      "botName": "B-Magnet Gold Hunter EA (1 Month Pass)",
+      "planKey": "1month",
+      "planName": "1 Month Pass",
+      "price": 100.0,
+      "status": "Active",
+      "startDate": "2026-08-16T14:40:39Z",
+      "expiresDate": "2026-09-15T14:40:39Z",
+      "licenseKey": "BM8-88492021111-20260915-BC65008B",
+      "broker": "GTCfx",
+      "gtcfxMt5Account": "88492021111",
+      "mt5Account": "88492021111",
+      "autoRenew": true,
+      "paymentMethod": "USDT (BEP-20 Wallet)",
+      "lastSignal": "XAUUSD (Gold) EA Armed on GTCfx MT5 #88492021111"
+    },
+    {
       "id": "sub_bmagnet_1m",
       "customerPhone": "+919495097786",
       "botId": "bot_bmagnet_1m",
@@ -229,6 +267,32 @@
     }
   ],
   "invoices": [
+    {
+      "id": "INV-2026-9504",
+      "date": "2026-08-16T14:46:57Z",
+      "customerPhone": "+91 94950 43030",
+      "botName": "B-Magnet Gold Hunter EA (1 Year VIP Pass)",
+      "plan": "2-Day Starter Trial",
+      "amount": 10.0,
+      "currency": "USDT",
+      "status": "Paid",
+      "paymentMethod": "USDT (BEP-20 BSC)",
+      "broker": "GTCfx",
+      "gtcfxMt5Account": "8849202"
+    },
+    {
+      "id": "INV-2026-3882",
+      "date": "2026-08-16T14:40:39Z",
+      "customerPhone": "+91 94950 43030",
+      "botName": "B-Magnet Gold Hunter EA (1 Month Pass)",
+      "plan": "1 Month Pass",
+      "amount": 100.0,
+      "currency": "USDT",
+      "status": "Paid",
+      "paymentMethod": "USDT (BEP-20 BSC)",
+      "broker": "GTCfx",
+      "gtcfxMt5Account": "88492021111"
+    },
     {
       "id": "INV-2026-0891",
       "date": "2026-08-01T10:00:00Z",
@@ -274,7 +338,110 @@
     ]
   },
   "wallet": {
-    "balance": 250.0,
+    "balance": 140.0,
     "currency": "USD"
-  }
+  },
+  "currentUser": {
+    "id": "goog_491330",
+    "fullPhone": "+91 94950 91330",
+    "phone": "+91 94950 91330",
+    "email": "hanaan.trader@gmail.com",
+    "name": "Hanaan Junaid",
+    "picture": "https://lh3.googleusercontent.com/a/default-user=s96-c",
+    "authProvider": "google",
+    "isLoggedIn": true,
+    "token": "tok_goog_0adafebb2a96f0e6e68383d6da96b3cc",
+    "loginTime": "2026-08-16T15:02:29Z"
+  },
+  "customers": {
+    "hanaan.trader@gmail.com": {
+      "id": "cust_fd466162",
+      "phone": "+91 94950 43030",
+      "email": "hanaan.trader@gmail.com",
+      "name": "Hanaan.trader",
+      "authProvider": "gmail_otp",
+      "walletBalance": 250.0,
+      "totalSpent": 0.0,
+      "activeBots": 0,
+      "gtcfxMt5Account": "8849201",
+      "subscriptions": [],
+      "registeredAt": "2026-08-16T14:40:17Z",
+      "lastLoginAt": "2026-08-16T15:02:29Z",
+      "loginCount": 4,
+      "googleEmail": "hanaan.trader@gmail.com",
+      "picture": "https://lh3.googleusercontent.com/a/default-user=s96-c"
+    }
+  },
+  "notifications": [
+    {
+      "id": "notif_1786892549_159",
+      "type": "GOOGLE_LOGIN",
+      "title": "\ud83d\udd11 Google Sign-In",
+      "message": "User: Hanaan Junaid (hanaan.trader@gmail.com) signed in with Google. Wallet: 140.00 USDT",
+      "customerPhone": "+91 94950 91330",
+      "customerEmail": "hanaan.trader@gmail.com",
+      "timestamp": "2026-08-16T15:02:29Z",
+      "unread": true
+    },
+    {
+      "id": "notif_1786891845_276",
+      "type": "GMAIL_LOGIN",
+      "title": "\ud83d\udd11 Gmail Login",
+      "message": "Customer: Hanaan.trader (hanaan.trader@gmail.com) signed in via Gmail OTP. Wallet: 140.00 USDT",
+      "customerPhone": "+91 94950 64343",
+      "customerEmail": "hanaan.trader@gmail.com",
+      "timestamp": "2026-08-16T14:50:45Z",
+      "unread": true
+    },
+    {
+      "id": "notif_1786891815_808",
+      "type": "GMAIL_LOGIN",
+      "title": "\ud83d\udd11 Gmail Login",
+      "message": "Customer: Hanaan.trader (hanaan.trader@gmail.com) signed in via Gmail OTP. Wallet: 140.00 USDT",
+      "customerPhone": "+91 94950 64343",
+      "customerEmail": "hanaan.trader@gmail.com",
+      "timestamp": "2026-08-16T14:50:15Z",
+      "unread": true
+    },
+    {
+      "id": "notif_1786891617_684",
+      "type": "NEW_SUBSCRIPTION",
+      "title": "\ud83d\ude80 New Subscription: B-Magnet Gold Hunter EA (1 Year VIP Pass)",
+      "message": "Customer: +91 94950 43030 subscribed to 2-Day Starter Trial (10.0 USDT). GTCfx MT5: #8849202, License: BM8-8849202-20260818-785C893F",
+      "customerPhone": "+91 94950 43030",
+      "botName": "B-Magnet Gold Hunter EA (1 Year VIP Pass)",
+      "planName": "2-Day Starter Trial",
+      "amount": 10.0,
+      "gtcfxMt5Account": "8849202",
+      "licenseKey": "BM8-8849202-20260818-785C893F",
+      "expiresDate": "2026-08-18T14:46:57Z",
+      "timestamp": "2026-08-16T14:46:57Z",
+      "unread": true
+    },
+    {
+      "id": "notif_1786891239_669",
+      "type": "NEW_SUBSCRIPTION",
+      "title": "\ud83d\ude80 New Subscription: B-Magnet Gold Hunter EA (1 Month Pass)",
+      "message": "Customer: +91 94950 43030 subscribed to 1 Month Pass (100.0 USDT). GTCfx MT5: #88492021111, License: BM8-88492021111-20260915-BC65008B",
+      "customerPhone": "+91 94950 43030",
+      "botName": "B-Magnet Gold Hunter EA (1 Month Pass)",
+      "planName": "1 Month Pass",
+      "amount": 100.0,
+      "gtcfxMt5Account": "88492021111",
+      "licenseKey": "BM8-88492021111-20260915-BC65008B",
+      "expiresDate": "2026-09-15T14:40:39Z",
+      "timestamp": "2026-08-16T14:40:39Z",
+      "unread": true
+    },
+    {
+      "id": "notif_1786891217_262",
+      "type": "NEW_GMAIL_CUSTOMER",
+      "title": "\ud83c\udf89 New Gmail Customer",
+      "message": "Customer: Hanaan.trader (hanaan.trader@gmail.com) signed in via Gmail OTP. Wallet: 250.00 USDT",
+      "customerPhone": "+91 94950 43030",
+      "customerEmail": "hanaan.trader@gmail.com",
+      "timestamp": "2026-08-16T14:40:17Z",
+      "unread": true
+    }
+  ]
 }

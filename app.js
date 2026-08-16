@@ -442,7 +442,7 @@ class BotHubApp {
     this.openModal('logoutConfirmModal');
   }
 
-  async confirmLogoutAction() {
+  async confirmLogout() {
     this.closeModal('logoutConfirmModal');
     try {
       await fetch('/api/auth/logout', { method: 'POST' });
@@ -2654,7 +2654,15 @@ Hello, here are my subscription and license details. Please verify my GTCfx MT5 
 
   openModal(modalId) {
     const modal = document.getElementById(modalId);
-    if (modal) modal.classList.add('active');
+    if (modal) {
+      modal.classList.add('active');
+      if (!modal.dataset.backdropBound) {
+        modal.dataset.backdropBound = 'true';
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) this.closeModal(modalId);
+        });
+      }
+    }
   }
 
   closeModal(modalId) {
