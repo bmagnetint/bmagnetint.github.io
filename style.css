@@ -321,11 +321,11 @@ body {
   justify-content: space-between;
   align-items: center;
   gap: 8px;
-  background: rgba(255, 255, 255, 0.48);
-  backdrop-filter: blur(40px) saturate(240%) brightness(104%);
-  -webkit-backdrop-filter: blur(40px) saturate(240%) brightness(104%);
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(48px) saturate(260%) brightness(108%);
+  -webkit-backdrop-filter: blur(48px) saturate(260%) brightness(108%);
   border-bottom: 1.5px solid rgba(255, 255, 255, 0.75);
-  box-shadow: 0 8px 32px rgba(25, 39, 80, 0.06), inset 0 -1px 1.5px rgba(255, 255, 255, 0.95);
+  box-shadow: 0 12px 36px rgba(25, 39, 80, 0.08), inset 0 -1px 2px rgba(255, 255, 255, 0.95);
   flex-shrink: 0;
   position: relative;
   z-index: 100;
@@ -335,11 +335,11 @@ body {
 }
 
 body.theme-dark .app-header {
-  background: rgba(10, 17, 32, 0.48) !important;
-  backdrop-filter: blur(40px) saturate(240%) brightness(104%) !important;
-  -webkit-backdrop-filter: blur(40px) saturate(240%) brightness(104%) !important;
-  border-bottom: 1.5px solid rgba(255, 255, 255, 0.12) !important;
-  box-shadow: 0 10px 36px rgba(0, 0, 0, 0.55), inset 0 -1px 1.5px rgba(255, 255, 255, 0.1) !important;
+  background: rgba(10, 17, 32, 0.38) !important;
+  backdrop-filter: blur(48px) saturate(260%) brightness(108%) !important;
+  -webkit-backdrop-filter: blur(48px) saturate(260%) brightness(108%) !important;
+  border-bottom: 1.5px solid rgba(255, 255, 255, 0.14) !important;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.6), inset 0 -1px 2px rgba(255, 255, 255, 0.15) !important;
 }
 
 .header-left {
@@ -554,31 +554,32 @@ body.header-minimized .wallet-compact-corner-btn {
 .live-ticker-container {
   height: 36px;
   max-height: 36px;
-  background: linear-gradient(90deg, rgba(16, 185, 129, 0.12) 0%, rgba(6, 78, 59, 0.08) 50%, rgba(16, 185, 129, 0.12) 100%);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1.5px solid rgba(16, 185, 129, 0.28);
+  background: linear-gradient(90deg, rgba(16, 185, 129, 0.14) 0%, rgba(6, 78, 59, 0.09) 50%, rgba(16, 185, 129, 0.14) 100%);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border-bottom: 1px solid rgba(16, 185, 129, 0.28);
   display: flex;
   align-items: center;
   padding: 0 14px;
   overflow: hidden;
   font-size: 11px;
   flex-shrink: 0;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: max-height 0.45s cubic-bezier(0.16, 1, 0.3, 1), 
+              opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-bottom-color 0.35s ease;
+  will-change: max-height, opacity, transform;
+  transform-origin: top center;
   transform: translateZ(0);
 }
 
-/* Hide Live Green Session Bar when Scrolling Down */
+/* Ultra-Smooth, non-jumping slide & fade for Live Green Session Bar */
 body.scrolled-hide-live .live-ticker-container {
   max-height: 0 !important;
-  height: 0 !important;
   opacity: 0 !important;
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
-  border-bottom: 0px solid transparent !important;
-  margin: 0 !important;
+  border-bottom-color: transparent !important;
+  transform: translateY(-8px) scaleY(0.92);
   pointer-events: none !important;
-  transform: translateY(-100%);
 }
 
 .ticker-label {
@@ -1802,28 +1803,28 @@ body.scrolled-hide-live .live-ticker-container {
   max-width: 440px;
   margin: 0 auto;
   height: 64px;
-  background: rgba(255, 255, 255, 0.48);
-  backdrop-filter: blur(40px) saturate(240%) brightness(104%);
-  -webkit-backdrop-filter: blur(40px) saturate(240%) brightness(104%);
-  border: 1.5px solid rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(48px) saturate(260%) brightness(108%);
+  -webkit-backdrop-filter: blur(48px) saturate(260%) brightness(108%);
+  border: 1.5px solid rgba(255, 255, 255, 0.8);
   border-radius: 36px;
   display: flex;
   justify-content: space-around;
   align-items: center;
   padding: 5px 6px;
   z-index: 100;
-  box-shadow: 0 20px 50px rgba(25, 39, 80, 0.14), 0 2px 10px rgba(25, 39, 80, 0.04), inset 0 1.5px 2px rgba(255, 255, 255, 0.95), inset 0 -1px 1.5px rgba(255, 255, 255, 0.4);
+  box-shadow: 0 20px 50px rgba(25, 39, 80, 0.14), 0 2px 10px rgba(25, 39, 80, 0.04), inset 0 1.5px 2px rgba(255, 255, 255, 1), inset 0 -1px 2px rgba(255, 255, 255, 0.45);
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   transform: translateZ(0);
   -webkit-transform: translateZ(0);
 }
 
 body.theme-dark .bottom-nav {
-  background: rgba(10, 17, 32, 0.48) !important;
-  backdrop-filter: blur(40px) saturate(240%) brightness(104%) !important;
-  -webkit-backdrop-filter: blur(40px) saturate(240%) brightness(104%) !important;
-  border: 1.5px solid rgba(255, 255, 255, 0.16) !important;
-  box-shadow: 0 22px 55px rgba(0, 0, 0, 0.65), 0 4px 16px rgba(0, 0, 0, 0.4), inset 0 1.5px 2px rgba(255, 255, 255, 0.2), inset 0 -1px 1.5px rgba(0, 0, 0, 0.35) !important;
+  background: rgba(10, 17, 32, 0.38) !important;
+  backdrop-filter: blur(48px) saturate(260%) brightness(108%) !important;
+  -webkit-backdrop-filter: blur(48px) saturate(260%) brightness(108%) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.18) !important;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65), 0 4px 16px rgba(0, 0, 0, 0.4), inset 0 1.5px 2px rgba(255, 255, 255, 0.22), inset 0 -1px 2px rgba(0, 0, 0, 0.4) !important;
 }
 
 .nav-item {

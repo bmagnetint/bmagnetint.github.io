@@ -1050,14 +1050,25 @@ class BotHubApp {
   }
 
   setupEventListeners() {
-    // Hide Live Green Session Tab when scrolling down content
+    // Ultra-Smooth, non-jumping Live Green Bar scroll auto-hide
     const mainContent = document.getElementById('mainContent');
     if (mainContent) {
+      let isTicking = false;
+      let isHidden = false;
       mainContent.addEventListener('scroll', () => {
-        if (mainContent.scrollTop > 15) {
-          document.body.classList.add('scrolled-hide-live');
-        } else {
-          document.body.classList.remove('scrolled-hide-live');
+        if (!isTicking) {
+          window.requestAnimationFrame(() => {
+            const top = mainContent.scrollTop;
+            if (!isHidden && top > 35) {
+              document.body.classList.add('scrolled-hide-live');
+              isHidden = true;
+            } else if (isHidden && top < 12) {
+              document.body.classList.remove('scrolled-hide-live');
+              isHidden = false;
+            }
+            isTicking = false;
+          });
+          isTicking = true;
         }
       }, { passive: true });
     }
