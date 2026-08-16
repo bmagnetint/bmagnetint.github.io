@@ -1,0 +1,14 @@
+{
+  "public/app.js": "38a68a783da6cad46224c47aaedcc31b348668418d0011fe083ce5ddab55b8db",
+  "public/favicon.ico": "a125d7354da80f5e8dd48e92b09995c179a599a7ba26f2b8fed4eeef9e601dab",
+  "public/icon-192.png": "a125d7354da80f5e8dd48e92b09995c179a599a7ba26f2b8fed4eeef9e601dab",
+  "public/icon-512.png": "a125d7354da80f5e8dd48e92b09995c179a599a7ba26f2b8fed4eeef9e601dab",
+  "public/index.html": "46448e9d91be3a777cde9eac5debc0e3de4fa537c7901aa81f490bbc7a75c968",
+  "public/key-generator.html": "86b8e6f51cbf931b4f1e416cfa1b50a27015190180747cbdfdf87235bfe4f742",
+  "public/manifest.json": "faaee2b7c2dd72cec7b8e70e18e81b96533e9876161bbe0752ca53f061c80808",
+  "public/qrcode.js": "a536da9afe90f6807ee63298ad883798c681d15170dc027510ea07169ddadbdf",
+  "public/style.css": "dab1cf80c62efedbd38fc321cd28a5443a0203a0ede7689088406cde24ab7bff",
+  "public/sw.js": "f4ca1d866cc7d0cf21bf1b4fc1a3fb8adec84ae9e0d7d313ad9d8fc63fcbc4e3",
+  "public/images/b-magnet-logo.png": "a125d7354da80f5e8dd48e92b09995c179a599a7ba26f2b8fed4eeef9e601dab",
+  "data/db.json": "18946cb452839d0108b4f02ddf37c8865d6e01dd7a774c3077b20ac3f5f5e394"
+}

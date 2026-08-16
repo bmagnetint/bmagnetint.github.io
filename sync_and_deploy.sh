@@ -4,11 +4,60 @@ set -e
 SOURCE_DIR="/Users/hanaanjunaid/.gemini/antigravity/scratch/bot_market_app"
 DEST_DIR="/Users/hanaanjunaid/Documents/bmagnetint"
 
-echo "🔄 Starting B-Bot App sync: $(date)"
-
 cd "$DEST_DIR"
 
-# 1. Copy updated files
+# 1. Smart Change Detection using Python
+CHANGE_DETECTED=$(/usr/bin/python3 -c '
+import os, hashlib, json
+
+SOURCE = "/Users/hanaanjunaid/.gemini/antigravity/scratch/bot_market_app"
+DEST = "/Users/hanaanjunaid/Documents/bmagnetint"
+HASH_CACHE_FILE = os.path.join(DEST, ".last_sync_hashes.json")
+
+def get_dir_hashes(base_path):
+    hashes = {}
+    for sub in ["public", "data"]:
+        full_sub = os.path.join(base_path, sub)
+        if not os.path.exists(full_sub):
+            continue
+        for root, dirs, files in os.walk(full_sub):
+            for f in sorted(files):
+                if f.startswith(".") or f.endswith(".pyc") or f.endswith(".log"):
+                    continue
+                file_path = os.path.join(root, f)
+                rel_path = os.path.relpath(file_path, base_path)
+                try:
+                    with open(file_path, "rb") as fp:
+                        hashes[rel_path] = hashlib.sha256(fp.read()).hexdigest()
+                except Exception:
+                    pass
+    return hashes
+
+current_hashes = get_dir_hashes(SOURCE)
+last_hashes = {}
+if os.path.exists(HASH_CACHE_FILE):
+    try:
+        with open(HASH_CACHE_FILE, "r") as fp:
+            last_hashes = json.load(fp)
+    except Exception:
+        last_hashes = {}
+
+if current_hashes != last_hashes:
+    with open(HASH_CACHE_FILE, "w") as fp:
+        json.dump(current_hashes, fp, indent=2)
+    print("YES")
+else:
+    print("NO")
+')
+
+if [ "$CHANGE_DETECTED" = "NO" ]; then
+  echo "✨ [$(date '+%Y-%m-%d %H:%M:%S')] No changes detected in B-Bot App source. Everything is up-to-date."
+  exit 0
+fi
+
+echo "🚀 [$(date '+%Y-%m-%d %H:%M:%S')] New changes detected in B-Bot App! Synchronizing and deploying..."
+
+# 2. Copy updated files
 if [ -d "$SOURCE_DIR/public" ]; then
   cp -rf "$SOURCE_DIR/public/"* "$DEST_DIR/"
 fi
@@ -18,7 +67,7 @@ if [ -d "$SOURCE_DIR/data" ]; then
   cp -rf "$SOURCE_DIR/data/"* "$DEST_DIR/data/"
 fi
 
-# 2. Inject static fallback in app.js if not already present
+# 3. Inject static fallback in app.js if not already present
 /usr/bin/python3 -c '
 import re
 
@@ -55,7 +104,7 @@ if "Static Hosting Fallback" not in app_js:
         f.write(app_js)
 '
 
-# 3. Ensure index.html includes favicons, theme-dark, and logout modal
+# 4. Ensure index.html includes favicons, theme-dark, and logout modal
 /usr/bin/python3 -c '
 import re, time
 
@@ -117,7 +166,7 @@ with open("index.html", "w", encoding="utf-8") as f:
     f.write(html)
 '
 
-# 4. Ensure style.css contains theme-dark tokens and high-contrast modal styles
+# 5. Ensure style.css contains theme-dark tokens and high-contrast modal styles
 /usr/bin/python3 -c '
 with open("style.css", "r", encoding="utf-8") as f:
     css = f.read()
@@ -240,7 +289,7 @@ body.theme-dark .checkout-summary-card,
         f.write(css)
 '
 
-# 5. Deploy to Firebase & GitHub
+# 6. Deploy to Firebase & GitHub
 echo "🚀 Deploying to Firebase Hosting..."
 firebase deploy
 
