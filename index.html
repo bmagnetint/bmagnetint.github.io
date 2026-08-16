@@ -25,10 +25,29 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="B-Bot Pro">
 
+  <!-- Security: Force HTTPS & Upgrade Insecure HTTP Requests -->
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  <script>
+    // Automatic HTTPS upgrade to fix security errors and enable 1-tap PWA Home Screen install
+    if (location.protocol === 'http:' && location.hostname !== 'localhost' && location.hostname !== '127.0.0.1' && !location.hostname.endsWith('.local')) {
+      location.replace('https://' + location.host + location.pathname + location.search + location.hash);
+    }
+    // Catch PWA beforeinstallprompt immediately on boot
+    window.__deferredPwaPrompt = null;
+    window.addEventListener('beforeinstallprompt', function(e) {
+      e.preventDefault();
+      window.__deferredPwaPrompt = e;
+      if (window.botHubApp) {
+        window.botHubApp.deferredPwaPrompt = e;
+        window.botHubApp.checkPwaInstallBanner();
+      }
+    });
+  </script>
+
   <!-- Google Identity Services (Sign-In with Google) -->
   <script src="https://accounts.google.com/gsi/client" async defer></script>
   
-  <link rel="stylesheet" href="style.css?v=9407">
+  <link rel="stylesheet" href="style.css?v=1206">
 </head>
 <body class="theme-dark">
 
@@ -1847,6 +1866,6 @@
 
   <!-- App Scripts -->
   <script src="qrcode.js"></script>
-  <script src="app.js?v=9407"></script>
+  <script src="app.js?v=1206"></script>
 </body>
 </html>

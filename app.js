@@ -237,20 +237,21 @@ class BotHubApp {
     await this.fetchData();
     this.startLiveSignalSimulation();
 
-    // Register Service Worker for Android PWA / Play Store TWA
+    // Register Service Worker for PWA (with root scope)
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js').catch(err => {
+        navigator.serviceWorker.register('/sw.js', { scope: '/' }).catch(err => {
           console.log('SW registration note:', err);
         });
       });
     }
 
-    // PWA Install Prompt Handler
-    this.deferredPwaPrompt = null;
+    // PWA Install Prompt Handler - Direct 1-Tap Home Screen Engine
+    this.deferredPwaPrompt = window.__deferredPwaPrompt || null;
     window.addEventListener('beforeinstallprompt', (e) => {
       e.preventDefault();
       this.deferredPwaPrompt = e;
+      window.__deferredPwaPrompt = e;
       if (this.state.currentUser) {
         this.checkPwaInstallBanner();
       }
@@ -258,6 +259,7 @@ class BotHubApp {
 
     window.addEventListener('appinstalled', () => {
       this.deferredPwaPrompt = null;
+      window.__deferredPwaPrompt = null;
       this.dismissPwaBanner();
       this.showToast('🎉 B-Bot Pro is now installed on your Home Screen!', 'success');
     });
@@ -699,6 +701,20 @@ class BotHubApp {
     }
   }
 
+  renderAvatarIntoElement(element, user) {
+    if (!element) return;
+    const name = (user && user.name) || 'Hanaan';
+    const initial = (name.charAt(0) || 'H').toUpperCase();
+
+    if (user && user.avatarUrl) {
+      element.innerHTML = `<img src="${user.avatarUrl}" alt="${name}" style="width:100%;height:100%;object-fit:cover;border-radius:50%;display:block;" />`;
+    } else if (user && user.avatarIcon) {
+      element.innerHTML = `<span style="font-size:1.2em;line-height:1;display:flex;align-items:center;justify-content:center;">${user.avatarIcon}</span>`;
+    } else {
+      element.textContent = initial;
+    }
+  }
+
   applyLoggedInUI(user) {
     const overlay = document.getElementById('authScreenOverlay');
     if (overlay) overlay.classList.remove('active');
@@ -709,12 +725,17 @@ class BotHubApp {
     const displayName = user.name || (user.email ? user.email.split('@')[0] : 'Hanaan');
     const displayPhone = user.phone || user.fullPhone || user.email || '+91 94950 97786';
     const displayUid = user.userId || user.id || 'BM-98214';
-    const initial = (displayName.charAt(0) || 'H').toUpperCase();
 
     if (userPhoneText) {
       userPhoneText.textContent = displayName;
     }
     if (logoutBtn) logoutBtn.style.display = 'inline-flex';
+
+    // Update Header mini avatar
+    const headerAvatar = document.querySelector('.user-avatar-mini');
+    if (headerAvatar) {
+      this.renderAvatarIntoElement(headerAvatar, user);
+    }
 
     // Update Account Settings Profile Card
     const pName = document.getElementById('profileDisplayName');
@@ -724,8 +745,14 @@ class BotHubApp {
 
     if (pName) pName.textContent = displayName;
     if (pPhone) pPhone.textContent = displayPhone;
-    if (pAvatar) pAvatar.textContent = initial;
+    if (pAvatar) this.renderAvatarIntoElement(pAvatar, user);
     if (pUid) pUid.textContent = `ID: ${displayUid}`;
+
+    // Update Profile Modal avatar if open
+    const pmcAvatarBig = document.getElementById('pmcAvatarBig');
+    if (pmcAvatarBig) {
+      this.renderAvatarIntoElement(pmcAvatarBig, user);
+    }
 
     // 📲 Display PWA Download/Install to Home Screen Badge
     setTimeout(() => this.checkPwaInstallBanner(), 400);
@@ -742,7 +769,6 @@ class BotHubApp {
     const displayUid = user.userId || user.id || 'BM-98214';
     const displayTelegram = user.telegram || '@B_Magnet_Gold_bot';
     const displayMt5 = user.gtcfxMt5Account || '8849201';
-    const initial = (displayName.charAt(0) || 'H').toUpperCase();
 
     const pmcAvatarBig = document.getElementById('pmcAvatarBig');
     const pmcDisplayName = document.getElementById('pmcDisplayName');
@@ -755,7 +781,7 @@ class BotHubApp {
     const inputProfileMt5 = document.getElementById('inputProfileMt5');
     const pmcWalletBalance = document.getElementById('pmcWalletBalance');
 
-    if (pmcAvatarBig) pmcAvatarBig.textContent = initial;
+    if (pmcAvatarBig) this.renderAvatarIntoElement(pmcAvatarBig, user);
     if (pmcDisplayName) pmcDisplayName.textContent = displayName;
     if (pmcUserIdDisplay) pmcUserIdDisplay.textContent = displayUid;
     if (inputProfileUserId) inputProfileUserId.value = displayUid;
@@ -770,7 +796,102 @@ class BotHubApp {
       pmcWalletBalance.textContent = `${bal} USDT`;
     }
 
+    // Hide preset avatar tray by default
+    const tray = document.getElementById('presetAvatarTray');
+    if (tray) tray.style.display = 'none';
+
     this.openModal('profileDetailsModal');
+  }
+
+  handleProfilePhotoUpload(event) {
+    const file = event.target.files && event.target.files[0];
+    if (!file) return;
+
+    if (!file.type.startsWith('image/')) {
+      this.showToast('Please select a valid image file (JPG, PNG, WebP).', 'warning');
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const img = new Image();
+      img.onload = () => {
+        // Optimize and compress image using in-memory canvas
+        const canvas = document.createElement('canvas');
+        const MAX_SIZE = 256;
+        let width = img.width;
+        let height = img.height;
+
+        if (width > height) {
+          if (width > MAX_SIZE) {
+            height = Math.round((height * MAX_SIZE) / width);
+            width = MAX_SIZE;
+          }
+        } else {
+          if (height > MAX_SIZE) {
+            width = Math.round((width * MAX_SIZE) / height);
+            height = MAX_SIZE;
+          }
+        }
+
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, width, height);
+
+        const dataUrl = canvas.toDataURL('image/jpeg', 0.85);
+
+        if (!this.state.currentUser) {
+          this.state.currentUser = { isLoggedIn: true, userId: 'BM-98214', name: 'Hanaan' };
+        }
+        this.state.currentUser.avatarUrl = dataUrl;
+        this.state.currentUser.avatarIcon = null;
+
+        localStorage.setItem('b_bot_auth_user', JSON.stringify(this.state.currentUser));
+        this.applyLoggedInUI(this.state.currentUser);
+        this.showToast('✅ Profile picture updated successfully!', 'success');
+      };
+      img.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+    event.target.value = '';
+  }
+
+  togglePresetAvatarSelector() {
+    const tray = document.getElementById('presetAvatarTray');
+    if (tray) {
+      tray.style.display = (tray.style.display === 'none' || !tray.style.display) ? 'block' : 'none';
+    }
+  }
+
+  setPresetAvatar(icon) {
+    if (!this.state.currentUser) {
+      this.state.currentUser = { isLoggedIn: true, userId: 'BM-98214', name: 'Hanaan' };
+    }
+    this.state.currentUser.avatarIcon = icon;
+    this.state.currentUser.avatarUrl = null;
+
+    localStorage.setItem('b_bot_auth_user', JSON.stringify(this.state.currentUser));
+    this.applyLoggedInUI(this.state.currentUser);
+
+    const tray = document.getElementById('presetAvatarTray');
+    if (tray) tray.style.display = 'none';
+
+    this.showToast(`✨ Avatar icon updated to ${icon}!`, 'success');
+  }
+
+  removeProfilePhoto() {
+    if (!this.state.currentUser) return;
+    this.state.currentUser.avatarUrl = null;
+    this.state.currentUser.avatarIcon = null;
+
+    localStorage.setItem('b_bot_auth_user', JSON.stringify(this.state.currentUser));
+    this.applyLoggedInUI(this.state.currentUser);
+
+    const tray = document.getElementById('presetAvatarTray');
+    if (tray) tray.style.display = 'none';
+
+    this.showToast('Profile photo removed. Showing initials.', 'info');
   }
 
   saveProfileDetails() {
@@ -840,24 +961,40 @@ class BotHubApp {
   }
 
   async installPwaApp() {
-    // 1. Android / Chrome / Edge native beforeinstallprompt
-    if (this.deferredPwaPrompt) {
+    // 1. Check if already installed and running standalone
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+    if (isStandalone) {
+      this.showToast('✅ B-Bot Pro is already installed and running on your Home Screen!', 'info');
+      return;
+    }
+
+    // 2. Direct 1-tap installation via native browser prompt
+    const promptEvent = this.deferredPwaPrompt || window.__deferredPwaPrompt;
+    if (promptEvent) {
       try {
-        this.deferredPwaPrompt.prompt();
-        const { outcome } = await this.deferredPwaPrompt.userChoice;
-        if (outcome === 'accepted') {
-          this.showToast('🎉 B-Bot Pro App added to your Home Screen!', 'success');
+        await promptEvent.prompt();
+        const choiceResult = await promptEvent.userChoice;
+        if (choiceResult && choiceResult.outcome === 'accepted') {
+          this.showToast('🎉 B-Bot Pro installed to your Home Screen!', 'success');
           this.dismissPwaBanner();
         }
         this.deferredPwaPrompt = null;
-        return;
+        window.__deferredPwaPrompt = null;
       } catch (err) {
-        console.log('Install prompt error:', err);
+        console.error('Direct install prompt error:', err);
       }
+      return;
     }
 
-    // 2. iOS / Safari or general guide modal
-    this.openModal('pwaIosGuideModal');
+    // 3. Security context check (PWA 1-tap installation requires HTTPS or localhost)
+    if (location.protocol !== 'https:' && location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
+      this.showToast('🔒 HTTPS is required for direct Home Screen installation. Upgrading...', 'warning');
+      location.replace('https://' + location.host + location.pathname + location.search);
+      return;
+    }
+
+    // 4. If prompt is not yet ready, notify user directly without showing explanation guides
+    this.showToast('📱 Please select "Install App" or "Add to Home Screen" from your browser menu', 'info');
   }
 
   async handleGoogleLogin() {

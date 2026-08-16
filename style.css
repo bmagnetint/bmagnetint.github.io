@@ -1757,17 +1757,63 @@ body.theme-dark .profile-modal-capsule {
 }
 
 .pmc-avatar {
-  width: 60px;
-  height: 60px;
+  width: 64px;
+  height: 64px;
   border-radius: 50%;
   background: linear-gradient(135deg, #00a896 0%, #0284c7 100%);
   color: #ffffff;
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 900;
   display: flex;
   align-items: center;
   justify-content: center;
   box-shadow: 0 6px 18px rgba(0, 168, 150, 0.28);
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  border: 2px solid rgba(255, 255, 255, 0.85);
+  transition: transform 0.2s ease;
+}
+
+.pmc-avatar:hover {
+  transform: scale(1.04);
+}
+
+.pmc-avatar img,
+.profile-avatar img,
+.user-avatar-mini img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.pmc-avatar-edit-btn {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #0284c7;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  transition: all 0.2s ease;
+  z-index: 3;
+}
+
+.pmc-avatar-edit-btn:hover {
+  background: #00a896;
+  transform: scale(1.12);
+}
+
+.pmc-avatar-edit-btn .material-symbols-rounded {
+  font-size: 13px;
 }
 
 .pmc-verified-badge {
@@ -1783,10 +1829,125 @@ body.theme-dark .profile-modal-capsule {
   align-items: center;
   justify-content: center;
   border: 2px solid #fff;
+  z-index: 2;
 }
 
 .pmc-verified-badge .material-symbols-rounded {
   font-size: 13px;
+}
+
+/* Quick Avatar Actions Bar */
+.profile-avatar-actions-bar {
+  display: flex;
+  gap: 8px;
+  margin-top: -12px;
+  margin-bottom: 18px;
+}
+
+.btn-avatar-action {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 8px 10px;
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: var(--radius-md);
+  color: #192750;
+  font-size: 11.5px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 8px rgba(25, 39, 80, 0.04);
+}
+
+body.theme-dark .btn-avatar-action {
+  background: rgba(15, 23, 42, 0.45) !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+  color: #f8fafc !important;
+}
+
+.btn-avatar-action:hover {
+  background: rgba(0, 168, 150, 0.15);
+  border-color: #00a896;
+  color: #00a896;
+  transform: translateY(-1px);
+}
+
+.btn-avatar-action .material-symbols-rounded {
+  font-size: 15px;
+}
+
+.btn-avatar-danger:hover {
+  background: rgba(225, 29, 72, 0.12);
+  border-color: #e11d48;
+  color: #e11d48;
+}
+
+/* Preset Avatar Tray */
+.preset-avatar-tray {
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  margin-bottom: 18px;
+  animation: fadeInDown 0.22s ease-out;
+}
+
+body.theme-dark .preset-avatar-tray {
+  background: rgba(15, 23, 42, 0.45) !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+.pat-title {
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #64748b;
+  letter-spacing: 0.4px;
+  margin-bottom: 8px;
+}
+
+.pat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(36px, 1fr));
+  gap: 8px;
+}
+
+.pat-item {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 0;
+}
+
+body.theme-dark .pat-item {
+  background: rgba(30, 41, 59, 0.6);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.pat-item:hover {
+  transform: scale(1.15);
+  background: rgba(0, 168, 150, 0.2);
+  border-color: #00a896;
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .pmc-details {
