@@ -8,7 +8,7 @@
       "category": "1 Month",
       "icon": "radar",
       "color": "#00A896",
-      "badge": "🔥 Most Popular Plan",
+      "badge": "\ud83d\udd25 Most Popular Plan",
       "winRate": 89.4,
       "monthlyRoi": "18 - 23",
       "maxDrawdown": 30.0,
@@ -199,44 +199,6 @@
   ],
   "userSubscriptions": [
     {
-      "id": "sub_1786838264_8977",
-      "customerPhone": "+919495097786",
-      "botId": "bot_bmagnet_trial",
-      "botName": "B-Magnet Gold Hunter EA (2-Day Starter Trial)",
-      "planKey": "trial",
-      "planName": "2-Day Starter Trial",
-      "price": 10.0,
-      "status": "Active",
-      "startDate": "2026-08-15T23:57:44Z",
-      "expiresDate": "2026-08-17T23:57:44Z",
-      "licenseKey": "BM8-88492011-20260817-FB7BB7AE",
-      "broker": "GTCfx",
-      "gtcfxMt5Account": "88492011",
-      "mt5Account": "88492011",
-      "autoRenew": true,
-      "paymentMethod": "USDT (BEP-20 Wallet)",
-      "lastSignal": "XAUUSD (Gold) EA Armed on GTCfx MT5 #88492011"
-    },
-    {
-      "id": "sub_1786837875_4292",
-      "customerPhone": "+919495097786",
-      "botId": "bot_bmagnet_trial",
-      "botName": "B-Magnet Gold Hunter EA (2-Day Starter Trial)",
-      "planKey": "trial",
-      "planName": "2-Day Starter Trial",
-      "price": 10.0,
-      "status": "Active",
-      "startDate": "2026-08-15T23:51:15Z",
-      "expiresDate": "2026-08-17T23:51:15Z",
-      "licenseKey": "BM8-8849202-20260817-9D332826",
-      "broker": "GTCfx",
-      "gtcfxMt5Account": "8849202",
-      "mt5Account": "8849202",
-      "autoRenew": true,
-      "paymentMethod": "USDT (BEP-20 Wallet)",
-      "lastSignal": "XAUUSD (Gold) EA Armed on GTCfx MT5 #8849202"
-    },
-    {
       "id": "sub_bmagnet_1m",
       "customerPhone": "+919495097786",
       "botId": "bot_bmagnet_1m",
@@ -267,32 +229,6 @@
     }
   ],
   "invoices": [
-    {
-      "id": "INV-2026-1594",
-      "date": "2026-08-15T23:57:44Z",
-      "customerPhone": "+919495097786",
-      "botName": "B-Magnet Gold Hunter EA (2-Day Starter Trial)",
-      "plan": "2-Day Starter Trial",
-      "amount": 10.0,
-      "currency": "USDT",
-      "status": "Paid",
-      "paymentMethod": "USDT (BEP-20 BSC)",
-      "broker": "GTCfx",
-      "gtcfxMt5Account": "88492011"
-    },
-    {
-      "id": "INV-2026-4173",
-      "date": "2026-08-15T23:51:15Z",
-      "customerPhone": "+919495097786",
-      "botName": "B-Magnet Gold Hunter EA (2-Day Starter Trial)",
-      "plan": "2-Day Starter Trial",
-      "amount": 10.0,
-      "currency": "USDT",
-      "status": "Paid",
-      "paymentMethod": "USDT (BEP-20 BSC)",
-      "broker": "GTCfx",
-      "gtcfxMt5Account": "8849202"
-    },
     {
       "id": "INV-2026-0891",
       "date": "2026-08-01T10:00:00Z",
@@ -338,39 +274,7 @@
     ]
   },
   "wallet": {
-    "balance": 230.0,
+    "balance": 250.0,
     "currency": "USD"
-  },
-  "notifications": [
-    {
-      "id": "notif_1786838264_47",
-      "type": "NEW_SUBSCRIPTION",
-      "title": "\ud83d\ude80 New Subscription: B-Magnet Gold Hunter EA (2-Day Starter Trial)",
-      "message": "Customer: +919495097786 subscribed to 2-Day Starter Trial (10.0 USDT). GTCfx MT5: #88492011, License: BM8-88492011-20260817-FB7BB7AE",
-      "customerPhone": "+919495097786",
-      "botName": "B-Magnet Gold Hunter EA (2-Day Starter Trial)",
-      "planName": "2-Day Starter Trial",
-      "amount": 10.0,
-      "gtcfxMt5Account": "88492011",
-      "licenseKey": "BM8-88492011-20260817-FB7BB7AE",
-      "expiresDate": "2026-08-17T23:57:44Z",
-      "timestamp": "2026-08-15T23:57:44Z",
-      "unread": true
-    },
-    {
-      "id": "notif_1786837875_880",
-      "type": "NEW_SUBSCRIPTION",
-      "title": "\ud83d\ude80 New Subscription: B-Magnet Gold Hunter EA (2-Day Starter Trial)",
-      "message": "Customer: +919495097786 subscribed to 2-Day Starter Trial (10.0 USDT). GTCfx MT5: #8849202, License: BM8-8849202-20260817-9D332826",
-      "customerPhone": "+919495097786",
-      "botName": "B-Magnet Gold Hunter EA (2-Day Starter Trial)",
-      "planName": "2-Day Starter Trial",
-      "amount": 10.0,
-      "gtcfxMt5Account": "8849202",
-      "licenseKey": "BM8-8849202-20260817-9D332826",
-      "expiresDate": "2026-08-17T23:51:15Z",
-      "timestamp": "2026-08-15T23:51:15Z",
-      "unread": true
-    }
-  ]
+  }
 }

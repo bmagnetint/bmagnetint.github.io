@@ -58,111 +58,93 @@
   -webkit-tap-highlight-color: transparent;
 }
 
+html, body {
+  height: 100%;
+  height: 100vh;
+  height: -webkit-fill-available;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   font-family: var(--font-sans);
-  background-color: var(--bg-app);
+  background-color: #d8ebfa;
   color: var(--text-primary);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
-  min-height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
-  overflow-x: hidden;
+  align-items: stretch;
 }
 
-/* App Viewport Wrapper & Attractive Blurry Background (Light Theme) */
+/* App Viewport Wrapper */
 .app-viewport-wrapper {
   width: 100%;
-  min-height: 100vh;
+  height: 100%;
+  height: 100vh;
+  height: -webkit-fill-available;
   display: flex;
   justify-content: center;
-  align-items: center;
-  padding: 20px 10px;
+  align-items: stretch;
+  overflow: hidden;
+  padding: 0;
   background: 
-    radial-gradient(circle at 10% 10%, rgba(0, 168, 150, 0.15) 0%, transparent 45%),
-    radial-gradient(circle at 90% 85%, rgba(2, 132, 199, 0.15) 0%, transparent 45%),
-    radial-gradient(circle at 50% 50%, rgba(184, 220, 250, 0.6) 0%, transparent 65%),
+    radial-gradient(circle at 10% 10%, rgba(0, 168, 150, 0.12) 0%, transparent 45%),
+    radial-gradient(circle at 90% 85%, rgba(2, 132, 199, 0.12) 0%, transparent 45%),
     #d8ebfa;
 }
 
+/* App Shell (Locked Header & Bottom Dock, Middle Content Scrolls) */
 .mobile-frame {
   width: 100%;
-  max-width: 440px;
-  height: 92vh;
-  max-height: 920px;
+  max-width: 480px;
+  height: 100%;
+  height: 100vh;
+  height: -webkit-fill-available;
   background: 
-    radial-gradient(circle at 10% 0%, rgba(0, 201, 167, 0.18) 0%, transparent 45%),
-    radial-gradient(circle at 90% 25%, rgba(59, 130, 246, 0.14) 0%, transparent 45%),
-    radial-gradient(circle at 30% 65%, rgba(216, 235, 250, 0.8) 0%, transparent 55%),
-    radial-gradient(circle at 80% 90%, rgba(0, 168, 150, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 10% 0%, rgba(0, 201, 167, 0.14) 0%, transparent 45%),
+    radial-gradient(circle at 90% 25%, rgba(59, 130, 246, 0.12) 0%, transparent 45%),
+    radial-gradient(circle at 30% 65%, rgba(216, 235, 250, 0.7) 0%, transparent 55%),
     linear-gradient(180deg, #d8ebfa 0%, #b8dcfa 50%, #edf5fd 100%);
-  border-radius: 44px;
-  border: 3px solid rgba(255, 255, 255, 0.95);
-  box-shadow: 0 25px 60px rgba(25, 39, 80, 0.15), 0 0 35px rgba(0, 168, 150, 0.1);
+  border-radius: 0;
+  border: none;
+  border-left: 1px solid rgba(147, 197, 253, 0.4);
+  border-right: 1px solid rgba(147, 197, 253, 0.4);
+  box-shadow: 0 0 45px rgba(25, 39, 80, 0.08);
   position: relative;
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  transition: all 0.3s ease;
 }
 
-.mobile-frame.fullscreen {
-  max-width: 100%;
-  height: 100vh;
-  max-height: 100vh;
-  border-radius: 0;
-  border: none;
-}
-
-/* Status Bar */
-.mobile-status-bar {
-  height: 38px;
-  padding: 0 24px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 13px;
-  font-weight: 700;
-  color: #192750;
-  z-index: 20;
-  flex-shrink: 0;
-}
-
-.status-notch {
-  width: 120px;
-  height: 18px;
-  background-color: #192750;
-  border-radius: 0 0 12px 12px;
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.status-icons {
-  display: flex;
-  align-items: center;
-  gap: 6px;
+@media (max-width: 520px) {
+  .mobile-frame {
+    max-width: 100%;
+    border-left: none;
+    border-right: none;
+    box-shadow: none;
+  }
 }
 
 .icon-sm {
   font-size: 15px !important;
 }
 
-/* Header */
+/* Locked Header */
 .app-header {
   height: 60px;
-  padding: 0 20px;
+  padding: 0 18px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.88);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1.5px solid rgba(255, 255, 255, 0.95);
   box-shadow: 0 4px 16px rgba(25, 39, 80, 0.04);
   flex-shrink: 0;
+  position: relative;
   z-index: 100;
 }
 
@@ -460,17 +442,21 @@ body {
   font-weight: 800;
 }
 
-/* Main Scrollable Container */
+/* Main Scrollable Container (Scrolls middle content smoothly while header and bottom dock remain locked) */
 .app-content {
   flex: 1;
   overflow-y: auto;
   overflow-x: hidden;
   position: relative;
   scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: contain;
 }
 
 .app-content::-webkit-scrollbar {
   display: none;
+  width: 0;
+  height: 0;
 }
 
 /* View Panels */
