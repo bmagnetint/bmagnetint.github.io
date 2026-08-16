@@ -1410,11 +1410,46 @@
     </div>
   </div>
 
+  <!-- ======================================================== -->
+  <!-- MODAL: LOGOUT CONFIRMATION POPUP                        -->
+  <!-- ======================================================== -->
+  <div class="modal-backdrop" id="logoutConfirmModal">
+    <div class="modal-sheet modal-dialog-centered">
+      <div class="sheet-handle"></div>
+      <div class="modal-header">
+        <h3 class="modal-title" style="display: flex; align-items: center; gap: 8px; color: #ff3366;">
+          <span class="material-symbols-rounded" style="color: #ff3366;">logout</span>
+          Confirm Sign Out
+        </h3>
+        <button class="modal-close-btn" onclick="window.botHubApp.closeModal('logoutConfirmModal')">
+          <span class="material-symbols-rounded">close</span>
+        </button>
+      </div>
+      <div class="modal-body" style="text-align: center; padding: 24px 20px;">
+        <div style="width: 56px; height: 56px; border-radius: 50%; background: rgba(225, 29, 72, 0.12); border: 1px solid rgba(225, 29, 72, 0.3); display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; color: #ff3366;">
+          <span class="material-symbols-rounded" style="font-size: 28px;">power_settings_new</span>
+        </div>
+        <h4 style="font-size: 17px; font-weight: 800; color: #ffffff; margin-bottom: 8px;">Log out of B-Bot Pro?</h4>
+        <p style="font-size: 13px; color: #94a3b8; line-height: 1.5; margin-bottom: 24px;">
+          Are you sure you want to end your session? You will return to the welcome authentication screen.
+        </p>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+          <button type="button" class="btn-cancel-modal" onclick="window.botHubApp.closeModal('logoutConfirmModal')">
+            Cancel
+          </button>
+          <button type="button" class="btn-logout-confirm" onclick="window.botHubApp.confirmLogoutAction()">
+            Sign Out
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Toast Notification System -->
   <div class="toast-container" id="toastContainer"></div>
 
   <!-- App Scripts -->
   <script src="qrcode.js"></script>
-  <script src="app.js?v=2.5"></script>
+  <script src="app.js?v=2.6"></script>
 </body>
 </html>

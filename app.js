@@ -438,16 +438,19 @@ class BotHubApp {
   handleVerifyOtp() { return this.handleVerifyEmailOtp(); }
   editAuthPhone() { return this.editAuthEmail(); }
 
-  async handleLogout() {
-    if (confirm('Do you want to log out from B-Bot Pro?')) {
-      try {
-        await fetch('/api/auth/logout', { method: 'POST' });
-      } catch (e) {}
-      localStorage.removeItem('b_bot_auth_user');
-      this.state.currentUser = null;
-      this.showLoginScreen();
-      this.showToast('You have been logged out.', 'info');
-    }
+  handleLogout() {
+    this.openModal('logoutConfirmModal');
+  }
+
+  async confirmLogoutAction() {
+    this.closeModal('logoutConfirmModal');
+    try {
+      await fetch('/api/auth/logout', { method: 'POST' });
+    } catch (e) {}
+    localStorage.removeItem('b_bot_auth_user');
+    this.state.currentUser = null;
+    this.showLoginScreen();
+    this.showToast('You have been logged out.', 'info');
   }
 
   showUserMenu() {
