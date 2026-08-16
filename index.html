@@ -29,7 +29,7 @@
   <!-- Google Identity Services (Sign-In with Google) -->
   <script src="https://accounts.google.com/gsi/client" async defer></script>
   
-  <link rel="stylesheet" href="style.css?v=8202">
+  <link rel="stylesheet" href="style.css?v=8606">
 </head>
 <body class="theme-dark">
 
@@ -825,32 +825,35 @@
         </div>
       </div>
 
-      <!-- Bottom Mobile Navigation Bar -->
-      <nav class="bottom-nav">
-        <button class="nav-item active" data-view="explore" onclick="window.botHubApp.switchView('explore')">
-          <span class="material-symbols-rounded nav-icon">explore</span>
+      <!-- Bottom Mobile Navigation Bar (iOS Model Glassy Dock with App Icon Squircles) -->
+      <nav class="bottom-nav ios-dock">
+        <button class="nav-item active" data-view="explore" onclick="window.botHubApp.switchView('explore')" title="Explore Marketplace">
+          <div class="ios-dock-squircle ios-icon-safari">
+            <span class="material-symbols-rounded ios-icon-symbol">explore</span>
+          </div>
           <span class="nav-label">Explore</span>
         </button>
 
-        <button class="nav-item" data-view="subscriptions" onclick="window.botHubApp.switchView('subscriptions')">
-          <span class="material-symbols-rounded nav-icon">bolt</span>
+        <button class="nav-item" data-view="subscriptions" onclick="window.botHubApp.switchView('subscriptions')" title="My Bots & Passes">
+          <div class="ios-dock-squircle ios-icon-bots">
+            <span class="material-symbols-rounded ios-icon-symbol">bolt</span>
+            <span class="ios-badge-pill" id="navBadgeSubCount">1</span>
+          </div>
           <span class="nav-label">My Bots</span>
-          <span class="nav-badge" id="navBadgeSubCount">1</span>
         </button>
 
-        <button class="nav-item" data-view="database" onclick="window.botHubApp.switchView('database')">
-          <span class="material-symbols-rounded nav-icon" style="color: #10B981;">table_chart</span>
-          <span class="nav-label" style="color: #10B981;">Database</span>
-          <span class="nav-badge" style="background: #10B981;">CRM</span>
+        <button class="nav-item" data-view="database" onclick="window.botHubApp.switchView('database')" title="Admin CRM & Clients">
+          <div class="ios-dock-squircle ios-icon-crm">
+            <span class="material-symbols-rounded ios-icon-symbol">table_chart</span>
+            <span class="ios-badge-pill ios-badge-green">CRM</span>
+          </div>
+          <span class="nav-label">Database</span>
         </button>
 
-        <button class="nav-item" data-view="creator" onclick="window.botHubApp.switchView('creator')">
-          <span class="material-symbols-rounded nav-icon">storefront</span>
-          <span class="nav-label">Creator</span>
-        </button>
-
-        <button class="nav-item" data-view="settings" onclick="window.botHubApp.switchView('settings')">
-          <span class="material-symbols-rounded nav-icon">manage_accounts</span>
+        <button class="nav-item" data-view="settings" onclick="window.botHubApp.switchView('settings')" title="Account & Settings">
+          <div class="ios-dock-squircle ios-icon-account">
+            <span class="material-symbols-rounded ios-icon-symbol">manage_accounts</span>
+          </div>
           <span class="nav-label">Account</span>
         </button>
       </nav>
@@ -1603,6 +1606,6 @@
 
   <!-- App Scripts -->
   <script src="qrcode.js"></script>
-  <script src="app.js?v=8202"></script>
+  <script src="app.js?v=8606"></script>
 </body>
 </html>

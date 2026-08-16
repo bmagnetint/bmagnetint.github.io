@@ -437,6 +437,7 @@ class BotHubApp {
     const loginEmailInput = document.getElementById('loginEmailInput');
     const loginOtpInput = document.getElementById('loginOtpInput');
     const themeLabel = document.getElementById('welcomeThemeLabel');
+    const brandTitle = document.getElementById('headerBrandTitle');
     const brandSub = document.getElementById('brandSubtitle');
 
     if (txtWelcomeTitle) txtWelcomeTitle.textContent = t.welcomeTitle;
@@ -451,6 +452,7 @@ class BotHubApp {
     if (txtSignUpLink) txtSignUpLink.textContent = t.signUpLink;
     if (loginEmailInput) loginEmailInput.placeholder = t.emailPlaceholder;
     if (loginOtpInput) loginOtpInput.placeholder = t.passwordPlaceholder;
+    if (brandTitle) brandTitle.textContent = t.brandTitle;
     if (brandSub) brandSub.textContent = t.brandSub;
 
     // Bottom Navigation Dock

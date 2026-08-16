@@ -345,9 +345,9 @@ body.theme-dark .app-header {
 .header-left {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   min-width: 0;
-  flex-shrink: 0;
+  flex-shrink: 1;
 }
 
 .brand-logo-prominent {
@@ -371,25 +371,57 @@ body.theme-dark .app-header {
   transform: scale(1.06);
 }
 
-.brand-logo {
-  width: auto;
-  height: auto;
-  background: transparent;
-  box-shadow: none;
-  border: none;
+.header-brand-text-col {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
   justify-content: center;
-  flex-shrink: 0;
+  gap: 1px;
+  min-width: 0;
 }
 
-.header-bmagnet-logo {
-  height: 38px;
-  width: auto;
-  max-width: 52px;
-  object-fit: contain;
-  display: block;
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+.header-brand-title-row {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.header-brand-title {
+  font-size: 15.5px;
+  font-weight: 800;
+  color: #192750;
+  letter-spacing: -0.3px;
+  line-height: 1.15;
+  white-space: nowrap;
+}
+
+body.theme-dark .header-brand-title {
+  color: #ffffff !important;
+}
+
+.header-brand-badge {
+  font-size: 8.5px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #00a896, #0284c7);
+  color: #ffffff;
+  padding: 1.5px 5px;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+  line-height: 1;
+  display: inline-block;
+}
+
+.header-brand-sub {
+  font-size: 9.5px;
+  font-weight: 600;
+  color: #64748b;
+  line-height: 1.1;
+  white-space: nowrap;
+  letter-spacing: 0.1px;
+}
+
+body.theme-dark .header-brand-sub {
+  color: #94a3b8 !important;
 }
 
 .header-right {
@@ -1755,118 +1787,182 @@ body.scrolled-hide-live .live-ticker-container {
    MODERN iOS LIQUID FLOATING GLASS DOCK (DYNAMIC CAPSULE ISLAND)
    ========================================================================== */
 .bottom-nav {
+/* ==========================================================================
+   MODERN iOS LIQUID GLASS DOCK WITH APP ICON SQUIRCLES (NATIVE iOS MODELS)
+   ========================================================================== */
+.bottom-nav,
+.ios-dock {
   position: absolute;
   bottom: max(14px, env(safe-area-inset-bottom, 14px));
   left: 14px;
   right: 14px;
   width: calc(100% - 28px);
-  max-width: 440px;
+  max-width: 420px;
   margin: 0 auto;
-  height: 64px;
-  background: rgba(255, 255, 255, 0.35);
-  backdrop-filter: blur(48px) saturate(260%) brightness(108%);
-  -webkit-backdrop-filter: blur(48px) saturate(260%) brightness(108%);
-  border: 1.5px solid rgba(255, 255, 255, 0.8);
-  border-radius: 36px;
+  height: 76px;
+  background: rgba(255, 255, 255, 0.32);
+  backdrop-filter: blur(50px) saturate(240%) brightness(110%);
+  -webkit-backdrop-filter: blur(50px) saturate(240%) brightness(110%);
+  border: 1.5px solid rgba(255, 255, 255, 0.75);
+  border-radius: 34px;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding: 5px 6px;
+  padding: 6px 10px;
   z-index: 100;
-  box-shadow: 0 20px 50px rgba(25, 39, 80, 0.14), 0 2px 10px rgba(25, 39, 80, 0.04), inset 0 1.5px 2px rgba(255, 255, 255, 1), inset 0 -1px 2px rgba(255, 255, 255, 0.45);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15), 0 4px 14px rgba(0, 0, 0, 0.05), inset 0 1.5px 2px rgba(255, 255, 255, 1), inset 0 -1px 2px rgba(255, 255, 255, 0.5);
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   transform: translateZ(0);
   -webkit-transform: translateZ(0);
 }
 
-body.theme-dark .bottom-nav {
-  background: rgba(10, 17, 32, 0.38) !important;
-  backdrop-filter: blur(48px) saturate(260%) brightness(108%) !important;
-  -webkit-backdrop-filter: blur(48px) saturate(260%) brightness(108%) !important;
-  border: 1.5px solid rgba(255, 255, 255, 0.18) !important;
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65), 0 4px 16px rgba(0, 0, 0, 0.4), inset 0 1.5px 2px rgba(255, 255, 255, 0.22), inset 0 -1px 2px rgba(0, 0, 0, 0.4) !important;
+body.theme-dark .bottom-nav,
+body.theme-dark .ios-dock {
+  background: rgba(255, 255, 255, 0.12) !important;
+  backdrop-filter: blur(50px) saturate(240%) brightness(110%) !important;
+  -webkit-backdrop-filter: blur(50px) saturate(240%) brightness(110%) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.22) !important;
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.5), inset 0 1.5px 2px rgba(255, 255, 255, 0.3), inset 0 -1px 2px rgba(0, 0, 0, 0.4) !important;
 }
 
 .nav-item {
   flex: 1;
   height: 100%;
-  max-height: 54px;
   background: transparent;
   border: none;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: #64748b;
   cursor: pointer;
   position: relative;
-  border-radius: 26px;
-  padding: 4px 2px;
+  border-radius: 20px;
+  padding: 2px 2px;
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.nav-item:hover {
-  color: #192750;
+/* iOS App Icon Squircle Container */
+.ios-dock-squircle {
+  width: 44px;
+  height: 44px;
+  border-radius: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.14), inset 0 1px 1px rgba(255, 255, 255, 0.45);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, filter 0.25s ease;
 }
 
-body.theme-dark .nav-item:hover {
-  color: #f8fafc;
-}
-
-/* Active Floating Pill Highlight */
-.nav-item.active {
-  color: #00a896;
-  background: linear-gradient(135deg, rgba(0, 168, 150, 0.15) 0%, rgba(2, 132, 199, 0.12) 100%);
-  box-shadow: 0 2px 10px rgba(0, 168, 150, 0.14);
-}
-
-body.theme-dark .nav-item.active {
-  color: #00f2fe !important;
-  background: linear-gradient(135deg, rgba(0, 242, 254, 0.2) 0%, rgba(0, 168, 150, 0.16) 100%) !important;
-  box-shadow: 0 2px 14px rgba(0, 242, 254, 0.22) !important;
-}
-
-.nav-icon {
-  font-size: 21px;
+.ios-icon-symbol {
+  font-size: 24px;
   line-height: 1;
-  transition: transform 0.24s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.nav-item.active .nav-icon {
-  transform: translateY(-1px) scale(1.06);
-}
-
-.nav-label {
-  font-size: 10px;
-  font-weight: 700;
-  line-height: 1.1;
-  margin-top: 2px;
-  max-height: 14px;
-  opacity: 0.92;
-  transform: translateY(0);
-  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
-  overflow: hidden;
-  white-space: nowrap;
   display: block;
 }
 
-.nav-item.active .nav-label {
-  font-weight: 800;
-  opacity: 1;
+/* 1. Explore Tab: Safari Compass Style */
+.ios-icon-safari {
+  background: linear-gradient(180deg, #ffffff 0%, #e0f2fe 100%);
+  border: 1px solid rgba(2, 132, 199, 0.25);
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.2), inset 0 1px 1px #ffffff;
+}
+.ios-icon-safari .ios-icon-symbol {
+  color: #0284c7;
 }
 
-.nav-badge {
+/* 2. My Bots Tab: iOS Robot Automation Style */
+.ios-icon-bots {
+  background: linear-gradient(180deg, #818cf8 0%, #4338ca 100%);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 4px 14px rgba(67, 56, 202, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.5);
+}
+.ios-icon-bots .ios-icon-symbol {
+  color: #ffffff;
+}
+
+/* 3. Database CRM Tab: iOS Phone/WhatsApp Green Style */
+.ios-icon-crm {
+  background: linear-gradient(180deg, #34d399 0%, #059669 100%);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 4px 14px rgba(5, 150, 105, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.5);
+}
+.ios-icon-crm .ios-icon-symbol {
+  color: #ffffff;
+}
+
+/* 4. Account Settings Tab: iOS Slate Settings Style */
+.ios-icon-account {
+  background: linear-gradient(180deg, #64748b 0%, #1e293b 100%);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 4px 14px rgba(30, 41, 59, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.5);
+}
+.ios-icon-account .ios-icon-symbol {
+  color: #ffffff;
+}
+
+/* iOS Notification Badge Pill */
+.ios-badge-pill {
   position: absolute;
-  top: -2px;
-  right: 6px;
-  background: var(--color-danger);
-  color: #fff;
+  top: -4px;
+  right: -4px;
+  min-width: 17px;
+  height: 17px;
+  border-radius: 9px;
+  background: #ef4444;
+  color: #ffffff;
   font-size: 9px;
   font-weight: 800;
-  padding: 1px 4px;
-  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+  border: 1.5px solid #ffffff;
+  box-shadow: 0 2px 6px rgba(239, 68, 68, 0.45);
+}
+
+.ios-badge-green {
+  background: #059669 !important;
+  font-size: 7.5px;
+  box-shadow: 0 2px 6px rgba(5, 150, 105, 0.45) !important;
+}
+
+/* iOS Active Interaction States */
+.nav-item.active .ios-dock-squircle {
+  transform: translateY(-2px) scale(1.08);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.28), inset 0 1px 1px rgba(255, 255, 255, 0.7);
+}
+
+.nav-item:active .ios-dock-squircle {
+  transform: scale(0.92);
+}
+
+.nav-label {
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-top: 3px;
+  max-height: 12px;
+  color: #475569;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+  letter-spacing: 0px;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.nav-item.active .nav-label {
+  color: #0284c7;
+  font-weight: 800;
+}
+
+body.theme-dark .nav-label {
+  color: #cbd5e1;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+body.theme-dark .nav-item.active .nav-label {
+  color: #38bdf8;
 }
 
 .nav-item-cta {
