@@ -1,499 +1,1432 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>B Magnet International — Institutional Asset Management & AI Yield Portals</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: data: 'unsafe-inline' 'unsafe-eval';" />
-    <meta name="description" content="B Magnet International is a premier institutional asset management platform providing segregated multi-sig custody, automated AI Forex yield execution, and transparent capital allocation." />
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0d14">
+  <title>B-Bot Pro - Bot Marketing & Subscription Mobile App</title>
+  
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
+  
+  <!-- Android PWA & Play Store Manifest -->
+  <link rel="manifest" href="/manifest.json">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="B-Bot Pro">
+
+  <!-- Google Identity Services (Sign-In with Google) -->
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  
+  <link rel="stylesheet" href="style.css?v=2.5">
+</head>
+<body class="theme-dark">
+
+  <div class="app-viewport-wrapper">
     
-    <link
-      href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="styles.css" />
-    <link rel="manifest" href="manifest.json" />
-    <meta name="theme-color" content="#0d1f42" />
-  </head>
-  <body class="corporate-body">
-    <!-- TOP STICKY CORPORATE NAVBAR -->
-    <header class="biz-navbar">
-      <div class="biz-nav-container">
-        <a href="index.html" class="biz-brand-link">
-          <img src="logo.png" alt="B Magnet International Logo" class="biz-nav-logo" />
-          <div class="biz-brand-text">
-            <span class="biz-brand-name">B MAGNET INTERNATIONAL</span>
-            <span class="biz-brand-sub">INSTITUTIONAL ASSET MANAGEMENT</span>
-          </div>
-        </a>
-
-        <!-- Desktop Navigation Links -->
-        <nav class="biz-nav-links">
-          <a href="#about" class="biz-nav-item">About Us</a>
-          <a href="#solutions" class="biz-nav-item">Solutions</a>
-          <a href="#calculator" class="biz-nav-item">Yield Calculator</a>
-          <a href="#plans" class="biz-nav-item">Investment Plans</a>
-          <a href="#security" class="biz-nav-item">Security Vaults</a>
-        </nav>
-
-        <!-- Right Utility Actions -->
-        <div class="biz-nav-actions">
-          <button id="langToggleBtn" class="biz-util-btn" title="Toggle Language (EN / العربية)">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"></circle>
-              <line x1="2" y1="12" x2="22" y2="12"></line>
-              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-            </svg>
-            <span id="currentLangLabel">EN</span>
-          </button>
-
-          <button id="themeToggleBtn" class="biz-util-btn" title="Toggle Theme (Dark / Light)">
-            <span id="themeIcon">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="5"></circle>
-                <line x1="12" y1="1" x2="12" y2="3"></line>
-                <line x1="12" y1="21" x2="12" y2="23"></line>
-                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                <line x1="1" y1="12" x2="3" y2="12"></line>
-                <line x1="21" y1="12" x2="23" y2="12"></line>
-                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-              </svg>
-            </span>
-          </button>
-
-          <a href="login.html" class="biz-nav-login-link">Sign In</a>
-          <a href="login.html" class="biz-nav-cta-btn">Access Portal →</a>
+    <!-- Mobile Shell Container -->
+    <div class="mobile-frame" id="mobileFrame">
+      
+      <!-- Mobile Status Bar -->
+      <div class="mobile-status-bar">
+        <span class="status-time" id="statusTime">9:41</span>
+        <div class="status-notch"></div>
+        <div class="status-icons">
+          <span class="material-symbols-rounded icon-sm">signal_cellular_4_bar</span>
+          <span class="material-symbols-rounded icon-sm">wifi</span>
+          <span class="material-symbols-rounded icon-sm">battery_full</span>
         </div>
       </div>
-    </header>
 
-    <!-- HERO SECTION (Executive Corporate Banner) -->
-    <section class="biz-hero-section">
-      <div class="biz-hero-mesh"></div>
-      <div class="biz-hero-container">
-        <div class="biz-hero-content">
-          <div class="biz-badge-pill">
-            <span class="pulse-dot"></span>
-            <span>MULTI-SIG CUSTODIAL VAULTS • AUTOMATED AI YIELDS</span>
-          </div>
+      <!-- ======================================================== -->
+      <!-- SCREEN: FULL DUAL-SCREEN AUTH FLOW (MATCHING ATTACHED IMAGE) -->
+      <!-- ======================================================== -->
+      <!-- ======================================================== -->
+      <!-- SCREEN: FULL DUAL-SCREEN AUTH FLOW WITH B-MAGNET BRANDING  -->
+      <!-- ======================================================== -->
+      <div class="auth-overlay active" id="authScreenOverlay">
+        
+        <!-- Fullscreen Faded Trading Chart Background (Spans Entire Screen) -->
+        <div class="auth-fullscreen-faded-chart">
+          <svg viewBox="0 0 400 700" fill="none" xmlns="http://www.w3.org/2000/svg" class="faded-trading-chart-svg" preserveAspectRatio="xMidYMid slice">
+            <defs>
+              <filter id="bg_chart_blur" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur stdDeviation="3" />
+              </filter>
+              <linearGradient id="bg_chart_grad" x1="0" y1="0" x2="0" y2="700" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#00F2FE" stop-opacity="0.35"/>
+                <stop offset="0.6" stop-color="#3B82F6" stop-opacity="0.15"/>
+                <stop offset="1" stop-color="#93c5fd" stop-opacity="0.0"/>
+              </linearGradient>
+            </defs>
 
-          <h1 class="biz-hero-headline">
-            Institutional Sovereign Wealth & Automated AI Capital Yields.
-          </h1>
+            <!-- Faded Chart Grid & Candlesticks -->
+            <g filter="url(#bg_chart_blur)" opacity="0.5">
+              <!-- Horizontal price grids -->
+              <line x1="10" y1="60" x2="390" y2="60" stroke="#93c5fd" stroke-width="1" stroke-dasharray="6 6" stroke-opacity="0.4"/>
+              <line x1="10" y1="140" x2="390" y2="140" stroke="#93c5fd" stroke-width="1" stroke-dasharray="6 6" stroke-opacity="0.4"/>
+              <line x1="10" y1="220" x2="390" y2="220" stroke="#93c5fd" stroke-width="1" stroke-dasharray="6 6" stroke-opacity="0.4"/>
+              <line x1="10" y1="300" x2="390" y2="300" stroke="#93c5fd" stroke-width="1" stroke-dasharray="6 6" stroke-opacity="0.4"/>
+              <line x1="10" y1="380" x2="390" y2="380" stroke="#93c5fd" stroke-width="1" stroke-dasharray="6 6" stroke-opacity="0.4"/>
+              <line x1="10" y1="460" x2="390" y2="460" stroke="#93c5fd" stroke-width="1" stroke-dasharray="6 6" stroke-opacity="0.4"/>
+              <line x1="10" y1="540" x2="390" y2="540" stroke="#93c5fd" stroke-width="1" stroke-dasharray="6 6" stroke-opacity="0.4"/>
 
-          <p class="biz-hero-tagline">
-            B Magnet International provides accredited investors, private family offices, and institutions with segregated Tier-1 multi-sig cold storage, automated MT5 neural trading execution, and transparent daily distributions.
-          </p>
+              <!-- Vertical Time Lines -->
+              <line x1="80" y1="20" x2="80" y2="680" stroke="#93c5fd" stroke-width="1" stroke-dasharray="6 6" stroke-opacity="0.25"/>
+              <line x1="160" y1="20" x2="160" y2="680" stroke="#93c5fd" stroke-width="1" stroke-dasharray="6 6" stroke-opacity="0.25"/>
+              <line x1="240" y1="20" x2="240" y2="680" stroke="#93c5fd" stroke-width="1" stroke-dasharray="6 6" stroke-opacity="0.25"/>
+              <line x1="320" y1="20" x2="320" y2="680" stroke="#93c5fd" stroke-width="1" stroke-dasharray="6 6" stroke-opacity="0.25"/>
 
-          <div class="biz-hero-cta-group">
-            <a href="login.html" class="biz-btn-primary">
-              <span>Access Investor Portal →</span>
-            </a>
-            <a href="#calculator" class="biz-btn-secondary">
-              <span>Calculate Daily Yields ↓</span>
-            </a>
-            <a href="register.html" class="biz-btn-outline">
-              <span>Open Investor Account</span>
-            </a>
-          </div>
+              <!-- Candlesticks Array -->
+              <line x1="40" y1="340" x2="40" y2="420" stroke="#10B981" stroke-width="2"/>
+              <rect x="34" y="360" width="12" height="40" rx="2" fill="#10B981"/>
 
-          <!-- Hero Metrics Ticker Strip -->
-          <div class="biz-metrics-strip">
-            <div class="biz-metric-item">
-              <strong class="biz-metric-num">$250M+</strong>
-              <span class="biz-metric-label">Institutional AUM</span>
-            </div>
-            <div class="biz-metric-divider"></div>
-            <div class="biz-metric-item">
-              <strong class="biz-metric-num" style="color: var(--accent-teal);">$10 – $30</strong>
-              <span class="biz-metric-label">Daily Yield / Bot (Mon–Fri)</span>
-            </div>
-            <div class="biz-metric-divider"></div>
-            <div class="biz-metric-item">
-              <strong class="biz-metric-num">2.5%</strong>
-              <span class="biz-metric-label">Downside Stop Protection</span>
-            </div>
-            <div class="biz-metric-divider"></div>
-            <div class="biz-metric-item">
-              <strong class="biz-metric-num">100%</strong>
-              <span class="biz-metric-label">Segregated Tier-1 Custody</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+              <line x1="75" y1="300" x2="75" y2="390" stroke="#10B981" stroke-width="2"/>
+              <rect x="69" y="320" width="12" height="50" rx="2" fill="#10B981"/>
 
-    <!-- ABOUT SECTION -->
-    <section id="about" class="biz-section-wrap">
-      <div class="biz-container">
-        <div class="biz-section-header">
-          <span class="biz-section-eyebrow">FIDUCIARY EXCELLENCE</span>
-          <h2 class="biz-section-title">Built for Sovereign Wealth & Private Institutions</h2>
-          <p class="biz-section-subtitle">
-            Engineered from the ground up to eliminate trading friction, mitigate market volatility, and deliver predictable daily passive yields into segregated multi-signature vaults.
-          </p>
-        </div>
+              <line x1="110" y1="320" x2="110" y2="380" stroke="#EF4444" stroke-width="2"/>
+              <rect x="104" y="335" width="12" height="30" rx="2" fill="#EF4444"/>
 
-        <div class="biz-features-grid">
-          <div class="biz-feature-card">
-            <div class="biz-feature-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-              </svg>
-            </div>
-            <h3 class="biz-feature-title">Multi-Sig Cold Vault Custody</h3>
-            <p class="biz-feature-desc">
-              All client capital is held in segregated multi-party computation (MPC) cold vaults with 256-bit cryptographic keys. No single entity holds complete authorization.
-            </p>
-          </div>
+              <line x1="145" y1="260" x2="145" y2="350" stroke="#10B981" stroke-width="2"/>
+              <rect x="139" y="280" width="12" height="55" rx="2" fill="#10B981"/>
 
-          <div class="biz-feature-card">
-            <div class="biz-feature-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
-              </svg>
-            </div>
-            <h3 class="biz-feature-title">Automated AI Neural Execution</h3>
-            <p class="biz-feature-desc">
-              High-frequency algorithms execute liquidity capture across major FX currency pairs (EUR/USD, GBP/USD, USD/JPY) strictly during Mon–Fri market hours.
-            </p>
-          </div>
+              <line x1="180" y1="240" x2="180" y2="330" stroke="#10B981" stroke-width="2"/>
+              <rect x="174" y="255" width="12" height="50" rx="2" fill="#10B981"/>
 
-          <div class="biz-feature-card">
-            <div class="biz-feature-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-              </svg>
-            </div>
-            <h3 class="biz-feature-title">2.5% Downside Risk Stops</h3>
-            <p class="biz-feature-desc">
-              Institutional risk protocols enforce hard 2.5% stop-loss thresholds per market cycle, guaranteeing capital preservation under all market shocks.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
+              <line x1="215" y1="270" x2="215" y2="320" stroke="#EF4444" stroke-width="2"/>
+              <rect x="209" y="275" width="12" height="30" rx="2" fill="#EF4444"/>
 
-    <!-- INTERACTIVE INVESTMENT & YIELD CALCULATOR -->
-    <section id="calculator" class="biz-section-wrap biz-calc-bg">
-      <div class="biz-container">
-        <div class="biz-section-header">
-          <span class="biz-section-eyebrow">YIELD SIMULATOR</span>
-          <h2 class="biz-section-title">Interactive AI Bot Capital Calculator</h2>
-          <p class="biz-section-subtitle">
-            Simulate your projected daily, monthly, and quarterly net returns based on your allocated AI bot units.
-          </p>
+              <line x1="250" y1="200" x2="250" y2="290" stroke="#10B981" stroke-width="2"/>
+              <rect x="244" y="215" width="12" height="55" rx="2" fill="#10B981"/>
+
+              <line x1="285" y1="170" x2="285" y2="260" stroke="#10B981" stroke-width="2"/>
+              <rect x="279" y="185" width="12" height="60" rx="2" fill="#10B981"/>
+
+              <line x1="320" y1="140" x2="320" y2="230" stroke="#10B981" stroke-width="2"/>
+              <rect x="314" y="155" width="12" height="55" rx="2" fill="#10B981"/>
+
+              <line x1="355" y1="110" x2="355" y2="190" stroke="#10B981" stroke-width="2"/>
+              <rect x="349" y="120" width="12" height="50" rx="2" fill="#10B981"/>
+
+              <!-- Primary Indicator Waves -->
+              <path d="M10 420 C 80 380, 140 280, 220 260 C 300 240, 340 130, 390 90" stroke="#00F2FE" stroke-width="5" stroke-linecap="round" fill="none"/>
+              <path d="M10 420 C 80 380, 140 280, 220 260 C 300 240, 340 130, 390 90 L 390 700 L 10 700 Z" fill="url(#bg_chart_grad)"/>
+              <path d="M10 440 C 90 410, 160 310, 240 290 C 320 270, 350 160, 390 120" stroke="#F59E0B" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+
+              <!-- Bottom Volume Bars -->
+              <rect x="34" y="600" width="12" height="60" rx="2" fill="#3B82F6" fill-opacity="0.6"/>
+              <rect x="69" y="580" width="12" height="80" rx="2" fill="#3B82F6" fill-opacity="0.7"/>
+              <rect x="104" y="610" width="12" height="50" rx="2" fill="#3B82F6" fill-opacity="0.4"/>
+              <rect x="139" y="560" width="12" height="100" rx="2" fill="#3B82F6" fill-opacity="0.8"/>
+              <rect x="174" y="570" width="12" height="90" rx="2" fill="#3B82F6" fill-opacity="0.7"/>
+              <rect x="209" y="620" width="12" height="40" rx="2" fill="#3B82F6" fill-opacity="0.3"/>
+              <rect x="244" y="550" width="12" height="110" rx="2" fill="#3B82F6" fill-opacity="0.85"/>
+              <rect x="279" y="540" width="12" height="120" rx="2" fill="#3B82F6" fill-opacity="0.9"/>
+              <rect x="314" y="520" width="12" height="140" rx="2" fill="#3B82F6" fill-opacity="0.95"/>
+              <rect x="349" y="500" width="12" height="160" rx="2" fill="#3B82F6"/>
+            </g>
+          </svg>
         </div>
 
-        <div class="biz-calc-card">
-          <div class="biz-calc-left">
-            <label style="display: block; font-size: 0.88rem; font-weight: 800; color: var(--text-primary); margin-bottom: 12px;">
-              Select Number of AI Bot Units:
-            </label>
-            
-            <div class="biz-bot-selector-grid">
-              <button type="button" class="biz-bot-btn active" data-bots="1" data-capital="1000" data-rent="300">
-                <strong>1 Bot</strong>
-                <span>$1,000 Capital</span>
-              </button>
-              <button type="button" class="biz-bot-btn" data-bots="2" data-capital="2000" data-rent="600">
-                <strong>2 Bots</strong>
-                <span>$2,000 Capital</span>
-              </button>
-              <button type="button" class="biz-bot-btn" data-bots="3" data-capital="3000" data-rent="900">
-                <strong>3 Bots</strong>
-                <span>$3,000 Capital</span>
-              </button>
-              <button type="button" class="biz-bot-btn" data-bots="5" data-capital="5000" data-rent="1500">
-                <strong>5 Bots</strong>
-                <span>$5,000 Capital</span>
-              </button>
-            </div>
-
-            <div class="biz-calc-details-table">
-              <div class="biz-calc-row">
-                <span>Base Capital Deposit:</span>
-                <strong id="calcCapital">$1,000 USD</strong>
-              </div>
-              <div class="biz-calc-row">
-                <span>3-Month Bot Rental Fee:</span>
-                <strong id="calcRent">$300 USD (3-Mo Contract)</strong>
-              </div>
-              <div class="biz-calc-row">
-                <span>Total Initial Outlay:</span>
-                <strong id="calcOutlay" style="color: var(--accent-gold); font-size: 1.1rem;">$1,300 USD</strong>
-              </div>
-            </div>
-          </div>
-
-          <div class="biz-calc-right">
-            <div class="biz-calc-yield-box">
-              <span class="biz-yield-label">Projected Daily Net Return (Mon–Fri):</span>
-              <div class="biz-yield-value" id="calcDailyReturn">$10 – $30 <span style="font-size: 1rem; color: var(--slate-400);">/ day</span></div>
+        <div class="auth-screens-viewport" id="authScreensViewport">
+          
+          <!-- ========================================== -->
+          <!-- SCREEN 1: WELCOME / HELLO SCREEN (LEFT IMAGE) -->
+          <!-- ========================================== -->
+          <div class="auth-screen-slide active" id="authWelcomeScreen">
+            <div class="welcome-screen-inner">
               
-              <div style="margin: 16px 0; border-top: 1px solid rgba(255,255,255,0.12);"></div>
+              <!-- Top Greeting -->
+              <div class="welcome-header">
+                <h1 class="welcome-title">HELLO</h1>
+                <p class="welcome-subtitle">Sign in to access your automated trading passes</p>
+              </div>
 
-              <span class="biz-yield-label">Projected Monthly Profit (~22 Trading Days):</span>
-              <div class="biz-yield-monthly" id="calcMonthlyReturn">$220 – $660 <span style="font-size: 1rem; color: var(--slate-400);">/ mo</span></div>
+              <!-- Center Logo Display (Frameless, Large B-Magnet Official Logo) -->
+              <div class="welcome-logo-center-wrapper">
+                <img src="images/b-magnet-logo.png" alt="B-Magnet - Perfect business solutions" class="bmagnet-hero-logo-img">
+              </div>
 
-              <a href="login.html" id="calcActionBtn" class="biz-btn-primary" style="width: 100%; margin-top: 24px; text-align: center;">
-                Allocate 1 Bot & Fund via Vault →
+              <!-- Bottom Buttons on Screen 1 -->
+              <div class="welcome-actions">
+                <button type="button" class="btn-clean-navy" onclick="window.botHubApp.showSignInScreen()">
+                  <span>Sign In</span>
+                </button>
+                <button type="button" class="btn-clean-white" onclick="window.botHubApp.handleGoogleLogin()">
+                  <span>Sign Up</span>
+                </button>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- ========================================== -->
+          <!-- SCREEN 2: SIGN IN SCREEN (RIGHT IMAGE)     -->
+          <!-- ========================================== -->
+          <div class="auth-screen-slide" id="authSignInScreen">
+            <div class="signin-screen-inner">
+              
+              <!-- Top Header with Back Button & Subtle Bot Details -->
+              <div class="signin-top-hero">
+                <button type="button" class="signin-back-btn" onclick="window.botHubApp.showWelcomeScreen()" title="Back to Welcome">
+                  <span class="material-symbols-rounded">arrow_back</span>
+                </button>
+
+                <div class="signin-bot-details-card">
+                  <div class="signin-bot-badge-row">
+                    <span class="bot-status-dot-live"></span>
+                    <span class="bot-badge-label font-mono">B-MAGNET GOLD HUNTER EA</span>
+                  </div>
+                  <h2 class="signin-bot-title">Institutional MT5 Automated Trading</h2>
+                  <div class="signin-bot-tags-row">
+                    <span class="signin-bot-chip">✨ 89.4% Win Rate</span>
+                    <span class="signin-bot-chip">⚡ 24/5 Auto Gold</span>
+                    <span class="signin-bot-chip">🛡️ Low Drawdown</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Bottom Curved Pure-White Sheet (Right Image) -->
+              <div class="signin-white-sheet">
+                <form class="signin-clean-form" onsubmit="event.preventDefault(); window.botHubApp.handleCleanSignIn();">
+                  
+                  <!-- Email Field -->
+                  <div class="signin-input-wrapper">
+                    <input type="email" id="loginEmailInput" class="signin-clean-input" placeholder="Email" value="hanaan.trader@gmail.com" required autocomplete="email">
+                  </div>
+
+                  <!-- Password Field -->
+                  <div class="signin-input-wrapper">
+                    <input type="password" id="loginOtpInput" class="signin-clean-input" placeholder="Password" value="8492" required>
+                  </div>
+
+                  <!-- Sign In Button (Navy Blue Pill) -->
+                  <button type="submit" class="btn-clean-navy btn-signin-block" id="loginMainSubmitBtn">
+                    <span>Sign In</span>
+                  </button>
+
+                  <!-- Forgot password? -->
+                  <div class="signin-forgot-row">
+                    <a href="#" class="signin-forgot-link" onclick="event.preventDefault(); window.botHubApp.fillDemoCredentials();">Forgot password?</a>
+                  </div>
+
+                  <!-- Google Sign In Only (Facebook Removed) -->
+                  <div class="signin-social-row">
+                    <button type="button" class="signin-social-btn btn-google-single" id="btnGoogleLogin" onclick="window.botHubApp.handleGoogleLogin()">
+                      <svg class="google-svg-icon" viewBox="0 0 24 24" width="18" height="18">
+                        <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                        <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                        <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"/>
+                        <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"/>
+                      </svg>
+                      <span>Sign In with Google</span>
+                    </button>
+                  </div>
+
+                  <!-- Google Identity Services Container -->
+                  <div id="g_id_onload"
+                       data-client_id="193074652385-prup7faehlgodh890o06ehfaujblvvni.apps.googleusercontent.com"
+                       data-context="signin"
+                       data-ux_mode="popup"
+                       data-callback="handleGoogleCredentialResponse"
+                       data-auto_prompt="false">
+                  </div>
+
+                  <!-- Don't have an account? Sign Up -->
+                  <div class="signin-footer-row">
+                    <span>Don't have an account? <a href="#" class="signin-signup-link" onclick="event.preventDefault(); window.botHubApp.handleGoogleLogin();">Sign Up</a></span>
+                  </div>
+
+                </form>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- App Header -->
+      <header class="app-header">
+        <div class="header-left">
+          <div class="brand-logo">
+            <img src="images/b-magnet-logo.png" alt="B-Magnet" class="header-bmagnet-logo">
+          </div>
+          <div class="brand-info">
+            <h1 class="brand-title">B-Magnet <span class="brand-badge">PRO</span></h1>
+            <span class="brand-sub" id="brandSubtitle">Trading & Marketing Bots</span>
+          </div>
+        </div>
+
+        <div class="header-right">
+          <!-- Compact Corner Wallet Asset with Logged-in User Name -->
+          <button class="wallet-compact-corner-btn" id="openTopupBtn" onclick="window.botHubApp.openTopupModal()" title="BEP-20 Wallet & Account">
+            <span class="user-avatar-mini">
+              <span class="material-symbols-rounded">account_circle</span>
+            </span>
+            <div class="wallet-user-info-col">
+              <span class="wallet-user-title" id="headerUserPhoneText">Hanaan</span>
+              <span class="wallet-user-amt font-mono" id="headerWalletBalance">250.00 USDT</span>
+            </div>
+          </button>
+          <button class="icon-btn" id="toggleViewModeBtn" title="Toggle Fullscreen Frame">
+            <span class="material-symbols-rounded">fullscreen</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- Live Signal / Trade Execution Ticker Bar -->
+      <div class="live-ticker-container">
+        <div class="ticker-label">
+          <span class="pulse-dot"></span> LIVE
+        </div>
+        <div class="ticker-marquee">
+          <div class="ticker-content" id="liveTickerContent">
+            <span class="ticker-item"><strong class="highlight">B-Magnet Gold Hunter Pro:</strong> XAUUSD Buy 0.20 Lot @ 2,488.20 <span class="profit">+42.0 pips</span></span>
+            <span class="ticker-item"><strong class="highlight">B-Magnet Gold Hunter Lite:</strong> XAUUSD Scalp TP Triggered <span class="profit">+$185.00</span></span>
+            <span class="ticker-item"><strong class="highlight">Trend Scalper AI:</strong> XAUUSD Scalp @ 2,482.10 <span class="profit">+$142.50</span></span>
+            <span class="ticker-item"><strong class="highlight">Grid Master:</strong> NZDCAD Closed TP #4 <span class="profit">+$68.20</span></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main App Content Screens -->
+      <main class="app-content" id="mainContent">
+
+        <!-- ======================================================== -->
+        <!-- VIEW 1: EXPLORE / BOT MARKETPLACE                        -->
+        <!-- ======================================================== -->
+        <section class="view-panel active" id="viewExplore">
+          
+          <!-- Section: All Available Marketplace Bots -->
+          <div class="section-title-row">
+            <h2 class="section-title">Verified Trading Bots & Plans</h2>
+            <span class="section-count" id="botCountBadge">4 Plans</span>
+          </div>
+
+          <!-- Dynamic Bots Grid: Exactly 4 Bots (1M, 3M, 1Y, 2-Day Trial) -->
+          <div class="bots-grid" id="botsGridContainer">
+            <!-- Rendered by JavaScript -->
+          </div>
+
+          <!-- Bottom: Premium Distinct GTCfx Broker Registration Card -->
+          <div class="gtcfx-broker-banner">
+            <div class="gbb-glow-bg"></div>
+            
+            <div class="gbb-top-row">
+              <div class="gbb-brand">
+                <div class="gbb-logo-icon">
+                  <span class="material-symbols-rounded">candlestick_chart</span>
+                </div>
+                <div class="gbb-brand-text">
+                  <span class="gbb-badge"><span class="gbb-live-dot"></span> RECOMMENDED BROKER</span>
+                  <h3 class="gbb-headline">GTCfx MetaTrader 5 Account</h3>
+                </div>
+              </div>
+              <span class="gbb-tag-gold">0.0 Raw Spreads</span>
+            </div>
+
+            <p class="gbb-description">
+              Connect your B-Magnet EAs directly to <strong>GTCfx MT5</strong> for zero commission on Gold (XAUUSD), ultra-low latency server execution, and instant cryptographic license approval.
+            </p>
+
+            <div class="gbb-features-row">
+              <div class="gbb-feat-item">
+                <span class="material-symbols-rounded gbb-feat-icon">check_circle</span>
+                <span>Raw Gold Spreads (0.0)</span>
+              </div>
+              <div class="gbb-feat-item">
+                <span class="material-symbols-rounded gbb-feat-icon">check_circle</span>
+                <span>Zero EA Restrictions</span>
+              </div>
+              <div class="gbb-feat-item">
+                <span class="material-symbols-rounded gbb-feat-icon">check_circle</span>
+                <span>Live & Demo Support</span>
+              </div>
+            </div>
+
+            <a href="https://web.mygtc.app/login/register?ref=Y8JMgpna" target="_blank" rel="noopener noreferrer" class="gbb-action-btn">
+              <span class="material-symbols-rounded">person_add</span>
+              <span>Open GTCfx MT5 Account</span>
+              <span class="material-symbols-rounded" style="font-size: 16px;">arrow_forward</span>
+            </a>
+          </div>
+        </section>
+
+
+        <!-- ======================================================== -->
+        <!-- VIEW 2: MY SUBSCRIPTIONS & LICENSES                      -->
+        <!-- ======================================================== -->
+        <section class="view-panel" id="viewSubscriptions">
+          
+          <div class="panel-header">
+            <div>
+              <h2 class="panel-title">My Bot Subscriptions</h2>
+              <p class="panel-subtitle">Manage licenses, MT5 account binding & active status</p>
+            </div>
+            <button class="btn-add-bot-cute" onclick="window.botHubApp.openPurchaseAdditionalModal()" title="Purchase Bot Plan / Additional MT5 License">
+              <span class="cute-plus-pill">+</span>
+              <span>Add Bot</span>
+            </button>
+          </div>
+
+          <!-- Subscription Stat Cards -->
+          <div class="sub-stats-row">
+            <div class="sub-stat-card">
+              <span class="sub-stat-num" id="activeSubCount">1</span>
+              <span class="sub-stat-lbl">Active Bot</span>
+            </div>
+            <div class="sub-stat-card">
+              <span class="sub-stat-num text-success" id="monthlySubCost">$100.00</span>
+              <span class="sub-stat-lbl">Monthly Cost</span>
+            </div>
+            <div class="sub-stat-card">
+              <span class="sub-stat-num text-cyan" id="boundMt5Accounts">1</span>
+              <span class="sub-stat-lbl">GTCfx MT5</span>
+            </div>
+          </div>
+
+          <!-- Subscriptions List Container -->
+          <div class="subscriptions-list" id="subscriptionsListContainer">
+            <!-- Rendered by JavaScript -->
+          </div>
+
+        </section>
+
+
+        <!-- ======================================================== -->
+        <!-- VIEW 3: CREATOR STUDIO & AFFILIATE MARKETING             -->
+        <!-- ======================================================== -->
+        <section class="view-panel" id="viewCreator">
+          
+          <div class="panel-header">
+            <div>
+              <h2 class="panel-title">Creator & Marketing Hub</h2>
+              <p class="panel-subtitle">Monetize your EAs & earn 20% affiliate commissions</p>
+            </div>
+            <button class="btn-sm btn-primary" onclick="window.botHubApp.openPublishModal()">
+              <span class="material-symbols-rounded">publish</span> Market a Bot
+            </button>
+          </div>
+
+          <!-- Creator Revenue Banner -->
+          <div class="creator-revenue-card">
+            <div class="rev-header">
+              <span class="rev-label">Monthly Recurring Revenue (MRR)</span>
+              <span class="rev-badge">+24.5% this mo</span>
+            </div>
+            <div class="rev-amount" id="creatorMrr">$4,820.00</div>
+            
+            <div class="rev-metrics-row">
+              <div class="rev-metric">
+                <span class="rev-metric-val" id="creatorSubscribers">64</span>
+                <span class="rev-metric-lbl">Subscribers</span>
+              </div>
+              <div class="rev-metric">
+                <span class="rev-metric-val" id="creatorActiveBots">2</span>
+                <span class="rev-metric-lbl">Active Bots</span>
+              </div>
+              <div class="rev-metric">
+                <span class="rev-metric-val text-success" id="creatorPayoutBalance">$3,480.00</span>
+                <span class="rev-metric-lbl">Available Payout</span>
+              </div>
+            </div>
+
+            <button class="btn-payout" onclick="window.botHubApp.showToast('Payout of $3,480.00 requested to your USDT wallet!', 'success')">
+              <span class="material-symbols-rounded">payments</span> Request Instant Payout
+            </button>
+          </div>
+
+          <!-- Affiliate Referral Program Card -->
+          <div class="affiliate-card">
+            <div class="affiliate-header">
+              <div class="affiliate-icon">
+                <span class="material-symbols-rounded">share_reviews</span>
+              </div>
+              <div>
+                <h3 class="affiliate-title">Affiliate Referral Program</h3>
+                <p class="affiliate-desc">Earn <strong>20% recurring commission</strong> for every user who subscribes with your link.</p>
+              </div>
+            </div>
+
+            <div class="referral-box">
+              <div class="ref-input-wrapper">
+                <input type="text" readonly id="affiliateLinkInput" value="https://bbot.pro/ref/TRADER-ALEX99" class="ref-input">
+                <button class="copy-ref-btn" onclick="window.botHubApp.copyReferralLink()">
+                  <span class="material-symbols-rounded">content_copy</span> Copy
+                </button>
+              </div>
+            </div>
+
+            <div class="affiliate-stats-row">
+              <div>
+                <span class="aff-num">18</span>
+                <span class="aff-lbl">Total Referrals</span>
+              </div>
+              <div>
+                <span class="aff-num text-success">$740.00</span>
+                <span class="aff-lbl">Commission Earned</span>
+              </div>
+              <div>
+                <span class="aff-num text-cyan">20%</span>
+                <span class="aff-lbl">Payout Rate</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Published Bots Management -->
+          <div class="section-title-row">
+            <h3 class="section-title">Your Published Bots</h3>
+          </div>
+          <div class="published-bots-list" id="publishedBotsList">
+            <!-- Rendered by JS -->
+          </div>
+
+        </section>
+
+
+        <!-- ======================================================== -->
+        <!-- VIEW 4: BILLING, WALLETS & INVOICES                      -->
+        <!-- ======================================================== -->
+        <section class="view-panel" id="viewBilling">
+          
+          <div class="panel-header">
+            <div>
+              <h2 class="panel-title">BEP-20 Wallet & Invoices</h2>
+              <p class="panel-subtitle">Deposit USDT over BNB Smart Chain to activate 1M, 3M & 1Y passes</p>
+            </div>
+            <button class="btn-sm btn-primary" onclick="window.botHubApp.openTopupModal()">
+              <span class="material-symbols-rounded">add</span> Deposit USDT
+            </button>
+          </div>
+
+          <!-- Active Wallet Balance Hero Card -->
+          <div class="wallet-hero-card bep20-hero-card">
+            <div class="wallet-hero-top">
+              <div>
+                <span class="wallet-hero-lbl">AVAILABLE BEP-20 USDT BALANCE</span>
+                <div class="wallet-hero-amount" id="billingWalletBalance">250.00 USDT</div>
+              </div>
+              <button class="btn-topup-hero" onclick="window.botHubApp.openTopupModal()">
+                <span class="material-symbols-rounded">currency_bitcoin</span> Deposit BEP-20
+              </button>
+            </div>
+            <div class="wallet-hero-note">
+              <span class="bsc-badge-chip">BNB Chain BEP-20</span>
+              <span>All 1-Month, 3-Month & 1-Year plans are charged directly in BEP-20 USDT with instant automated activation.</span>
+            </div>
+          </div>
+
+          <!-- Saved Payment Methods -->
+          <div class="section-title-row">
+            <h3 class="section-title">Connected BEP-20 Deposit Rail</h3>
+          </div>
+          <div class="payment-methods-list" id="paymentMethodsList">
+            <!-- Rendered by JS -->
+          </div>
+
+          <!-- Billing Invoices History -->
+          <div class="section-title-row" style="margin-top: 24px;">
+            <h3 class="section-title">Billing & Invoice Receipts</h3>
+          </div>
+          <div class="invoices-list" id="invoicesListContainer">
+            <!-- Rendered by JS -->
+          </div>
+
+        </section>
+
+
+        <!-- ======================================================== -->
+        <!-- VIEW 5: SETTINGS & MT5 CONFIG                            -->
+        <!-- ======================================================== -->
+        <section class="view-panel" id="viewSettings">
+          
+          <div class="panel-header">
+            <div>
+              <h2 class="panel-title">Account & Profile</h2>
+              <p class="panel-subtitle">B-Magnet Trading Portal</p>
+            </div>
+          </div>
+
+          <!-- User Profile Card -->
+          <div class="profile-card">
+            <div class="profile-avatar" id="profileAvatarText">H</div>
+            <div class="profile-info">
+              <h3 class="profile-name" id="profileDisplayName">Hanaan</h3>
+              <p class="profile-email" id="profileDisplayPhone">+91 94950 97786</p>
+              <span class="profile-tier-badge">Active B-Magnet Trader</span>
+            </div>
+          </div>
+
+          <!-- GTCfx Broker Account Registration Card -->
+          <div class="gtcfx-referral-card">
+            <div class="gtcfx-card-header">
+              <div class="gtcfx-brand-col">
+                <div class="gtcfx-icon-box">
+                  <span class="material-symbols-rounded">show_chart</span>
+                </div>
+                <div>
+                  <h4 class="gtcfx-title">Register GTCfx Account</h4>
+                  <span class="gtcfx-subtitle">Official Recommended MT5 Broker</span>
+                </div>
+              </div>
+              <span class="gtcfx-tag">MT5 Broker</span>
+            </div>
+            
+            <p class="gtcfx-desc">
+              Create your live or demo MT5 trading account on <strong>GTCfx</strong> for raw spreads, zero commission on Gold (XAUUSD), and instant EA whitelist approval.
+            </p>
+
+            <a href="https://web.mygtc.app/login/register?ref=Y8JMgpna" target="_blank" rel="noopener noreferrer" class="btn-gtcfx-action">
+              <span class="material-symbols-rounded">person_add</span>
+              <span>Register GTCfx Account</span>
+              <span class="material-symbols-rounded" style="font-size: 16px;">open_in_new</span>
+            </a>
+          </div>
+
+          <!-- Settings Groups -->
+          <div class="settings-group">
+            <h4 class="settings-group-title">Integrations & Alerts</h4>
+
+            <div class="setting-item" onclick="window.botHubApp.showTelegramAlertsModal()">
+              <div class="setting-icon-box text-cyan"><span class="material-symbols-rounded">send</span></div>
+              <div class="setting-info">
+                <div class="setting-name">Telegram Trade Push Alerts</div>
+                <div class="setting-sub">Connected: @B_Magnet_Gold_bot</div>
+              </div>
+              <span class="material-symbols-rounded chevron">chevron_right</span>
+            </div>
+          </div>
+
+          <div class="settings-group">
+            <h4 class="settings-group-title">Preferences & Security</h4>
+
+            <div class="setting-item" onclick="window.botHubApp.showCurrencySelector()">
+              <div class="setting-icon-box text-success"><span class="material-symbols-rounded">currency_exchange</span></div>
+              <div class="setting-info">
+                <div class="setting-name">Display Currency</div>
+                <div class="setting-sub" id="activeCurrencyDisplay">USDT (BEP-20) / USD ($)</div>
+              </div>
+              <span class="material-symbols-rounded chevron">chevron_right</span>
+            </div>
+
+            <div class="setting-item" onclick="window.botHubApp.resetDemoData()">
+              <div class="setting-icon-box text-danger"><span class="material-symbols-rounded">restart_alt</span></div>
+              <div class="setting-info">
+                <div class="setting-name text-danger">Reset Demo State</div>
+                <div class="setting-sub">Restore original demo bots, subscriptions & invoices</div>
+              </div>
+              <span class="material-symbols-rounded chevron">chevron_right</span>
+            </div>
+          </div>
+
+          <!-- Account Sign Out / Switch User -->
+          <div class="settings-logout-card">
+            <button type="button" class="btn-logout-full" onclick="window.botHubApp.handleLogout()" id="accountLogoutBtn">
+              <span class="material-symbols-rounded">logout</span>
+              <span>Log Out / Switch Account</span>
+            </button>
+            <p class="logout-hint-text">Securely end session and return to welcome screen</p>
+          </div>
+
+        </section>
+
+        <!-- ======================================================== -->
+        <!-- VIEW 5: GOOGLE ACCOUNT CRM & LIVE DATABASE               -->
+        <!-- ======================================================== -->
+        <section class="view-panel" id="viewDatabase">
+          <div class="db-header-banner">
+            <div class="db-banner-top">
+              <div class="db-brand-icon">
+                <span class="material-symbols-rounded">table_chart</span>
+              </div>
+              <div>
+                <div class="db-pill-status">
+                  <span class="pulse-dot" style="background: #10B981;"></span>
+                  <span>Google Account Database Live</span>
+                </div>
+                <h2 class="db-title">Customer CRM & Bot Registry</h2>
+              </div>
+            </div>
+            <p class="db-subtitle">Real-time database of customer phone numbers, wallet balances, active bot subscriptions, GTCfx MT5 terminals, and expiry countdowns.</p>
+
+            <div class="google-sync-card">
+              <div class="gsc-top">
+                <div class="gsc-logo">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none">
+                    <path d="M19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3Z" fill="#0F9D58"/>
+                    <path d="M15 13H9V11H15V13ZM15 9H9V7H15V9ZM15 17H9V15H15V17Z" fill="white"/>
+                  </svg>
+                  <span>Google Sheets Webhook Sync</span>
+                </div>
+                <span class="badge-featured" style="font-size: 9px; padding: 2px 6px;">Live Sync</span>
+              </div>
+              <div class="gsc-input-row">
+                <input type="text" id="googleSheetWebhookInput" class="form-input font-mono font-xs" placeholder="Paste: https://script.google.com/macros/s/.../exec">
+                <button class="btn-primary btn-sm" id="btnSyncGoogleSheet" onclick="window.botHubApp.syncToGoogleSheet()" title="Synchronize Database to Google Sheet">
+                  <span class="material-symbols-rounded">sync</span> Sync
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- CRM KPI Metric Cards -->
+          <div class="db-kpi-grid">
+            <div class="kpi-card">
+              <span class="kpi-label">Registered Customers</span>
+              <div class="kpi-value font-mono" id="dbKpiCustomers">1</div>
+              <span class="kpi-delta positive">Verified Mobiles</span>
+            </div>
+            <div class="kpi-card">
+              <span class="kpi-label">Active Bot Passes</span>
+              <div class="kpi-value font-mono" id="dbKpiSubscriptions">2</div>
+              <span class="kpi-delta positive">B-Magnet EAs</span>
+            </div>
+            <div class="kpi-card">
+              <span class="kpi-label">BEP-20 Revenue</span>
+              <div class="kpi-value font-mono" id="dbKpiRevenue">370.00 USDT</div>
+              <span class="kpi-delta positive">BSC Chain</span>
+            </div>
+            <div class="kpi-card">
+              <span class="kpi-label">GTCfx MT5 Accounts</span>
+              <div class="kpi-value font-mono" id="dbKpiMt5">2 Whitelisted</div>
+              <span class="kpi-delta positive">Active Trading</span>
+            </div>
+          </div>
+
+          <!-- Section 1: Customer Registry -->
+          <div class="card" style="margin-bottom: 16px;">
+            <div class="card-header flex-between">
+              <h3 class="card-title">
+                <span class="material-symbols-rounded" style="color: #10B981;">group</span>
+                Customer Registry (Phones & Balances)
+              </h3>
+              <button class="btn-xs btn-outline" onclick="window.botHubApp.exportCustomersCsv()">Export CSV</button>
+            </div>
+            <div class="table-responsive">
+              <table class="crm-table" id="crmCustomersTable">
+                <thead>
+                  <tr>
+                    <th>Customer Mobile</th>
+                    <th>BEP-20 Wallet</th>
+                    <th>Active Bots</th>
+                    <th>Total Spent</th>
+                    <th>GTCfx MT5</th>
+                    <th>Last Active</th>
+                  </tr>
+                </thead>
+                <tbody id="crmCustomersTbody">
+                  <!-- Rendered dynamically -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Section 2: Active Subscriptions & Expiry -->
+          <div class="card" style="margin-bottom: 16px;">
+            <div class="card-header flex-between">
+              <h3 class="card-title">
+                <span class="material-symbols-rounded" style="color: #F0B90B;">verified</span>
+                Bot Purchases & Expiry Tracker
+              </h3>
+              <span class="badge-featured" style="font-size: 10px;">1M / 3M / 1Y</span>
+            </div>
+            <div class="table-responsive">
+              <table class="crm-table" id="crmSubscriptionsTable">
+                <thead>
+                  <tr>
+                    <th>Customer</th>
+                    <th>Bot Name</th>
+                    <th>Plan Tier</th>
+                    <th>License Key</th>
+                    <th>GTCfx MT5 #</th>
+                    <th>Expiry Date</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="crmSubscriptionsTbody">
+                  <!-- Rendered dynamically -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Section 3: Live Owner Audit & Alert Log -->
+          <div class="card">
+            <div class="card-header flex-between">
+              <h3 class="card-title">
+                <span class="material-symbols-rounded" style="color: #6366F1;">notifications_active</span>
+                Live Activity & Notification Stream
+              </h3>
+              <button class="btn-xs btn-outline" onclick="window.botHubApp.fetchAdminDatabase()">Refresh</button>
+            </div>
+            <div class="activity-timeline" id="crmAuditTimeline">
+              <!-- Rendered dynamically -->
+            </div>
+          </div>
+
+        </section>
+
+      </main>
+
+      <!-- Bottom Mobile Navigation Bar -->
+      <nav class="bottom-nav">
+        <button class="nav-item active" data-view="explore" onclick="window.botHubApp.switchView('explore')">
+          <span class="material-symbols-rounded nav-icon">explore</span>
+          <span class="nav-label">Explore</span>
+        </button>
+
+        <button class="nav-item" data-view="subscriptions" onclick="window.botHubApp.switchView('subscriptions')">
+          <span class="material-symbols-rounded nav-icon">bolt</span>
+          <span class="nav-label">My Bots</span>
+          <span class="nav-badge" id="navBadgeSubCount">1</span>
+        </button>
+
+        <button class="nav-item" data-view="database" onclick="window.botHubApp.switchView('database')">
+          <span class="material-symbols-rounded nav-icon" style="color: #10B981;">table_chart</span>
+          <span class="nav-label" style="color: #10B981;">Database</span>
+          <span class="nav-badge" style="background: #10B981;">CRM</span>
+        </button>
+
+        <button class="nav-item" data-view="creator" onclick="window.botHubApp.switchView('creator')">
+          <span class="material-symbols-rounded nav-icon">storefront</span>
+          <span class="nav-label">Creator</span>
+        </button>
+
+        <button class="nav-item" data-view="settings" onclick="window.botHubApp.switchView('settings')">
+          <span class="material-symbols-rounded nav-icon">manage_accounts</span>
+          <span class="nav-label">Account</span>
+        </button>
+      </nav>
+
+    </div>
+  </div>
+
+
+  <!-- ======================================================== -->
+  <!-- MODAL: PURCHASE BOT PLAN / ADDITIONAL MT5 LICENSE        -->
+  <!-- ======================================================== -->
+  <div class="modal-backdrop" id="purchaseAdditionalModal">
+    <div class="modal-sheet checkout-sheet">
+      <div class="sheet-handle"></div>
+      <div class="modal-header">
+        <div>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <h3 class="modal-title">Purchase Bot Plan</h3>
+            <span class="bsc-badge-chip">BEP-20 Rail</span>
+          </div>
+          <p class="modal-subtitle">Choose a plan to activate a new or additional MT5 license</p>
+        </div>
+        <button class="modal-close-btn" onclick="window.botHubApp.closeModal('purchaseAdditionalModal')">
+          <span class="material-symbols-rounded">close</span>
+        </button>
+      </div>
+      <div class="modal-body" id="purchaseAdditionalBody">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- MODAL: BOT DETAILS & BACKTEST VIEW                       -->
+  <!-- ======================================================== -->
+  <div class="modal-backdrop" id="botDetailsModal">
+    <div class="modal-sheet">
+      <div class="sheet-handle"></div>
+      <div class="modal-header">
+        <h3 class="modal-title" id="detailBotTitle">Bot Details</h3>
+        <button class="modal-close-btn" onclick="window.botHubApp.closeModal('botDetailsModal')">
+          <span class="material-symbols-rounded">close</span>
+        </button>
+      </div>
+      <div class="modal-body" id="detailBotBody">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ======================================================== -->
+  <!-- MODAL: TOP UP BEP-20 CRYPTO WALLET                       -->
+  <!-- ======================================================== -->
+  <div class="modal-backdrop" id="topupModal">
+    <div class="modal-sheet checkout-sheet">
+      <div class="sheet-handle"></div>
+      
+      <div class="modal-header">
+        <div>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <h3 class="modal-title">Top Up BEP-20 Wallet</h3>
+            <span class="bsc-badge-chip">BNB Chain</span>
+          </div>
+          <p class="modal-subtitle">Deposit USDT via BNB Smart Chain (BEP-20)</p>
+        </div>
+        <button class="modal-close-btn" onclick="window.botHubApp.closeModal('topupModal')">
+          <span class="material-symbols-rounded">close</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        
+        <!-- Current Wallet Balance Banner -->
+        <div class="wallet-balance-banner bep20-banner">
+          <div>
+            <span class="wb-lbl">CURRENT BEP-20 BALANCE</span>
+            <div class="wb-amount font-mono" id="topupCurrentBalanceDisplay">250.00 USDT</div>
+          </div>
+          <div style="text-align: right;">
+            <span class="wb-badge">BEP-20 Verified</span>
+            <span style="display: block; font-size: 10px; color: var(--text-muted); margin-top: 2px;">Gas: ~$0.03</span>
+          </div>
+        </div>
+
+        <!-- Quick USDT Presets matching Bot Plans -->
+        <label class="form-label" style="margin-top: 14px;">Select USDT Deposit Amount</label>
+        <div class="amount-presets-grid">
+          <button class="preset-btn" data-amt="10" onclick="window.botHubApp.setTopupAmount(10)">+10 USDT (Trial)</button>
+          <button class="preset-btn active" data-amt="100" onclick="window.botHubApp.setTopupAmount(100)">+100 USDT (1M)</button>
+          <button class="preset-btn" data-amt="250" onclick="window.botHubApp.setTopupAmount(250)">+250 USDT (3M)</button>
+          <button class="preset-btn" data-amt="900" onclick="window.botHubApp.setTopupAmount(900)">+900 USDT (1Y)</button>
+          <button class="preset-btn" data-amt="1000" onclick="window.botHubApp.setTopupAmount(1000)">+1,000 USDT</button>
+          <button class="preset-btn" data-amt="2500" onclick="window.botHubApp.setTopupAmount(2500)">+2,500 USDT</button>
+        </div>
+
+        <div class="form-group" style="margin-top: 10px;">
+          <label class="form-label" for="customTopupInput">Custom Deposit Amount (USDT BEP-20)</label>
+          <div class="input-with-icon">
+            <span class="material-symbols-rounded input-icon">currency_bitcoin</span>
+            <input type="number" id="customTopupInput" class="form-input font-mono" value="100" min="10" step="10">
+          </div>
+        </div>
+
+        <!-- BEP20 Deposit Address & Validated QR Code Box -->
+        <div class="bep20-deposit-box">
+          <div class="bep20-network-pill">
+            <span class="material-symbols-rounded" style="font-size: 16px; color: #F0B90B;">token</span>
+            <span>Network: <strong>BNB Smart Chain (BEP-20) Only</strong></span>
+          </div>
+
+          <!-- Step 1: Validated Scannable BEP-20 QR Code -->
+          <div class="crypto-qr-container" style="margin: 12px 0;">
+            <div class="qr-code-box">
+              <canvas id="bep20QrCanvas" width="220" height="220" class="qr-canvas"></canvas>
+            </div>
+            <div class="qr-pulse-badge">
+              <span class="pulse-dot" style="background: #F0B90B;"></span> Validated BEP-20 QR (BSC Network)
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">
+              <span>Deposit Address (BEP-20 USDT)</span>
+              <span class="label-hint">Official Deposit Wallet</span>
+            </label>
+            <div class="input-with-icon">
+              <input type="text" readonly id="bep20AddressInput" class="form-input font-mono font-xs" value="0x26B5E776b4e3f40378b440Dfb2ACD675938B480b">
+              <button class="copy-inside-btn" onclick="window.botHubApp.copyBep20Address()" title="Copy BEP-20 Address">
+                <span class="material-symbols-rounded">content_copy</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Step 2: Paste Transaction Hash Key (Mandatory for Credit) -->
+          <div class="form-group" style="margin-top: 14px;">
+            <label class="form-label" for="bep20TxHashInput" style="display: flex; justify-content: space-between; align-items: center;">
+              <span>🔑 Paste Transaction Hash (TxHash / TxID)</span>
+              <span class="label-hint" style="color: #f59e0b; font-weight: 700;">Required to Credit</span>
+            </label>
+            <div class="input-with-icon">
+              <span class="material-symbols-rounded input-icon" style="color: #00A896;">receipt_long</span>
+              <input type="text" id="bep20TxHashInput" class="form-input font-mono font-xs" placeholder="Paste 0x... Tx Hash from Binance / TrustWallet / MetaMask" oninput="window.botHubApp.validateTxHashInput()">
+            </div>
+            <div id="txHashValidationMessage" style="font-size: 11px; margin-top: 4px; color: #64748b;">
+              Paste your 64-character transaction hash starting with <strong>0x</strong> to verify and credit your balance.
+            </div>
+          </div>
+
+          <p class="crypto-note">⚠️ Send ONLY USDT (BEP-20) on BNB Smart Chain. Deposit is credited instantly once the transaction hash is verified.</p>
+        </div>
+
+        <button class="btn-primary btn-block btn-lg" id="submitTopupBtn" style="margin-top: 16px;" onclick="window.botHubApp.processTopup()">
+          <span class="material-symbols-rounded">verified</span>
+          <span id="submitTopupBtnText">Verify Hash & Credit 100.00 USDT</span>
+        </button>
+
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ======================================================== -->
+  <!-- MODAL: SUBSCRIPTION CHECKOUT (1M / 3M / 1Y VIA BEP-20)   -->
+  <!-- ======================================================== -->
+  <div class="modal-backdrop" id="checkoutModal">
+    <div class="modal-sheet checkout-sheet">
+      <div class="sheet-handle"></div>
+      
+      <div class="modal-header">
+        <div>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <h3 class="modal-title">Subscribe to Bot</h3>
+            <span class="bsc-badge-chip">BEP-20 Rail</span>
+          </div>
+          <p class="modal-subtitle" id="checkoutBotName">B-Magnet Gold Hunter EA Pro</p>
+        </div>
+        <button class="modal-close-btn" onclick="window.botHubApp.closeModal('checkoutModal')">
+          <span class="material-symbols-rounded">close</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        
+        <!-- Step 1: Select Subscription Tier (1 Month, 3 Months, 1 Year) -->
+        <label class="form-label">Select Subscription Period (1 Month • 3 Months • 1 Year)</label>
+        <div class="plan-options-grid" id="checkoutPlansContainer">
+          <!-- Rendered by JS -->
+        </div>
+
+        <!-- Step 2: GTCfx MT5 Account Binding (Required & Account-Locked) -->
+        <div class="form-group" style="margin-top: 14px;">
+          <label class="form-label" for="checkoutMt5Input" style="display: flex; justify-content: space-between; align-items: center;">
+            <span>GTCfx MT5 Account Login Number</span>
+            <span class="label-hint" style="color: #ef4444; font-weight: 800;">* Required</span>
+          </label>
+          <div class="input-with-icon">
+            <span class="material-symbols-rounded input-icon">terminal</span>
+            <input type="text" id="checkoutMt5Input" class="form-input font-mono" placeholder="Enter your GTCfx MT5 Account Number (e.g. 8849202)" value="8849202" oninput="window.botHubApp.checkMt5AccountAvailability()">
+          </div>
+
+          <!-- Conflict Alert Banner (Displayed when MT5 already has active bot) -->
+          <div class="mt5-conflict-alert" id="checkoutMt5ConflictAlert" style="display: none;">
+            <div class="mca-header">
+              <span class="material-symbols-rounded" style="color: #ef4444; font-size: 18px;">warning</span>
+              <span>MT5 Account Already Attached to an Active Bot!</span>
+            </div>
+            <div class="mca-content" id="checkoutMt5ConflictMessage">
+              <!-- Rendered dynamically by JS -->
+            </div>
+          </div>
+
+          <div class="mt5-binding-notice-card">
+            <div class="mbn-header">
+              <span class="material-symbols-rounded" style="color: #f59e0b; font-size: 16px;">shield_lock</span>
+              <span>Account-Locked Whitelist Security:</span>
+            </div>
+            <p class="mbn-desc">
+              This EA license is cryptographically compiled <strong>ONLY for the GTCfx MT5 account specified above</strong>. The EA will strictly execute trades on this account and will block attachment on any other login.
+            </p>
+            <div class="mbn-footer">
+              <span>Don't have a GTCfx trading account?</span>
+              <a href="https://web.mygtc.app/login/register?ref=Y8JMgpna" target="_blank" rel="noopener" class="gtcfx-reg-link">
+                <span>Register GTCfx Account</span>
+                <span class="material-symbols-rounded" style="font-size: 13px;">open_in_new</span>
               </a>
             </div>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- PRICING & INVESTMENT PLANS SECTION -->
-    <section id="plans" class="biz-section-wrap">
-      <div class="biz-container">
-        <div class="biz-section-header">
-          <span class="biz-section-eyebrow">PORTFOLIO TIERS</span>
-          <h2 class="biz-section-title">Institutional Investment Plans</h2>
-          <p class="biz-section-subtitle">
-            Transparent allocations with standard 3-month bot rental contracts and segregated multi-sig custody.
+        <!-- Step 3: BEP-20 Wallet Payment Breakdown Card -->
+        <div class="wallet-payment-summary-card bep20-summary-card">
+          <div class="wps-header">
+            <span class="wps-title"><span class="material-symbols-rounded" style="font-size: 16px; color: #F0B90B;">token</span> Paid from BEP-20 USDT Wallet</span>
+            <span class="wps-badge" id="checkoutWalletBalanceBadge">250.00 USDT Available</span>
+          </div>
+
+          <div class="wps-row">
+            <span>Current BEP-20 Balance</span>
+            <span class="font-mono" id="checkoutCurrentBalanceText">250.00 USDT</span>
+          </div>
+          <div class="wps-row">
+            <span>Plan Cost</span>
+            <span class="font-mono text-cyan" id="checkoutPlanPriceText">-100.00 USDT</span>
+          </div>
+          <div class="wps-row wps-total-row">
+            <span>Balance After Purchase</span>
+            <span class="font-mono" id="checkoutRemainingBalanceText">150.00 USDT</span>
+          </div>
+
+          <!-- Shortfall Warning Alert (Hidden when balance sufficient) -->
+          <div class="shortfall-alert" id="shortfallAlert" style="display: none;">
+            <span class="material-symbols-rounded alert-icon">warning</span>
+            <div>
+              <strong>Insufficient BEP-20 USDT Balance!</strong>
+              <div style="font-size: 11px; margin-top: 2px;">Deposit at least <span id="shortfallAmountText">0.00 USDT</span> on BSC to activate this license.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Submit Payment Button -->
+        <button class="btn-primary btn-block btn-lg" id="submitCheckoutBtn" onclick="window.botHubApp.processCheckout()">
+          <span class="material-symbols-rounded" id="checkoutBtnIcon">lock</span>
+          <span id="submitCheckoutBtnText">Pay 100.00 USDT</span>
+        </button>
+
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ======================================================== -->
+  <!-- MODAL: PAYMENT SUCCESSFUL & GTCFX MT5 WHATSAPP DISPATCH -->
+  <!-- ======================================================== -->
+  <div class="modal-backdrop" id="paymentSuccessModal">
+    <div class="modal-sheet success-sheet">
+      <div class="sheet-handle"></div>
+      
+      <div class="modal-body" style="padding-top: 10px;">
+        
+        <!-- Animated Success Badge -->
+        <div class="success-hero-header">
+          <div class="success-check-circle">
+            <span class="material-symbols-rounded">check</span>
+          </div>
+          <h3 class="success-title">Payment Successful!</h3>
+          <p class="success-subtitle">Your EA subscription has been activated from your BEP-20 Wallet.</p>
+        </div>
+
+        <!-- Receipt Summary Card -->
+        <div class="success-receipt-card">
+          <div class="src-header">
+            <div>
+              <h4 class="src-bot-name" id="successBotName">B-Magnet Gold Hunter EA Pro</h4>
+              <span class="src-plan-name" id="successPlanName">1 Month Pro Pass (30 Days)</span>
+            </div>
+            <span class="src-status-pill">PAID</span>
+          </div>
+
+          <div class="src-grid">
+            <div class="src-item">
+              <span class="src-lbl">AMOUNT PAID</span>
+              <span class="src-val font-mono text-cyan" id="successAmountPaid">100.00 USDT</span>
+            </div>
+            <div class="src-item">
+              <span class="src-lbl">PAYMENT METHOD</span>
+              <span class="src-val">BEP-20 Wallet</span>
+            </div>
+            <div class="src-item">
+              <span class="src-lbl">INVOICE ID</span>
+              <span class="src-val font-mono" id="successInvoiceId">INV-2026-8492</span>
+            </div>
+            <div class="src-item">
+              <span class="src-lbl">BROKER REQUIRED</span>
+              <span class="src-val text-amber font-bold">GTCfx MT5</span>
+            </div>
+          </div>
+
+          <!-- Generated License Box -->
+          <div class="success-license-box">
+            <span class="src-lbl">GENERATED LICENSE KEY</span>
+            <div class="license-copy-row">
+              <span class="license-code font-mono" id="successLicenseKey">BM-PRO-8492-7193-MT5</span>
+              <button class="btn-copy-code" onclick="window.botHubApp.copySuccessLicenseKey()" title="Copy License Key">
+                <span class="material-symbols-rounded">content_copy</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2: Attached GTCfx MT5 Account & Account-Lock Status -->
+        <div class="gtcfx-step-card">
+          <div class="gtcfx-step-header">
+            <div class="gtcfx-logo-badge">GTCfx</div>
+            <div>
+              <h4 class="gtcfx-title">Attached GTCfx MT5 Trading Account</h4>
+              <p class="gtcfx-sub">Cryptographically locked to this specific MT5 login</p>
+            </div>
+          </div>
+
+          <div style="background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 10px; padding: 10px 14px; margin-top: 10px; display: flex; align-items: center; justify-content: space-between;">
+            <div>
+              <span style="font-size: 10px; color: var(--text-muted); display: block; font-weight: 800;">ATTACHED MT5 ACCOUNT</span>
+              <strong class="font-mono text-cyan" style="font-size: 15px;" id="successAttachedMt5Text">#8849201</strong>
+            </div>
+            <span class="bsc-badge-chip" style="background: rgba(0, 168, 150, 0.15); color: #00a896; border-color: rgba(0, 168, 150, 0.3);">Account-Locked</span>
+          </div>
+
+          <div class="mt5-binding-notice-card" style="margin-top: 10px;">
+            <div class="mbn-header">
+              <span class="material-symbols-rounded" style="color: #f59e0b; font-size: 16px;">verified_user</span>
+              <span>Single-Account Whitelist Active:</span>
+            </div>
+            <p class="mbn-desc" style="margin-bottom: 0;">
+              This EA license is valid <strong>ONLY for GTCfx MT5 <span id="successLockNoticeMt5">#8849201</span></strong>. The EA algorithm checks account credentials on initialization and will strictly reject execution on any other login.
+            </p>
+          </div>
+        </div>
+
+        <!-- Step 3: Send to WhatsApp Button -->
+        <div class="whatsapp-action-box">
+          <div class="wa-target-note">
+            <span class="material-symbols-rounded" style="font-size: 16px; color: #25D366;">chat</span>
+            <span>Send payment proof & GTCfx MT5 number to WhatsApp: <strong>+91 9495097786</strong></span>
+          </div>
+
+          <a href="#" id="sendWhatsAppBtn" target="_blank" rel="noopener noreferrer" class="btn-whatsapp btn-block btn-lg" onclick="window.botHubApp.handleWhatsAppClick(event)">
+            <svg class="wa-icon" viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+              <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm0 18.15c-1.49 0-2.95-.4-4.22-1.15l-.3-.18-3.13.82.83-3.05-.2-.31a8.167 8.167 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24 2.2 0 4.27.86 5.82 2.42a8.188 8.188 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.19 8.24zm4.51-6.17c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.15.17-.25.25-.42.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.53.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.07-.12-.23-.19-.48-.31z"/>
+            </svg>
+            <span>Send Details to WhatsApp (+919495097786)</span>
+          </a>
+
+          <button class="btn-outline btn-block" style="margin-top: 10px;" onclick="window.botHubApp.closeModal('paymentSuccessModal'); window.botHubApp.switchView('subscriptions')">
+            <span>View Subscriptions & MT5 Terminal</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ======================================================== -->
+  <!-- MODAL: LICENSE KEY & MT5 BINDING MANAGER                 -->
+  <!-- ======================================================== -->
+  <div class="modal-backdrop" id="licenseModal">
+    <div class="modal-sheet">
+      <div class="sheet-handle"></div>
+      <div class="modal-header">
+        <h3 class="modal-title">Bot License & Terminal Setup</h3>
+        <button class="modal-close-btn" onclick="window.botHubApp.closeModal('licenseModal')">
+          <span class="material-symbols-rounded">close</span>
+        </button>
+      </div>
+      <div class="modal-body" id="licenseModalBody">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ======================================================== -->
+  <!-- MODAL: MARKET & PUBLISH A BOT                            -->
+  <!-- ======================================================== -->
+  <div class="modal-backdrop" id="publishModal">
+    <div class="modal-sheet">
+      <div class="sheet-handle"></div>
+      <div class="modal-header">
+        <h3 class="modal-title">Market Your Trading Bot</h3>
+        <button class="modal-close-btn" onclick="window.botHubApp.closeModal('publishModal')">
+          <span class="material-symbols-rounded">close</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+        <div class="form-group">
+          <label class="form-label" for="pubBotName">Bot Name *</label>
+          <input type="text" id="pubBotName" class="form-input" placeholder="e.g. Gold Rush Sniper EA">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="pubBotTagline">Short Tagline *</label>
+          <input type="text" id="pubBotTagline" class="form-input" placeholder="e.g. London Session Breakout Scalper for XAUUSD">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-half">
+            <label class="form-label" for="pubCategory">Category</label>
+            <select id="pubCategory" class="form-select">
+              <option value="MT5 Forex">MT5 Forex</option>
+              <option value="Crypto & Gold">Crypto & Gold</option>
+              <option value="Grid Trading">Grid Trading</option>
+              <option value="Signal Copier">Signal Copier</option>
+              <option value="Marketing & Funnels">Marketing & Funnels</option>
+            </select>
+          </div>
+          <div class="form-group col-half">
+            <label class="form-label" for="pubRiskLevel">Risk Level</label>
+            <select id="pubRiskLevel" class="form-select">
+              <option value="Low">Low Risk</option>
+              <option value="Medium" selected>Medium Risk</option>
+              <option value="High">High Risk</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-third">
+            <label class="form-label" for="pubWinRate">Win Rate %</label>
+            <input type="number" id="pubWinRate" class="form-input" value="78.5" step="0.1">
+          </div>
+          <div class="form-group col-third">
+            <label class="form-label" for="pubMonthlyRoi">Monthly ROI %</label>
+            <input type="number" id="pubMonthlyRoi" class="form-input" value="16.4" step="0.1">
+          </div>
+          <div class="form-group col-third">
+            <label class="form-label" for="pubMonthlyPrice">Monthly Price ($)</label>
+            <input type="number" id="pubMonthlyPrice" class="form-input" value="59">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="pubDescription">Strategy & Architecture Description</label>
+          <textarea id="pubDescription" class="form-textarea" rows="3" placeholder="Explain entry filters, risk management, and recommended pairs..."></textarea>
+        </div>
+
+        <button class="btn-primary btn-block btn-lg" onclick="window.botHubApp.submitPublishBot()">
+          <span class="material-symbols-rounded">rocket_launch</span> Publish Bot to Marketplace
+        </button>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- MODAL: LOCALHOST MT5 LICENSE KEY GENERATOR (v.08 Engine) -->
+  <!-- ======================================================== -->
+  <div class="modal-backdrop" id="licenseGeneratorModal">
+    <div class="modal-sheet key-gen-sheet">
+      <div class="sheet-handle"></div>
+      
+      <div class="modal-header">
+        <div>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <h3 class="modal-title">🔐 MT5 EA License Key</h3>
+            <span class="bsc-badge-chip" style="background: rgba(0, 168, 150, 0.15); color: #00a896; border-color: rgba(0, 168, 150, 0.3);">Auto-Detected</span>
+          </div>
+          <p class="modal-subtitle">Cryptographic license key bound to your default MT5 & purchased bot plan</p>
+        </div>
+        <button class="modal-close-btn" onclick="window.botHubApp.closeModal('licenseGeneratorModal')">
+          <span class="material-symbols-rounded">close</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        
+        <!-- State 1: Locked State (Shown when user has 0 purchased bots) -->
+        <div id="genLockedState" class="key-gen-locked-state" style="display: none;">
+          <div class="locked-icon-circle">
+            <span class="material-symbols-rounded">lock</span>
+          </div>
+          <h4 class="locked-title">Active Bot Purchase Required</h4>
+          <p class="locked-desc">
+            Your MT5 EA License Key is automatically generated from your purchased bot subscription and default MT5 number. Subscribe to a bot plan (2-Day Trial, 1 Month, 3 Months, or 1 Year) to generate your key.
           </p>
+          <button class="btn-primary btn-block btn-lg" onclick="window.botHubApp.closeModal('licenseGeneratorModal'); window.botHubApp.switchView('explore');">
+            <span class="material-symbols-rounded">bolt</span> Explore Bot Plans
+          </button>
         </div>
 
-        <div class="biz-plans-grid">
-          <!-- Plan 1 -->
-          <div class="biz-plan-card">
-            <div class="biz-plan-badge">Starter Vault</div>
-            <h3 class="biz-plan-title">1 Bot Unit</h3>
-            <div class="biz-plan-price">$1,000 <span>Deposit</span></div>
-            <p class="biz-plan-desc">Ideal for initial institutional verification and test allocations.</p>
-
-            <ul class="biz-plan-list">
-              <li>✓ <strong>$300</strong> 3-Month Bot Rental Fee</li>
-              <li>✓ <strong>$1,300</strong> Total Initial Outlay</li>
-              <li>✓ <strong>$10 – $30 / day</strong> (Mon–Fri Active)</li>
-              <li>✓ <strong>$220 – $660 / mo</strong> Net Yields</li>
-              <li>✓ FIPS 140-2 Level 3 Multi-Sig Vault</li>
-            </ul>
-
-            <a href="plan-detail.html?plan=starter&capital=1000" class="biz-btn-primary" style="width: 100%;">
-              Select Starter Plan →
-            </a>
+        <!-- State 2: Auto-Detected & Locked License Generator View -->
+        <div id="genActiveState">
+          
+          <!-- Dropdown Selection Tab for All Purchased Bots & Default Accounts -->
+          <div class="form-group" id="genSubSelectGroup" style="margin-bottom: 12px;">
+            <label class="form-label" for="genPurchasedBotSelect" style="display: flex; justify-content: space-between; align-items: center;">
+              <span>Select Purchased Bot & Account</span>
+              <span class="label-hint" style="color: #00A896; font-weight: 700;">📂 Active Subscriptions</span>
+            </label>
+            <div class="input-with-icon">
+              <span class="material-symbols-rounded input-icon">smart_toy</span>
+              <select id="genPurchasedBotSelect" class="form-input custom-select font-mono" style="font-size: 12px; font-weight: 600;" onchange="window.botHubApp.onSelectPurchasedBot(this.value)">
+                <!-- Dynamically populated with all purchased bots -->
+              </select>
+            </div>
           </div>
 
-          <!-- Plan 2 -->
-          <div class="biz-plan-card featured-plan">
-            <div class="biz-plan-badge highlight">Most Popular</div>
-            <h3 class="biz-plan-title">2 Bot Units</h3>
-            <div class="biz-plan-price">$2,000 <span>Deposit</span></div>
-            <p class="biz-plan-desc">Accelerated capital growth with dual-neural algorithmic hedging.</p>
-
-            <ul class="biz-plan-list">
-              <li>✓ <strong>$600</strong> 3-Month Bot Rental Fee</li>
-              <li>✓ <strong>$2,600</strong> Total Initial Outlay</li>
-              <li>✓ <strong>$20 – $60 / day</strong> (Mon–Fri Active)</li>
-              <li>✓ <strong>$440 – $1,320 / mo</strong> Net Yields</li>
-              <li>✓ Priority On-Chain Settlement</li>
-            </ul>
-
-            <a href="plan-detail.html?plan=growth&capital=2000" class="biz-btn-primary" style="width: 100%;">
-              Select Growth Plan →
-            </a>
-          </div>
-
-          <!-- Plan 3 -->
-          <div class="biz-plan-card">
-            <div class="biz-plan-badge">Alpha Vault</div>
-            <h3 class="biz-plan-title">3 Bot Units</h3>
-            <div class="biz-plan-price">$3,000 <span>Deposit</span></div>
-            <p class="biz-plan-desc">Institutional alpha tier for private family offices & wealth funds.</p>
-
-            <ul class="biz-plan-list">
-              <li>✓ <strong>$900</strong> 3-Month Bot Rental Fee</li>
-              <li>✓ <strong>$3,900</strong> Total Initial Outlay</li>
-              <li>✓ <strong>$30 – $90 / day</strong> (Mon–Fri Active)</li>
-              <li>✓ <strong>$660 – $1,980 / mo</strong> Net Yields</li>
-              <li>✓ Dedicated Risk Officer & 24/7 Desk</li>
-            </ul>
-
-            <a href="plan-detail.html?plan=alpha&capital=3000" class="biz-btn-primary" style="width: 100%;">
-              Select Alpha Plan →
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECURITY & COMPLIANCE -->
-    <section id="security" class="biz-section-wrap biz-security-bg">
-      <div class="biz-container">
-        <div class="biz-security-layout">
-          <div class="biz-security-text">
-            <span class="biz-section-eyebrow" style="color: var(--accent-teal);">BANK-GRADE SECURITY</span>
-            <h2 class="biz-section-title" style="color: #ffffff;">Cryptographic Multi-Signature Cold Storage</h2>
-            <p style="color: var(--slate-400); font-size: 0.95rem; margin-bottom: 24px; line-height: 1.6;">
-              B Magnet International utilizes hardware-grade security modules and multi-party computation protocols to ensure client capital remains inviolable.
-            </p>
-
-            <div class="biz-security-checkpoints">
-              <div class="biz-check-item">
-                <span class="biz-check-icon">🔒</span>
-                <div>
-                  <strong style="color: #ffffff;">FIPS 140-2 Level 3 Compliance</strong>
-                  <p style="color: var(--slate-400); font-size: 0.82rem;">Hardware security modules with tamper-evident physical barriers.</p>
-                </div>
+          <!-- Auto-Detected Bot & MT5 Info Card -->
+          <div class="auto-detected-plan-card">
+            <div class="adp-row">
+              <span class="adp-lbl">PURCHASED BOT</span>
+              <strong class="adp-val" id="genDetectedBotName">B-Magnet Gold Hunter EA (1 Month Pass)</strong>
+            </div>
+            
+            <div class="adp-grid">
+              <div class="adp-item">
+                <span class="adp-lbl">DEFAULT GTCFX MT5</span>
+                <strong class="adp-val text-cyan font-mono" id="genDetectedMt5Account">#8849201</strong>
               </div>
-
-              <div class="biz-check-item">
-                <span class="biz-check-icon">🏛️</span>
-                <div>
-                  <strong style="color: #ffffff;">Tier-1 Segregated Liquidity</strong>
-                  <p style="color: var(--slate-400); font-size: 0.82rem;">Never commingled with proprietary firm operations or third-party liabilities.</p>
-                </div>
+              <div class="adp-item">
+                <span class="adp-lbl">RENT DURATION</span>
+                <strong class="adp-val text-amber font-mono" id="genDetectedPlanDuration">1 Month (30 Days)</strong>
               </div>
-
-              <div class="biz-check-item">
-                <span class="biz-check-icon">⚡</span>
-                <div>
-                  <strong style="color: #ffffff;">Direct USDT BEP20 & TRC20 Settlement</strong>
-                  <p style="color: var(--slate-400); font-size: 0.82rem;">Zero intermediary latency with automated on-chain deposit tracking.</p>
-                </div>
+              <div class="adp-item">
+                <span class="adp-lbl">EXPIRES ON</span>
+                <strong class="adp-val font-mono" id="genDetExpiry">2026.09.14 23:59:59</strong>
+              </div>
+              <div class="adp-item">
+                <span class="adp-lbl">LICENSE STATUS</span>
+                <strong class="adp-val text-success" id="genKeyStatusBadge">✅ Issued & Locked</strong>
               </div>
             </div>
           </div>
 
-          <div class="biz-security-box">
-            <div class="biz-vault-badge">
-              <span class="pulse-dot"></span>
-              <span>LIVE MULTI-SIG VAULT STATUS: OPERATIONAL</span>
+          <!-- Generated Cryptographic Key Display Card -->
+          <div class="gen-result-card" style="margin-top: 14px;">
+            <div class="gen-result-top">
+              <span class="gen-key-tag">🔑 AUTHENTIC MT5 ACTIVATION KEY</span>
+              <span class="gen-duration-pill" id="genDurationBadge">1 Month ($100)</span>
             </div>
-            <div class="biz-vault-address-preview">
-              <span style="font-size: 0.76rem; color: var(--slate-400); display: block; margin-bottom: 4px;">BEP20 Custody Vault Address:</span>
-              <code>0x1C5e0e66DF3dA13f9a86b799c175F78cA54E70d2</code>
+
+            <div class="gen-key-display font-mono" id="genKeyOutput">BM8-8849201-20260914-0F7C0A67</div>
+
+            <div class="key-locked-notice" id="genLockedNoticeWrap">
+              <span class="material-symbols-rounded">lock</span>
+              <span><strong>Persistent Key Locked:</strong> This key has already been generated and permanently bound to MT5 <span id="genNoticeMt5">#8849201</span>. Re-generation is locked for active licenses.</span>
             </div>
-            <div class="biz-vault-address-preview" style="margin-top: 12px;">
-              <span style="font-size: 0.76rem; color: var(--slate-400); display: block; margin-bottom: 4px;">TRC20 Custody Vault Address:</span>
-              <code>TTi1Pp64FkZXAgscRtaN5wTETdYMYq8MwV</code>
+
+            <div class="gen-actions-row" style="margin-top: 12px;">
+              <button type="button" class="btn-gen-copy" onclick="window.botHubApp.copyGeneratedKey()">
+                <span class="material-symbols-rounded">content_copy</span>
+                <span>📋 Copy Key</span>
+              </button>
+              <button type="button" class="btn-gen-whatsapp" onclick="window.botHubApp.copyGeneratedWhatsAppMsg()">
+                <span class="material-symbols-rounded">chat</span>
+                <span>💬 Copy WhatsApp Msg</span>
+              </button>
             </div>
           </div>
+
+          <!-- Instructions Card -->
+          <div class="gen-instructions-card">
+            <div class="gen-inst-title">
+              <span class="material-symbols-rounded" style="font-size: 16px; color: #00A896;">help_outline</span>
+              <span>How to Activate in MT5:</span>
+            </div>
+            <ol class="gen-inst-steps">
+              <li>Open MetaTrader 5 on your PC/VPS and attach <strong>B-Magnet Gold Hunter</strong> to Gold (XAUUSD) chart.</li>
+              <li>In the EA Inputs settings tab, paste your License Key into the <strong>InpLicenseKey</strong> input box.</li>
+              <li>Ensure <strong>Allow Algo Trading</strong> is enabled and click OK to start automated trading!</li>
+            </ol>
+          </div>
+
         </div>
+
       </div>
-    </section>
 
-    <!-- FINAL CALL TO ACTION -->
-    <section class="biz-final-cta">
-      <div class="biz-container" style="text-align: center;">
-        <h2 class="biz-cta-heading">Ready to Allocate Institutional Capital?</h2>
-        <p class="biz-cta-sub">
-          Join leading global wealth managers and sovereign investors utilizing B Magnet International's automated AI yield vaults.
-        </p>
-        <div style="display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;">
-          <a href="login.html" class="biz-btn-primary" style="padding: 16px 36px; font-size: 1.05rem;">
-            Access Investor Portal →
-          </a>
-          <a href="register.html" class="biz-btn-secondary" style="padding: 16px 36px; font-size: 1.05rem;">
-            Register Investor Profile
-          </a>
-        </div>
       </div>
-    </section>
+    </div>
+  </div>
 
-    <!-- CORPORATE FOOTER -->
-    <footer class="biz-footer">
-      <div class="biz-container">
-        <div class="biz-footer-grid">
-          <div>
-            <div class="biz-brand-link" style="margin-bottom: 12px;">
-              <img src="logo.png" alt="B Magnet International Logo" class="biz-nav-logo" style="height: 44px;" />
-              <div class="biz-brand-text">
-                <span class="biz-brand-name">B MAGNET INTERNATIONAL</span>
-                <span class="biz-brand-sub">INSTITUTIONAL ASSET MANAGEMENT</span>
-              </div>
-            </div>
-            <p style="font-size: 0.82rem; color: var(--slate-500); max-width: 320px; line-height: 1.6;">
-              Premier institutional capital allocation, multi-sig custodial security, and automated AI Forex yield distribution.
-            </p>
-          </div>
-
-          <div>
-            <h4 class="biz-footer-head">Platform</h4>
-            <ul class="biz-footer-links">
-              <li><a href="login.html">Investor Portal (Sign In)</a></li>
-              <li><a href="register.html">Investor Registration & KYC</a></li>
-              <li><a href="plan.html">Bot Investment Plans</a></li>
-              <li><a href="payment.html">Crypto Deposit Vaults</a></li>
-              <li><a href="dashboard.html">Client Dashboard</a></li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 class="biz-footer-head">Technology</h4>
-            <ul class="biz-footer-links">
-              <li><a href="#solutions">Automated Neural Execution</a></li>
-              <li><a href="#security">Multi-Sig Cold Custody</a></li>
-              <li><a href="#calculator">Yield Calculator</a></li>
-              <li><a href="#security">2.5% Downside Stops</a></li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 class="biz-footer-head">Contact & Compliance</h4>
-            <ul class="biz-footer-links">
-              <li><span>Official Investor Support:</span></li>
-              <li><strong style="color: var(--text-primary);">support@bmagnetint.com</strong></li>
-              <li><span style="font-size: 0.78rem; color: var(--slate-500);">Financial Center, DIFC, Dubai</span></li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="biz-footer-bottom">
-          <p>© 2026 B Magnet International. Multi-Sig Custodial Vaults & Automated AI Capital Yields. All rights reserved.</p>
-        </div>
+  <!-- ======================================================== -->
+  <!-- MODAL: OWNER NOTIFICATIONS & REAL-TIME ALERTS           -->
+  <!-- ======================================================== -->
+  <div class="modal-backdrop" id="notificationsModal">
+    <div class="modal-sheet">
+      <div class="sheet-handle"></div>
+      <div class="modal-header">
+        <h3 class="modal-title" style="display: flex; align-items: center; gap: 8px;">
+          <span class="material-symbols-rounded" style="color: #F0B90B;">notifications_active</span>
+          Owner Real-Time Alerts
+        </h3>
+        <button class="modal-close-btn" onclick="window.botHubApp.closeModal('notificationsModal')">
+          <span class="material-symbols-rounded">close</span>
+        </button>
       </div>
-    </footer>
+      <div class="modal-body" id="notificationsModalBody">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+  </div>
 
-    <!-- Interactive Calculator & Theme Scripts -->
-    <script src="translations.js"></script>
-    <script src="theme.js"></script>
-    <script>
-      // Interactive Calculator Script for Homepage
-      document.addEventListener('DOMContentLoaded', () => {
-        const botBtns = document.querySelectorAll('.biz-bot-btn');
-        const calcCapital = document.getElementById('calcCapital');
-        const calcRent = document.getElementById('calcRent');
-        const calcOutlay = document.getElementById('calcOutlay');
-        const calcDailyReturn = document.getElementById('calcDailyReturn');
-        const calcMonthlyReturn = document.getElementById('calcMonthlyReturn');
-        const calcActionBtn = document.getElementById('calcActionBtn');
+  <!-- Toast Notification System -->
+  <div class="toast-container" id="toastContainer"></div>
 
-        botBtns.forEach(btn => {
-          btn.addEventListener('click', () => {
-            botBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-
-            const bots = parseInt(btn.getAttribute('data-bots'), 10);
-            const capital = parseInt(btn.getAttribute('data-capital'), 10);
-            const rent = parseInt(btn.getAttribute('data-rent'), 10);
-            const outlay = capital + rent;
-
-            const minDaily = bots * 10;
-            const maxDaily = bots * 30;
-            const minMonthly = bots * 220;
-            const maxMonthly = bots * 660;
-
-            if (calcCapital) calcCapital.textContent = `$${capital.toLocaleString()} USD`;
-            if (calcRent) calcRent.textContent = `$${rent.toLocaleString()} USD (3-Mo Contract)`;
-            if (calcOutlay) calcOutlay.textContent = `$${outlay.toLocaleString()} USD`;
-            if (calcDailyReturn) calcDailyReturn.innerHTML = `$${minDaily} – $${maxDaily} <span style="font-size: 1rem; color: var(--slate-400);">/ day</span>`;
-            if (calcMonthlyReturn) calcMonthlyReturn.innerHTML = `$${minMonthly} – $${maxMonthly} <span style="font-size: 1rem; color: var(--slate-400);">/ mo</span>`;
-            if (calcActionBtn) {
-              calcActionBtn.textContent = `Allocate ${bots} Bot${bots > 1 ? 's' : ''} & Fund via Vault →`;
-              calcActionBtn.href = `plan-detail.html?plan=${bots === 1 ? 'starter' : bots === 2 ? 'growth' : bots === 3 ? 'alpha' : 'enterprise'}&capital=${capital}`;
-            }
-          });
-        });
-      });
-    </script>
-  </body>
+  <!-- App Scripts -->
+  <script src="qrcode.js"></script>
+  <script src="app.js?v=2.5"></script>
+</body>
 </html>

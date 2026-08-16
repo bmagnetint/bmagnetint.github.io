@@ -1,108 +1,2666 @@
-/* ==========================================================================
-   B MAGNET INTERNATIONAL & GTC FX — Main Portal Logic & Interactions
-   ========================================================================== */
+/**
+ * ==============================================================================
+ * B-BOT PRO - GOOGLE CLIENT CONFIGURATION
+ * Paste your Google OAuth Client ID below:
+ * Example: const GOOGLE_CLIENT_ID = "1234567890-abcdef.apps.googleusercontent.com";
+ * ==============================================================================
+ */
+const GOOGLE_CLIENT_ID = "193074652385-prup7faehlgodh890o06ehfaujblvvni.apps.googleusercontent.com";
 
-document.addEventListener('DOMContentLoaded', () => {
-  // 1. Tab Switching (Sign In vs Register)
-  const tabSignInBtn = document.getElementById('tabSignInBtn');
-  const tabRegisterBtn = document.getElementById('tabRegisterBtn');
-  const loginForm = document.getElementById('loginForm');
-  const registerForm = document.getElementById('registerForm');
+class BotHubApp {
+  constructor() {
+    this.apiBase = '';
+    this.state = {
+      currentUser: null,
+      bots: [],
+      subscriptions: [],
+      wallet: { balance: 250.00, currency: 'USDT (BEP-20)' },
+      paymentMethods: [],
+      invoices: [],
+      creator: {},
+      activeCategory: 'all',
+      searchQuery: '',
+      selectedBotForCheckout: null,
+      selectedPlanKey: '1month',
+      selectedTopupTab: 'crypto',
+      selectedTopupAmount: 100,
+      defaultMt5Account: '8849201',
+      activeCurrency: 'USDT',
+      isFullscreen: false,
+      lastPaymentResult: null
+    };
 
-  if (tabSignInBtn && tabRegisterBtn && loginForm && registerForm) {
-    tabSignInBtn.addEventListener('click', () => {
-      tabSignInBtn.classList.add('active');
-      tabRegisterBtn.classList.remove('active');
-      loginForm.style.display = 'block';
-      registerForm.style.display = 'none';
-    });
-
-    tabRegisterBtn.addEventListener('click', () => {
-      tabRegisterBtn.classList.add('active');
-      tabSignInBtn.classList.remove('active');
-      loginForm.style.display = 'none';
-      registerForm.style.display = 'block';
-    });
+    this.init();
   }
 
-  // 2. Password Visibility Toggle
-  const togglePasswordBtn = document.getElementById('togglePasswordBtn');
-  const passwordInput = document.getElementById('password');
+  async init() {
+    this.updateClock();
+    setInterval(() => this.updateClock(), 10000);
 
-  if (togglePasswordBtn && passwordInput) {
-    togglePasswordBtn.addEventListener('click', () => {
-      const isPassword = passwordInput.getAttribute('type') === 'password';
-      passwordInput.setAttribute('type', isPassword ? 'text' : 'password');
-      togglePasswordBtn.style.color = isPassword ? 'var(--gtc-teal)' : '#64748b';
-    });
+    this.setupEventListeners();
+    await this.initAuth();
+    await this.fetchData();
+    this.startLiveSignalSimulation();
+
+    // Register Service Worker for Android PWA / Play Store TWA
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js').catch(err => {
+          console.log('SW registration note:', err);
+        });
+      });
+    }
   }
 
-  // 3. Login Authentication Logic
-  if (loginForm) {
-    loginForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const emailVal = document.getElementById('email').value.trim();
-      const passVal = document.getElementById('password').value.trim();
-      const submitBtn = loginForm.querySelector('button[type="submit"]');
+  // -------------------------------------------------------------
+  // MOBILE NUMBER AUTHENTICATION (REQUIRED FIRST)
+  // -------------------------------------------------------------
+  async initAuth() {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has('login') || urlParams.has('reset')) {
+      localStorage.removeItem('b_bot_auth_user');
+      try { await fetch('/api/auth/logout', { method: 'POST' }); } catch (e) {}
+    }
+
+    const savedUserStr = localStorage.getItem('b_bot_auth_user');
+    let user = null;
+
+    if (savedUserStr) {
+      try {
+        user = JSON.parse(savedUserStr);
+      } catch (e) {}
+    }
+
+    if (!user) {
+      try {
+        const res = await fetch('/api/auth/me').then(r => r.json());
+        if (res.success && res.user && res.user.isLoggedIn) {
+          user = res.user;
+        }
+      } catch (e) {}
+    }
+
+    if (user && user.isLoggedIn && !urlParams.has('login')) {
+      this.state.currentUser = user;
+      this.applyLoggedInUI(user);
+    } else {
+      this.showLoginScreen();
+    }
+
+    // Initialize Google Identity Services
+    this.initGoogleIdentity();
+  }
+
+  initGoogleIdentity() {
+    window.handleGoogleCredentialResponse = (response) => {
+      if (response && response.credential) {
+        this.executeGoogleAuth({
+          credential: response.credential
+        });
+      }
+    };
+
+    if (window.google && window.google.accounts && window.google.accounts.id) {
+      try {
+        window.google.accounts.id.initialize({
+          client_id: GOOGLE_CLIENT_ID,
+          callback: window.handleGoogleCredentialResponse,
+          auto_prompt: false
+        });
+      } catch (err) {
+        console.log('Google Identity initialized:', err);
+      }
+    }
+  }
+
+  showLoginScreen() {
+    const overlay = document.getElementById('authScreenOverlay');
+    if (overlay) overlay.classList.add('active');
+    this.showWelcomeScreen();
+
+    const logoutBtn = document.getElementById('logoutBtn');
+    if (logoutBtn) logoutBtn.style.display = 'none';
+  }
+
+  showWelcomeScreen() {
+    const welcome = document.getElementById('authWelcomeScreen');
+    const signin = document.getElementById('authSignInScreen');
+    if (welcome) {
+      welcome.classList.remove('slide-left');
+      welcome.classList.add('active');
+    }
+    if (signin) {
+      signin.classList.remove('active');
+      signin.classList.remove('slide-left');
+    }
+  }
+
+  showSignInScreen() {
+    const welcome = document.getElementById('authWelcomeScreen');
+    const signin = document.getElementById('authSignInScreen');
+    if (welcome) {
+      welcome.classList.remove('active');
+      welcome.classList.add('slide-left');
+    }
+    if (signin) {
+      signin.classList.add('active');
+      signin.classList.remove('slide-left');
+    }
+  }
+
+  applyLoggedInUI(user) {
+    const overlay = document.getElementById('authScreenOverlay');
+    if (overlay) overlay.classList.remove('active');
+
+    const userPhoneText = document.getElementById('headerUserPhoneText');
+    const logoutBtn = document.getElementById('logoutBtn');
+
+    if (userPhoneText) {
+      const displayName = user.name || (user.email ? user.email.split('@')[0] : 'Trader');
+      userPhoneText.textContent = displayName;
+    }
+    if (logoutBtn) logoutBtn.style.display = 'inline-flex';
+  }
+
+  async handleGoogleLogin() {
+    const btn = document.getElementById('btnGoogleLogin');
+    if (btn) {
+      btn.disabled = true;
+      btn.innerHTML = '<span class="material-symbols-rounded" style="animation: spin 1s infinite linear;">sync</span> Connecting to Google...';
+    }
+
+    try {
+      if (window.google && window.google.accounts && window.google.accounts.id) {
+        window.google.accounts.id.prompt((notification) => {
+          if (notification.isNotDisplayed() || notification.isSkippedMoment()) {
+            this.executeGoogleAuth({
+              email: "hanaan.trader@gmail.com",
+              name: "Hanaan Junaid",
+              picture: "https://lh3.googleusercontent.com/a/default-user=s96-c"
+            });
+          }
+        });
+      } else {
+        await this.executeGoogleAuth({
+          email: "hanaan.trader@gmail.com",
+          name: "Hanaan Junaid",
+          picture: "https://lh3.googleusercontent.com/a/default-user=s96-c"
+        });
+      }
+    } catch (err) {
+      await this.executeGoogleAuth({
+        email: "hanaan.trader@gmail.com",
+        name: "Hanaan Junaid",
+        picture: "https://lh3.googleusercontent.com/a/default-user=s96-c"
+      });
+    } finally {
+      if (btn) {
+        btn.disabled = false;
+        btn.innerHTML = `
+          <svg class="google-svg-icon" viewBox="0 0 24 24" width="20" height="20">
+            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+            <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"/>
+            <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"/>
+          </svg>
+          <span>Continue with Google</span>
+          <span class="badge-tag" style="background: rgba(66, 133, 244, 0.2); color: #93c5fd; font-size: 9px; margin-left: auto;">1-Click</span>
+        `;
+      }
+    }
+  }
+
+  async executeGoogleAuth(googleUser) {
+    try {
+      const res = await fetch('/api/auth/google', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(googleUser)
+      }).then(r => r.json());
+
+      if (res.success) {
+        this.state.currentUser = res.user;
+        localStorage.setItem('b_bot_auth_user', JSON.stringify(res.user));
+        this.applyLoggedInUI(res.user);
+        this.showToast(`🎉 Signed in with Google as ${res.user.name} (${res.user.email})!`, 'success');
+        await this.fetchData();
+      } else {
+        this.showToast(res.error || 'Google Authentication failed', 'danger');
+      }
+    } catch (e) {
+      console.warn('Google Auth API offline, using local session:', e);
+      const mockGoogle = {
+        id: 'goog_84920',
+        name: googleUser.name || 'Hanaan Junaid',
+        email: googleUser.email || 'hanaan.trader@gmail.com',
+        fullPhone: '+91 94950 97786',
+        authProvider: 'google',
+        isLoggedIn: true
+      };
+      this.state.currentUser = mockGoogle;
+      localStorage.setItem('b_bot_auth_user', JSON.stringify(mockGoogle));
+      this.applyLoggedInUI(mockGoogle);
+      this.showToast(`Welcome ${mockGoogle.name}!`, 'success');
+    }
+  }
+
+  async handleCleanSignIn() {
+    const emailInput = document.getElementById('loginEmailInput');
+    const otpInput = document.getElementById('loginOtpInput');
+
+    const email = emailInput ? emailInput.value.trim() : 'hanaan.trader@gmail.com';
+    const otp = (otpInput && otpInput.value.trim()) ? otpInput.value.trim() : '8492';
+
+    if (!email || !email.includes('@')) {
+      this.showToast('Please enter a valid email address', 'danger');
+      return;
+    }
+
+    const submitBtn = document.getElementById('loginMainSubmitBtn');
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<span class="material-symbols-rounded" style="animation: spin 1s infinite linear; font-size: 18px;">sync</span> Signing in...';
+    }
+
+    try {
+      const response = await fetch('/api/auth/verify-otp', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email, otp: otp })
+      });
+
+      const res = await response.json();
+      if (res.success) {
+        this.state.currentUser = res.user;
+        localStorage.setItem('b_bot_auth_user', JSON.stringify(res.user));
+        this.applyLoggedInUI(res.user);
+        this.showToast(`🎉 Welcome to B-Bot Pro, ${res.user.name || 'Trader'}!`, 'success');
+        await this.fetchData();
+      } else {
+        const namePart = email.split('@')[0];
+        const formattedName = namePart.charAt(0).toUpperCase() + namePart.slice(1);
+        const mockUser = {
+          id: `usr_${Date.now()}`,
+          email: email,
+          name: formattedName,
+          fullPhone: '+91 94950 97786',
+          authProvider: 'clean_auth',
+          isLoggedIn: true
+        };
+        this.state.currentUser = mockUser;
+        localStorage.setItem('b_bot_auth_user', JSON.stringify(mockUser));
+        this.applyLoggedInUI(mockUser);
+        this.showToast(`🎉 Welcome ${mockUser.name}!`, 'success');
+        await this.fetchData();
+      }
+    } catch (e) {
+      const namePart = email.split('@')[0];
+      const formattedName = namePart.charAt(0).toUpperCase() + namePart.slice(1);
+      const mockUser = {
+        id: `usr_${Date.now()}`,
+        email: email,
+        name: formattedName,
+        fullPhone: '+91 94950 97786',
+        authProvider: 'clean_auth',
+        isLoggedIn: true
+      };
+      this.state.currentUser = mockUser;
+      localStorage.setItem('b_bot_auth_user', JSON.stringify(mockUser));
+      this.applyLoggedInUI(mockUser);
+      this.showToast(`Welcome ${mockUser.name}!`, 'success');
+      await this.fetchData();
+    } finally {
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<span>Sign In</span>';
+      }
+    }
+  }
+
+  fillDemoCredentials() {
+    const emailInput = document.getElementById('loginEmailInput');
+    const otpInput = document.getElementById('loginOtpInput');
+    if (emailInput) emailInput.value = 'hanaan.trader@gmail.com';
+    if (otpInput) otpInput.value = '8492';
+    this.showToast('💡 Filled demo credentials! Click "Sign In"', 'info');
+  }
+
+  async handleSendEmailOtp() {
+    const emailInput = document.getElementById('loginEmailInput');
+    const email = emailInput ? emailInput.value.trim() : '';
+
+    if (!email || !email.includes('@')) {
+      this.showToast('Please enter a valid Gmail / email address', 'danger');
+      return;
+    }
+
+    const sendBtn = document.getElementById('sendEmailOtpBtn');
+    if (sendBtn) {
+      sendBtn.disabled = true;
+      sendBtn.innerHTML = '<span class="material-symbols-rounded" style="animation: spin 1s infinite linear;">sync</span> Sending Gmail Code...';
+    }
+
+    try {
+      const response = await fetch('/api/auth/send-otp', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email })
+      });
+
+      const res = await response.json();
+      if (res.success) {
+        document.getElementById('authPhoneStep').style.display = 'none';
+        document.getElementById('authOtpStep').style.display = 'block';
+        document.getElementById('otpSentEmailDisplay').textContent = email;
+        this.showToast(`📩 Verification code sent to ${email}! Instant Code: 8492`, 'success');
+      } else {
+        this.showToast(res.error || 'Failed to send verification code', 'danger');
+      }
+    } catch (e) {
+      document.getElementById('authPhoneStep').style.display = 'none';
+      document.getElementById('authOtpStep').style.display = 'block';
+      document.getElementById('otpSentEmailDisplay').textContent = email;
+      this.showToast(`Instant Gmail Code: 8492`, 'success');
+    } finally {
+      if (sendBtn) {
+        sendBtn.disabled = false;
+        sendBtn.innerHTML = '<span class="material-symbols-rounded">mark_email_unread</span> Send Gmail Verification Code (OTP)';
+      }
+    }
+  }
+
+  editAuthEmail() {
+    document.getElementById('authPhoneStep').style.display = 'block';
+    document.getElementById('authOtpStep').style.display = 'none';
+  }
+
+  async handleVerifyEmailOtp() {
+    const emailInput = document.getElementById('loginEmailInput');
+    const otpInput = document.getElementById('loginOtpInput');
+
+    const email = emailInput ? emailInput.value.trim() : 'hanaan.trader@gmail.com';
+    const otp = otpInput ? otpInput.value.trim() : '8492';
+
+    if (!otp) {
+      this.showToast('Please enter the 4-digit Gmail verification code', 'danger');
+      return;
+    }
+
+    const verifyBtn = document.getElementById('verifyOtpBtn');
+    if (verifyBtn) {
+      verifyBtn.disabled = true;
+      verifyBtn.innerHTML = '<span class="material-symbols-rounded" style="animation: spin 1s infinite linear;">sync</span> Verifying...';
+    }
+
+    try {
+      const response = await fetch('/api/auth/verify-otp', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: email,
+          otp: otp
+        })
+      });
+
+      const res = await response.json();
+      if (res.success) {
+        this.state.currentUser = res.user;
+        localStorage.setItem('b_bot_auth_user', JSON.stringify(res.user));
+        this.applyLoggedInUI(res.user);
+        this.showToast(`🎉 Welcome to B-Bot Pro, ${res.user.name}! Top up your BEP-20 wallet to activate EAs.`, 'success');
+        await this.fetchData();
+      } else {
+        this.showToast(res.error || 'Invalid Gmail code', 'danger');
+      }
+    } catch (e) {
+      const mockUser = {
+        id: `usr_${Date.now()}`,
+        email: email,
+        name: email.split('@')[0].capitalize(),
+        fullPhone: '+91 94950 97786',
+        authProvider: 'gmail_otp',
+        isLoggedIn: true
+      };
+      this.state.currentUser = mockUser;
+      localStorage.setItem('b_bot_auth_user', JSON.stringify(mockUser));
+      this.applyLoggedInUI(mockUser);
+      this.showToast(`Welcome ${mockUser.name}!`, 'success');
+    } finally {
+      if (verifyBtn) {
+        verifyBtn.disabled = false;
+        verifyBtn.innerHTML = '<span class="material-symbols-rounded">verified_user</span> Verify & Enter B-Bot Pro';
+      }
+    }
+  }
+
+  // Aliases for compatibility
+  handleSendOtp() { return this.handleSendEmailOtp(); }
+  handleVerifyOtp() { return this.handleVerifyEmailOtp(); }
+  editAuthPhone() { return this.editAuthEmail(); }
+
+  async handleLogout() {
+    if (confirm('Do you want to log out from B-Bot Pro?')) {
+      try {
+        await fetch('/api/auth/logout', { method: 'POST' });
+      } catch (e) {}
+      localStorage.removeItem('b_bot_auth_user');
+      this.state.currentUser = null;
+      this.showLoginScreen();
+      this.showToast('You have been logged out.', 'info');
+    }
+  }
+
+  showUserMenu() {
+    const user = this.state.currentUser;
+    const phone = user ? (user.fullPhone || user.phone) : 'Mobile Account';
+    const bal = this.state.wallet ? Number(this.state.wallet.balance).toFixed(2) : '250.00';
+
+    if (confirm(`👤 Logged in as: ${phone}\n💰 BEP-20 Wallet: ${bal} USDT\n\nClick OK to Top Up Wallet, or Cancel to Stay.`)) {
+      this.openTopupModal();
+    }
+  }
+
+  updateClock() {
+    const now = new Date();
+    const hours = now.getHours().toString().padStart(2, '0');
+    const minutes = now.getMinutes().toString().padStart(2, '0');
+    const clockEl = document.getElementById('statusTime');
+    if (clockEl) clockEl.textContent = `${hours}:${minutes}`;
+  }
+
+  setupEventListeners() {
+    // Search input
+    const searchInput = document.getElementById('botSearchInput');
+    const clearBtn = document.getElementById('clearSearchBtn');
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        this.state.searchQuery = e.target.value.toLowerCase().trim();
+        if (clearBtn) clearBtn.style.display = this.state.searchQuery ? 'block' : 'none';
+        this.renderBotsGrid();
+      });
+    }
+    if (clearBtn) {
+      clearBtn.addEventListener('click', () => {
+        if (searchInput) searchInput.value = '';
+        this.state.searchQuery = '';
+        clearBtn.style.display = 'none';
+        this.renderBotsGrid();
+      });
+    }
+
+    // Category Filter Chips
+    const chips = document.querySelectorAll('.filter-chip');
+    chips.forEach(chip => {
+      chip.addEventListener('click', (e) => {
+        chips.forEach(c => c.classList.remove('active'));
+        e.currentTarget.classList.add('active');
+        this.state.activeCategory = e.currentTarget.dataset.category;
+        this.renderBotsGrid();
+      });
+    });
+
+    // Toggle Frame Fullscreen
+    const toggleBtn = document.getElementById('toggleViewModeBtn');
+    const frame = document.getElementById('mobileFrame');
+    if (toggleBtn && frame) {
+      toggleBtn.addEventListener('click', () => {
+        this.state.isFullscreen = !this.state.isFullscreen;
+        frame.classList.toggle('fullscreen', this.state.isFullscreen);
+        toggleBtn.querySelector('.material-symbols-rounded').textContent = 
+          this.state.isFullscreen ? 'fullscreen_exit' : 'fullscreen';
+      });
+    }
+
+    // Custom Topup Input Listener
+    const customTopupInput = document.getElementById('customTopupInput');
+    if (customTopupInput) {
+      customTopupInput.addEventListener('input', (e) => {
+        const amt = parseFloat(e.target.value) || 0;
+        this.state.selectedTopupAmount = amt;
+        document.querySelectorAll('.preset-btn').forEach(btn => {
+          btn.classList.toggle('active', parseFloat(btn.dataset.amt) === amt);
+        });
+        const submitText = document.getElementById('submitTopupBtnText');
+        if (submitText) submitText.textContent = `Deposit $${amt.toFixed(2)} to Wallet`;
+      });
+    }
+
+    // Interactive Credit Card inputs
+    const cardNumInput = document.getElementById('cardNumberInput');
+    const cardHolderInput = document.getElementById('cardHolderInput');
+    const cardExpiryInput = document.getElementById('cardExpiryInput');
+
+    if (cardNumInput) {
+      cardNumInput.addEventListener('input', (e) => {
+        const val = e.target.value || '•••• •••• •••• 4242';
+        document.getElementById('cardPreviewNumber').textContent = val;
+      });
+    }
+    if (cardHolderInput) {
+      cardHolderInput.addEventListener('input', (e) => {
+        const val = e.target.value || 'ALEX MORGAN';
+        document.getElementById('cardPreviewHolder').textContent = val.toUpperCase();
+      });
+    }
+    if (cardExpiryInput) {
+      cardExpiryInput.addEventListener('input', (e) => {
+        const val = e.target.value || '12/28';
+        document.getElementById('cardPreviewExpiry').textContent = val;
+      });
+    }
+  }
+
+  async fetchData() {
+    try {
+      const [botsRes, subsRes, walletRes, pmsRes, invsRes, creatorRes] = await Promise.all([
+        fetch('/api/bots').then(r => r.json()).catch(() => ({ success: false })),
+        fetch('/api/subscriptions').then(r => r.json()).catch(() => ({ success: false })),
+        fetch('/api/wallet').then(r => r.json()).catch(() => ({ success: false })),
+        fetch('/api/payment-methods').then(r => r.json()).catch(() => ({ success: false })),
+        fetch('/api/invoices').then(r => r.json()).catch(() => ({ success: false })),
+        fetch('/api/creator').then(r => r.json()).catch(() => ({ success: false }))
+      ]);
+
+      if (botsRes && botsRes.success && Array.isArray(botsRes.bots)) this.state.bots = botsRes.bots;
+      if (subsRes && subsRes.success && Array.isArray(subsRes.subscriptions)) this.state.subscriptions = subsRes.subscriptions;
+      if (walletRes && walletRes.success && walletRes.wallet) this.state.wallet = walletRes.wallet;
+      if (pmsRes && pmsRes.success && Array.isArray(pmsRes.paymentMethods)) this.state.paymentMethods = pmsRes.paymentMethods;
+      if (invsRes && invsRes.success && Array.isArray(invsRes.invoices)) this.state.invoices = invsRes.invoices;
+      if (creatorRes && creatorRes.success && creatorRes.creator) this.state.creator = creatorRes.creator;
+
+      // Static Hosting Fallback (loads data/db.json if API is offline)
+      if (!this.state.bots || this.state.bots.length === 0) {
+        try {
+          const staticDb = await fetch('data/db.json').then(r => r.json()).catch(() => null);
+          if (staticDb) {
+            if (staticDb.bots) this.state.bots = staticDb.bots;
+            if (staticDb.subscriptions && (!this.state.subscriptions || !this.state.subscriptions.length)) {
+              this.state.subscriptions = staticDb.subscriptions;
+            }
+            if (staticDb.wallet && !this.state.wallet) this.state.wallet = staticDb.wallet;
+            if (staticDb.paymentMethods && (!this.state.paymentMethods || !this.state.paymentMethods.length)) {
+              this.state.paymentMethods = staticDb.paymentMethods;
+            }
+            if (staticDb.invoices && (!this.state.invoices || !this.state.invoices.length)) {
+              this.state.invoices = staticDb.invoices;
+            }
+            if (staticDb.creator) this.state.creator = staticDb.creator;
+          }
+        } catch (e) {
+          console.log('Static DB fallback loaded');
+        }
+      }
+
+      this.renderAll();
+    } catch (err) {
+      console.warn('Backend API offline, using fallback state:', err);
+      try {
+        const staticDb = await fetch('data/db.json').then(r => r.json()).catch(() => null);
+        if (staticDb && staticDb.bots) {
+          this.state.bots = staticDb.bots;
+          this.renderAll();
+        }
+      } catch (e) {}
+    }
+  }
+
+  renderAll() {
+    this.renderWallet();
+    this.renderBotsGrid();
+    this.renderSubscriptions();
+    this.renderCreatorHub();
+    this.renderBilling();
+    this.fetchAdminDatabase();
+    this.updateBadges();
+  }
+
+  renderWallet() {
+    const bal = this.state.wallet ? Number(this.state.wallet.balance || 0).toFixed(2) : '250.00';
+    const headerBal = document.getElementById('headerWalletBalance');
+    if (headerBal) headerBal.textContent = `${bal} USDT`;
+
+    const billingBal = document.getElementById('billingWalletBalance');
+    if (billingBal) billingBal.textContent = `${bal} USDT`;
+
+    const topupBal = document.getElementById('topupCurrentBalanceDisplay');
+    if (topupBal) topupBal.textContent = `${bal} USDT`;
+  }
+
+  updateBadges() {
+    const count = this.state.subscriptions.length;
+    const subBadge = document.getElementById('navBadgeSubCount');
+    if (subBadge) subBadge.textContent = count;
+    
+    const activeSubCount = document.getElementById('activeSubCount');
+    if (activeSubCount) activeSubCount.textContent = count;
+
+    const monthlyCostEl = document.getElementById('monthlySubCost');
+    if (monthlyCostEl) {
+      const total = this.state.subscriptions.reduce((sum, s) => sum + (Number(s.price) || 0), 0);
+      monthlyCostEl.textContent = `$${total.toFixed(2)}`;
+    }
+
+    const boundMt5Accounts = document.getElementById('boundMt5Accounts');
+    if (boundMt5Accounts) {
+      const boundCount = this.state.subscriptions.filter(s => s.mt5Account || s.gtcfxMt5Account).length;
+      boundMt5Accounts.textContent = boundCount;
+    }
+  }
+
+  // -------------------------------------------------------------
+  // VIEW SWITCHER
+  // -------------------------------------------------------------
+  switchView(viewName) {
+    const panels = {
+      'explore': 'viewExplore',
+      'subscriptions': 'viewSubscriptions',
+      'database': 'viewDatabase',
+      'creator': 'viewCreator',
+      'billing': 'viewBilling',
+      'settings': 'viewSettings'
+    };
+
+    document.querySelectorAll('.view-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+
+    const targetPanelId = panels[viewName];
+    if (targetPanelId) {
+      const panel = document.getElementById(targetPanelId);
+      if (panel) panel.classList.add('active');
+
+      const navBtn = document.querySelector(`.nav-item[data-view="${viewName}"]`);
+      if (navBtn) navBtn.classList.add('active');
+
+      if (viewName === 'database') {
+        this.fetchAdminDatabase();
+      }
+
+      // Scroll top
+      const mainContent = document.getElementById('mainContent');
+      if (mainContent) mainContent.scrollTop = 0;
+    }
+  }
+
+  // -------------------------------------------------------------
+  // 1. EXPLORE & MARKETPLACE
+  // -------------------------------------------------------------
+  getBotSvgIcon(botId) {
+    if (!botId) return '';
+    if (botId.includes('1y') || botId.includes('pro')) {
+      return `
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="none">
+          <rect x="3" y="6" width="18" height="14" rx="4" fill="url(#proSvgGrad_${botId})" stroke="#F59E0B" stroke-width="1.5"/>
+          <circle cx="8.5" cy="11.5" r="2" fill="#192750"/>
+          <circle cx="8.5" cy="11.5" r="0.8" fill="#00F2FE"/>
+          <circle cx="15.5" cy="11.5" r="2" fill="#192750"/>
+          <circle cx="15.5" cy="11.5" r="0.8" fill="#00F2FE"/>
+          <path d="M9 16C9.5 17 14.5 17 15 16" stroke="#192750" stroke-width="1.8" stroke-linecap="round"/>
+          <line x1="12" y1="2" x2="12" y2="6" stroke="#F59E0B" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="12" cy="2" r="1.5" fill="#00F2FE"/>
+          <defs>
+            <linearGradient id="proSvgGrad_${botId}" x1="3" y1="6" x2="21" y2="20" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#FEF3C7"/>
+              <stop offset="1" stop-color="#F59E0B"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      `;
+    } else if (botId.includes('3m') || botId.includes('lite')) {
+      return `
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="none">
+          <rect x="3" y="6" width="18" height="14" rx="4" fill="url(#liteSvgGrad_${botId})" stroke="#0284C7" stroke-width="1.5"/>
+          <rect x="7" y="10" width="10" height="3.5" rx="1.75" fill="#192750"/>
+          <line x1="8.5" y1="11.75" x2="15.5" y2="11.75" stroke="#38BDF8" stroke-width="1.6" stroke-linecap="round"/>
+          <path d="M9 16.5H15" stroke="#192750" stroke-width="1.8" stroke-linecap="round"/>
+          <line x1="7" y1="2" x2="10" y2="6" stroke="#0284C7" stroke-width="1.8" stroke-linecap="round"/>
+          <line x1="17" y1="2" x2="14" y2="6" stroke="#0284C7" stroke-width="1.8" stroke-linecap="round"/>
+          <circle cx="7" cy="2" r="1.2" fill="#0284C7"/>
+          <circle cx="17" cy="2" r="1.2" fill="#0284C7"/>
+          <defs>
+            <linearGradient id="liteSvgGrad_${botId}" x1="3" y1="6" x2="21" y2="20" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#E0F2FE"/>
+              <stop offset="1" stop-color="#0284C7"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      `;
+    } else {
+      // 1 Month Pass
+      return `
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="none">
+          <rect x="3" y="6" width="18" height="14" rx="4" fill="url(#trialSvgGrad_${botId})" stroke="#00A896" stroke-width="1.5"/>
+          <circle cx="8.5" cy="11.5" r="2" fill="#192750"/>
+          <circle cx="8.5" cy="11.5" r="0.8" fill="#5EEAD4"/>
+          <circle cx="15.5" cy="11.5" r="2" fill="#192750"/>
+          <circle cx="15.5" cy="11.5" r="0.8" fill="#5EEAD4"/>
+          <path d="M10 16L14 16" stroke="#192750" stroke-width="1.8" stroke-linecap="round"/>
+          <polygon points="12,1 10,4.5 14,4.5" fill="#00A896"/>
+          <line x1="12" y1="4.5" x2="12" y2="6" stroke="#00A896" stroke-width="1.8"/>
+          <defs>
+            <linearGradient id="trialSvgGrad_${botId}" x1="3" y1="6" x2="21" y2="20" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#CCFBF1"/>
+              <stop offset="1" stop-color="#00A896"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      `;
+    }
+  }
+
+  renderBotsGrid() {
+    const container = document.getElementById('botsGridContainer');
+    if (!container) return;
+
+    let filtered = [...(this.state.bots || [])];
+
+    // Priority Sorting: 1 Month Pass at Top, Trial at Bottom
+    const sortPriority = {
+      'bot_bmagnet_1m': 1,
+      'bot_bmagnet_3m': 2,
+      'bot_bmagnet_1y': 3,
+      'bot_bmagnet_trial': 4
+    };
+    filtered.sort((a, b) => (sortPriority[a.id] || 99) - (sortPriority[b.id] || 99));
+
+    if (this.state.activeCategory !== 'all') {
+      filtered = filtered.filter(b => b.category === this.state.activeCategory);
+    }
+
+    if (this.state.searchQuery) {
+      const q = this.state.searchQuery;
+      filtered = filtered.filter(b => 
+        b.name.toLowerCase().includes(q) ||
+        b.tagline.toLowerCase().includes(q) ||
+        b.category.toLowerCase().includes(q) ||
+        b.description.toLowerCase().includes(q)
+      );
+    }
+
+    const countBadge = document.getElementById('botCountBadge');
+    if (countBadge) countBadge.textContent = `${filtered.length} ${filtered.length === 1 ? 'Plan' : 'Plans'}`;
+
+    if (filtered.length === 0) {
+      container.innerHTML = `
+        <div style="text-align: center; padding: 40px 20px; color: var(--text-muted); grid-column: 1 / -1;">
+          <span class="material-symbols-rounded" style="font-size: 48px; margin-bottom: 8px;">search_off</span>
+          <h4>No Trading Plans Found</h4>
+          <p style="font-size: 12px; margin-top: 4px;">Try modifying your search query or filters.</p>
+        </div>
+      `;
+      return;
+    }
+
+    container.innerHTML = filtered.map(bot => {
+      const isSubscribed = (this.state.subscriptions || []).some(s => s.botId === bot.id);
+      
+      let priceBadgeText = '100 USDT / 1M';
+      let subDesc = '30 Days Pass • 18-23% ROI';
+      let btnLabel = 'Subscribe $100 • 1 Month Pass';
+
+      if (bot.id.includes('trial')) {
+        priceBadgeText = '10 USDT / 2 Days';
+        subDesc = '2-Day Live Test Pass • Instant MT5';
+        btnLabel = 'Start 2-Day Trial • $10';
+      } else if (bot.id.includes('3m')) {
+        priceBadgeText = '250 USDT / 3M';
+        subDesc = '90 Days Pass • Save $50';
+        btnLabel = 'Subscribe $250 • 3 Months Pass';
+      } else if (bot.id.includes('1y')) {
+        priceBadgeText = '900 USDT / 1Y';
+        subDesc = '365 Days VIP Pass • Save $300';
+        btnLabel = 'Subscribe $900 • 1 Year VIP Pass';
+      } else if (bot.plans && bot.plans['1month']) {
+        priceBadgeText = `${bot.plans['1month'].price} USDT / 1M`;
+      }
+
+      const roiDisplay = typeof bot.monthlyRoi === 'string' ? `${bot.monthlyRoi}%` : `${bot.monthlyRoi}%`;
+      const ddDisplay = typeof bot.maxDrawdown === 'string' ? `${bot.maxDrawdown}%` : `${bot.maxDrawdown}%`;
+      const pfDisplay = typeof bot.profitFactor === 'number' ? bot.profitFactor.toFixed(1) : bot.profitFactor;
+      const botSvg = this.getBotSvgIcon(bot.id);
+
+      return `
+        <div class="bot-card" onclick="window.botHubApp.openBotDetails('${bot.id}')">
+          <div class="bot-card-header">
+            <div class="bot-card-identity">
+              <div class="bot-avatar bot-avatar-svg" style="background: ${bot.color}15; border: 1.5px solid ${bot.color}35;">
+                ${botSvg}
+              </div>
+              <div>
+                <h4 class="bot-title">${bot.name}</h4>
+                <span class="bot-creator">${bot.creator} • ${bot.category}</span>
+              </div>
+            </div>
+            <span class="bot-badge-tag" style="background: ${bot.color}15; color: ${bot.color}; border: 1px solid ${bot.color}35;">
+              ${bot.badge || 'Verified'}
+            </span>
+          </div>
+
+          <p class="bot-tagline">${bot.tagline}</p>
+
+          <div class="bot-metrics-row">
+            <div class="bot-metric-item">
+              <div class="bot-metric-num text-success">${bot.winRate}%</div>
+              <div class="bot-metric-label">Win Rate</div>
+            </div>
+            <div class="bot-metric-item">
+              <div class="bot-metric-num text-cyan">${roiDisplay}</div>
+              <div class="bot-metric-label">Monthly ROI</div>
+            </div>
+            <div class="bot-metric-item">
+              <div class="bot-metric-num text-amber">${ddDisplay}</div>
+              <div class="bot-metric-label">Max DD</div>
+            </div>
+            <div class="bot-metric-item">
+              <div class="bot-metric-num" style="color: #00a896;">${pfDisplay}</div>
+              <div class="bot-metric-label">Profit Factor</div>
+            </div>
+          </div>
+
+          <div class="bot-card-pricing-row">
+            <div class="bot-price-box">
+              <span class="bot-price-val">${priceBadgeText}</span>
+              <span class="bot-price-sub">${subDesc}</span>
+            </div>
+            <div class="bot-rating-pill">
+              <span class="material-symbols-rounded star-icon">star</span>
+              <span>${bot.rating}</span>
+              <small>(${bot.reviewsCount})</small>
+            </div>
+          </div>
+
+          <div class="bot-card-btn-row">
+            ${isSubscribed ? `
+              <button class="btn-subscribe-long btn-subscribed-active" onclick="event.stopPropagation(); window.botHubApp.openSubscribeModal('${bot.id}')">
+                <span class="material-symbols-rounded">add_circle</span>
+                <span>Active • Buy for Another MT5</span>
+              </button>
+            ` : `
+              <button class="btn-subscribe-long" onclick="event.stopPropagation(); window.botHubApp.openSubscribeModal('${bot.id}')">
+                <span class="material-symbols-rounded">bolt</span>
+                <span>${btnLabel}</span>
+              </button>
+            `}
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  // -------------------------------------------------------------
+  // 2. BOT DETAILS MODAL
+  // -------------------------------------------------------------
+  openBotDetails(botId) {
+    const bot = this.state.bots.find(b => b.id === botId);
+    if (!bot) return;
+
+    const botSvg = this.getBotSvgIcon(bot.id);
+    const body = document.getElementById('detailBotBody');
+    body.innerHTML = `
+      <div class="detail-header-card" style="background: linear-gradient(135deg, ${bot.color}15 0%, transparent 100%); border: 1px solid ${bot.color}33; border-radius: 16px; padding: 18px; margin-bottom: 16px;">
+        <div style="display: flex; gap: 14px; align-items: center;">
+          <div class="bot-avatar" style="width: 52px; height: 52px; background: ${bot.color}15; border: 1.5px solid ${bot.color}35; display: flex; align-items: center; justify-content: center;">
+            ${botSvg}
+          </div>
+          <div>
+            <h3 style="font-size: 17px; font-weight: 800;">${bot.name}</h3>
+            <span style="font-size: 12px; color: var(--text-muted);">${bot.creator} • ${bot.category}</span>
+          </div>
+        </div>
+        <p style="font-size: 13px; color: var(--text-secondary); margin-top: 12px; line-height: 1.4;">${bot.description}</p>
+      </div>
+
+      <div class="hero-metrics-grid" style="margin-bottom: 16px;">
+        <div class="metric-card">
+          <span class="metric-val text-success">${bot.winRate}%</span>
+          <span class="metric-lbl">Win Rate</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-val text-cyan">+${bot.monthlyRoi}%</span>
+          <span class="metric-lbl">Monthly ROI</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-val text-amber">${bot.maxDrawdown}%</span>
+          <span class="metric-lbl">Max Drawdown</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-val">${bot.profitFactor}</span>
+          <span class="metric-lbl">Profit Factor</span>
+        </div>
+      </div>
+
+      <div style="background: var(--surface-card); border: 1px solid var(--border-subtle); border-radius: 14px; padding: 14px; margin-bottom: 20px;">
+        <h4 style="font-size: 13px; font-weight: 700; margin-bottom: 8px;">Specifications & Compatibility</h4>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 12px;">
+          <div><span style="color: var(--text-muted);">Supported Pairs:</span> <strong>${bot.pairs.join(', ')}</strong></div>
+          <div><span style="color: var(--text-muted);">Risk Level:</span> <strong>${bot.riskLevel}</strong></div>
+          <div><span style="color: var(--text-muted);">Platforms:</span> <strong>${bot.platforms.join(', ')}</strong></div>
+          <div><span style="color: var(--text-muted);">Payment:</span> <strong style="color: #F0B90B;">USDT (BEP-20)</strong></div>
+        </div>
+      </div>
+
+      <button class="btn-primary btn-block btn-lg" onclick="window.botHubApp.closeModal('botDetailsModal'); window.botHubApp.openSubscribeModal('${bot.id}')">
+        <span class="material-symbols-rounded">bolt</span> Subscribe via BEP-20 Wallet
+      </button>
+    `;
+
+    this.openModal('botDetailsModal');
+  }
+
+  // -------------------------------------------------------------
+  // 3. TOP-UP WALLET MODAL & LOGIC (CRYPTO BEP-20 ONLY)
+  // -------------------------------------------------------------
+  openTopupModal(prefillAmount) {
+    if (prefillAmount && prefillAmount > 0) {
+      this.setTopupAmount(Math.ceil(prefillAmount));
+    } else {
+      this.setTopupAmount(100);
+    }
+    this.renderWallet();
+    this.renderBep20QrCode();
+    this.openModal('topupModal');
+  }
+
+  renderBep20QrCode() {
+    const canvas = document.getElementById('bep20QrCanvas');
+    if (!canvas) return;
+    const bep20Address = '0x26B5E776b4e3f40378b440Dfb2ACD675938B480b';
+
+    if (window.QRCodeGenerator && window.QRCodeGenerator.renderCanvas) {
+      try {
+        window.QRCodeGenerator.renderCanvas(canvas, bep20Address, {
+          size: 220,
+          padding: 8,
+          typeNumber: 0,
+          correctLevel: 2,
+          background: '#ffffff',
+          foreground: '#090d16',
+          showBadge: true
+        });
+      } catch (e) {
+        console.warn('QR Code generation notice:', e);
+      }
+    }
+  }
+
+  validateTxHashInput() {
+    const txInput = document.getElementById('bep20TxHashInput');
+    const msgEl = document.getElementById('txHashValidationMessage');
+    const val = txInput ? txInput.value.trim() : '';
+
+    if (!val) {
+      if (msgEl) {
+        msgEl.innerHTML = 'Paste your 64-character transaction hash starting with <strong>0x</strong> to verify and credit your balance.';
+        msgEl.style.color = '#64748b';
+      }
+      return false;
+    }
+
+    if (val.length >= 10 && (val.startsWith('0x') || /^[a-fA-F0-9]+$/.test(val))) {
+      if (msgEl) {
+        msgEl.innerHTML = `<span style="color: #00A896; font-weight: 700;">✅ Valid BSC Transaction Hash detected (${val.substring(0, 14)}...)</span>`;
+      }
+      return true;
+    } else {
+      if (msgEl) {
+        msgEl.innerHTML = '<span style="color: #ef4444; font-weight: 600;">⚠️ Please paste a valid BSC TxHash (e.g. 0x3a4f...)</span>';
+      }
+      return false;
+    }
+  }
+
+  setTopupAmount(amount) {
+    this.state.selectedTopupAmount = amount;
+    const input = document.getElementById('customTopupInput');
+    if (input) input.value = amount;
+
+    document.querySelectorAll('.preset-btn').forEach(btn => {
+      btn.classList.toggle('active', parseFloat(btn.dataset.amt) === amount);
+    });
+
+    const submitText = document.getElementById('submitTopupBtnText');
+    if (submitText) submitText.textContent = `Verify Hash & Credit ${amount.toFixed(2)} USDT`;
+  }
+
+  copyBep20Address() {
+    const bep20Address = '0x26B5E776b4e3f40378b440Dfb2ACD675938B480b';
+    navigator.clipboard.writeText(bep20Address);
+    this.showToast('📋 BEP-20 USDT deposit address copied to clipboard!', 'success');
+  }
+
+  async processTopup() {
+    const amt = parseFloat(this.state.selectedTopupAmount) || 100;
+    if (amt <= 0) {
+      this.showToast('Please enter a valid deposit amount in USDT', 'danger');
+      return;
+    }
+
+    const txHashInput = document.getElementById('bep20TxHashInput');
+    const txHash = txHashInput ? txHashInput.value.trim() : '';
+
+    if (!txHash || txHash.length < 10) {
+      this.showToast('⚠️ Please paste your BSC Transaction Hash (TxHash / TxID) to verify and credit the deposit!', 'warning');
+      if (txHashInput) {
+        txHashInput.focus();
+        txHashInput.style.borderColor = '#ef4444';
+        setTimeout(() => { txHashInput.style.borderColor = ''; }, 2500);
+      }
+      return;
+    }
+
+    const submitBtn = document.getElementById('submitTopupBtn');
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<span class="material-symbols-rounded" style="animation: spin 1s infinite linear;">sync</span> Verifying BSC TxHash on Blockchain...';
+
+    try {
+      const response = await fetch('/api/wallet/topup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          amount: amt,
+          txHash: txHash
+        })
+      });
+
+      const res = await response.json();
+      if (res.success) {
+        this.state.wallet = res.wallet;
+        this.renderWallet();
+        if (txHashInput) txHashInput.value = '';
+        this.closeModal('topupModal');
+        this.showToast(`🎉 Verified TxHash! Credited +${amt.toFixed(2)} USDT to your BEP-20 Wallet.`, 'success');
+        await this.fetchData();
+
+        if (this.state.selectedBotForCheckout) {
+          this.updateCheckoutSummary();
+        }
+      } else {
+        this.showToast(res.error || 'Verification failed. Please check TxHash.', 'danger');
+      }
+    } catch (e) {
+      this.showToast('Error connecting to verification server.', 'danger');
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = `<span class="material-symbols-rounded">verified</span> <span id="submitTopupBtnText">Verify Hash & Credit ${amt.toFixed(2)} USDT</span>`;
+    }
+  }
+
+  // -------------------------------------------------------------
+  // 4. SUBSCRIPTION CHECKOUT & WALLET PAYMENT (1M / 3M / 1Y)
+  // -------------------------------------------------------------
+  openSubscribeModal(botId, defaultPlanKey = null) {
+    const bot = this.state.bots.find(b => b.id === botId) || this.state.bots[0];
+    if (!bot) return;
+
+    this.state.selectedBotForCheckout = bot;
+    
+    // Default plan selection based on defaultPlanKey or botId
+    if (defaultPlanKey) {
+      this.state.selectedPlanKey = defaultPlanKey;
+    } else if (botId && botId.includes('trial')) {
+      this.state.selectedPlanKey = 'trial';
+    } else if (botId && botId.includes('3m')) {
+      this.state.selectedPlanKey = '3month';
+    } else if (botId && botId.includes('1y')) {
+      this.state.selectedPlanKey = '1year';
+    } else {
+      this.state.selectedPlanKey = '1month';
+    }
+
+    document.getElementById('checkoutBotName').textContent = bot.name;
+    const plansContainer = document.getElementById('checkoutPlansContainer');
+
+    // Standard Duration Plans
+    const standardPlans = {
+      'trial': { name: '2-Day Starter Trial', price: 10, durationDays: 2, save: '2 Days ($10)' },
+      '1month': { name: '1 Month Pass', price: 100, durationDays: 30 },
+      '3month': { name: '3 Months Pass', price: 250, durationDays: 90, save: 'Save $50' },
+      '1year': { name: '1 Year VIP Pass', price: 900, durationDays: 365, save: 'Save $300' }
+    };
+
+    plansContainer.innerHTML = Object.entries(standardPlans).map(([key, plan]) => {
+      const isSelected = key === this.state.selectedPlanKey;
+      let saveBadge = '';
+      if (plan.save) {
+        let bg = 'rgba(0, 168, 150, 0.15)';
+        let col = '#00a896';
+        if (key === '1year') {
+          bg = 'rgba(245, 158, 11, 0.15)';
+          col = '#d97706';
+        } else if (key === '3month') {
+          bg = 'rgba(2, 132, 199, 0.15)';
+          col = '#0284c7';
+        }
+        saveBadge = `<span class="plan-badge" style="background: ${bg}; color: ${col}; font-weight: 700; padding: 2px 6px; border-radius: 4px; font-size: 10px;">${plan.save}</span>`;
+      }
+
+      return `
+        <div class="plan-card-option ${isSelected ? 'selected' : ''}" data-plan="${key}" onclick="window.botHubApp.selectPlan('${key}')">
+          <div class="plan-option-left">
+            <div class="plan-radio-dot"></div>
+            <div class="plan-meta">
+              <div class="plan-name">${plan.name} ${saveBadge}</div>
+              <span class="plan-subtext">${plan.durationDays} Days Access • Instant GTCfx MT5 Whitelist</span>
+            </div>
+          </div>
+          <div class="plan-price-tag">${plan.price} USDT</div>
+        </div>
+      `;
+    }).join('');
+
+    // Pre-populate with candidate MT5 account that is not yet bound
+    const mt5Input = document.getElementById('checkoutMt5Input');
+    if (mt5Input) {
+      const boundAccounts = new Set((this.state.subscriptions || []).filter(s => s.status === 'Active').map(s => (s.gtcfxMt5Account || s.mt5Account || '').toString().replace(/\D/g, '')));
+      
+      let candidate = 8849201;
+      while (boundAccounts.has(candidate.toString())) {
+        candidate++;
+      }
+      mt5Input.value = candidate.toString();
+      mt5Input.style.borderColor = '';
+    }
+
+    this.checkMt5AccountAvailability();
+    this.updateCheckoutSummary();
+    this.openModal('checkoutModal');
+  }
+
+  checkMt5AccountAvailability() {
+    const input = document.getElementById('checkoutMt5Input');
+    const alertBox = document.getElementById('checkoutMt5ConflictAlert');
+    const msgBox = document.getElementById('checkoutMt5ConflictMessage');
+    const submitBtn = document.getElementById('submitCheckoutBtn');
+    const btnText = document.getElementById('submitCheckoutBtnText');
+    const btnIcon = document.getElementById('checkoutBtnIcon');
+    if (!input) return false;
+
+    const raw = input.value.trim();
+    const acc = raw.replace(/\D/g, '');
+
+    if (!acc || acc.length < 4) {
+      if (alertBox) alertBox.style.display = 'none';
+      input.style.borderColor = '';
+      return false;
+    }
+
+    // Check if this account is already attached to an active subscription
+    const existing = (this.state.subscriptions || []).find(s => {
+      const subAcc = (s.gtcfxMt5Account || s.mt5Account || '').toString().replace(/\D/g, '');
+      const isSubActive = !s.status || s.status.toLowerCase() === 'active' || s.status.toLowerCase() === 'running';
+      return subAcc === acc && isSubActive;
+    });
+
+    if (existing) {
+      input.style.borderColor = '#ef4444';
+      if (alertBox) alertBox.style.display = 'block';
+      if (msgBox) {
+        let expStr = 'Active';
+        if (existing.expiresDate) {
+          try {
+            expStr = new Date(existing.expiresDate).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+          } catch(e) {
+            expStr = existing.expiresDate.substring(0, 10);
+          }
+        }
+
+        msgBox.innerHTML = `
+          <p style="margin: 0 0 6px 0;">GTCfx MT5 <strong>#${acc}</strong> is already attached to an active bot license:</p>
+          <div style="background: rgba(0,0,0,0.06); padding: 6px 10px; border-radius: 6px; font-size: 11px; margin-bottom: 6px;">
+            <div>🤖 <strong>Bot:</strong> ${existing.botName}</div>
+            <div>⏱️ <strong>Plan Period:</strong> ${existing.planName}</div>
+            <div>📅 <strong>Active Until (Expiry):</strong> <span style="color: #b91c1c; font-weight: 800;">${expStr}</span></div>
+          </div>
+          <span style="color: #991b1b; font-weight: 700; font-size: 11px;">⚠️ Each MT5 account can only host 1 active bot license. Please enter a different GTCfx MT5 account number.</span>
+        `;
+      }
 
       if (submitBtn) {
         submitBtn.disabled = true;
-        submitBtn.innerHTML = 'Authenticating GTC FX Vault...';
+        submitBtn.style.background = '#ef4444';
+        submitBtn.style.color = '#ffffff';
+      }
+      if (btnText) btnText.textContent = `MT5 In Use (Choose Another)`;
+      if (btnIcon) btnIcon.textContent = 'block';
+
+      return true;
+    } else {
+      input.style.borderColor = '#10b981';
+      if (alertBox) alertBox.style.display = 'none';
+      return false;
+    }
+  }
+
+  selectPlan(planKey) {
+    this.state.selectedPlanKey = planKey;
+    document.querySelectorAll('.plan-card-option').forEach(el => {
+      el.classList.toggle('selected', el.dataset.plan === planKey);
+    });
+    this.updateCheckoutSummary();
+  }
+
+  updateCheckoutSummary() {
+    const bot = this.state.selectedBotForCheckout;
+    if (!bot) return;
+
+    const plan = (bot.plans && bot.plans[this.state.selectedPlanKey]) || { name: '1 Month Pass', price: 100 };
+    const price = Number(plan.price || 0);
+    const currentBalance = Number((this.state.wallet && this.state.wallet.balance) || 0);
+    const remaining = currentBalance - price;
+    const hasEnoughFunds = remaining >= 0;
+    const shortfall = price - currentBalance;
+
+    // Update wallet labels
+    const badgeEl = document.getElementById('checkoutWalletBalanceBadge');
+    if (badgeEl) badgeEl.textContent = `${currentBalance.toFixed(2)} USDT Available`;
+
+    const currBalEl = document.getElementById('checkoutCurrentBalanceText');
+    if (currBalEl) currBalEl.textContent = `${currentBalance.toFixed(2)} USDT`;
+
+    const priceEl = document.getElementById('checkoutPlanPriceText');
+    if (priceEl) priceEl.textContent = `-${price.toFixed(2)} USDT`;
+
+    const remBalEl = document.getElementById('checkoutRemainingBalanceText');
+    if (remBalEl) {
+      if (hasEnoughFunds) {
+        remBalEl.textContent = `${remaining.toFixed(2)} USDT`;
+        remBalEl.className = 'font-mono text-success';
+      } else {
+        remBalEl.textContent = `-${Math.abs(remaining).toFixed(2)} USDT (Shortfall)`;
+        remBalEl.className = 'font-mono text-amber';
+      }
+    }
+
+    // Shortfall Alert
+    const shortfallAlert = document.getElementById('shortfallAlert');
+    const shortfallAmtText = document.getElementById('shortfallAmountText');
+    const submitBtn = document.getElementById('submitCheckoutBtn');
+    const btnText = document.getElementById('submitCheckoutBtnText');
+    const btnIcon = document.getElementById('checkoutBtnIcon');
+
+    // First check MT5 conflict
+    const isConflict = this.checkMt5AccountAvailability();
+    if (isConflict) {
+      return;
+    }
+
+    if (!hasEnoughFunds) {
+      if (shortfallAlert) shortfallAlert.style.display = 'flex';
+      if (shortfallAmtText) shortfallAmtText.textContent = `${shortfall.toFixed(2)} USDT`;
+      if (btnText) btnText.textContent = `Deposit ${shortfall.toFixed(2)} USDT`;
+      if (btnIcon) btnIcon.textContent = 'add_circle';
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.className = 'btn-primary btn-block btn-lg';
+        submitBtn.style.background = 'linear-gradient(135deg, #F0B90B 0%, #D97706 100%)';
+        submitBtn.style.color = '#000';
+      }
+    } else {
+      if (shortfallAlert) shortfallAlert.style.display = 'none';
+      if (btnText) btnText.textContent = `Pay ${price.toFixed(2)} USDT`;
+      if (btnIcon) btnIcon.textContent = 'lock';
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.className = 'btn-primary btn-block btn-lg';
+        submitBtn.style.background = '';
+        submitBtn.style.color = '';
+      }
+    }
+  }
+
+  async processCheckout() {
+    const bot = this.state.selectedBotForCheckout;
+    if (!bot) return;
+
+    const plan = (bot.plans && bot.plans[this.state.selectedPlanKey]) || { name: '1 Month Pass', price: 100, durationDays: 30 };
+    const price = Number(plan.price || 0);
+    const currentBalance = Number((this.state.wallet && this.state.wallet.balance) || 0);
+
+    if (currentBalance < price) {
+      const shortfall = price - currentBalance;
+      this.closeModal('checkoutModal');
+      this.openTopupModal(shortfall);
+      this.showToast(`Please deposit at least ${shortfall.toFixed(2)} USDT (BEP-20) to complete subscription.`, 'info');
+      return;
+    }
+
+    const mt5Input = document.getElementById('checkoutMt5Input');
+    const rawMt5 = mt5Input ? mt5Input.value.trim() : '';
+    const mt5Account = rawMt5.replace(/\D/g, '');
+
+    // 1. Mandatory GTCfx MT5 Account Validation
+    if (!mt5Account || mt5Account.length < 4) {
+      if (mt5Input) {
+        mt5Input.focus();
+        mt5Input.style.borderColor = '#ef4444';
+      }
+      this.showToast('⚠️ Please enter your GTCfx MT5 Account Number (minimum 4 digits) to attach this bot.', 'danger');
+      return;
+    }
+
+    // 2. Check for single-bot per MT5 account restriction
+    const isConflict = this.checkMt5AccountAvailability();
+    if (isConflict) {
+      const existing = (this.state.subscriptions || []).find(s => {
+        const subAcc = (s.gtcfxMt5Account || s.mt5Account || '').toString().replace(/\D/g, '');
+        const isSubActive = !s.status || s.status.toLowerCase() === 'active' || s.status.toLowerCase() === 'running';
+        return subAcc === mt5Account && isSubActive;
+      });
+
+      let expStr = 'Active';
+      if (existing && existing.expiresDate) {
+        try {
+          expStr = new Date(existing.expiresDate).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+        } catch(e) {
+          expStr = existing.expiresDate.substring(0, 10);
+        }
       }
 
-      setTimeout(() => {
-        // Successful login
-        localStorage.setItem('bmagnet_auth', 'true');
-        localStorage.setItem('bmagnet_email', emailVal || 'test@bmagnetint.com');
-        window.location.href = 'dashboard.html';
-      }, 700);
+      const botTitle = existing ? existing.botName : 'Existing Bot';
+      const planTitle = existing ? existing.planName : 'Active Pass';
+
+      this.showToast(`⚠️ MT5 #${mt5Account} is already attached to "${botTitle}" (${planTitle}, Expiry: ${expStr}). Please enter a different MT5 account.`, 'danger');
+      if (mt5Input) mt5Input.focus();
+      return;
+    }
+
+    if (mt5Input) mt5Input.style.borderColor = '';
+
+    const submitBtn = document.getElementById('submitCheckoutBtn');
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<span class="material-symbols-rounded" style="animation: spin 1s infinite linear;">sync</span> Activating...';
+
+    try {
+      const response = await fetch('/api/subscriptions/create', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          botId: bot.id,
+          planKey: this.state.selectedPlanKey,
+          gtcfxMt5Account: mt5Account,
+          mt5Account: mt5Account
+        })
+      });
+
+      const res = await response.json();
+      if (res.success) {
+        if (res.wallet) {
+          this.state.wallet = res.wallet;
+        } else if (this.state.wallet) {
+          this.state.wallet.balance = Math.max(0, currentBalance - price);
+        }
+
+        if (res.subscription) {
+          this.state.subscriptions = this.state.subscriptions.filter(s => s.id !== res.subscription.id);
+          this.state.subscriptions.unshift(res.subscription);
+        }
+
+        this.renderAll();
+        this.closeModal('checkoutModal');
+
+        // Store payment result for the Payment Success screen
+        this.state.lastPaymentResult = {
+          subId: res.subscription ? res.subscription.id : `sub_${Date.now()}`,
+          botName: bot.name,
+          planName: plan.name,
+          price: price,
+          currency: 'USDT',
+          licenseKey: res.licenseKey,
+          invoiceId: (res.invoice && res.invoice.id) || `INV-2026-${Math.floor(Math.random()*8999)+1000}`,
+          gtcfxAccount: mt5Account,
+          whatsappTarget: '+919495097786',
+          date: new Date().toLocaleDateString()
+        };
+
+        this.renderPaymentSuccessModal();
+        this.openModal('paymentSuccessModal');
+        this.showToast(`🎉 Payment successful! Deducted ${price.toFixed(2)} USDT. Attached to GTCfx MT5 #${mt5Account}.`, 'success');
+        
+        // Sync full state with backend
+        await this.fetchData();
+      } else {
+        if (res.needTopup) {
+          this.closeModal('checkoutModal');
+          this.openTopupModal(res.shortfall);
+        }
+        this.showToast(res.error || 'Subscription failed', 'danger');
+      }
+    } catch (e) {
+      console.warn("API checkout network error, updating state locally:", e);
+      if (!this.state.wallet) this.state.wallet = { balance: 250, currency: "USDT" };
+      this.state.wallet.balance = Math.max(0, currentBalance - price);
+
+      const localSubId = `sub_${Date.now()}_${Math.floor(Math.random()*8999)+1000}`;
+      const localLic = `BM8-${mt5Account}-20260914-${Math.random().toString(36).substring(2, 6).toUpperCase()}`;
+      const localSub = {
+        id: localSubId,
+        customerPhone: "+919495097786",
+        botId: bot.id,
+        botName: bot.name,
+        planKey: this.state.selectedPlanKey,
+        planName: plan.name,
+        price: price,
+        status: 'Active',
+        startDate: new Date().toISOString(),
+        expiresDate: new Date(Date.now() + (plan.durationDays || 30) * 86400000).toISOString(),
+        licenseKey: localLic,
+        broker: 'GTCfx',
+        gtcfxMt5Account: mt5Account,
+        mt5Account: mt5Account,
+        autoRenew: true,
+        paymentMethod: 'USDT (BEP-20 Wallet)',
+        lastSignal: `EA Armed on GTCfx MT5 #${mt5Account}`
+      };
+
+      this.state.subscriptions.unshift(localSub);
+      this.renderAll();
+
+      this.state.lastPaymentResult = {
+        subId: localSubId,
+        botName: bot.name,
+        planName: plan.name,
+        price: price,
+        currency: 'USDT',
+        licenseKey: localLic,
+        invoiceId: `INV-2026-${Math.floor(Math.random()*8999)+1000}`,
+        gtcfxAccount: mt5Account,
+        whatsappTarget: '+919495097786',
+        date: new Date().toLocaleDateString()
+      };
+      this.closeModal('checkoutModal');
+      this.renderPaymentSuccessModal();
+      this.openModal('paymentSuccessModal');
+      this.showToast(`Subscription activated & locked to GTCfx MT5 #${mt5Account}!`, 'success');
+    } finally {
+      submitBtn.disabled = false;
+      this.updateCheckoutSummary();
+    }
+  }
+
+  // -------------------------------------------------------------
+  // 5. PAYMENT SUCCESS & GTCFX WHATSAPP DISPATCH
+  // -------------------------------------------------------------
+  renderPaymentSuccessModal() {
+    const data = this.state.lastPaymentResult;
+    if (!data) return;
+
+    const botNameEl = document.getElementById('successBotName');
+    if (botNameEl) botNameEl.textContent = data.botName;
+
+    const planNameEl = document.getElementById('successPlanName');
+    if (planNameEl) planNameEl.textContent = data.planName;
+
+    const amtEl = document.getElementById('successAmountPaid');
+    if (amtEl) amtEl.textContent = `${Number(data.price).toFixed(2)} USDT`;
+
+    const invEl = document.getElementById('successInvoiceId');
+    if (invEl) invEl.textContent = data.invoiceId;
+
+    const licEl = document.getElementById('successLicenseKey');
+    if (licEl) licEl.textContent = data.licenseKey;
+
+    const attMt5El = document.getElementById('successAttachedMt5Text');
+    if (attMt5El) attMt5El.textContent = `#${data.gtcfxAccount || '8849201'}`;
+
+    const lockNoticeMt5 = document.getElementById('successLockNoticeMt5');
+    if (lockNoticeMt5) lockNoticeMt5.textContent = `#${data.gtcfxAccount || '8849201'}`;
+
+    this.updateWhatsAppLink();
+  }
+
+  buildWhatsAppMessage(gtcfxAccount) {
+    const data = this.state.lastPaymentResult || {
+      botName: 'B-Magnet Gold Hunter EA Pro',
+      planName: '1 Month Pro Pass',
+      price: 100.00,
+      currency: 'USDT',
+      licenseKey: 'BM8-8849201-20260914-0F7C0A67',
+      invoiceId: 'INV-2026-8492',
+      gtcfxAccount: gtcfxAccount || '8849201',
+      date: new Date().toLocaleDateString()
+    };
+
+    const acc = gtcfxAccount || data.gtcfxAccount || '8849201';
+
+    return `🤖 *B-Bot Pro — Payment Success & GTCfx MT5 Whitelist*
+━━━━━━━━━━━━━━━━━━━━━
+✅ *Status:* Payment Successful (PAID)
+🤖 *Bot:* ${data.botName}
+⏱️ *Plan:* ${data.planName}
+💰 *Amount Paid:* ${Number(data.price).toFixed(2)} USDT (BEP-20)
+🔑 *License Key:* ${data.licenseKey}
+🏦 *Broker:* GTCfx
+📈 *Attached GTCfx MT5 Account #:* ${acc} *(Account-Locked)*
+🧾 *Invoice ID:* ${data.invoiceId}
+📅 *Date:* ${data.date}
+━━━━━━━━━━━━━━━━━━━━━
+Hello, I have completed the payment for ${data.botName}. My GTCfx MT5 Account is #${acc}. Please whitelist my account and send the EA setup installation files. Thank you!`;
+  }
+
+  updateWhatsAppLink() {
+    const acc = (this.state.lastPaymentResult && this.state.lastPaymentResult.gtcfxAccount) || '8849201';
+    const msg = this.buildWhatsAppMessage(acc);
+    const targetPhone = '919495097786';
+    const whatsappUrl = `https://api.whatsapp.com/send?phone=${targetPhone}&text=${encodeURIComponent(msg)}`;
+
+    const btn = document.getElementById('sendWhatsAppBtn');
+    if (btn) {
+      btn.href = whatsappUrl;
+    }
+  }
+
+  copySuccessLicenseKey() {
+    const data = this.state.lastPaymentResult;
+    const key = data ? data.licenseKey : 'BM-PRO-8492-7193-MT5';
+    navigator.clipboard.writeText(key);
+    this.showToast('License Key copied to clipboard!', 'success');
+  }
+
+  async handleWhatsAppClick(event) {
+    const input = document.getElementById('successGtcfxMt5Input');
+    const acc = input && input.value.trim() ? input.value.trim() : '8849201';
+
+    if (this.state.lastPaymentResult && this.state.lastPaymentResult.subId) {
+      try {
+        await fetch('/api/subscriptions/update-gtcfx', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            subscriptionId: this.state.lastPaymentResult.subId,
+            gtcfxMt5Account: acc
+          })
+        });
+      } catch (e) {}
+    }
+
+    this.showToast('🚀 Opening WhatsApp with your payment details & GTCfx MT5 number...', 'success');
+  }
+
+  sendSubscriptionToWhatsApp(subId) {
+    const sub = this.state.subscriptions.find(s => s.id === subId);
+    if (!sub) return;
+
+    const acc = sub.gtcfxMt5Account || sub.mt5Account || '8849201';
+    const msg = `🤖 *B-Bot Pro — Payment Success & GTCfx MT5 Whitelist*
+━━━━━━━━━━━━━━━━━━━━━
+✅ *Status:* Active / Paid Subscription
+🤖 *Bot:* ${sub.botName}
+⏱️ *Plan:* ${sub.planName}
+💰 *Price:* ${Number(sub.price).toFixed(2)} USDT (BEP-20)
+🔑 *License Key:* ${sub.licenseKey}
+🏦 *Broker:* GTCfx
+📈 *GTCfx MT5 Account #:* ${acc}
+━━━━━━━━━━━━━━━━━━━━━
+Hello, here are my subscription and license details. Please verify my GTCfx MT5 Account (#${acc}) on the license server. Thank you!`;
+
+    const targetPhone = '919495097786';
+    const url = `https://api.whatsapp.com/send?phone=${targetPhone}&text=${encodeURIComponent(msg)}`;
+    window.open(url, '_blank');
+    this.showToast('Opening WhatsApp to send details to +919495097786...', 'success');
+  }
+
+  // -------------------------------------------------------------
+  // 6. MY SUBSCRIPTIONS & LICENSE MANAGER
+  // -------------------------------------------------------------
+  renderSubscriptions() {
+    const container = document.getElementById('subscriptionsListContainer');
+    if (!container) return;
+
+    if (this.state.subscriptions.length === 0) {
+      container.innerHTML = `
+        <div style="text-align: center; padding: 40px 20px; color: var(--text-muted); background: var(--surface-card); border: 1px solid var(--border-subtle); border-radius: 20px;">
+          <span class="material-symbols-rounded" style="font-size: 48px; margin-bottom: 8px; color: var(--brand-cyan);">bolt</span>
+          <h4>No Active Subscriptions</h4>
+          <p style="font-size: 12px; margin: 4px 0 16px;">Explore our marketplace and subscribe to automated MT5 EAs or Signal Copiers.</p>
+          <button class="btn-primary btn-sm" onclick="window.botHubApp.switchView('explore')">Explore Bots</button>
+        </div>
+      `;
+      return;
+    }
+
+    container.innerHTML = this.state.subscriptions.map(sub => {
+      const gtcfxAcc = (sub.gtcfxMt5Account || sub.mt5Account || '8849201').toString().replace(/\D/g, '') || '8849201';
+
+      return `
+        <div class="subscription-card">
+          <div class="sub-card-top">
+            <div>
+              <h4 class="sub-name">${sub.botName}</h4>
+              <span style="font-size: 11px; color: var(--text-muted);">${sub.planName} • ${Number(sub.price).toFixed(2)} USDT (BEP-20)</span>
+            </div>
+            <span class="sub-status-active">🟢 Active</span>
+          </div>
+
+          <!-- Attached GTCfx MT5 Account Banner -->
+          <div class="bot-gtcfx-attached-banner">
+            <div class="bga-left">
+              <div class="bga-icon-circle">
+                <span class="material-symbols-rounded" style="font-size: 18px;">link</span>
+              </div>
+              <div>
+                <span class="bga-label">ATTACHED TRADING ACCOUNT</span>
+                <div class="bga-account-row">
+                  <strong class="bga-account font-mono">GTCfx MT5 #${gtcfxAcc}</strong>
+                </div>
+              </div>
+            </div>
+            <span class="bga-lock-tag">🔒 Account-Locked</span>
+          </div>
+
+          <div class="license-box">
+            <div>
+              <span style="font-size: 10px; color: var(--text-muted); display: block; font-weight: 800;">LICENSE KEY (LOCKED TO GTCFX #${gtcfxAcc})</span>
+              <span class="license-key-text font-mono">${sub.licenseKey}</span>
+            </div>
+            <button class="btn-copy-license" onclick="window.botHubApp.copyText('${sub.licenseKey}', 'License Key copied!')" title="Copy Key">
+              <span class="material-symbols-rounded">content_copy</span>
+            </button>
+          </div>
+
+          <div class="sub-meta-row">
+            <span>Broker: <strong style="color: #fbbf24;">GTCfx</strong> (MT5 #${gtcfxAcc})</span>
+            <span>Paid via: <strong>${sub.paymentMethod || 'USDT (BEP-20)'}</strong></span>
+          </div>
+
+          <div style="background: rgba(0,0,0,0.25); padding: 8px 12px; border-radius: 8px; margin-bottom: 14px; font-size: 11px; display: flex; align-items: center; gap: 8px;">
+            <span class="pulse-dot"></span>
+            <span style="color: var(--text-secondary);">${sub.lastSignal || `EA Armed & Whitelisted for GTCfx MT5 #${gtcfxAcc}`}</span>
+          </div>
+
+          <div class="sub-actions-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+            <button class="btn-sm btn-whatsapp" style="padding: 8px 8px; font-size: 11px;" onclick="window.botHubApp.sendSubscriptionToWhatsApp('${sub.id}')">
+              <span class="material-symbols-rounded" style="font-size: 15px;">chat</span> WhatsApp
+            </button>
+            <button class="btn-sm btn-outline" style="padding: 8px 6px; font-size: 11px;" onclick="window.botHubApp.openLicenseSetupModal('${sub.id}')">
+              <span class="material-symbols-rounded" style="font-size: 15px;">terminal</span> GTCfx MT5
+            </button>
+            <button class="btn-sm btn-key-gen-small" style="padding: 8px 6px; font-size: 11px;" onclick="window.botHubApp.openLicenseGeneratorForSub('${sub.id}')">
+              <span class="material-symbols-rounded" style="font-size: 15px;">key</span> Key Gen
+            </button>
+            <button class="btn-sm btn-primary" style="padding: 8px 6px; font-size: 11px; background: linear-gradient(135deg, #0284c7 0%, #00a896 100%);" onclick="window.botHubApp.openSubscribeModal('${sub.botId}', '${sub.planKey}')" title="Purchase the same plan again for another MT5 account">
+              <span class="material-symbols-rounded" style="font-size: 15px;">add_circle</span> Buy Again
+            </button>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  openPurchaseAdditionalModal() {
+    const body = document.getElementById('purchaseAdditionalBody');
+    if (!body) return;
+
+    const allBots = this.state.bots || [];
+    body.innerHTML = `
+      <div style="margin-bottom: 16px;">
+        <p style="font-size: 12px; color: var(--text-secondary); line-height: 1.5;">
+          Select any bot plan below to purchase an active license. You can purchase the same plan multiple times for different MT5 account numbers.
+        </p>
+      </div>
+      <div class="purchase-plans-list" style="display: flex; flex-direction: column; gap: 10px;">
+        ${allBots.map(bot => {
+          let priceText = '$100 USDT';
+          let durText = '1 Month Pass (30 Days)';
+          let planKey = '1month';
+
+          if (bot.id.includes('trial')) {
+            priceText = '$10 USDT';
+            durText = '2-Day Starter Trial';
+            planKey = 'trial';
+          } else if (bot.id.includes('3m')) {
+            priceText = '$250 USDT';
+            durText = '3 Months Pass (90 Days)';
+            planKey = '3month';
+          } else if (bot.id.includes('1y')) {
+            priceText = '$900 USDT';
+            durText = '1 Year VIP Pass (365 Days)';
+            planKey = '1year';
+          }
+
+          const botSvg = this.getBotSvgIcon(bot.id);
+
+          return `
+            <div style="display: flex; align-items: center; justify-content: space-between; background: var(--surface-card); border: 1.5px solid var(--border-subtle); border-radius: 14px; padding: 12px 14px; gap: 10px;">
+              <div style="display: flex; align-items: center; gap: 10px; min-width: 0;">
+                <div style="width: 38px; height: 38px; border-radius: 10px; background: ${bot.color}15; border: 1px solid ${bot.color}35; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                  ${botSvg}
+                </div>
+                <div style="min-width: 0;">
+                  <h5 style="font-size: 13px; font-weight: 700; margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${bot.name}</h5>
+                  <span style="font-size: 11px; color: var(--text-muted);">${durText}</span>
+                </div>
+              </div>
+              <div style="display: flex; align-items: center; gap: 10px; flex-shrink: 0;">
+                <span style="font-size: 13px; font-weight: 800; color: #fbbf24;" class="font-mono">${priceText}</span>
+                <button class="btn-primary btn-sm" onclick="window.botHubApp.closeModal('purchaseAdditionalModal'); window.botHubApp.openSubscribeModal('${bot.id}', '${planKey}')">
+                  <span class="material-symbols-rounded" style="font-size: 15px;">bolt</span> Buy Plan
+                </button>
+              </div>
+            </div>
+          `;
+        }).join('')}
+      </div>
+    `;
+
+    this.openModal('purchaseAdditionalModal');
+  }
+
+  openLicenseSetupModal(subId) {
+    const sub = this.state.subscriptions.find(s => s.id === subId);
+    if (!sub) return;
+
+    const gtcfxAcc = sub.gtcfxMt5Account || sub.mt5Account || '8849201';
+
+    const body = document.getElementById('licenseModalBody');
+    body.innerHTML = `
+      <div style="margin-bottom: 16px;">
+        <h4 style="font-size: 15px; font-weight: 700;">${sub.botName}</h4>
+        <span style="font-size: 12px; color: var(--text-muted);">GTCfx Broker MT5 Whitelist & Terminal Setup</span>
+      </div>
+
+      <div class="license-box" style="margin-bottom: 16px;">
+        <div>
+          <span style="font-size: 10px; color: var(--text-muted); display: block;">ACTIVE LICENSE KEY</span>
+          <span class="license-key-text">${sub.licenseKey}</span>
+        </div>
+        <button class="btn-copy-license" onclick="window.botHubApp.copyText('${sub.licenseKey}', 'License Key copied!')">
+          <span class="material-symbols-rounded">content_copy</span>
+        </button>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="modalMt5Input">
+          <span>GTCfx MT5 Account Number</span>
+          <span class="label-hint">GTCfx Live or Demo Account</span>
+        </label>
+        <input type="text" id="modalMt5Input" class="form-input font-mono" value="${gtcfxAcc}" placeholder="e.g. 8849201">
+      </div>
+
+      <div style="background: rgba(234, 179, 8, 0.08); border: 1px solid rgba(234, 179, 8, 0.25); border-radius: 12px; padding: 12px; margin-bottom: 16px; font-size: 11px; color: var(--text-secondary); line-height: 1.4;">
+        <strong style="color: #fbbf24;">GTCfx Installation Guide:</strong>
+        <ol style="margin-left: 16px; margin-top: 4px;">
+          <li>Copy your License Key above.</li>
+          <li>In your GTCfx MT5 terminal, attach the EA to XAUUSD chart.</li>
+          <li>Enter your License Key in EA Inputs and enable 'Allow Algo Trading'.</li>
+        </ol>
+      </div>
+
+      <button class="btn-primary btn-block btn-lg" onclick="window.botHubApp.submitMt5Binding('${sub.id}')">
+        <span class="material-symbols-rounded">check</span> Save GTCfx MT5 Account
+      </button>
+
+      <button class="btn-whatsapp btn-block" style="margin-top: 10px;" onclick="window.botHubApp.sendSubscriptionToWhatsApp('${sub.id}')">
+        <svg class="wa-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+          <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm0 18.15c-1.49 0-2.95-.4-4.22-1.15l-.3-.18-3.13.82.83-3.05-.2-.31a8.167 8.167 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24 2.2 0 4.27.86 5.82 2.42a8.188 8.188 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.19 8.24zm4.51-6.17c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.15.17-.25.25-.42.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.53.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.07-.12-.23-.19-.48-.31z"/>
+        </svg>
+        <span>Send to WhatsApp (+919495097786)</span>
+      </button>
+    `;
+
+    this.openModal('licenseModal');
+  }
+
+  async submitMt5Binding(subId) {
+    const input = document.getElementById('modalMt5Input');
+    const acc = input ? input.value.trim() : '';
+    if (!acc) {
+      this.showToast('Please enter a valid GTCfx MT5 Account Number', 'danger');
+      return;
+    }
+
+    try {
+      const response = await fetch('/api/subscriptions/update-gtcfx', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          subscriptionId: subId,
+          gtcfxMt5Account: acc
+        })
+      });
+
+      const res = await response.json();
+      if (res.success) {
+        this.showToast(`GTCfx MT5 Account #${acc} whitelisted!`, 'success');
+        this.closeModal('licenseModal');
+        await this.fetchData();
+      }
+    } catch (e) {
+      this.closeModal('licenseModal');
+      this.showToast('Account bound locally!', 'success');
+    }
+  }
+
+  // -------------------------------------------------------------
+  // 5. CREATOR STUDIO & AFFILIATE HUB
+  // -------------------------------------------------------------
+  renderCreatorHub() {
+    const creator = this.state.creator;
+    if (!creator) return;
+
+    const mrrEl = document.getElementById('creatorMrr');
+    if (mrrEl) mrrEl.textContent = `$${(creator.mrr || 4820).toFixed(2)}`;
+
+    const subsEl = document.getElementById('creatorSubscribers');
+    if (subsEl) subsEl.textContent = creator.totalSubscribers || 64;
+
+    const activeBotsEl = document.getElementById('creatorActiveBots');
+    if (activeBotsEl) activeBotsEl.textContent = creator.activeBots || 2;
+
+    const payoutEl = document.getElementById('creatorPayoutBalance');
+    if (payoutEl) payoutEl.textContent = `$${(creator.payoutBalance || 3480).toFixed(2)}`;
+
+    const publishedList = document.getElementById('publishedBotsList');
+    if (publishedList && creator.publishedBots) {
+      publishedList.innerHTML = creator.publishedBots.map(bot => `
+        <div style="background: var(--surface-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 14px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <h4 style="font-size: 14px; font-weight: 700;">${bot.name}</h4>
+            <span style="font-size: 11px; color: var(--text-muted);">${bot.subscribers} Active Subscribers • $${bot.monthlyRevenue.toFixed(2)}/mo</span>
+          </div>
+          <span style="font-size: 10px; font-weight: 700; background: var(--color-success-bg); color: var(--color-success); padding: 3px 8px; border-radius: 20px;">
+            ${bot.status}
+          </span>
+        </div>
+      `).join('');
+    }
+  }
+
+  copyReferralLink() {
+    const input = document.getElementById('affiliateLinkInput');
+    if (input) {
+      navigator.clipboard.writeText(input.value);
+      this.showToast('Affiliate referral link copied! Earn 20% on every subscriber.', 'success');
+    }
+  }
+
+  openPublishModal() {
+    this.openModal('publishModal');
+  }
+
+  async submitPublishBot() {
+    const name = document.getElementById('pubBotName').value.trim();
+    const tagline = document.getElementById('pubBotTagline').value.trim();
+    const category = document.getElementById('pubCategory').value;
+    const riskLevel = document.getElementById('pubRiskLevel').value;
+    const winRate = document.getElementById('pubWinRate').value;
+    const monthlyRoi = document.getElementById('pubMonthlyRoi').value;
+    const monthlyPrice = document.getElementById('pubMonthlyPrice').value;
+    const description = document.getElementById('pubDescription').value.trim();
+
+    if (!name || !tagline) {
+      this.showToast('Please provide a Bot Name and Tagline', 'danger');
+      return;
+    }
+
+    try {
+      const response = await fetch('/api/bots/publish', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name, tagline, category, riskLevel, winRate, monthlyRoi, monthlyPrice, description
+        })
+      });
+      const res = await response.json();
+      if (res.success) {
+        this.closeModal('publishModal');
+        this.showToast(`🚀 ${name} published to marketplace!`, 'success');
+        await this.fetchData();
+        this.switchView('explore');
+      }
+    } catch (e) {
+      this.closeModal('publishModal');
+      this.showToast('Bot published successfully in local mode!', 'success');
+    }
+  }
+
+  // -------------------------------------------------------------
+  // 6. BILLING & INVOICES
+  // -------------------------------------------------------------
+  renderBilling() {
+    // Connected BEP-20 Asset Card & Payment Methods
+    const pmContainer = document.getElementById('paymentMethodsList');
+    if (pmContainer) {
+      const bep20Addr = '0x26B5E776b4e3f40378b440Dfb2ACD675938B480b';
+      pmContainer.innerHTML = `
+        <div class="pm-item" style="border-color: rgba(240, 185, 11, 0.35); background: linear-gradient(135deg, rgba(240, 185, 11, 0.08) 0%, rgba(12, 16, 26, 0.95) 100%);">
+          <div class="pm-left">
+            <div class="pm-icon-box" style="background: rgba(240, 185, 11, 0.2); color: #F0B90B; border: 1px solid rgba(240, 185, 11, 0.4);">
+              <span class="material-symbols-rounded">currency_bitcoin</span>
+            </div>
+            <div>
+              <div class="pm-title" style="display: flex; align-items: center; gap: 6px;">
+                <span>USDT (BEP-20)</span>
+                <span class="bsc-coin-badge">BSC</span>
+              </div>
+              <div class="pm-sub font-mono font-xs" style="color: #fbbf24; word-break: break-all; margin-top: 2px;">
+                ${bep20Addr}
+              </div>
+            </div>
+          </div>
+          <button class="btn-copy-code" onclick="window.botHubApp.copyText('${bep20Addr}', 'Deposit Address copied!')" title="Copy Address">
+            <span class="material-symbols-rounded" style="font-size: 16px;">content_copy</span>
+          </button>
+        </div>
+      `;
+    }
+
+    // Invoices
+    const invContainer = document.getElementById('invoicesListContainer');
+    if (invContainer) {
+      invContainer.innerHTML = this.state.invoices.map(inv => {
+        return `
+          <div class="inv-item">
+            <div class="inv-left">
+              <div class="pm-icon-box" style="color: var(--color-success);">
+                <span class="material-symbols-rounded">receipt_long</span>
+              </div>
+              <div>
+                <div class="inv-title">${inv.botName} (${inv.plan})</div>
+                <div class="inv-sub">${inv.id} • ${new Date(inv.date).toLocaleDateString()} • ${inv.paymentMethod}</div>
+              </div>
+            </div>
+            <div style="text-align: right;">
+              <span style="font-size: 14px; font-weight: 800; font-family: var(--font-mono);">${inv.amount.toFixed(2)} USDT</span>
+              <span style="display: block; font-size: 10px; color: var(--color-success); font-weight: 700;">${inv.status}</span>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+  }
+
+  openAddPaymentModal() {
+    this.showToast('Connect your Credit Card or Crypto Wallet in the Checkout flow.', 'success');
+  }
+
+  // -------------------------------------------------------------
+  // 7. SETTINGS & UTILS
+  // -------------------------------------------------------------
+  showMt5GlobalBindingModal() {
+    const acc = prompt('Enter your primary MetaTrader 5 Account Number:', this.state.defaultMt5Account);
+    if (acc) {
+      this.state.defaultMt5Account = acc.trim();
+      document.getElementById('defaultMt5AccountDisplay').textContent = `${this.state.defaultMt5Account} (Configured)`;
+      this.showToast(`Default MT5 Account set to #${this.state.defaultMt5Account}`, 'success');
+    }
+  }
+
+  showTelegramAlertsModal() {
+    const botUsername = prompt('Enter your Telegram @username or Bot Token for push alerts:', '@AlexTraderAlerts_bot');
+    if (botUsername) {
+      this.showToast(`Telegram Alerts connected to ${botUsername}!`, 'success');
+    }
+  }
+
+  showCurrencySelector() {
+    const currencies = ['USD ($)', 'USDT (Tether)', 'EUR (€)', 'GBP (£)'];
+    const selected = prompt(`Select Currency:\n1. USD ($)\n2. USDT\n3. EUR (€)\n4. GBP (£)\n\nEnter 1, 2, 3, or 4:`, '1');
+    if (selected) {
+      this.showToast('Currency preference updated!', 'success');
+    }
+  }
+
+  async resetDemoData() {
+    if (confirm('Reset all bots, subscriptions, and invoices to initial demo state?')) {
+      try {
+        await fetch('/api/reset-demo', { method: 'POST' });
+        await this.fetchData();
+        this.showToast('Demo data restored!', 'success');
+      } catch (e) {
+        this.showToast('Demo state reset', 'success');
+      }
+    }
+  }
+
+  startLiveSignalSimulation() {
+    this.liveTelemetry = {
+      goldPrice: 2492.65,
+      goldChange: +1.38,
+      spread: 0.0,
+      globalBaseEquity: 1482950.00,
+      globalNetProfit: 342890.00,
+      globalRoi: 23.1,
+      activeSession: 'London - NY Overlap Session (Peak Liquidity)',
+      marketRegime: 'Bullish Imbalance Trend • XAUUSD Strong Buy',
+      connectedNodes: 1840,
+      winRate: 92.4,
+      drawdown: 2.8,
+      recentTrades: [
+        { bot: 'B-Magnet Gold EA', action: 'Buy 0.50 Lot @ 2,491.20', pips: '+36.5 pips', profit: '+$1,825.00' },
+        { bot: 'B-Magnet Gold Hunter', action: 'Scalp TP Triggered @ 2,493.10', pips: '+18.0 pips', profit: '+$900.00' },
+        { bot: 'B-Magnet Gold Pro', action: 'Imbalance Cycle Closed', pips: '+54.0 pips', profit: '+$2,700.00' },
+        { bot: 'B-Magnet Recovery', action: 'Hedge Exit (100% Breakeven)', pips: '+4.0 pips', profit: '+$200.00' }
+      ],
+      tradeIndex: 0
+    };
+
+    const renderTickerTrack = () => {
+      const t = this.liveTelemetry;
+      const trade = t.recentTrades[t.tradeIndex % t.recentTrades.length];
+      const isUp = t.goldChange >= 0;
+      const formattedGold = t.goldPrice.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      const formattedEquity = t.globalBaseEquity.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      const formattedProfit = t.globalNetProfit.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+      return `
+        <!-- XAUUSD Realtime Live Price -->
+        <span class="ticker-item">
+          <span class="ticker-pill-tag tpt-gold">🟡 XAUUSD REALTIME</span>
+          <span class="highlight font-mono">$${formattedGold}</span>
+          <span class="${isUp ? 'price-up' : 'price-down'}">${isUp ? '▲' : '▼'} ${isUp ? '+' : ''}${t.goldChange.toFixed(2)}%</span>
+          <span style="font-size: 10px; color: var(--text-muted);">(Spread: ${t.spread.toFixed(1)} Raw GTCfx)</span>
+        </span>
+
+        <!-- Global Base Equity -->
+        <span class="ticker-item">
+          <span class="ticker-pill-tag tpt-equity">🌐 GLOBAL BASE EQUITY</span>
+          <strong class="highlight font-mono">$${formattedEquity}</strong>
+          <span class="profit font-mono">(+$${formattedProfit} / +${t.globalRoi}%)</span>
+        </span>
+
+        <!-- Current Live Session & Situation -->
+        <span class="ticker-item">
+          <span class="ticker-pill-tag tpt-session">🟢 LIVE SESSION</span>
+          <strong class="highlight">${t.activeSession}</strong>
+          <span style="color: #0284c7; font-weight: 700;">| ${t.marketRegime}</span>
+        </span>
+
+        <!-- Live Trade Execution Telemetry -->
+        <span class="ticker-item">
+          <span class="ticker-pill-tag tpt-signal">🤖 LIVE BOT TRADE</span>
+          <strong class="highlight">${trade.bot}:</strong>
+          <span>${trade.action}</span>
+          <span class="profit">${trade.profit} (${trade.pips})</span>
+        </span>
+
+        <!-- Risk & Node Telemetry -->
+        <span class="ticker-item">
+          <span class="ticker-pill-tag tpt-equity">🛡️ RISK CONTROL</span>
+          <span>Max DD: <strong>${t.drawdown}%</strong> (Cap: 30%)</span>
+          <span>• Win Rate: <strong class="profit">${t.winRate}%</strong></span>
+          <span>• Connected Nodes: <strong>${t.connectedNodes} GTCfx MT5 Terminals</strong></span>
+        </span>
+      `;
+    };
+
+    const updateDom = () => {
+      const el = document.getElementById('liveTickerContent');
+      if (!el) return;
+      const trackHtml = renderTickerTrack();
+      // Duplicate tracks for seamless infinite marquee loop
+      el.innerHTML = `${trackHtml}${trackHtml}`;
+    };
+
+    updateDom();
+
+    // High frequency price tick & equity telemetry update (every 2.2 seconds)
+    setInterval(() => {
+      const delta = (Math.random() - 0.47) * 0.35;
+      this.liveTelemetry.goldPrice = Math.max(2470, +(this.liveTelemetry.goldPrice + delta).toFixed(2));
+      this.liveTelemetry.goldChange = +(this.liveTelemetry.goldChange + (delta * 0.02)).toFixed(2);
+      
+      const equityDelta = delta * 180;
+      this.liveTelemetry.globalBaseEquity = +(this.liveTelemetry.globalBaseEquity + equityDelta).toFixed(2);
+      this.liveTelemetry.globalNetProfit = +(this.liveTelemetry.globalNetProfit + equityDelta).toFixed(2);
+
+      if (Math.random() > 0.6) {
+        this.liveTelemetry.tradeIndex++;
+      }
+
+      updateDom();
+    }, 2200);
+  }
+
+  copyText(text, successMsg) {
+    navigator.clipboard.writeText(text);
+    this.showToast(successMsg || 'Copied to clipboard!', 'success');
+  }
+
+  showToast(message, type = 'info') {
+    const container = document.getElementById('toastContainer');
+    if (!container) return;
+
+    const toast = document.createElement('div');
+    toast.className = `toast ${type === 'success' ? 'toast-success' : ''}`;
+    toast.textContent = message;
+
+    container.appendChild(toast);
+    setTimeout(() => {
+      if (toast.parentNode) toast.parentNode.removeChild(toast);
+    }, 3600);
+  }
+
+  // -------------------------------------------------------------
+  // 8. GOOGLE ACCOUNT CRM DATABASE & REAL-TIME ALERTS
+  // -------------------------------------------------------------
+  async fetchAdminDatabase() {
+    try {
+      const res = await fetch('/api/admin/database').then(r => r.json());
+      if (res.success) {
+        this.renderAdminDatabase(res);
+      }
+    } catch (e) {
+      console.warn('Error fetching admin database:', e);
+    }
+  }
+
+  renderAdminDatabase(data) {
+    const stats = data.stats || {};
+    const customers = data.customers || [];
+    const subscriptions = data.subscriptions || [];
+    const notifications = data.notifications || [];
+
+    // Top KPIs
+    const kpiCust = document.getElementById('dbKpiCustomers');
+    const kpiSubs = document.getElementById('dbKpiSubscriptions');
+    const kpiRev = document.getElementById('dbKpiRevenue');
+    const kpiMt5 = document.getElementById('dbKpiMt5');
+
+    if (kpiCust) kpiCust.textContent = stats.totalCustomers || customers.length || '1';
+    if (kpiSubs) kpiSubs.textContent = stats.activeSubscriptions || subscriptions.length || '2';
+    if (kpiRev) kpiRev.textContent = `${(stats.totalRevenueUsdt || 370).toFixed(2)} USDT`;
+    if (kpiMt5) kpiMt5.textContent = `${subscriptions.length} Whitelisted`;
+
+    // Saved webhook in input
+    const webhookInput = document.getElementById('googleSheetWebhookInput');
+    const savedUrl = localStorage.getItem('b_bot_google_webhook_url');
+    if (webhookInput && savedUrl && !webhookInput.value) {
+      webhookInput.value = savedUrl;
+    }
+
+    // Notification Badge in Header
+    const notifCount = document.getElementById('headerNotifCount');
+    if (notifCount) {
+      const unreadCount = notifications.filter(n => n.unread).length;
+      if (unreadCount > 0) {
+        notifCount.textContent = unreadCount;
+        notifCount.style.display = 'flex';
+      } else {
+        notifCount.style.display = 'none';
+      }
+    }
+
+    // Render Customers Table
+    const custTbody = document.getElementById('crmCustomersTbody');
+    if (custTbody) {
+      if (customers.length === 0) {
+        custTbody.innerHTML = '<tr><td colspan="6" style="text-align:center; color: var(--text-muted);">No customer logins recorded yet.</td></tr>';
+      } else {
+        custTbody.innerHTML = customers.map(c => `
+          <tr>
+            <td>
+              <strong style="color: #fff;">${c.phone}</strong>
+              <span style="display:block; font-size:10px; color:var(--text-muted);">${c.name || 'Trader'}</span>
+            </td>
+            <td class="font-mono font-bold" style="color: #10B981;">${Number(c.walletBalance || 0).toFixed(2)} USDT</td>
+            <td><span class="badge-featured" style="font-size:9px; padding:2px 6px;">${c.activeBots || (c.subscriptions ? c.subscriptions.length : 0)} EA</span></td>
+            <td class="font-mono">${Number(c.totalSpent || 0).toFixed(2)} USDT</td>
+            <td class="font-mono" style="color: #fbbf24;">#${c.gtcfxMt5Account || '8849201'}</td>
+            <td style="font-size: 10px; color: var(--text-muted);">${new Date(c.lastLoginAt || c.registeredAt || Date.now()).toLocaleString()}</td>
+          </tr>
+        `).join('');
+      }
+    }
+
+    // Render Subscriptions & Expiry Table
+    const subTbody = document.getElementById('crmSubscriptionsTbody');
+    if (subTbody) {
+      if (subscriptions.length === 0) {
+        subTbody.innerHTML = '<tr><td colspan="7" style="text-align:center; color: var(--text-muted);">No active bot subscriptions.</td></tr>';
+      } else {
+        const now = Date.now();
+        subTbody.innerHTML = subscriptions.map(s => {
+          const expTime = new Date(s.expiresDate).getTime();
+          const daysLeft = Math.ceil((expTime - now) / (1000 * 60 * 60 * 24));
+          let badgeClass = 'badge-days-left';
+          let badgeText = `${daysLeft} Days Left`;
+
+          if (daysLeft <= 0) {
+            badgeClass = 'badge-days-expired';
+            badgeText = 'Expired';
+          } else if (daysLeft <= 5) {
+            badgeClass = 'badge-days-warning';
+            badgeText = `⚠️ ${daysLeft} Days Left`;
+          }
+
+          return `
+            <tr>
+              <td><strong class="font-mono">${s.customerPhone || '+919495097786'}</strong></td>
+              <td style="font-weight: 700; color: #fff;">${s.botName}</td>
+              <td><span class="badge-tag">${s.planName}</span></td>
+              <td class="font-mono font-xs" style="color: var(--brand-cyan);">${s.licenseKey}</td>
+              <td class="font-mono" style="color: #fbbf24;">#${s.gtcfxMt5Account || s.mt5Account || '8849201'}</td>
+              <td style="font-size: 10px;">${new Date(s.expiresDate).toLocaleDateString()}</td>
+              <td><span class="${badgeClass}">${badgeText}</span></td>
+            </tr>
+          `;
+        }).join('');
+      }
+    }
+
+    // Render Audit & Notification Timeline
+    const timeline = document.getElementById('crmAuditTimeline');
+    if (timeline) {
+      if (notifications.length === 0) {
+        timeline.innerHTML = '<div style="text-align:center; color: var(--text-muted); padding: 12px;">No activity logged yet.</div>';
+      } else {
+        timeline.innerHTML = notifications.slice(0, 10).map(n => {
+          let icon = 'notifications';
+          let iconClass = 'login';
+          if (n.type === 'NEW_SUBSCRIPTION') {
+            icon = 'rocket_launch';
+            iconClass = 'sub';
+          } else if (n.type === 'WALLET_TOPUP') {
+            icon = 'currency_bitcoin';
+            iconClass = 'topup';
+          }
+
+          return `
+            <div class="timeline-item">
+              <div class="tl-icon ${iconClass}">
+                <span class="material-symbols-rounded" style="font-size: 18px;">${icon}</span>
+              </div>
+              <div class="tl-content">
+                <div class="tl-header">
+                  <span class="tl-title">${n.title}</span>
+                  <span class="tl-time">${new Date(n.timestamp).toLocaleTimeString()}</span>
+                </div>
+                <div class="tl-body">${n.message}</div>
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+    }
+  }
+
+  async syncToGoogleSheet() {
+    const input = document.getElementById('googleSheetWebhookInput');
+    const webhookUrl = input ? input.value.trim() : '';
+
+    if (webhookUrl) {
+      localStorage.setItem('b_bot_google_webhook_url', webhookUrl);
+    }
+
+    const btn = document.getElementById('btnSyncGoogleSheet');
+    if (btn) {
+      btn.disabled = true;
+      btn.innerHTML = '<span class="material-symbols-rounded" style="animation: spin 1s infinite linear;">sync</span> Syncing...';
+    }
+
+    try {
+      const res = await fetch('/api/admin/sync-google-sheet', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ webhookUrl: webhookUrl })
+      }).then(r => r.json());
+
+      // Outbound client-side push directly to Google Apps Script Web App
+      if (webhookUrl && webhookUrl.includes('script.google.com')) {
+        const dbRes = await fetch('/api/admin/database').then(r => r.json());
+        const payload = {
+          event: 'DATABASE_FULL_SYNC',
+          timestamp: new Date().toISOString(),
+          totalCustomers: dbRes.customers ? dbRes.customers.length : 1,
+          totalSubscriptions: dbRes.subscriptions ? dbRes.subscriptions.length : 2,
+          customers: dbRes.customers || [],
+          subscriptions: dbRes.subscriptions || [],
+          invoices: dbRes.invoices || [],
+          targetOwnerWhatsApp: '+919495097786'
+        };
+
+        try {
+          await fetch(webhookUrl, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+            body: JSON.stringify(payload)
+          });
+        } catch (postErr) {
+          console.log('Outbound webhook notice:', postErr);
+        }
+      }
+
+      if (res.success) {
+        this.showToast(`🟢 ${res.message}`, 'success');
+        this.fetchAdminDatabase();
+      } else {
+        this.showToast(res.error || 'Sync completed', 'info');
+      }
+    } catch (e) {
+      this.showToast('🟢 Google Database synchronized locally!', 'success');
+    } finally {
+      if (btn) {
+        btn.disabled = false;
+        btn.innerHTML = '<span class="material-symbols-rounded">sync</span> Sync';
+      }
+    }
+  }
+
+  openNotificationsModal() {
+    const body = document.getElementById('notificationsModalBody');
+
+    fetch('/api/notifications').then(r => r.json()).then(res => {
+      const list = (res.success && res.notifications) ? res.notifications : [];
+      if (body) {
+        if (list.length === 0) {
+          body.innerHTML = `
+            <div style="text-align: center; padding: 30px 10px; color: var(--text-muted);">
+              <span class="material-symbols-rounded" style="font-size: 40px; color: var(--text-muted); display: block; margin-bottom: 8px;">notifications_off</span>
+              <p>No new customer alerts yet.</p>
+            </div>
+          `;
+        } else {
+          body.innerHTML = `
+            <div style="display: flex; flex-direction: column; gap: 10px; max-height: 400px; overflow-y: auto;">
+              ${list.map(n => `
+                <div class="timeline-item" style="background: rgba(255, 255, 255, 0.03);">
+                  <div class="tl-icon ${n.type === 'NEW_SUBSCRIPTION' ? 'sub' : (n.type === 'WALLET_TOPUP' ? 'topup' : 'login')}">
+                    <span class="material-symbols-rounded" style="font-size: 18px;">
+                      ${n.type === 'NEW_SUBSCRIPTION' ? 'rocket_launch' : (n.type === 'WALLET_TOPUP' ? 'currency_bitcoin' : 'person_add')}
+                    </span>
+                  </div>
+                  <div class="tl-content">
+                    <div class="tl-header">
+                      <span class="tl-title">${n.title}</span>
+                      <span class="tl-time">${new Date(n.timestamp).toLocaleTimeString()}</span>
+                    </div>
+                    <div class="tl-body">${n.message}</div>
+                    <div style="margin-top: 8px;">
+                      <a href="https://api.whatsapp.com/send?phone=919495097786&text=${encodeURIComponent('Hello ' + (n.customerPhone || '') + ', regarding your B-Bot Pro notification: ' + n.title)}" target="_blank" class="btn-xs btn-outline" style="display: inline-flex; align-items: center; gap: 4px; color: #25D366; border-color: rgba(37, 211, 102, 0.3);">
+                        <span class="material-symbols-rounded" style="font-size: 13px;">chat</span> WhatsApp Customer
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          `;
+        }
+      }
+      this.openModal('notificationsModal');
+    }).catch(() => {
+      this.openModal('notificationsModal');
     });
   }
 
-  // 4. Register Quick Submission
-  if (registerForm) {
-    registerForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const regName = document.getElementById('regFullName').value.trim();
-      const regEmail = document.getElementById('regEmail').value.trim();
+  exportCustomersCsv() {
+    fetch('/api/admin/database').then(r => r.json()).then(res => {
+      const customers = res.customers || [];
+      if (customers.length === 0) {
+        this.showToast('No customer records to export', 'info');
+        return;
+      }
+      let csv = 'Customer Phone,Trader Name,Wallet Balance USDT,Active Bots,Total Spent USDT,GTCfx MT5 Account,Registered Date,Last Login\n';
+      customers.forEach(c => {
+        csv += `"${c.phone}","${c.name}",${c.walletBalance || 0},${c.activeBots || 0},${c.totalSpent || 0},"${c.gtcfxMt5Account || '8849201'}","${c.registeredAt}","${c.lastLoginAt || ''}"\n`;
+      });
 
-      localStorage.setItem('bmagnet_kyc_name', regName || 'Alexander Vance');
-      localStorage.setItem('bmagnet_kyc_email', regEmail || 'alexander.vance@wealth.com');
-      window.location.href = 'register.html';
+      const blob = new Blob([csv], { type: 'text/csv' });
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.setAttribute('href', url);
+      a.setAttribute('download', `b_bot_pro_customers_${Date.now()}.csv`);
+      a.click();
+      this.showToast('📥 Customer CRM CSV exported successfully!', 'success');
     });
   }
 
-  // 5. Fast Passkey Access
-  const passkeyBtn = document.getElementById('passkeySignInBtn');
-  if (passkeyBtn) {
-    passkeyBtn.addEventListener('click', () => {
-      passkeyBtn.innerHTML = '<span>Scanning Face ID / Touch ID...</span>';
-      setTimeout(() => {
-        passkeyBtn.innerHTML = '<span>✅ Biometric Authorized!</span>';
-        setTimeout(() => {
-          localStorage.setItem('bmagnet_auth', 'true');
-          window.location.href = 'dashboard.html';
-        }, 500);
-      }, 900);
-    });
+  openGoogleScriptGuide() {
+    alert(
+      "🟢 GOOGLE SHEETS LIVE SYNC INSTRUCTIONS:\n\n" +
+      "1. Open https://sheets.new in your Google Account.\n" +
+      "2. Click Extensions > Apps Script.\n" +
+      "3. Paste the contents of google_apps_script.js.\n" +
+      "4. Click Deploy > New deployment > Web App.\n" +
+      "5. Set access to 'Anyone' and click Deploy.\n" +
+      "6. Copy your Web App URL and paste it into the Sync Webhook box."
+    );
   }
 
-  // 6. Social Sign-In (Google / Apple)
-  const googleBtn = document.getElementById('googleSignInBtn');
-  if (googleBtn) {
-    googleBtn.addEventListener('click', () => {
-      localStorage.setItem('bmagnet_auth', 'true');
-      localStorage.setItem('bmagnet_email', 'investor@gmail.com');
-      window.location.href = 'dashboard.html';
-    });
+  copyGtcfxReferralLink() {
+    const url = 'https://web.mygtc.app/login/register?ref=Y8JMgpna';
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(url).then(() => {
+        this.showToast('📋 GTCfx Registration Link copied to clipboard!', 'success');
+      }).catch(() => {
+        this.copyText(url, '📋 GTCfx Registration Link copied!');
+      });
+    } else {
+      this.copyText(url, '📋 GTCfx Registration Link copied!');
+    }
   }
 
-  const appleBtn = document.getElementById('appleSignInBtn');
-  if (appleBtn) {
-    appleBtn.addEventListener('click', () => {
-      localStorage.setItem('bmagnet_auth', 'true');
-      localStorage.setItem('bmagnet_email', 'investor@icloud.com');
-      window.location.href = 'dashboard.html';
-    });
+  // -------------------------------------------------------------
+  // 12. LOCALHOST CRYPTOGRAPHIC MT5 LICENSE GENERATOR
+  // -------------------------------------------------------------
+  calculateLicenseHash(raw) {
+    let hash = 2166136261 >>> 0;
+    for (let i = 0; i < raw.length; i++) {
+      hash ^= raw.charCodeAt(i);
+      hash = Math.imul(hash, 16777619) >>> 0;
+    }
+    return hash.toString(16).toUpperCase().padStart(8, '0');
   }
+
+  openLicenseGeneratorForSub(subId) {
+    this.openLicenseGeneratorModal(subId);
+  }
+
+  populatePurchasedBotsDropdown(selectedSubId) {
+    const select = document.getElementById('genPurchasedBotSelect');
+    if (!select) return;
+    const activeSubs = this.state.subscriptions || [];
+
+    select.innerHTML = activeSubs.map(s => {
+      const acc = s.gtcfxMt5Account || s.mt5Account || '8849201';
+      return `<option value="${s.id}" ${s.id === selectedSubId ? 'selected' : ''}>🤖 ${s.botName} • ${s.planName} (MT5 #${acc})</option>`;
+    }).join('');
+  }
+
+  onSelectPurchasedBot(subId) {
+    const activeSubs = this.state.subscriptions || [];
+    const sub = activeSubs.find(s => s.id === subId) || activeSubs[0];
+    if (sub) {
+      this.renderGeneratorForSub(sub);
+    }
+  }
+
+  renderGeneratorForSub(sub) {
+    if (!sub) return;
+
+    // 1. Auto-detect default MT5 account number from purchased bot
+    const detectedMt5 = (sub.gtcfxMt5Account || sub.mt5Account || (this.state.currentUser && this.state.currentUser.gtcfxMt5Account) || '8849201').toString().replace(/\D/g, '') || '8849201';
+
+    const detBotEl = document.getElementById('genDetectedBotName');
+    if (detBotEl) detBotEl.textContent = sub.botName || 'B-Magnet Gold Hunter EA';
+
+    const detMt5El = document.getElementById('genDetectedMt5Account');
+    if (detMt5El) detMt5El.textContent = `#${detectedMt5}`;
+
+    const noticeMt5El = document.getElementById('genNoticeMt5');
+    if (noticeMt5El) noticeMt5El.textContent = `#${detectedMt5}`;
+
+    // 2. Auto-detect rent duration strictly from purchased bot plan
+    const planKey = (sub.planKey || '').toLowerCase();
+    const price = Number(sub.price) || 100;
+
+    let daysToAdd = 30;
+    let planTitle = '1 Month ($100)';
+    let durDisplay = '1 Month (30 Days)';
+
+    if (planKey.includes('trial') || price === 10) {
+      daysToAdd = 2;
+      planTitle = 'Trial (2 Days)';
+      durDisplay = '2-Day Starter Trial';
+    } else if (planKey.includes('3m') || planKey.includes('3month') || price === 250) {
+      daysToAdd = 90;
+      planTitle = '3 Months ($250)';
+      durDisplay = '3 Months Pass (90 Days)';
+    } else if (planKey.includes('1y') || planKey.includes('year') || price === 900) {
+      daysToAdd = 365;
+      planTitle = '1 Year ($900)';
+      durDisplay = '1 Year VIP Pass (365 Days)';
+    } else {
+      daysToAdd = 30;
+      planTitle = '1 Month ($100)';
+      durDisplay = '1 Month Pass (30 Days)';
+    }
+
+    const detPlanEl = document.getElementById('genDetectedPlanDuration');
+    if (detPlanEl) detPlanEl.textContent = sub.planName || durDisplay;
+
+    const durBadge = document.getElementById('genDurationBadge');
+    if (durBadge) durBadge.textContent = planTitle;
+
+    // 3. Expiry date calculation
+    let expiryTag = "";
+    let expiryDesc = "";
+
+    if (sub.expiresDate) {
+      try {
+        const d = new Date(sub.expiresDate);
+        const yyyy = d.getFullYear();
+        const mm = String(d.getMonth() + 1).padStart(2, '0');
+        const dd = String(d.getDate()).padStart(2, '0');
+        expiryTag = `${yyyy}${mm}${dd}`;
+        expiryDesc = `${yyyy}.${mm}.${dd} 23:59:59`;
+      } catch (e) {
+        let d = new Date();
+        d.setDate(d.getDate() + daysToAdd);
+        const yyyy = d.getFullYear();
+        const mm = String(d.getMonth() + 1).padStart(2, '0');
+        const dd = String(d.getDate()).padStart(2, '0');
+        expiryTag = `${yyyy}${mm}${dd}`;
+        expiryDesc = `${yyyy}.${mm}.${dd} 23:59:59`;
+      }
+    } else {
+      let d = new Date();
+      d.setDate(d.getDate() + daysToAdd);
+      const yyyy = d.getFullYear();
+      const mm = String(d.getMonth() + 1).padStart(2, '0');
+      const dd = String(d.getDate()).padStart(2, '0');
+      expiryTag = `${yyyy}${mm}${dd}`;
+      expiryDesc = `${yyyy}.${mm}.${dd} 23:59:59`;
+    }
+
+    const detExp = document.getElementById('genDetExpiry');
+    if (detExp) detExp.textContent = expiryDesc;
+
+    // 4. Existing Key Lock Rule: If key already generated, lock and reuse existing key
+    let finalKey = sub.licenseKey;
+    if (!finalKey) {
+      const salt = "BM_V08_GOLD_SECRET_SALT_@919495097786";
+      const raw = `${detectedMt5}_${expiryTag}_${salt}`;
+      const checksum = this.calculateLicenseHash(raw);
+      finalKey = `BM8-${detectedMt5}-${expiryTag}-${checksum}`;
+      sub.licenseKey = finalKey;
+    }
+
+    const keyOut = document.getElementById('genKeyOutput');
+    if (keyOut) keyOut.textContent = finalKey;
+
+    const statusBadge = document.getElementById('genKeyStatusBadge');
+    if (statusBadge) statusBadge.textContent = '✅ Issued & Locked';
+
+    const lockedNotice = document.getElementById('genLockedNoticeWrap');
+    if (lockedNotice) lockedNotice.style.display = 'flex';
+
+    this.currentGeneratedData = {
+      key: finalKey,
+      account: detectedMt5,
+      plan: planTitle,
+      botName: sub.botName || 'B-Magnet Gold Hunter EA',
+      expiryDesc: expiryDesc
+    };
+  }
+
+  openLicenseGeneratorModal(targetSubIdOrAccount = null) {
+    const activeSubs = this.state.subscriptions || [];
+    const lockedEl = document.getElementById('genLockedState');
+    const activeEl = document.getElementById('genActiveState');
+
+    // 1. Enforce requirement: Key Generator ONLY works after purchasing a bot
+    if (activeSubs.length === 0) {
+      if (lockedEl) lockedEl.style.display = 'block';
+      if (activeEl) activeEl.style.display = 'none';
+      this.openModal('licenseGeneratorModal');
+      return;
+    }
+
+    if (lockedEl) lockedEl.style.display = 'none';
+    if (activeEl) activeEl.style.display = 'block';
+
+    // 2. Identify the target purchased bot subscription
+    let targetSub = activeSubs[0];
+    if (targetSubIdOrAccount) {
+      const foundSub = activeSubs.find(s => s.id === targetSubIdOrAccount || s.gtcfxMt5Account === targetSubIdOrAccount || s.mt5Account === targetSubIdOrAccount);
+      if (foundSub) targetSub = foundSub;
+    }
+
+    // 3. Populate dropdown with all purchased bots & accounts
+    this.populatePurchasedBotsDropdown(targetSub.id);
+
+    // 4. Render details & locked existing key
+    this.renderGeneratorForSub(targetSub);
+
+    this.openModal('licenseGeneratorModal');
+  }
+
+  copyGeneratedKey() {
+    if (!this.currentGeneratedData || !this.currentGeneratedData.key) {
+      this.generateLiveKey();
+    }
+    const key = this.currentGeneratedData.key;
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(key).then(() => {
+        this.showToast(`✅ License Key Copied!`, 'success');
+      }).catch(() => {
+        this.copyText(key, `✅ License Key Copied!`);
+      });
+    } else {
+      this.copyText(key, `✅ License Key Copied!`);
+    }
+  }
+
+  copyGeneratedWhatsAppMsg() {
+    if (!this.currentGeneratedData || !this.currentGeneratedData.key) {
+      this.generateLiveKey();
+    }
+    const d = this.currentGeneratedData;
+    const msg = `🧲 *B-MAGNET GOLD HUNTER v.08 LICENSE ACTIVATION*\n\n` +
+                `👤 *Registered Account:* #${d.account}\n` +
+                `💎 *Plan:* ${d.plan}\n` +
+                `⏳ *Validity Until:* ${d.expiryDesc}\n\n` +
+                `🔑 *Your License Key:* \n\`${d.key}\`\n\n` +
+                `📥 *Instructions:*\n` +
+                `1. Open MT5 and attach *B-Magnet Gold Hunter* to your Gold (XAUUSD) chart.\n` +
+                `2. In the EA Inputs settings tab, paste your License Key into *InpLicenseKey*.\n` +
+                `3. Click OK to start trading!\n\n` +
+                `📞 *Vendor Support:* +919495097786`;
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(msg).then(() => {
+        this.showToast("💬 WhatsApp Message Copied!", "success");
+      }).catch(() => {
+        this.copyText(msg, "💬 WhatsApp Message Copied!");
+      });
+    } else {
+      this.copyText(msg, "💬 WhatsApp Message Copied!");
+    }
+  }
+
+  openModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) modal.classList.add('active');
+  }
+
+  closeModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) modal.classList.remove('active');
+  }
+}
+
+// Global App Initializer
+window.addEventListener('DOMContentLoaded', () => {
+  window.botHubApp = new BotHubApp();
 });

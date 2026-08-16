@@ -1,0 +1,376 @@
+{
+  "bots": [
+    {
+      "id": "bot_bmagnet_1m",
+      "name": "B-Magnet Gold Hunter EA (1 Month Pass)",
+      "tagline": "Full MT5 Automated Gold Trading Algorithm (30 Days Pass)",
+      "creator": "B-Magnet Labs",
+      "category": "1 Month",
+      "icon": "radar",
+      "color": "#00A896",
+      "badge": "🔥 Most Popular Plan",
+      "winRate": 89.4,
+      "monthlyRoi": "18 - 23",
+      "maxDrawdown": 30.0,
+      "profitFactor": 3.5,
+      "riskLevel": "Low-Medium",
+      "totalSubscribers": 1840,
+      "description": "Full institutional MT5 Gold EA license valid for 30 days. Automated XAUUSD trend following, magnetic order-flow imbalance detection, and dynamic recovery.",
+      "plans": {
+        "1month": {
+          "name": "1 Month Pass",
+          "price": 100,
+          "durationDays": 30
+        },
+        "3month": {
+          "name": "3 Months Pass (Save $50)",
+          "price": 250,
+          "durationDays": 90
+        },
+        "1year": {
+          "name": "1 Year VIP Pass (Save $300)",
+          "price": 900,
+          "durationDays": 365
+        },
+        "trial": {
+          "name": "2-Day Starter Trial",
+          "price": 10,
+          "durationDays": 2
+        }
+      },
+      "platforms": [
+        "MetaTrader 5",
+        "Windows VPS",
+        "macOS"
+      ],
+      "pairs": [
+        "XAUUSD (Gold)"
+      ],
+      "rating": 4.95,
+      "reviewsCount": 312
+    },
+    {
+      "id": "bot_bmagnet_3m",
+      "name": "B-Magnet Gold Hunter EA (3 Months Pass)",
+      "tagline": "Quarterly MT5 Gold Trading Pass with 90-Day Whitelist (Save $50)",
+      "creator": "B-Magnet Labs",
+      "category": "3 Months",
+      "icon": "shield",
+      "color": "#0284C7",
+      "badge": "3 Months (Save $50)",
+      "winRate": 89.4,
+      "monthlyRoi": "18 - 23",
+      "maxDrawdown": 30.0,
+      "profitFactor": 3.5,
+      "riskLevel": "Low-Medium",
+      "totalSubscribers": 1420,
+      "description": "Quarterly 90-day MT5 automated trading pass. Extended institutional gold trading algorithm access with dedicated VIP server support and automatic parameter updates.",
+      "plans": {
+        "3month": {
+          "name": "3 Months Pass (Save $50)",
+          "price": 250,
+          "durationDays": 90
+        },
+        "1month": {
+          "name": "1 Month Pass",
+          "price": 100,
+          "durationDays": 30
+        },
+        "1year": {
+          "name": "1 Year VIP Pass (Save $300)",
+          "price": 900,
+          "durationDays": 365
+        },
+        "trial": {
+          "name": "2-Day Starter Trial",
+          "price": 10,
+          "durationDays": 2
+        }
+      },
+      "platforms": [
+        "MetaTrader 5",
+        "Windows VPS",
+        "macOS"
+      ],
+      "pairs": [
+        "XAUUSD (Gold)"
+      ],
+      "rating": 4.96,
+      "reviewsCount": 248
+    },
+    {
+      "id": "bot_bmagnet_1y",
+      "name": "B-Magnet Gold Hunter EA (1 Year VIP Pass)",
+      "tagline": "Annual Institutional VIP Pass with 365-Day Uninterrupted Whitelist (Save $300)",
+      "creator": "B-Magnet Labs",
+      "category": "1 Year VIP",
+      "icon": "bolt",
+      "color": "#F59E0B",
+      "badge": "1 Year VIP (Save $300)",
+      "winRate": 89.4,
+      "monthlyRoi": "18 - 23",
+      "maxDrawdown": 30.0,
+      "profitFactor": 3.5,
+      "riskLevel": "Low-Medium",
+      "totalSubscribers": 2860,
+      "description": "Annual 365-day institutional VIP pass for MetaTrader 5. Complete year of continuous automated gold trading, priority license server routing, and unlimited broker account migrations.",
+      "plans": {
+        "1year": {
+          "name": "1 Year VIP Pass (Save $300)",
+          "price": 900,
+          "durationDays": 365
+        },
+        "3month": {
+          "name": "3 Months Pass (Save $50)",
+          "price": 250,
+          "durationDays": 90
+        },
+        "1month": {
+          "name": "1 Month Pass",
+          "price": 100,
+          "durationDays": 30
+        },
+        "trial": {
+          "name": "2-Day Starter Trial",
+          "price": 10,
+          "durationDays": 2
+        }
+      },
+      "platforms": [
+        "MetaTrader 5",
+        "Windows VPS",
+        "macOS"
+      ],
+      "pairs": [
+        "XAUUSD (Gold)"
+      ],
+      "rating": 4.98,
+      "reviewsCount": 512
+    },
+    {
+      "id": "bot_bmagnet_trial",
+      "name": "B-Magnet Gold Hunter EA (2-Day Starter Trial)",
+      "tagline": "Instant 2-Day Live Test Pass on MT5 Demo or Live Account",
+      "creator": "B-Magnet Labs",
+      "category": "Starter Trial",
+      "icon": "bolt",
+      "color": "#00A896",
+      "badge": "Starter Trial ($10)",
+      "winRate": 89.4,
+      "monthlyRoi": "18 - 23",
+      "maxDrawdown": 30.0,
+      "profitFactor": 3.5,
+      "riskLevel": "Low",
+      "totalSubscribers": 3450,
+      "description": "Instant 2-day live test pass to verify live execution, spreads, and automated TP/SL trade fills on your MT5 personal demo or live account before full pass activation.",
+      "plans": {
+        "trial": {
+          "name": "2-Day Starter Trial",
+          "price": 10,
+          "durationDays": 2
+        },
+        "1month": {
+          "name": "1 Month Pass",
+          "price": 100,
+          "durationDays": 30
+        },
+        "3month": {
+          "name": "3 Months Pass (Save $50)",
+          "price": 250,
+          "durationDays": 90
+        },
+        "1year": {
+          "name": "1 Year VIP Pass (Save $300)",
+          "price": 900,
+          "durationDays": 365
+        }
+      },
+      "platforms": [
+        "MetaTrader 5",
+        "Windows VPS",
+        "macOS"
+      ],
+      "pairs": [
+        "XAUUSD (Gold)"
+      ],
+      "rating": 4.92,
+      "reviewsCount": 612
+    }
+  ],
+  "userSubscriptions": [
+    {
+      "id": "sub_1786838264_8977",
+      "customerPhone": "+919495097786",
+      "botId": "bot_bmagnet_trial",
+      "botName": "B-Magnet Gold Hunter EA (2-Day Starter Trial)",
+      "planKey": "trial",
+      "planName": "2-Day Starter Trial",
+      "price": 10.0,
+      "status": "Active",
+      "startDate": "2026-08-15T23:57:44Z",
+      "expiresDate": "2026-08-17T23:57:44Z",
+      "licenseKey": "BM8-88492011-20260817-FB7BB7AE",
+      "broker": "GTCfx",
+      "gtcfxMt5Account": "88492011",
+      "mt5Account": "88492011",
+      "autoRenew": true,
+      "paymentMethod": "USDT (BEP-20 Wallet)",
+      "lastSignal": "XAUUSD (Gold) EA Armed on GTCfx MT5 #88492011"
+    },
+    {
+      "id": "sub_1786837875_4292",
+      "customerPhone": "+919495097786",
+      "botId": "bot_bmagnet_trial",
+      "botName": "B-Magnet Gold Hunter EA (2-Day Starter Trial)",
+      "planKey": "trial",
+      "planName": "2-Day Starter Trial",
+      "price": 10.0,
+      "status": "Active",
+      "startDate": "2026-08-15T23:51:15Z",
+      "expiresDate": "2026-08-17T23:51:15Z",
+      "licenseKey": "BM8-8849202-20260817-9D332826",
+      "broker": "GTCfx",
+      "gtcfxMt5Account": "8849202",
+      "mt5Account": "8849202",
+      "autoRenew": true,
+      "paymentMethod": "USDT (BEP-20 Wallet)",
+      "lastSignal": "XAUUSD (Gold) EA Armed on GTCfx MT5 #8849202"
+    },
+    {
+      "id": "sub_bmagnet_1m",
+      "customerPhone": "+919495097786",
+      "botId": "bot_bmagnet_1m",
+      "botName": "B-Magnet Gold Hunter EA (1 Month Pass)",
+      "planKey": "1month",
+      "planName": "1 Month Pass",
+      "price": 100,
+      "status": "Active",
+      "startDate": "2026-08-15T12:00:00Z",
+      "expiresDate": "2026-09-14T23:59:59Z",
+      "licenseKey": "BM8-8849201-20260914-0F7C0A67",
+      "broker": "GTCfx",
+      "gtcfxMt5Account": "8849201",
+      "mt5Account": "8849201",
+      "autoRenew": true,
+      "paymentMethod": "USDT (BEP-20 Wallet)",
+      "lastSignal": "XAUUSD Buy 0.20 Lot @ 2,488.20 (+42.0 pips)"
+    }
+  ],
+  "paymentMethods": [
+    {
+      "id": "pm_bep20",
+      "type": "crypto",
+      "currency": "USDT (BEP-20)",
+      "network": "BNB Smart Chain (BEP20)",
+      "address": "0x26B5E776b4e3f40378b440Dfb2ACD675938B480b",
+      "isDefault": true
+    }
+  ],
+  "invoices": [
+    {
+      "id": "INV-2026-1594",
+      "date": "2026-08-15T23:57:44Z",
+      "customerPhone": "+919495097786",
+      "botName": "B-Magnet Gold Hunter EA (2-Day Starter Trial)",
+      "plan": "2-Day Starter Trial",
+      "amount": 10.0,
+      "currency": "USDT",
+      "status": "Paid",
+      "paymentMethod": "USDT (BEP-20 BSC)",
+      "broker": "GTCfx",
+      "gtcfxMt5Account": "88492011"
+    },
+    {
+      "id": "INV-2026-4173",
+      "date": "2026-08-15T23:51:15Z",
+      "customerPhone": "+919495097786",
+      "botName": "B-Magnet Gold Hunter EA (2-Day Starter Trial)",
+      "plan": "2-Day Starter Trial",
+      "amount": 10.0,
+      "currency": "USDT",
+      "status": "Paid",
+      "paymentMethod": "USDT (BEP-20 BSC)",
+      "broker": "GTCfx",
+      "gtcfxMt5Account": "8849202"
+    },
+    {
+      "id": "INV-2026-0891",
+      "date": "2026-08-01T10:00:00Z",
+      "botName": "B-Magnet Gold Hunter EA Pro",
+      "plan": "1 Month Pro Pass",
+      "amount": 100.0,
+      "currency": "USDT",
+      "status": "Paid",
+      "paymentMethod": "USDT (BEP-20 BSC)"
+    },
+    {
+      "id": "TOPUP-2026-0042",
+      "date": "2026-08-01T09:45:00Z",
+      "botName": "BEP-20 Wallet Deposit",
+      "plan": "+250.00 USDT (BEP-20)",
+      "amount": 250.0,
+      "currency": "USDT",
+      "status": "Paid",
+      "paymentMethod": "USDT (BEP-20 BSC)"
+    }
+  ],
+  "creator": {
+    "mrr": 4820.0,
+    "totalSubscribers": 64,
+    "activeBots": 2,
+    "payoutBalance": 3480.0,
+    "affiliateReferrals": 18,
+    "publishedBots": [
+      {
+        "id": "bot_bmagnet_pro",
+        "name": "B-Magnet Gold Hunter EA Pro",
+        "subscribers": 42,
+        "monthlyRevenue": 3738.0,
+        "status": "Published"
+      },
+      {
+        "id": "bot_bmagnet_lite",
+        "name": "B-Magnet Gold Hunter EA Lite",
+        "subscribers": 22,
+        "monthlyRevenue": 1078.0,
+        "status": "Published"
+      }
+    ]
+  },
+  "wallet": {
+    "balance": 230.0,
+    "currency": "USD"
+  },
+  "notifications": [
+    {
+      "id": "notif_1786838264_47",
+      "type": "NEW_SUBSCRIPTION",
+      "title": "\ud83d\ude80 New Subscription: B-Magnet Gold Hunter EA (2-Day Starter Trial)",
+      "message": "Customer: +919495097786 subscribed to 2-Day Starter Trial (10.0 USDT). GTCfx MT5: #88492011, License: BM8-88492011-20260817-FB7BB7AE",
+      "customerPhone": "+919495097786",
+      "botName": "B-Magnet Gold Hunter EA (2-Day Starter Trial)",
+      "planName": "2-Day Starter Trial",
+      "amount": 10.0,
+      "gtcfxMt5Account": "88492011",
+      "licenseKey": "BM8-88492011-20260817-FB7BB7AE",
+      "expiresDate": "2026-08-17T23:57:44Z",
+      "timestamp": "2026-08-15T23:57:44Z",
+      "unread": true
+    },
+    {
+      "id": "notif_1786837875_880",
+      "type": "NEW_SUBSCRIPTION",
+      "title": "\ud83d\ude80 New Subscription: B-Magnet Gold Hunter EA (2-Day Starter Trial)",
+      "message": "Customer: +919495097786 subscribed to 2-Day Starter Trial (10.0 USDT). GTCfx MT5: #8849202, License: BM8-8849202-20260817-9D332826",
+      "customerPhone": "+919495097786",
+      "botName": "B-Magnet Gold Hunter EA (2-Day Starter Trial)",
+      "planName": "2-Day Starter Trial",
+      "amount": 10.0,
+      "gtcfxMt5Account": "8849202",
+      "licenseKey": "BM8-8849202-20260817-9D332826",
+      "expiresDate": "2026-08-17T23:51:15Z",
+      "timestamp": "2026-08-15T23:51:15Z",
+      "unread": true
+    }
+  ]
+}

@@ -1,21 +1,7 @@
-const CACHE_NAME = 'bmagnet-app-v1';
-const ASSETS = [
-  '/',
-  '/index.html',
-  '/dashboard.html',
-  '/styles.css',
-  '/app.js',
-  '/login.js',
-  '/logo.png',
-  '/manifest.json'
-];
+// B-Bot Pro - High Performance Service Worker v2 (Clean UI)
+const CACHE_NAME = 'bbot-pro-v2-clean-ui';
 
 self.addEventListener('install', (event) => {
-  event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(ASSETS);
-    })
-  );
   self.skipWaiting();
 });
 
@@ -23,21 +9,15 @@ self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((keys) => {
       return Promise.all(
-        keys.map((key) => {
-          if (key !== CACHE_NAME) {
-            return caches.delete(key);
-          }
-        })
+        keys.map((key) => caches.delete(key))
       );
-    })
+    }).then(() => self.clients.claim())
   );
-  self.clients.claim();
 });
 
 self.addEventListener('fetch', (event) => {
+  // Always fetch fresh network content
   event.respondWith(
-    caches.match(event.request).then((cachedResponse) => {
-      return cachedResponse || fetch(event.request);
-    })
+    fetch(event.request).catch(() => caches.match(event.request))
   );
 });
