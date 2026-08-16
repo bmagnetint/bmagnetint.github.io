@@ -29,7 +29,7 @@
   <!-- Google Identity Services (Sign-In with Google) -->
   <script src="https://accounts.google.com/gsi/client" async defer></script>
   
-  <link rel="stylesheet" href="style.css?v=8606">
+  <link rel="stylesheet" href="style.css?v=0406">
 </head>
 <body class="theme-dark">
 
@@ -161,9 +161,9 @@
                 <p class="welcome-subtitle" id="txtWelcomeSubtitle">Sign in to access your automated trading passes</p>
               </div>
 
-              <!-- Center Logo Display (Frameless, Large B-Magnet Official Logo) -->
+              <!-- Center Logo Display (Full Uncropped Official B-Magnet Logo with Arabic & English text) -->
               <div class="welcome-logo-center-wrapper">
-                <img src="images/b-magnet-emblem.png" alt="B-Magnet" class="bmagnet-hero-logo-img">
+                <img src="images/b-magnet-logo.png" alt="B-Magnet - Perfect business solutions" class="bmagnet-hero-logo-img">
               </div>
 
               <!-- Bottom Buttons on Screen 1 -->
@@ -635,6 +635,25 @@
             </div>
           </div>
 
+          <!-- Admin Panel Master Security Gate (Passcode: 9633) -->
+          <div class="settings-group">
+            <h4 class="settings-group-title" id="txtAdminSecurityTitle">Admin & Master Database</h4>
+
+            <div class="setting-item admin-panel-entry-item" onclick="window.botHubApp.openAdminPanelFromSettings()">
+              <div class="setting-icon-box text-emerald">
+                <span class="material-symbols-rounded">admin_panel_settings</span>
+              </div>
+              <div class="setting-info">
+                <div class="setting-name-row">
+                  <span class="setting-name font-bold" id="txtAdminPanelTitle">Admin Panel</span>
+                  <span class="badge-lock-code">CODE: 9633</span>
+                </div>
+                <div class="setting-sub" id="txtAdminPanelSub">Customer CRM, active bot passes, wallet ledger & Google Sheets sync</div>
+              </div>
+              <span class="material-symbols-rounded chevron">chevron_right</span>
+            </div>
+          </div>
+
           <!-- Account Session & Log Out Badge Card -->
           <div class="settings-logout-card">
             <div class="slc-header">
@@ -655,14 +674,14 @@
         </section>
 
         <!-- ======================================================== -->
-        <!-- VIEW 5: GOOGLE ACCOUNT CRM & LIVE DATABASE               -->
+        <!-- VIEW 5: GOOGLE ACCOUNT CRM & LIVE DATABASE (ADMIN PANEL) -->
         <!-- ======================================================== -->
         <section class="view-panel" id="viewDatabase">
           <div class="db-header-banner">
             <div class="db-banner-top">
               <div style="display: flex; align-items: center; gap: 12px;">
                 <div class="db-brand-icon">
-                  <span class="material-symbols-rounded">table_chart</span>
+                  <span class="material-symbols-rounded">admin_panel_settings</span>
                 </div>
                 <div>
                   <div class="db-pill-status">
@@ -672,10 +691,16 @@
                   <h2 class="db-title">Customer CRM & Bot Registry</h2>
                 </div>
               </div>
-              <button type="button" class="btn-lock-crm-pill" onclick="window.botHubApp.lockAdminCrm()" title="Lock CRM Security Gate">
-                <span class="material-symbols-rounded" style="font-size: 15px;">lock</span>
-                <span>Lock CRM</span>
-              </button>
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <button type="button" class="btn-xs btn-outline" onclick="window.botHubApp.switchView('settings')" title="Back to Account Settings" style="display: inline-flex; align-items: center; gap: 4px; padding: 5px 10px; border-radius: 8px;">
+                  <span class="material-symbols-rounded" style="font-size: 15px;">arrow_back</span>
+                  <span>Account</span>
+                </button>
+                <button type="button" class="btn-lock-crm-pill" onclick="window.botHubApp.lockAdminCrm()" title="Lock CRM Security Gate">
+                  <span class="material-symbols-rounded" style="font-size: 15px;">lock</span>
+                  <span>Lock CRM</span>
+                </button>
+              </div>
             </div>
             <p class="db-subtitle">Real-time database of customer phone numbers, wallet balances, active bot subscriptions, GTCfx MT5 terminals, and expiry countdowns.</p>
 
@@ -842,12 +867,11 @@
           <span class="nav-label">My Bots</span>
         </button>
 
-        <button class="nav-item" data-view="database" onclick="window.botHubApp.switchView('database')" title="Admin CRM & Clients">
-          <div class="ios-dock-squircle ios-icon-crm">
-            <span class="material-symbols-rounded ios-icon-symbol">table_chart</span>
-            <span class="ios-badge-pill ios-badge-green">CRM</span>
+        <button class="nav-item" data-view="creator" onclick="window.botHubApp.switchView('creator')" title="Market & Creator Hub">
+          <div class="ios-dock-squircle ios-icon-market">
+            <span class="material-symbols-rounded ios-icon-symbol">storefront</span>
           </div>
-          <span class="nav-label">Database</span>
+          <span class="nav-label">Market</span>
         </button>
 
         <button class="nav-item" data-view="settings" onclick="window.botHubApp.switchView('settings')" title="Account & Settings">
@@ -1606,6 +1630,6 @@
 
   <!-- App Scripts -->
   <script src="qrcode.js"></script>
-  <script src="app.js?v=8606"></script>
+  <script src="app.js?v=0406"></script>
 </body>
 </html>

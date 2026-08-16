@@ -711,7 +711,7 @@ body.scrolled-hide-live .live-ticker-container {
 /* View Panels (Scroll clearance for modern iOS floating glass dock) */
 .view-panel {
   display: none;
-  padding: 14px 16px calc(108px + env(safe-area-inset-bottom, 16px));
+  padding: 14px 16px calc(118px + env(safe-area-inset-bottom, 16px));
   animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -1784,10 +1784,6 @@ body.scrolled-hide-live .live-ticker-container {
 }
 
 /* ==========================================================================
-   MODERN iOS LIQUID FLOATING GLASS DOCK (DYNAMIC CAPSULE ISLAND)
-   ========================================================================== */
-.bottom-nav {
-/* ==========================================================================
    MODERN iOS LIQUID GLASS DOCK WITH APP ICON SQUIRCLES (NATIVE iOS MODELS)
    ========================================================================== */
 .bottom-nav,
@@ -1882,7 +1878,17 @@ body.theme-dark .ios-dock {
   color: #ffffff;
 }
 
-/* 3. Database CRM Tab: iOS Phone/WhatsApp Green Style */
+/* 3. Market Tab: iOS Storefront Amber/Gold Style */
+.ios-icon-market {
+  background: linear-gradient(180deg, #f59e0b 0%, #d97706 100%);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 4px 14px rgba(217, 119, 6, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.5);
+}
+.ios-icon-market .ios-icon-symbol {
+  color: #ffffff;
+}
+
+/* 3b. Database CRM Tab: iOS Phone/WhatsApp Green Style */
 .ios-icon-crm {
   background: linear-gradient(180deg, #34d399 0%, #059669 100%);
   border: 1px solid rgba(255, 255, 255, 0.25);
@@ -5864,4 +5870,55 @@ body.theme-dark .ticker-label {
 
 [dir="rtl"] .signin-bot-details-card {
   text-align: center;
+}
+
+/* ==========================================================================
+   ADMIN PANEL ENTRY CARD (ACCOUNT SETTINGS)
+   ========================================================================== */
+.admin-panel-entry-item {
+  border-left: 3px solid #10b981 !important;
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.05) 0%, rgba(2, 132, 199, 0.04) 100%) !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.admin-panel-entry-item:hover {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.12) 0%, rgba(2, 132, 199, 0.08) 100%) !important;
+  transform: translateX(3px);
+}
+
+[dir="rtl"] .admin-panel-entry-item {
+  border-left: none !important;
+  border-right: 3px solid #10b981 !important;
+}
+
+[dir="rtl"] .admin-panel-entry-item:hover {
+  transform: translateX(-3px);
+}
+
+.text-emerald {
+  color: #10b981 !important;
+}
+
+.badge-lock-code {
+  font-size: 8.5px;
+  font-weight: 800;
+  background: rgba(16, 185, 129, 0.15);
+  color: #059669;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  padding: 1.5px 6px;
+  border-radius: 6px;
+  letter-spacing: 0.5px;
+  font-family: monospace;
+}
+
+body.theme-dark .admin-panel-entry-item {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.12) 0%, rgba(15, 23, 42, 0.8) 100%) !important;
+  border-color: rgba(51, 65, 85, 0.9) !important;
+  border-left-color: #10b981 !important;
+}
+
+body.theme-dark .badge-lock-code {
+  background: rgba(16, 185, 129, 0.25);
+  color: #34d399;
+  border-color: rgba(16, 185, 129, 0.45);
 }

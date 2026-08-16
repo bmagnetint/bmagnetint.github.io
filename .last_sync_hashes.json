@@ -1,17 +1,17 @@
 {
-  "public/app.js": "1d39d5888febd9a7f1fcb38a634e159508f24d59f4af64ebf74a8e01bc807d3a",
+  "public/app.js": "b84a79a67427ef6ca88a80a6c9eb9de6fa94276f2c6a392f5387335a51207ad1",
   "public/apple-touch-icon-precomposed.png": "cef73be89c60058c66ae1dba85ff02061bc73b50d7c1909e1c8ca27f88dd43e1",
   "public/apple-touch-icon.png": "cef73be89c60058c66ae1dba85ff02061bc73b50d7c1909e1c8ca27f88dd43e1",
   "public/favicon.ico": "423bac49d3d23c03bc41521aa93c38e06865e8551dbc7895cc81786b9ae1d193",
   "public/icon-192.png": "380066ca2faab5d914f553212f177c45fcc0f40e28b38caf739295e53edb56a1",
   "public/icon-512.png": "ac95a64054c37c680d0acef4d90cb3c2f732dded4b5f86799ced2eb45a97f2d6",
-  "public/index.html": "6c16c90c242ec76cd21a2b7627ea4831f0eb735b7e99fe7097f27579389e0a12",
+  "public/index.html": "4e9cf128f004cb7af36004200dc8729aca519e77f0dd340a94bf807d8b80184b",
   "public/key-generator.html": "86b8e6f51cbf931b4f1e416cfa1b50a27015190180747cbdfdf87235bfe4f742",
   "public/manifest.json": "faaee2b7c2dd72cec7b8e70e18e81b96533e9876161bbe0752ca53f061c80808",
   "public/qrcode.js": "a536da9afe90f6807ee63298ad883798c681d15170dc027510ea07169ddadbdf",
-  "public/style.css": "9ef7686dc60423c4d66542a45f3137104f070640f080c9e2144952ffc50b92da",
+  "public/style.css": "a66fd22a614ddc5c35bcf4c8d2c5895be8579894af5b16c55e33a5a0d7cd7a32",
   "public/sw.js": "f4ca1d866cc7d0cf21bf1b4fc1a3fb8adec84ae9e0d7d313ad9d8fc63fcbc4e3",
   "public/images/b-magnet-emblem.png": "4683edf2be74aa76276b1811e00bd6d6f7cd8ae80799078bd32ed4e089b06dc5",
   "public/images/b-magnet-logo.png": "a125d7354da80f5e8dd48e92b09995c179a599a7ba26f2b8fed4eeef9e601dab",
-  "data/db.json": "18946cb452839d0108b4f02ddf37c8865d6e01dd7a774c3077b20ac3f5f5e394"
+  "data/db.json": "50222f2f02c1d5083e1a101035bf45cb580be3db160951ed016cd91147aca9e3"
 }

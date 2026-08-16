@@ -24,13 +24,16 @@ const TRANSLATIONS = {
     pwaSub: 'Add to Home Screen for fast 1-tap access',
     pwaBtn: 'Install',
     settingPwaTitle: 'Install App to Home Screen',
-    settingPwaSub: 'Download B-Bot Pro as a web app on your device',
     brandTitle: 'B-Magnet',
     brandSub: 'Trading & Marketing Bots',
     navExplore: 'Explore',
     navBots: 'My Bots',
+    navMarket: 'Market',
     navDb: 'Database',
     navAccount: 'Account',
+    adminPanelTitle: 'Admin Panel',
+    adminPanelSub: 'Customer CRM, active bot passes, wallet ledger & Google Sheets sync',
+    adminSecurityGroup: 'Admin & Master Database',
     liveTickerTag: 'LIVE',
     exploreTitle: 'Verified Trading Bots & Plans',
     exploreCountSuffix: 'Plans',
@@ -120,8 +123,12 @@ const TRANSLATIONS = {
     brandSub: 'بوتات التداول والتسويق الآلي',
     navExplore: 'استكشاف',
     navBots: 'اشتراكاتي',
+    navMarket: 'السوق',
     navDb: 'العملاء',
     navAccount: 'حسابي',
+    adminPanelTitle: 'لوحة تحكم المشرف (الأدمن)',
+    adminPanelSub: 'سجل العملاء، تراخيص البوتات، أرصدة المحافظ، والمزامنة السحابية',
+    adminSecurityGroup: 'إدارة النظام وقاعدة البيانات',
     liveTickerTag: 'مباشر',
     exploreTitle: 'البوتات وخطط التداول المعتمدة',
     exploreCountSuffix: 'خطط',
@@ -463,10 +470,18 @@ class BotHubApp {
       if (labelEl) {
         if (view === 'explore') labelEl.textContent = t.navExplore;
         else if (view === 'subscriptions') labelEl.textContent = t.navBots;
+        else if (view === 'creator') labelEl.textContent = t.navMarket;
         else if (view === 'database') labelEl.textContent = t.navDb;
         else if (view === 'settings') labelEl.textContent = t.navAccount;
       }
     });
+
+    const txtAdminPanelTitle = document.getElementById('txtAdminPanelTitle');
+    const txtAdminPanelSub = document.getElementById('txtAdminPanelSub');
+    const txtAdminSecurityTitle = document.getElementById('txtAdminSecurityTitle');
+    if (txtAdminPanelTitle && t.adminPanelTitle) txtAdminPanelTitle.textContent = t.adminPanelTitle;
+    if (txtAdminPanelSub && t.adminPanelSub) txtAdminPanelSub.textContent = t.adminPanelSub;
+    if (txtAdminSecurityTitle && t.adminSecurityGroup) txtAdminSecurityTitle.textContent = t.adminSecurityGroup;
 
     // Explore Search Input & Filter Chips
     const searchInput = document.getElementById('botSearchInput');
@@ -1291,6 +1306,14 @@ class BotHubApp {
   // -------------------------------------------------------------
   // MASTER ADMIN CRM PASSCODE LOCK METHODS (CODE: 9633)
   // -------------------------------------------------------------
+  openAdminPanelFromSettings() {
+    if (this.state.isAdminUnlocked) {
+      this.switchView('database');
+    } else {
+      this.promptAdminCrmLock();
+    }
+  }
+
   promptAdminCrmLock() {
     const modal = document.getElementById('crmAdminLockModal');
     const input = document.getElementById('crmAdminPinInput');
@@ -1330,7 +1353,7 @@ class BotHubApp {
     if (enteredPin === '9633') {
       this.state.isAdminUnlocked = true;
       this.closeModal('crmAdminLockModal');
-      this.showToast('🔓 Master Admin Access Granted! Welcome to CRM.', 'success');
+      this.showToast('🔓 Master Admin Access Granted! Welcome to Admin Panel.', 'success');
       this.switchView('database');
     } else {
       if (input) {
@@ -1346,14 +1369,14 @@ class BotHubApp {
     this.closeModal('crmAdminLockModal');
     const activePanel = document.querySelector('.view-panel.active');
     if (!activePanel || activePanel.id === 'viewDatabase') {
-      this.switchView('explore');
+      this.switchView('settings');
     }
   }
 
   lockAdminCrm() {
     this.state.isAdminUnlocked = false;
-    this.showToast('🔒 CRM Database Re-locked for Security', 'info');
-    this.switchView('explore');
+    this.showToast('🔒 Admin Panel Re-locked for Security', 'info');
+    this.switchView('settings');
   }
 
   // -------------------------------------------------------------
