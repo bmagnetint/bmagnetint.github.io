@@ -1050,14 +1050,14 @@ class BotHubApp {
   }
 
   setupEventListeners() {
-    // Dynamic Scroll Minification for Header, Live Ticker Bar & Bottom Dock
+    // Hide Live Green Session Tab when scrolling down content
     const mainContent = document.getElementById('mainContent');
     if (mainContent) {
       mainContent.addEventListener('scroll', () => {
-        if (mainContent.scrollTop > 20) {
-          document.body.classList.add('header-minimized', 'dock-minimized');
+        if (mainContent.scrollTop > 15) {
+          document.body.classList.add('scrolled-hide-live');
         } else {
-          document.body.classList.remove('header-minimized', 'dock-minimized');
+          document.body.classList.remove('scrolled-hide-live');
         }
       }, { passive: true });
     }
@@ -1154,17 +1154,17 @@ class BotHubApp {
         fetch('/api/creator').then(r => r.json()).catch(() => ({ success: false }))
       ]);
 
-      if (botsRes && botsRes.success && Array.isArray(botsRes.bots)) this.state.bots = botsRes.bots;
-      if (subsRes && subsRes.success && Array.isArray(subsRes.subscriptions)) this.state.subscriptions = subsRes.subscriptions;
-      if (walletRes && walletRes.success && walletRes.wallet) this.state.wallet = walletRes.wallet;
-      if (pmsRes && pmsRes.success && Array.isArray(pmsRes.paymentMethods)) this.state.paymentMethods = pmsRes.paymentMethods;
-      if (invsRes && invsRes.success && Array.isArray(invsRes.invoices)) this.state.invoices = invsRes.invoices;
-      if (creatorRes && creatorRes.success && creatorRes.creator) this.state.creator = creatorRes.creator;
+      if (botsRes.success) this.state.bots = botsRes.bots;
+      if (subsRes.success) this.state.subscriptions = subsRes.subscriptions;
+      if (walletRes.success) this.state.wallet = walletRes.wallet;
+      if (pmsRes.success) this.state.paymentMethods = pmsRes.paymentMethods;
+      if (invsRes.success) this.state.invoices = invsRes.invoices;
+      if (creatorRes.success) this.state.creator = creatorRes.creator;
 
-      // Static Hosting Fallback (loads data/db.json if API is offline)
+            // Static Hosting Fallback (loads data/db.json if API is offline)
       if (!this.state.bots || this.state.bots.length === 0) {
         try {
-          const staticDb = await fetch('data/db.json').then(r => r.json()).catch(() => null);
+          const staticDb = await fetch("data/db.json").then(r => r.json()).catch(() => null);
           if (staticDb) {
             if (staticDb.bots) this.state.bots = staticDb.bots;
             if (staticDb.subscriptions && (!this.state.subscriptions || !this.state.subscriptions.length)) {
@@ -1180,20 +1180,13 @@ class BotHubApp {
             if (staticDb.creator) this.state.creator = staticDb.creator;
           }
         } catch (e) {
-          console.log('Static DB fallback loaded');
+          console.log("Static DB fallback loaded");
         }
       }
 
       this.renderAll();
     } catch (err) {
       console.warn('Backend API offline, using fallback state:', err);
-      try {
-        const staticDb = await fetch('data/db.json').then(r => r.json()).catch(() => null);
-        if (staticDb && staticDb.bots) {
-          this.state.bots = staticDb.bots;
-          this.renderAll();
-        }
-      } catch (e) {}
     }
   }
 

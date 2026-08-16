@@ -24,7 +24,7 @@
   <!-- Google Identity Services (Sign-In with Google) -->
   <script src="https://accounts.google.com/gsi/client" async defer></script>
   
-  <link rel="stylesheet" href="style.css?v=2.9">
+  <link rel="stylesheet" href="style.css?v=3388">
 </head>
 <body class="theme-dark">
 
@@ -273,16 +273,6 @@
         </div>
 
         <div class="header-right">
-          <!-- Quick Header Language & Theme Controls -->
-          <div class="header-controls-group">
-            <button type="button" class="header-icon-pill-btn" onclick="window.botHubApp.toggleLanguage()" title="Switch Language (EN / AR)" id="headerLangToggleBtn">
-              <span id="headerLangText">AR</span>
-            </button>
-            <button type="button" class="header-icon-pill-btn" onclick="window.botHubApp.toggleTheme()" title="Toggle Dark/Light Mode" id="headerThemeToggleBtn">
-              <span class="material-symbols-rounded" id="headerThemeIcon" style="font-size: 16px;">dark_mode</span>
-            </button>
-          </div>
-
           <!-- Compact Corner Wallet Asset with Logged-in User Name -->
           <button class="wallet-compact-corner-btn" id="openTopupBtn" onclick="window.botHubApp.openTopupModal()" title="BEP-20 Wallet & Account">
             <span class="user-avatar-mini">
@@ -1600,46 +1590,11 @@
     </div>
   </div>
 
-  <!-- ======================================================== -->
-  <!-- MODAL: LOGOUT CONFIRMATION POPUP                        -->
-  <!-- ======================================================== -->
-  <div class="modal-backdrop" id="logoutConfirmModal">
-    <div class="modal-sheet modal-dialog-centered">
-      <div class="sheet-handle"></div>
-      <div class="modal-header">
-        <h3 class="modal-title" style="display: flex; align-items: center; gap: 8px; color: #ff3366;">
-          <span class="material-symbols-rounded" style="color: #ff3366;">logout</span>
-          Confirm Sign Out
-        </h3>
-        <button class="modal-close-btn" onclick="window.botHubApp.closeModal('logoutConfirmModal')">
-          <span class="material-symbols-rounded">close</span>
-        </button>
-      </div>
-      <div class="modal-body" style="text-align: center; padding: 24px 20px;">
-        <div style="width: 56px; height: 56px; border-radius: 50%; background: rgba(225, 29, 72, 0.12); border: 1px solid rgba(225, 29, 72, 0.3); display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; color: #ff3366;">
-          <span class="material-symbols-rounded" style="font-size: 28px;">power_settings_new</span>
-        </div>
-        <h4 style="font-size: 17px; font-weight: 800; color: #ffffff; margin-bottom: 8px;">Log out of B-Bot Pro?</h4>
-        <p style="font-size: 13px; color: #94a3b8; line-height: 1.5; margin-bottom: 24px;">
-          Are you sure you want to end your session? You will return to the welcome authentication screen.
-        </p>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
-          <button type="button" class="btn-cancel-modal" onclick="window.botHubApp.closeModal('logoutConfirmModal')">
-            Cancel
-          </button>
-          <button type="button" class="btn-logout-confirm" onclick="window.botHubApp.confirmLogout()">
-            Sign Out
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <!-- Toast Notification System -->
   <div class="toast-container" id="toastContainer"></div>
 
   <!-- App Scripts -->
   <script src="qrcode.js"></script>
-  <script src="app.js?v=2.9"></script>
+  <script src="app.js?v=3388"></script>
 </body>
 </html>
