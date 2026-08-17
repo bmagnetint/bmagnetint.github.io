@@ -349,8 +349,8 @@
     "phone": "+91 94950 84201",
     "authProvider": "gmail_otp",
     "isLoggedIn": true,
-    "token": "tok_a1fb5862f7d4fc055108bdb7b78b44b5",
-    "loginTime": "2026-08-17T17:45:15Z"
+    "token": "tok_2856e9d1e227bce909da693d09cdee12",
+    "loginTime": "2026-08-17T19:17:38Z"
   },
   "customers": {
     "hanaan.trader@gmail.com": {
@@ -365,13 +365,33 @@
       "gtcfxMt5Account": "8849201",
       "subscriptions": [],
       "registeredAt": "2026-08-16T14:40:17Z",
-      "lastLoginAt": "2026-08-17T17:45:15Z",
-      "loginCount": 16,
+      "lastLoginAt": "2026-08-17T19:17:38Z",
+      "loginCount": 18,
       "googleEmail": "hanaan.trader@gmail.com",
       "picture": "https://lh3.googleusercontent.com/a/default-user=s96-c"
     }
   },
   "notifications": [
+    {
+      "id": "notif_1786994258_448",
+      "type": "GMAIL_LOGIN",
+      "title": "\ud83d\udd11 Gmail Login",
+      "message": "Customer: Hanaan.trader (hanaan.trader@gmail.com) signed in via Gmail OTP. Wallet: 140.00 USDT",
+      "customerPhone": "+91 94950 84201",
+      "customerEmail": "hanaan.trader@gmail.com",
+      "timestamp": "2026-08-17T19:17:38Z",
+      "unread": true
+    },
+    {
+      "id": "notif_1786993569_727",
+      "type": "GMAIL_LOGIN",
+      "title": "\ud83d\udd11 Gmail Login",
+      "message": "Customer: Hanaan.trader (hanaan.trader@gmail.com) signed in via Gmail OTP. Wallet: 140.00 USDT",
+      "customerPhone": "+91 94950 84201",
+      "customerEmail": "hanaan.trader@gmail.com",
+      "timestamp": "2026-08-17T19:06:09Z",
+      "unread": true
+    },
     {
       "id": "notif_1786988715_696",
       "type": "GMAIL_LOGIN",

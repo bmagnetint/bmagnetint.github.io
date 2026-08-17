@@ -1,19 +1,19 @@
 {
-  "public/app.js": "104de81a60f941ee21d75da6e5481fc4a75e28cdb88dbdc9d8dee75fbb5f16d4",
+  "public/app.js": "83514ce7e07000e5688620bd78e652dd95b2c9b1e89c637745f708504f60a09f",
   "public/apple-touch-icon-precomposed.png": "cef73be89c60058c66ae1dba85ff02061bc73b50d7c1909e1c8ca27f88dd43e1",
   "public/apple-touch-icon.png": "cef73be89c60058c66ae1dba85ff02061bc73b50d7c1909e1c8ca27f88dd43e1",
   "public/favicon.ico": "423bac49d3d23c03bc41521aa93c38e06865e8551dbc7895cc81786b9ae1d193",
   "public/icon-192.png": "380066ca2faab5d914f553212f177c45fcc0f40e28b38caf739295e53edb56a1",
   "public/icon-512.png": "ac95a64054c37c680d0acef4d90cb3c2f732dded4b5f86799ced2eb45a97f2d6",
-  "public/index.html": "2981c2c1960f8ff5e1df6b1a3cb99c2d6dc041893f431a6166480f9ae2a5f34c",
-  "public/key-generator.html": "86b8e6f51cbf931b4f1e416cfa1b50a27015190180747cbdfdf87235bfe4f742",
+  "public/index.html": "0ab2c473d1ecb64363547223ff50eb1df9774faa1fa9f9fa6211ca1deff1f835",
+  "public/key-generator.html": "7ea88d078fea2d1a965692f5b606a328c71da2383bf45d88d580b5a11913fdde",
   "public/manifest.json": "381a880dd32be5d2ecdeebd145837a9578a57cfa00ef899aa0df0997d2047100",
   "public/qrcode.js": "a536da9afe90f6807ee63298ad883798c681d15170dc027510ea07169ddadbdf",
-  "public/style.css": "e4ea0b1e52a1d7d85490fade0799af51eb6967f6a6c26411f5490987431e2820",
+  "public/style.css": "f26b5054048e7fa74c7c4ce3240586a140589163e6ff21cd08d2089b526379a0",
   "public/sw.js": "f4ca1d866cc7d0cf21bf1b4fc1a3fb8adec84ae9e0d7d313ad9d8fc63fcbc4e3",
   "public/images/ai-bot-core-visual.jpg": "895803d28fbe6620cdf3f118d715aaa5df2c7bb6438e479d41f9431e510f0f71",
   "public/images/ai-trading-bot-visual.jpg": "cc47a181d7c5c6dd744ac8759f107332d7645f1772c3e7dd3aa8d84f822a2119",
   "public/images/b-magnet-emblem.png": "4683edf2be74aa76276b1811e00bd6d6f7cd8ae80799078bd32ed4e089b06dc5",
   "public/images/b-magnet-logo.png": "a125d7354da80f5e8dd48e92b09995c179a599a7ba26f2b8fed4eeef9e601dab",
-  "data/db.json": "266b6f9192ed9d98f009b514f7f3f64e3866e70cde14be4818fa7dfb31e862ff"
+  "data/db.json": "27628a0e8cecc0c322c73251870ca95ce1321dc4c0d341fe0df1a6cd851fb7a1"
 }

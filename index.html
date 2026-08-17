@@ -47,7 +47,7 @@
   <!-- Google Identity Services (Sign-In with Google) -->
   <script src="https://accounts.google.com/gsi/client" async defer></script>
   
-  <link rel="stylesheet" href="style.css?v=8948">
+  <link rel="stylesheet" href="style.css?v=4400">
 </head>
 <body class="theme-dark">
 
@@ -1189,6 +1189,15 @@
                   <span class="material-symbols-rounded chevron">chevron_right</span>
                 </div>
 
+                <div class="setting-item" onclick="window.botHubApp.openLicenseGeneratorModal()">
+                  <div class="setting-icon-box text-cyan"><span class="material-symbols-rounded">vpn_key</span></div>
+                  <div class="setting-info">
+                    <div class="setting-name font-bold">MT5 Key Generator</div>
+                    <div class="setting-sub">Generate and copy B-Magnet Gold EA activation keys</div>
+                  </div>
+                  <span class="material-symbols-rounded chevron">chevron_right</span>
+                </div>
+
                 <div class="setting-item" onclick="window.botHubApp.toggleTheme()">
                   <div class="setting-icon-box text-warning"><span class="material-symbols-rounded" id="accountThemeSettingIcon">dark_mode</span></div>
                   <div class="setting-info">
@@ -2290,105 +2299,127 @@
         </button>
       </div>
 
-      <div class="modal-body">
+      <div class="modal-body" style="padding-top: 8px;">
         
-        <!-- State 1: Locked State (Shown when user has 0 purchased bots) -->
-        <div id="genLockedState" class="key-gen-locked-state" style="display: none;">
-          <div class="locked-icon-circle">
-            <span class="material-symbols-rounded">lock</span>
-          </div>
-          <h4 class="locked-title">Active Bot Purchase Required</h4>
-          <p class="locked-desc">
-            Your MT5 EA License Key is automatically generated from your purchased bot subscription and default MT5 number. Subscribe to a bot plan (2-Day Trial, 1 Month, 3 Months, or 1 Year) to generate your key.
-          </p>
-          <button class="btn-primary btn-block btn-lg" onclick="window.botHubApp.closeModal('licenseGeneratorModal'); window.botHubApp.switchView('explore');">
-            <span class="material-symbols-rounded">bolt</span> Explore Bot Plans
-          </button>
-        </div>
-
-        <!-- State 2: Auto-Detected & Locked License Generator View -->
-        <div id="genActiveState">
-          
-          <!-- Dropdown Selection Tab for All Purchased Bots & Default Accounts -->
-          <div class="form-group" id="genSubSelectGroup" style="margin-bottom: 12px;">
-            <label class="form-label" for="genPurchasedBotSelect" style="display: flex; justify-content: space-between; align-items: center;">
-              <span>Select Purchased Bot & Account</span>
-              <span class="label-hint" style="color: #00A896; font-weight: 700;">📂 Active Subscriptions</span>
+        <!-- Interactive Compact MT5 License Key Generator Program -->
+        <div class="akg-form-grid" style="margin-bottom: 12px;">
+          <!-- 1. MT5 Account Input & Quick Select -->
+          <div class="akg-field-col">
+            <label class="akg-label">
+              <span>1. MT5 Account Number</span>
+              <span class="akg-label-hint">Live & Demo MT5</span>
             </label>
-            <div class="input-with-icon">
-              <span class="material-symbols-rounded input-icon">smart_toy</span>
-              <select id="genPurchasedBotSelect" class="form-input custom-select font-mono" style="font-size: 12px; font-weight: 600;" onchange="window.botHubApp.onSelectPurchasedBot(this.value)">
-                <!-- Dynamically populated with all purchased bots -->
+            <div class="akg-input-with-select">
+              <input type="text" id="modalKeyGenAcc" class="akg-input font-mono" placeholder="Enter MT5 # (e.g. 8849201)" value="8849201" autocomplete="off" oninput="window.botHubApp.generateModalKey()">
+              <select id="modalKeyGenClientSelect" class="akg-select" onchange="window.botHubApp.onModalClientSelect(this.value)" title="Quick-fill from active subscriptions">
+                <option value="">⚡ Quick-fill Active Subscriptions...</option>
               </select>
             </div>
           </div>
 
-          <!-- Auto-Detected Bot & MT5 Info Card -->
-          <div class="auto-detected-plan-card">
-            <div class="adp-row">
-              <span class="adp-lbl">PURCHASED BOT</span>
-              <strong class="adp-val" id="genDetectedBotName">B-Magnet Gold Hunter EA (1 Month Pass)</strong>
-            </div>
-            
-            <div class="adp-grid">
-              <div class="adp-item">
-                <span class="adp-lbl">DEFAULT GTCFX MT5</span>
-                <strong class="adp-val text-cyan font-mono" id="genDetectedMt5Account">#8849201</strong>
-              </div>
-              <div class="adp-item">
-                <span class="adp-lbl">RENT DURATION</span>
-                <strong class="adp-val text-amber font-mono" id="genDetectedPlanDuration">1 Month (30 Days)</strong>
-              </div>
-              <div class="adp-item">
-                <span class="adp-lbl">EXPIRES ON</span>
-                <strong class="adp-val font-mono" id="genDetExpiry">2026.09.14 23:59:59</strong>
-              </div>
-              <div class="adp-item">
-                <span class="adp-lbl">LICENSE STATUS</span>
-                <strong class="adp-val text-success" id="genKeyStatusBadge">✅ Issued & Locked</strong>
-              </div>
-            </div>
-          </div>
-
-          <!-- Generated Cryptographic Key Display Card -->
-          <div class="gen-result-card" style="margin-top: 14px;">
-            <div class="gen-result-top">
-              <span class="gen-key-tag">🔑 AUTHENTIC MT5 ACTIVATION KEY</span>
-              <span class="gen-duration-pill" id="genDurationBadge">1 Month ($100)</span>
-            </div>
-
-            <div class="gen-key-display font-mono" id="genKeyOutput">BM8-8849201-20260914-0F7C0A67</div>
-
-            <div class="key-locked-notice" id="genLockedNoticeWrap">
-              <span class="material-symbols-rounded">lock</span>
-              <span><strong>Persistent Key Locked:</strong> This key has already been generated and permanently bound to MT5 <span id="genNoticeMt5">#8849201</span>. Re-generation is locked for active licenses.</span>
-            </div>
-
-            <div class="gen-actions-row" style="margin-top: 12px;">
-              <button type="button" class="btn-gen-copy" onclick="window.botHubApp.copyGeneratedKey()">
-                <span class="material-symbols-rounded">content_copy</span>
-                <span>📋 Copy Key</span>
+          <!-- 2. License Duration & Pricing Presets -->
+          <div class="akg-field-col">
+            <label class="akg-label">
+              <span>2. License Duration & Plan</span>
+              <span class="akg-label-hint" id="modalKeyGenPlanLabel">1 Month ($100)</span>
+            </label>
+            <div class="akg-presets-grid">
+              <button type="button" class="akg-preset-btn" data-dur="trial" onclick="window.botHubApp.selectModalKeyDuration('DAYS', 2, 'Trial (2 Days)', '$10', this)">
+                <span class="akg-p-name">Trial (2 Days) ⏱️</span>
+                <span class="akg-p-price">$10 Test</span>
               </button>
-              <button type="button" class="btn-gen-whatsapp" onclick="window.botHubApp.copyGeneratedWhatsAppMsg()">
-                <span class="material-symbols-rounded">chat</span>
-                <span>💬 Copy WhatsApp Msg</span>
+              <button type="button" class="akg-preset-btn active" data-dur="1m" onclick="window.botHubApp.selectModalKeyDuration('MONTHS', 1, '1 Month ($100)', '$100', this)">
+                <span class="akg-p-name">1 Month ⚡</span>
+                <span class="akg-p-price">$100 Pass</span>
+              </button>
+              <button type="button" class="akg-preset-btn" data-dur="3m" onclick="window.botHubApp.selectModalKeyDuration('MONTHS', 3, '3 Months ($250)', '$250', this)">
+                <span class="akg-p-name">3 Months 🔥</span>
+                <span class="akg-p-price">$250 (Save $50)</span>
+              </button>
+              <button type="button" class="akg-preset-btn" data-dur="1y" onclick="window.botHubApp.selectModalKeyDuration('MONTHS', 12, '1 Year ($900)', '$900', this)">
+                <span class="akg-p-name">1 Year VIP 🏆</span>
+                <span class="akg-p-price">$900 (Save $300)</span>
+              </button>
+              <button type="button" class="akg-preset-btn" data-dur="lifetime" onclick="window.botHubApp.selectModalKeyDuration('LIFETIME', 0, 'Lifetime ♾️', 'Full Access', this)">
+                <span class="akg-p-name">Lifetime ♾️</span>
+                <span class="akg-p-price">No Expiry</span>
+              </button>
+              <button type="button" class="akg-preset-btn" data-dur="custom" onclick="window.botHubApp.toggleModalKeyCustomDate(this)">
+                <span class="akg-p-name">Custom 📅</span>
+                <span class="akg-p-price">Pick Date</span>
               </button>
             </div>
-          </div>
-
-          <!-- Instructions Card -->
-          <div class="gen-instructions-card">
-            <div class="gen-inst-title">
-              <span class="material-symbols-rounded" style="font-size: 16px; color: #00A896;">help_outline</span>
-              <span>How to Activate in MT5:</span>
+            <div id="modalKeyGenCustomDateWrap" style="display: none; margin-top: 6px;">
+              <input type="date" id="modalKeyGenCustomDate" class="akg-input font-mono" onchange="window.botHubApp.generateModalKey()">
             </div>
-            <ol class="gen-inst-steps">
-              <li>Open MetaTrader 5 on your PC/VPS and attach <strong>B-Magnet Gold Hunter</strong> to Gold (XAUUSD) chart.</li>
-              <li>In the EA Inputs settings tab, paste your License Key into the <strong>InpLicenseKey</strong> input box.</li>
-              <li>Ensure <strong>Allow Algo Trading</strong> is enabled and click OK to start automated trading!</li>
-            </ol>
+          </div>
+        </div>
+
+        <!-- Real-time Generated Key Result Display -->
+        <div class="akg-result-box" id="modalKeyGenResultBox" style="margin-bottom: 12px;">
+          <div class="akg-res-header">
+            <div class="akg-res-badge">
+              <span class="material-symbols-rounded" style="font-size: 16px;">key</span>
+              <span>AUTHENTIC MT5 ACTIVATION KEY</span>
+            </div>
+            <span class="akg-dur-pill" id="modalKeyGenDurPill">1 Month ($100)</span>
           </div>
 
+          <div class="akg-key-display-box" id="modalKeyGenOutput" onclick="window.botHubApp.copyModalKey()" title="Click to copy key">
+            BM8-8849201-20260917-0F7C0A67
+          </div>
+
+          <div class="akg-details-strip">
+            <div class="akg-det-cell">
+              <span class="akg-det-lbl">MT5 Account:</span>
+              <strong class="akg-det-val font-mono" id="modalKeyGenDetAcc">#8849201</strong>
+            </div>
+            <div class="akg-det-cell">
+              <span class="akg-det-lbl">Plan / Price:</span>
+              <strong class="akg-det-val text-cyan" id="modalKeyGenDetPlan">1 Month ($100)</strong>
+            </div>
+            <div class="akg-det-cell">
+              <span class="akg-det-lbl">Expires On:</span>
+              <strong class="akg-det-val font-mono text-amber" id="modalKeyGenDetExpiry">2026.09.17 23:59:59</strong>
+            </div>
+            <div class="akg-det-cell">
+              <span class="akg-det-lbl">Support Contact:</span>
+              <strong class="akg-det-val font-mono">+919495097786</strong>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="akg-actions-grid">
+            <button type="button" class="btn-akg-action btn-akg-copy" onclick="window.botHubApp.copyModalKey()">
+              <span class="material-symbols-rounded">content_copy</span>
+              <span>Copy Key</span>
+            </button>
+            <button type="button" class="btn-akg-action btn-akg-wa-msg" onclick="window.botHubApp.copyModalWhatsAppMsg()">
+              <span class="material-symbols-rounded">chat</span>
+              <span>Copy WA Msg</span>
+            </button>
+            <button type="button" class="btn-akg-action btn-akg-wa-send" onclick="window.botHubApp.sendModalWhatsAppDirect()">
+              <span class="material-symbols-rounded">send</span>
+              <span>Send WA</span>
+            </button>
+            <button type="button" class="btn-akg-action btn-akg-save-crm" onclick="window.botHubApp.saveModalKeyToMt5()">
+              <span class="material-symbols-rounded">save</span>
+              <span>Bind MT5</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 3-Step MT5 Activation Instructions -->
+        <div class="gen-instructions-card">
+          <div class="gen-inst-title">
+            <span class="material-symbols-rounded" style="font-size: 16px; color: #00A896;">help_outline</span>
+            <span>How to Activate in MetaTrader 5:</span>
+          </div>
+          <ol class="gen-inst-steps">
+            <li>Open MetaTrader 5 and attach <strong>B-Magnet Gold Hunter</strong> to your Gold (XAUUSD) chart.</li>
+            <li>In the EA Inputs settings tab, paste your License Key into <strong>InpLicenseKey</strong>.</li>
+            <li>Ensure <strong>Allow Algo Trading</strong> is enabled and click OK to start trading!</li>
+          </ol>
         </div>
 
       </div>
@@ -2522,6 +2553,6 @@
 
   <!-- App Scripts -->
   <script src="qrcode.js"></script>
-  <script src="app.js?v=8948"></script>
+  <script src="app.js?v=4400"></script>
 </body>
 </html>

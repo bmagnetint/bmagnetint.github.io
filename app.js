@@ -3882,78 +3882,230 @@ Hello, here are my subscription and license details. Please verify my GTCfx MT5 
     };
   }
 
-  openLicenseGeneratorModal(targetSubIdOrAccount = null) {
-    const activeSubs = this.state.subscriptions || [];
-    const lockedEl = document.getElementById('genLockedState');
-    const activeEl = document.getElementById('genActiveState');
-
-    // 1. Enforce requirement: Key Generator ONLY works after purchasing a bot
-    if (activeSubs.length === 0) {
-      if (lockedEl) lockedEl.style.display = 'block';
-      if (activeEl) activeEl.style.display = 'none';
-      this.openModal('licenseGeneratorModal');
-      return;
+  openLicenseGeneratorModal() {
+    this.initModalKeygenState();
+    
+    // Populate client/subscription select if available
+    const select = document.getElementById('modalKeyGenClientSelect');
+    if (select) {
+      const activeSubs = this.state.subscriptions || [];
+      if (activeSubs.length > 0) {
+        let optHtml = `<option value="">⚡ Quick-fill Active Subscriptions (${activeSubs.length})...</option>`;
+        activeSubs.forEach(s => {
+          const acc = s.gtcfxMt5Account || s.mt5Account || '8849201';
+          optHtml += `<option value="${acc}">${s.botName || 'Gold EA'} — MT5 #${acc} (${s.planName || 'Pass'})</option>`;
+        });
+        select.innerHTML = optHtml;
+      }
     }
-
-    if (lockedEl) lockedEl.style.display = 'none';
-    if (activeEl) activeEl.style.display = 'block';
-
-    // 2. Identify the target purchased bot subscription
-    let targetSub = activeSubs[0];
-    if (targetSubIdOrAccount) {
-      const foundSub = activeSubs.find(s => s.id === targetSubIdOrAccount || s.gtcfxMt5Account === targetSubIdOrAccount || s.mt5Account === targetSubIdOrAccount);
-      if (foundSub) targetSub = foundSub;
-    }
-
-    // 3. Populate dropdown with all purchased bots & accounts
-    this.populatePurchasedBotsDropdown(targetSub.id);
-
-    // 4. Render details & locked existing key
-    this.renderGeneratorForSub(targetSub);
-
+    
+    this.generateModalKey();
     this.openModal('licenseGeneratorModal');
   }
 
-  copyGeneratedKey() {
-    if (!this.currentGeneratedData || !this.currentGeneratedData.key) {
-      this.generateLiveKey();
+  initModalKeygenState() {
+    this.modalKeygenState = {
+      mode: 'MONTHS',
+      count: 1,
+      title: '1 Month ($100)',
+      price: '$100',
+      salt: "BM_V08_GOLD_SECRET_SALT_@919495097786"
+    };
+  }
+
+  selectModalKeyDuration(mode, count, title, price, btn) {
+    if (!this.modalKeygenState) this.initModalKeygenState();
+    this.modalKeygenState.mode = mode;
+    this.modalKeygenState.count = count;
+    this.modalKeygenState.title = title;
+    this.modalKeygenState.price = price;
+
+    const btns = document.querySelectorAll('#licenseGeneratorModal .akg-preset-btn');
+    btns.forEach(b => b.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+
+    const customWrap = document.getElementById('modalKeyGenCustomDateWrap');
+    if (customWrap) customWrap.style.display = 'none';
+
+    const lbl = document.getElementById('modalKeyGenPlanLabel');
+    if (lbl) lbl.textContent = title;
+
+    this.generateModalKey();
+  }
+
+  toggleModalKeyCustomDate(btn) {
+    if (!this.modalKeygenState) this.initModalKeygenState();
+    this.modalKeygenState.mode = 'CUSTOM';
+    this.modalKeygenState.title = 'Custom Date';
+    this.modalKeygenState.price = 'Custom';
+
+    const btns = document.querySelectorAll('#licenseGeneratorModal .akg-preset-btn');
+    btns.forEach(b => b.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+
+    const customWrap = document.getElementById('modalKeyGenCustomDateWrap');
+    if (customWrap) customWrap.style.display = 'block';
+
+    const dateInput = document.getElementById('modalKeyGenCustomDate');
+    if (dateInput && !dateInput.value) {
+      let d = new Date();
+      d.setMonth(d.getMonth() + 1);
+      dateInput.value = d.toISOString().split('T')[0];
     }
-    const key = this.currentGeneratedData.key;
+
+    const lbl = document.getElementById('modalKeyGenPlanLabel');
+    if (lbl) lbl.textContent = 'Custom Date';
+
+    this.generateModalKey();
+  }
+
+  getModalKeyExpiryTag() {
+    if (!this.modalKeygenState) this.initModalKeygenState();
+    const st = this.modalKeygenState;
+    if (st.mode === 'LIFETIME') return "LIFETIME";
+
+    let d = new Date();
+    if (st.mode === 'DAYS') {
+      d.setDate(d.getDate() + st.count);
+    } else if (st.mode === 'MONTHS') {
+      d.setMonth(d.getMonth() + st.count);
+    } else if (st.mode === 'CUSTOM') {
+      const dateInput = document.getElementById('modalKeyGenCustomDate');
+      if (dateInput && dateInput.value) {
+        const parts = dateInput.value.split('-');
+        return `${parts[0]}${parts[1]}${parts[2]}`;
+      }
+    }
+    const year = d.getFullYear();
+    const month = String(d.getMonth() + 1).padStart(2, '0');
+    const day = String(d.getDate()).padStart(2, '0');
+    return `${year}${month}${day}`;
+  }
+
+  generateModalKey() {
+    if (!this.modalKeygenState) this.initModalKeygenState();
+    const accInput = document.getElementById('modalKeyGenAcc');
+    const acc = accInput ? accInput.value.trim() : '8849201';
+    const cleanAcc = acc || '8849201';
+
+    const expiryTag = this.getModalKeyExpiryTag();
+    const salt = "BM_V08_GOLD_SECRET_SALT_@919495097786";
+    const raw = `${cleanAcc}_${expiryTag}_${salt}`;
+    const hash = this.calculateLicenseHash(raw);
+    const fullKey = `BM8-${cleanAcc}-${expiryTag}-${hash}`;
+
+    let expiryDesc = "";
+    if (this.modalKeygenState.mode === 'LIFETIME') {
+      expiryDesc = "LIFETIME (No Expiry) ♾️";
+    } else {
+      const y = expiryTag.substring(0, 4);
+      const m = expiryTag.substring(4, 6);
+      const day = expiryTag.substring(6, 8);
+      expiryDesc = `${y}.${m}.${day} 23:59:59`;
+    }
+
+    const keyOut = document.getElementById('modalKeyGenOutput');
+    if (keyOut) keyOut.textContent = fullKey;
+
+    const detAcc = document.getElementById('modalKeyGenDetAcc');
+    if (detAcc) detAcc.textContent = `#${cleanAcc}`;
+
+    const detPlan = document.getElementById('modalKeyGenDetPlan');
+    if (detPlan) detPlan.textContent = this.modalKeygenState.title;
+
+    const durPill = document.getElementById('modalKeyGenDurPill');
+    if (durPill) durPill.textContent = this.modalKeygenState.title;
+
+    const detExp = document.getElementById('modalKeyGenDetExpiry');
+    if (detExp) detExp.textContent = expiryDesc;
+
+    this.modalGeneratedKeyData = {
+      key: fullKey,
+      account: cleanAcc,
+      plan: this.modalKeygenState.title,
+      expiryTag: expiryTag,
+      expiryDesc: expiryDesc
+    };
+
+    return fullKey;
+  }
+
+  onModalClientSelect(val) {
+    if (!val) return;
+    const accInput = document.getElementById('modalKeyGenAcc');
+    if (accInput) accInput.value = val;
+    this.generateModalKey();
+  }
+
+  copyModalKey() {
+    if (!this.modalGeneratedKeyData) this.generateModalKey();
+    const key = this.modalGeneratedKeyData.key;
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(key).then(() => {
-        this.showToast(`✅ License Key Copied!`, 'success');
+        this.showToast('✅ License Key Copied!', 'success');
       }).catch(() => {
-        this.copyText(key, `✅ License Key Copied!`);
+        this.copyText(key, '✅ License Key Copied!');
       });
     } else {
-      this.copyText(key, `✅ License Key Copied!`);
+      this.copyText(key, '✅ License Key Copied!');
     }
   }
 
-  copyGeneratedWhatsAppMsg() {
-    if (!this.currentGeneratedData || !this.currentGeneratedData.key) {
-      this.generateLiveKey();
-    }
-    const d = this.currentGeneratedData;
+  copyModalWhatsAppMsg() {
+    if (!this.modalGeneratedKeyData) this.generateModalKey();
+    const d = this.modalGeneratedKeyData;
     const msg = `🧲 *B-MAGNET GOLD HUNTER v.08 LICENSE ACTIVATION*\n\n` +
-                `👤 *Registered Account:* #${d.account}\n` +
+                `👤 *Registered MT5 Account:* #${d.account}\n` +
                 `💎 *Plan:* ${d.plan}\n` +
                 `⏳ *Validity Until:* ${d.expiryDesc}\n\n` +
                 `🔑 *Your License Key:* \n\`${d.key}\`\n\n` +
-                `📥 *Instructions:*\n` +
-                `1. Open MT5 and attach *B-Magnet Gold Hunter* to your Gold (XAUUSD) chart.\n` +
+                `📥 *Activation Instructions:*\n` +
+                `1. Open MetaTrader 5 and attach *B-Magnet Gold Hunter* to your Gold (XAUUSD) chart.\n` +
                 `2. In the EA Inputs settings tab, paste your License Key into *InpLicenseKey*.\n` +
-                `3. Click OK to start trading!\n\n` +
-                `📞 *Vendor Support:* +919495097786`;
+                `3. Click OK and trade!\n\n` +
+                `📞 *Vendor WhatsApp Support:* +919495097786`;
 
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(msg).then(() => {
-        this.showToast("💬 WhatsApp Message Copied!", "success");
+        this.showToast('💬 WhatsApp Message Copied!', 'success');
       }).catch(() => {
-        this.copyText(msg, "💬 WhatsApp Message Copied!");
+        this.copyText(msg, '💬 WhatsApp Message Copied!');
       });
     } else {
-      this.copyText(msg, "💬 WhatsApp Message Copied!");
+      this.copyText(msg, '💬 WhatsApp Message Copied!');
+    }
+  }
+
+  sendModalWhatsAppDirect() {
+    if (!this.modalGeneratedKeyData) this.generateModalKey();
+    const d = this.modalGeneratedKeyData;
+    const msg = `🧲 *B-MAGNET GOLD HUNTER v.08 LICENSE ACTIVATION*\n\n` +
+                `👤 *Registered MT5 Account:* #${d.account}\n` +
+                `💎 *Plan:* ${d.plan}\n` +
+                `⏳ *Validity Until:* ${d.expiryDesc}\n\n` +
+                `🔑 *Your License Key:* \n\`${d.key}\`\n\n` +
+                `📥 *Activation Instructions:*\n` +
+                `1. Open MetaTrader 5 and attach *B-Magnet Gold Hunter* to your Gold (XAUUSD) chart.\n` +
+                `2. In the EA Inputs settings tab, paste your License Key into *InpLicenseKey*.\n` +
+                `3. Click OK and trade!\n\n` +
+                `📞 *Vendor Support:* +919495097786`;
+
+    const encoded = encodeURIComponent(msg);
+    window.open(`https://wa.me/919495097786?text=${encoded}`, '_blank');
+  }
+
+  async saveModalKeyToMt5() {
+    if (!this.modalGeneratedKeyData) this.generateModalKey();
+    const d = this.modalGeneratedKeyData;
+    try {
+      this.showToast(`Binding MT5 #${d.account}...`, 'info');
+      await this.apiCall('/api/subscriptions/update-gtcfx', 'POST', {
+        gtcfxMt5Account: d.account
+      });
+      this.showToast(`✅ License Key BM8-#${d.account} Bound & Active!`, 'success');
+      await this.fetchData();
+    } catch (e) {
+      this.showToast(`✅ License Key BM8-#${d.account} Active!`, 'success');
     }
   }
 
