@@ -358,13 +358,23 @@
       "gtcfxMt5Account": "8849201",
       "subscriptions": [],
       "registeredAt": "2026-08-16T14:40:17Z",
-      "lastLoginAt": "2026-08-17T20:13:38Z",
-      "loginCount": 20,
+      "lastLoginAt": "2026-08-17T22:11:58Z",
+      "loginCount": 21,
       "googleEmail": "hanaan.trader@gmail.com",
       "picture": "https://lh3.googleusercontent.com/a/default-user=s96-c"
     }
   },
   "notifications": [
+    {
+      "id": "notif_1787004718_234",
+      "type": "GMAIL_LOGIN",
+      "title": "\ud83d\udd11 Gmail Login",
+      "message": "Customer: Hanaan.trader (hanaan.trader@gmail.com) signed in via Gmail OTP. Wallet: 140.00 USDT",
+      "customerPhone": "+91 94950 84201",
+      "customerEmail": "hanaan.trader@gmail.com",
+      "timestamp": "2026-08-17T22:11:58Z",
+      "unread": true
+    },
     {
       "id": "notif_1786997618_838",
       "type": "GMAIL_LOGIN",
