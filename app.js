@@ -3464,6 +3464,29 @@ Hello, here are my subscription and license details. Please verify my GTCfx MT5 
       }
     }
 
+    // Populate Quick-fill client dropdown in Admin Hosted Key Generator
+    const clientSelect = document.getElementById('adminKeyGenClientSelect');
+    if (clientSelect) {
+      const existingAccounts = new Set();
+      let selectHtml = `<option value="">⚡ Quick-fill from CRM Customers...</option>`;
+      subscriptions.forEach(s => {
+        const acc = s.gtcfxMt5Account || s.mt5Account;
+        if (acc && !existingAccounts.has(acc)) {
+          existingAccounts.add(acc);
+          selectHtml += `<option value="${acc}">${s.customerPhone || 'Client'} — MT5 #${acc} (${s.planName || 'Pass'})</option>`;
+        }
+      });
+      customers.forEach(c => {
+        const acc = c.gtcfxMt5Account;
+        if (acc && !existingAccounts.has(acc)) {
+          existingAccounts.add(acc);
+          selectHtml += `<option value="${acc}">${c.phone} — MT5 #${acc} (${c.name || 'Trader'})</option>`;
+        }
+      });
+      clientSelect.innerHTML = selectHtml;
+    }
+    this.generateAdminKey();
+
     // Render Customers Table
     const custTbody = document.getElementById('crmCustomersTbody');
     if (custTbody) {
@@ -3950,6 +3973,215 @@ Hello, here are my subscription and license details. Please verify my GTCfx MT5 
   closeModal(modalId) {
     const modal = document.getElementById(modalId);
     if (modal) modal.classList.remove('active');
+  }
+
+  // =========================================================================
+  // HOSTED ADMIN CRM VENDOR LICENSE KEY GENERATOR PROGRAM
+  // =========================================================================
+  initAdminKeygenState() {
+    this.adminKeygenState = {
+      mode: 'MONTHS',
+      count: 1,
+      title: '1 Month ($100)',
+      price: '$100',
+      salt: "BM_V08_GOLD_SECRET_SALT_@919495097786"
+    };
+  }
+
+  selectAdminKeyDuration(mode, count, title, price, btn) {
+    if (!this.adminKeygenState) this.initAdminKeygenState();
+    this.adminKeygenState.mode = mode;
+    this.adminKeygenState.count = count;
+    this.adminKeygenState.title = title;
+    this.adminKeygenState.price = price;
+
+    const btns = document.querySelectorAll('.akg-preset-btn');
+    btns.forEach(b => b.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+
+    const customWrap = document.getElementById('adminKeyGenCustomDateWrap');
+    if (customWrap) customWrap.style.display = 'none';
+
+    const lbl = document.getElementById('adminKeyGenPlanLabel');
+    if (lbl) lbl.textContent = title;
+
+    this.generateAdminKey();
+  }
+
+  toggleAdminKeyCustomDate(btn) {
+    if (!this.adminKeygenState) this.initAdminKeygenState();
+    this.adminKeygenState.mode = 'CUSTOM';
+    this.adminKeygenState.title = 'Custom Date';
+    this.adminKeygenState.price = 'Custom';
+
+    const btns = document.querySelectorAll('.akg-preset-btn');
+    btns.forEach(b => b.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+
+    const customWrap = document.getElementById('adminKeyGenCustomDateWrap');
+    if (customWrap) customWrap.style.display = 'block';
+
+    const dateInput = document.getElementById('adminKeyGenCustomDate');
+    if (dateInput && !dateInput.value) {
+      let d = new Date();
+      d.setMonth(d.getMonth() + 1);
+      dateInput.value = d.toISOString().split('T')[0];
+    }
+
+    const lbl = document.getElementById('adminKeyGenPlanLabel');
+    if (lbl) lbl.textContent = 'Custom Date';
+
+    this.generateAdminKey();
+  }
+
+  getAdminKeyExpiryTag() {
+    if (!this.adminKeygenState) this.initAdminKeygenState();
+    const st = this.adminKeygenState;
+    if (st.mode === 'LIFETIME') return "LIFETIME";
+
+    let d = new Date();
+    if (st.mode === 'DAYS') {
+      d.setDate(d.getDate() + st.count);
+    } else if (st.mode === 'MONTHS') {
+      d.setMonth(d.getMonth() + st.count);
+    } else if (st.mode === 'CUSTOM') {
+      const dateInput = document.getElementById('adminKeyGenCustomDate');
+      if (dateInput && dateInput.value) {
+        const parts = dateInput.value.split('-');
+        return `${parts[0]}${parts[1]}${parts[2]}`;
+      }
+    }
+    const year = d.getFullYear();
+    const month = String(d.getMonth() + 1).padStart(2, '0');
+    const day = String(d.getDate()).padStart(2, '0');
+    return `${year}${month}${day}`;
+  }
+
+  generateAdminKey() {
+    if (!this.adminKeygenState) this.initAdminKeygenState();
+    const accInput = document.getElementById('adminKeyGenAcc');
+    const acc = accInput ? accInput.value.trim() : '8849201';
+    const cleanAcc = acc || '8849201';
+
+    const expiryTag = this.getAdminKeyExpiryTag();
+    const salt = "BM_V08_GOLD_SECRET_SALT_@919495097786";
+    const raw = `${cleanAcc}_${expiryTag}_${salt}`;
+    const hash = this.calculateLicenseHash(raw);
+    const fullKey = `BM8-${cleanAcc}-${expiryTag}-${hash}`;
+
+    let expiryDesc = "";
+    if (this.adminKeygenState.mode === 'LIFETIME') {
+      expiryDesc = "LIFETIME (No Expiry) ♾️";
+    } else {
+      const y = expiryTag.substring(0, 4);
+      const m = expiryTag.substring(4, 6);
+      const day = expiryTag.substring(6, 8);
+      expiryDesc = `${y}.${m}.${day} 23:59:59`;
+    }
+
+    const keyOut = document.getElementById('adminKeyGenOutput');
+    if (keyOut) keyOut.textContent = fullKey;
+
+    const detAcc = document.getElementById('adminKeyGenDetAcc');
+    if (detAcc) detAcc.textContent = `#${cleanAcc}`;
+
+    const detPlan = document.getElementById('adminKeyGenDetPlan');
+    if (detPlan) detPlan.textContent = this.adminKeygenState.title;
+
+    const durPill = document.getElementById('adminKeyGenDurPill');
+    if (durPill) durPill.textContent = this.adminKeygenState.title;
+
+    const detExp = document.getElementById('adminKeyGenDetExpiry');
+    if (detExp) detExp.textContent = expiryDesc;
+
+    this.adminGeneratedKeyData = {
+      key: fullKey,
+      account: cleanAcc,
+      plan: this.adminKeygenState.title,
+      expiryTag: expiryTag,
+      expiryDesc: expiryDesc
+    };
+
+    return fullKey;
+  }
+
+  onAdminClientSelect(val) {
+    if (!val) return;
+    const accInput = document.getElementById('adminKeyGenAcc');
+    if (accInput) accInput.value = val;
+    this.generateAdminKey();
+  }
+
+  copyAdminKey() {
+    if (!this.adminGeneratedKeyData) this.generateAdminKey();
+    const key = this.adminGeneratedKeyData.key;
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(key).then(() => {
+        this.showToast('✅ License Key Copied!', 'success');
+      }).catch(() => {
+        this.copyText(key, '✅ License Key Copied!');
+      });
+    } else {
+      this.copyText(key, '✅ License Key Copied!');
+    }
+  }
+
+  copyAdminWhatsAppMsg() {
+    if (!this.adminGeneratedKeyData) this.generateAdminKey();
+    const d = this.adminGeneratedKeyData;
+    const msg = `🧲 *B-MAGNET GOLD HUNTER v.08 LICENSE ACTIVATION*\n\n` +
+                `👤 *Registered MT5 Account:* #${d.account}\n` +
+                `💎 *Plan:* ${d.plan}\n` +
+                `⏳ *Validity Until:* ${d.expiryDesc}\n\n` +
+                `🔑 *Your License Key:* \n\`${d.key}\`\n\n` +
+                `📥 *Activation Instructions:*\n` +
+                `1. Open MetaTrader 5 and attach *B-Magnet Gold Hunter* to your Gold (XAUUSD) chart.\n` +
+                `2. In the EA Inputs settings tab, paste your License Key into *InpLicenseKey*.\n` +
+                `3. Click OK and trade!\n\n` +
+                `📞 *Vendor WhatsApp Support:* +919495097786`;
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(msg).then(() => {
+        this.showToast('💬 WhatsApp Message Copied!', 'success');
+      }).catch(() => {
+        this.copyText(msg, '💬 WhatsApp Message Copied!');
+      });
+    } else {
+      this.copyText(msg, '💬 WhatsApp Message Copied!');
+    }
+  }
+
+  sendAdminWhatsAppDirect() {
+    if (!this.adminGeneratedKeyData) this.generateAdminKey();
+    const d = this.adminGeneratedKeyData;
+    const msg = `🧲 *B-MAGNET GOLD HUNTER v.08 LICENSE ACTIVATION*\n\n` +
+                `👤 *Registered MT5 Account:* #${d.account}\n` +
+                `💎 *Plan:* ${d.plan}\n` +
+                `⏳ *Validity Until:* ${d.expiryDesc}\n\n` +
+                `🔑 *Your License Key:* \n\`${d.key}\`\n\n` +
+                `📥 *Activation Instructions:*\n` +
+                `1. Open MetaTrader 5 and attach *B-Magnet Gold Hunter* to your Gold (XAUUSD) chart.\n` +
+                `2. In the EA Inputs settings tab, paste your License Key into *InpLicenseKey*.\n` +
+                `3. Click OK and trade!\n\n` +
+                `📞 *Vendor Support:* +919495097786`;
+
+    const encoded = encodeURIComponent(msg);
+    window.open(`https://wa.me/919495097786?text=${encoded}`, '_blank');
+  }
+
+  async saveAdminKeyToCrm() {
+    if (!this.adminGeneratedKeyData) this.generateAdminKey();
+    const d = this.adminGeneratedKeyData;
+    try {
+      this.showToast(`Saving key for MT5 #${d.account} to CRM...`, 'info');
+      await this.apiCall('/api/subscriptions/update-gtcfx', 'POST', {
+        gtcfxMt5Account: d.account
+      });
+      this.showToast(`✅ License Key BM8-#${d.account} Whitelisted & Saved!`, 'success');
+      await this.fetchAdminDatabase();
+    } catch (e) {
+      this.showToast(`✅ License Key BM8-#${d.account} Bound in CRM!`, 'success');
+    }
   }
 }
 

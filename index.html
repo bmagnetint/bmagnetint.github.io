@@ -47,7 +47,7 @@
   <!-- Google Identity Services (Sign-In with Google) -->
   <script src="https://accounts.google.com/gsi/client" async defer></script>
   
-  <link rel="stylesheet" href="style.css?v=3731">
+  <link rel="stylesheet" href="style.css?v=8948">
 </head>
 <body class="theme-dark">
 
@@ -1314,6 +1314,133 @@
             </div>
           </div>
 
+          <!-- Hosted Vendor License Key Generator Program (Inside Admin CRM) -->
+          <div class="card admin-keygen-card" id="adminKeygenProgramCard" style="margin-bottom: 20px;">
+            <div class="card-header flex-between">
+              <div class="akg-title-wrap">
+                <div class="akg-icon-badge">
+                  <span class="material-symbols-rounded">vpn_key</span>
+                </div>
+                <div>
+                  <h3 class="card-title" style="font-size: 15px;">MT5 Vendor License Key Generator</h3>
+                  <p class="akg-sub">Generate and issue live activation keys for B-Magnet Gold Hunter v0.8</p>
+                </div>
+              </div>
+              <span class="badge-featured" style="background: rgba(0, 229, 255, 0.12); color: #00e5ff; border: 1px solid rgba(0, 229, 255, 0.25); font-size: 9.5px;">
+                🔐 SHA-FNV1a Engine Active
+              </span>
+            </div>
+
+            <div class="akg-body">
+              <div class="akg-form-grid">
+                <!-- 1. MT5 Account Input & Quick Select from CRM -->
+                <div class="akg-field-col">
+                  <label class="akg-label">
+                    <span>1. Client MT5 Account Number</span>
+                    <span class="akg-label-hint">Live & Demo MT5</span>
+                  </label>
+                  <div class="akg-input-with-select">
+                    <input type="text" id="adminKeyGenAcc" class="akg-input font-mono" placeholder="Enter Client MT5 # (e.g. 8849201)" value="8849201" autocomplete="off" oninput="window.botHubApp.generateAdminKey()">
+                    <select id="adminKeyGenClientSelect" class="akg-select" onchange="window.botHubApp.onAdminClientSelect(this.value)" title="Quick-fill from CRM client list">
+                      <option value="">⚡ Quick-fill from CRM Customers...</option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- 2. License Duration & Pricing Presets -->
+                <div class="akg-field-col">
+                  <label class="akg-label">
+                    <span>2. License Duration & Plan Tier</span>
+                    <span class="akg-label-hint" id="adminKeyGenPlanLabel">1 Month ($100)</span>
+                  </label>
+                  <div class="akg-presets-grid">
+                    <button type="button" class="akg-preset-btn" data-dur="trial" onclick="window.botHubApp.selectAdminKeyDuration('DAYS', 2, 'Trial (2 Days)', '$10', this)">
+                      <span class="akg-p-name">Trial (2 Days) ⏱️</span>
+                      <span class="akg-p-price">$10 Test</span>
+                    </button>
+                    <button type="button" class="akg-preset-btn active" data-dur="1m" onclick="window.botHubApp.selectAdminKeyDuration('MONTHS', 1, '1 Month ($100)', '$100', this)">
+                      <span class="akg-p-name">1 Month ⚡</span>
+                      <span class="akg-p-price">$100 Pass</span>
+                    </button>
+                    <button type="button" class="akg-preset-btn" data-dur="3m" onclick="window.botHubApp.selectAdminKeyDuration('MONTHS', 3, '3 Months ($250)', '$250', this)">
+                      <span class="akg-p-name">3 Months 🔥</span>
+                      <span class="akg-p-price">$250 (Save $50)</span>
+                    </button>
+                    <button type="button" class="akg-preset-btn" data-dur="1y" onclick="window.botHubApp.selectAdminKeyDuration('MONTHS', 12, '1 Year ($900)', '$900', this)">
+                      <span class="akg-p-name">1 Year VIP 🏆</span>
+                      <span class="akg-p-price">$900 (Save $300)</span>
+                    </button>
+                    <button type="button" class="akg-preset-btn" data-dur="lifetime" onclick="window.botHubApp.selectAdminKeyDuration('LIFETIME', 0, 'Lifetime ♾️', 'Full Access', this)">
+                      <span class="akg-p-name">Lifetime ♾️</span>
+                      <span class="akg-p-price">No Expiry</span>
+                    </button>
+                    <button type="button" class="akg-preset-btn" data-dur="custom" onclick="window.botHubApp.toggleAdminKeyCustomDate(this)">
+                      <span class="akg-p-name">Custom 📅</span>
+                      <span class="akg-p-price">Pick Date</span>
+                    </button>
+                  </div>
+                  <div id="adminKeyGenCustomDateWrap" style="display: none; margin-top: 8px;">
+                    <input type="date" id="adminKeyGenCustomDate" class="akg-input font-mono" onchange="window.botHubApp.generateAdminKey()">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Real-time Generated Key Result Display -->
+              <div class="akg-result-box" id="adminKeyGenResultBox">
+                <div class="akg-res-header">
+                  <div class="akg-res-badge">
+                    <span class="material-symbols-rounded" style="font-size: 16px;">key</span>
+                    <span>GENERATED CLIENT ACTIVATION KEY</span>
+                  </div>
+                  <span class="akg-dur-pill" id="adminKeyGenDurPill">1 Month ($100)</span>
+                </div>
+
+                <div class="akg-key-display-box" id="adminKeyGenOutput" onclick="window.botHubApp.copyAdminKey()" title="Click to copy key">
+                  BM8-8849201-20260917-0F7C0A67
+                </div>
+
+                <div class="akg-details-strip">
+                  <div class="akg-det-cell">
+                    <span class="akg-det-lbl">MT5 Account:</span>
+                    <strong class="akg-det-val font-mono" id="adminKeyGenDetAcc">#8849201</strong>
+                  </div>
+                  <div class="akg-det-cell">
+                    <span class="akg-det-lbl">Plan / Price:</span>
+                    <strong class="akg-det-val text-cyan" id="adminKeyGenDetPlan">1 Month ($100)</strong>
+                  </div>
+                  <div class="akg-det-cell">
+                    <span class="akg-det-lbl">Expires On:</span>
+                    <strong class="akg-det-val font-mono text-amber" id="adminKeyGenDetExpiry">2026.09.17 23:59:59</strong>
+                  </div>
+                  <div class="akg-det-cell">
+                    <span class="akg-det-lbl">Support Contact:</span>
+                    <strong class="akg-det-val font-mono">+919495097786</strong>
+                  </div>
+                </div>
+
+                <!-- Action Button Controls -->
+                <div class="akg-actions-grid">
+                  <button type="button" class="btn-akg-action btn-akg-copy" onclick="window.botHubApp.copyAdminKey()">
+                    <span class="material-symbols-rounded">content_copy</span>
+                    <span>Copy Key</span>
+                  </button>
+                  <button type="button" class="btn-akg-action btn-akg-wa-msg" onclick="window.botHubApp.copyAdminWhatsAppMsg()">
+                    <span class="material-symbols-rounded">chat</span>
+                    <span>Copy WA Msg</span>
+                  </button>
+                  <button type="button" class="btn-akg-action btn-akg-wa-send" onclick="window.botHubApp.sendAdminWhatsAppDirect()">
+                    <span class="material-symbols-rounded">send</span>
+                    <span>Send WA</span>
+                  </button>
+                  <button type="button" class="btn-akg-action btn-akg-save-crm" onclick="window.botHubApp.saveAdminKeyToCrm()">
+                    <span class="material-symbols-rounded">save</span>
+                    <span>Save to CRM</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <!-- Section 1: Customer Registry -->
           <div class="card" style="margin-bottom: 16px;">
             <div class="card-header flex-between">
@@ -2395,6 +2522,6 @@
 
   <!-- App Scripts -->
   <script src="qrcode.js"></script>
-  <script src="app.js?v=3731"></script>
+  <script src="app.js?v=8948"></script>
 </body>
 </html>
