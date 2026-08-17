@@ -47,7 +47,7 @@
   <!-- Google Identity Services (Sign-In with Google) -->
   <script src="https://accounts.google.com/gsi/client" async defer></script>
   
-  <link rel="stylesheet" href="style.css?v=4400">
+  <link rel="stylesheet" href="style.css?v=0553">
 </head>
 <body class="theme-dark">
 
@@ -463,28 +463,26 @@
             <div class="auth-split-left-area">
               <div class="asl-inner">
                 
-                <!-- Top Brand Bar & Return to Website Button -->
+                <!-- Top Brand Bar & Return to Home Button -->
                 <div class="asl-top-bar">
-                  <div class="asl-brand">
-                    <img src="images/b-magnet-emblem.png" alt="B-Magnet" class="asl-brand-logo">
-                    <div class="asl-brand-text">
-                      <div class="asl-brand-title">B-Magnet <span class="asl-brand-pro">PRO</span></div>
-                      <span class="asl-brand-sub">Algorithmic Trading & Marketing Systems</span>
-                    </div>
-                  </div>
-
-                  <button type="button" class="btn-top-back-landing" onclick="window.botHubApp.showLandingPage()" title="Back to Company Home">
-                    <span class="material-symbols-rounded">arrow_back</span>
-                    <span>Company Website</span>
+                  <button type="button" class="btn-top-back-landing" onclick="window.botHubApp.showLandingPage()" title="Back to Home">
+                    <span class="material-symbols-rounded">home</span>
+                    <span>Home</span>
                   </button>
-                </div>
 
-                <!-- Bot Headline & Live Badges -->
-                <div class="asl-hero-block">
-                  <div class="asl-badge-row">
+                  <div class="asl-live-status-pill">
                     <span class="pulse-dot" style="background:#10b981;"></span>
                     <span class="asl-badge-text">B-MAGNET GOLD HUNTER EA v0.8 • MT5 ACTIVE</span>
                   </div>
+                </div>
+
+                <!-- Centered Maximum Size Logo (Above Content, No Extra Texts, No Crop) -->
+                <div class="asl-center-logo-hero">
+                  <img src="images/b-magnet-logo.png" alt="B-Magnet - Perfect business solutions" class="asl-main-hero-logo">
+                </div>
+
+                <!-- Bot Headline & Description -->
+                <div class="asl-hero-block">
                   <h2 class="asl-hero-title">Next-Gen AI Algorithmic Gold Trading</h2>
                   <p class="asl-hero-desc">
                     Institutional quantitative algorithm engineered for MetaTrader 5 (MT5). Powered by multi-timeframe liquidity confluence, neural order-flow scanning, and automated risk protection on Gold (XAUUSD).
@@ -654,9 +652,9 @@
                 
                 <!-- Welcome Top Utilities -->
                 <div class="welcome-top-bar">
-                  <button type="button" class="btn-top-back-landing" onclick="window.botHubApp.showLandingPage()" title="Back to Company Home">
-                    <span class="material-symbols-rounded">arrow_back</span>
-                    <span>Home Website</span>
+                  <button type="button" class="btn-top-back-landing" onclick="window.botHubApp.showLandingPage()" title="Back to Home">
+                    <span class="material-symbols-rounded">home</span>
+                    <span>Home</span>
                   </button>
 
                   <div class="welcome-top-right-group">
@@ -707,9 +705,9 @@
                 <!-- Top Header with Back to Website / Back to Welcome & EA Badge -->
                 <div class="signin-top-hero">
                   <div class="signin-top-actions-row">
-                    <button type="button" class="signin-back-btn" onclick="window.botHubApp.showLandingPage()" title="Back to Company Home">
-                      <span class="material-symbols-rounded">arrow_back</span>
-                      <span>Home Website</span>
+                    <button type="button" class="signin-back-btn" onclick="window.botHubApp.showLandingPage()" title="Back to Home">
+                      <span class="material-symbols-rounded">home</span>
+                      <span>Home</span>
                     </button>
 
                     <div class="lang-switch-pill" style="transform: scale(0.9);">
@@ -2553,6 +2551,6 @@
 
   <!-- App Scripts -->
   <script src="qrcode.js"></script>
-  <script src="app.js?v=4400"></script>
+  <script src="app.js?v=0553"></script>
 </body>
 </html>
