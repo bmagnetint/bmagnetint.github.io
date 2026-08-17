@@ -47,7 +47,7 @@
   <!-- Google Identity Services (Sign-In with Google) -->
   <script src="https://accounts.google.com/gsi/client" async defer></script>
   
-  <link rel="stylesheet" href="style.css?v=1206">
+  <link rel="stylesheet" href="style.css?v=3731">
 </head>
 <body class="theme-dark">
 
@@ -62,7 +62,7 @@
       <!-- ======================================================== -->
       <!-- SCREEN: FULL DUAL-SCREEN AUTH FLOW WITH B-MAGNET BRANDING  -->
       <!-- ======================================================== -->
-      <div class="auth-overlay active" id="authScreenOverlay">
+      <div class="auth-overlay active landing-active" id="authScreenOverlay">
         
         <!-- Fullscreen Faded Trading Chart Background (Spans Entire Screen) -->
         <div class="auth-fullscreen-faded-chart">
@@ -80,7 +80,6 @@
 
             <!-- Faded Chart Grid & Candlesticks -->
             <g filter="url(#bg_chart_blur)" opacity="0.5">
-              <!-- Horizontal price grids -->
               <line x1="10" y1="60" x2="390" y2="60" stroke="#93c5fd" stroke-width="1" stroke-dasharray="6 6" stroke-opacity="0.4"/>
               <line x1="10" y1="140" x2="390" y2="140" stroke="#93c5fd" stroke-width="1" stroke-dasharray="6 6" stroke-opacity="0.4"/>
               <line x1="10" y1="220" x2="390" y2="220" stroke="#93c5fd" stroke-width="1" stroke-dasharray="6 6" stroke-opacity="0.4"/>
@@ -89,7 +88,6 @@
               <line x1="10" y1="460" x2="390" y2="460" stroke="#93c5fd" stroke-width="1" stroke-dasharray="6 6" stroke-opacity="0.4"/>
               <line x1="10" y1="540" x2="390" y2="540" stroke="#93c5fd" stroke-width="1" stroke-dasharray="6 6" stroke-opacity="0.4"/>
 
-              <!-- Vertical Time Lines -->
               <line x1="80" y1="20" x2="80" y2="680" stroke="#93c5fd" stroke-width="1" stroke-dasharray="6 6" stroke-opacity="0.25"/>
               <line x1="160" y1="20" x2="160" y2="680" stroke="#93c5fd" stroke-width="1" stroke-dasharray="6 6" stroke-opacity="0.25"/>
               <line x1="240" y1="20" x2="240" y2="680" stroke="#93c5fd" stroke-width="1" stroke-dasharray="6 6" stroke-opacity="0.25"/>
@@ -98,31 +96,22 @@
               <!-- Candlesticks Array -->
               <line x1="40" y1="340" x2="40" y2="420" stroke="#10B981" stroke-width="2"/>
               <rect x="34" y="360" width="12" height="40" rx="2" fill="#10B981"/>
-
               <line x1="75" y1="300" x2="75" y2="390" stroke="#10B981" stroke-width="2"/>
               <rect x="69" y="320" width="12" height="50" rx="2" fill="#10B981"/>
-
               <line x1="110" y1="320" x2="110" y2="380" stroke="#EF4444" stroke-width="2"/>
               <rect x="104" y="335" width="12" height="30" rx="2" fill="#EF4444"/>
-
               <line x1="145" y1="260" x2="145" y2="350" stroke="#10B981" stroke-width="2"/>
               <rect x="139" y="280" width="12" height="55" rx="2" fill="#10B981"/>
-
               <line x1="180" y1="240" x2="180" y2="330" stroke="#10B981" stroke-width="2"/>
               <rect x="174" y="255" width="12" height="50" rx="2" fill="#10B981"/>
-
               <line x1="215" y1="270" x2="215" y2="320" stroke="#EF4444" stroke-width="2"/>
               <rect x="209" y="275" width="12" height="30" rx="2" fill="#EF4444"/>
-
               <line x1="250" y1="200" x2="250" y2="290" stroke="#10B981" stroke-width="2"/>
               <rect x="244" y="215" width="12" height="55" rx="2" fill="#10B981"/>
-
               <line x1="285" y1="170" x2="285" y2="260" stroke="#10B981" stroke-width="2"/>
               <rect x="279" y="185" width="12" height="60" rx="2" fill="#10B981"/>
-
               <line x1="320" y1="140" x2="320" y2="230" stroke="#10B981" stroke-width="2"/>
               <rect x="314" y="155" width="12" height="55" rx="2" fill="#10B981"/>
-
               <line x1="355" y1="110" x2="355" y2="190" stroke="#10B981" stroke-width="2"/>
               <rect x="349" y="120" width="12" height="50" rx="2" fill="#10B981"/>
 
@@ -130,124 +119,510 @@
               <path d="M10 420 C 80 380, 140 280, 220 260 C 300 240, 340 130, 390 90" stroke="#00F2FE" stroke-width="5" stroke-linecap="round" fill="none"/>
               <path d="M10 420 C 80 380, 140 280, 220 260 C 300 240, 340 130, 390 90 L 390 700 L 10 700 Z" fill="url(#bg_chart_grad)"/>
               <path d="M10 440 C 90 410, 160 310, 240 290 C 320 270, 350 160, 390 120" stroke="#F59E0B" stroke-width="3.5" stroke-linecap="round" fill="none"/>
-
-              <!-- Bottom Volume Bars -->
-              <rect x="34" y="600" width="12" height="60" rx="2" fill="#3B82F6" fill-opacity="0.6"/>
-              <rect x="69" y="580" width="12" height="80" rx="2" fill="#3B82F6" fill-opacity="0.7"/>
-              <rect x="104" y="610" width="12" height="50" rx="2" fill="#3B82F6" fill-opacity="0.4"/>
-              <rect x="139" y="560" width="12" height="100" rx="2" fill="#3B82F6" fill-opacity="0.8"/>
-              <rect x="174" y="570" width="12" height="90" rx="2" fill="#3B82F6" fill-opacity="0.7"/>
-              <rect x="209" y="620" width="12" height="40" rx="2" fill="#3B82F6" fill-opacity="0.3"/>
-              <rect x="244" y="550" width="12" height="110" rx="2" fill="#3B82F6" fill-opacity="0.85"/>
-              <rect x="279" y="540" width="12" height="120" rx="2" fill="#3B82F6" fill-opacity="0.9"/>
-              <rect x="314" y="520" width="12" height="140" rx="2" fill="#3B82F6" fill-opacity="0.95"/>
-              <rect x="349" y="500" width="12" height="160" rx="2" fill="#3B82F6"/>
             </g>
           </svg>
         </div>
 
+        <!-- ======================================================== -->
+        <!-- 1. DESKTOP COMPANY WEBSITE (Rendered on Monitors / PC)   -->
+        <!-- ======================================================== -->
+        <div class="desktop-company-landing" id="desktopCompanyLanding">
+          
+          <!-- Top Company Navigation Bar -->
+          <header class="landing-header">
+            <div class="landing-header-inner">
+              <div class="landing-brand-col">
+                <img src="images/b-magnet-emblem.png" alt="B-Magnet Logo" class="landing-brand-logo">
+                <div class="landing-brand-text">
+                  <div class="landing-brand-title">B-Magnet <span class="landing-brand-badge">PRO</span></div>
+                  <span class="landing-brand-sub">Trading & Marketing Bots</span>
+                </div>
+              </div>
+
+              <!-- Center Nav Links -->
+              <nav class="landing-nav-links">
+                <a href="#aboutProgramSection" class="landing-nav-link">About Program</a>
+                <a href="#plansSection" class="landing-nav-link">Bot Plans</a>
+                <a href="#gtcfxSection" class="landing-nav-link">GTCfx Broker</a>
+                <a href="#faqSection" class="landing-nav-link">Security & FAQ</a>
+              </nav>
+
+              <!-- Top Right Controls: Language Switch, Theme & Corner Login -->
+              <div class="landing-header-actions">
+                <div class="lang-switch-pill">
+                  <button type="button" class="lang-btn active" onclick="window.botHubApp.setAppLanguage('en')">EN</button>
+                  <button type="button" class="lang-btn" onclick="window.botHubApp.setAppLanguage('ar')">عربي</button>
+                </div>
+
+                <button type="button" class="theme-toggle-pill" onclick="window.botHubApp.toggleTheme()" title="Toggle Dark / Light Mode">
+                  <span class="material-symbols-rounded theme-icon">dark_mode</span>
+                </button>
+
+                <!-- 🌟 Corner Login / Launch App Button -->
+                <button type="button" class="btn-landing-corner-login" onclick="window.botHubApp.showSignInPage()">
+                  <span class="material-symbols-rounded">login</span>
+                  <span>Sign In / Launch</span>
+                </button>
+              </div>
+            </div>
+          </header>
+
+          <!-- Landing Page Scroll Container -->
+          <div class="landing-scroll-body">
+            
+            <!-- HERO SECTION -->
+            <section class="landing-hero-section" id="heroSection">
+              <div class="landing-hero-inner">
+                <div class="landing-hero-left">
+                  <div class="landing-hero-badge">
+                    <span class="pulse-dot" style="background:#10b981;"></span>
+                    <span>Institutional MT5 Trading Automation</span>
+                  </div>
+                  <h1 class="landing-hero-title">
+                    Automated Gold Trading Bots <br><span class="landing-text-highlight">Engineered for Maximum Precision</span>
+                  </h1>
+                  <p class="landing-hero-desc">
+                    Fully automated Expert Advisor (EA) built for MetaTrader 5 (MT5). Powered by multi-timeframe liquidity confluence, real-time risk controls, and hands-off 24/5 cloud reliability on Gold (XAUUSD).
+                  </p>
+
+                  <div class="landing-hero-cta-row">
+                    <button type="button" class="btn-hero-primary" onclick="window.botHubApp.showSignInPage()">
+                      <span>Launch Trading App / Sign In</span>
+                      <span class="material-symbols-rounded">arrow_forward</span>
+                    </button>
+                    <a href="https://web.mygtc.app/login/register?ref=Y8JMgpna" target="_blank" rel="noopener noreferrer" class="btn-hero-secondary">
+                      <span>Register GTCfx MT5 Account</span>
+                      <span class="material-symbols-rounded">open_in_new</span>
+                    </a>
+                  </div>
+
+                  <!-- 4 Live Proof Metrics -->
+                  <div class="landing-metrics-grid">
+                    <div class="landing-metric-card">
+                      <span class="lmc-val">89.4%</span>
+                      <span class="lmc-lbl">Verified Win Rate</span>
+                    </div>
+                    <div class="landing-metric-card">
+                      <span class="lmc-val">24/5</span>
+                      <span class="lmc-lbl">Continuous Auto Execution</span>
+                    </div>
+                    <div class="landing-metric-card">
+                      <span class="lmc-val">0.0 Pip</span>
+                      <span class="lmc-lbl">Raw ECN Spread (GTCfx)</span>
+                    </div>
+                    <div class="landing-metric-card">
+                      <span class="lmc-val">100%</span>
+                      <span class="lmc-lbl">Direct Client Fund Control</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="landing-hero-right">
+                  <!-- Interactive Glass Trading Card -->
+                  <div class="landing-showcase-card">
+                    <div class="lsc-header">
+                      <div class="lsc-header-left">
+                        <span class="bot-status-dot-live"></span>
+                        <span class="lsc-bot-tag">B-MAGNET GOLD HUNTER PRO EA</span>
+                      </div>
+                      <span class="lsc-badge-live">LIVE MT5</span>
+                    </div>
+                    <div class="lsc-price-row">
+                      <div class="lsc-asset">XAUUSD <span class="sub-text">Spot Gold</span></div>
+                      <div class="lsc-price font-mono">2,488.50 <span class="profit-chip">+1.42%</span></div>
+                    </div>
+                    
+                    <!-- Live Trade Triggers Feed -->
+                    <div class="lsc-signal-box">
+                      <div class="lsc-sb-title">Recent Automated Algorithmic Trades</div>
+                      <div class="lsc-trade-item">
+                        <span class="trade-side buy">BUY</span>
+                        <span class="trade-info">XAUUSD 0.20 Lot @ 2,482.10</span>
+                        <span class="trade-profit font-mono">+$185.00</span>
+                      </div>
+                      <div class="lsc-trade-item">
+                        <span class="trade-side buy">BUY</span>
+                        <span class="trade-info">XAUUSD 0.15 Lot @ 2,476.40</span>
+                        <span class="trade-profit font-mono">+$142.50</span>
+                      </div>
+                      <div class="lsc-trade-item">
+                        <span class="trade-side buy">BUY</span>
+                        <span class="trade-info">XAUUSD 0.10 Lot @ 2,471.80</span>
+                        <span class="trade-profit font-mono">+$94.20</span>
+                      </div>
+                    </div>
+
+                    <div class="lsc-bottom-features">
+                      <span class="lsc-chip">🛡️ Low Drawdown Protection</span>
+                      <span class="lsc-chip">⚡ Instant MT5 License Sync</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- ABOUT THE PROGRAM SECTION -->
+            <section class="landing-section" id="aboutProgramSection">
+              <div class="landing-section-header">
+                <span class="landing-section-badge">Architecture & Strategy</span>
+                <h2 class="landing-section-title">All About the B-Magnet EA Program</h2>
+                <p class="landing-section-desc">
+                  Engineered with complete algorithmic transparency. You maintain 100% custody of your funds with your broker while our EA executes algorithmically on your MetaTrader 5 terminal.
+                </p>
+              </div>
+
+              <div class="landing-features-grid">
+                <div class="landing-feature-card">
+                  <div class="lfc-icon-box text-cyan">
+                    <span class="material-symbols-rounded">psychology</span>
+                  </div>
+                  <h3 class="lfc-title">1. Institutional Order Flow</h3>
+                  <p class="lfc-desc">
+                    Identifies institutional order blocks and liquidity pools on Gold (XAUUSD), entering trades when smart money enters the market.
+                  </p>
+                </div>
+
+                <div class="landing-feature-card">
+                  <div class="lfc-icon-box text-emerald">
+                    <span class="material-symbols-rounded">hub</span>
+                  </div>
+                  <h3 class="lfc-title">2. Multi-Timeframe Confluence</h3>
+                  <p class="lfc-desc">
+                    Scans M1, M5, M15, and H1 timeframes in milliseconds to verify high-probability confluence before opening a position.
+                  </p>
+                </div>
+
+                <div class="landing-feature-card">
+                  <div class="lfc-icon-box text-warning">
+                    <span class="material-symbols-rounded">security</span>
+                  </div>
+                  <h3 class="lfc-title">3. Dynamic Risk & Smart Scaling</h3>
+                  <p class="lfc-desc">
+                    Micro-lot sizing calibrated to your exact balance, coupled with strict stop-losses, trailing stops, and profit locking.
+                  </p>
+                </div>
+
+                <div class="landing-feature-card">
+                  <div class="lfc-icon-box text-blue">
+                    <span class="material-symbols-rounded">sync_saved_locally</span>
+                  </div>
+                  <h3 class="lfc-title">4. Instant MT5 Cloud Sync</h3>
+                  <p class="lfc-desc">
+                    Direct integration with your MetaTrader 5 account number. Validated with military-grade SHA-256 Secret Salt license security.
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            <!-- BOT PLANS & PRICING SECTION -->
+            <section class="landing-section" id="plansSection">
+              <div class="landing-section-header">
+                <span class="landing-section-badge">Licensing & Passes</span>
+                <h2 class="landing-section-title">Select Your Trading Bot Pass</h2>
+                <p class="landing-section-desc">Transparent pricing with instant activation. Connect to live or demo MT5 accounts.</p>
+              </div>
+
+              <div class="landing-plans-grid">
+                <!-- 1 Month Plan -->
+                <div class="landing-plan-card popular">
+                  <div class="lpc-popular-badge">MOST POPULAR</div>
+                  <div class="lpc-header">
+                    <div class="lpc-icon-circle">🌟</div>
+                    <div>
+                      <h4 class="lpc-name">1 Month Pass</h4>
+                      <span class="lpc-period">30-Day Automated Pass</span>
+                    </div>
+                  </div>
+                  <div class="lpc-price-row">
+                    <span class="lpc-price font-mono">$100</span>
+                    <span class="lpc-duration">/ 30 days</span>
+                  </div>
+                  <ul class="lpc-features-list">
+                    <li><span class="material-symbols-rounded check">check_circle</span> Full Gold EA MT5 Engine (30 Days)</li>
+                    <li><span class="material-symbols-rounded check">check_circle</span> 1 MT5 Live or Demo Account</li>
+                    <li><span class="material-symbols-rounded check">check_circle</span> 24/5 Automated Gold Scalping</li>
+                    <li><span class="material-symbols-rounded check">check_circle</span> Telegram Instant Trade Alerts</li>
+                  </ul>
+                  <button type="button" class="btn-plan-select btn-popular" onclick="window.botHubApp.showSignInPage()">Get 1 Month Pass ($100)</button>
+                </div>
+
+                <!-- 3 Months Plan (Save $50) -->
+                <div class="landing-plan-card">
+                  <div class="lpc-header">
+                    <div class="lpc-icon-circle">⚡</div>
+                    <div>
+                      <h4 class="lpc-name">3 Months Pass</h4>
+                      <span class="lpc-period">90-Day Whitelist</span>
+                    </div>
+                  </div>
+                  <div class="lpc-price-row">
+                    <span class="lpc-price font-mono">$250</span>
+                    <span class="lpc-duration">/ 90 days <span class="save-tag">Save $50</span></span>
+                  </div>
+                  <ul class="lpc-features-list">
+                    <li><span class="material-symbols-rounded check">check_circle</span> Full 90-Day MT5 Algorithm Access</li>
+                    <li><span class="material-symbols-rounded check">check_circle</span> 1 MT5 Account Binding</li>
+                    <li><span class="material-symbols-rounded check">check_circle</span> Dedicated VIP Server Routing</li>
+                    <li><span class="material-symbols-rounded check">check_circle</span> Priority Strategy & Parameter Updates</li>
+                  </ul>
+                  <button type="button" class="btn-plan-select" onclick="window.botHubApp.showSignInPage()">Get 3 Months Pass ($250)</button>
+                </div>
+
+                <!-- 1 Year Plan (VIP - Save $300) -->
+                <div class="landing-plan-card">
+                  <div class="lpc-header">
+                    <div class="lpc-icon-circle">👑</div>
+                    <div>
+                      <h4 class="lpc-name">1 Year VIP Pass</h4>
+                      <span class="lpc-period">365-Day Institutional</span>
+                    </div>
+                  </div>
+                  <div class="lpc-price-row">
+                    <span class="lpc-price font-mono">$900</span>
+                    <span class="lpc-duration">/ 365 days <span class="save-tag">Save $300</span></span>
+                  </div>
+                  <ul class="lpc-features-list">
+                    <li><span class="material-symbols-rounded check">check_circle</span> Full Institutional EA Access (1 Year)</li>
+                    <li><span class="material-symbols-rounded check">check_circle</span> Up to 2 MT5 Account Connections</li>
+                    <li><span class="material-symbols-rounded check">check_circle</span> Unlimited Free Broker Migrations</li>
+                    <li><span class="material-symbols-rounded check">check_circle</span> 1-on-1 Dedicated Setup & VPS Support</li>
+                  </ul>
+                  <button type="button" class="btn-plan-select" onclick="window.botHubApp.showSignInPage()">Get 1 Year VIP ($900)</button>
+                </div>
+
+                <!-- 2-Day Starter Trial -->
+                <div class="landing-plan-card">
+                  <div class="lpc-header">
+                    <div class="lpc-icon-circle">🎁</div>
+                    <div>
+                      <h4 class="lpc-name">2-Day Starter Trial</h4>
+                      <span class="lpc-period">Live Market Test Pass</span>
+                    </div>
+                  </div>
+                  <div class="lpc-price-row">
+                    <span class="lpc-price font-mono">$10</span>
+                    <span class="lpc-duration">/ 2 days</span>
+                  </div>
+                  <ul class="lpc-features-list">
+                    <li><span class="material-symbols-rounded check">check_circle</span> Test EA on Live or Demo MT5</li>
+                    <li><span class="material-symbols-rounded check">check_circle</span> 1 MT5 Account Access (2 Days)</li>
+                    <li><span class="material-symbols-rounded check">check_circle</span> Live Spreads & TP/SL Trade Fills</li>
+                    <li><span class="material-symbols-rounded check">check_circle</span> Instant Secret Salt License Generation</li>
+                  </ul>
+                  <button type="button" class="btn-plan-select" onclick="window.botHubApp.showSignInPage()">Start Trial ($10)</button>
+                </div>
+              </div>
+            </section>
+
+            <!-- GTCFX BROKER PARTNERSHIP SECTION -->
+            <section class="landing-section" id="gtcfxSection">
+              <div class="landing-gtcfx-banner">
+                <div class="lgb-left">
+                  <div class="lgb-icon-box">
+                    <span class="material-symbols-rounded">candlestick_chart</span>
+                  </div>
+                  <div>
+                    <span class="lgb-tag">Recommended Broker</span>
+                    <h3 class="lgb-title">Trade with GTCfx & B-Magnet</h3>
+                    <p class="lgb-desc">Ultra-low raw ECN spreads on Gold (XAUUSD), lightning-fast execution (&lt; 15ms), and fast BEP-20 USDT deposit/withdrawal integration.</p>
+                  </div>
+                </div>
+                <a href="https://web.mygtc.app/login/register?ref=Y8JMgpna" target="_blank" rel="noopener noreferrer" class="btn-gtcfx-cta">
+                  <span>Register GTCfx MT5 Account</span>
+                  <span class="material-symbols-rounded">open_in_new</span>
+                </a>
+              </div>
+            </section>
+
+            <!-- FOOTER -->
+            <footer class="landing-footer" id="faqSection">
+              <div class="landing-footer-inner">
+                <div class="lfi-left">
+                  <div class="lfi-brand">B-Magnet Pro</div>
+                  <p class="lfi-copy">© 2026 B-Magnet Trading Systems. Institutional MT5 Algorithmic Technology. All rights reserved.</p>
+                </div>
+                <div class="lfi-right">
+                  <span class="lfi-badge">🛡️ SHA-256 License Gate</span>
+                  <span class="lfi-badge">⚡ MT5 Connected</span>
+                </div>
+              </div>
+            </footer>
+
+          </div>
+        </div>
+
+        <!-- ======================================================== -->
+        <!-- 2. FULL AUTH & SIGN-IN VIEWPORT (Desktop Split & Mobile) -->
+        <!-- ======================================================== -->
         <div class="auth-screens-viewport" id="authScreensViewport">
           
-          <!-- ========================================== -->
-          <!-- SCREEN 1: WELCOME / HELLO SCREEN (LEFT IMAGE) -->
-          <!-- ========================================== -->
-          <div class="auth-screen-slide active" id="authWelcomeScreen">
-            <div class="welcome-screen-inner">
-              
-              <!-- Welcome Top Utilities (Language Switch & Dark/Light Toggle) -->
-              <div class="welcome-top-bar">
-                <!-- Language Switcher: EN | عربي -->
-                <div class="lang-switch-pill" id="welcomeLangSwitch">
-                  <button type="button" class="lang-btn active" id="langBtnEn" onclick="window.botHubApp.setAppLanguage('en')">
-                    <span>EN</span>
-                  </button>
-                  <button type="button" class="lang-btn" id="langBtnAr" onclick="window.botHubApp.setAppLanguage('ar')">
-                    <span>عربي</span>
+          <!-- 💻 DESKTOP MONITOR SPLIT-SCREEN LAYOUT -->
+          <div class="auth-split-container" id="authSplitContainer">
+            
+            <!-- LEFT WIDE AREA: BOT DETAILS & AI PICS -->
+            <div class="auth-split-left-area">
+              <div class="asl-inner">
+                
+                <!-- Top Brand Bar & Return to Website Button -->
+                <div class="asl-top-bar">
+                  <div class="asl-brand">
+                    <img src="images/b-magnet-emblem.png" alt="B-Magnet" class="asl-brand-logo">
+                    <div class="asl-brand-text">
+                      <div class="asl-brand-title">B-Magnet <span class="asl-brand-pro">PRO</span></div>
+                      <span class="asl-brand-sub">Algorithmic Trading & Marketing Systems</span>
+                    </div>
+                  </div>
+
+                  <button type="button" class="btn-top-back-landing" onclick="window.botHubApp.showLandingPage()" title="Back to Company Home">
+                    <span class="material-symbols-rounded">arrow_back</span>
+                    <span>Company Website</span>
                   </button>
                 </div>
 
-                <!-- Dark / Light Theme Toggle -->
-                <button type="button" class="theme-toggle-pill" id="welcomeThemeToggle" onclick="window.botHubApp.toggleTheme()" title="Toggle Dark / Light Mode">
-                  <span class="material-symbols-rounded theme-icon" id="welcomeThemeIcon">dark_mode</span>
-                  <span class="theme-label" id="welcomeThemeLabel">Dark</span>
-                </button>
-              </div>
+                <!-- Bot Headline & Live Badges -->
+                <div class="asl-hero-block">
+                  <div class="asl-badge-row">
+                    <span class="pulse-dot" style="background:#10b981;"></span>
+                    <span class="asl-badge-text">B-MAGNET GOLD HUNTER EA v0.8 • MT5 ACTIVE</span>
+                  </div>
+                  <h2 class="asl-hero-title">Next-Gen AI Algorithmic Gold Trading</h2>
+                  <p class="asl-hero-desc">
+                    Institutional quantitative algorithm engineered for MetaTrader 5 (MT5). Powered by multi-timeframe liquidity confluence, neural order-flow scanning, and automated risk protection on Gold (XAUUSD).
+                  </p>
+                </div>
 
-              <!-- Top Greeting -->
-              <div class="welcome-header">
-                <h1 class="welcome-title" id="txtWelcomeTitle">HELLO</h1>
-                <p class="welcome-subtitle" id="txtWelcomeSubtitle">Sign in to access your automated trading passes</p>
-              </div>
+                <!-- 🤖 AI PICTURES & VISUAL SHOWCASE CARD -->
+                <div class="asl-ai-showcase-card">
+                  <div class="asl-ai-img-wrapper">
+                    <img src="images/ai-trading-bot-visual.jpg" alt="AI Algorithmic Trading Bot Engine" class="asl-ai-main-img" id="aslAiMainImg">
+                    <div class="asl-ai-img-overlay"></div>
+                    
+                    <!-- Floating Live AI HUD Chips on Image -->
+                    <div class="asl-floating-chip chip-top-left">
+                      <span class="material-symbols-rounded icon-teal">auto_graph</span>
+                      <div>
+                        <span class="afc-label">Win Rate</span>
+                        <span class="afc-val font-mono">89.4% Verified</span>
+                      </div>
+                    </div>
 
-              <!-- Center Logo Display (Full Uncropped Official B-Magnet Logo with Arabic & English text) -->
-              <div class="welcome-logo-center-wrapper">
-                <img src="images/b-magnet-logo.png" alt="B-Magnet - Perfect business solutions" class="bmagnet-hero-logo-img">
-              </div>
+                    <div class="asl-floating-chip chip-top-right">
+                      <span class="material-symbols-rounded icon-gold">trending_up</span>
+                      <div>
+                        <span class="afc-label">Monthly ROI</span>
+                        <span class="afc-val font-mono">18% - 23%</span>
+                      </div>
+                    </div>
 
-              <!-- Bottom Buttons on Screen 1 -->
-              <div class="welcome-actions">
-                <button type="button" class="btn-clean-navy" onclick="window.botHubApp.showSignInScreen()">
-                  <span id="txtSignInBtn">Sign In</span>
-                </button>
-                <button type="button" class="btn-clean-white" onclick="window.botHubApp.handleGoogleLogin()">
-                  <span id="txtSignUpBtn">Sign Up</span>
-                </button>
-              </div>
+                    <div class="asl-floating-chip chip-bottom-left">
+                      <span class="material-symbols-rounded icon-blue">shield</span>
+                      <div>
+                        <span class="afc-label">Max Drawdown</span>
+                        <span class="afc-val font-mono">30.0% Guard</span>
+                      </div>
+                    </div>
 
+                    <div class="asl-floating-chip chip-bottom-right">
+                      <span class="material-symbols-rounded icon-emerald">bolt</span>
+                      <div>
+                        <span class="afc-label">Execution Latency</span>
+                        <span class="afc-val font-mono">&lt; 15ms MT5</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- AI Visual Gallery Switcher Tabs -->
+                  <div class="asl-gallery-switcher">
+                    <button type="button" class="asl-switch-btn active" id="aslSwitchBtn1" onclick="window.botHubApp.switchAiImage('images/ai-trading-bot-visual.jpg', this)">
+                      <span class="material-symbols-rounded">candlestick_chart</span>
+                      <span>AI Gold Engine Matrix</span>
+                    </button>
+                    <button type="button" class="asl-switch-btn" id="aslSwitchBtn2" onclick="window.botHubApp.switchAiImage('images/ai-bot-core-visual.jpg', this)">
+                      <span class="material-symbols-rounded">memory</span>
+                      <span>MT5 Quantum Neural Core</span>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- 4 Bot Pillar Highlight Cards -->
+                <div class="asl-features-grid">
+                  <div class="asl-feat-card">
+                    <div class="afc-icon-circle"><span class="material-symbols-rounded">waves</span></div>
+                    <div class="afc-info">
+                      <h5>Magnetic Order Flow</h5>
+                      <p>Detects institutional liquidity voids and sweep levels before high-probability bounces.</p>
+                    </div>
+                  </div>
+
+                  <div class="asl-feat-card">
+                    <div class="afc-icon-circle"><span class="material-symbols-rounded">sync</span></div>
+                    <div class="afc-info">
+                      <h5>M1-H1 Multi-Timeframe</h5>
+                      <p>Synchronizes high-speed scalping with macro trends to filter false breakouts.</p>
+                    </div>
+                  </div>
+
+                  <div class="asl-feat-card">
+                    <div class="afc-icon-circle"><span class="material-symbols-rounded">tune</span></div>
+                    <div class="afc-info">
+                      <h5>Dynamic Risk Sizing</h5>
+                      <p>Auto-calculates micro lots based on equity balance and market volatility.</p>
+                    </div>
+                  </div>
+
+                  <div class="asl-feat-card">
+                    <div class="afc-icon-circle"><span class="material-symbols-rounded">key</span></div>
+                    <div class="afc-info">
+                      <h5>Secret Salt Gate</h5>
+                      <p>Automated SHA-256 cryptographic license activation directly in MT5 parameters.</p>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
             </div>
-          </div>
 
-          <!-- ========================================== -->
-          <!-- SCREEN 2: SIGN IN SCREEN (RIGHT IMAGE)     -->
-          <!-- ========================================== -->
-          <div class="auth-screen-slide" id="authSignInScreen">
-            <div class="signin-screen-inner">
-              
-              <!-- Top Header with Back Button & Subtle Bot Details -->
-              <div class="signin-top-hero">
-                <button type="button" class="signin-back-btn" onclick="window.botHubApp.showWelcomeScreen()" title="Back to Welcome">
-                  <span class="material-symbols-rounded">arrow_back</span>
-                </button>
+            <!-- RIGHT SIDE: DEDICATED LOGIN TAB / CARD -->
+            <div class="auth-split-right-login">
+              <div class="asr-login-card">
+                
+                <!-- Card Header with Language & Theme Switch -->
+                <div class="asr-card-top-bar">
+                  <div class="lang-switch-pill">
+                    <button type="button" class="lang-btn active" onclick="window.botHubApp.setAppLanguage('en')">EN</button>
+                    <button type="button" class="lang-btn" onclick="window.botHubApp.setAppLanguage('ar')">عربي</button>
+                  </div>
 
-                <div class="signin-bot-details-card">
-                  <div class="signin-bot-badge-row">
-                    <span class="bot-status-dot-live"></span>
-                    <span class="bot-badge-label font-mono">B-MAGNET GOLD HUNTER EA</span>
-                  </div>
-                  <h2 class="signin-bot-title" id="txtSigninBotTitle">Institutional MT5 Automated Trading</h2>
-                  <div class="signin-bot-tags-row">
-                    <span class="signin-bot-chip">✨ 89.4% Win Rate</span>
-                    <span class="signin-bot-chip">⚡ 24/5 Auto Gold</span>
-                    <span class="signin-bot-chip">🛡️ Low Drawdown</span>
-                  </div>
+                  <button type="button" class="theme-toggle-pill" onclick="window.botHubApp.toggleTheme()" title="Toggle Dark / Light Mode">
+                    <span class="material-symbols-rounded theme-icon">dark_mode</span>
+                  </button>
                 </div>
-              </div>
 
-              <!-- Bottom Curved Pure-White Sheet (Right Image) -->
-              <div class="signin-white-sheet">
+                <!-- Logo & Sign In Titles -->
+                <div class="asr-login-header">
+                  <img src="images/b-magnet-emblem.png" alt="B-Magnet Emblem" class="asr-login-logo">
+                  <h3 class="asr-login-title">Sign In to Your Account</h3>
+                  <p class="asr-login-sub">Access your automated bot passes, MT5 whitelists & trading wallet</p>
+                </div>
+
+                <!-- Clean Sign In Form -->
                 <div class="signin-clean-form">
-                  
-                  <!-- Account Identifier Field -->
                   <div class="signin-input-wrapper">
-                    <input type="text" id="loginEmailInput" class="signin-clean-input" placeholder="Account ID / Username" value="hanaan.trader@gmail.com" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-lpignore="true" data-form-type="other" onkeydown="if(event.key==='Enter') window.botHubApp.handleCleanSignIn();">
+                    <input type="text" id="loginEmailInput" class="signin-clean-input" placeholder="Account ID / Username" value="hanaan.trader@gmail.com" onkeydown="if(event.key==='Enter') window.botHubApp.handleCleanSignIn();">
                   </div>
 
-                  <!-- Access Passcode Field (Masked with secure text-security, decoupled from browser password warnings) -->
                   <div class="signin-input-wrapper">
-                    <input type="text" id="loginOtpInput" class="signin-clean-input secure-auth-input" placeholder="Passcode PIN" value="8492" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-lpignore="true" data-form-type="other" onkeydown="if(event.key==='Enter') window.botHubApp.handleCleanSignIn();">
+                    <input type="text" id="loginOtpInput" class="signin-clean-input secure-auth-input" placeholder="Passcode PIN" value="8492" onkeydown="if(event.key==='Enter') window.botHubApp.handleCleanSignIn();">
                   </div>
 
-                  <!-- Sign In Button (Navy Blue Pill) -->
                   <button type="button" class="btn-clean-navy btn-signin-block" id="loginMainSubmitBtn" onclick="window.botHubApp.handleCleanSignIn();">
-                    <span id="txtSigninSubmitBtn">Sign In</span>
+                    <span id="txtSigninSubmitBtn">Sign In / Launch App</span>
                   </button>
 
-                  <!-- Quick Demo Access Key Recovery -->
                   <div class="signin-forgot-row">
-                    <a href="#" class="signin-forgot-link" id="txtForgotPwd" onclick="event.preventDefault(); window.botHubApp.fillDemoCredentials();">Forgot passcode?</a>
+                    <a href="#" class="signin-forgot-link" id="txtForgotPwd" onclick="event.preventDefault(); window.botHubApp.fillDemoCredentials();">Forgot passcode? (Demo PIN: 8492)</a>
                   </div>
 
-                  <!-- Google Sign In Only (Facebook Removed) -->
                   <div class="signin-social-row">
                     <button type="button" class="signin-social-btn btn-google-single" id="btnGoogleLogin" onclick="window.botHubApp.handleGoogleLogin()">
                       <svg class="google-svg-icon" viewBox="0 0 24 24" width="18" height="18">
@@ -260,24 +635,141 @@
                     </button>
                   </div>
 
-                  <!-- Google Identity Services Container -->
-                  <div id="g_id_onload"
-                       data-client_id="193074652385-prup7faehlgodh890o06ehfaujblvvni.apps.googleusercontent.com"
-                       data-context="signin"
-                       data-ux_mode="popup"
-                       data-callback="handleGoogleCredentialResponse"
-                       data-auto_prompt="false">
-                  </div>
-
-                  <!-- Don't have an account? Sign Up -->
                   <div class="signin-footer-row">
-                    <span><span id="txtNoAccount">Don't have an account?</span> <a href="#" class="signin-signup-link" id="txtSignUpLink" onclick="event.preventDefault(); window.botHubApp.handleGoogleLogin();">Sign Up</a></span>
+                    <span class="asr-security-badge">🛡️ SHA-256 Encrypted License Server</span>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+
+          <!-- 📱 MOBILE PHONE AUTH VIEWPORT (< 768px) -->
+          <div class="auth-mobile-slides-wrapper" id="authMobileSlidesWrapper">
+            
+            <!-- SCREEN 1: WELCOME SCREEN -->
+            <div class="auth-screen-slide active" id="authWelcomeScreen">
+              <div class="welcome-screen-inner">
+                
+                <!-- Welcome Top Utilities -->
+                <div class="welcome-top-bar">
+                  <button type="button" class="btn-top-back-landing" onclick="window.botHubApp.showLandingPage()" title="Back to Company Home">
+                    <span class="material-symbols-rounded">arrow_back</span>
+                    <span>Home Website</span>
+                  </button>
+
+                  <div class="welcome-top-right-group">
+                    <div class="lang-switch-pill" id="welcomeLangSwitch">
+                      <button type="button" class="lang-btn active" id="langBtnEn" onclick="window.botHubApp.setAppLanguage('en')">
+                        <span>EN</span>
+                      </button>
+                      <button type="button" class="lang-btn" id="langBtnAr" onclick="window.botHubApp.setAppLanguage('ar')">
+                        <span>عربي</span>
+                      </button>
+                    </div>
+
+                    <button type="button" class="theme-toggle-pill" id="welcomeThemeToggle" onclick="window.botHubApp.toggleTheme()" title="Toggle Dark / Light Mode">
+                      <span class="material-symbols-rounded theme-icon" id="welcomeThemeIcon">dark_mode</span>
+                      <span class="theme-label" id="welcomeThemeLabel">Dark</span>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Top Greeting -->
+                <div class="welcome-header">
+                  <h1 class="welcome-title" id="txtWelcomeTitle">HELLO</h1>
+                  <p class="welcome-subtitle" id="txtWelcomeSubtitle">Sign in to access your automated trading passes</p>
+                </div>
+
+                <!-- Center Logo Display -->
+                <div class="welcome-logo-center-wrapper">
+                  <img src="images/b-magnet-logo.png" alt="B-Magnet - Perfect business solutions" class="bmagnet-hero-logo-img">
+                </div>
+
+                <!-- Bottom Buttons on Screen 1 -->
+                <div class="welcome-actions">
+                  <button type="button" class="btn-clean-navy" onclick="window.botHubApp.showSignInScreen()">
+                    <span id="txtSignInBtn">Sign In</span>
+                  </button>
+                  <button type="button" class="btn-clean-white" onclick="window.botHubApp.handleGoogleLogin()">
+                    <span id="txtSignUpBtn">Sign Up</span>
+                  </button>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- SCREEN 2: SIGN IN SCREEN -->
+            <div class="auth-screen-slide" id="authSignInScreen">
+              <div class="signin-screen-inner">
+                
+                <!-- Top Header with Back to Website / Back to Welcome & EA Badge -->
+                <div class="signin-top-hero">
+                  <div class="signin-top-actions-row">
+                    <button type="button" class="signin-back-btn" onclick="window.botHubApp.showLandingPage()" title="Back to Company Home">
+                      <span class="material-symbols-rounded">arrow_back</span>
+                      <span>Home Website</span>
+                    </button>
+
+                    <div class="lang-switch-pill" style="transform: scale(0.9);">
+                      <button type="button" class="lang-btn active" onclick="window.botHubApp.setAppLanguage('en')">EN</button>
+                      <button type="button" class="lang-btn" onclick="window.botHubApp.setAppLanguage('ar')">عربي</button>
+                    </div>
                   </div>
 
+                  <div class="signin-bot-details-card">
+                    <div class="signin-bot-badge-row">
+                      <span class="bot-status-dot-live"></span>
+                      <span class="bot-badge-label font-mono">B-MAGNET GOLD HUNTER EA</span>
+                    </div>
+                    <h2 class="signin-bot-title" id="txtSigninBotTitle">Institutional MT5 Automated Trading</h2>
+                    <div class="signin-bot-tags-row">
+                      <span class="signin-bot-chip">✨ 89.4% Win Rate</span>
+                      <span class="signin-bot-chip">⚡ 24/5 Auto Gold</span>
+                      <span class="signin-bot-chip">🛡️ Low Drawdown</span>
+                    </div>
+                  </div>
                 </div>
-              </div>
 
+                <!-- Bottom Curved Pure-White Sheet -->
+                <div class="signin-white-sheet">
+                  <div class="signin-clean-form">
+                    
+                    <div class="signin-input-wrapper">
+                      <input type="text" id="loginMobileEmailInput" class="signin-clean-input" placeholder="Account ID / Username" value="hanaan.trader@gmail.com" onkeydown="if(event.key==='Enter') window.botHubApp.handleCleanSignIn();">
+                    </div>
+
+                    <div class="signin-input-wrapper">
+                      <input type="text" id="loginMobileOtpInput" class="signin-clean-input secure-auth-input" placeholder="Passcode PIN" value="8492" onkeydown="if(event.key==='Enter') window.botHubApp.handleCleanSignIn();">
+                    </div>
+
+                    <button type="button" class="btn-clean-navy btn-signin-block" id="loginMobileSubmitBtn" onclick="window.botHubApp.handleCleanSignIn();">
+                      <span>Sign In</span>
+                    </button>
+
+                    <div class="signin-forgot-row">
+                      <a href="#" class="signin-forgot-link" onclick="event.preventDefault(); window.botHubApp.fillDemoCredentials();">Forgot passcode? (Demo PIN: 8492)</a>
+                    </div>
+
+                    <div class="signin-social-row">
+                      <button type="button" class="signin-social-btn btn-google-single" onclick="window.botHubApp.handleGoogleLogin()">
+                        <svg class="google-svg-icon" viewBox="0 0 24 24" width="18" height="18">
+                          <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                          <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                          <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"/>
+                          <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"/>
+                        </svg>
+                        <span>Sign In with Google</span>
+                      </button>
+                    </div>
+
+                  </div>
+                </div>
+
+              </div>
             </div>
+
           </div>
 
         </div>
@@ -285,30 +777,59 @@
 
       <!-- App Header -->
       <header class="app-header">
-        <div class="header-left">
-          <div class="brand-logo-prominent">
-            <img src="images/b-magnet-emblem.png" alt="B-Magnet" class="header-bmagnet-logo-prominent">
-          </div>
-          <div class="header-brand-text-col">
-            <div class="header-brand-title-row">
-              <span class="header-brand-title" id="headerBrandTitle">B-Magnet</span>
-              <span class="header-brand-badge">PRO</span>
+        <div class="header-inner">
+          <div class="header-left">
+            <div class="brand-logo-prominent">
+              <img src="images/b-magnet-emblem.png" alt="B-Magnet" class="header-bmagnet-logo-prominent">
             </div>
-            <span class="header-brand-sub" id="brandSubtitle">Trading & Marketing Bots</span>
+            <div class="header-brand-text-col">
+              <div class="header-brand-title-row">
+                <span class="header-brand-title" id="headerBrandTitle">B-Magnet</span>
+                <span class="header-brand-badge">PRO</span>
+              </div>
+              <span class="header-brand-sub" id="brandSubtitle">Trading & Marketing Bots</span>
+            </div>
           </div>
-        </div>
 
-        <div class="header-right">
-          <!-- Compact Corner Wallet Asset with Logged-in User Name -->
-          <button class="wallet-compact-corner-btn" id="openTopupBtn" onclick="window.botHubApp.openTopupModal()" title="BEP-20 Wallet & Account">
-            <span class="user-avatar-mini">
-              <span class="material-symbols-rounded">account_circle</span>
-            </span>
-            <div class="wallet-user-info-col">
-              <span class="wallet-user-title" id="headerUserPhoneText">Hanaan</span>
-              <span class="wallet-user-amt font-mono" id="headerWalletBalance">250.00 USDT</span>
+          <!-- Desktop Center Navigation Bar (Visible on Computers/Monitors) -->
+          <nav class="desktop-nav-menu" id="desktopNavMenu">
+            <button type="button" class="desktop-nav-link active" data-view="explore" onclick="window.botHubApp.switchView('explore')">
+              <span class="material-symbols-rounded">explore</span>
+              <span>Explore</span>
+            </button>
+            <button type="button" class="desktop-nav-link" data-view="subscriptions" onclick="window.botHubApp.switchView('subscriptions')">
+              <span class="material-symbols-rounded">bolt</span>
+              <span>My Bots</span>
+              <span class="desktop-nav-badge" id="desktopNavBadgeSubCount">1</span>
+            </button>
+            <button type="button" class="desktop-nav-link" data-view="creator" onclick="window.botHubApp.switchView('creator')">
+              <span class="material-symbols-rounded">storefront</span>
+              <span>Market</span>
+            </button>
+            <button type="button" class="desktop-nav-link" data-view="settings" onclick="window.botHubApp.switchView('settings')">
+              <span class="material-symbols-rounded">manage_accounts</span>
+              <span>Account</span>
+            </button>
+          </nav>
+
+          <div class="header-right">
+            <!-- Desktop Live Engine Status Badge -->
+            <div class="desktop-status-pill">
+              <span class="pulse-dot" style="background: #10b981;"></span>
+              <span class="dsp-text">MT5 Engine Live</span>
             </div>
-          </button>
+
+            <!-- Compact Corner Wallet Asset with Logged-in User Name -->
+            <button class="wallet-compact-corner-btn" id="openTopupBtn" onclick="window.botHubApp.openTopupModal()" title="BEP-20 Wallet & Account">
+              <span class="user-avatar-mini">
+                <span class="material-symbols-rounded">account_circle</span>
+              </span>
+              <div class="wallet-user-info-col">
+                <span class="wallet-user-title" id="headerUserPhoneText">Hanaan</span>
+                <span class="wallet-user-amt font-mono" id="headerWalletBalance">250.00 USDT</span>
+              </div>
+            </button>
+          </div>
         </div>
       </header>
 
@@ -561,151 +1082,159 @@
             </div>
           </div>
 
-          <!-- User Profile Card (Clickable to open Account Settings) -->
-          <div class="profile-card profile-card-interactive" onclick="window.botHubApp.openProfileDetailsModal()" title="Click to view & edit Account Details">
-            <div class="profile-avatar" id="profileAvatarText">H</div>
-            <div class="profile-info">
-              <div class="profile-name-row">
-                <h3 class="profile-name" id="profileDisplayName">Hanaan</h3>
-                <span class="profile-uid-pill" id="profileDisplayUid">ID: BM-98214</span>
-              </div>
-              <p class="profile-email" id="profileDisplayPhone">+91 94950 97786</p>
-              <span class="profile-tier-badge">Active B-Magnet Trader</span>
-            </div>
-            <div class="profile-card-chevron">
-              <span class="material-symbols-rounded">edit_note</span>
-            </div>
-          </div>
-
-          <!-- Account Identity & Information Group -->
-          <div class="settings-group">
-            <h4 class="settings-group-title">Account Identity & Information</h4>
-
-            <div class="setting-item" onclick="window.botHubApp.openProfileDetailsModal()">
-              <div class="setting-icon-box text-cyan"><span class="material-symbols-rounded">badge</span></div>
-              <div class="setting-info">
-                <div class="setting-name">Personal Details & User ID</div>
-                <div class="setting-sub">User ID, phone number, email address & contact info</div>
-              </div>
-              <span class="material-symbols-rounded chevron">chevron_right</span>
-            </div>
-          </div>
-
-          <!-- GTCfx Broker Account Registration (Simple & Clean) -->
-          <div class="gtcfx-referral-card">
-            <div class="gtcfx-simple-row">
-              <div class="gtcfx-brand-col">
-                <div class="gtcfx-icon-box">
-                  <span class="material-symbols-rounded">show_chart</span>
+          <div class="settings-desktop-grid">
+            <!-- Left Column: Identity, Broker & Session -->
+            <div class="settings-col-left">
+              <!-- User Profile Card (Clickable to open Account Settings) -->
+              <div class="profile-card profile-card-interactive" onclick="window.botHubApp.openProfileDetailsModal()" title="Click to view & edit Account Details">
+                <div class="profile-avatar" id="profileAvatarText">H</div>
+                <div class="profile-info">
+                  <div class="profile-name-row">
+                    <h3 class="profile-name" id="profileDisplayName">Hanaan</h3>
+                    <span class="profile-uid-pill" id="profileDisplayUid">ID: BM-98214</span>
+                  </div>
+                  <p class="profile-email" id="profileDisplayPhone">+91 94950 97786</p>
+                  <span class="profile-tier-badge">Active B-Magnet Trader</span>
                 </div>
-                <div>
-                  <h4 class="gtcfx-title">Register GTCfx Account</h4>
-                  <span class="gtcfx-subtitle">Recommended MT5 trading account</span>
+                <div class="profile-card-chevron">
+                  <span class="material-symbols-rounded">edit_note</span>
                 </div>
               </div>
-              <a href="https://web.mygtc.app/login/register?ref=Y8JMgpna" target="_blank" rel="noopener noreferrer" class="btn-gtcfx-simple-pill">
-                <span>Register</span>
-                <span class="material-symbols-rounded" style="font-size: 15px;">open_in_new</span>
-              </a>
-            </div>
-          </div>
 
-          <!-- Settings Groups -->
-          <div class="settings-group">
-            <h4 class="settings-group-title">Integrations & Alerts</h4>
+              <!-- Account Identity & Information Group -->
+              <div class="settings-group">
+                <h4 class="settings-group-title">Account Identity & Information</h4>
 
-            <div class="setting-item" onclick="window.botHubApp.showTelegramAlertsModal()">
-              <div class="setting-icon-box text-cyan"><span class="material-symbols-rounded">send</span></div>
-              <div class="setting-info">
-                <div class="setting-name">Telegram Trade Push Alerts</div>
-                <div class="setting-sub">Connected: @B_Magnet_Gold_bot</div>
-              </div>
-              <span class="material-symbols-rounded chevron">chevron_right</span>
-            </div>
-          </div>
-
-          <div class="settings-group">
-            <h4 class="settings-group-title">Preferences & Security</h4>
-
-            <div class="setting-item" onclick="window.botHubApp.installPwaApp()">
-              <div class="setting-icon-box text-cyan"><span class="material-symbols-rounded">install_mobile</span></div>
-              <div class="setting-info">
-                <div class="setting-name" id="settingPwaTitle">Install App to Home Screen</div>
-                <div class="setting-sub" id="settingPwaSub">Download B-Bot Pro as a web app on your device</div>
-              </div>
-              <span class="material-symbols-rounded chevron">chevron_right</span>
-            </div>
-
-            <div class="setting-item" onclick="window.botHubApp.showCurrencySelector()">
-              <div class="setting-icon-box text-success"><span class="material-symbols-rounded">currency_exchange</span></div>
-              <div class="setting-info">
-                <div class="setting-name">Display Currency</div>
-                <div class="setting-sub" id="activeCurrencyDisplay">USDT (BEP-20) / USD ($)</div>
-              </div>
-              <span class="material-symbols-rounded chevron">chevron_right</span>
-            </div>
-
-            <div class="setting-item" onclick="window.botHubApp.toggleTheme()">
-              <div class="setting-icon-box text-warning"><span class="material-symbols-rounded" id="accountThemeSettingIcon">dark_mode</span></div>
-              <div class="setting-info">
-                <div class="setting-name">App Theme Mode</div>
-                <div class="setting-sub" id="activeThemeDisplay">Light Mode</div>
-              </div>
-              <span class="material-symbols-rounded chevron">chevron_right</span>
-            </div>
-
-            <div class="setting-item" onclick="window.botHubApp.toggleLanguage()">
-              <div class="setting-icon-box text-cyan"><span class="material-symbols-rounded">language</span></div>
-              <div class="setting-info">
-                <div class="setting-name">Language / اللغة</div>
-                <div class="setting-sub" id="activeLangDisplay">English (EN)</div>
-              </div>
-              <span class="material-symbols-rounded chevron">chevron_right</span>
-            </div>
-
-            <div class="setting-item" onclick="window.botHubApp.resetDemoData()">
-              <div class="setting-icon-box text-danger"><span class="material-symbols-rounded">restart_alt</span></div>
-              <div class="setting-info">
-                <div class="setting-name text-danger">Reset Demo State</div>
-                <div class="setting-sub">Restore original demo bots, subscriptions & invoices</div>
-              </div>
-              <span class="material-symbols-rounded chevron">chevron_right</span>
-            </div>
-          </div>
-
-          <!-- Admin Panel Master Security Gate (Passcode: 9633) -->
-          <div class="settings-group">
-            <h4 class="settings-group-title" id="txtAdminSecurityTitle">Admin & Master Database</h4>
-
-            <div class="setting-item admin-panel-entry-item" onclick="window.botHubApp.openAdminPanelFromSettings()">
-              <div class="setting-icon-box text-emerald">
-                <span class="material-symbols-rounded">admin_panel_settings</span>
-              </div>
-              <div class="setting-info">
-                <div class="setting-name-row">
-                  <span class="setting-name font-bold" id="txtAdminPanelTitle">Admin Panel</span>
+                <div class="setting-item" onclick="window.botHubApp.openProfileDetailsModal()">
+                  <div class="setting-icon-box text-cyan"><span class="material-symbols-rounded">badge</span></div>
+                  <div class="setting-info">
+                    <div class="setting-name">Personal Details & User ID</div>
+                    <div class="setting-sub">User ID, phone number, email address & contact info</div>
+                  </div>
+                  <span class="material-symbols-rounded chevron">chevron_right</span>
                 </div>
-                <div class="setting-sub" id="txtAdminPanelSub">Customer CRM, active bot passes, wallet ledger & Google Sheets sync</div>
               </div>
-              <span class="material-symbols-rounded chevron">chevron_right</span>
-            </div>
-          </div>
 
-          <!-- Account Session & Log Out Badge Card -->
-          <div class="settings-logout-card">
-            <div class="slc-header">
-              <div class="slc-user-badge">
-                <span class="pulse-dot" style="background: #10b981; width: 6px; height: 6px;"></span>
-                <span>Active Account Session</span>
+              <!-- GTCfx Broker Account Registration (Simple & Clean) -->
+              <div class="gtcfx-referral-card">
+                <div class="gtcfx-simple-row">
+                  <div class="gtcfx-brand-col">
+                    <div class="gtcfx-icon-box">
+                      <span class="material-symbols-rounded">show_chart</span>
+                    </div>
+                    <div>
+                      <h4 class="gtcfx-title">Register GTCfx Account</h4>
+                      <span class="gtcfx-subtitle">Recommended MT5 trading account</span>
+                    </div>
+                  </div>
+                  <a href="https://web.mygtc.app/login/register?ref=Y8JMgpna" target="_blank" rel="noopener noreferrer" class="btn-gtcfx-simple-pill">
+                    <span>Register</span>
+                    <span class="material-symbols-rounded" style="font-size: 15px;">open_in_new</span>
+                  </a>
+                </div>
               </div>
-              <span class="slc-device-tag">Signed In</span>
+
+              <!-- Account Session & Log Out Badge Card -->
+              <div class="settings-logout-card">
+                <div class="slc-header">
+                  <div class="slc-user-badge">
+                    <span class="pulse-dot" style="background: #10b981; width: 6px; height: 6px;"></span>
+                    <span>Active Account Session</span>
+                  </div>
+                  <span class="slc-device-tag">Signed In</span>
+                </div>
+                
+                <button type="button" class="btn-logout-full" onclick="window.botHubApp.handleLogout()" id="accountLogoutBtn">
+                  <span class="material-symbols-rounded">logout</span>
+                  <span>Log Out / Switch Account</span>
+                </button>
+                <p class="logout-hint-text">Securely end session and return to welcome screen</p>
+              </div>
             </div>
-            
-            <button type="button" class="btn-logout-full" onclick="window.botHubApp.handleLogout()" id="accountLogoutBtn">
-              <span class="material-symbols-rounded">logout</span>
-              <span>Log Out / Switch Account</span>
-            </button>
-            <p class="logout-hint-text">Securely end session and return to welcome screen</p>
+
+            <!-- Right Column: Preferences, Integrations & Admin -->
+            <div class="settings-col-right">
+              <!-- Settings Groups -->
+              <div class="settings-group">
+                <h4 class="settings-group-title">Integrations & Alerts</h4>
+
+                <div class="setting-item" onclick="window.botHubApp.showTelegramAlertsModal()">
+                  <div class="setting-icon-box text-cyan"><span class="material-symbols-rounded">send</span></div>
+                  <div class="setting-info">
+                    <div class="setting-name">Telegram Trade Push Alerts</div>
+                    <div class="setting-sub">Connected: @B_Magnet_Gold_bot</div>
+                  </div>
+                  <span class="material-symbols-rounded chevron">chevron_right</span>
+                </div>
+              </div>
+
+              <div class="settings-group">
+                <h4 class="settings-group-title">Preferences & Security</h4>
+
+                <div class="setting-item" onclick="window.botHubApp.installPwaApp()">
+                  <div class="setting-icon-box text-cyan"><span class="material-symbols-rounded">install_mobile</span></div>
+                  <div class="setting-info">
+                    <div class="setting-name" id="settingPwaTitle">Install App to Home Screen</div>
+                    <div class="setting-sub" id="settingPwaSub">Download B-Bot Pro as a web app on your device</div>
+                  </div>
+                  <span class="material-symbols-rounded chevron">chevron_right</span>
+                </div>
+
+                <div class="setting-item" onclick="window.botHubApp.showCurrencySelector()">
+                  <div class="setting-icon-box text-success"><span class="material-symbols-rounded">currency_exchange</span></div>
+                  <div class="setting-info">
+                    <div class="setting-name">Display Currency</div>
+                    <div class="setting-sub" id="activeCurrencyDisplay">USDT (BEP-20) / USD ($)</div>
+                  </div>
+                  <span class="material-symbols-rounded chevron">chevron_right</span>
+                </div>
+
+                <div class="setting-item" onclick="window.botHubApp.toggleTheme()">
+                  <div class="setting-icon-box text-warning"><span class="material-symbols-rounded" id="accountThemeSettingIcon">dark_mode</span></div>
+                  <div class="setting-info">
+                    <div class="setting-name">App Theme Mode</div>
+                    <div class="setting-sub" id="activeThemeDisplay">Light Mode</div>
+                  </div>
+                  <span class="material-symbols-rounded chevron">chevron_right</span>
+                </div>
+
+                <div class="setting-item" onclick="window.botHubApp.toggleLanguage()">
+                  <div class="setting-icon-box text-cyan"><span class="material-symbols-rounded">language</span></div>
+                  <div class="setting-info">
+                    <div class="setting-name">Language / اللغة</div>
+                    <div class="setting-sub" id="activeLangDisplay">English (EN)</div>
+                  </div>
+                  <span class="material-symbols-rounded chevron">chevron_right</span>
+                </div>
+
+                <div class="setting-item" onclick="window.botHubApp.resetDemoData()">
+                  <div class="setting-icon-box text-danger"><span class="material-symbols-rounded">restart_alt</span></div>
+                  <div class="setting-info">
+                    <div class="setting-name text-danger">Reset Demo State</div>
+                    <div class="setting-sub">Restore original demo bots, subscriptions & invoices</div>
+                  </div>
+                  <span class="material-symbols-rounded chevron">chevron_right</span>
+                </div>
+              </div>
+
+              <!-- Admin Panel Master Security Gate (Passcode: 9633) -->
+              <div class="settings-group">
+                <h4 class="settings-group-title" id="txtAdminSecurityTitle">Admin & Master Database</h4>
+
+                <div class="setting-item admin-panel-entry-item" onclick="window.botHubApp.openAdminPanelFromSettings()">
+                  <div class="setting-icon-box text-emerald">
+                    <span class="material-symbols-rounded">admin_panel_settings</span>
+                  </div>
+                  <div class="setting-info">
+                    <div class="setting-name-row">
+                      <span class="setting-name font-bold" id="txtAdminPanelTitle">Admin Panel</span>
+                    </div>
+                    <div class="setting-sub" id="txtAdminPanelSub">Customer CRM, active bot passes, wallet ledger & Google Sheets sync</div>
+                  </div>
+                  <span class="material-symbols-rounded chevron">chevron_right</span>
+                </div>
+              </div>
+            </div>
           </div>
 
         </section>
@@ -918,23 +1447,23 @@
   <!-- ======================================================== -->
   <!-- MODAL: LOGOUT CONFIRMATION POPUP                         -->
   <!-- ======================================================== -->
-  <div class="modal-backdrop modal-dialog-mode" id="logoutConfirmModal">
+  <div class="modal-backdrop modal-dialog-mode" id="logoutConfirmModal" onclick="if(event.target===this) window.botHubApp.closeModal('logoutConfirmModal')">
     <div class="modal-dialog-card logout-dialog-card" onclick="event.stopPropagation()">
       <div class="dialog-icon-wrapper dialog-icon-danger">
         <span class="material-symbols-rounded">logout</span>
       </div>
-      <div class="dialog-badge-chip">SESSION SECURITY</div>
-      <h3 class="dialog-title">Log Out of B-Magnet?</h3>
-      <p class="dialog-desc">
-        Are you sure you want to end your active session? You will return to the welcome screen and can sign in anytime.
+      <div class="dialog-badge-chip" id="txtLogoutBadge">SESSION SECURITY</div>
+      <h3 class="dialog-title" id="txtLogoutConfirmTitle">Log Out of B-Magnet?</h3>
+      <p class="dialog-desc" id="txtLogoutConfirmDesc">
+        Are you sure you want to end your active session? You will return to the home screen and can sign in anytime.
       </p>
       <div class="dialog-actions-row">
         <button type="button" class="dialog-btn-cancel" onclick="window.botHubApp.closeModal('logoutConfirmModal')">
-          Stay Signed In
+          <span id="txtStaySignedInBtn">Stay Signed In</span>
         </button>
         <button type="button" class="dialog-btn-danger" onclick="window.botHubApp.confirmLogout()">
-          <span class="material-symbols-rounded" style="font-size: 18px;">logout</span>
-          <span>Log Out</span>
+          <span class="material-symbols-rounded" style="font-size: 19px;">logout</span>
+          <span id="txtConfirmLogoutBtn">Log Out</span>
         </button>
       </div>
     </div>
@@ -1866,6 +2395,6 @@
 
   <!-- App Scripts -->
   <script src="qrcode.js"></script>
-  <script src="app.js?v=1206"></script>
+  <script src="app.js?v=3731"></script>
 </body>
 </html>

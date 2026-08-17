@@ -87,6 +87,11 @@ const TRANSLATIONS = {
     settingReset: 'Reset Demo State',
     settingResetSub: 'Restore original demo bots, subscriptions & invoices',
     settingLogout: 'Logout Account',
+    logoutConfirmTitle: 'Log Out of B-Magnet?',
+    logoutConfirmDesc: 'Are you sure you want to end your active session? You will return to the home screen and can sign in anytime.',
+    staySignedInBtn: 'Stay Signed In',
+    confirmLogoutBtn: 'Log Out',
+    loggedOutToast: '🔒 You have been securely logged out.',
     adminLockTitle: 'CRM Access Locked',
     adminLockDesc: 'This section contains private customer records, MT5 accounts, and wallet balances. Enter the 4-digit Master Security Passcode to unlock.',
     adminUnlockBtn: 'Unlock CRM',
@@ -182,6 +187,11 @@ const TRANSLATIONS = {
     settingReset: 'إعادة ضبط البيانات التجريبية',
     settingResetSub: 'استعادة البوتات التجريبية الأصلية والاشتراكات',
     settingLogout: 'تسجيل الخروج',
+    logoutConfirmTitle: 'هل تريد تسجيل الخروج من B-Magnet؟',
+    logoutConfirmDesc: 'هل أنت متأكد من إنهاء جلستك الحالية؟ ستعود إلى الصفحة الرئيسية ويمكنك تسجيل الدخول في أي وقت.',
+    staySignedInBtn: 'البقاء مسجلاً',
+    confirmLogoutBtn: 'تسجيل الخروج',
+    loggedOutToast: '🔒 تم تسجيل الخروج بنجاح وأمان.',
     adminLockTitle: 'قفل الوصول إلى CRM',
     adminLockDesc: 'هذا القسم يحتوي على سجلات العملاء وحسابات MT5 والأرصدة. أدخل رمز الأمان الماستر المكون من 4 أرقام لفتح القفل.',
     adminUnlockBtn: 'فتح CRM',
@@ -219,6 +229,7 @@ class BotHubApp {
       isFullscreen: false,
       lastPaymentResult: null,
       isAdminUnlocked: false,
+      selectedExplorePlanId: 'bot_bmagnet_1m',
       theme: localStorage.getItem('b_bot_theme') || 'light',
       lang: localStorage.getItem('b_bot_lang') || 'en'
     };
@@ -589,6 +600,19 @@ class BotHubApp {
     const logoutBtnText = document.querySelector('#viewSettings .btn-danger span:last-child');
     if (logoutBtnText) logoutBtnText.textContent = t.settingLogout;
 
+    // Logout Modal Dialog Elements
+    const txtLogoutConfirmTitle = document.getElementById('txtLogoutConfirmTitle');
+    const txtLogoutConfirmDesc = document.getElementById('txtLogoutConfirmDesc');
+    const txtStaySignedInBtn = document.getElementById('txtStaySignedInBtn');
+    const txtConfirmLogoutBtn = document.getElementById('txtConfirmLogoutBtn');
+    const txtLogoutBadge = document.getElementById('txtLogoutBadge');
+
+    if (txtLogoutConfirmTitle) txtLogoutConfirmTitle.textContent = t.logoutConfirmTitle;
+    if (txtLogoutConfirmDesc) txtLogoutConfirmDesc.textContent = t.logoutConfirmDesc;
+    if (txtStaySignedInBtn) txtStaySignedInBtn.textContent = t.staySignedInBtn;
+    if (txtConfirmLogoutBtn) txtConfirmLogoutBtn.textContent = t.confirmLogoutBtn;
+    if (txtLogoutBadge) txtLogoutBadge.textContent = lang === 'ar' ? 'أمان الجلسة' : 'SESSION SECURITY';
+
     if (themeLabel) {
       themeLabel.textContent = this.state.theme === 'dark' 
         ? (lang === 'ar' ? 'فاتح' : 'Light') 
@@ -668,14 +692,30 @@ class BotHubApp {
 
   showLoginScreen() {
     const overlay = document.getElementById('authScreenOverlay');
-    if (overlay) overlay.classList.add('active');
-    this.showWelcomeScreen();
+    if (overlay) {
+      overlay.classList.add('active');
+      overlay.classList.remove('signin-active');
+      overlay.classList.add('landing-active');
+    }
+
+    if (window.innerWidth <= 768) {
+      this.showWelcomeScreen();
+    } else {
+      this.showLandingPage();
+    }
 
     const logoutBtn = document.getElementById('logoutBtn');
     if (logoutBtn) logoutBtn.style.display = 'none';
   }
 
   showWelcomeScreen() {
+    const overlay = document.getElementById('authScreenOverlay');
+    if (overlay) {
+      overlay.classList.add('active');
+      overlay.classList.remove('landing-active');
+      overlay.classList.remove('signin-active');
+      overlay.classList.add('welcome-active');
+    }
     const welcome = document.getElementById('authWelcomeScreen');
     const signin = document.getElementById('authSignInScreen');
     if (welcome) {
@@ -689,6 +729,13 @@ class BotHubApp {
   }
 
   showSignInScreen() {
+    const overlay = document.getElementById('authScreenOverlay');
+    if (overlay) {
+      overlay.classList.add('active');
+      overlay.classList.remove('landing-active');
+      overlay.classList.remove('welcome-active');
+      overlay.classList.add('signin-active');
+    }
     const welcome = document.getElementById('authWelcomeScreen');
     const signin = document.getElementById('authSignInScreen');
     if (welcome) {
@@ -698,6 +745,13 @@ class BotHubApp {
     if (signin) {
       signin.classList.add('active');
       signin.classList.remove('slide-left');
+    }
+    const emailInput = document.getElementById('loginEmailInput') || document.getElementById('loginMobileEmailInput');
+    if (emailInput) {
+      setTimeout(() => {
+        emailInput.focus();
+        emailInput.select();
+      }, 100);
     }
   }
 
@@ -1080,8 +1134,8 @@ class BotHubApp {
   }
 
   async handleCleanSignIn() {
-    const emailInput = document.getElementById('loginEmailInput');
-    const otpInput = document.getElementById('loginOtpInput');
+    const emailInput = document.getElementById('loginEmailInput') || document.getElementById('loginMobileEmailInput');
+    const otpInput = document.getElementById('loginOtpInput') || document.getElementById('loginMobileOtpInput');
 
     const email = emailInput ? emailInput.value.trim() : 'hanaan.trader@gmail.com';
     const otp = (otpInput && otpInput.value.trim()) ? otpInput.value.trim() : '8492';
@@ -1091,7 +1145,7 @@ class BotHubApp {
       return;
     }
 
-    const submitBtn = document.getElementById('loginMainSubmitBtn');
+    const submitBtn = document.getElementById('loginMainSubmitBtn') || document.getElementById('loginMobileSubmitBtn');
     if (submitBtn) {
       submitBtn.disabled = true;
       submitBtn.innerHTML = '<span class="material-symbols-rounded" style="animation: spin 1s infinite linear; font-size: 18px;">sync</span> Signing in...';
@@ -1109,7 +1163,7 @@ class BotHubApp {
         this.state.currentUser = res.user;
         localStorage.setItem('b_bot_auth_user', JSON.stringify(res.user));
         this.applyLoggedInUI(res.user);
-        this.showToast(`🎉 Welcome to B-Bot Pro, ${res.user.name || 'Trader'}!`, 'success');
+        this.showToast(`🎉 Welcome to B-Magnet Trading Pro, ${res.user.name || 'Trader'}!`, 'success');
         await this.fetchData();
       } else {
         const namePart = email.split('@')[0];
@@ -1147,17 +1201,134 @@ class BotHubApp {
     } finally {
       if (submitBtn) {
         submitBtn.disabled = false;
-        submitBtn.innerHTML = '<span>Sign In</span>';
+        submitBtn.innerHTML = '<span>Sign In / Launch App</span>';
       }
     }
   }
 
   fillDemoCredentials() {
-    const emailInput = document.getElementById('loginEmailInput');
-    const otpInput = document.getElementById('loginOtpInput');
+    const emailInput = document.getElementById('loginEmailInput') || document.getElementById('loginMobileEmailInput');
+    const otpInput = document.getElementById('loginOtpInput') || document.getElementById('loginMobileOtpInput');
     if (emailInput) emailInput.value = 'hanaan.trader@gmail.com';
     if (otpInput) otpInput.value = '8492';
     this.showToast('💡 Filled demo credentials! Click "Sign In"', 'info');
+  }
+
+  // -------------------------------------------------------------
+  // DESKTOP COMPANY WEBSITE & SIGN-IN PAGE / MODAL HANDLERS
+  // -------------------------------------------------------------
+  switchAiImage(imageUrl, btnElement) {
+    const mainImg = document.getElementById('aslAiMainImg');
+    if (mainImg) {
+      mainImg.style.transition = 'opacity 0.2s ease, transform 0.2s ease';
+      mainImg.style.opacity = '0.3';
+      mainImg.style.transform = 'scale(0.97)';
+      setTimeout(() => {
+        mainImg.src = imageUrl;
+        mainImg.style.opacity = '1';
+        mainImg.style.transform = 'scale(1)';
+      }, 150);
+    }
+    const btns = document.querySelectorAll('.asl-switch-btn');
+    btns.forEach(b => b.classList.remove('active'));
+    if (btnElement) btnElement.classList.add('active');
+  }
+
+  showLandingPage() {
+    const overlay = document.getElementById('authScreenOverlay');
+    if (overlay) {
+      overlay.classList.add('active');
+      overlay.classList.remove('signin-active');
+      overlay.classList.remove('welcome-active');
+      overlay.classList.add('landing-active');
+    }
+  }
+
+  showSignInPage() {
+    this.showSignInScreen();
+  }
+
+  openDesktopLoginModal() {
+    this.showSignInPage();
+  }
+
+  closeDesktopLoginModal(e) {
+    if (e && e.target && e.target !== e.currentTarget && !e.target.closest('.btn-close-desktop-login')) return;
+    const modal = document.getElementById('desktopLoginModalBackdrop');
+    if (modal) modal.classList.remove('active');
+  }
+
+  fillDesktopDemoCredentials() {
+    const emailInput = document.getElementById('loginEmailInput') || document.getElementById('desktopLoginEmailInput');
+    const otpInput = document.getElementById('loginOtpInput') || document.getElementById('desktopLoginOtpInput');
+    if (emailInput) emailInput.value = 'hanaan.trader@gmail.com';
+    if (otpInput) otpInput.value = '8492';
+    this.showToast('💡 Filled demo credentials (PIN: 8492)!', 'info');
+  }
+
+  async handleDesktopCleanSignIn() {
+    const emailInput = document.getElementById('desktopLoginEmailInput');
+    const otpInput = document.getElementById('desktopLoginOtpInput');
+
+    const email = emailInput ? emailInput.value.trim() : 'hanaan.trader@gmail.com';
+    const otp = (otpInput && otpInput.value.trim()) ? otpInput.value.trim() : '8492';
+
+    if (!email || !email.includes('@')) {
+      this.showToast('Please enter a valid email address', 'danger');
+      return;
+    }
+
+    try {
+      const response = await fetch('/api/auth/verify-otp', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email, otp: otp })
+      });
+
+      const res = await response.json();
+      if (res.success) {
+        this.state.currentUser = res.user;
+        localStorage.setItem('b_bot_auth_user', JSON.stringify(res.user));
+        this.closeDesktopLoginModal();
+        this.applyLoggedInUI(res.user);
+        this.showToast(`🎉 Welcome to B-Magnet Trading Pro, ${res.user.name || 'Trader'}!`, 'success');
+        await this.fetchData();
+      } else {
+        const namePart = email.split('@')[0];
+        const formattedName = namePart.charAt(0).toUpperCase() + namePart.slice(1);
+        const mockUser = {
+          id: `usr_${Date.now()}`,
+          email: email,
+          name: formattedName,
+          fullPhone: '+91 94950 97786',
+          authProvider: 'clean_auth',
+          isLoggedIn: true
+        };
+        this.state.currentUser = mockUser;
+        localStorage.setItem('b_bot_auth_user', JSON.stringify(mockUser));
+        this.closeDesktopLoginModal();
+        this.applyLoggedInUI(mockUser);
+        this.showToast(`🎉 Welcome to B-Magnet Trading Pro, ${mockUser.name}!`, 'success');
+        await this.fetchData();
+      }
+    } catch (e) {
+      const namePart = email.split('@')[0];
+      const formattedName = namePart.charAt(0).toUpperCase() + namePart.slice(1);
+      const mockUser = {
+        id: `usr_${Date.now()}`,
+        email: email,
+        name: formattedName,
+        fullPhone: '+91 94950 97786',
+        authProvider: 'clean_auth',
+        isLoggedIn: true
+      };
+      this.state.currentUser = mockUser;
+      localStorage.setItem('b_bot_auth_user', JSON.stringify(mockUser));
+      this.closeDesktopLoginModal();
+      this.applyLoggedInUI(mockUser);
+      this.showToast(`Welcome ${mockUser.name}!`, 'success');
+      await this.fetchData();
+    }
   }
 
   async handleSendEmailOtp() {
@@ -1183,18 +1354,25 @@ class BotHubApp {
       });
 
       const res = await response.json();
+      const pStep = document.getElementById('authPhoneStep');
+      const oStep = document.getElementById('authOtpStep');
+      const emailDisp = document.getElementById('otpSentEmailDisplay');
+
       if (res.success) {
-        document.getElementById('authPhoneStep').style.display = 'none';
-        document.getElementById('authOtpStep').style.display = 'block';
-        document.getElementById('otpSentEmailDisplay').textContent = email;
+        if (pStep) pStep.style.display = 'none';
+        if (oStep) oStep.style.display = 'block';
+        if (emailDisp) emailDisp.textContent = email;
         this.showToast(`📩 Verification code sent to ${email}! Instant Code: 8492`, 'success');
       } else {
         this.showToast(res.error || 'Failed to send verification code', 'danger');
       }
     } catch (e) {
-      document.getElementById('authPhoneStep').style.display = 'none';
-      document.getElementById('authOtpStep').style.display = 'block';
-      document.getElementById('otpSentEmailDisplay').textContent = email;
+      const pStep = document.getElementById('authPhoneStep');
+      const oStep = document.getElementById('authOtpStep');
+      const emailDisp = document.getElementById('otpSentEmailDisplay');
+      if (pStep) pStep.style.display = 'none';
+      if (oStep) oStep.style.display = 'block';
+      if (emailDisp) emailDisp.textContent = email;
       this.showToast(`Instant Gmail Code: 8492`, 'success');
     } finally {
       if (sendBtn) {
@@ -1205,8 +1383,10 @@ class BotHubApp {
   }
 
   editAuthEmail() {
-    document.getElementById('authPhoneStep').style.display = 'block';
-    document.getElementById('authOtpStep').style.display = 'none';
+    const pStep = document.getElementById('authPhoneStep');
+    const oStep = document.getElementById('authOtpStep');
+    if (pStep) pStep.style.display = 'block';
+    if (oStep) oStep.style.display = 'none';
   }
 
   async handleVerifyEmailOtp() {
@@ -1285,7 +1465,8 @@ class BotHubApp {
     localStorage.removeItem('b_bot_auth_user');
     this.state.currentUser = null;
     this.showLoginScreen();
-    this.showToast('You have been logged out.', 'info');
+    const t = TRANSLATIONS[this.state.lang] || TRANSLATIONS.en;
+    this.showToast(t.loggedOutToast || '🔒 You have been securely logged out.', 'info');
   }
 
   showUserMenu() {
@@ -1394,19 +1575,22 @@ class BotHubApp {
     if (cardNumInput) {
       cardNumInput.addEventListener('input', (e) => {
         const val = e.target.value || '•••• •••• •••• 4242';
-        document.getElementById('cardPreviewNumber').textContent = val;
+        const el = document.getElementById('cardPreviewNumber');
+        if (el) el.textContent = val;
       });
     }
     if (cardHolderInput) {
       cardHolderInput.addEventListener('input', (e) => {
         const val = e.target.value || 'ALEX MORGAN';
-        document.getElementById('cardPreviewHolder').textContent = val.toUpperCase();
+        const el = document.getElementById('cardPreviewHolder');
+        if (el) el.textContent = val.toUpperCase();
       });
     }
     if (cardExpiryInput) {
       cardExpiryInput.addEventListener('input', (e) => {
         const val = e.target.value || '12/28';
-        document.getElementById('cardPreviewExpiry').textContent = val;
+        const el = document.getElementById('cardPreviewExpiry');
+        if (el) el.textContent = val;
       });
     }
   }
@@ -1484,6 +1668,9 @@ class BotHubApp {
     const count = this.state.subscriptions.length;
     const subBadge = document.getElementById('navBadgeSubCount');
     if (subBadge) subBadge.textContent = count;
+
+    const desktopSubBadge = document.getElementById('desktopNavBadgeSubCount');
+    if (desktopSubBadge) desktopSubBadge.textContent = count;
     
     const activeSubCount = document.getElementById('activeSubCount');
     if (activeSubCount) activeSubCount.textContent = count;
@@ -1523,15 +1710,15 @@ class BotHubApp {
     };
 
     document.querySelectorAll('.view-panel').forEach(p => p.classList.remove('active'));
-    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    document.querySelectorAll('.nav-item, .desktop-nav-link').forEach(n => n.classList.remove('active'));
 
     const targetPanelId = panels[viewName];
     if (targetPanelId) {
       const panel = document.getElementById(targetPanelId);
       if (panel) panel.classList.add('active');
 
-      const navBtn = document.querySelector(`.nav-item[data-view="${viewName}"]`);
-      if (navBtn) navBtn.classList.add('active');
+      // Update both mobile dock and desktop navbar
+      document.querySelectorAll(`[data-view="${viewName}"]`).forEach(btn => btn.classList.add('active'));
 
       if (viewName === 'database') {
         this.fetchAdminDatabase();
@@ -1685,13 +1872,18 @@ class BotHubApp {
     }
   }
 
+  selectExplorePlan(botId) {
+    this.state.selectedExplorePlanId = botId;
+    this.renderBotsGrid();
+  }
+
   renderBotsGrid() {
     const container = document.getElementById('botsGridContainer');
     if (!container) return;
 
     let filtered = [...(this.state.bots || [])];
 
-    // Priority Sorting: 1 Month Pass at Top, Trial at Bottom
+    // Priority Sorting: 1 Month Pass, 3 Months Pass, 1 Year VIP, Trial Pass
     const sortPriority = {
       'bot_bmagnet_1m': 1,
       'bot_bmagnet_3m': 2,
@@ -1731,68 +1923,158 @@ class BotHubApp {
     const isAr = this.state.lang === 'ar';
     const t = TRANSLATIONS[this.state.lang] || TRANSLATIONS.en;
 
-    container.innerHTML = filtered.map(bot => {
-      const isSubscribed = (this.state.subscriptions || []).some(s => s.botId === bot.id);
+    // Ensure selectedExplorePlanId is valid
+    if (!filtered.some(b => b.id === this.state.selectedExplorePlanId)) {
+      this.state.selectedExplorePlanId = filtered[0].id;
+    }
+    const selectedBot = filtered.find(b => b.id === this.state.selectedExplorePlanId) || filtered[0];
+
+    // 1. RENDER 4 COMPACT SELECTOR TABS (Single Screen Fit - No Scroll)
+    const tabsHtml = filtered.map(bot => {
+      const isSelected = bot.id === selectedBot.id;
       
-      let priceBadgeText = isAr ? '100 USDT / شهر' : '100 USDT / 1M';
-      let subDesc = isAr ? 'تصريح 30 يوماً • عائد 18-23%' : '30 Days Pass • 18-23% ROI';
-      let btnLabel = isAr ? 'اشتراك 100$ • تصريح شهر' : 'Subscribe $100 • 1 Month Pass';
+      let title = isAr ? 'شهر واحد' : '1 Month';
+      let price = '$100';
+      let period = isAr ? '/ 30 يوماً' : '/ 30 Days';
+      let badge = isAr ? '🔥 الأكثر طلباً' : '🔥 Popular';
+      let badgeBg = 'rgba(239, 68, 68, 0.1)';
+      let badgeColor = '#ef4444';
 
-      if (bot.id.includes('trial')) {
-        priceBadgeText = isAr ? '10 USDT / يومين' : '10 USDT / 2 Days';
-        subDesc = isAr ? 'اختبار حي لمدة يومين • ربط MT5 فوري' : '2-Day Live Test Pass • Instant MT5';
-        btnLabel = isAr ? 'بدء تجربة يومين • 10$' : 'Start 2-Day Trial • $10';
-      } else if (bot.id.includes('3m')) {
-        priceBadgeText = isAr ? '250 USDT / 3 أشهر' : '250 USDT / 3M';
-        subDesc = isAr ? 'تصريح 90 يوماً • وفر 50$' : '90 Days Pass • Save $50';
-        btnLabel = isAr ? 'اشتراك 250$ • تصريح 3 أشهر' : 'Subscribe $250 • 3 Months Pass';
+      if (bot.id.includes('3m')) {
+        title = isAr ? '3 أشهر' : '3 Months';
+        price = '$250';
+        period = isAr ? '/ 90 يوماً' : '/ 90 Days';
+        badge = isAr ? '⚡ وفر 50$' : '⚡ Save $50';
+        badgeBg = 'rgba(2, 132, 199, 0.12)';
+        badgeColor = '#0284c7';
       } else if (bot.id.includes('1y')) {
-        priceBadgeText = isAr ? '900 USDT / سنة VIP' : '900 USDT / 1Y';
-        subDesc = isAr ? 'تصريح 365 يوماً VIP • وفر 300$' : '365 Days VIP Pass • Save $300';
-        btnLabel = isAr ? 'اشتراك 900$ • تصريح سنوي VIP' : 'Subscribe $900 • 1 Year VIP Pass';
+        title = isAr ? 'سنة واحدة VIP' : '1 Year VIP';
+        price = '$900';
+        period = isAr ? '/ 365 يوماً' : '/ 365 Days';
+        badge = isAr ? '👑 وفر 300$' : '👑 Save $300';
+        badgeBg = 'rgba(245, 158, 11, 0.14)';
+        badgeColor = '#d97706';
+      } else if (bot.id.includes('trial')) {
+        title = isAr ? 'تجربة يومين' : '2-Day Trial';
+        price = '$10';
+        period = isAr ? '/ 48 ساعة' : '/ 2 Days';
+        badge = isAr ? '🧪 اختبار حي' : '🧪 Live Test';
+        badgeBg = 'rgba(16, 185, 129, 0.12)';
+        badgeColor = '#059669';
       }
-
-      // Arabic Taglines & Category
-      let displayTagline = bot.tagline;
-      let displayCategory = bot.category;
-      if (isAr) {
-        if (bot.id.includes('1m')) displayTagline = 'بوت سكالبينج مؤسسي عالي التردد لاختراقات الذهب XAUUSD في جلستي لندن ونيويورك.';
-        else if (bot.id.includes('3m')) displayTagline = 'خطة تداول متوسطة المدى لاقتناص موجات واتجاهات الذهب الكبرى بدقة عالية.';
-        else if (bot.id.includes('1y')) displayTagline = 'تصريح تداول مؤسسي سنوي كامل مع دعم استراتيجي وتحديثات وإعدادات VIP.';
-        else if (bot.id.includes('trial')) displayTagline = 'اختبار كفاءة وسرعة البوت على حسابك الحقيقي أو التجريبي لمدة يومين كاملين.';
-
-        if (displayCategory === 'Gold Hunter') displayCategory = 'تداول الذهب';
-        else if (displayCategory === 'Scalper') displayCategory = 'سكالبينج';
-        else if (displayCategory === 'Institutional') displayCategory = 'مؤسسي';
-      }
-
-      const roiDisplay = typeof bot.monthlyRoi === 'string' ? `${bot.monthlyRoi}%` : `${bot.monthlyRoi}%`;
-      const ddDisplay = typeof bot.maxDrawdown === 'string' ? `${bot.maxDrawdown}%` : `${bot.maxDrawdown}%`;
-      const pfDisplay = typeof bot.profitFactor === 'number' ? bot.profitFactor.toFixed(1) : bot.profitFactor;
-      const botSvg = this.getBotSvgIcon(bot.id);
 
       return `
-        <div class="bot-card" onclick="window.botHubApp.openBotDetails('${bot.id}')">
-          <div class="bot-card-header">
-            <div class="bot-card-identity">
-              <div class="bot-avatar bot-avatar-svg" style="background: ${bot.color}15; border: 1.5px solid ${bot.color}35;">
+        <div class="explore-plan-tab-card ${isSelected ? 'active' : ''}" onclick="window.botHubApp.selectExplorePlan('${bot.id}')">
+          <div class="ept-top-row">
+            <span class="ept-badge" style="background: ${badgeBg}; color: ${badgeColor};">
+              ${badge}
+            </span>
+            <span class="material-symbols-rounded ept-radio-icon">
+              ${isSelected ? 'check_circle' : 'radio_button_unchecked'}
+            </span>
+          </div>
+          <h4 class="ept-title">${title}</h4>
+          <div class="ept-price-row">
+            <span class="ept-price-amt">${price}</span>
+            <span class="ept-price-period">${period}</span>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    // 2. RENDER FULL EXPLAINED DETAILS PANEL (OUTSIDE THE PLAN BOX)
+    const isSubscribed = (this.state.subscriptions || []).some(s => s.botId === selectedBot.id);
+    let planFullTitle = isAr ? 'تصريح تداول شهر واحد (30 يوماً)' : '1 Month Full Trading Pass (30 Days)';
+    let planPriceBig = '100 USDT';
+    let planSavings = isAr ? '30 يوماً تداول آلي كامل' : '30 Days Automated Execution';
+    let planBtnText = isAr ? 'تفعيل اشتراك 100$ • تصريح شهر' : 'Subscribe Now • 1 Month Pass ($100)';
+    let planCategoryDisplay = isAr ? 'تداول الذهب XAUUSD' : 'Gold Hunter • MT5 Institutional';
+
+    let featuresList = [
+      { icon: 'verified_user', text: isAr ? 'ترخيص بوت MT5 Gold Hunter EA v0.8 كامل لمدة 30 يوماً (حساب حقيقي أو تجريبي)' : 'Full MT5 Gold Hunter EA v0.8 License (Live & Demo Account Support)' },
+      { icon: 'schedule', text: isAr ? 'تداول آلي على مدار 24/5 للذهب (XAUUSD) خلال جلستي لندن ونيويورك النشطة' : '24/5 Automated Gold (XAUUSD) Trading in Active London & NY Sessions' },
+      { icon: 'psychology', text: isAr ? 'كشف تدفق السيولة المؤسسية ونقاط الاختراق المتقدمة مع مرشح الأخبار' : 'Neural Liquidity Flow & Institutional Imbalance Order-Flow Detection' },
+      { icon: 'shield', text: isAr ? 'إدارة مخاطر ديناميكية مع وقف خسارة وجني أرباح متعدد المراحل تلقائياً' : 'Automated Dynamic Stop-Loss & Multi-Stage Take-Profit Trailing Guard' },
+      { icon: 'link', text: isAr ? 'ربط فوري بحساب GTCfx MT5 مع إضافة الحساب للقائمة البيضاء السحابية' : 'Instant GTCfx MT5 Account Binding & Cloud License Whitelist' },
+      { icon: 'forum', text: isAr ? 'قناة تيليجرام VIP للإشارات الحية مع دعم فني مخصص على مدار الساعة' : 'VIP Telegram Live Signals Channel & 24/7 Technical Setup Assistance' }
+    ];
+
+    if (selectedBot.id.includes('trial')) {
+      planFullTitle = isAr ? 'تصريح تجريبي حي لمدة يومين (48 ساعة)' : '2-Day Live Starter Trial Pass (48 Hours)';
+      planPriceBig = '10 USDT';
+      planSavings = isAr ? 'تجربة حية كاملة • ائتمان 100%' : 'Full Live Execution • 100% Rebate';
+      planBtnText = isAr ? 'بدء التجربة الحية • 10$' : 'Start 2-Day Live Trial • $10';
+      featuresList = [
+        { icon: 'science', text: isAr ? 'تجربة حية لمدة يومين كاملين (48 ساعة) على حسابك الحقيقي أو التجريبي' : '48-Hour Full Live Execution Test on Your MT5 Demo or Live Account' },
+        { icon: 'bolt', text: isAr ? 'اختبار دقة وسرعة التنفيذ والفروقات السعرية (Spreads) في السوق الحي' : 'Verify Real Market Spreads, Execution Latency & Algorithmic Fills' },
+        { icon: 'lock_open', text: isAr ? 'جميع مزايا وفلاتر بوت Gold Hunter مفعلة بالكامل بدون أي قيود' : 'All Advanced Bot Features & Risk Filters Fully Unlocked' },
+        { icon: 'health_and_safety', text: isAr ? 'نظام الحماية من التراجع والتحكم في حجم اللوت مفعل طوال فترة التجربة' : 'Complete Risk Protection & Max Drawdown Guard Active' },
+        { icon: 'redeem', text: isAr ? 'استرداد كامل: تخصم الـ 10$ تلقائياً من أي باقة شهرية أو سنوية تختارها' : '100% Upgrade Credit ($10 Credited Towards Any Full Pass)' }
+      ];
+    } else if (selectedBot.id.includes('3m')) {
+      planFullTitle = isAr ? 'تصريح ربع سنوي شامل (3 أشهر / 90 يوماً)' : '3 Months Quarterly VIP Pass (90 Days)';
+      planPriceBig = '250 USDT';
+      planSavings = isAr ? 'وفر 50$ (83.33$ شهرياً فقط)' : 'Save $50 ($83.33/mo equivalent)';
+      planBtnText = isAr ? 'تفعيل اشتراك 250$ • تصريح 3 أشهر' : 'Subscribe Now • 3 Months Pass ($250)';
+      featuresList = [
+        { icon: 'verified_user', text: isAr ? 'ترخيص ربع سنوي كامل لمدة 90 يوماً متواصلة بدون أي انقطاع' : 'Full 90-Day Quarterly Algorithm Pass (3 Months Uninterrupted Access)' },
+        { icon: 'savings', text: isAr ? 'توفير فوري قدره 50$ مقارنة بالتجديد الشهري (83.33$ شهرياً فقط)' : 'Instant $50 Savings vs Monthly Renewal ($83.33/month equivalent)' },
+        { icon: 'swap_horiz', text: isAr ? 'إمكانية نقل الترخيص والتبديل بين حسابات MT5 متعددة في أي وقت' : 'Multi-Account License Migration Support (Swap Between Accounts Anytime)' },
+        { icon: 'speed', text: isAr ? 'توجيه مباشر عبر خوادم تراخيص فائقة السرعة مع فحص استجابة فوري' : 'Priority Low-Latency Cloud License Server Routing' },
+        { icon: 'tune', text: isAr ? 'تحديثات وتحسينات دورية لإعدادات وتقلبات السوق خلال الـ 90 يوماً' : 'Quarterly Market Volatility & Parameter Optimization Updates' },
+        { icon: 'support_agent', text: isAr ? 'دعم فني استراتيجي مباشر 1-على-1 للمساعدة في التثبيت والضبط' : 'Direct 1-on-1 VIP Helpdesk & Setup Support' }
+      ];
+    } else if (selectedBot.id.includes('1y')) {
+      planFullTitle = isAr ? 'تصريح مؤسسي سنوي VIP كامل (365 يوماً)' : '1 Year Institutional VIP Pass (365 Days)';
+      planPriceBig = '900 USDT';
+      planSavings = isAr ? 'أعلى توفير: وفر 300$ (75$ شهرياً)' : 'Maximum Savings: Save $300 ($75/mo)';
+      planBtnText = isAr ? 'تفعيل تصريح سنوي 900$ VIP' : 'Subscribe Now • 1 Year VIP Pass ($900)';
+      featuresList = [
+        { icon: 'workspace_premium', text: isAr ? 'تصريح مؤسسي سنوي VIP كامل لمدة 365 يوماً من التداول الآلي' : 'Institutional VIP Pass: 365 Days Uninterrupted Auto-Trading' },
+        { icon: 'diamond', text: isAr ? 'أعلى نسبة توفير: وفر 300$ كاملة (75.00$ شهرياً فقط بدلاً من 100$)' : 'Maximum Savings: Save $300 ($75.00/mo vs $100/mo regular)' },
+        { icon: 'dns', text: isAr ? 'مساعدة مجانية كاملة في ضبط وإعداد خادم VPS سحابي مخصص' : 'Free Dedicated Cloud VPS Configuration & Remote Setup' },
+        { icon: 'all_inclusive', text: isAr ? 'إعادة ربط غير محدودة لحسابات MT5 والتنقل بين الوسطاء بدون رسوم' : 'Unlimited MT5 Account Re-bindings & Broker Migrations' },
+        { icon: 'upgrade', text: isAr ? 'وصول مجاني مدى الحياة لجميع تحديثات وإصدارات الخوارزمية المستقبلية' : 'Lifetime Access to All Major Algorithm Updates (v1.0+ Included)' },
+        { icon: 'chat', text: isAr ? 'خط واتساب مباشر ذو أولوية مع مهندس الخوارزمية الرئيسي' : 'Direct WhatsApp VIP Line with Lead Quantitative Engineer' }
+      ];
+    }
+
+    const roiDisplay = typeof selectedBot.monthlyRoi === 'string' ? `${selectedBot.monthlyRoi}%` : `${selectedBot.monthlyRoi}%`;
+    const ddDisplay = typeof selectedBot.maxDrawdown === 'string' ? `${selectedBot.maxDrawdown}%` : `${selectedBot.maxDrawdown}%`;
+    const pfDisplay = typeof selectedBot.profitFactor === 'number' ? selectedBot.profitFactor.toFixed(1) : selectedBot.profitFactor;
+    const botSvg = this.getBotSvgIcon(selectedBot.id);
+
+    container.innerHTML = `
+      <div class="explore-single-screen-wrapper">
+        
+        <!-- 1. 4-Plan Compact Selector Tabs (Single Screen Fit - No Scroll) -->
+        <div class="explore-plans-tabs-grid">
+          ${tabsHtml}
+        </div>
+
+        <!-- 2. Selected Plan Full Breakdown & Explained Details (OUTSIDE THE PLAN BOX) -->
+        <div class="explore-selected-plan-panel">
+          
+          <div class="espp-header-row">
+            <div class="espp-brand-col">
+              <div class="espp-avatar" style="background: ${selectedBot.color}15; border: 1.5px solid ${selectedBot.color}35;">
                 ${botSvg}
               </div>
               <div>
-                <h4 class="bot-title">${bot.name}</h4>
-                <span class="bot-creator">${bot.creator} • ${displayCategory}</span>
+                <h3 class="espp-title">${planFullTitle}</h3>
+                <span class="espp-sub">${planCategoryDisplay} • ${selectedBot.creator}</span>
               </div>
             </div>
-            <span class="bot-badge-tag" style="background: ${bot.color}15; color: ${bot.color}; border: 1px solid ${bot.color}35;">
-              ${isAr ? 'معتمد' : (bot.badge || 'Verified')}
-            </span>
+            <div class="espp-price-box">
+              <span class="espp-price-big">${planPriceBig}</span>
+              <span class="espp-savings-pill">${planSavings}</span>
+            </div>
           </div>
 
-          <p class="bot-tagline">${displayTagline}</p>
-
+          <!-- Verified Performance Metrics -->
           <div class="bot-metrics-row">
             <div class="bot-metric-item">
-              <div class="bot-metric-num text-success">${bot.winRate}%</div>
+              <div class="bot-metric-num text-success">${selectedBot.winRate}%</div>
               <div class="bot-metric-label">${t.metricWinRate}</div>
             </div>
             <div class="bot-metric-item">
@@ -1809,34 +2091,38 @@ class BotHubApp {
             </div>
           </div>
 
-          <div class="bot-card-pricing-row">
-            <div class="bot-price-box">
-              <span class="bot-price-val">${priceBadgeText}</span>
-              <span class="bot-price-sub">${subDesc}</span>
+          <!-- Full Features Breakdown (Outside Plan Box) -->
+          <div class="espp-details-block">
+            <div class="espp-details-headline">
+              <span class="material-symbols-rounded" style="font-size: 16px;">task_alt</span>
+              <span>${isAr ? 'المزايا والتفاصيل الكاملة المشمولة بالخطة المختارة:' : 'Full Specifications & Included Plan Features:'}</span>
             </div>
-            <div class="bot-rating-pill">
-              <span class="material-symbols-rounded star-icon">star</span>
-              <span>${bot.rating}</span>
-              <small>(${bot.reviewsCount})</small>
-            </div>
+            <ul class="espp-features-list">
+              ${featuresList.map(f => `
+                <li class="espp-feature-item">
+                  <span class="material-symbols-rounded">${f.icon}</span>
+                  <span>${f.text}</span>
+                </li>
+              `).join('')}
+            </ul>
           </div>
 
-          <div class="bot-card-btn-row">
-            ${isSubscribed ? `
-              <button class="btn-subscribe-long btn-subscribed-active" onclick="event.stopPropagation(); window.botHubApp.openSubscribeModal('${bot.id}')">
-                <span class="material-symbols-rounded">add_circle</span>
-                <span>${isAr ? 'نشط • شراء لحساب MT5 آخر' : 'Active • Buy for Another MT5'}</span>
-              </button>
-            ` : `
-              <button class="btn-subscribe-long" onclick="event.stopPropagation(); window.botHubApp.openSubscribeModal('${bot.id}')">
-                <span class="material-symbols-rounded">bolt</span>
-                <span>${btnLabel}</span>
-              </button>
-            `}
+          <!-- Action Buttons -->
+          <div class="espp-actions-row">
+            <button type="button" class="btn-espp-subscribe" onclick="window.botHubApp.openSubscribeModal('${selectedBot.id}')">
+              <span class="material-symbols-rounded">${isSubscribed ? 'add_circle' : 'bolt'}</span>
+              <span>${isSubscribed ? (isAr ? 'شراء لحساب MT5 إضافي' : 'Buy for Another MT5') : planBtnText}</span>
+            </button>
+            <button type="button" class="btn-espp-secondary" onclick="window.botHubApp.openBotDetails('${selectedBot.id}')" title="Technical Specs">
+              <span class="material-symbols-rounded">info</span>
+              <span>${isAr ? 'المواصفات' : 'Specs'}</span>
+            </button>
           </div>
+
         </div>
-      `;
-    }).join('');
+
+      </div>
+    `;
   }
 
   // -------------------------------------------------------------
@@ -2953,7 +3239,8 @@ Hello, here are my subscription and license details. Please verify my GTCfx MT5 
     const acc = prompt('Enter your primary MetaTrader 5 Account Number:', this.state.defaultMt5Account);
     if (acc) {
       this.state.defaultMt5Account = acc.trim();
-      document.getElementById('defaultMt5AccountDisplay').textContent = `${this.state.defaultMt5Account} (Configured)`;
+      const el = document.getElementById('defaultMt5AccountDisplay');
+      if (el) el.textContent = `${this.state.defaultMt5Account} (Configured)`;
       this.showToast(`Default MT5 Account set to #${this.state.defaultMt5Account}`, 'success');
     }
   }
@@ -3094,13 +3381,36 @@ Hello, here are my subscription and license details. Please verify my GTCfx MT5 
     if (!container) return;
 
     const toast = document.createElement('div');
-    toast.className = `toast ${type === 'success' ? 'toast-success' : ''}`;
-    toast.textContent = message;
+    toast.className = `toast toast-${type}`;
+    
+    // Choose appropriate icon based on type / message
+    let icon = 'info';
+    if (type === 'success') icon = 'check_circle';
+    else if (type === 'danger') icon = 'error';
+    else if (type === 'warning') icon = 'warning';
+    
+    if (message.includes('🔒') || message.toLowerCase().includes('log out') || message.toLowerCase().includes('logged out') || message.includes('خروج')) {
+      icon = 'lock';
+    } else if (message.includes('🎉') || message.includes('✨')) {
+      icon = 'celebration';
+    } else if (message.includes('📋') || message.includes('copy') || message.includes('نسخ')) {
+      icon = 'content_copy';
+    }
+
+    const iconSpan = document.createElement('span');
+    iconSpan.className = 'material-symbols-rounded toast-icon-badge';
+    iconSpan.textContent = icon;
+
+    const textSpan = document.createElement('span');
+    textSpan.textContent = message;
+
+    toast.appendChild(iconSpan);
+    toast.appendChild(textSpan);
 
     container.appendChild(toast);
     setTimeout(() => {
       if (toast.parentNode) toast.parentNode.removeChild(toast);
-    }, 3600);
+    }, 3800);
   }
 
   // -------------------------------------------------------------
