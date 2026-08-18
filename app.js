@@ -697,28 +697,7 @@ class BotHubApp {
   }
 
   showWelcomeScreen() {
-    const overlay = document.getElementById('authScreenOverlay');
-    if (overlay) {
-      overlay.classList.add('active');
-      overlay.classList.remove('landing-active');
-      overlay.classList.remove('signin-active');
-      overlay.classList.add('welcome-active');
-    }
-    const welcome = document.getElementById('authWelcomeScreen');
-    const signin = document.getElementById('authSignInScreen');
-    const signup = document.getElementById('authSignUpScreen');
-    if (welcome) {
-      welcome.classList.remove('slide-left');
-      welcome.classList.add('active');
-    }
-    if (signin) {
-      signin.classList.remove('active');
-      signin.classList.remove('slide-left');
-    }
-    if (signup) {
-      signup.classList.remove('active');
-      signup.classList.remove('slide-left');
-    }
+    this.showLandingPage();
   }
 
   showSignInScreen() {
@@ -726,26 +705,15 @@ class BotHubApp {
     if (overlay) {
       overlay.classList.add('active');
       overlay.classList.remove('landing-active');
-      overlay.classList.remove('welcome-active');
-      overlay.classList.add('signin-active');
+      overlay.classList.add('auth-active');
     }
+    const viewLanding = document.getElementById('viewLandingPage');
+    const viewAuth = document.getElementById('viewAuthPortal');
+    if (viewLanding) viewLanding.style.display = 'none';
+    if (viewAuth) viewAuth.style.display = 'flex';
+
     this.switchAuthMode('signin');
-    const welcome = document.getElementById('authWelcomeScreen');
-    const signin = document.getElementById('authSignInScreen');
-    const signup = document.getElementById('authSignUpScreen');
-    if (welcome) {
-      welcome.classList.remove('active');
-      welcome.classList.add('slide-left');
-    }
-    if (signup) {
-      signup.classList.remove('active');
-      signup.classList.remove('slide-left');
-    }
-    if (signin) {
-      signin.classList.add('active');
-      signin.classList.remove('slide-left');
-    }
-    const emailInput = document.getElementById('loginEmailInput') || document.getElementById('loginMobileEmailInput');
+    const emailInput = document.getElementById('loginEmailInput');
     if (emailInput) {
       setTimeout(() => {
         emailInput.focus();
@@ -759,26 +727,15 @@ class BotHubApp {
     if (overlay) {
       overlay.classList.add('active');
       overlay.classList.remove('landing-active');
-      overlay.classList.remove('welcome-active');
-      overlay.classList.add('signin-active');
+      overlay.classList.add('auth-active');
     }
+    const viewLanding = document.getElementById('viewLandingPage');
+    const viewAuth = document.getElementById('viewAuthPortal');
+    if (viewLanding) viewLanding.style.display = 'none';
+    if (viewAuth) viewAuth.style.display = 'flex';
+
     this.switchAuthMode('signup');
-    const welcome = document.getElementById('authWelcomeScreen');
-    const signin = document.getElementById('authSignInScreen');
-    const signup = document.getElementById('authSignUpScreen');
-    if (welcome) {
-      welcome.classList.remove('active');
-      welcome.classList.add('slide-left');
-    }
-    if (signin) {
-      signin.classList.remove('active');
-      signin.classList.add('slide-left');
-    }
-    if (signup) {
-      signup.classList.add('active');
-      signup.classList.remove('slide-left');
-    }
-    const nameInput = document.getElementById('signupNameInput') || document.getElementById('mobileSignupName');
+    const nameInput = document.getElementById('signupNameInput');
     if (nameInput) {
       setTimeout(() => {
         nameInput.focus();
@@ -1467,7 +1424,7 @@ class BotHubApp {
   // DESKTOP COMPANY WEBSITE & SIGN-IN PAGE / MODAL HANDLERS
   // -------------------------------------------------------------
   switchAiImage(imageUrl, btnElement) {
-    const mainImg = document.getElementById('aslAiMainImg');
+    const mainImg = document.getElementById('aspAiMainImg') || document.getElementById('aslAiMainImg');
     if (mainImg) {
       mainImg.style.transition = 'opacity 0.2s ease, transform 0.2s ease';
       mainImg.style.opacity = '0.3';
@@ -1478,7 +1435,7 @@ class BotHubApp {
         mainImg.style.transform = 'scale(1)';
       }, 150);
     }
-    const btns = document.querySelectorAll('.asl-switch-btn');
+    const btns = document.querySelectorAll('.asp-switch-btn, .asl-switch-btn');
     btns.forEach(b => b.classList.remove('active'));
     if (btnElement) btnElement.classList.add('active');
   }
@@ -1487,12 +1444,18 @@ class BotHubApp {
     const overlay = document.getElementById('authScreenOverlay');
     if (overlay) {
       overlay.classList.add('active');
-      overlay.classList.remove('signin-active');
-      overlay.classList.remove('welcome-active');
+      overlay.classList.remove('auth-active');
       overlay.classList.add('landing-active');
     }
-    const landing = document.getElementById('desktopCompanyLanding');
-    if (landing) landing.scrollTop = 0;
+    const viewLanding = document.getElementById('viewLandingPage');
+    const viewAuth = document.getElementById('viewAuthPortal');
+    if (viewLanding) {
+      viewLanding.style.display = 'flex';
+      viewLanding.scrollTop = 0;
+    }
+    if (viewAuth) {
+      viewAuth.style.display = 'none';
+    }
     const scrollBody = document.querySelector('.landing-scroll-body');
     if (scrollBody) scrollBody.scrollTop = 0;
   }
@@ -1794,9 +1757,9 @@ class BotHubApp {
       });
     });
 
-    // Toggle Frame Fullscreen
+    // Toggle Fullscreen Web View
     const toggleBtn = document.getElementById('toggleViewModeBtn');
-    const frame = document.getElementById('mobileFrame');
+    const frame = document.getElementById('appWebContainer') || document.getElementById('mobileFrame');
     if (toggleBtn && frame) {
       toggleBtn.addEventListener('click', () => {
         this.state.isFullscreen = !this.state.isFullscreen;
