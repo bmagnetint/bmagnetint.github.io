@@ -4975,10 +4975,10 @@ body.theme-dark .desktop-company-landing {
   display: none;
 }
 
-@media (min-width: 769px) {
-  .mobile-auth-only {
-    display: none !important;
-  }
+/* Universal Base Landing Page Component Styles */
+.mobile-auth-only {
+  display: none !important;
+}
 
   /* Landing Header (iOS 27 Liquid Glass) */
   .landing-header {
@@ -6089,7 +6089,6 @@ body.theme-dark .desktop-company-landing {
     color: #64748b;
     margin: 0;
   }
-}
 
 /* Back to Website Buttons on Auth Screens */
 .btn-top-back-landing {
@@ -6245,26 +6244,41 @@ body.theme-dark .signin-back-btn {
     font-size: 12.5px !important;
   }
   .landing-hero-section {
-    padding: 30px 16px 50px 16px !important;
+    padding: 24px 16px 40px 16px !important;
   }
   .landing-hero-inner {
     grid-template-columns: 1fr !important;
     gap: 24px !important;
   }
   .landing-hero-title {
-    font-size: 28px !important;
-    line-height: 1.18 !important;
+    font-size: 26px !important;
+    line-height: 1.2 !important;
   }
   .landing-hero-desc {
-    font-size: 14.5px !important;
+    font-size: 14px !important;
   }
   .cmp-features-grid {
     grid-template-columns: 1fr !important;
-    gap: 14px !important;
+    gap: 12px !important;
   }
   .landing-metrics-grid {
     grid-template-columns: repeat(2, 1fr) !important;
     gap: 10px !important;
+  }
+  .landing-plans-grid {
+    grid-template-columns: 1fr !important;
+    gap: 18px !important;
+  }
+  .landing-gtcfx-banner {
+    flex-direction: column !important;
+    text-align: center !important;
+    padding: 24px 18px !important;
+    gap: 20px !important;
+  }
+  .lgb-left {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
   }
   .auth-mobile-slides-wrapper {
     display: block !important;
