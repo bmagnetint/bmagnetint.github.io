@@ -10243,4 +10243,110 @@ body.theme-dark .cmp-card p {
   color: #94a3b8;
 }
 
+/* ==========================================================================
+   MOBILE VIEW UI ENHANCEMENTS & BUTTON OPTIMIZATIONS (< 768px)
+   ========================================================================== */
+@media (max-width: 768px) {
+  /* Landing Header Actions for Mobile */
+  .landing-header-inner {
+    padding: 10px 16px !important;
+    gap: 10px !important;
+  }
+  
+  .landing-header-actions {
+    gap: 8px !important;
+  }
+
+  .btn-landing-corner-login {
+    padding: 8px 14px !important;
+    font-size: 12px !important;
+    border-radius: 99px !important;
+  }
+
+  /* B-Magnet Company Profile Box Mobile Padding */
+  .b-magnet-company-profile-box {
+    padding: 24px 18px !important;
+    border-radius: 22px !important;
+    margin: 16px auto 28px auto !important;
+  }
+
+  .cmp-title {
+    font-size: 20px !important;
+    line-height: 1.35 !important;
+  }
+
+  .cmp-lead {
+    font-size: 13.5px !important;
+    line-height: 1.55 !important;
+  }
+
+  /* macOS Dock Mobile Responsiveness (< 768px) */
+  body.logged-in .bottom-nav {
+    width: calc(100% - 24px) !important;
+    min-width: unset !important;
+    max-width: 410px !important;
+    height: 60px !important;
+    padding: 4px 12px !important;
+    gap: 6px !important;
+    bottom: max(14px, env(safe-area-inset-bottom, 14px)) !important;
+  }
+
+  .bottom-nav .nav-item {
+    padding: 4px 10px !important;
+    border-radius: 16px !important;
+  }
+
+  .bottom-nav .nav-icon {
+    font-size: 22px !important;
+  }
+
+  .bottom-nav .nav-label {
+    font-size: 10px !important;
+    margin-top: 2px !important;
+  }
+
+  /* Mobile Button Touch Targets */
+  .btn-yellow-hero,
+  .btn-yellow-card,
+  .btn-card-buy,
+  .btn-clean-navy,
+  .btn-gtcfx-cta {
+    min-height: 46px !important;
+    font-size: 13.5px !important;
+    padding: 10px 18px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 99px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  body.logged-in .bottom-nav {
+    width: calc(100% - 16px) !important;
+    max-width: 360px !important;
+    height: 56px !important;
+    padding: 2px 8px !important;
+    gap: 4px !important;
+    bottom: max(10px, env(safe-area-inset-bottom, 10px)) !important;
+  }
+
+  .bottom-nav .nav-item {
+    padding: 2px 6px !important;
+  }
+
+  .bottom-nav .nav-icon {
+    font-size: 20px !important;
+  }
+
+  .bottom-nav .nav-label {
+    font-size: 9px !important;
+  }
+
+  .cmp-card {
+    padding: 16px !important;
+    border-radius: 16px !important;
+  }
+}
+
 
