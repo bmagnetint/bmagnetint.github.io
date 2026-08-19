@@ -1,7 +1,7 @@
 {
-  "name": "B-Bot Pro: MT5 Forex & Crypto EA Hub",
-  "short_name": "B-Bot Pro",
-  "description": "Discover, subscribe and manage institutional MT5 Gold EAs (B-Magnet Gold Hunter EA Pro & Lite) with BEP-20 USDT crypto wallet payments.",
+  "name": "B-Magnet PRO: MT5 Gold Trading Algorithms & Bots",
+  "short_name": "B-Magnet PRO",
+  "description": "Institutional MT5 Gold trading Expert Advisor (B-Magnet Gold Hunter EA v0.8) with cryptographic license key verification and BEP-20 USDT payments.",
   "id": "/",
   "start_url": "/",
   "scope": "/",

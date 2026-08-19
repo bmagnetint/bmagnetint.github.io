@@ -1,19 +1,23 @@
 {
-  "public/app.js": "70bde8f86ecd04b01b4f3546eb33ffd49f4959ea79e248e9f9413529aa47f274",
+  "public/app.js": "97e8c9dbe95a61813ddc5b37d5605885fe9471773afc62adf84635a37d3bde8f",
   "public/apple-touch-icon-precomposed.png": "cef73be89c60058c66ae1dba85ff02061bc73b50d7c1909e1c8ca27f88dd43e1",
   "public/apple-touch-icon.png": "cef73be89c60058c66ae1dba85ff02061bc73b50d7c1909e1c8ca27f88dd43e1",
   "public/favicon.ico": "423bac49d3d23c03bc41521aa93c38e06865e8551dbc7895cc81786b9ae1d193",
   "public/icon-192.png": "380066ca2faab5d914f553212f177c45fcc0f40e28b38caf739295e53edb56a1",
   "public/icon-512.png": "ac95a64054c37c680d0acef4d90cb3c2f732dded4b5f86799ced2eb45a97f2d6",
-  "public/index.html": "1e67ebf37070f966f40cfbeeb14652408034aae5b4ac93082adc42ab754c8366",
+  "public/index.html": "fe8a549479bdbc355e67193d9aa788e2b2a2771974acb650cd67b0f747b2dca2",
   "public/key-generator.html": "7ea88d078fea2d1a965692f5b606a328c71da2383bf45d88d580b5a11913fdde",
-  "public/manifest.json": "381a880dd32be5d2ecdeebd145837a9578a57cfa00ef899aa0df0997d2047100",
+  "public/manifest.json": "b331d91b9eded6a5d5846dd3ed8d74a2fe4e29129f9788db8e9703c764c31858",
   "public/qrcode.js": "a536da9afe90f6807ee63298ad883798c681d15170dc027510ea07169ddadbdf",
-  "public/style.css": "28d7f2e8aefb4b2fa4579b3117935b1623b8a62701a0fe67e0d6eeb73dd4fc35",
+  "public/style.css": "7cfa553ed96f941f004171044288f23e87735f4f443e567b81130113448da0b0",
   "public/sw.js": "f4ca1d866cc7d0cf21bf1b4fc1a3fb8adec84ae9e0d7d313ad9d8fc63fcbc4e3",
   "public/images/ai-bot-core-visual.jpg": "895803d28fbe6620cdf3f118d715aaa5df2c7bb6438e479d41f9431e510f0f71",
   "public/images/ai-trading-bot-visual.jpg": "cc47a181d7c5c6dd744ac8759f107332d7645f1772c3e7dd3aa8d84f822a2119",
   "public/images/b-magnet-emblem.png": "4683edf2be74aa76276b1811e00bd6d6f7cd8ae80799078bd32ed4e089b06dc5",
+  "public/images/b-magnet-floating-3d-logo.jpg": "a1d657c3557984b8d39be6f41664f5a233a0051cc5d7b8fdc0ba665479f45ed5",
+  "public/images/b-magnet-gold-algo-hero.jpg": "4f0a0ced2308a338bc8afa9469aef68e0524670114a1a3b1e079ea12634c0965",
   "public/images/b-magnet-logo.png": "a125d7354da80f5e8dd48e92b09995c179a599a7ba26f2b8fed4eeef9e601dab",
-  "data/db.json": "4f577fc9b75405e2132b1ab78e2ea3605904b29560e936e60364b821ee21bdec"
+  "public/images/b-magnet-neural-brain.jpg": "773ff34c5275c38f4b6c75224d81d55665dfe768a7b31327e425e5b75b07da59",
+  "public/images/hero-trader-skipio.jpg": "92dbf03b4c9f3ce932382fada39e7974fa9574622de2dc93d4040b89f89204aa",
+  "data/db.json": "596453ff7973ea19ca09f8e7fe4d2a8c1d4661849d8a03923cb5aba7c36b1f60"
 }

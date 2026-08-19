@@ -4,11 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <meta name="theme-color" content="#0a0d14">
-  <title>B-Bot Pro - Bot Marketing & Subscription Mobile App</title>
+  <title>B-Magnet PRO - Automated Gold Trading Bots & MT5 Algorithms</title>
+  <meta name="description" content="Institutional MT5 Gold trading Expert Advisor (B-Magnet Gold Hunter EA v0.8) with cryptographic license verification and high-precision execution.">
   
-  <!-- Fonts & Icons -->
+  <!-- Fonts & Icons (Outfit & Plus Jakarta Sans matching Original B-Magnet Logo) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400;500;600;700;800;900&family=Cairo:wght@400;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Saira+Condensed:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
   
   <!-- Android PWA, iOS Safari & Play Store Manifest -->
@@ -23,7 +25,7 @@
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="B-Bot Pro">
+  <meta name="apple-mobile-web-app-title" content="B-Magnet PRO">
 
   <!-- Security: Force HTTPS & Upgrade Insecure HTTP Requests -->
   <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
@@ -47,7 +49,7 @@
   <!-- Google Identity Services (Sign-In with Google) -->
   <script src="https://accounts.google.com/gsi/client" async defer></script>
   
-  <link rel="stylesheet" href="style.css?v=4059">
+  <link rel="stylesheet" href="style.css?v=3107">
 </head>
 <body class="theme-dark">
 
@@ -126,40 +128,57 @@
         <!-- ======================================================== -->
         <div class="landing-page-view" id="viewLandingPage">
           
-          <!-- Top Company Navigation Bar -->
+          <!-- Top Company Navigation Bar (Skipio Clean Corporate Header) -->
           <header class="landing-header">
             <div class="landing-header-inner">
               <div class="landing-brand-col" onclick="window.botHubApp.showLandingPage()" style="cursor: pointer;">
-                <img src="images/b-magnet-emblem.png" alt="B-Magnet Logo" class="landing-brand-logo">
-                <div class="landing-brand-text">
-                  <div class="landing-brand-title">B-Magnet <span class="landing-brand-badge">PRO</span></div>
-                  <span class="landing-brand-sub">Trading & Marketing Bots</span>
-                </div>
+                <img src="images/b-magnet-logo.png" alt="B-Magnet - Perfect business solutions" class="landing-main-logo">
               </div>
 
-              <!-- Center Nav Links (Desktop) -->
+              <!-- Center Nav Links -->
               <nav class="landing-nav-links">
-                <a href="#aboutProgramSection" class="landing-nav-link">About Program</a>
-                <a href="#plansSection" class="landing-nav-link">Bot Plans</a>
-                <a href="#gtcfxSection" class="landing-nav-link">GTCfx Broker</a>
-                <a href="#faqSection" class="landing-nav-link">Security & FAQ</a>
+                <a href="#plansSection" class="landing-nav-link" id="landingNavProducts">Products ▾</a>
+                <a href="#aboutProgramSection" class="landing-nav-link" id="landingNavArch">Architecture ▾</a>
+                <a href="#plansSection" class="landing-nav-link" id="landingNavPricing">Pricing</a>
+                <a href="#gtcfxSection" class="landing-nav-link" id="landingNavGtcfx">GTCfx Broker</a>
+                <a href="#faqSection" class="landing-nav-link" id="landingNavFaq">FAQ</a>
               </nav>
 
-              <!-- Top Right Controls: Language Switch, Theme & Launch -->
+              <!-- Top Right Controls: Login Text Link, Yellow Sign Up Pill, Language & Theme -->
               <div class="landing-header-actions">
-                <div class="lang-switch-pill">
-                  <button type="button" class="lang-btn active" onclick="window.botHubApp.setAppLanguage('en')">EN</button>
-                  <button type="button" class="lang-btn" onclick="window.botHubApp.setAppLanguage('ar')">عربي</button>
-                </div>
-
-                <button type="button" class="theme-toggle-pill" onclick="window.botHubApp.toggleTheme()" title="Toggle Dark / Light Mode">
-                  <span class="material-symbols-rounded theme-icon">dark_mode</span>
+                <button type="button" class="btn-skipio-login-link" id="landingLoginBtn" onclick="window.botHubApp.showSignInPage()">
+                  Login
                 </button>
 
-                <!-- Corner Login / Launch App Button -->
-                <button type="button" class="btn-landing-corner-login" onclick="window.botHubApp.showSignInPage()">
-                  <span class="material-symbols-rounded">login</span>
-                  <span>Sign In / Launch</span>
+                <button type="button" class="btn-skipio-yellow-nav" id="landingSignUpBtn" onclick="window.botHubApp.showSignUpScreen()">
+                  Sign Up
+                </button>
+
+                <!-- Globe Icon Language Dropdown -->
+                <div class="lang-dropdown-wrapper" id="landingLangDropdownWrap">
+                  <button type="button" class="lang-globe-btn" onclick="window.botHubApp.toggleLanguageDropdown(event, this)" title="Choose Language / اختر اللغة" aria-label="Change Language">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="globe-svg-icon">
+                      <circle cx="12" cy="12" r="10"/>
+                      <line x1="2" y1="12" x2="22" y2="12"/>
+                      <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                    </svg>
+                  </button>
+                  <div class="lang-dropdown-menu">
+                    <button type="button" class="lang-drop-item active" data-lang="en" onclick="window.botHubApp.selectLanguage('en')">
+                      <span class="ldi-flag">🇬🇧</span>
+                      <span class="ldi-name">English</span>
+                      <span class="ldi-check">✓</span>
+                    </button>
+                    <button type="button" class="lang-drop-item" data-lang="ar" onclick="window.botHubApp.selectLanguage('ar')">
+                      <span class="ldi-flag">🇦🇪</span>
+                      <span class="ldi-name">العربية</span>
+                      <span class="ldi-check">✓</span>
+                    </button>
+                  </div>
+                </div>
+
+                <button type="button" class="theme-toggle-pill" onclick="window.botHubApp.toggleTheme()" title="Toggle Dark / Light Mode" aria-label="Toggle Theme">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-svg-icon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
                 </button>
               </div>
             </div>
@@ -168,185 +187,492 @@
           <!-- Landing Page Scroll Container -->
           <div class="landing-scroll-body">
             
-            <!-- HERO SECTION -->
-            <section class="landing-hero-section" id="heroSection">
-              <div class="landing-hero-inner">
-                <div class="landing-hero-left">
-                  <div class="landing-hero-badge">
-                    <span class="pulse-dot" style="background:#10b981;"></span>
-                    <span>Institutional MT5 Trading Automation</span>
+            <!-- TOP OF WEBSITE: B-MAGNET COMPANY PROFILE EXPLANATION & 3D MOUSE GRAVITY BRAND HERO -->
+            <div class="top-brand-profile-hero" id="topBrandProfileHero">
+              <div class="tbph-inner">
+                
+                <!-- Left Column: Company Profile Explanation -->
+                <div class="tbph-content">
+                  <div class="tbph-badge-row">
+                    <span class="tbph-pill">
+                      <span class="pulse-dot" style="background:#00f2fe;"></span>
+                      <span id="tbphBadgeText">OFFICIAL COMPANY PROFILE</span>
+                    </span>
+                    <span class="tbph-reg font-mono">REG: MT5-QUANT-2026</span>
                   </div>
-                  <h1 class="landing-hero-title">
-                    Automated Gold Trading Bots <br><span class="landing-text-highlight">Engineered for Maximum Precision</span>
-                  </h1>
-                  <p class="landing-hero-desc">
-                    Fully automated Expert Advisor (EA) built for MetaTrader 5 (MT5). Powered by multi-timeframe liquidity confluence, real-time risk controls, and hands-off 24/5 cloud reliability on Gold (XAUUSD).
+
+                  <h1 class="tbph-title" id="tbphTitle">B-Magnet Trading Systems</h1>
+                  <h2 class="tbph-subtitle" id="tbphSubtitle">Institutional Quantitative Algorithms for Gold (XAUUSD) on MetaTrader 5</h2>
+
+                  <p class="tbph-description" id="tbphDesc">
+                    <strong>B-Magnet</strong> is an institutional quantitative financial technology firm specializing in proprietary, high-frequency Expert Advisors (EA) built exclusively for Gold (XAUUSD) trading on MetaTrader 5. Engineered to eliminate emotional trading errors and protect capital, our automated systems deploy multi-timeframe order-flow magnetics, dynamic risk preservation buffers, sub-15ms GTCfx execution, and cryptographic SHA-256 license security.
                   </p>
 
-                  <div class="landing-hero-cta-row">
-                    <button type="button" class="btn-hero-primary" onclick="window.botHubApp.showSignInPage()">
-                      <span>Launch Trading App / Sign In</span>
-                      <span class="material-symbols-rounded">arrow_forward</span>
-                    </button>
-                    <a href="https://web.mygtc.app/login/register?ref=Y8JMgpna" target="_blank" rel="noopener noreferrer" class="btn-hero-secondary">
-                      <span>Register GTCfx MT5 Account</span>
-                      <span class="material-symbols-rounded">open_in_new</span>
-                    </a>
+                  <!-- 4 Core Pillars -->
+                  <div class="tbph-pillars-grid">
+                    <div class="tbph-pillar-item">
+                      <span class="tbph-pillar-icon">⚡</span>
+                      <div>
+                        <strong class="font-mono">89.4% Win Rate</strong>
+                        <span id="tbphPillar1">Verified Algo Precision</span>
+                      </div>
+                    </div>
+                    <div class="tbph-pillar-item">
+                      <span class="tbph-pillar-icon">🛡️</span>
+                      <div>
+                        <strong class="font-mono">30% Max DD Guard</strong>
+                        <span id="tbphPillar2">Dynamic Risk Control</span>
+                      </div>
+                    </div>
+                    <div class="tbph-pillar-item">
+                      <span class="tbph-pillar-icon">⚡</span>
+                      <div>
+                        <strong class="font-mono">&lt; 15ms Latency</strong>
+                        <span id="tbphPillar3">GTCfx Raw ECN Feed</span>
+                      </div>
+                    </div>
+                    <div class="tbph-pillar-item">
+                      <span class="tbph-pillar-icon">📞</span>
+                      <div>
+                        <strong class="font-mono">24/7 Hotline</strong>
+                        <span id="tbphPillar4">WhatsApp Setup Support</span>
+                      </div>
+                    </div>
                   </div>
 
-                  <!-- 4 Live Proof Metrics -->
-                  <div class="landing-metrics-grid">
-                    <div class="landing-metric-card">
-                      <span class="lmc-val">89.4%</span>
-                      <span class="lmc-lbl">Verified Win Rate</span>
+                  <!-- Action CTA Buttons -->
+                  <div class="tbph-actions-row">
+                    <button type="button" class="btn-tbph-primary" onclick="window.botHubApp.showSignInPage()">
+                      <span id="tbphBtnGetStarted">Get Started with B-Magnet</span>
+                    </button>
+                    <a href="https://wa.me/919495097786?text=Hi%20B-Magnet%20Team%2C%20I%20would%20like%20to%20learn%20more%20about%20the%20Company%20and%20Gold%20Hunter%20EA" target="_blank" rel="noopener noreferrer" class="btn-tbph-whatsapp" title="Chat on WhatsApp">
+                      <svg class="faq-wa-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                        <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67M9.53 7.5C9.36 7.5 9.09 7.57 8.85 7.83C8.62 8.09 7.96 8.71 7.96 9.96C7.96 11.22 8.88 12.43 9.01 12.6C9.14 12.77 10.79 15.32 13.32 16.41C13.92 16.67 14.39 16.83 14.75 16.94C15.36 17.14 15.91 17.11 16.35 17.05C16.84 16.97 17.86 16.43 18.07 15.83C18.28 15.23 18.28 14.72 18.22 14.61C18.15 14.5 17.99 14.44 17.75 14.32C17.5 14.2 16.29 13.61 16.06 13.52C15.84 13.44 15.68 13.4 15.51 13.65C15.35 13.89 14.88 14.44 14.74 14.61C14.6 14.78 14.46 14.8 14.22 14.68C13.97 14.55 12.93 14.21 11.7 13.11C10.74 12.25 10.09 11.19 9.96 10.97C9.84 10.75 9.95 10.63 10.07 10.51C10.18 10.4 10.32 10.22 10.45 10.08C10.57 9.93 10.61 9.83 10.69 9.66C10.77 9.5 10.73 9.35 10.67 9.23C10.61 9.11 10.14 7.95 9.94 7.5C9.75 7.05 9.56 7.11 9.42 7.11C9.3 7.11 9.15 7.11 9.01 7.11L9.53 7.5Z"/>
+                      </svg>
+                      <span id="tbphBtnWhatsapp">WhatsApp Support (+91 94950 97786)</span>
+                    </a>
+                  </div>
+                </div>
+
+                <!-- Right Column: Interactive 3D Mouse Gravity Bigger Logo Stage -->
+                <div class="tbph-visual-stage" id="tbphVisualStage">
+                  <div class="tbph-stage-glow"></div>
+                  <div class="tbph-stage-ring-1"></div>
+                  <div class="tbph-stage-ring-2"></div>
+                  <img src="images/b-magnet-logo.png" alt="B-Magnet Giant 3D Logo" class="tbph-big-logo" id="tbphBigLogo">
+                  
+                  <!-- Interactive Floating Orbit Satellites -->
+                  <div class="tbph-orbit-chip chip-gold">
+                    <span class="pulse-dot" style="background:#f59e0b;"></span>
+                    <span>XAUUSD $2,488.20</span>
+                  </div>
+                  <div class="tbph-orbit-chip chip-teal">
+                    <span class="pulse-dot" style="background:#00f2fe;"></span>
+                    <span>MT5 EA Active</span>
+                  </div>
+                  <div class="tbph-orbit-chip chip-emerald">
+                    <span class="pulse-dot" style="background:#10b981;"></span>
+                    <span>SHA-256 Vault</span>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            
+            <!-- SKIPIO-INSPIRED HERO SECTION (CLEAN PANEL LAYOUT) -->
+            <section class="landing-hero-section skipio-hero-wrapper" id="heroSection">
+              <div class="skipio-hero-grid">
+                
+                <!-- Left Column: Large Headline, Desc & Dual Action Buttons -->
+                <div class="skipio-hero-left">
+                  
+                  <!-- Floating Big Brand Crest Badge in First View -->
+                  <div class="hero-floating-crest-badge" id="heroFloatingCrest">
+                    <div class="hfc-logo-wrap">
+                      <img src="images/b-magnet-logo.png" alt="B-Magnet Logo" class="hfc-logo-img">
                     </div>
-                    <div class="landing-metric-card">
-                      <span class="lmc-val">18-23%</span>
-                      <span class="lmc-lbl">Target Monthly ROI</span>
+                    <div class="hfc-details">
+                      <div class="hfc-tag"><span class="pulse-dot" style="background:#00f2fe;"></span> <span id="hfcTagText">INSTITUTIONAL QUANT BOT</span></div>
+                      <div class="hfc-version font-mono">v0.8 Gold Hunter Matrix</div>
                     </div>
-                    <div class="landing-metric-card">
-                      <span class="lmc-val">30.0%</span>
-                      <span class="lmc-lbl">Max Drawdown Guard</span>
+                  </div>
+
+                  <h1 class="skipio-hero-title" id="skipioHeroTitle">
+                    Personalized<br>
+                    Automated Gold<br>
+                    Trading Algorithms
+                  </h1>
+                  <p class="skipio-hero-desc" id="skipioHeroDesc">
+                    Connect with institutional quantitative precision and convert market volatility into consistent growth with B-Magnet's automated MT5 Expert Advisor on Gold (XAUUSD).
+                  </p>
+
+                  <div class="skipio-hero-cta-group">
+                    <button type="button" class="btn-skipio-yellow-hero" onclick="window.botHubApp.showSignInPage()">
+                      <span id="btnHeroGetStartedText">Get Started Now</span>
+                    </button>
+                    <button type="button" class="btn-skipio-talk-hero" onclick="window.botHubApp.openWhatsAppSupport()">
+                      <span id="btnHeroTalkExpertText">Talk to an Expert</span>
+                      <span class="skipio-target-dot">⦿</span>
+                    </button>
+                  </div>
+
+                  <!-- B-MAGNET COMPANY PROFILE EXPLANATION BOX -->
+                  <div class="hero-company-profile-box" id="heroCompanyProfileBox">
+                    <div class="hcpb-top">
+                      <span class="hcpb-tag" id="hcpbTag"><span class="pulse-dot" style="background:#10b981;"></span> COMPANY PROFILE & MISSION</span>
+                      <span class="hcpb-reg font-mono">REG: MT5-QUANT-2026</span>
                     </div>
-                    <div class="landing-metric-card">
-                      <span class="lmc-val">&lt; 15ms</span>
-                      <span class="lmc-lbl">MT5 Execution Latency</span>
+                    <h3 class="hcpb-heading" id="hcpbHeading">Institutional Gold Quantitative Engineering</h3>
+                    <p class="hcpb-text" id="hcpbText">
+                      B-Magnet is a premier fintech trading systems provider specializing in automated, high-frequency MetaTrader 5 Expert Advisors (EA) for Gold (XAUUSD). Engineered to convert raw volatility into steady growth through multi-timeframe order-flow magnetics, dynamic risk buffers, and sub-15ms execution.
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Right Column: 3D Floating Big Logo & Visual Card with Floating Expert Card -->
+                <div class="skipio-hero-right">
+                  <div class="skipio-visual-card">
+                    <img src="images/b-magnet-floating-3d-logo.jpg" alt="B-Magnet 3D Floating Logo & Gold Hunter Terminal" class="skipio-trader-img" id="landingMainHeroImg">
+                    
+                    <!-- Top HUD Status Chips -->
+                    <div class="hsg-chip hsg-chip-top">
+                      <span class="pulse-dot" style="background:#00f2fe;"></span>
+                      <span id="landingHeroActiveChip">XAUUSD MT5 Algorithm: Active</span>
+                    </div>
+
+                    <!-- Floating "Want to talk with an expert?" Interactive Glass Widget -->
+                    <div class="skipio-expert-widget" onclick="window.botHubApp.openWhatsAppSupport()" title="Chat with Algorithmic Trading Specialist">
+                      <div class="sew-avatar-wrap">
+                        <img src="images/b-magnet-emblem.png" alt="Support Specialist" class="sew-avatar">
+                        <span class="sew-online-dot"></span>
+                      </div>
+                      <div class="sew-text">
+                        <span class="sew-prompt" id="skipioExpertPrompt">Want to talk with an expert?</span>
+                      </div>
+                    </div>
+
+                    <!-- Floating 3-Way Showcase Switcher -->
+                    <div class="hero-card-switcher">
+                      <button type="button" class="hcs-btn active" onclick="window.botHubApp.switchLandingHeroImage('images/b-magnet-floating-3d-logo.jpg', this)">
+                        <span class="pulse-dot" style="background:#f59e0b;"></span>
+                        <span>3D Logo</span>
+                      </button>
+                      <button type="button" class="hcs-btn" onclick="window.botHubApp.switchLandingHeroImage('images/b-magnet-gold-algo-hero.jpg', this)">
+                        <span class="pulse-dot" style="background:#00f2fe;"></span>
+                        <span>Gold Matrix</span>
+                      </button>
+                      <button type="button" class="hcs-btn" onclick="window.botHubApp.switchLandingHeroImage('images/b-magnet-neural-brain.jpg', this)">
+                        <span class="pulse-dot" style="background:#10b981;"></span>
+                        <span>Neural Core</span>
+                      </button>
+                    </div>
+
+                    <!-- Floating English Pill in Bottom Left Corner -->
+                    <div class="skipio-corner-lang" onclick="window.botHubApp.toggleLanguage()">
+                      <span class="scl-target">⦿</span>
+                      <span class="scl-lbl" id="skipioCornerLangText">English</span>
                     </div>
                   </div>
                 </div>
 
-                <!-- Right Hero AI Showcase Card -->
-                <div class="landing-hero-right">
-                  <div class="hero-showcase-glass-card">
-                    <div class="hsg-img-wrapper">
-                      <img src="images/ai-trading-bot-visual.jpg" alt="B-Magnet Gold Hunter EA Visual" class="hsg-main-img">
-                      <div class="hsg-chip hsg-chip-top">
-                        <span class="pulse-dot" style="background:#00f2fe;"></span>
-                        <span>Neural Order Flow: Active</span>
-                      </div>
-                      <div class="hsg-chip hsg-chip-bottom">
-                        <span class="material-symbols-rounded icon-gold">monetization_on</span>
-                        <span>Gold (XAUUSD) M1/M5 Confluence</span>
-                      </div>
-                    </div>
-                  </div>
+              </div>
+
+              <!-- 4 Live Proof Metrics Grid -->
+              <div class="landing-metrics-grid" style="margin-top: 36px;">
+                <div class="landing-metric-card">
+                  <span class="lmc-val">89.4%</span>
+                  <span class="lmc-lbl" id="landingMetricWinRateLbl">Verified Win Rate</span>
+                </div>
+                <div class="landing-metric-card">
+                  <span class="lmc-val">18-23%</span>
+                  <span class="lmc-lbl" id="landingMetricRoiLbl">Target Monthly ROI</span>
+                </div>
+                <div class="landing-metric-card">
+                  <span class="lmc-val">30.0%</span>
+                  <span class="lmc-lbl" id="landingMetricDdLbl">Max Drawdown Guard</span>
+                </div>
+                <div class="landing-metric-card">
+                  <span class="lmc-val">&lt; 15ms</span>
+                  <span class="lmc-lbl" id="landingMetricLatencyLbl">MT5 Execution Latency</span>
                 </div>
               </div>
             </section>
 
-            <!-- ABOUT PROGRAM SECTION -->
+            <!-- ======================================================== -->
+            <!-- B-MAGNET INTERNATIONAL SHOWCASE & FLOATING 3D LOGO STAGE -->
+            <!-- ======================================================== -->
+            <section class="landing-international-section" id="internationalSection">
+              <div class="landing-international-inner">
+                
+                <!-- Section Header -->
+                <div class="section-tag-center">
+                  <span class="pulse-dot" style="background:#00f2fe;"></span>
+                  <span id="bmiTag">B-MAGNET INTERNATIONAL ECOSYSTEM</span>
+                </div>
+                <h2 class="section-title-center" id="bmiMainTitle">About B-Magnet International</h2>
+                <p class="section-desc-center" id="bmiMainSubtitle">
+                  Pioneering institutional quantitative algorithmic intelligence across 14+ countries with multi-asset MetaTrader 5 execution and high-frequency precision.
+                </p>
+
+                <div class="bmi-grid-layout">
+                  
+                  <!-- Left Column: About B-Magnet International Corporate Overview -->
+                  <div class="bmi-card-dossier">
+                    <div class="bmi-dossier-header">
+                      <div class="bmi-dossier-badge">
+                        <span class="pulse-dot" style="background:#10b981;"></span>
+                        <span id="bmiDossierBadge">INSTITUTIONAL QUANTITATIVE FINTECH</span>
+                      </div>
+                      <span class="bmi-reg-id font-mono">GLOBAL ID: BM-INT-2026-XAU</span>
+                    </div>
+
+                    <h3 class="bmi-dossier-title" id="bmiDossierTitle">Global Algorithmic Engineering & Market Leadership</h3>
+                    
+                    <p class="bmi-dossier-p" id="bmiDossierP1">
+                      <strong>B-Magnet International</strong> is a premier financial technology organization dedicated to engineering autonomous quantitative trading algorithms for commodities, specializing in <strong>Gold (XAUUSD)</strong> on MetaTrader 5 terminals.
+                    </p>
+                    
+                    <p class="bmi-dossier-p" id="bmiDossierP2">
+                      Headquartered with international clientele across the UAE, Middle East, Europe, and Asia, B-Magnet bridges quantitative high-frequency order-flow analytics with bank-grade risk controls to transform market volatility into consistent, capital-preserved growth.
+                    </p>
+
+                    <!-- 4 Institutional Pillars -->
+                    <div class="bmi-pillars-row">
+                      <div class="bmi-pillar-card">
+                        <div class="bpc-icon-wrap" style="color:#00f2fe; background:rgba(0,242,254,0.1);">🌐</div>
+                        <div>
+                          <h4 id="bmiPillar1Title">14+ Countries</h4>
+                          <p id="bmiPillar1Desc">Active traders & hedge funds across Dubai, UK, Singapore & Asia.</p>
+                        </div>
+                      </div>
+
+                      <div class="bmi-pillar-card">
+                        <div class="bpc-icon-wrap" style="color:#f59e0b; background:rgba(245,158,11,0.1);">⚡</div>
+                        <div>
+                          <h4 id="bmiPillar2Title">Sub-15ms Latency</h4>
+                          <p id="bmiPillar2Desc">Direct fiber link to GTCfx ECN servers for zero slippage.</p>
+                        </div>
+                      </div>
+
+                      <div class="bmi-pillar-card">
+                        <div class="bpc-icon-wrap" style="color:#10b981; background:rgba(16,185,129,0.1);">🛡️</div>
+                        <div>
+                          <h4 id="bmiPillar3Title">SHA-256 Vault</h4>
+                          <p id="bmiPillar3Desc">Cryptographic account binding preventing unauthorized copying.</p>
+                        </div>
+                      </div>
+
+                      <div class="bmi-pillar-card">
+                        <div class="bpc-icon-wrap" style="color:#8b5cf6; background:rgba(139,92,246,0.1);">📞</div>
+                        <div>
+                          <h4 id="bmiPillar4Title">24/7 Global Desk</h4>
+                          <p id="bmiPillar4Desc">Dedicated remote installation hotline at +91 94950 97786.</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Action Link Group -->
+                    <div class="bmi-dossier-actions">
+                      <button type="button" class="btn-skipio-yellow-hero" onclick="window.botHubApp.showSignInPage()" style="padding: 12px 24px; font-size: 13.5px;">
+                        <span id="bmiBtnJoin">Join B-Magnet Global Network</span>
+                      </button>
+                      <a href="https://wa.me/919495097786?text=Hi%20B-Magnet%20International%2C%20I%20would%20like%20to%20learn%20more%20about%20your%20global%20algorithmic%20solutions" target="_blank" rel="noopener noreferrer" class="faq-whatsapp-btn" style="margin: 0; padding: 11px 20px;" title="Chat with International Desk">
+                        <svg class="faq-wa-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                          <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67M9.53 7.5C9.36 7.5 9.09 7.57 8.85 7.83C8.62 8.09 7.96 8.71 7.96 9.96C7.96 11.22 8.88 12.43 9.01 12.6C9.14 12.77 10.79 15.32 13.32 16.41C13.92 16.67 14.39 16.83 14.75 16.94C15.36 17.14 15.91 17.11 16.35 17.05C16.84 16.97 17.86 16.43 18.07 15.83C18.28 15.23 18.28 14.72 18.22 14.61C18.15 14.5 17.99 14.44 17.75 14.32C17.5 14.2 16.29 13.61 16.06 13.52C15.84 13.44 15.68 13.4 15.51 13.65C15.35 13.89 14.88 14.44 14.74 14.61C14.6 14.78 14.46 14.8 14.22 14.68C13.97 14.55 12.93 14.21 11.7 13.11C10.74 12.25 10.09 11.19 9.96 10.97C9.84 10.75 9.95 10.63 10.07 10.51C10.18 10.4 10.32 10.22 10.45 10.08C10.57 9.93 10.61 9.83 10.69 9.66C10.77 9.5 10.73 9.35 10.67 9.23C10.61 9.11 10.14 7.95 9.94 7.5C9.75 7.05 9.56 7.11 9.42 7.11C9.3 7.11 9.15 7.11 9.01 7.11L9.53 7.5Z"/>
+                        </svg>
+                        <span id="bmiBtnWa">WhatsApp Hotline (+91 94950 97786)</span>
+                      </a>
+                    </div>
+                  </div>
+
+                  <!-- Right Column: Ultra-Attractive 3D Floating B-Magnet Hologram Showcase -->
+                  <div class="bmi-hologram-stage" id="bmiHologramStage">
+                    <div class="bmi-holo-ambient-aura"></div>
+                    <div class="bmi-holo-ring-gold"></div>
+                    <div class="bmi-holo-ring-cyan"></div>
+                    <div class="bmi-holo-laser-grid"></div>
+
+                    <!-- 3D Floating B-Magnet Logo Pivot -->
+                    <div class="bmi-holo-logo-pivot" id="bmiHoloLogoPivot">
+                      <img src="images/b-magnet-logo.png" alt="B-Magnet International 3D Floating Logo" class="bmi-holo-logo-img" id="bmiHoloLogoImg">
+                      
+                      <!-- Orbiting Quantum Satellites -->
+                      <div class="bmi-holo-chip chip-algo">
+                        <span class="pulse-dot" style="background:#00f2fe;"></span>
+                        <span>XAUUSD Algo Core</span>
+                      </div>
+                      <div class="bmi-holo-chip chip-gtcfx">
+                        <span class="pulse-dot" style="background:#f59e0b;"></span>
+                        <span>GTCfx 0.0 Pip Raw</span>
+                      </div>
+                      <div class="bmi-holo-chip chip-security">
+                        <span class="pulse-dot" style="background:#10b981;"></span>
+                        <span>SHA-256 Vault Locked</span>
+                      </div>
+                      <div class="bmi-holo-chip chip-speed">
+                        <span class="pulse-dot" style="background:#8b5cf6;"></span>
+                        <span>&lt; 15ms Execution</span>
+                      </div>
+                    </div>
+
+                    <!-- Stage Bottom Live Ticker Banner -->
+                    <div class="bmi-holo-ticker-banner">
+                      <span class="pulse-dot" style="background:#10b981;"></span>
+                      <span class="bht-text" id="bmiHoloTickerText">B-Magnet Gold Hunter v0.8 • 1,200+ Active Global Traders • Live MT5 Execution</span>
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+            </section>
+
+            <!-- ABOUT PROGRAM & QUANTITATIVE ARCHITECTURE SECTION -->
             <section class="landing-about-section" id="aboutProgramSection">
               <div class="landing-about-inner">
                 <div class="section-tag-center">
-                  <span class="material-symbols-rounded">psychology</span>
-                  <span>QUANTITATIVE ARCHITECTURE</span>
+                  <span class="pulse-dot" style="background:#00a896;"></span>
+                  <span id="landingAboutTag">QUANTITATIVE ARCHITECTURE</span>
                 </div>
-                <h2 class="section-title-center">Why Trade with B-Magnet Gold Hunter v0.8?</h2>
-                <p class="section-desc-center">Built specifically for high-volatility commodities and gold markets, our proprietary algorithm eliminates emotional trading and protects institutional capital.</p>
+                <h2 class="section-title-center" id="landingAboutTitle">Why Trade with B-Magnet Gold Hunter v0.8?</h2>
+                <p class="section-desc-center" id="landingAboutDesc">Built specifically for high-volatility commodities and gold markets, our proprietary algorithm eliminates emotional trading and protects institutional capital.</p>
 
                 <div class="landing-features-grid">
                   <div class="lfg-card">
-                    <div class="lfg-icon-box"><span class="material-symbols-rounded">waves</span></div>
-                    <h3>Magnetic Order Flow Detection</h3>
-                    <p>Scans institutional market depth and liquidity imbalance zones in real-time, executing only at high-confluence turning points.</p>
+                    <div class="lfg-icon-box">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M2 12c.6 0 1.2-.4 1.4-1 .8-2.3 3-4 5.6-4s4.8 1.7 5.6 4c.2.6.8 1 1.4 1s1.2-.4 1.4-1c.8-2.3 3-4 5.6-4"/>
+                        <path d="M2 17c.6 0 1.2-.4 1.4-1 .8-2.3 3-4 5.6-4s4.8 1.7 5.6 4c.2.6.8 1 1.4 1s1.2-.4 1.4-1c.8-2.3 3-4 5.6-4"/>
+                      </svg>
+                    </div>
+                    <h3 id="lfgTitle1">Magnetic Order Flow Detection</h3>
+                    <p id="lfgDesc1">Scans institutional market depth and liquidity imbalance zones in real-time, executing only at high-confluence turning points.</p>
                   </div>
                   <div class="lfg-card">
-                    <div class="lfg-icon-box"><span class="material-symbols-rounded">dynamic_form</span></div>
-                    <h3>Adaptive Dynamic Risk Control</h3>
-                    <p>Automatically calculates micro lot sizes relative to account balance, incorporating strict daily trailing stops and drawdown limits.</p>
+                    <div class="lfg-icon-box">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="3" width="18" height="18" rx="2"/>
+                        <path d="M3 9h18"/>
+                        <path d="M9 21V9"/>
+                      </svg>
+                    </div>
+                    <h3 id="lfgTitle2">Adaptive Dynamic Risk Control</h3>
+                    <p id="lfgDesc2">Automatically calculates micro lot sizes relative to account balance, incorporating strict daily trailing stops and drawdown limits.</p>
                   </div>
                   <div class="lfg-card">
-                    <div class="lfg-icon-box"><span class="material-symbols-rounded">hub</span></div>
-                    <h3>GTCfx Multi-Terminal Execution</h3>
-                    <p>Engineered to synchronize flawlessly across live MT5 broker terminals with sub-15ms low-latency order execution.</p>
+                    <div class="lfg-icon-box">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="3"/>
+                        <circle cx="5" cy="5" r="2"/>
+                        <circle cx="19" cy="5" r="2"/>
+                        <circle cx="5" cy="19" r="2"/>
+                        <circle cx="19" cy="19" r="2"/>
+                        <path d="M7 6.5l3.5 3.5M17 6.5l-3.5 3.5M7 17.5l3.5-3.5M17 17.5l-3.5-3.5"/>
+                      </svg>
+                    </div>
+                    <h3 id="lfgTitle3">GTCfx Multi-Terminal Execution</h3>
+                    <p id="lfgDesc3">Engineered to synchronize flawlessly across live MT5 broker terminals with sub-15ms low-latency order execution.</p>
+                  </div>
+                  <div class="lfg-card">
+                    <div class="lfg-icon-box">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 2l-2 2m-1.5 1.5L10 13l-4 4-2-2 4-4 7.5-7.5"/>
+                        <circle cx="7.5" cy="16.5" r="3.5"/>
+                      </svg>
+                    </div>
+                    <h3 id="lfgTitle4">Cryptographic SHA-256 Security</h3>
+                    <p id="lfgDesc4">Direct MT5 account whitelist binding preventing unauthorized replication and ensuring high-speed execution.</p>
                   </div>
                 </div>
               </div>
             </section>
+
+            <!-- INSTITUTIONAL PRICING MATRIX SECTION -->
+            <section class="landing-plans-section" id="plansSection">
               <div class="landing-plans-inner">
                 <div class="section-tag-center">
-                  <span class="material-symbols-rounded">verified</span>
-                  <span>INSTITUTIONAL TIER MATRIX</span>
+                  <span class="pulse-dot" style="background:#f59e0b;"></span>
+                  <span id="landingPlansTag">INSTITUTIONAL TIER MATRIX</span>
                 </div>
-                <h2 class="section-title-center">Choose Your Gold Hunter Bot Pass</h2>
-                <p class="section-desc-center">All passes include full MT5 Expert Advisor access, automated cryptographic license key, and dedicated vendor setup support.</p>
+                <h2 class="section-title-center" id="landingPlansTitle">Choose Your Gold Hunter Bot Pass</h2>
+                <p class="section-desc-center" id="landingPlansDesc">All passes include full MT5 Expert Advisor access, automated cryptographic license key, and dedicated vendor setup support.</p>
 
                 <!-- 4 Tiers Single Screen Grid -->
                 <div class="landing-plans-grid">
                   <!-- Tier 1: 2-Day Trial -->
                   <div class="lp-card">
                     <div class="lpc-header">
-                      <span class="lpc-tier-badge">Quick Test</span>
-                      <h3 class="lpc-name">Trial Pass</h3>
+                      <span class="lpc-tier-badge" id="lpBadge1">Quick Test</span>
+                      <h3 class="lpc-name" id="lpName1">Trial Pass</h3>
                       <div class="lpc-price font-mono"><span>$</span>10</div>
-                      <span class="lpc-duration">2 Days Live Access</span>
+                      <span class="lpc-duration" id="lpDur1">2 Days Live Access</span>
                     </div>
-                    <ul class="lpc-features">
-                      <li><span class="material-symbols-rounded text-emerald">check_circle</span> 2-Day Complete EA Activation</li>
-                      <li><span class="material-symbols-rounded text-emerald">check_circle</span> 1 MT5 Live or Demo Account</li>
-                      <li><span class="material-symbols-rounded text-emerald">check_circle</span> Default Standard Preset</li>
-                      <li><span class="material-symbols-rounded text-emerald">check_circle</span> 24/5 Auto Gold Scalping</li>
+                    <ul class="lpc-features" id="lpFeaturesList1">
+                      <li><span class="text-emerald" style="font-weight:900; margin-right:6px;">✓</span> 2-Day Complete EA Activation</li>
+                      <li><span class="text-emerald" style="font-weight:900; margin-right:6px;">✓</span> 1 MT5 Live or Demo Account</li>
+                      <li><span class="text-emerald" style="font-weight:900; margin-right:6px;">✓</span> Default Standard Preset</li>
+                      <li><span class="text-emerald" style="font-weight:900; margin-right:6px;">✓</span> 24/5 Auto Gold Scalping</li>
                     </ul>
                     <button type="button" class="btn-lpc-action" onclick="window.botHubApp.showSignInPage()">
-                      <span>Select Trial ($10)</span>
+                      <span id="lpBtn1Text">Select Trial ($10)</span>
                     </button>
                   </div>
 
                   <!-- Tier 2: 1 Month (Most Popular) -->
                   <div class="lp-card featured">
-                    <div class="lpc-popular-pill">MOST POPULAR</div>
+                    <div class="lpc-popular-pill" id="lpPopularBadge">MOST POPULAR</div>
                     <div class="lpc-header">
-                      <span class="lpc-tier-badge text-cyan">Standard</span>
-                      <h3 class="lpc-name">1 Month Pass</h3>
+                      <span class="lpc-tier-badge text-cyan" id="lpBadge2">Standard</span>
+                      <h3 class="lpc-name" id="lpName2">1 Month Pass</h3>
                       <div class="lpc-price font-mono"><span>$</span>100</div>
-                      <span class="lpc-duration">30 Days Full Access</span>
+                      <span class="lpc-duration" id="lpDur2">30 Days Full Access</span>
                     </div>
-                    <ul class="lpc-features">
-                      <li><span class="material-symbols-rounded text-emerald">check_circle</span> 30-Day Unrestricted EA Trading</li>
-                      <li><span class="material-symbols-rounded text-emerald">check_circle</span> 1 MT5 Live Account Whitelist</li>
-                      <li><span class="material-symbols-rounded text-emerald">check_circle</span> Aggressive & Safe Risk Presets</li>
-                      <li><span class="material-symbols-rounded text-emerald">check_circle</span> WhatsApp Priority Support</li>
+                    <ul class="lpc-features" id="lpFeaturesList2">
+                      <li><span class="text-emerald" style="font-weight:900; margin-right:6px;">✓</span> 30-Day Unrestricted EA Trading</li>
+                      <li><span class="text-emerald" style="font-weight:900; margin-right:6px;">✓</span> 1 MT5 Live Account Whitelist</li>
+                      <li><span class="text-emerald" style="font-weight:900; margin-right:6px;">✓</span> Aggressive & Safe Risk Presets</li>
+                      <li><span class="text-emerald" style="font-weight:900; margin-right:6px;">✓</span> WhatsApp Priority Support</li>
                     </ul>
                     <button type="button" class="btn-lpc-action btn-lpc-featured" onclick="window.botHubApp.showSignInPage()">
-                      <span>Activate 1 Month ($100)</span>
+                      <span id="lpBtn2Text">Activate 1 Month ($100)</span>
                     </button>
                   </div>
 
                   <!-- Tier 3: 3 Months -->
                   <div class="lp-card">
                     <div class="lpc-header">
-                      <span class="lpc-tier-badge text-amber">Value Pass</span>
-                      <h3 class="lpc-name">3 Months Pass</h3>
+                      <span class="lpc-tier-badge text-amber" id="lpBadge3">Value Pass</span>
+                      <h3 class="lpc-name" id="lpName3">3 Months Pass</h3>
                       <div class="lpc-price font-mono"><span>$</span>250</div>
-                      <span class="lpc-duration">90 Days Full Access (Save $50)</span>
+                      <span class="lpc-duration" id="lpDur3">90 Days Full Access (Save $50)</span>
                     </div>
-                    <ul class="lpc-features">
-                      <li><span class="material-symbols-rounded text-emerald">check_circle</span> 90-Day Unrestricted License</li>
-                      <li><span class="material-symbols-rounded text-emerald">check_circle</span> 1 MT5 Account Binding</li>
-                      <li><span class="material-symbols-rounded text-emerald">check_circle</span> Neural Volatility Guard Update</li>
-                      <li><span class="material-symbols-rounded text-emerald">check_circle</span> 1-on-1 VPS Cloud Setup Assistance</li>
+                    <ul class="lpc-features" id="lpFeaturesList3">
+                      <li><span class="text-emerald" style="font-weight:900; margin-right:6px;">✓</span> 90-Day Unrestricted License</li>
+                      <li><span class="text-emerald" style="font-weight:900; margin-right:6px;">✓</span> 1 MT5 Account Binding</li>
+                      <li><span class="text-emerald" style="font-weight:900; margin-right:6px;">✓</span> Neural Volatility Guard Update</li>
+                      <li><span class="text-emerald" style="font-weight:900; margin-right:6px;">✓</span> 1-on-1 VPS Cloud Setup Assistance</li>
                     </ul>
                     <button type="button" class="btn-lpc-action" onclick="window.botHubApp.showSignInPage()">
-                      <span>Activate 3 Months ($250)</span>
+                      <span id="lpBtn3Text">Activate 3 Months ($250)</span>
                     </button>
                   </div>
 
                   <!-- Tier 4: 1 Year VIP -->
                   <div class="lp-card">
                     <div class="lpc-header">
-                      <span class="lpc-tier-badge text-gold">Annual VIP</span>
-                      <h3 class="lpc-name">1 Year VIP</h3>
+                      <span class="lpc-tier-badge text-gold" id="lpBadge4">Annual VIP</span>
+                      <h3 class="lpc-name" id="lpName4">1 Year VIP</h3>
                       <div class="lpc-price font-mono"><span>$</span>900</div>
-                      <span class="lpc-duration">365 Days Access (Save $300)</span>
+                      <span class="lpc-duration" id="lpDur4">365 Days Access (Save $300)</span>
                     </div>
-                    <ul class="lpc-features">
-                      <li><span class="material-symbols-rounded text-emerald">check_circle</span> 365-Day Unlimited Trading Pass</li>
-                      <li><span class="material-symbols-rounded text-emerald">check_circle</span> 2 MT5 Account Whitelists</li>
-                      <li><span class="material-symbols-rounded text-emerald">check_circle</span> Lifetime Version Upgrades (v0.9/v1.0)</li>
-                      <li><span class="material-symbols-rounded text-emerald">check_circle</span> Direct Algo Developer Hotline</li>
+                    <ul class="lpc-features" id="lpFeaturesList4">
+                      <li><span class="text-emerald" style="font-weight:900; margin-right:6px;">✓</span> 365-Day Unlimited Trading Pass</li>
+                      <li><span class="text-emerald" style="font-weight:900; margin-right:6px;">✓</span> 2 MT5 Account Whitelists</li>
+                      <li><span class="text-emerald" style="font-weight:900; margin-right:6px;">✓</span> Lifetime Version Upgrades (v0.9/v1.0)</li>
+                      <li><span class="text-emerald" style="font-weight:900; margin-right:6px;">✓</span> Direct Algo Developer Hotline</li>
                     </ul>
                     <button type="button" class="btn-lpc-action" onclick="window.botHubApp.showSignInPage()">
-                      <span>Activate 1 Year ($900)</span>
+                      <span id="lpBtn4Text">Activate 1 Year ($900)</span>
                     </button>
                   </div>
                 </div>
@@ -359,23 +685,22 @@
                 <div class="gtcfx-card-glass">
                   <div class="gtcfx-inner">
                     <div class="gtcfx-left">
-                      <div class="gtcfx-badge">OFFICIAL BROKER PARTNERSHIP</div>
-                      <h2 class="gtcfx-title">Optimized Exclusively for GTCfx MT5 Terminals</h2>
-                      <p class="gtcfx-desc">
-                        To guarantee peak latency (< 15ms) and 0.0 pip raw spreads on Gold, register your trading account through our official GTCfx partnership portal.
+                      <div class="gtcfx-badge" id="landingGtcfxBadge">OFFICIAL BROKER PARTNERSHIP</div>
+                      <h2 class="gtcfx-title" id="landingGtcfxTitle">Optimized Exclusively for GTCfx MT5 Terminals</h2>
+                      <p class="gtcfx-desc" id="landingGtcfxDesc">
+                        To guarantee peak latency (&lt; 15ms) and 0.0 pip raw spreads on Gold, register your trading account through our official GTCfx partnership portal.
                       </p>
                       <div class="gtcfx-perks-row">
-                        <span class="gtcfx-perk"><span class="material-symbols-rounded text-emerald">check</span> 0.0 Pip Raw Spread</span>
-                        <span class="gtcfx-perk"><span class="material-symbols-rounded text-emerald">check</span> Instant USDT Deposits</span>
-                        <span class="gtcfx-perk"><span class="material-symbols-rounded text-emerald">check</span> Zero Slippage Execution</span>
+                        <span class="gtcfx-perk" id="gtcfxPerk1"><span class="text-emerald" style="font-weight:900; margin-right:4px;">✓</span> 0.0 Pip Raw Spread</span>
+                        <span class="gtcfx-perk" id="gtcfxPerk2"><span class="text-emerald" style="font-weight:900; margin-right:4px;">✓</span> Instant USDT Deposits</span>
+                        <span class="gtcfx-perk" id="gtcfxPerk3"><span class="text-emerald" style="font-weight:900; margin-right:4px;">✓</span> Zero Slippage Execution</span>
                       </div>
                     </div>
                     <div class="gtcfx-right">
                       <a href="https://web.mygtc.app/login/register?ref=Y8JMgpna" target="_blank" rel="noopener noreferrer" class="btn-gtcfx-cta">
-                        <span>Open GTCfx Live MT5 Account</span>
-                        <span class="material-symbols-rounded">open_in_new</span>
+                        <span id="btnGtcfxCtaText">Open GTCfx Live MT5 Account ↗</span>
                       </a>
-                      <span class="gtcfx-ref-hint">Referral Code: <strong class="font-mono">Y8JMgpna</strong></span>
+                      <span class="gtcfx-ref-hint" id="gtcfxRefHint">Referral Code: <strong class="font-mono">Y8JMgpna</strong></span>
                     </div>
                   </div>
                 </div>
@@ -386,27 +711,34 @@
             <section class="landing-faq-section" id="faqSection">
               <div class="landing-faq-inner">
                 <div class="section-tag-center">
-                  <span class="material-symbols-rounded">security</span>
-                  <span>SECURITY & VERIFICATION</span>
+                  <span class="pulse-dot" style="background:#0284c7;"></span>
+                  <span id="landingFaqTag">SECURITY & VERIFICATION</span>
                 </div>
-                <h2 class="section-title-center">Frequently Asked Questions</h2>
+                <h2 class="section-title-center" id="landingFaqTitle">Frequently Asked Questions</h2>
 
                 <div class="landing-faq-grid">
                   <div class="faq-card">
-                    <h4>How does license activation work on MT5?</h4>
-                    <p>When you subscribe, our cryptographic server generates a unique SHA-256 license key bound to your MT5 account number. Attach the EA in MT5, paste your key into InpLicenseKey, and Algo Trading starts immediately.</p>
+                    <h4 id="faqQ1">How does license activation work on MT5?</h4>
+                    <p id="faqA1">When you subscribe, our cryptographic server generates a unique SHA-256 license key bound to your MT5 account number. Attach the EA in MT5, paste your key into InpLicenseKey, and Algo Trading starts immediately.</p>
                   </div>
                   <div class="faq-card">
-                    <h4>What is the minimum recommended capital?</h4>
-                    <p>We recommend a minimum balance of $200 – $500 for micro-lot scalping (0.01 lot) on Gold (XAUUSD) to maintain safe drawdown parameters.</p>
+                    <h4 id="faqQ2">What is the minimum recommended capital?</h4>
+                    <p id="faqA2">We recommend a minimum balance of $200 – $500 for micro-lot scalping (0.01 lot) on Gold (XAUUSD) to maintain safe drawdown parameters.</p>
                   </div>
                   <div class="faq-card">
-                    <h4>Can I run this bot on a VPS cloud server?</h4>
-                    <p>Yes, 24/5 VPS cloud hosting is recommended so your bot trades non-stop during market hours without needing your personal computer on.</p>
+                    <h4 id="faqQ3">Can I run this bot on a VPS cloud server?</h4>
+                    <p id="faqA3">Yes, 24/5 VPS cloud hosting is recommended so your bot trades non-stop during market hours without needing your personal computer on.</p>
                   </div>
-                  <div class="faq-card">
-                    <h4>How do I get vendor setup support?</h4>
-                    <p>Our technical team is available 24/7 on WhatsApp hotline at <strong>+91 94950 97786</strong> for live remote installation and parameter tuning.</p>
+                  <div class="faq-card faq-card-support">
+                    <h4 id="faqQ4">How do I get vendor setup support?</h4>
+                    <p id="faqA4">Our technical team is available 24/7 on WhatsApp hotline at <strong>+91 94950 97786</strong> for live remote installation and parameter tuning.</p>
+                    <a href="https://wa.me/919495097786?text=Hi%20B-Magnet%20Team%2C%20I%20need%20vendor%20setup%20support%20for%20Gold%20Hunter%20EA" target="_blank" rel="noopener noreferrer" class="faq-whatsapp-btn" id="faqWhatsappBtn" title="Chat on WhatsApp">
+                      <svg class="faq-wa-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                        <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67M9.53 7.5C9.36 7.5 9.09 7.57 8.85 7.83C8.62 8.09 7.96 8.71 7.96 9.96C7.96 11.22 8.88 12.43 9.01 12.6C9.14 12.77 10.79 15.32 13.32 16.41C13.92 16.67 14.39 16.83 14.75 16.94C15.36 17.14 15.91 17.11 16.35 17.05C16.84 16.97 17.86 16.43 18.07 15.83C18.28 15.23 18.28 14.72 18.22 14.61C18.15 14.5 17.99 14.44 17.75 14.32C17.5 14.2 16.29 13.61 16.06 13.52C15.84 13.44 15.68 13.4 15.51 13.65C15.35 13.89 14.88 14.44 14.74 14.61C14.6 14.78 14.46 14.8 14.22 14.68C13.97 14.55 12.93 14.21 11.7 13.11C10.74 12.25 10.09 11.19 9.96 10.97C9.84 10.75 9.95 10.63 10.07 10.51C10.18 10.4 10.32 10.22 10.45 10.08C10.57 9.93 10.61 9.83 10.69 9.66C10.77 9.5 10.73 9.35 10.67 9.23C10.61 9.11 10.14 7.95 9.94 7.5C9.75 7.05 9.56 7.11 9.42 7.11C9.3 7.11 9.15 7.11 9.01 7.11L9.53 7.5Z"/>
+                      </svg>
+                      <span id="faqWhatsappBtnText">Chat with Support on WhatsApp</span>
+                      <span class="faq-wa-arrow">↗</span>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -417,7 +749,7 @@
               <div class="landing-footer-inner">
                 <div class="lfi-left">
                   <div class="lfi-brand">B-Magnet PRO Algorithm Systems</div>
-                  <p class="lfi-copy">© 2026 B-Magnet Trading Systems. Institutional MT5 Algorithmic Technology. All rights reserved.</p>
+                  <p class="lfi-copy" id="footerLegalCopy">© 2026 B-Magnet Trading Systems. Institutional MT5 Algorithmic Technology. All rights reserved.</p>
                 </div>
                 <div class="lfi-right">
                   <span class="lfi-badge">🛡️ SHA-256 License Gate</span>
@@ -439,55 +771,57 @@
             <!-- LEFT SHOWCASE PANEL (Desktop & Tablet) -->
             <div class="auth-showcase-panel">
               <div class="asp-top-bar">
-                <button type="button" class="btn-portal-home" onclick="window.botHubApp.showLandingPage()" title="Back to Home">
-                  <span class="material-symbols-rounded">home</span>
-                  <span>Home</span>
-                </button>
                 <div class="asp-status-pill">
                   <span class="pulse-dot" style="background:#10b981;"></span>
                   <span>Institutional MT5 Engine Active</span>
                 </div>
               </div>
 
-              <!-- Centered Full Logo (No Extra Texts, No Crop) -->
-              <div class="asp-logo-hero">
-                <img src="images/b-magnet-logo.png" alt="B-Magnet - Perfect business solutions" class="asp-main-logo">
-              </div>
-
-              <div class="asp-hero-text">
-                <h2 class="asp-title">Next-Gen AI Algorithmic Gold Trading</h2>
-                <p class="asp-desc">
-                  Institutional quantitative algorithm engineered for MetaTrader 5 (MT5). Powered by multi-timeframe liquidity confluence, neural order-flow scanning, and automated risk protection on Gold (XAUUSD).
-                </p>
+              <!-- Centered Interactive 3D Mouse Gravity Logo Stage (Larger with 3D Physics) -->
+              <div class="asp-logo-hero" id="aspLogoHeroStage">
+                <div class="asp-logo-ambient-glow"></div>
+                <div class="asp-logo-3d-pivot" id="authLeftLogoPivot">
+                  <img src="images/b-magnet-logo.png" alt="B-Magnet 3D Logo" class="asp-main-logo-3d" id="authLeftLogoImg">
+                  
+                  <!-- Orbiting Quantum Chips for Auth Panel -->
+                  <div class="asp-orbit-chip chip-gold">
+                    <span class="pulse-dot" style="background:#f59e0b;"></span>
+                    <span>MT5 Gold Hunter</span>
+                  </div>
+                  <div class="asp-orbit-chip chip-cyan">
+                    <span class="pulse-dot" style="background:#00f2fe;"></span>
+                    <span>SHA-256 Vault</span>
+                  </div>
+                </div>
               </div>
 
               <!-- AI Visual Graphic Card -->
               <div class="asp-ai-card">
                 <div class="asp-img-wrap">
-                  <img src="images/ai-trading-bot-visual.jpg" alt="AI Bot Matrix" class="asp-ai-img" id="aspAiMainImg">
+                  <img src="images/b-magnet-gold-algo-hero.jpg" alt="B-Magnet Gold Hunter EA Visual" class="asp-ai-img" id="aspAiMainImg">
                   <div class="asp-chip chip-1">
-                    <span class="material-symbols-rounded icon-teal">auto_graph</span>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00f2fe" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M18 9l-5 5-4-4-5 5"/></svg>
                     <div>
                       <span class="asp-chip-lbl">Win Rate</span>
                       <strong class="font-mono">89.4%</strong>
                     </div>
                   </div>
                   <div class="asp-chip chip-2">
-                    <span class="material-symbols-rounded icon-gold">trending_up</span>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
                     <div>
                       <span class="asp-chip-lbl">Monthly ROI</span>
                       <strong class="font-mono">18% - 23%</strong>
                     </div>
                   </div>
                   <div class="asp-chip chip-3">
-                    <span class="material-symbols-rounded icon-blue">shield</span>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                     <div>
                       <span class="asp-chip-lbl">Max DD</span>
                       <strong class="font-mono">30% Guard</strong>
                     </div>
                   </div>
                   <div class="asp-chip chip-4">
-                    <span class="material-symbols-rounded icon-emerald">bolt</span>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
                     <div>
                       <span class="asp-chip-lbl">Latency</span>
                       <strong class="font-mono">&lt; 15ms</strong>
@@ -495,46 +829,14 @@
                   </div>
                 </div>
                 <div class="asp-img-switcher">
-                  <button type="button" class="asp-switch-btn active" onclick="window.botHubApp.switchAiImage('images/ai-trading-bot-visual.jpg', this)">
-                    <span class="material-symbols-rounded">candlestick_chart</span>
+                  <button type="button" class="asp-switch-btn active" onclick="window.botHubApp.switchAiImage('images/b-magnet-gold-algo-hero.jpg', this)">
+                    <span class="pulse-dot" style="background:#00f2fe;"></span>
                     <span>AI Gold Matrix</span>
                   </button>
-                  <button type="button" class="asp-switch-btn" onclick="window.botHubApp.switchAiImage('images/ai-bot-core-visual.jpg', this)">
-                    <span class="material-symbols-rounded">memory</span>
+                  <button type="button" class="asp-switch-btn" onclick="window.botHubApp.switchAiImage('images/b-magnet-neural-brain.jpg', this)">
+                    <span class="pulse-dot" style="background:#f59e0b;"></span>
                     <span>Neural Core</span>
                   </button>
-                </div>
-              </div>
-
-              <!-- 4 Feature Pillars Grid -->
-              <div class="asp-features-grid">
-                <div class="asp-feat-item">
-                  <div class="afi-icon"><span class="material-symbols-rounded">waves</span></div>
-                  <div>
-                    <h6>Order Flow Liquidity</h6>
-                    <p>Detects institutional voids before market sweeps.</p>
-                  </div>
-                </div>
-                <div class="asp-feat-item">
-                  <div class="afi-icon"><span class="material-symbols-rounded">sync</span></div>
-                  <div>
-                    <h6>Multi-Timeframe M1-H1</h6>
-                    <p>Filters out false breakouts in real-time.</p>
-                  </div>
-                </div>
-                <div class="asp-feat-item">
-                  <div class="afi-icon"><span class="material-symbols-rounded">tune</span></div>
-                  <div>
-                    <h6>Dynamic Risk Sizing</h6>
-                    <p>Calculates micro lots per equity volatility.</p>
-                  </div>
-                </div>
-                <div class="asp-feat-item">
-                  <div class="afi-icon"><span class="material-symbols-rounded">key</span></div>
-                  <div>
-                    <h6>Cryptographic MT5 Pass</h6>
-                    <p>SHA-256 licensed direct in MT5 inputs.</p>
-                  </div>
                 </div>
               </div>
             </div>
@@ -543,21 +845,41 @@
             <div class="auth-card-panel">
               <div class="auth-card-inner">
                 
-                <!-- Card Top Bar: Home Button (Visible on Mobile), Language & Theme Switch -->
+                <!-- Card Top Bar: New Home Button (Positioned Directly on Login Panel) + Language & Theme Switch -->
                 <div class="auth-card-top-bar">
-                  <button type="button" class="btn-portal-home mobile-home-btn" onclick="window.botHubApp.showLandingPage()" title="Back to Home">
-                    <span class="material-symbols-rounded">home</span>
-                    <span>Home</span>
+                  <button type="button" class="btn-portal-home-new" onclick="window.botHubApp.showLandingPage()" title="Return to Main Website" aria-label="Home">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="new-home-svg">
+                      <path d="M3 9.5L12 3l9 6.5V20a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                      <polyline points="9 22 9 12 15 12 15 22"/>
+                    </svg>
                   </button>
 
                   <div class="auth-card-top-right">
-                    <div class="lang-switch-pill">
-                      <button type="button" class="lang-btn active" onclick="window.botHubApp.setAppLanguage('en')">EN</button>
-                      <button type="button" class="lang-btn" onclick="window.botHubApp.setAppLanguage('ar')">عربي</button>
+                    <!-- Globe Icon Language Dropdown -->
+                    <div class="lang-dropdown-wrapper" id="authLangDropdownWrap">
+                      <button type="button" class="lang-globe-btn" onclick="window.botHubApp.toggleLanguageDropdown(event, this)" title="Choose Language / اختر اللغة" aria-label="Change Language">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="globe-svg-icon">
+                          <circle cx="12" cy="12" r="10"/>
+                          <line x1="2" y1="12" x2="22" y2="12"/>
+                          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                        </svg>
+                      </button>
+                      <div class="lang-dropdown-menu">
+                        <button type="button" class="lang-drop-item active" data-lang="en" onclick="window.botHubApp.selectLanguage('en')">
+                          <span class="ldi-flag">🇬🇧</span>
+                          <span class="ldi-name">English</span>
+                          <span class="ldi-check">✓</span>
+                        </button>
+                        <button type="button" class="lang-drop-item" data-lang="ar" onclick="window.botHubApp.selectLanguage('ar')">
+                          <span class="ldi-flag">🇦🇪</span>
+                          <span class="ldi-name">العربية</span>
+                          <span class="ldi-check">✓</span>
+                        </button>
+                      </div>
                     </div>
 
-                    <button type="button" class="theme-toggle-pill" onclick="window.botHubApp.toggleTheme()" title="Toggle Dark / Light Mode">
-                      <span class="material-symbols-rounded theme-icon">dark_mode</span>
+                    <button type="button" class="theme-toggle-pill" onclick="window.botHubApp.toggleTheme()" title="Toggle Dark / Light Mode" aria-label="Toggle Theme">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-svg-icon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
                     </button>
                   </div>
                 </div>
@@ -570,39 +892,48 @@
                 <!-- Segmented Auth Mode Switcher (Sign In vs Sign Up) -->
                 <div class="auth-mode-segmented">
                   <button type="button" class="ams-btn active" id="tabBtnSignIn" onclick="window.botHubApp.switchAuthMode('signin')">
-                    <span class="material-symbols-rounded">login</span>
-                    <span>Sign In</span>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ams-svg-icon">
+                      <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/>
+                      <polyline points="10 17 15 12 10 7"/>
+                      <line x1="15" y1="12" x2="3" y2="12"/>
+                    </svg>
+                    <span id="txtTabSignInLabel">Sign In</span>
                   </button>
                   <button type="button" class="ams-btn" id="tabBtnSignUp" onclick="window.botHubApp.switchAuthMode('signup')">
-                    <span class="material-symbols-rounded">person_add</span>
-                    <span>Sign Up</span>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ams-svg-icon">
+                      <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                      <circle cx="8.5" cy="7" r="4"/>
+                      <line x1="20" y1="8" x2="20" y2="14"/>
+                      <line x1="23" y1="11" x2="17" y2="11"/>
+                    </svg>
+                    <span id="txtTabSignUpLabel">Sign Up</span>
                   </button>
                 </div>
 
                 <!-- 1. SIGN IN FORM -->
                 <div id="authSignInFormSection" class="auth-form-section">
                   <div class="auth-form-header">
-                    <h3 class="afh-title">Sign In to Your Account</h3>
-                    <p class="afh-sub">Access your automated bot passes, MT5 whitelists & trading wallet</p>
+                    <h3 class="afh-title" id="txtWelcomeTitle">Welcome Back</h3>
+                    <p class="afh-sub" id="txtWelcomeSubtitle">Enter your account details to access your dashboard</p>
                   </div>
 
                   <div class="auth-form-body">
                     <div class="auth-input-group">
                       <label class="auth-input-label">Account ID / Email</label>
-                      <input type="text" id="loginEmailInput" class="auth-form-input" placeholder="e.g. hanaan.trader@gmail.com" value="hanaan.trader@gmail.com" onkeydown="if(event.key==='Enter') window.botHubApp.handleCleanSignIn();">
+                      <input type="text" id="loginEmailInput" class="auth-form-input" placeholder="e.g. your.email@domain.com" onkeydown="if(event.key==='Enter') window.botHubApp.handleCleanSignIn();">
                     </div>
 
                     <div class="auth-input-group">
                       <label class="auth-input-label">Passcode PIN</label>
-                      <input type="text" id="loginOtpInput" class="auth-form-input secure-auth-input" placeholder="4-Digit PIN" value="8492" onkeydown="if(event.key==='Enter') window.botHubApp.handleCleanSignIn();">
+                      <input type="password" id="loginOtpInput" class="auth-form-input secure-auth-input" placeholder="Enter 4-Digit Passcode" maxlength="6" onkeydown="if(event.key==='Enter') window.botHubApp.handleCleanSignIn();">
                     </div>
 
                     <button type="button" class="btn-auth-primary" id="loginMainSubmitBtn" onclick="window.botHubApp.handleCleanSignIn();">
-                      <span id="txtSigninSubmitBtn">Sign In / Launch App</span>
+                      <span id="txtSigninSubmitBtn">Continue to Portal →</span>
                     </button>
 
                     <div class="auth-helper-row">
-                      <a href="#" class="auth-helper-link" id="txtForgotPwd" onclick="event.preventDefault(); window.botHubApp.fillDemoCredentials();">Forgot passcode? (Demo PIN: 8492)</a>
+                      <a href="#" class="auth-helper-link" id="txtForgotPwd" onclick="event.preventDefault(); window.botHubApp.fillDemoCredentials();">Forgot passcode?</a>
                     </div>
 
                     <div class="auth-divider"><span>OR</span></div>
@@ -614,7 +945,7 @@
                         <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"/>
                         <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"/>
                       </svg>
-                      <span id="txtGoogleSignIn">Sign In with Google</span>
+                      <span id="txtGoogleSignIn">Continue with Google</span>
                     </button>
                   </div>
                 </div>
@@ -630,27 +961,27 @@
                   <div id="signupStep1Fields" class="auth-form-body">
                     <div class="auth-input-group">
                       <label class="auth-input-label">Full Name</label>
-                      <input type="text" id="signupNameInput" class="auth-form-input" placeholder="e.g. Hanaan Junaid">
+                      <input type="text" id="signupNameInput" class="auth-form-input" placeholder="e.g. Your Full Name">
                     </div>
 
                     <div class="auth-input-group">
                       <label class="auth-input-label">Email Address</label>
-                      <input type="email" id="signupEmailInput" class="auth-form-input" placeholder="e.g. hanaan@gmail.com">
+                      <input type="email" id="signupEmailInput" class="auth-form-input" placeholder="e.g. your.email@domain.com">
                     </div>
 
                     <div class="auth-input-group">
                       <label class="auth-input-label">Mobile Phone Number</label>
-                      <input type="tel" id="signupPhoneInput" class="auth-form-input" placeholder="e.g. +91 94950 97786">
+                      <input type="tel" id="signupPhoneInput" class="auth-form-input" placeholder="e.g. +971 50 123 4567">
                     </div>
 
                     <div class="auth-input-group">
                       <label class="auth-input-label">GTCfx MT5 Account # (Optional)</label>
-                      <input type="text" id="signupMt5Input" class="auth-form-input font-mono" placeholder="e.g. 8849201" value="8849201">
+                      <input type="text" id="signupMt5Input" class="auth-form-input font-mono" placeholder="Enter GTCfx MT5 Login #">
                     </div>
 
                     <div class="auth-input-group">
                       <label class="auth-input-label">Create 4-Digit Passcode PIN</label>
-                      <input type="password" id="signupPinInput" class="auth-form-input secure-auth-input" placeholder="4-Digit PIN" maxlength="6" value="8492">
+                      <input type="password" id="signupPinInput" class="auth-form-input secure-auth-input" placeholder="Create 4-Digit PIN" maxlength="6">
                     </div>
 
                     <button type="button" class="btn-auth-primary" id="signupSubmitBtn" onclick="window.botHubApp.handleRegisterSendOtp()">
@@ -661,21 +992,18 @@
                   <!-- STEP 2: Email OTP Verification -->
                   <div id="signupStep2OtpFields" class="auth-form-body" style="display: none;">
                     <div class="signup-otp-banner">
-                      <div class="sob-icon"><span class="material-symbols-rounded">mark_email_read</span></div>
+                      <div class="sob-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00f2fe" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                      </div>
                       <div class="sob-text">
                         <span class="sob-lbl">Verification Code Sent</span>
                         <strong class="sob-email font-mono" id="signupOtpTargetEmail">user@gmail.com</strong>
                       </div>
                     </div>
 
-                    <div class="signup-demo-hint">
-                      <span class="pulse-dot" style="background:#00a896;"></span>
-                      <span>Instant Demo OTP: <strong class="font-mono text-cyan">8492</strong></span>
-                    </div>
-
                     <div class="auth-input-group">
                       <label class="auth-input-label">Enter 4-Digit OTP Code</label>
-                      <input type="text" id="signupOtpInput" class="auth-form-input font-mono" placeholder="Enter Code" maxlength="6" style="text-align: center; font-size: 18px; letter-spacing: 4px;" value="8492">
+                      <input type="text" id="signupOtpInput" class="auth-form-input font-mono" placeholder="Enter Code" maxlength="6" style="text-align: center; font-size: 18px; letter-spacing: 4px;">
                     </div>
 
                     <button type="button" class="btn-auth-primary" id="signupVerifyBtn" onclick="window.botHubApp.handleRegisterVerifyOtp()">
@@ -717,41 +1045,33 @@
             </div>
           </div>
 
-          <!-- Desktop Center Navigation Bar -->
-          <nav class="desktop-nav-menu" id="desktopNavMenu">
-            <button type="button" class="desktop-nav-link active" data-view="explore" onclick="window.botHubApp.switchView('explore')">
-              <span class="material-symbols-rounded">explore</span>
-              <span>Explore</span>
-            </button>
-            <button type="button" class="desktop-nav-link" data-view="subscriptions" onclick="window.botHubApp.switchView('subscriptions')">
-              <span class="material-symbols-rounded">bolt</span>
-              <span>My Bots</span>
-              <span class="desktop-nav-badge" id="desktopNavBadgeSubCount">1</span>
-            </button>
-            <button type="button" class="desktop-nav-link" data-view="creator" onclick="window.botHubApp.switchView('creator')">
-              <span class="material-symbols-rounded">storefront</span>
-              <span>Market</span>
-            </button>
-            <button type="button" class="desktop-nav-link" data-view="database" onclick="window.botHubApp.switchView('database')">
-              <span class="material-symbols-rounded">database</span>
-              <span>CRM Database</span>
-            </button>
-            <button type="button" class="desktop-nav-link" data-view="settings" onclick="window.botHubApp.switchView('settings')">
-              <span class="material-symbols-rounded">manage_accounts</span>
-              <span>Account</span>
-            </button>
-          </nav>
-
           <div class="header-right">
-            <!-- Language Switcher -->
-            <div class="lang-switch-pill">
-              <button type="button" class="lang-btn active" onclick="window.botHubApp.setAppLanguage('en')">EN</button>
-              <button type="button" class="lang-btn" onclick="window.botHubApp.setAppLanguage('ar')">عربي</button>
+            <!-- Globe Icon Language Dropdown -->
+            <div class="lang-dropdown-wrapper" id="appLangDropdownWrap">
+              <button type="button" class="lang-globe-btn" onclick="window.botHubApp.toggleLanguageDropdown(event, this)" title="Choose Language / اختر اللغة" aria-label="Change Language">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="globe-svg-icon">
+                  <circle cx="12" cy="12" r="10"/>
+                  <line x1="2" y1="12" x2="22" y2="12"/>
+                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                </svg>
+              </button>
+              <div class="lang-dropdown-menu">
+                <button type="button" class="lang-drop-item active" data-lang="en" onclick="window.botHubApp.selectLanguage('en')">
+                  <span class="ldi-flag">🇬🇧</span>
+                  <span class="ldi-name">English</span>
+                  <span class="ldi-check">✓</span>
+                </button>
+                <button type="button" class="lang-drop-item" data-lang="ar" onclick="window.botHubApp.selectLanguage('ar')">
+                  <span class="ldi-flag">🇦🇪</span>
+                  <span class="ldi-name">العربية</span>
+                  <span class="ldi-check">✓</span>
+                </button>
+              </div>
             </div>
 
             <!-- Dark / Light Theme Pill -->
-            <button type="button" class="theme-toggle-pill" onclick="window.botHubApp.toggleTheme()" title="Toggle Dark / Light Mode">
-              <span class="material-symbols-rounded theme-icon">dark_mode</span>
+            <button type="button" class="theme-toggle-pill" onclick="window.botHubApp.toggleTheme()" title="Toggle Dark / Light Mode" aria-label="Toggle Theme">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-svg-icon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
             </button>
 
             <!-- Desktop Live Engine Status Badge -->
@@ -763,7 +1083,7 @@
             <!-- Compact Corner Wallet Asset with Logged-in User Name -->
             <button class="wallet-compact-corner-btn" id="openTopupBtn" onclick="window.botHubApp.openTopupModal()" title="BEP-20 Wallet & Account">
               <span class="user-avatar-mini">
-                <span class="material-symbols-rounded">account_circle</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
               </span>
               <div class="wallet-user-info-col">
                 <span class="wallet-user-title" id="headerUserPhoneText">Hanaan</span>
@@ -771,15 +1091,13 @@
               </div>
             </button>
 
-            <!-- Direct Home / Website Button -->
-            <button type="button" class="btn-portal-home" onclick="window.botHubApp.showLandingPage()" title="Back to Website Homepage">
-              <span class="material-symbols-rounded">home</span>
-              <span>Home</span>
-            </button>
-
-            <!-- Logout Button -->
-            <button type="button" class="btn-header-logout" id="logoutBtn" onclick="window.botHubApp.handleLogout()" title="Secure Logout" style="display: none;">
-              <span class="material-symbols-rounded">logout</span>
+            <!-- Single Dashboard Power / Logout Icon Button -->
+            <button type="button" class="btn-dash-power-icon" id="logoutBtn" onclick="window.botHubApp.handleLogout()" title="Secure Log Out" aria-label="Log Out" style="display: none;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="power-svg-icon">
+                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+                <polyline points="16 17 21 12 16 7"/>
+                <line x1="21" y1="12" x2="9" y2="12"/>
+              </svg>
             </button>
           </div>
         </div>
@@ -808,6 +1126,34 @@
         <!-- ======================================================== -->
         <section class="view-panel active" id="viewExplore">
           
+          <!-- DASHBOARD TOP: B-MAGNET COMPANY PROFILE & 3D INTERACTIVE BRAND HERO -->
+          <div class="dash-top-profile-hero">
+            <div class="dtph-inner">
+              <div class="dtph-logo-col">
+                <div class="dtph-logo-glow"></div>
+                <img src="images/b-magnet-logo.png" alt="B-Magnet" class="dtph-logo-img">
+              </div>
+              <div class="dtph-info-col">
+                <div class="dtph-badge-row">
+                  <span class="dtph-pill"><span class="pulse-dot" style="background:#00f2fe;"></span> <span id="dashProfileBadge">OFFICIAL COMPANY PROFILE</span></span>
+                  <span class="dtph-reg font-mono">REG: MT5-QUANT-2026</span>
+                </div>
+                <h3 class="dtph-title" id="dashProfileTitle">B-Magnet Quantitative Trading Systems</h3>
+                <p class="dtph-desc" id="dashProfileDesc">
+                  Specialized institutional algorithmic engineering firm delivering high-frequency, capital-protected MetaTrader 5 Expert Advisors (EA) on Gold (XAUUSD) with dynamic order-flow magnetics, sub-15ms GTCfx execution, and cryptographic SHA-256 license security.
+                </p>
+                <div class="dtph-metrics-row">
+                  <span class="dtph-metric"><strong class="font-mono">89.4%</strong> Win Rate</span>
+                  <span class="dtph-metric"><strong class="font-mono">&lt; 15ms</strong> GTCfx Latency</span>
+                  <span class="dtph-metric"><strong class="font-mono">30%</strong> Max DD Guard</span>
+                  <a href="https://wa.me/919495097786?text=Hi%20B-Magnet%20Team%2C%20I%20need%20setup%20support" target="_blank" rel="noopener noreferrer" class="dtph-wa-link">
+                    <span>24/7 WhatsApp Support (+91 94950 97786) ↗</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <!-- Section: All Available Marketplace Bots -->
           <div class="section-title-row">
             <h2 class="section-title">Verified Trading Bots & Plans</h2>
@@ -824,7 +1170,7 @@
             <div class="gbb-top-row">
               <div class="gbb-brand">
                 <div class="gbb-logo-icon">
-                  <span class="material-symbols-rounded">candlestick_chart</span>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00f2fe" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M18 9l-5 5-4-4-5 5"/></svg>
                 </div>
                 <div class="gbb-brand-text">
                   <h3 class="gbb-headline">Register GTCfx Account</h3>
@@ -833,7 +1179,7 @@
               </div>
               <a href="https://web.mygtc.app/login/register?ref=Y8JMgpna" target="_blank" rel="noopener noreferrer" class="gbb-btn-simple">
                 <span>Register</span>
-                <span class="material-symbols-rounded" style="font-size: 15px;">open_in_new</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
               </a>
             </div>
           </div>
@@ -891,7 +1237,7 @@
               <p class="panel-subtitle">Monetize your EAs & earn 20% affiliate commissions</p>
             </div>
             <button class="btn-sm btn-primary" onclick="window.botHubApp.openPublishModal()">
-              <span class="material-symbols-rounded">publish</span> Market a Bot
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg> Market a Bot
             </button>
           </div>
 
@@ -919,7 +1265,7 @@
             </div>
 
             <button class="btn-payout" onclick="window.botHubApp.showToast('Payout of $3,480.00 requested to your USDT wallet!', 'success')">
-              <span class="material-symbols-rounded">payments</span> Request Instant Payout
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg> Request Instant Payout
             </button>
           </div>
 
@@ -927,7 +1273,7 @@
           <div class="affiliate-card">
             <div class="affiliate-header">
               <div class="affiliate-icon">
-                <span class="material-symbols-rounded">share_reviews</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00f2fe" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
               </div>
               <div>
                 <h3 class="affiliate-title">Affiliate Referral Program</h3>
@@ -939,7 +1285,7 @@
               <div class="ref-input-wrapper">
                 <input type="text" readonly id="affiliateLinkInput" value="https://bbot.pro/ref/TRADER-ALEX99" class="ref-input">
                 <button class="copy-ref-btn" onclick="window.botHubApp.copyReferralLink()">
-                  <span class="material-symbols-rounded">content_copy</span> Copy
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copy
                 </button>
               </div>
             </div>
@@ -982,7 +1328,7 @@
               <p class="panel-subtitle">Deposit USDT over BNB Smart Chain to activate 1M, 3M & 1Y passes</p>
             </div>
             <button class="btn-sm btn-primary" onclick="window.botHubApp.openTopupModal()">
-              <span class="material-symbols-rounded">add</span> Deposit USDT
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Deposit USDT
             </button>
           </div>
 
@@ -994,7 +1340,7 @@
                 <div class="wallet-hero-amount" id="billingWalletBalance">250.00 USDT</div>
               </div>
               <button class="btn-topup-hero" onclick="window.botHubApp.openTopupModal()">
-                <span class="material-symbols-rounded">currency_bitcoin</span> Deposit BEP-20
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg> Deposit BEP-20
               </button>
             </div>
             <div class="wallet-hero-note">
@@ -1049,7 +1395,7 @@
                   <span class="profile-tier-badge">Active B-Magnet Trader</span>
                 </div>
                 <div class="profile-card-chevron">
-                  <span class="material-symbols-rounded">edit_note</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00f2fe" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
                 </div>
               </div>
 
@@ -1058,12 +1404,14 @@
                 <h4 class="settings-group-title">Account Identity & Information</h4>
 
                 <div class="setting-item" onclick="window.botHubApp.openProfileDetailsModal()">
-                  <div class="setting-icon-box text-cyan"><span class="material-symbols-rounded">badge</span></div>
+                  <div class="setting-icon-box text-cyan">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00f2fe" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                  </div>
                   <div class="setting-info">
                     <div class="setting-name">Personal Details & User ID</div>
                     <div class="setting-sub">User ID, phone number, email address & contact info</div>
                   </div>
-                  <span class="material-symbols-rounded chevron">chevron_right</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron-svg"><polyline points="9 18 15 12 9 6"/></svg>
                 </div>
               </div>
 
@@ -1072,7 +1420,7 @@
                 <div class="gtcfx-simple-row">
                   <div class="gtcfx-brand-col">
                     <div class="gtcfx-icon-box">
-                      <span class="material-symbols-rounded">show_chart</span>
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00f2fe" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
                     </div>
                     <div>
                       <h4 class="gtcfx-title">Register GTCfx Account</h4>
@@ -1081,7 +1429,7 @@
                   </div>
                   <a href="https://web.mygtc.app/login/register?ref=Y8JMgpna" target="_blank" rel="noopener noreferrer" class="btn-gtcfx-simple-pill">
                     <span>Register</span>
-                    <span class="material-symbols-rounded" style="font-size: 15px;">open_in_new</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
                   </a>
                 </div>
               </div>
@@ -1097,7 +1445,7 @@
                 </div>
                 
                 <button type="button" class="btn-logout-full" onclick="window.botHubApp.handleLogout()" id="accountLogoutBtn">
-                  <span class="material-symbols-rounded">logout</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
                   <span>Log Out / Switch Account</span>
                 </button>
                 <p class="logout-hint-text">Securely end session and return to welcome screen</p>
@@ -1111,12 +1459,14 @@
                 <h4 class="settings-group-title">Integrations & Alerts</h4>
 
                 <div class="setting-item" onclick="window.botHubApp.showTelegramAlertsModal()">
-                  <div class="setting-icon-box text-cyan"><span class="material-symbols-rounded">send</span></div>
+                  <div class="setting-icon-box text-cyan">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00f2fe" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                  </div>
                   <div class="setting-info">
                     <div class="setting-name">Telegram Trade Push Alerts</div>
                     <div class="setting-sub">Connected: @B_Magnet_Gold_bot</div>
                   </div>
-                  <span class="material-symbols-rounded chevron">chevron_right</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron-svg"><polyline points="9 18 15 12 9 6"/></svg>
                 </div>
               </div>
 
@@ -1124,75 +1474,92 @@
                 <h4 class="settings-group-title">Preferences & Security</h4>
 
                 <div class="setting-item" onclick="window.botHubApp.installPwaApp()">
-                  <div class="setting-icon-box text-cyan"><span class="material-symbols-rounded">install_mobile</span></div>
+                  <div class="setting-icon-box text-cyan">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00f2fe" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+                  </div>
                   <div class="setting-info">
                     <div class="setting-name" id="settingPwaTitle">Install App to Home Screen</div>
                     <div class="setting-sub" id="settingPwaSub">Download B-Bot Pro as a web app on your device</div>
                   </div>
-                  <span class="material-symbols-rounded chevron">chevron_right</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron-svg"><polyline points="9 18 15 12 9 6"/></svg>
                 </div>
 
                 <div class="setting-item" onclick="window.botHubApp.showCurrencySelector()">
-                  <div class="setting-icon-box text-success"><span class="material-symbols-rounded">currency_exchange</span></div>
+                  <div class="setting-icon-box text-success">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2"/></svg>
+                  </div>
                   <div class="setting-info">
                     <div class="setting-name">Display Currency</div>
                     <div class="setting-sub" id="activeCurrencyDisplay">USDT (BEP-20) / USD ($)</div>
                   </div>
-                  <span class="material-symbols-rounded chevron">chevron_right</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron-svg"><polyline points="9 18 15 12 9 6"/></svg>
                 </div>
 
                 <div class="setting-item" onclick="window.botHubApp.openLicenseGeneratorModal()">
-                  <div class="setting-icon-box text-cyan"><span class="material-symbols-rounded">vpn_key</span></div>
+                  <div class="setting-icon-box text-cyan">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00f2fe" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>
+                  </div>
                   <div class="setting-info">
                     <div class="setting-name font-bold">MT5 Key Generator</div>
                     <div class="setting-sub">Generate and copy B-Magnet Gold EA activation keys</div>
                   </div>
-                  <span class="material-symbols-rounded chevron">chevron_right</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron-svg"><polyline points="9 18 15 12 9 6"/></svg>
                 </div>
 
                 <div class="setting-item" onclick="window.botHubApp.toggleTheme()">
-                  <div class="setting-icon-box text-warning"><span class="material-symbols-rounded" id="accountThemeSettingIcon">dark_mode</span></div>
+                  <div class="setting-icon-box text-warning" id="accountThemeSettingIcon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                  </div>
                   <div class="setting-info">
                     <div class="setting-name">App Theme Mode</div>
                     <div class="setting-sub" id="activeThemeDisplay">Light Mode</div>
                   </div>
-                  <span class="material-symbols-rounded chevron">chevron_right</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron-svg"><polyline points="9 18 15 12 9 6"/></svg>
                 </div>
 
                 <div class="setting-item" onclick="window.botHubApp.toggleLanguage()">
-                  <div class="setting-icon-box text-cyan"><span class="material-symbols-rounded">language</span></div>
+                  <div class="setting-icon-box text-cyan">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00f2fe" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                  </div>
                   <div class="setting-info">
                     <div class="setting-name">Language / اللغة</div>
                     <div class="setting-sub" id="activeLangDisplay">English (EN)</div>
                   </div>
-                  <span class="material-symbols-rounded chevron">chevron_right</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron-svg"><polyline points="9 18 15 12 9 6"/></svg>
                 </div>
 
                 <div class="setting-item" onclick="window.botHubApp.resetDemoData()">
-                  <div class="setting-icon-box text-danger"><span class="material-symbols-rounded">restart_alt</span></div>
-                  <div class="setting-info">
-                    <div class="setting-name text-danger">Reset Demo State</div>
-                    <div class="setting-sub">Restore original demo bots, subscriptions & invoices</div>
+                  <div class="setting-icon-box text-danger">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
                   </div>
-                  <span class="material-symbols-rounded chevron">chevron_right</span>
+                  <div class="setting-info">
+                    <div class="setting-name text-danger">Restore Default Data</div>
+                    <div class="setting-sub">Reset and sync database with factory default parameters</div>
+                  </div>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron-svg"><polyline points="9 18 15 12 9 6"/></svg>
                 </div>
               </div>
 
               <!-- Admin Panel Master Security Gate (Passcode: 9633) -->
               <div class="settings-group">
-                <h4 class="settings-group-title" id="txtAdminSecurityTitle">Admin & Master Database</h4>
+                <h4 class="settings-group-title" id="txtAdminSecurityTitle">Admin & Security Access</h4>
 
                 <div class="setting-item admin-panel-entry-item" onclick="window.botHubApp.openAdminPanelFromSettings()">
                   <div class="setting-icon-box text-emerald">
-                    <span class="material-symbols-rounded">admin_panel_settings</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <ellipse cx="12" cy="5" rx="9" ry="3"/>
+                      <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/>
+                      <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
+                    </svg>
                   </div>
                   <div class="setting-info">
                     <div class="setting-name-row">
-                      <span class="setting-name font-bold" id="txtAdminPanelTitle">Admin Panel</span>
+                      <span class="setting-name font-bold" id="txtAdminPanelTitle">Master CRM Database</span>
+                      <span class="badge-tag" style="background: rgba(16, 185, 129, 0.15); color: #10b981; font-size: 10px; margin-left: 6px;">PIN: 9633</span>
                     </div>
-                    <div class="setting-sub" id="txtAdminPanelSub">Customer CRM, active bot passes, wallet ledger & Google Sheets sync</div>
+                    <div class="setting-sub" id="txtAdminPanelSub">Access customer records, MT5 subscriptions, wallet ledger & Google Sheets sync</div>
                   </div>
-                  <span class="material-symbols-rounded chevron">chevron_right</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron-svg"><polyline points="9 18 15 12 9 6"/></svg>
                 </div>
               </div>
             </div>
@@ -1301,7 +1668,7 @@
                     <span class="akg-label-hint">Live & Demo MT5</span>
                   </label>
                   <div class="akg-input-with-select">
-                    <input type="text" id="adminKeyGenAcc" class="akg-input font-mono" placeholder="Enter Client MT5 # (e.g. 8849201)" value="8849201" autocomplete="off" oninput="window.botHubApp.generateAdminKey()">
+                    <input type="text" id="adminKeyGenAcc" class="akg-input font-mono" placeholder="Enter Client MT5 Account #" autocomplete="off" oninput="window.botHubApp.generateAdminKey()">
                     <select id="adminKeyGenClientSelect" class="akg-select" onchange="window.botHubApp.onAdminClientSelect(this.value)" title="Quick-fill from CRM client list">
                       <option value="">⚡ Quick-fill from CRM Customers...</option>
                     </select>
@@ -1317,7 +1684,7 @@
                   <div class="akg-presets-grid">
                     <button type="button" class="akg-preset-btn" data-dur="trial" onclick="window.botHubApp.selectAdminKeyDuration('DAYS', 2, 'Trial (2 Days)', '$10', this)">
                       <span class="akg-p-name">Trial (2 Days) ⏱️</span>
-                      <span class="akg-p-price">$10 Test</span>
+                      <span class="akg-p-price">$10 Trial</span>
                     </button>
                     <button type="button" class="akg-preset-btn active" data-dur="1m" onclick="window.botHubApp.selectAdminKeyDuration('MONTHS', 1, '1 Month ($100)', '$100', this)">
                       <span class="akg-p-name">1 Month ⚡</span>
@@ -1495,14 +1862,55 @@
         </div>
         <div class="pwa-actions-right">
           <button type="button" class="btn-pwa-install" onclick="window.botHubApp.installPwaApp()">
-            <span class="material-symbols-rounded">download_for_offline</span>
-            <span id="pwaBtnText">Install</span>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="pwa-dl-svg">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+            <span id="pwaBtnText">Download App</span>
           </button>
-          <button type="button" class="btn-pwa-dismiss" onclick="window.botHubApp.dismissPwaBanner()" title="Dismiss">
-            <span class="material-symbols-rounded">close</span>
+          <button type="button" class="btn-pwa-dismiss" onclick="window.botHubApp.dismissPwaBanner()" title="Dismiss" aria-label="Close">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"/>
+              <line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
           </button>
         </div>
       </div>
+
+      <!-- ======================================================== -->
+      <!-- MOBILE BOTTOM DOCK NAVIGATION (Explore, My Bots, Market, Account) -->
+      <!-- ======================================================== -->
+      <nav class="bottom-nav" id="mobileBottomNav">
+        <button type="button" class="nav-item active" data-view="explore" onclick="window.botHubApp.switchView('explore')">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="nav-svg">
+            <circle cx="12" cy="12" r="10"/>
+            <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>
+          </svg>
+          <span class="nav-label">Explore</span>
+        </button>
+        <button type="button" class="nav-item" data-view="subscriptions" onclick="window.botHubApp.switchView('subscriptions')">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="nav-svg">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+          </svg>
+          <span class="nav-label">My Bots</span>
+          <span class="bottom-nav-badge" id="mobileNavBadgeSubCount">1</span>
+        </button>
+        <button type="button" class="nav-item" data-view="creator" onclick="window.botHubApp.switchView('creator')">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="nav-svg">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+            <polyline points="9 22 9 12 15 12 15 22"/>
+          </svg>
+          <span class="nav-label">Market</span>
+        </button>
+        <button type="button" class="nav-item" data-view="settings" onclick="window.botHubApp.switchView('settings')">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="nav-svg">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+          </svg>
+          <span class="nav-label">Account</span>
+        </button>
+      </nav>
 
   </div>
 
@@ -1541,7 +1949,7 @@
       <div class="modal-header">
         <div style="display: flex; align-items: center; gap: 10px;">
           <div class="header-modal-icon-badge text-cyan">
-            <span class="material-symbols-rounded">badge</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00f2fe" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
           </div>
           <div>
             <h3 class="modal-title" id="txtProfileModalTitle">Account & Profile Settings</h3>
@@ -1549,7 +1957,7 @@
           </div>
         </div>
         <button class="modal-close-btn" onclick="window.botHubApp.closeModal('profileDetailsModal')">
-          <span class="material-symbols-rounded">close</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
         </button>
       </div>
       
@@ -1561,10 +1969,10 @@
             <input type="file" id="profilePicInput" accept="image/*" style="display:none;" onchange="window.botHubApp.handleProfilePhotoUpload(event)">
             <div class="pmc-avatar" id="pmcAvatarBig" onclick="document.getElementById('profilePicInput').click()" title="Click to upload profile photo">H</div>
             <button type="button" class="pmc-avatar-edit-btn" onclick="document.getElementById('profilePicInput').click()" title="Change Profile Picture">
-              <span class="material-symbols-rounded">photo_camera</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
             </button>
             <div class="pmc-verified-badge" title="Verified Trader">
-              <span class="material-symbols-rounded">verified</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
             </div>
           </div>
           <div class="pmc-details">
@@ -1576,7 +1984,7 @@
               <span class="pmc-id-label">Trader ID:</span>
               <span class="pmc-id-val font-mono" id="pmcUserIdDisplay">BM-98214</span>
               <button type="button" class="btn-copy-mini" onclick="window.botHubApp.copyUserId()" title="Copy User ID">
-                <span class="material-symbols-rounded">content_copy</span>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
               </button>
             </div>
             <div class="pmc-meta-row">
@@ -1589,15 +1997,15 @@
         <!-- Quick Profile Picture Action Toolbar -->
         <div class="profile-avatar-actions-bar">
           <button type="button" class="btn-avatar-action" onclick="document.getElementById('profilePicInput').click()">
-            <span class="material-symbols-rounded">upload</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
             <span>Upload Photo</span>
           </button>
           <button type="button" class="btn-avatar-action" onclick="window.botHubApp.togglePresetAvatarSelector()">
-            <span class="material-symbols-rounded">sentiment_satisfied</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
             <span>Choose Icon</span>
           </button>
           <button type="button" class="btn-avatar-action btn-avatar-danger" id="btnRemoveAvatar" onclick="window.botHubApp.removeProfilePhoto()">
-            <span class="material-symbols-rounded">delete_outline</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
             <span>Remove</span>
           </button>
         </div>
@@ -1625,14 +2033,14 @@
           <!-- User ID Field -->
           <div class="profile-field-card">
             <div class="pfc-icon-col">
-              <span class="material-symbols-rounded">fingerprint</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00f2fe" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 12c0-3 2.5-5.5 5.5-5.5S23 9 23 12"/><path d="M12 12c0-6 5-10 10-10"/></svg>
             </div>
             <div class="pfc-content-col">
               <label class="pfc-label">Unique User / Trader ID</label>
               <div class="pfc-input-row">
                 <input type="text" id="inputProfileUserId" class="pfc-input font-mono" value="BM-98214" readonly>
                 <button type="button" class="pfc-action-btn" onclick="window.botHubApp.copyUserId()">
-                  <span class="material-symbols-rounded">content_copy</span>
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
                   <span>Copy</span>
                 </button>
               </div>
@@ -1642,7 +2050,7 @@
           <!-- Full Name Field -->
           <div class="profile-field-card">
             <div class="pfc-icon-col">
-              <span class="material-symbols-rounded">person</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00f2fe" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
             </div>
             <div class="pfc-content-col">
               <label class="pfc-label" for="inputProfileName">Full Name / Display Name</label>
@@ -1653,12 +2061,12 @@
           <!-- Phone Number Field -->
           <div class="profile-field-card">
             <div class="pfc-icon-col">
-              <span class="material-symbols-rounded">call</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00f2fe" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
             </div>
             <div class="pfc-content-col">
               <div style="display:flex; justify-content:space-between; align-items:center;">
                 <label class="pfc-label" for="inputProfilePhone">Registered Phone Number</label>
-                <span class="pfc-verified-tag"><span class="material-symbols-rounded">verified</span> Verified</span>
+                <span class="pfc-verified-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Verified</span>
               </div>
               <input type="tel" id="inputProfilePhone" class="pfc-input" placeholder="+91 94950 97786" value="+91 94950 97786">
             </div>
@@ -1667,12 +2075,12 @@
           <!-- Email ID Field -->
           <div class="profile-field-card">
             <div class="pfc-icon-col">
-              <span class="material-symbols-rounded">mail</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00f2fe" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
             </div>
             <div class="pfc-content-col">
               <div style="display:flex; justify-content:space-between; align-items:center;">
                 <label class="pfc-label" for="inputProfileEmail">Email Address</label>
-                <span class="pfc-verified-tag"><span class="material-symbols-rounded">verified</span> Verified</span>
+                <span class="pfc-verified-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Verified</span>
               </div>
               <input type="email" id="inputProfileEmail" class="pfc-input" placeholder="hanaan@bmagnet.ai" value="hanaan@bmagnet.ai">
             </div>
@@ -1681,7 +2089,7 @@
           <!-- Telegram Alerts Handle -->
           <div class="profile-field-card">
             <div class="pfc-icon-col">
-              <span class="material-symbols-rounded">send</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00f2fe" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
             </div>
             <div class="pfc-content-col">
               <label class="pfc-label" for="inputProfileTelegram">Telegram Handle (For Signal Alerts)</label>
@@ -1692,14 +2100,14 @@
           <!-- Default MT5 Trading Account -->
           <div class="profile-field-card">
             <div class="pfc-icon-col">
-              <span class="material-symbols-rounded">candlestick_chart</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00f2fe" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M18 9l-5 5-4-4-5 5"/></svg>
             </div>
             <div class="pfc-content-col">
               <div style="display:flex; justify-content:space-between; align-items:center;">
                 <label class="pfc-label" for="inputProfileMt5">Default GTCfx MT5 Account</label>
                 <span class="pfc-broker-tag">GTC Global Trade</span>
               </div>
-              <input type="text" id="inputProfileMt5" class="pfc-input font-mono" placeholder="8849201" value="8849201">
+              <input type="text" id="inputProfileMt5" class="pfc-input font-mono" placeholder="Enter MT5 Account #">
             </div>
           </div>
 
@@ -1708,13 +2116,13 @@
         <!-- Security & Device Info Box -->
         <div class="profile-security-box">
           <div class="psb-header">
-            <span class="material-symbols-rounded text-emerald">security</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
             <span class="psb-title">Security & Device Session</span>
           </div>
           <div class="psb-items">
             <div class="psb-item">
               <span class="psb-k">2-Factor Authentication:</span>
-              <span class="psb-v text-emerald"><span class="material-symbols-rounded" style="font-size:13px;">check_circle</span> Enabled (OTP)</span>
+              <span class="psb-v text-emerald"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:-2px;"><polyline points="20 6 9 17 4 12"/></svg> Enabled (OTP)</span>
             </div>
             <div class="psb-item">
               <span class="psb-k">Active Session Platform:</span>
@@ -1730,7 +2138,7 @@
         <!-- Actions -->
         <div class="profile-modal-actions">
           <button type="button" class="btn-save-profile" onclick="window.botHubApp.saveProfileDetails()">
-            <span class="material-symbols-rounded">save</span>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
             <span>Save Profile Changes</span>
           </button>
         </div>
@@ -1929,7 +2337,7 @@
           </label>
           <div class="input-with-icon">
             <span class="material-symbols-rounded input-icon">terminal</span>
-            <input type="text" id="checkoutMt5Input" class="form-input font-mono" placeholder="Enter your GTCfx MT5 Account Number (e.g. 8849202)" value="8849202" oninput="window.botHubApp.checkMt5AccountAvailability()">
+            <input type="text" id="checkoutMt5Input" class="form-input font-mono" placeholder="Enter GTCfx MT5 Account #" oninput="window.botHubApp.checkMt5AccountAvailability()">
           </div>
 
           <!-- Conflict Alert Banner (Displayed when MT5 already has active bot) -->
@@ -2237,7 +2645,7 @@
               <span class="akg-label-hint">Live & Demo MT5</span>
             </label>
             <div class="akg-input-with-select">
-              <input type="text" id="modalKeyGenAcc" class="akg-input font-mono" placeholder="Enter MT5 # (e.g. 8849201)" value="8849201" autocomplete="off" oninput="window.botHubApp.generateModalKey()">
+              <input type="text" id="modalKeyGenAcc" class="akg-input font-mono" placeholder="Enter MT5 Account #" autocomplete="off" oninput="window.botHubApp.generateModalKey()">
               <select id="modalKeyGenClientSelect" class="akg-select" onchange="window.botHubApp.onModalClientSelect(this.value)" title="Quick-fill from active subscriptions">
                 <option value="">⚡ Quick-fill Active Subscriptions...</option>
               </select>
@@ -2253,7 +2661,7 @@
             <div class="akg-presets-grid">
               <button type="button" class="akg-preset-btn" data-dur="trial" onclick="window.botHubApp.selectModalKeyDuration('DAYS', 2, 'Trial (2 Days)', '$10', this)">
                 <span class="akg-p-name">Trial (2 Days) ⏱️</span>
-                <span class="akg-p-price">$10 Test</span>
+                <span class="akg-p-price">$10 Trial</span>
               </button>
               <button type="button" class="akg-preset-btn active" data-dur="1m" onclick="window.botHubApp.selectModalKeyDuration('MONTHS', 1, '1 Month ($100)', '$100', this)">
                 <span class="akg-p-name">1 Month ⚡</span>
@@ -2480,6 +2888,6 @@
 
   <!-- App Scripts -->
   <script src="qrcode.js"></script>
-  <script src="app.js?v=4059"></script>
+  <script src="app.js?v=3107"></script>
 </body>
 </html>

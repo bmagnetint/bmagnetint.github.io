@@ -7,23 +7,146 @@ const GOOGLE_CLIENT_ID = "193074652385-prup7faehlgodh890o06ehfaujblvvni.apps.goo
 
 const TRANSLATIONS = {
   en: {
-    welcomeTitle: 'HELLO',
-    welcomeSub: 'Sign in to access your automated trading passes',
+    // Landing Header & Navigation
+    landingNavProducts: 'Products ▾',
+    landingNavArch: 'Architecture ▾',
+    landingNavPricing: 'Pricing',
+    landingNavGtcfx: 'GTCfx Broker',
+    landingNavFaq: 'FAQ',
+    landingLoginBtn: 'Login',
+    landingSignUpBtn: 'Sign Up',
+
+    // Hero Section
+    heroTitle: 'Personalized<br>Automated Gold<br>Trading Algorithms',
+    heroDesc: "Connect with institutional quantitative precision and convert market volatility into consistent growth with B-Magnet's automated MT5 Expert Advisor on Gold (XAUUSD).",
+    heroGetStarted: 'Get Started Now',
+    heroTalkExpert: 'Talk to an Expert',
+    heroExpertPrompt: 'Want to talk with an expert?',
+    heroActiveChip: 'XAUUSD MT5 Algorithm: Active',
+    hfcTagText: 'INSTITUTIONAL QUANT BOT',
+    hcpbTag: 'COMPANY PROFILE & MISSION',
+    hcpbHeading: 'Institutional Gold Quantitative Engineering',
+    hcpbText: 'B-Magnet is a premier fintech trading systems provider specializing in automated, high-frequency MetaTrader 5 Expert Advisors (EA) for Gold (XAUUSD). Engineered to convert raw volatility into steady growth through multi-timeframe order-flow magnetics, dynamic risk buffers, and sub-15ms execution.',
+    tbphBadgeText: 'OFFICIAL COMPANY PROFILE',
+    tbphTitle: 'B-Magnet Trading Systems',
+    tbphSubtitle: 'Institutional Quantitative Algorithms for Gold (XAUUSD) on MetaTrader 5',
+    tbphDesc: 'B-Magnet is an institutional quantitative financial technology firm specializing in proprietary, high-frequency Expert Advisors (EA) built exclusively for Gold (XAUUSD) trading on MetaTrader 5. Engineered to eliminate emotional trading errors and protect capital, our automated systems deploy multi-timeframe order-flow magnetics, dynamic risk preservation buffers, sub-15ms GTCfx execution, and cryptographic SHA-256 license security.',
+    tbphPillar1: 'Verified Algo Precision',
+    tbphPillar2: 'Dynamic Risk Control',
+    tbphPillar3: 'GTCfx Raw ECN Feed',
+    tbphPillar4: 'WhatsApp Setup Support',
+    tbphBtnGetStarted: 'Get Started with B-Magnet',
+    tbphBtnWhatsapp: 'WhatsApp Support (+91 94950 97786)',
+    dashProfileBadge: 'OFFICIAL COMPANY PROFILE',
+    dashProfileTitle: 'B-Magnet Quantitative Trading Systems',
+    dashProfileDesc: 'Specialized institutional algorithmic engineering firm delivering high-frequency, capital-protected MetaTrader 5 Expert Advisors (EA) on Gold (XAUUSD) with dynamic order-flow magnetics, sub-15ms GTCfx execution, and cryptographic SHA-256 license security.',
+
+    // Metrics
+    metricWinRateLbl: 'Verified Win Rate',
+    metricRoiLbl: 'Target Monthly ROI',
+    metricDdLbl: 'Max Drawdown Guard',
+    metricLatencyLbl: 'MT5 Execution Latency',
+
+    // B-Magnet International Section
+    bmiTag: 'B-MAGNET INTERNATIONAL ECOSYSTEM',
+    bmiMainTitle: 'About B-Magnet International',
+    bmiMainSubtitle: 'Pioneering institutional quantitative algorithmic intelligence across 14+ countries with multi-asset MetaTrader 5 execution and high-frequency precision.',
+    bmiDossierBadge: 'INSTITUTIONAL QUANTITATIVE FINTECH',
+    bmiDossierTitle: 'Global Algorithmic Engineering & Market Leadership',
+    bmiDossierP1: '<strong>B-Magnet International</strong> is a premier financial technology organization dedicated to engineering autonomous quantitative trading algorithms for commodities, specializing in <strong>Gold (XAUUSD)</strong> on MetaTrader 5 terminals.',
+    bmiDossierP2: 'Headquartered with international clientele across the UAE, Middle East, Europe, and Asia, B-Magnet bridges quantitative high-frequency order-flow analytics with bank-grade risk controls to transform market volatility into consistent, capital-preserved growth.',
+    bmiPillar1Title: '14+ Countries',
+    bmiPillar1Desc: 'Active traders & hedge funds across Dubai, UK, Singapore & Asia.',
+    bmiPillar2Title: 'Sub-15ms Latency',
+    bmiPillar2Desc: 'Direct fiber link to GTCfx ECN servers for zero slippage.',
+    bmiPillar3Title: 'SHA-256 Vault',
+    bmiPillar3Desc: 'Cryptographic account binding preventing unauthorized copying.',
+    bmiPillar4Title: '24/7 Global Desk',
+    bmiPillar4Desc: 'Dedicated remote installation hotline at +91 94950 97786.',
+    bmiBtnJoin: 'Join B-Magnet Global Network',
+    bmiBtnWa: 'WhatsApp Hotline (+91 94950 97786)',
+    bmiHoloTicker: 'B-Magnet Gold Hunter v0.8 • 1,200+ Active Global Traders • Live MT5 Execution',
+
+    // Quantitative Architecture Section
+    aboutTag: 'QUANTITATIVE ARCHITECTURE',
+    aboutTitle: 'Why Trade with B-Magnet Gold Hunter v0.8?',
+    aboutDesc: 'Built specifically for high-volatility commodities and gold markets, our proprietary algorithm eliminates emotional trading and protects institutional capital.',
+    lfgTitle1: 'Magnetic Order Flow Detection',
+    lfgDesc1: 'Scans institutional market depth and liquidity imbalance zones in real-time, executing only at high-confluence turning points.',
+    lfgTitle2: 'Adaptive Dynamic Risk Control',
+    lfgDesc2: 'Automatically calculates micro lot sizes relative to account balance, incorporating strict daily trailing stops and drawdown limits.',
+    lfgTitle3: 'GTCfx Multi-Terminal Execution',
+    lfgDesc3: 'Engineered to synchronize flawlessly across live MT5 broker terminals with sub-15ms low-latency order execution.',
+    lfgTitle4: 'Cryptographic SHA-256 Security',
+    lfgDesc4: 'Direct MT5 account whitelist binding preventing unauthorized replication and ensuring high-speed execution.',
+
+    // Institutional Pricing Matrix Section
+    plansTag: 'INSTITUTIONAL TIER MATRIX',
+    plansTitle: 'Choose Your Gold Hunter Bot Pass',
+    plansDesc: 'All passes include full MT5 Expert Advisor access, automated cryptographic license key, and dedicated vendor setup support.',
+    lpPopularBadge: 'MOST POPULAR',
+    lpBadge1: 'Quick Test',
+    lpName1: 'Trial Pass',
+    lpDur1: '2 Days Live Access',
+    lpBtn1: 'Select Trial ($10)',
+    lpBadge2: 'Standard',
+    lpName2: '1 Month Pass',
+    lpDur2: '30 Days Full Access',
+    lpBtn2: 'Activate 1 Month ($100)',
+    lpBadge3: 'Value Pass',
+    lpName3: '3 Months Pass',
+    lpDur3: '90 Days Full Access (Save $50)',
+    lpBtn3: 'Activate 3 Months ($250)',
+    lpBadge4: 'Annual VIP',
+    lpName4: '1 Year VIP',
+    lpDur4: '365 Days Access (Save $300)',
+    lpBtn4: 'Activate 1 Year ($900)',
+
+    // GTCfx Broker Partnership Section
+    gtcfxBadge: 'OFFICIAL BROKER PARTNERSHIP',
+    gtcfxTitle: 'Optimized Exclusively for GTCfx MT5 Terminals',
+    gtcfxDesc: 'To guarantee peak latency (< 15ms) and 0.0 pip raw spreads on Gold, register your trading account through our official GTCfx partnership portal.',
+    gtcfxPerk1: '✓ 0.0 Pip Raw Spread',
+    gtcfxPerk2: '✓ Instant USDT Deposits',
+    gtcfxPerk3: '✓ Zero Slippage Execution',
+    gtcfxCta: 'Open GTCfx Live MT5 Account ↗',
+    gtcfxRef: 'Referral Code: ',
+
+    // Security & FAQ Section
+    faqTag: 'SECURITY & VERIFICATION',
+    faqTitle: 'Frequently Asked Questions',
+    faqQ1: 'How does license activation work on MT5?',
+    faqA1: 'When you subscribe, our cryptographic server generates a unique SHA-256 license key bound to your MT5 account number. Attach the EA in MT5, paste your key into InpLicenseKey, and Algo Trading starts immediately.',
+    faqQ2: 'What is the minimum recommended capital?',
+    faqA2: 'We recommend a minimum balance of $200 – $500 for micro-lot scalping (0.01 lot) on Gold (XAUUSD) to maintain safe drawdown parameters.',
+    faqQ3: 'Can I run this bot on a VPS cloud server?',
+    faqA3: 'Yes, 24/5 VPS cloud hosting is recommended so your bot trades non-stop during market hours without needing your personal computer on.',
+    faqQ4: 'How do I get vendor setup support?',
+    faqA4: 'Our technical team is available 24/7 on WhatsApp hotline at +91 94950 97786 for live remote installation and parameter tuning.',
+    faqWhatsappBtn: 'Chat with Support on WhatsApp',
+
+    // Footer
+    footerCopy: '© 2026 B-Magnet Trading Systems. Institutional MT5 Algorithmic Technology. All rights reserved.',
+
+    // Auth & Welcome
+    welcomeTitle: 'Welcome Back',
+    welcomeSub: 'Enter your account details to access your dashboard',
     signInBtn: 'Sign In',
     signUpBtn: 'Sign Up',
+    signinSubmitBtn: 'Continue to Portal →',
     signinBotTitle: 'Institutional MT5 Automated Trading',
     emailPlaceholder: 'Account ID / Username',
     passwordPlaceholder: 'Passcode PIN',
     forgotPwd: 'Forgot passcode?',
-    googleSignIn: 'Sign In with Google',
+    googleSignIn: 'Continue with Google',
     noAccount: "Don't have an account?",
     signUpLink: 'Sign Up',
     themeDark: 'Dark',
     themeLight: 'Light',
-    pwaTitle: 'Install B-Bot Pro App',
+    pwaTitle: 'Install B-Magnet PRO',
     pwaSub: 'Add to Home Screen for fast 1-tap access',
     pwaBtn: 'Install',
-    settingPwaTitle: 'Install App to Home Screen',
+    settingPwaTitle: 'Install B-Magnet to Home Screen',
     brandTitle: 'B-Magnet',
     brandSub: 'Trading & Marketing Bots',
     navExplore: 'Explore',
@@ -47,9 +170,6 @@ const TRANSLATIONS = {
     metricRoi: 'Monthly ROI',
     metricDd: 'Max DD',
     metricPf: 'Profit Factor',
-    gtcfxTitle: 'Register GTCfx Account',
-    gtcfxSub: 'Recommended MT5 broker for B-Magnet Gold EA',
-    gtcfxBtn: 'Register',
     subsTitle: 'My Bot Subscriptions',
     subsSub: 'Manage licenses, MT5 account binding & active status',
     addBotBtn: 'Add Bot',
@@ -84,8 +204,8 @@ const TRANSLATIONS = {
     settingCurrency: 'Display Currency',
     settingTheme: 'App Theme Mode',
     settingLang: 'Language / اللغة',
-    settingReset: 'Reset Demo State',
-    settingResetSub: 'Restore original demo bots, subscriptions & invoices',
+    settingReset: 'Restore Default Data',
+    settingResetSub: 'Reset and sync database with factory default parameters',
     settingLogout: 'Logout Account',
     logoutConfirmTitle: 'Log Out of B-Magnet?',
     logoutConfirmDesc: 'Are you sure you want to end your active session? You will return to the home screen and can sign in anytime.',
@@ -95,35 +215,158 @@ const TRANSLATIONS = {
     adminLockTitle: 'CRM Access Locked',
     adminLockDesc: 'This section contains private customer records, MT5 accounts, and wallet balances. Enter the 4-digit Master Security Passcode to unlock.',
     adminUnlockBtn: 'Unlock CRM',
-    iosGuideTitle: 'Add B-Bot Pro to Home Screen',
-    iosGuideDesc: 'Install B-Bot Pro on your phone for full-screen trading, faster alerts, and instant 1-tap launch.',
+    iosGuideTitle: 'Add B-Magnet PRO to Home Screen',
+    iosGuideDesc: 'Install B-Magnet PRO on your phone for full-screen trading, faster alerts, and instant 1-tap launch.',
     iosStep1Title: 'Tap the Share Button',
     iosStep1Desc: 'Tap the Share icon in your Safari bottom navigation bar.',
     iosStep2Title: 'Select "Add to Home Screen"',
     iosStep2Desc: 'Scroll down the action list and tap Add to Home Screen.',
     iosStep3Title: 'Tap "Add" in Top Right',
-    iosStep3Desc: 'Confirm and tap Add to place the official B-Bot Pro icon on your home screen!',
+    iosStep3Desc: 'Confirm and tap Add to place the official B-Magnet PRO icon on your home screen!',
     btnGotIt: 'Got It, Thanks!'
   },
   ar: {
+    // Landing Header & Navigation
+    landingNavProducts: 'المنتجات ▾',
+    landingNavArch: 'الهندسة الكمية ▾',
+    landingNavPricing: 'الأسعار',
+    landingNavGtcfx: 'وسيط GTCfx',
+    landingNavFaq: 'الأسئلة الشائعة',
+    landingLoginBtn: 'تسجيل الدخول',
+    landingSignUpBtn: 'إنشاء حساب',
+
+    // Hero Section
+    heroTitle: 'خوارزميات تداول<br>الذهب الآلية<br>والمخصصة',
+    heroDesc: 'تداول بدقة كمية مؤسسية وحوّل تقلبات السوق إلى نمو مستمر مع مستشار التداول الآلي (EA) من B-Magnet على الذهب (XAUUSD).',
+    heroGetStarted: 'ابدأ الآن',
+    heroTalkExpert: 'تحدث مع خبير',
+    heroExpertPrompt: 'هل ترغب بالتحدث مع خبير؟',
+    heroActiveChip: 'خوارزمية الذهب MT5: نشطة',
+    hfcTagText: 'خوارزمية كمية مؤسسية',
+    hcpbTag: 'ملف الشركة والرؤية المؤسسية',
+    hcpbHeading: 'الهندسة الكمية المؤسسية لتداول الذهب',
+    hcpbText: 'تعتبر بي ماغنيت شركة رائدة في تطوير خوارزميات التداول الآلي، متخصصة في مستشاري منصة MT5 فائقة السرعة للذهب (XAUUSD). صُممت لتحويل تقلبات الأسواق إلى نمو مستمر ومحمي عبر كشف تدفق السيولة المغناطيسي وإدارة المخاطر وسرعة تنفيذ أقل من 15 مللي ثانية.',
+    tbphBadgeText: 'ملف الشركة والرؤية المؤسسية',
+    tbphTitle: 'أنظمة B-Magnet للتداول الكمي',
+    tbphSubtitle: 'الخوارزميات الكمية المؤسسية لتداول الذهب (XAUUSD) على منصة MT5',
+    tbphDesc: 'تعتبر بي ماغنيت مؤسسة رائدة في التكنولوجيا المالية والهندسة الكمية، متخصصة في تطوير مستشاري التداول الآلي عالي التردد (EA) للذهب (XAUUSD) على منصة MetaTrader 5. صُممت أنظمتنا لإلغاء أخطاء التداول البشري وحماية رأس المال عبر كشف تدفق السيولة المغناطيسي، وسرعة تنفيذ أقل من 15 مللي ثانية مع وسيط GTCfx، ونظام أمان وتشفير التراخيص SHA-256.',
+    tbphPillar1: 'دقة خوارزمية مؤكدة',
+    tbphPillar2: 'إدارة مخاطر ديناميكية',
+    tbphPillar3: 'ربط مباشر مع GTCfx',
+    tbphPillar4: 'دعم فني وتثبيت واتساب',
+    tbphBtnGetStarted: 'ابدأ الآن مع B-Magnet',
+    tbphBtnWhatsapp: 'دعم واتساب (+91 94950 97786)',
+    dashProfileBadge: 'ملف الشركة والرؤية المؤسسية',
+    dashProfileTitle: 'أنظمة B-Magnet للتداول الكمي',
+    dashProfileDesc: 'شركة هندسة خوارزميات كمية متخصصة في توفير روبوتات تداول عالية الدقة على الذهب (XAUUSD) لمنصة MT5 مع نظام حماية رأس المال وسرعة تنفيذ فائقة وتشفير SHA-256.',
+
+    // Metrics
+    metricWinRateLbl: 'نسبة فوز مؤكدة',
+    metricRoiLbl: 'عائد شهري مستهدف',
+    metricDdLbl: 'حماية التراجع الأقصى',
+    metricLatencyLbl: 'سرعة تنفيذ MT5',
+
+    // B-Magnet International Section
+    bmiTag: 'منظومة B-MAGNET الدولية',
+    bmiMainTitle: 'حول شركة B-Magnet الدولية',
+    bmiMainSubtitle: 'ريادة الذكاء الاصطناعي والخوارزميات الكمية المؤسسية في أكثر من 14 دولة مع تنفيذ فائق السرعة على منصة MT5.',
+    bmiDossierBadge: 'تكنولوجيا مالية وهندسة كمية مؤسسية',
+    bmiDossierTitle: 'الهندسة الخوارزمية العالمية والريادة المؤسسية',
+    bmiDossierP1: 'تعتبر <strong>B-Magnet الدولية</strong> مؤسسة تكنولوجيا مالية رائدة متخصصة في تطوير خوارزميات التداول الآلي والكمي للسلع، وعلى رأسها <strong>الذهب (XAUUSD)</strong> على منصة MT5.',
+    bmiDossierP2: 'تخدم عملاء ومؤسسات في الإمارات، والشرق الأوسط، وأوروبا، وآسيا، حيث تدمج بين تحليل تدفق السيولة عالي التردد وإدارة المخاطر البنكية لتحويل تقلبات السوق إلى نمو مستمر ومحمي.',
+    bmiPillar1Title: 'أكثر من 14 دولة',
+    bmiPillar1Desc: 'متداولون وصناديق تحوط في دبي، بريطانيا، سنغافورة وآسيا.',
+    bmiPillar2Title: 'سرعة تنفيذ أقل من 15ms',
+    bmiPillar2Desc: 'ربط مباشر بالألياف الضوئية مع خوادم GTCfx ECN بدون انزلاق سعري.',
+    bmiPillar3Title: 'نظام تشفير SHA-256',
+    bmiPillar3Desc: 'ربط مشفر بكل حساب MT5 لمنع الاستنساخ أو القرصنة.',
+    bmiPillar4Title: 'مكتب دعم عالمي 24/7',
+    bmiPillar4Desc: 'خط ساخن للتثبيت عن بعد والمساعدة الفنية على +91 94950 97786.',
+    bmiBtnJoin: 'انضم إلى شبكة B-Magnet الدولية',
+    bmiBtnWa: 'الخط الساخن واتساب (+91 94950 97786)',
+    bmiHoloTicker: 'B-Magnet Gold Hunter v0.8 • أكثر من 1,200 متداول عالمي • تنفيذ MT5 مباشر',
+
+    // Quantitative Architecture Section
+    aboutTag: 'الهندسة الكمية المؤسسية',
+    aboutTitle: 'لماذا تتداول مع B-Magnet Gold Hunter v0.8؟',
+    aboutDesc: 'صُمم خصيصاً لأسواق الذهب والسلع عالية التقلب، حيث تلغي خوارزميتنا التداول العاطفي وتحمي رأس المال المؤسسي.',
+    lfgTitle1: 'كشف تدفق الأوامر المغناطيسي',
+    lfgDesc1: 'يفحص عمق السوق المؤسسي ومناطق اختلال السيولة لحظياً، وينفذ فقط عند نقاط التحول عالية الدقة.',
+    lfgTitle2: 'إدارة المخاطر الديناميكية التكيفية',
+    lfgDesc2: 'يحسب أحجام العقود الميكرو تلقائياً نسبة إلى رصيد الحساب، مع أوامر وقف خسارة متدرجة وحدود تراجع يومية صارمة.',
+    lfgTitle3: 'تنفيذ متعدد المنصات على GTCfx',
+    lfgDesc3: 'مصمم للمزامنة الفائقة عبر منصات تداول MT5 الحية بسرعة تنفيذ أقل من 15 مللي ثانية.',
+    lfgTitle4: 'أمان تشفير SHA-256',
+    lfgDesc4: 'ربط مباشر وحصري برقم حساب MT5 لمنع الاستنساخ غير المصرح به وضمان أعلى سرعة تنفيذ.',
+
+    // Institutional Pricing Matrix Section
+    plansTag: 'مصفوفة الخطط المؤسسية',
+    plansTitle: 'اختر تصريح روبوت Gold Hunter الخاص بك',
+    plansDesc: 'تشمل جميع التصاريح وصولاً كاملاً لمستشار MT5، ومفتاح ترخيص مشفر تلقائياً، ودعماً مخصصاً للإعداد.',
+    lpPopularBadge: 'الأكثر طلباً',
+    lpBadge1: 'تجربة سريعة',
+    lpName1: 'تصريح تجريبي',
+    lpDur1: 'وصول حي لمدة يومين',
+    lpBtn1: 'اختيار التجريبي ($10)',
+    lpBadge2: 'قياسي',
+    lpName2: 'تصريح شهر واحد',
+    lpDur2: 'وصول كامل لمدة 30 يوماً',
+    lpBtn2: 'تفعيل شهر واحد ($100)',
+    lpBadge3: 'باقة التوفير',
+    lpName3: 'تصريح 3 أشهر',
+    lpDur3: 'وصول كامل 90 يوماً (وفر $50)',
+    lpBtn3: 'تفعيل 3 أشهر ($250)',
+    lpBadge4: 'سنوي VIP',
+    lpName4: 'تصريح سنة VIP',
+    lpDur4: 'وصول لمدة 365 يوماً (وفر $300)',
+    lpBtn4: 'تفعيل سنة كاملة ($900)',
+
+    // GTCfx Broker Partnership Section
+    gtcfxBadge: 'الشراكة الرسمية مع الوسيط',
+    gtcfxTitle: 'مُحسّن حصرياً لمنصات GTCfx MT5',
+    gtcfxDesc: 'لضمان أدنى زمن استجابة (< 15ms) وسبريد خام 0.0 نقطة على الذهب، سجّل حساب التداول الخاص بك عبر بوابة شراكتنا الرسمية.',
+    gtcfxPerk1: '✓ سبريد خام 0.0 نقطة',
+    gtcfxPerk2: '✓ إيداع فوري عبر USDT',
+    gtcfxPerk3: '✓ تنفيذ بدون انزلاق سعري',
+    gtcfxCta: 'افتح حساب MT5 حقيقي مع GTCfx ↗',
+    gtcfxRef: 'رمز الإحالة: ',
+
+    // Security & FAQ Section
+    faqTag: 'الأمان والتحقق',
+    faqTitle: 'الأسئلة الشائعة',
+    faqQ1: 'كيف يعمل تفعيل الترخيص على MT5؟',
+    faqA1: 'عند الاشتراك، يقوم خادمنا المشفر بتوليد مفتاح ترخيص SHA-256 فريد مرتبط برقم حساب MT5 الخاص بك. قم بإدراج الروبوت في منصة MT5 والصق المفتاح لتبدأ الخوارزمية فوراً.',
+    faqQ2: 'ما هو الحد الأدنى الموصى به لرأس المال؟',
+    faqA2: 'نوصي برصيد لا يقل عن 200$ إلى 500$ للمضاربة بعقود ميكرو (0.01 لوت) على الذهب (XAUUSD) للحفاظ على مستويات تراجع آمنة.',
+    faqQ3: 'هل يمكنني تشغيل هذا الروبوت على خادم سحابي VPS؟',
+    faqA3: 'نعم، يوصى باستخدام خادم VPS سحابي ليعمل الروبوت بدون توقف 24/5 خلال ساعات عمل السوق دون الحاجة لإبقاء حاسوبك الشخصي قيد التشغيل.',
+    faqQ4: 'كيف أحصل على دعم الإعداد والتركيب من المطور؟',
+    faqA4: 'فريقنا التقني متاح على مدار الساعة عبر واتساب على الرقم +91 94950 97786 للمساعدة في التثبيت عن بعد وضبط الإعدادات.',
+    faqWhatsappBtn: 'تواصل مع الدعم الفني عبر واتساب',
+
+    // Footer
+    footerCopy: '© 2026 أنظمة B-Magnet للتداول الآلي. تقنية خوارزميات MT5 المؤسسية. جميع الحقوق محفوظة.',
+
+    // Auth & Welcome
     welcomeTitle: 'مرحباً بك',
-    welcomeSub: 'سجّل الدخول للوصول إلى اشتراكات وتراخيص التداول الآلي',
+    welcomeSub: 'أدخل تفاصيل حسابك للوصول إلى لوحة التحكم',
     signInBtn: 'تسجيل الدخول',
     signUpBtn: 'إنشاء حساب جديد',
+    signinSubmitBtn: 'المتابعة إلى البوابة ←',
     signinBotTitle: 'تداول الذهب الآلي عبر منصة MT5 المؤسسية',
     emailPlaceholder: 'اسم المستخدم أو المعرف',
     passwordPlaceholder: 'رمز الدخول السريع',
     forgotPwd: 'استعادة رمز الدخول؟',
-    googleSignIn: 'الدخول باستخدام Google',
+    googleSignIn: 'المتابعة باستخدام Google',
     noAccount: 'ليس لديك حساب بعد؟',
     signUpLink: 'إنشاء حساب',
     themeDark: 'داكن',
     themeLight: 'فاتح',
-    pwaTitle: 'تثبيت تطبيق B-Bot Pro',
+    pwaTitle: 'تثبيت تطبيق B-Magnet PRO',
     pwaSub: 'أضف التطبيق للشاشة الرئيسية للوصول السريع وبملء الشاشة',
     pwaBtn: 'تثبيت',
     settingPwaTitle: 'تثبيت التطبيق على الشاشة الرئيسية',
-    settingPwaSub: 'حمّل B-Bot Pro كتطبيق ويب على جهازك',
+    settingPwaSub: 'حمّل B-Magnet PRO كتطبيق ويب على جهازك',
     brandTitle: 'بي ماغنيت',
     brandSub: 'بوتات التداول والتسويق الآلي',
     navExplore: 'استكشاف',
@@ -147,9 +390,6 @@ const TRANSLATIONS = {
     metricRoi: 'العائد الشهري',
     metricDd: 'أقصى تراجع',
     metricPf: 'مُعامل الربح',
-    gtcfxTitle: 'تسجيل حساب GTCfx',
-    gtcfxSub: 'وسيط MT5 الموصى به لبوت B-Magnet للذهب',
-    gtcfxBtn: 'تسجيل',
     subsTitle: 'اشتراكات وتراخيص التداول',
     subsSub: 'إدارة التراخيص وربط حسابات MT5 وحالة التشغيل',
     addBotBtn: 'إضافة بوت',
@@ -184,8 +424,8 @@ const TRANSLATIONS = {
     settingCurrency: 'عملة العرض',
     settingTheme: 'مظهر التطبيق',
     settingLang: 'اللغة / Language',
-    settingReset: 'إعادة ضبط البيانات التجريبية',
-    settingResetSub: 'استعادة البوتات التجريبية الأصلية والاشتراكات',
+    settingReset: 'استعادة البيانات الافتراضية',
+    settingResetSub: 'إعادة ضبط ومزامنة قاعدة البيانات مع المعايير الافتراضية',
     settingLogout: 'تسجيل الخروج',
     logoutConfirmTitle: 'هل تريد تسجيل الخروج من B-Magnet؟',
     logoutConfirmDesc: 'هل أنت متأكد من إنهاء جلستك الحالية؟ ستعود إلى الصفحة الرئيسية ويمكنك تسجيل الدخول في أي وقت.',
@@ -243,6 +483,7 @@ class BotHubApp {
     setInterval(() => this.updateClock(), 10000);
 
     this.initThemeAndLanguage();
+    this.initHeroGravityPhysics();
     this.setupEventListeners();
     await this.initAuth();
     await this.fetchData();
@@ -368,6 +609,121 @@ class BotHubApp {
   }
 
   // -------------------------------------------------------------
+  // 3D MOUSE GRAVITY & AMBIENT HERO LOGO PHYSICS ENGINE
+  // -------------------------------------------------------------
+  initHeroGravityPhysics() {
+    const hero = document.getElementById('heroSection') || document.getElementById('viewLandingPage');
+    if (!hero) return;
+
+    // Physics state variables
+    let mouse = { x: 0, y: 0, targetX: 0, targetY: 0, isHovering: false };
+    let time = 0;
+
+    const onMouseMove = (e) => {
+      const w = window.innerWidth || 1200;
+      const h = window.innerHeight || 800;
+      const x = e.clientX - w / 2;
+      const y = e.clientY - h / 2;
+      
+      const normX = Math.max(-1.4, Math.min(1.4, x / (w / 2)));
+      const normY = Math.max(-1.4, Math.min(1.4, y / (h / 2)));
+
+      mouse.targetX = normX;
+      mouse.targetY = normY;
+      mouse.isHovering = true;
+    };
+
+    const onMouseLeave = () => {
+      mouse.isHovering = false;
+      mouse.targetX = 0;
+      mouse.targetY = 0;
+    };
+
+    const onTouchMove = (e) => {
+      if (e.touches && e.touches[0]) {
+        const touch = e.touches[0];
+        const w = window.innerWidth || 1200;
+        const h = window.innerHeight || 800;
+        const x = touch.clientX - w / 2;
+        const y = touch.clientY - h / 2;
+        mouse.targetX = Math.max(-1.2, Math.min(1.2, x / (w / 2)));
+        mouse.targetY = Math.max(-1.2, Math.min(1.2, y / (h / 2)));
+        mouse.isHovering = true;
+      }
+    };
+
+    const onDeviceOrientation = (e) => {
+      if (e.gamma !== null && e.beta !== null) {
+        const tiltX = Math.max(-1, Math.min(1, e.gamma / 25));
+        const tiltY = Math.max(-1, Math.min(1, (e.beta - 40) / 25));
+        mouse.targetX = tiltX;
+        mouse.targetY = tiltY;
+      }
+    };
+
+    // Attach listeners across window
+    window.addEventListener('mousemove', onMouseMove, { passive: true });
+    window.addEventListener('mouseleave', onMouseLeave, { passive: true });
+    window.addEventListener('touchmove', onTouchMove, { passive: true });
+    window.addEventListener('touchend', onMouseLeave, { passive: true });
+
+    if (window.DeviceOrientationEvent && typeof DeviceOrientationEvent.requestPermission !== 'function') {
+      window.addEventListener('deviceorientation', onDeviceOrientation, { passive: true });
+    }
+
+    // High performance continuous render loop with 60fps/120fps Lerp damping
+    const renderLoop = () => {
+      time += 0.025;
+
+      // Idle harmonic sine wave drift
+      const idleX = Math.sin(time * 0.7) * 0.12;
+      const idleY = Math.cos(time * 0.9) * 0.12;
+
+      // Linear interpolation damping
+      const lerpFactor = 0.075;
+      mouse.x += (mouse.targetX + idleX - mouse.x) * lerpFactor;
+      mouse.y += (mouse.targetY + idleY - mouse.y) * lerpFactor;
+
+      // 3D Matrix calculations for the Top Brand Profile Stage Logo (#tbphBigLogo)
+      const tbphLogo = document.getElementById('tbphBigLogo');
+      if (tbphLogo) {
+        const topRotY = mouse.x * 22;
+        const topRotX = -mouse.y * 18;
+        const topRotZ = mouse.x * mouse.y * 8;
+        const topTransX = mouse.x * 20;
+        const topTransY = mouse.y * 14;
+        tbphLogo.style.transform = `translate3d(${topTransX.toFixed(2)}px, ${topTransY.toFixed(2)}px, 0) rotateX(${topRotX.toFixed(2)}deg) rotateY(${topRotY.toFixed(2)}deg) rotateZ(${topRotZ.toFixed(2)}deg)`;
+      }
+
+      // 3D Matrix calculations for B-Magnet International Hologram Showcase Logo (#bmiHoloLogoPivot)
+      const bmiLogo = document.getElementById('bmiHoloLogoPivot');
+      if (bmiLogo) {
+        const bmiRotY = mouse.x * 25;
+        const bmiRotX = -mouse.y * 20;
+        const bmiRotZ = mouse.x * mouse.y * 10;
+        const bmiTransX = mouse.x * 24;
+        const bmiTransY = mouse.y * 18;
+        bmiLogo.style.transform = `translate3d(${bmiTransX.toFixed(2)}px, ${bmiTransY.toFixed(2)}px, 0) rotateX(${bmiRotX.toFixed(2)}deg) rotateY(${bmiRotY.toFixed(2)}deg) rotateZ(${bmiRotZ.toFixed(2)}deg)`;
+      }
+
+      // 3D Matrix calculations for Auth Left Panel Logo (#authLeftLogoPivot)
+      const authLogo = document.getElementById('authLeftLogoPivot');
+      if (authLogo) {
+        const authRotY = mouse.x * 24;
+        const authRotX = -mouse.y * 18;
+        const authRotZ = mouse.x * mouse.y * 8;
+        const authTransX = mouse.x * 20;
+        const authTransY = mouse.y * 14;
+        authLogo.style.transform = `translate3d(${authTransX.toFixed(2)}px, ${authTransY.toFixed(2)}px, 0) rotateX(${authRotX.toFixed(2)}deg) rotateY(${authRotY.toFixed(2)}deg) rotateZ(${authRotZ.toFixed(2)}deg)`;
+      }
+
+      requestAnimationFrame(renderLoop);
+    };
+
+    requestAnimationFrame(renderLoop);
+  }
+
+  // -------------------------------------------------------------
   // THEME (DARK / LIGHT) & LANGUAGE (EN / AR) SYSTEM
   // -------------------------------------------------------------
   initThemeAndLanguage() {
@@ -384,27 +740,57 @@ class BotHubApp {
     this.state.theme = theme;
     localStorage.setItem('b_bot_theme', theme);
     
-    const welcomeIcon = document.getElementById('welcomeThemeIcon');
-    const welcomeLabel = document.getElementById('welcomeThemeLabel');
-    const headerIcon = document.getElementById('headerThemeIcon');
-    const accountIcon = document.getElementById('accountThemeSettingIcon');
-    const accountDisplay = document.getElementById('activeThemeDisplay');
-
     if (theme === 'dark') {
       document.body.classList.add('theme-dark');
-      if (welcomeIcon) welcomeIcon.textContent = 'light_mode';
-      if (headerIcon) headerIcon.textContent = 'light_mode';
-      if (accountIcon) accountIcon.textContent = 'light_mode';
-      if (welcomeLabel) welcomeLabel.textContent = this.state.lang === 'ar' ? 'فاتح' : 'Light';
-      if (accountDisplay) accountDisplay.textContent = this.state.lang === 'ar' ? 'الوضع الداكن (مفعل)' : 'Dark Mode (Active)';
     } else {
       document.body.classList.remove('theme-dark');
-      if (welcomeIcon) welcomeIcon.textContent = 'dark_mode';
-      if (headerIcon) headerIcon.textContent = 'dark_mode';
-      if (accountIcon) accountIcon.textContent = 'dark_mode';
-      if (welcomeLabel) welcomeLabel.textContent = this.state.lang === 'ar' ? 'داكن' : 'Dark';
-      if (accountDisplay) accountDisplay.textContent = this.state.lang === 'ar' ? 'الوضع الفاتح (مفعل)' : 'Light Mode (Active)';
     }
+
+    const sunSvg = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-svg-icon"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>';
+    const moonSvg = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-svg-icon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+
+    // In Dark theme, show Sun SVG to switch to Light; in Light theme, show Moon SVG to switch to Dark
+    const activeSvg = theme === 'dark' ? sunSvg : moonSvg;
+
+    // Update all theme toggle pills with SVG icon ONLY (zero text)
+    const pills = document.querySelectorAll('.theme-toggle-pill');
+    pills.forEach(pill => {
+      pill.innerHTML = activeSvg;
+    });
+
+    const accountSettingIcon = document.getElementById('accountThemeSettingIcon');
+    if (accountSettingIcon) {
+      accountSettingIcon.innerHTML = activeSvg;
+    }
+
+    const isAr = this.state.lang === 'ar';
+    const accountDisplay = document.getElementById('activeThemeDisplay');
+    if (accountDisplay) {
+      accountDisplay.textContent = isAr 
+        ? (theme === 'dark' ? 'الوضع الداكن (مفعل)' : 'الوضع الفاتح (مفعل)')
+        : (theme === 'dark' ? 'Dark Mode (Active)' : 'Light Mode (Active)');
+    }
+  }
+
+  toggleLanguageDropdown(event, btnElement) {
+    if (event) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    const wrapper = btnElement ? btnElement.closest('.lang-dropdown-wrapper') : null;
+    const allWrappers = document.querySelectorAll('.lang-dropdown-wrapper');
+    allWrappers.forEach(w => {
+      if (w !== wrapper) w.classList.remove('open');
+    });
+    if (wrapper) {
+      wrapper.classList.toggle('open');
+    }
+  }
+
+  selectLanguage(lang) {
+    this.setAppLanguage(lang);
+    const allWrappers = document.querySelectorAll('.lang-dropdown-wrapper');
+    allWrappers.forEach(w => w.classList.remove('open'));
   }
 
   toggleLanguage() {
@@ -416,34 +802,344 @@ class BotHubApp {
     this.state.lang = lang;
     localStorage.setItem('b_bot_lang', lang);
 
-    const btnEn = document.getElementById('langBtnEn');
-    const btnAr = document.getElementById('langBtnAr');
-    const headerLangText = document.getElementById('headerLangText');
-    const activeLangDisplay = document.getElementById('activeLangDisplay');
+    const isAr = lang === 'ar';
+    const root = document.documentElement;
+    const body = document.body;
 
-    if (lang === 'ar') {
-      document.documentElement.setAttribute('dir', 'rtl');
-      document.documentElement.setAttribute('lang', 'ar');
-      document.body.classList.add('lang-ar');
-      document.body.classList.remove('lang-en');
-      if (btnAr) btnAr.classList.add('active');
-      if (btnEn) btnEn.classList.remove('active');
-      if (headerLangText) headerLangText.textContent = 'EN';
-      if (activeLangDisplay) activeLangDisplay.textContent = 'العربية (AR)';
+    if (isAr) {
+      root.setAttribute('dir', 'rtl');
+      root.setAttribute('lang', 'ar');
+      body.classList.add('lang-ar');
+      body.classList.remove('lang-en');
     } else {
-      document.documentElement.setAttribute('dir', 'ltr');
-      document.documentElement.setAttribute('lang', 'en');
-      document.body.classList.add('lang-en');
-      document.body.classList.remove('lang-ar');
-      if (btnEn) btnEn.classList.add('active');
-      if (btnAr) btnAr.classList.remove('active');
-      if (headerLangText) headerLangText.textContent = 'عربي';
-      if (activeLangDisplay) activeLangDisplay.textContent = 'English (EN)';
+      root.setAttribute('dir', 'ltr');
+      root.setAttribute('lang', 'en');
+      body.classList.add('lang-en');
+      body.classList.remove('lang-ar');
     }
 
+    // Update all language dropdown menu items active state
+    document.querySelectorAll('.lang-drop-item').forEach(item => {
+      const itemLang = item.getAttribute('data-lang');
+      if (itemLang === lang) {
+        item.classList.add('active');
+      } else {
+        item.classList.remove('active');
+      }
+    });
+
+    const headerLangText = document.getElementById('headerLangText');
+    if (headerLangText) headerLangText.textContent = isAr ? 'EN' : 'عربي';
+
+    const activeLangDisplay = document.getElementById('activeLangDisplay');
+    if (activeLangDisplay) activeLangDisplay.textContent = isAr ? 'العربية (AR)' : 'English (EN)';
+
+    const cornerLang = document.getElementById('skipioCornerLangText');
+    if (cornerLang) cornerLang.textContent = isAr ? 'العربية' : 'English';
+
     const t = TRANSLATIONS[lang] || TRANSLATIONS.en;
-    
-    // Auth & Welcome
+
+    // --- 0. TOP OF WEBSITE: FULL-WIDTH BRAND PROFILE & 3D LOGO HERO ---
+    const tbphBadge = document.getElementById('tbphBadgeText');
+    const tbphT = document.getElementById('tbphTitle');
+    const tbphSub = document.getElementById('tbphSubtitle');
+    const tbphD = document.getElementById('tbphDesc');
+    const tbphP1 = document.getElementById('tbphPillar1');
+    const tbphP2 = document.getElementById('tbphPillar2');
+    const tbphP3 = document.getElementById('tbphPillar3');
+    const tbphP4 = document.getElementById('tbphPillar4');
+    const tbphBtnGS = document.getElementById('tbphBtnGetStarted');
+    const tbphBtnWA = document.getElementById('tbphBtnWhatsapp');
+
+    if (tbphBadge && t.tbphBadgeText) tbphBadge.textContent = t.tbphBadgeText;
+    if (tbphT && t.tbphTitle) tbphT.textContent = t.tbphTitle;
+    if (tbphSub && t.tbphSubtitle) tbphSub.textContent = t.tbphSubtitle;
+    if (tbphD && t.tbphDesc) tbphD.innerHTML = `<strong>B-Magnet</strong> ${t.tbphDesc.replace(/^B-Magnet /, '').replace(/^تعتبر بي ماغنيت /, '')}`;
+    if (tbphP1 && t.tbphPillar1) tbphP1.textContent = t.tbphPillar1;
+    if (tbphP2 && t.tbphPillar2) tbphP2.textContent = t.tbphPillar2;
+    if (tbphP3 && t.tbphPillar3) tbphP3.textContent = t.tbphPillar3;
+    if (tbphP4 && t.tbphPillar4) tbphP4.textContent = t.tbphPillar4;
+    if (tbphBtnGS && t.tbphBtnGetStarted) tbphBtnGS.textContent = t.tbphBtnGetStarted;
+    if (tbphBtnWA && t.tbphBtnWhatsapp) tbphBtnWA.textContent = t.tbphBtnWhatsapp;
+
+    // Dashboard Top Profile Hero
+    const dpBadge = document.getElementById('dashProfileBadge');
+    const dpTitle = document.getElementById('dashProfileTitle');
+    const dpDesc = document.getElementById('dashProfileDesc');
+    if (dpBadge && t.dashProfileBadge) dpBadge.textContent = t.dashProfileBadge;
+    if (dpTitle && t.dashProfileTitle) dpTitle.textContent = t.dashProfileTitle;
+    if (dpDesc && t.dashProfileDesc) dpDesc.textContent = t.dashProfileDesc;
+
+    // --- 1. LANDING PAGE HEADER & NAVIGATION ---
+    const navProducts = document.getElementById('landingNavProducts');
+    const navArch = document.getElementById('landingNavArch');
+    const navPricing = document.getElementById('landingNavPricing');
+    const navGtcfx = document.getElementById('landingNavGtcfx');
+    const navFaq = document.getElementById('landingNavFaq');
+    const loginBtn = document.getElementById('landingLoginBtn');
+    const signUpBtn = document.getElementById('landingSignUpBtn');
+
+    if (navProducts) navProducts.textContent = t.landingNavProducts;
+    if (navArch) navArch.textContent = t.landingNavArch;
+    if (navPricing) navPricing.textContent = t.landingNavPricing;
+    if (navGtcfx) navGtcfx.textContent = t.landingNavGtcfx;
+    if (navFaq) navFaq.textContent = t.landingNavFaq;
+    if (loginBtn) loginBtn.textContent = t.landingLoginBtn;
+    if (signUpBtn) signUpBtn.textContent = t.landingSignUpBtn;
+
+    // --- 2. HERO SECTION ---
+    const heroTitle = document.getElementById('skipioHeroTitle');
+    const heroDesc = document.getElementById('skipioHeroDesc');
+    const btnHeroGetStarted = document.getElementById('btnHeroGetStartedText');
+    const btnHeroTalkExpert = document.getElementById('btnHeroTalkExpertText');
+    const expertPrompt = document.getElementById('skipioExpertPrompt');
+    const heroChip = document.getElementById('landingHeroActiveChip');
+    const hfcTag = document.getElementById('hfcTagText');
+    const hcpbT = document.getElementById('hcpbTag');
+    const hcpbH = document.getElementById('hcpbHeading');
+    const hcpbTxt = document.getElementById('hcpbText');
+
+    if (heroTitle) heroTitle.innerHTML = t.heroTitle;
+    if (heroDesc) heroDesc.textContent = t.heroDesc;
+    if (btnHeroGetStarted) btnHeroGetStarted.textContent = t.heroGetStarted;
+    if (btnHeroTalkExpert) btnHeroTalkExpert.textContent = t.heroTalkExpert;
+    if (expertPrompt) expertPrompt.textContent = t.heroExpertPrompt;
+    if (heroChip) heroChip.textContent = t.heroActiveChip;
+    if (hfcTag && t.hfcTagText) hfcTag.textContent = t.hfcTagText;
+    if (hcpbT && t.hcpbTag) hcpbT.innerHTML = `<span class="pulse-dot" style="background:#10b981;"></span> ${t.hcpbTag}`;
+    if (hcpbH && t.hcpbHeading) hcpbH.textContent = t.hcpbHeading;
+    if (hcpbTxt && t.hcpbText) hcpbTxt.textContent = t.hcpbText;
+
+    // Metrics
+    const metricWinRate = document.getElementById('landingMetricWinRateLbl');
+    const metricRoi = document.getElementById('landingMetricRoiLbl');
+    const metricDd = document.getElementById('landingMetricDdLbl');
+    const metricLatency = document.getElementById('landingMetricLatencyLbl');
+
+    if (metricWinRate) metricWinRate.textContent = t.metricWinRateLbl;
+    if (metricRoi) metricRoi.textContent = t.metricRoiLbl;
+    if (metricDd) metricDd.textContent = t.metricDdLbl;
+    if (metricLatency) metricLatency.textContent = t.metricLatencyLbl;
+
+    // --- 2.5 B-MAGNET INTERNATIONAL SECTION ---
+    const bmiTag = document.getElementById('bmiTag');
+    const bmiTitle = document.getElementById('bmiMainTitle');
+    const bmiSubtitle = document.getElementById('bmiMainSubtitle');
+    const bmiBadge = document.getElementById('bmiDossierBadge');
+    const bmiDossierTitle = document.getElementById('bmiDossierTitle');
+    const bmiP1 = document.getElementById('bmiDossierP1');
+    const bmiP2 = document.getElementById('bmiDossierP2');
+    const bmiP1T = document.getElementById('bmiPillar1Title');
+    const bmiP1D = document.getElementById('bmiPillar1Desc');
+    const bmiP2T = document.getElementById('bmiPillar2Title');
+    const bmiP2D = document.getElementById('bmiPillar2Desc');
+    const bmiP3T = document.getElementById('bmiPillar3Title');
+    const bmiP3D = document.getElementById('bmiPillar3Desc');
+    const bmiP4T = document.getElementById('bmiPillar4Title');
+    const bmiP4D = document.getElementById('bmiPillar4Desc');
+    const bmiBtnJoin = document.getElementById('bmiBtnJoin');
+    const bmiBtnWa = document.getElementById('bmiBtnWa');
+    const bmiHoloTicker = document.getElementById('bmiHoloTickerText');
+
+    if (bmiTag && t.bmiTag) bmiTag.textContent = t.bmiTag;
+    if (bmiTitle && t.bmiMainTitle) bmiTitle.textContent = t.bmiMainTitle;
+    if (bmiSubtitle && t.bmiMainSubtitle) bmiSubtitle.textContent = t.bmiMainSubtitle;
+    if (bmiBadge && t.bmiDossierBadge) bmiBadge.textContent = t.bmiDossierBadge;
+    if (bmiDossierTitle && t.bmiDossierTitle) bmiDossierTitle.textContent = t.bmiDossierTitle;
+    if (bmiP1 && t.bmiDossierP1) bmiP1.innerHTML = t.bmiDossierP1;
+    if (bmiP2 && t.bmiDossierP2) bmiP2.innerHTML = t.bmiDossierP2;
+    if (bmiP1T && t.bmiPillar1Title) bmiP1T.textContent = t.bmiPillar1Title;
+    if (bmiP1D && t.bmiPillar1Desc) bmiP1D.textContent = t.bmiPillar1Desc;
+    if (bmiP2T && t.bmiPillar2Title) bmiP2T.textContent = t.bmiPillar2Title;
+    if (bmiP2D && t.bmiPillar2Desc) bmiP2D.textContent = t.bmiPillar2Desc;
+    if (bmiP3T && t.bmiPillar3Title) bmiP3T.textContent = t.bmiPillar3Title;
+    if (bmiP3D && t.bmiPillar3Desc) bmiP3D.textContent = t.bmiPillar3Desc;
+    if (bmiP4T && t.bmiPillar4Title) bmiP4T.textContent = t.bmiPillar4Title;
+    if (bmiP4D && t.bmiPillar4Desc) bmiP4D.textContent = t.bmiPillar4Desc;
+    if (bmiBtnJoin && t.bmiBtnJoin) bmiBtnJoin.textContent = t.bmiBtnJoin;
+    if (bmiBtnWa && t.bmiBtnWa) bmiBtnWa.textContent = t.bmiBtnWa;
+    if (bmiHoloTicker && t.bmiHoloTicker) bmiHoloTicker.textContent = t.bmiHoloTicker;
+
+    // --- 3. QUANTITATIVE ARCHITECTURE ---
+    const aboutTag = document.getElementById('landingAboutTag');
+    const aboutTitle = document.getElementById('landingAboutTitle');
+    const aboutDesc = document.getElementById('landingAboutDesc');
+    const lfgT1 = document.getElementById('lfgTitle1');
+    const lfgD1 = document.getElementById('lfgDesc1');
+    const lfgT2 = document.getElementById('lfgTitle2');
+    const lfgD2 = document.getElementById('lfgDesc2');
+    const lfgT3 = document.getElementById('lfgTitle3');
+    const lfgD3 = document.getElementById('lfgDesc3');
+    const lfgT4 = document.getElementById('lfgTitle4');
+    const lfgD4 = document.getElementById('lfgDesc4');
+
+    if (aboutTag) aboutTag.textContent = t.aboutTag;
+    if (aboutTitle) aboutTitle.textContent = t.aboutTitle;
+    if (aboutDesc) aboutDesc.textContent = t.aboutDesc;
+    if (lfgT1) lfgT1.textContent = t.lfgTitle1;
+    if (lfgD1) lfgD1.textContent = t.lfgDesc1;
+    if (lfgT2) lfgT2.textContent = t.lfgTitle2;
+    if (lfgD2) lfgD2.textContent = t.lfgDesc2;
+    if (lfgT3) lfgT3.textContent = t.lfgTitle3;
+    if (lfgD3) lfgD3.textContent = t.lfgDesc3;
+    if (lfgT4) lfgT4.textContent = t.lfgTitle4;
+    if (lfgD4) lfgD4.textContent = t.lfgDesc4;
+
+    // --- 4. INSTITUTIONAL PRICING MATRIX ---
+    const plansTag = document.getElementById('landingPlansTag');
+    const plansTitle = document.getElementById('landingPlansTitle');
+    const plansDesc = document.getElementById('landingPlansDesc');
+    const lpPopBadge = document.getElementById('lpPopularBadge');
+
+    if (plansTag) plansTag.textContent = t.plansTag;
+    if (plansTitle) plansTitle.textContent = t.plansTitle;
+    if (plansDesc) plansDesc.textContent = t.plansDesc;
+    if (lpPopBadge) lpPopBadge.textContent = t.lpPopularBadge;
+
+    const lpB1 = document.getElementById('lpBadge1');
+    const lpN1 = document.getElementById('lpName1');
+    const lpD1 = document.getElementById('lpDur1');
+    const lpBtn1 = document.getElementById('lpBtn1Text');
+    if (lpB1) lpB1.textContent = t.lpBadge1;
+    if (lpN1) lpN1.textContent = t.lpName1;
+    if (lpD1) lpD1.textContent = t.lpDur1;
+    if (lpBtn1) lpBtn1.textContent = t.lpBtn1;
+
+    const lpB2 = document.getElementById('lpBadge2');
+    const lpN2 = document.getElementById('lpName2');
+    const lpD2 = document.getElementById('lpDur2');
+    const lpBtn2 = document.getElementById('lpBtn2Text');
+    if (lpB2) lpB2.textContent = t.lpBadge2;
+    if (lpN2) lpN2.textContent = t.lpName2;
+    if (lpD2) lpD2.textContent = t.lpDur2;
+    if (lpBtn2) lpBtn2.textContent = t.lpBtn2;
+
+    const lpB3 = document.getElementById('lpBadge3');
+    const lpN3 = document.getElementById('lpName3');
+    const lpD3 = document.getElementById('lpDur3');
+    const lpBtn3 = document.getElementById('lpBtn3Text');
+    if (lpB3) lpB3.textContent = t.lpBadge3;
+    if (lpN3) lpN3.textContent = t.lpName3;
+    if (lpD3) lpD3.textContent = t.lpDur3;
+    if (lpBtn3) lpBtn3.textContent = t.lpBtn3;
+
+    const lpB4 = document.getElementById('lpBadge4');
+    const lpN4 = document.getElementById('lpName4');
+    const lpD4 = document.getElementById('lpDur4');
+    const lpBtn4 = document.getElementById('lpBtn4Text');
+    if (lpB4) lpB4.textContent = t.lpBadge4;
+    if (lpN4) lpN4.textContent = t.lpName4;
+    if (lpD4) lpD4.textContent = t.lpDur4;
+    if (lpBtn4) lpBtn4.textContent = t.lpBtn4;
+
+    // Pricing Feature Lists
+    const lpFeat1 = document.getElementById('lpFeaturesList1');
+    const lpFeat2 = document.getElementById('lpFeaturesList2');
+    const lpFeat3 = document.getElementById('lpFeaturesList3');
+    const lpFeat4 = document.getElementById('lpFeaturesList4');
+
+    if (isAr) {
+      if (lpFeat1) lpFeat1.innerHTML = `
+        <li><span class="text-emerald" style="font-weight:900; margin-left:6px;">✓</span> 2-Day Complete EA Activation</li>
+        <li><span class="text-emerald" style="font-weight:900; margin-left:6px;">✓</span> 1 MT5 Live or Demo Account</li>
+        <li><span class="text-emerald" style="font-weight:900; margin-left:6px;">✓</span> Default Standard Preset</li>
+        <li><span class="text-emerald" style="font-weight:900; margin-left:6px;">✓</span> 24/5 Auto Gold Scalping</li>
+      `;
+      if (lpFeat2) lpFeat2.innerHTML = `
+        <li><span class="text-emerald" style="font-weight:900; margin-left:6px;">✓</span> تداول غير مقيد لمدة 30 يوماً</li>
+        <li><span class="text-emerald" style="font-weight:900; margin-left:6px;">✓</span> ربط حساب MT5 حقيقي واحد</li>
+        <li><span class="text-emerald" style="font-weight:900; margin-left:6px;">✓</span> إعدادات مخاطر قوية وآمنة</li>
+        <li><span class="text-emerald" style="font-weight:900; margin-left:6px;">✓</span> دعم VIP ذو أولوية عبر واتساب</li>
+      `;
+      if (lpFeat3) lpFeat3.innerHTML = `
+        <li><span class="text-emerald" style="font-weight:900; margin-left:6px;">✓</span> ترخيص غير مقيد لمدة 90 يوماً</li>
+        <li><span class="text-emerald" style="font-weight:900; margin-left:6px;">✓</span> ربط حساب MT5 واحد</li>
+        <li><span class="text-emerald" style="font-weight:900; margin-left:6px;">✓</span> تحديث حماية التقلبات العصبية</li>
+        <li><span class="text-emerald" style="font-weight:900; margin-left:6px;">✓</span> مساعدة إعداد سحابي VPS شخصية</li>
+      `;
+      if (lpFeat4) lpFeat4.innerHTML = `
+        <li><span class="text-emerald" style="font-weight:900; margin-left:6px;">✓</span> تصريح تداول غير محدود 365 يوماً</li>
+        <li><span class="text-emerald" style="font-weight:900; margin-left:6px;">✓</span> ربط حسابين MT5</li>
+        <li><span class="text-emerald" style="font-weight:900; margin-left:6px;">✓</span> ترقيات مجانية للإصدارات القادمة</li>
+        <li><span class="text-emerald" style="font-weight:900; margin-left:6px;">✓</span> خط اتصال مباشر مع مطور الخوارزمية</li>
+      `;
+    } else {
+      if (lpFeat1) lpFeat1.innerHTML = `
+        <li><span class="text-emerald" style="font-weight:900; margin-right:6px;">✓</span> 2-Day Complete EA Activation</li>
+        <li><span class="text-emerald" style="font-weight:900; margin-right:6px;">✓</span> 1 MT5 Live or Demo Account</li>
+        <li><span class="text-emerald" style="font-weight:900; margin-right:6px;">✓</span> Default Standard Preset</li>
+        <li><span class="text-emerald" style="font-weight:900; margin-right:6px;">✓</span> 24/5 Auto Gold Scalping</li>
+      `;
+      if (lpFeat2) lpFeat2.innerHTML = `
+        <li><span class="text-emerald" style="font-weight:900; margin-right:6px;">✓</span> 30-Day Unrestricted EA Trading</li>
+        <li><span class="text-emerald" style="font-weight:900; margin-right:6px;">✓</span> 1 MT5 Live Account Whitelist</li>
+        <li><span class="text-emerald" style="font-weight:900; margin-right:6px;">✓</span> Aggressive & Safe Risk Presets</li>
+        <li><span class="text-emerald" style="font-weight:900; margin-right:6px;">✓</span> WhatsApp Priority Support</li>
+      `;
+      if (lpFeat3) lpFeat3.innerHTML = `
+        <li><span class="text-emerald" style="font-weight:900; margin-right:6px;">✓</span> 90-Day Unrestricted License</li>
+        <li><span class="text-emerald" style="font-weight:900; margin-right:6px;">✓</span> 1 MT5 Account Binding</li>
+        <li><span class="text-emerald" style="font-weight:900; margin-right:6px;">✓</span> Neural Volatility Guard Update</li>
+        <li><span class="text-emerald" style="font-weight:900; margin-right:6px;">✓</span> 1-on-1 VPS Cloud Setup Assistance</li>
+      `;
+      if (lpFeat4) lpFeat4.innerHTML = `
+        <li><span class="text-emerald" style="font-weight:900; margin-right:6px;">✓</span> 365-Day Unlimited Trading Pass</li>
+        <li><span class="text-emerald" style="font-weight:900; margin-right:6px;">✓</span> 2 MT5 Account Whitelists</li>
+        <li><span class="text-emerald" style="font-weight:900; margin-right:6px;">✓</span> Lifetime Version Upgrades (v0.9/v1.0)</li>
+        <li><span class="text-emerald" style="font-weight:900; margin-right:6px;">✓</span> Direct Algo Developer Hotline</li>
+      `;
+    }
+
+    // --- 5. GTCFX BROKER PARTNERSHIP ---
+    const gtcfxBadge = document.getElementById('landingGtcfxBadge');
+    const gtcfxTitle = document.getElementById('landingGtcfxTitle');
+    const gtcfxDesc = document.getElementById('landingGtcfxDesc');
+    const gtcfxP1 = document.getElementById('gtcfxPerk1');
+    const gtcfxP2 = document.getElementById('gtcfxPerk2');
+    const gtcfxP3 = document.getElementById('gtcfxPerk3');
+    const gtcfxCta = document.getElementById('btnGtcfxCtaText');
+    const gtcfxRef = document.getElementById('gtcfxRefHint');
+
+    if (gtcfxBadge) gtcfxBadge.textContent = t.gtcfxBadge;
+    if (gtcfxTitle) gtcfxTitle.textContent = t.gtcfxTitle;
+    if (gtcfxDesc) gtcfxDesc.textContent = t.gtcfxDesc;
+    if (gtcfxP1) gtcfxP1.textContent = t.gtcfxPerk1;
+    if (gtcfxP2) gtcfxP2.textContent = t.gtcfxPerk2;
+    if (gtcfxP3) gtcfxP3.textContent = t.gtcfxPerk3;
+    if (gtcfxCta) gtcfxCta.textContent = t.gtcfxCta;
+    if (gtcfxRef) gtcfxRef.innerHTML = `${t.gtcfxRef}<strong class="font-mono">Y8JMgpna</strong>`;
+
+    // --- 6. SECURITY & FAQ ---
+    const faqTag = document.getElementById('landingFaqTag');
+    const faqTitle = document.getElementById('landingFaqTitle');
+    const fQ1 = document.getElementById('faqQ1');
+    const fA1 = document.getElementById('faqA1');
+    const fQ2 = document.getElementById('faqQ2');
+    const fA2 = document.getElementById('faqA2');
+    const fQ3 = document.getElementById('faqQ3');
+    const fA3 = document.getElementById('faqA3');
+    const fQ4 = document.getElementById('faqQ4');
+    const fA4 = document.getElementById('faqA4');
+
+    if (faqTag) faqTag.textContent = t.faqTag;
+    if (faqTitle) faqTitle.textContent = t.faqTitle;
+    if (fQ1) fQ1.textContent = t.faqQ1;
+    if (fA1) fA1.textContent = t.faqA1;
+    if (fQ2) fQ2.textContent = t.faqQ2;
+    if (fA2) fA2.textContent = t.faqA2;
+    if (fQ3) fQ3.textContent = t.faqQ3;
+    if (fA3) fA3.textContent = t.faqA3;
+    if (fQ4) fQ4.textContent = t.faqQ4;
+    if (fA4) fA4.textContent = t.faqA4;
+
+    const fWaBtn = document.getElementById('faqWhatsappBtnText');
+    if (fWaBtn && t.faqWhatsappBtn) fWaBtn.textContent = t.faqWhatsappBtn;
+
+    // Footer
+    const footerCopy = document.getElementById('footerLegalCopy');
+    if (footerCopy) footerCopy.textContent = t.footerCopy;
+
+    // --- 7. AUTH & WELCOME VIEWS ---
     const txtWelcomeTitle = document.getElementById('txtWelcomeTitle');
     const txtWelcomeSubtitle = document.getElementById('txtWelcomeSubtitle');
     const txtSignInBtn = document.getElementById('txtSignInBtn');
@@ -459,13 +1155,15 @@ class BotHubApp {
     const themeLabel = document.getElementById('welcomeThemeLabel');
     const brandTitle = document.getElementById('headerBrandTitle');
     const brandSub = document.getElementById('brandSubtitle');
+    const tabSignIn = document.getElementById('tabBtnSignIn');
+    const tabSignUp = document.getElementById('tabBtnSignUp');
 
     if (txtWelcomeTitle) txtWelcomeTitle.textContent = t.welcomeTitle;
     if (txtWelcomeSubtitle) txtWelcomeSubtitle.textContent = t.welcomeSub;
     if (txtSignInBtn) txtSignInBtn.textContent = t.signInBtn;
     if (txtSignUpBtn) txtSignUpBtn.textContent = t.signUpBtn;
     if (txtSigninBotTitle) txtSigninBotTitle.textContent = t.signinBotTitle;
-    if (txtSigninSubmitBtn) txtSigninSubmitBtn.textContent = t.signInBtn;
+    if (txtSigninSubmitBtn) txtSigninSubmitBtn.textContent = t.signinSubmitBtn || 'Continue to Portal →';
     if (txtForgotPwd) txtForgotPwd.textContent = t.forgotPwd;
     if (txtGoogleSignIn) txtGoogleSignIn.textContent = t.googleSignIn;
     if (txtNoAccount) txtNoAccount.textContent = t.noAccount;
@@ -474,6 +1172,24 @@ class BotHubApp {
     if (loginOtpInput) loginOtpInput.placeholder = t.passwordPlaceholder;
     if (brandTitle) brandTitle.textContent = t.brandTitle;
     if (brandSub) brandSub.textContent = t.brandSub;
+    const tabSignInLbl = document.getElementById('txtTabSignInLabel');
+    const tabSignUpLbl = document.getElementById('txtTabSignUpLabel');
+    if (tabSignInLbl) tabSignInLbl.textContent = t.signInBtn;
+    if (tabSignUpLbl) tabSignUpLbl.textContent = t.signUpBtn;
+
+    // --- 8. TOP & BOTTOM NAVIGATION ---
+    const navLinks = document.querySelectorAll('.desktop-nav-link, .bottom-nav .nav-item');
+    navLinks.forEach(item => {
+      const view = item.getAttribute('data-view');
+      const labelEl = item.querySelector('.desktop-nav-text') || item.querySelector('.nav-label');
+      if (labelEl) {
+        if (view === 'explore') labelEl.textContent = t.navExplore;
+        else if (view === 'subscriptions') labelEl.textContent = t.navBots;
+        else if (view === 'creator') labelEl.textContent = t.navMarket;
+        else if (view === 'database') labelEl.textContent = t.navDb;
+        else if (view === 'settings') labelEl.textContent = t.navAccount;
+      }
+    });
 
     // Bottom Navigation Dock
     const navItems = document.querySelectorAll('.bottom-nav .nav-item');
@@ -659,10 +1375,11 @@ class BotHubApp {
 
     if (user && user.isLoggedIn && !urlParams.has('login')) {
       this.state.currentUser = user;
-      this.applyLoggedInUI(user);
-    } else {
-      this.showLoginScreen();
+      this.populateUserMetadata(user);
     }
+
+    // Always show the home/landing page first when opening the site
+    this.showLandingPage();
 
     // Initialize Google Identity Services
     this.initGoogleIdentity();
@@ -825,7 +1542,7 @@ class BotHubApp {
         if (step1) step1.style.display = 'none';
         if (step2) step2.style.display = 'block';
 
-        this.showToast(`✨ OTP sent to ${email}. Instant Demo Code: 8492`, 'success');
+        this.showToast(`Verification code sent to ${email}`, 'success');
         const otpInput = document.getElementById('signupOtpInput');
         if (otpInput) {
           otpInput.value = data.demoOtp || '8492';
@@ -898,67 +1615,15 @@ class BotHubApp {
   }
 
   async handleMobileRegisterSendOtp() {
-    const name = document.getElementById('mobileSignupName')?.value.trim();
-    const email = document.getElementById('mobileSignupEmail')?.value.trim();
-    const phone = document.getElementById('mobileSignupPhone')?.value.trim();
-    const mt5 = document.getElementById('mobileSignupMt5')?.value.trim() || '8849201';
-    const pin = document.getElementById('mobileSignupPin')?.value.trim() || '8492';
-
-    if (!name || !email || !phone) {
-      this.showToast('Please fill in all registration fields', 'danger');
-      return;
-    }
-
-    try {
-      const response = await fetch('/api/auth/register-send-otp', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ fullName: name, email: email, phone: phone, gtcfxMt5Account: mt5, passcode: pin })
-      });
-      const data = await response.json();
-      if (data.success) {
-        document.getElementById('mobileSignupStep1').style.display = 'none';
-        document.getElementById('mobileSignupStep2').style.display = 'block';
-        document.getElementById('mobileSignupTargetEmail').textContent = email;
-        this.showToast(`✨ OTP sent to ${email}. Instant Demo Code: 8492`, 'success');
-      } else {
-        this.showToast(data.error || 'Failed to send OTP', 'danger');
-      }
-    } catch (e) {
-      this.showToast('Network error, please retry', 'danger');
-    }
+    return this.handleRegisterSendOtp();
   }
 
   async handleMobileRegisterVerifyOtp() {
-    const email = document.getElementById('mobileSignupEmail')?.value.trim();
-    const otp = document.getElementById('mobileSignupOtp')?.value.trim() || '8492';
-
-    try {
-      const response = await fetch('/api/auth/register-verify-otp', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email, otp: otp })
-      });
-      const res = await response.json();
-      if (res.success) {
-        this.state.currentUser = res.user;
-        localStorage.setItem('b_bot_auth_user', JSON.stringify(res.user));
-        this.applyLoggedInUI(res.user);
-        this.showToast(`🎉 Registration Complete! Welcome ${res.user.name}.`, 'success');
-        await this.fetchData();
-      } else {
-        this.showToast(res.error || 'Invalid OTP code', 'danger');
-      }
-    } catch (e) {
-      this.showToast('Verification error, please try again.', 'danger');
-    }
+    return this.handleRegisterVerifyOtp();
   }
 
   backToMobileSignupStep1() {
-    const s1 = document.getElementById('mobileSignupStep1');
-    const s2 = document.getElementById('mobileSignupStep2');
-    if (s1) s1.style.display = 'block';
-    if (s2) s2.style.display = 'none';
+    return this.backToSignupStep1();
   }
 
   renderAvatarIntoElement(element, user) {
@@ -975,10 +1640,8 @@ class BotHubApp {
     }
   }
 
-  applyLoggedInUI(user) {
-    const overlay = document.getElementById('authScreenOverlay');
-    if (overlay) overlay.classList.remove('active');
-
+  populateUserMetadata(user) {
+    if (!user) return;
     const userPhoneText = document.getElementById('headerUserPhoneText');
     const logoutBtn = document.getElementById('logoutBtn');
 
@@ -1014,7 +1677,43 @@ class BotHubApp {
       this.renderAvatarIntoElement(pmcAvatarBig, user);
     }
 
-    // 📲 Display PWA Download/Install to Home Screen Badge
+    // Update Landing page corner button to indicate active session
+    const cornerLoginBtn = document.querySelector('.btn-landing-corner-login');
+    if (cornerLoginBtn) {
+      cornerLoginBtn.innerHTML = `
+        <span class="material-symbols-rounded">dashboard</span>
+        <span>Open App</span>
+      `;
+      cornerLoginBtn.onclick = () => this.enterAppDashboard();
+    }
+
+    // Update Hero primary CTA button
+    const heroPrimaryBtn = document.querySelector('.btn-hero-primary');
+    if (heroPrimaryBtn) {
+      heroPrimaryBtn.innerHTML = `
+        <span>Launch Trading App</span>
+        <span class="material-symbols-rounded">arrow_forward</span>
+      `;
+      heroPrimaryBtn.onclick = () => this.enterAppDashboard();
+    }
+  }
+
+  enterAppDashboard() {
+    const overlay = document.getElementById('authScreenOverlay');
+    if (overlay) {
+      overlay.classList.remove('active');
+      overlay.classList.remove('landing-active');
+      overlay.classList.remove('auth-active');
+    }
+    const bottomNav = document.getElementById('mobileBottomNav');
+    if (bottomNav) bottomNav.style.setProperty('display', 'flex', 'important');
+    this.switchView('explore');
+  }
+
+  applyLoggedInUI(user) {
+    this.state.currentUser = user;
+    this.populateUserMetadata(user);
+    this.enterAppDashboard();
     setTimeout(() => this.checkPwaInstallBanner(), 400);
   }
 
@@ -1413,11 +2112,11 @@ class BotHubApp {
   }
 
   fillDemoCredentials() {
-    const emailInput = document.getElementById('loginEmailInput') || document.getElementById('loginMobileEmailInput');
-    const otpInput = document.getElementById('loginOtpInput') || document.getElementById('loginMobileOtpInput');
+    const emailInput = document.getElementById('loginEmailInput');
+    const otpInput = document.getElementById('loginOtpInput');
     if (emailInput) emailInput.value = 'hanaan.trader@gmail.com';
     if (otpInput) otpInput.value = '8492';
-    this.showToast('💡 Filled demo credentials! Click "Sign In"', 'info');
+    this.showToast('Credentials filled. Click "Sign In"', 'info');
   }
 
   // -------------------------------------------------------------
@@ -1440,6 +2139,23 @@ class BotHubApp {
     if (btnElement) btnElement.classList.add('active');
   }
 
+  switchLandingHeroImage(imageUrl, btnElement) {
+    const mainImg = document.getElementById('landingMainHeroImg');
+    if (mainImg) {
+      mainImg.style.transition = 'opacity 0.2s ease, transform 0.2s ease';
+      mainImg.style.opacity = '0.3';
+      mainImg.style.transform = 'scale(0.97)';
+      setTimeout(() => {
+        mainImg.src = imageUrl;
+        mainImg.style.opacity = '1';
+        mainImg.style.transform = 'scale(1)';
+      }, 150);
+    }
+    const btns = document.querySelectorAll('.hero-card-switcher .hcs-btn');
+    btns.forEach(b => b.classList.remove('active'));
+    if (btnElement) btnElement.classList.add('active');
+  }
+
   showLandingPage() {
     const overlay = document.getElementById('authScreenOverlay');
     if (overlay) {
@@ -1458,6 +2174,14 @@ class BotHubApp {
     }
     const scrollBody = document.querySelector('.landing-scroll-body');
     if (scrollBody) scrollBody.scrollTop = 0;
+
+    const bottomNav = document.getElementById('mobileBottomNav');
+    if (bottomNav) bottomNav.style.setProperty('display', 'none', 'important');
+  }
+
+  openWhatsAppSupport(message) {
+    const text = message || 'Hello B-Magnet Support, I want to talk with an expert about the Gold Trading EA.';
+    window.open(`https://wa.me/919495097786?text=${encodeURIComponent(text)}`, '_blank');
   }
 
   showSignInPage() {
@@ -1704,6 +2428,13 @@ class BotHubApp {
   }
 
   setupEventListeners() {
+    // Global click listener to auto-close language dropdowns when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.lang-dropdown-wrapper')) {
+        document.querySelectorAll('.lang-dropdown-wrapper').forEach(w => w.classList.remove('open'));
+      }
+    });
+
     // Ultra-Smooth, non-jumping Live Green Bar scroll auto-hide
     const mainContent = document.getElementById('mainContent');
     if (mainContent) {
@@ -1809,6 +2540,25 @@ class BotHubApp {
         if (el) el.textContent = val;
       });
     }
+
+    // Global ESC Key Listener to gracefully close active modals
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' || e.key === 'Esc') {
+        const activeModal = document.querySelector('.modal.active');
+        if (activeModal) {
+          activeModal.classList.remove('active');
+        }
+      }
+    });
+
+    // Global Backdrop Click Listener for Modals
+    document.querySelectorAll('.modal').forEach(modal => {
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          modal.classList.remove('active');
+        }
+      });
+    });
   }
 
   async fetchData() {
@@ -2185,9 +2935,16 @@ class BotHubApp {
             <span class="ept-badge" style="background: ${badgeBg}; color: ${badgeColor};">
               ${badge}
             </span>
-            <span class="material-symbols-rounded ept-radio-icon">
-              ${isSelected ? 'check_circle' : 'radio_button_unchecked'}
-            </span>
+            ${isSelected ? `
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00f2fe" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="ept-radio-svg">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+            ` : `
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="ept-radio-svg" style="opacity:0.4;">
+                <circle cx="12" cy="12" r="10"/>
+              </svg>
+            `}
           </div>
           <h4 class="ept-title">${title}</h4>
           <div class="ept-price-row">
@@ -2310,13 +3067,13 @@ class BotHubApp {
           <!-- Full Features Breakdown (Outside Plan Box) -->
           <div class="espp-details-block">
             <div class="espp-details-headline">
-              <span class="material-symbols-rounded" style="font-size: 16px;">task_alt</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
               <span>${isAr ? 'المزايا والتفاصيل الكاملة المشمولة بالخطة المختارة:' : 'Full Specifications & Included Plan Features:'}</span>
             </div>
             <ul class="espp-features-list">
               ${featuresList.map(f => `
                 <li class="espp-feature-item">
-                  <span class="material-symbols-rounded">${f.icon}</span>
+                  ${this.getFeatureSvgIcon(f.icon)}
                   <span>${f.text}</span>
                 </li>
               `).join('')}
@@ -2326,11 +3083,11 @@ class BotHubApp {
           <!-- Action Buttons -->
           <div class="espp-actions-row">
             <button type="button" class="btn-espp-subscribe" onclick="window.botHubApp.openSubscribeModal('${selectedBot.id}')">
-              <span class="material-symbols-rounded">${isSubscribed ? 'add_circle' : 'bolt'}</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
               <span>${isSubscribed ? (isAr ? 'شراء لحساب MT5 إضافي' : 'Buy for Another MT5') : planBtnText}</span>
             </button>
             <button type="button" class="btn-espp-secondary" onclick="window.botHubApp.openBotDetails('${selectedBot.id}')" title="Technical Specs">
-              <span class="material-symbols-rounded">info</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
               <span>${isAr ? 'المواصفات' : 'Specs'}</span>
             </button>
           </div>
@@ -2341,9 +3098,26 @@ class BotHubApp {
     `;
   }
 
+  getFeatureSvgIcon(name) {
+    if (name === 'verified_user') {
+      return `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="espp-svg-icon" style="flex-shrink:0;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>`;
+    } else if (name === 'schedule') {
+      return `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00f2fe" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="espp-svg-icon" style="flex-shrink:0;"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`;
+    } else if (name === 'psychology') {
+      return `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="espp-svg-icon" style="flex-shrink:0;"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-2.04z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-2.04z"/></svg>`;
+    } else if (name === 'shield') {
+      return `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="espp-svg-icon" style="flex-shrink:0;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`;
+    } else if (name === 'link') {
+      return `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00a896" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="espp-svg-icon" style="flex-shrink:0;"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>`;
+    } else if (name === 'forum') {
+      return `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="espp-svg-icon" style="flex-shrink:0;"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>`;
+    }
+    return `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="espp-svg-icon" style="flex-shrink:0;"><polyline points="20 6 9 17 4 12"/></svg>`;
+  }
+
   // -------------------------------------------------------------
   // 2. BOT DETAILS MODAL
-  // -------------------------------------------------------------
+  // -------------------------------------------------------------`
   openBotDetails(botId) {
     const bot = this.state.bots.find(b => b.id === botId);
     if (!bot) return;
@@ -2561,8 +3335,10 @@ class BotHubApp {
       this.state.selectedPlanKey = '1month';
     }
 
-    document.getElementById('checkoutBotName').textContent = bot.name;
+    const botNameEl = document.getElementById('checkoutBotName');
+    if (botNameEl) botNameEl.textContent = bot.name;
     const plansContainer = document.getElementById('checkoutPlansContainer');
+    if (!plansContainer) return;
 
     // Standard Duration Plans
     const standardPlans = {
@@ -3353,14 +4129,14 @@ Hello, here are my subscription and license details. Please verify my GTCfx MT5 
   }
 
   async submitPublishBot() {
-    const name = document.getElementById('pubBotName').value.trim();
-    const tagline = document.getElementById('pubBotTagline').value.trim();
-    const category = document.getElementById('pubCategory').value;
-    const riskLevel = document.getElementById('pubRiskLevel').value;
-    const winRate = document.getElementById('pubWinRate').value;
-    const monthlyRoi = document.getElementById('pubMonthlyRoi').value;
-    const monthlyPrice = document.getElementById('pubMonthlyPrice').value;
-    const description = document.getElementById('pubDescription').value.trim();
+    const name = document.getElementById('pubBotName')?.value?.trim() || '';
+    const tagline = document.getElementById('pubBotTagline')?.value?.trim() || '';
+    const category = document.getElementById('pubCategory')?.value || 'Scalper';
+    const riskLevel = document.getElementById('pubRiskLevel')?.value || 'Medium';
+    const winRate = document.getElementById('pubWinRate')?.value || '85%';
+    const monthlyRoi = document.getElementById('pubMonthlyRoi')?.value || '15-20%';
+    const monthlyPrice = document.getElementById('pubMonthlyPrice')?.value || '100';
+    const description = document.getElementById('pubDescription')?.value?.trim() || '';
 
     if (!name || !tagline) {
       this.showToast('Please provide a Bot Name and Tagline', 'danger');
@@ -3599,28 +4375,26 @@ Hello, here are my subscription and license details. Please verify my GTCfx MT5 
     const toast = document.createElement('div');
     toast.className = `toast toast-${type}`;
     
-    // Choose appropriate icon based on type / message
-    let icon = 'info';
-    if (type === 'success') icon = 'check_circle';
-    else if (type === 'danger') icon = 'error';
-    else if (type === 'warning') icon = 'warning';
-    
-    if (message.includes('🔒') || message.toLowerCase().includes('log out') || message.toLowerCase().includes('logged out') || message.includes('خروج')) {
-      icon = 'lock';
-    } else if (message.includes('🎉') || message.includes('✨')) {
-      icon = 'celebration';
-    } else if (message.includes('📋') || message.includes('copy') || message.includes('نسخ')) {
-      icon = 'content_copy';
+    // Choose clean SVG icon based on type (eliminates raw font text like "error")
+    let svgHtml = '';
+    if (type === 'success') {
+      svgHtml = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="toast-svg-icon"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>`;
+    } else if (type === 'danger') {
+      svgHtml = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="toast-svg-icon"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>`;
+    } else if (type === 'warning') {
+      svgHtml = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="toast-svg-icon"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>`;
+    } else {
+      svgHtml = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="toast-svg-icon"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>`;
     }
 
-    const iconSpan = document.createElement('span');
-    iconSpan.className = 'material-symbols-rounded toast-icon-badge';
-    iconSpan.textContent = icon;
+    const iconWrap = document.createElement('div');
+    iconWrap.className = 'toast-icon-wrap';
+    iconWrap.innerHTML = svgHtml;
 
     const textSpan = document.createElement('span');
     textSpan.textContent = message;
 
-    toast.appendChild(iconSpan);
+    toast.appendChild(iconWrap);
     toast.appendChild(textSpan);
 
     container.appendChild(toast);
