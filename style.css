@@ -6855,7 +6855,7 @@ body.theme-dark .auth-split-left-area {
     backdrop-filter: blur(40px) saturate(220%) brightness(106%) !important;
     -webkit-backdrop-filter: blur(40px) saturate(220%) brightness(106%) !important;
     border-radius: 32px !important;
-    padding: 30px 28px !important;
+    padding: 28px 26px !important;
     border: 1.5px solid rgba(255, 255, 255, 0.95) !important;
     box-shadow: 0 20px 60px rgba(15, 23, 42, 0.1), inset 0 1.5px 1.5px rgba(255, 255, 255, 0.95), inset 0 -1px 1px rgba(255, 255, 255, 0.2) !important;
     display: flex !important;
@@ -6874,10 +6874,17 @@ body.theme-dark .auth-split-left-area {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 8px;
   }
 
   .asr-login-header {
     text-align: center;
+    margin-top: 4px;
+    margin-bottom: auto;
+  }
+
+  .asr-login-card .signin-clean-form {
+    margin-top: auto;
   }
 
   .asr-login-logo {

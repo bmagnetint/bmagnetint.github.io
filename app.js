@@ -2043,7 +2043,7 @@ class BotHubApp {
     let planFullTitle = isAr ? 'تصريح تداول شهر واحد (30 يوماً)' : '1 Month Full Trading Pass (30 Days)';
     let planPriceBig = '100 USDT';
     let planSavings = isAr ? '30 يوماً تداول آلي كامل' : '30 Days Automated Execution';
-    let planBtnText = isAr ? 'تفعيل اشتراك 100$ • تصريح شهر' : 'Subscribe Now • 1 Month Pass ($100)';
+    let planBtnText = isAr ? 'اشتراك' : 'Subscribe';
     let planCategoryDisplay = isAr ? 'تداول الذهب XAUUSD' : 'Gold Hunter • MT5 Institutional';
 
     let featuresList = [
@@ -2059,7 +2059,7 @@ class BotHubApp {
       planFullTitle = isAr ? 'تصريح تجريبي حي لمدة يومين (48 ساعة)' : '2-Day Live Starter Trial Pass (48 Hours)';
       planPriceBig = '10 USDT';
       planSavings = isAr ? 'تجربة حية كاملة • ائتمان 100%' : 'Full Live Execution • 100% Rebate';
-      planBtnText = isAr ? 'بدء التجربة الحية • 10$' : 'Start 2-Day Live Trial • $10';
+      planBtnText = isAr ? 'اشتراك' : 'Subscribe';
       featuresList = [
         { icon: 'science', text: isAr ? 'تجربة حية لمدة يومين كاملين (48 ساعة) على حسابك الحقيقي أو التجريبي' : '48-Hour Full Live Execution Test on Your MT5 Demo or Live Account' },
         { icon: 'bolt', text: isAr ? 'اختبار دقة وسرعة التنفيذ والفروقات السعرية (Spreads) في السوق الحي' : 'Verify Real Market Spreads, Execution Latency & Algorithmic Fills' },
@@ -2071,7 +2071,7 @@ class BotHubApp {
       planFullTitle = isAr ? 'تصريح ربع سنوي شامل (3 أشهر / 90 يوماً)' : '3 Months Quarterly VIP Pass (90 Days)';
       planPriceBig = '250 USDT';
       planSavings = isAr ? 'وفر 50$ (83.33$ شهرياً فقط)' : 'Save $50 ($83.33/mo equivalent)';
-      planBtnText = isAr ? 'تفعيل اشتراك 250$ • تصريح 3 أشهر' : 'Subscribe Now • 3 Months Pass ($250)';
+      planBtnText = isAr ? 'اشتراك' : 'Subscribe';
       featuresList = [
         { icon: 'verified_user', text: isAr ? 'ترخيص ربع سنوي كامل لمدة 90 يوماً متواصلة بدون أي انقطاع' : 'Full 90-Day Quarterly Algorithm Pass (3 Months Uninterrupted Access)' },
         { icon: 'savings', text: isAr ? 'توفير فوري قدره 50$ مقارنة بالتجديد الشهري (83.33$ شهرياً فقط)' : 'Instant $50 Savings vs Monthly Renewal ($83.33/month equivalent)' },
@@ -2084,7 +2084,7 @@ class BotHubApp {
       planFullTitle = isAr ? 'تصريح مؤسسي سنوي VIP كامل (365 يوماً)' : '1 Year Institutional VIP Pass (365 Days)';
       planPriceBig = '900 USDT';
       planSavings = isAr ? 'أعلى توفير: وفر 300$ (75$ شهرياً)' : 'Maximum Savings: Save $300 ($75/mo)';
-      planBtnText = isAr ? 'تفعيل تصريح سنوي 900$ VIP' : 'Subscribe Now • 1 Year VIP Pass ($900)';
+      planBtnText = isAr ? 'اشتراك' : 'Subscribe';
       featuresList = [
         { icon: 'workspace_premium', text: isAr ? 'تصريح مؤسسي سنوي VIP كامل لمدة 365 يوماً من التداول الآلي' : 'Institutional VIP Pass: 365 Days Uninterrupted Auto-Trading' },
         { icon: 'diamond', text: isAr ? 'أعلى نسبة توفير: وفر 300$ كاملة (75.00$ شهرياً فقط بدلاً من 100$)' : 'Maximum Savings: Save $300 ($75.00/mo vs $100/mo regular)' },
