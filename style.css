@@ -7244,6 +7244,37 @@ body.theme-dark .theme-icon {
   box-shadow: 0 4px 14px rgba(25, 39, 80, 0.05), inset 0 1px 1px #fff;
 }
 
+.signin-back-btn.icon-only-home-btn {
+  width: 38px;
+  height: 38px;
+  min-height: 38px;
+  padding: 0;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(0, 168, 150, 0.3);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+  color: #00a896;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.theme-dark .signin-back-btn.icon-only-home-btn {
+  background: rgba(14, 20, 34, 0.7);
+  border-color: rgba(0, 201, 167, 0.4);
+  color: #00c9a7;
+}
+
+.signin-back-btn.icon-only-home-btn:hover {
+  background: rgba(0, 168, 150, 0.15);
+  border-color: #00a896;
+  transform: translateY(-1px);
+}
+
 .signin-back-btn:hover {
   background: rgba(255, 255, 255, 0.75);
   transform: translateY(-1px);
