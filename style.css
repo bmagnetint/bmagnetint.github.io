@@ -4890,7 +4890,8 @@ body.theme-dark .toast {
     radial-gradient(circle at 30% 65%, rgba(216, 235, 250, 0.7) 0%, transparent 55%),
     linear-gradient(180deg, #d8ebfa 0%, #b8dcfa 50%, #edf5fd 100%);
   z-index: 9999;
-  display: flex;
+  display: none;
+  pointer-events: none;
   align-items: center;
   justify-content: center;
   opacity: 0;
@@ -4902,8 +4903,10 @@ body.theme-dark .toast {
 }
 
 .auth-overlay.active {
-  opacity: 1;
-  visibility: visible;
+  display: flex !important;
+  pointer-events: auto !important;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 /* Full-Screen Faded Trading Chart Background */
