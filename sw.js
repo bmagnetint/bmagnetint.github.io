@@ -1,6 +1,4 @@
-// B-Bot Pro - High Performance Service Worker v2 (Clean UI)
-const CACHE_NAME = 'bbot-pro-v2-clean-ui';
-
+// B-Bot Pro - Auto Cache Purge & Service Worker Unregister
 self.addEventListener('install', (event) => {
   self.skipWaiting();
 });
@@ -8,16 +6,13 @@ self.addEventListener('install', (event) => {
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((keys) => {
-      return Promise.all(
-        keys.map((key) => caches.delete(key))
-      );
+      return Promise.all(keys.map((key) => caches.delete(key)));
+    }).then(() => {
+      return self.registration.unregister();
     }).then(() => self.clients.claim())
   );
 });
 
 self.addEventListener('fetch', (event) => {
-  // Always fetch fresh network content
-  event.respondWith(
-    fetch(event.request).catch(() => caches.match(event.request))
-  );
+  event.respondWith(fetch(event.request));
 });

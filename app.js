@@ -1,3 +1,24 @@
+// Force-purge any registered Service Worker and browser cache (safeguarded for Safari / Private Browsing)
+try {
+  if (typeof navigator !== 'undefined' && 'serviceWorker' in navigator) {
+    navigator.serviceWorker.getRegistrations().then(registrations => {
+      for (let registration of registrations) {
+        registration.unregister().catch(() => {});
+      }
+    }).catch(() => {});
+  }
+} catch (e) {}
+
+try {
+  if (typeof window !== 'undefined' && 'caches' in window) {
+    caches.keys().then(names => {
+      for (let name of names) {
+        caches.delete(name).catch(() => {});
+      }
+    }).catch(() => {});
+  }
+} catch (e) {}
+
 /**
  * ==============================================================================
  * B-BOT PRO - GOOGLE CLIENT CONFIGURATION
@@ -1745,6 +1766,7 @@ class BotHubApp {
       overlay.classList.remove('active');
       overlay.classList.remove('landing-active');
       overlay.classList.remove('auth-active');
+      overlay.style.setProperty('display', 'none', 'important');
     }
     const bottomNav = document.getElementById('mobileBottomNav');
     if (bottomNav) bottomNav.style.setProperty('display', 'flex', 'important');
@@ -2469,10 +2491,80 @@ class BotHubApp {
   }
 
   setupEventListeners() {
-    // Global click listener to auto-close language dropdowns when clicking outside
+    // Universal Event Delegation Engine (Guarantees 100% button response regardless of DOM ready timing)
     document.addEventListener('click', (e) => {
+      // Auto-close language dropdowns when clicking outside
       if (!e.target.closest('.lang-dropdown-wrapper')) {
         document.querySelectorAll('.lang-dropdown-wrapper').forEach(w => w.classList.remove('open'));
+      }
+
+      // 1. Yellow Login Button / Get Started / Landing CTA
+      const loginTrigger = e.target.closest('#landingYellowLoginBtn, .btn-skipio-yellow-nav, .btn-skipio-yellow-hero, .btn-tbph-primary, .btn-hero-primary, .btn-landing-corner-login');
+      if (loginTrigger) {
+        e.preventDefault();
+        this.showSignInPage();
+        return;
+      }
+
+      // 2. Auth Segmented Switcher (Sign In vs Sign Up tabs)
+      const signInTab = e.target.closest('#tabBtnSignIn, #txtTabSignInLabel');
+      if (signInTab) {
+        e.preventDefault();
+        this.switchAuthMode('signin');
+        return;
+      }
+
+      const signUpTab = e.target.closest('#tabBtnSignUp, #txtTabSignUpLabel');
+      if (signUpTab) {
+        e.preventDefault();
+        this.switchAuthMode('signup');
+        return;
+      }
+
+      // 3. Auth Submission Buttons
+      const loginSubmit = e.target.closest('#loginMainSubmitBtn');
+      if (loginSubmit) {
+        e.preventDefault();
+        this.handleCleanSignIn();
+        return;
+      }
+
+      const signupVerify = e.target.closest('#signupVerifyBtn');
+      if (signupVerify) {
+        e.preventDefault();
+        this.handleRegisterVerifyOtp();
+        return;
+      }
+
+      // 4. Portal Return Home Button
+      const portalHome = e.target.closest('.btn-portal-home-new');
+      if (portalHome) {
+        e.preventDefault();
+        this.showLandingPage();
+        return;
+      }
+
+      // 5. Admin CRM Lock / Unlock
+      const adminLockBtn = e.target.closest('#btnLockAdminCrm');
+      if (adminLockBtn) {
+        e.preventDefault();
+        this.promptAdminCrmLock();
+        return;
+      }
+
+      const adminUnlockBtn = e.target.closest('.btn-admin-unlock');
+      if (adminUnlockBtn) {
+        e.preventDefault();
+        this.submitAdminCrmUnlock();
+        return;
+      }
+
+      // 6. Navigation items
+      const navItem = e.target.closest('[data-view]');
+      if (navItem && navItem.dataset && navItem.dataset.view) {
+        e.preventDefault();
+        this.switchView(navItem.dataset.view);
+        return;
       }
     });
 
@@ -2701,6 +2793,17 @@ class BotHubApp {
   // VIEW SWITCHER & ADMIN CRM LOCK GATE (PASSCODE: 9633)
   // -------------------------------------------------------------
   switchView(viewName) {
+    // Hide auth overlay if active so the target app page renders cleanly
+    const overlay = document.getElementById('authScreenOverlay');
+    if (overlay) {
+      overlay.classList.remove('active');
+      overlay.classList.remove('landing-active');
+      overlay.classList.remove('auth-active');
+      overlay.style.setProperty('display', 'none', 'important');
+    }
+    const bottomNav = document.getElementById('mobileBottomNav');
+    if (bottomNav) bottomNav.style.setProperty('display', 'flex', 'important');
+
     // 🔐 Security Gate: Require Master Admin Passcode 9633 for CRM Database
     if (viewName === 'database' && !this.state.isAdminUnlocked) {
       this.promptAdminCrmLock();
