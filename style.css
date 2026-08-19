@@ -6979,29 +6979,41 @@ body.theme-dark .auth-split-left-area {
 .theme-toggle-pill {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  background: rgba(255, 255, 255, 0.45);
-  backdrop-filter: blur(20px) saturate(190%);
-  -webkit-backdrop-filter: blur(20px) saturate(190%);
-  border: 1px solid rgba(255, 255, 255, 0.75);
-  padding: 6px 14px;
-  border-radius: 24px;
-  font-size: 12px;
-  font-weight: 700;
-  color: #192750;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  min-height: 38px;
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(0, 168, 150, 0.3);
+  border-radius: 50%;
+  padding: 0;
   cursor: pointer;
-  box-shadow: 0 4px 14px rgba(25, 39, 80, 0.04), inset 0 1px 1px rgba(255, 255, 255, 0.8);
-  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.theme-dark .theme-toggle-pill {
+  background: rgba(14, 20, 34, 0.7);
+  border-color: rgba(0, 201, 167, 0.4);
+  color: #f8fafc;
 }
 
 .theme-toggle-pill:hover {
+  background: rgba(0, 168, 150, 0.15);
+  border-color: #00a896;
   transform: translateY(-1px);
-  box-shadow: 0 4px 14px rgba(25, 39, 80, 0.12);
 }
 
 .theme-icon {
-  font-size: 16px;
-  color: #0284c7;
+  font-size: 20px;
+  color: #00a896;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+body.theme-dark .theme-icon {
+  color: #f59e0b; /* Golden warm Sun color in Dark Mode */
 }
 
 .welcome-header {
@@ -10466,56 +10478,74 @@ body.theme-dark .cmp-lead {
   color: #94a3b8;
 }
 
+/* AUTOMATIC RESOLUTION & DEVICE DETECTION FOR THE 4 B-MAGNET EA PROGRAM PANELS */
 .cmp-features-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
-}
-
-@media (max-width: 900px) {
-  .cmp-features-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 600px) {
-  .cmp-features-grid {
-    grid-template-columns: 1fr;
-  }
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 24px;
 }
 
 .cmp-card {
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
-  border-radius: 16px;
-  padding: 20px;
-  transition: transform 0.2s ease, border-color 0.2s ease;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(24px) saturate(190%);
+  -webkit-backdrop-filter: blur(24px) saturate(190%);
+  border: 1px solid rgba(0, 168, 150, 0.25);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.05);
+  border-radius: 18px;
+  padding: 22px 18px;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-sizing: border-box;
 }
 
 body.theme-dark .cmp-card {
-  background: #111c38;
-  border-color: rgba(255, 255, 255, 0.08);
+  background: rgba(14, 20, 34, 0.85);
+  border-color: rgba(0, 201, 167, 0.3);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
 
 .cmp-card:hover {
-  transform: translateY(-3px);
+  transform: translateY(-4px);
   border-color: #00a896;
+  box-shadow: 0 16px 36px rgba(0, 168, 150, 0.16);
+}
+
+body.theme-dark .cmp-card:hover {
+  border-color: #00c9a7;
+  box-shadow: 0 16px 36px rgba(0, 201, 167, 0.22);
 }
 
 .cmp-card-icon {
-  font-size: 26px;
+  font-size: 28px;
   margin-bottom: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(0, 168, 150, 0.1);
+}
+
+body.theme-dark .cmp-card-icon {
+  background: rgba(0, 201, 167, 0.15);
 }
 
 .cmp-card h4 {
   font-size: 16px;
-  font-weight: 700;
-  margin: 0 0 8px 0;
+  font-weight: 800;
   color: #0f172a;
+  margin: 0 0 8px 0;
+  line-height: 1.3;
 }
 
 body.theme-dark .cmp-card h4 {
-  color: #ffffff;
+  color: #f8fafc;
 }
 
 .cmp-card p {

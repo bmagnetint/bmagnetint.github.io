@@ -397,8 +397,12 @@ class BotHubApp {
     const accountIcon = document.getElementById('accountThemeSettingIcon');
     const accountDisplay = document.getElementById('activeThemeDisplay');
 
+    // Toggle Sun / Moon icons across all theme buttons
+    const themeIcons = document.querySelectorAll('.theme-icon');
+
     if (theme === 'dark') {
       document.body.classList.add('theme-dark');
+      themeIcons.forEach(icon => { icon.textContent = 'light_mode'; });
       if (welcomeIcon) welcomeIcon.textContent = 'light_mode';
       if (headerIcon) headerIcon.textContent = 'light_mode';
       if (accountIcon) accountIcon.textContent = 'light_mode';
@@ -406,6 +410,7 @@ class BotHubApp {
       if (accountDisplay) accountDisplay.textContent = this.state.lang === 'ar' ? 'الوضع الداكن (مفعل)' : 'Dark Mode (Active)';
     } else {
       document.body.classList.remove('theme-dark');
+      themeIcons.forEach(icon => { icon.textContent = 'dark_mode'; });
       if (welcomeIcon) welcomeIcon.textContent = 'dark_mode';
       if (headerIcon) headerIcon.textContent = 'dark_mode';
       if (accountIcon) accountIcon.textContent = 'dark_mode';
