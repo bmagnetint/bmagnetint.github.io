@@ -691,13 +691,41 @@ class BotHubApp {
   }
 
   showLoginScreen() {
-    this.showLandingPage();
+    const overlay = document.getElementById('authScreenOverlay');
+    if (overlay) {
+      overlay.classList.add('active');
+      overlay.classList.remove('signin-active');
+      overlay.classList.add('landing-active');
+    }
+
+    if (window.innerWidth <= 768) {
+      this.showWelcomeScreen();
+    } else {
+      this.showLandingPage();
+    }
+
     const logoutBtn = document.getElementById('logoutBtn');
     if (logoutBtn) logoutBtn.style.display = 'none';
   }
 
   showWelcomeScreen() {
-    this.showLandingPage();
+    const overlay = document.getElementById('authScreenOverlay');
+    if (overlay) {
+      overlay.classList.add('active');
+      overlay.classList.remove('landing-active');
+      overlay.classList.remove('signin-active');
+      overlay.classList.add('welcome-active');
+    }
+    const welcome = document.getElementById('authWelcomeScreen');
+    const signin = document.getElementById('authSignInScreen');
+    if (welcome) {
+      welcome.classList.remove('slide-left');
+      welcome.classList.add('active');
+    }
+    if (signin) {
+      signin.classList.remove('active');
+      signin.classList.remove('slide-left');
+    }
   }
 
   showSignInScreen() {
@@ -705,260 +733,26 @@ class BotHubApp {
     if (overlay) {
       overlay.classList.add('active');
       overlay.classList.remove('landing-active');
-      overlay.classList.add('auth-active');
+      overlay.classList.remove('welcome-active');
+      overlay.classList.add('signin-active');
     }
-    const viewLanding = document.getElementById('viewLandingPage');
-    const viewAuth = document.getElementById('viewAuthPortal');
-    if (viewLanding) viewLanding.style.display = 'none';
-    if (viewAuth) viewAuth.style.display = 'flex';
-
-    this.switchAuthMode('signin');
-    const emailInput = document.getElementById('loginEmailInput');
+    const welcome = document.getElementById('authWelcomeScreen');
+    const signin = document.getElementById('authSignInScreen');
+    if (welcome) {
+      welcome.classList.remove('active');
+      welcome.classList.add('slide-left');
+    }
+    if (signin) {
+      signin.classList.add('active');
+      signin.classList.remove('slide-left');
+    }
+    const emailInput = document.getElementById('loginEmailInput') || document.getElementById('loginMobileEmailInput');
     if (emailInput) {
       setTimeout(() => {
         emailInput.focus();
         emailInput.select();
       }, 100);
     }
-  }
-
-  showSignUpScreen() {
-    const overlay = document.getElementById('authScreenOverlay');
-    if (overlay) {
-      overlay.classList.add('active');
-      overlay.classList.remove('landing-active');
-      overlay.classList.add('auth-active');
-    }
-    const viewLanding = document.getElementById('viewLandingPage');
-    const viewAuth = document.getElementById('viewAuthPortal');
-    if (viewLanding) viewLanding.style.display = 'none';
-    if (viewAuth) viewAuth.style.display = 'flex';
-
-    this.switchAuthMode('signup');
-    const nameInput = document.getElementById('signupNameInput');
-    if (nameInput) {
-      setTimeout(() => {
-        nameInput.focus();
-      }, 100);
-    }
-  }
-
-  switchAuthMode(mode) {
-    const tabSignIn = document.getElementById('tabBtnSignIn');
-    const tabSignUp = document.getElementById('tabBtnSignUp');
-    const sectionSignIn = document.getElementById('authSignInFormSection');
-    const sectionSignUp = document.getElementById('authSignUpFormSection');
-
-    if (mode === 'signup') {
-      if (tabSignIn) tabSignIn.classList.remove('active');
-      if (tabSignUp) tabSignUp.classList.add('active');
-      if (sectionSignIn) sectionSignIn.style.display = 'none';
-      if (sectionSignUp) sectionSignUp.style.display = 'block';
-      this.backToSignupStep1();
-    } else {
-      if (tabSignUp) tabSignUp.classList.remove('active');
-      if (tabSignIn) tabSignIn.classList.add('active');
-      if (sectionSignUp) sectionSignUp.style.display = 'none';
-      if (sectionSignIn) sectionSignIn.style.display = 'block';
-    }
-  }
-
-  async handleRegisterSendOtp() {
-    const nameInput = document.getElementById('signupNameInput');
-    const emailInput = document.getElementById('signupEmailInput');
-    const phoneInput = document.getElementById('signupPhoneInput');
-    const mt5Input = document.getElementById('signupMt5Input');
-    const pinInput = document.getElementById('signupPinInput');
-    const submitBtn = document.getElementById('signupSubmitBtn');
-
-    const fullName = nameInput ? nameInput.value.trim() : '';
-    const email = emailInput ? emailInput.value.trim() : '';
-    const phone = phoneInput ? phoneInput.value.trim() : '';
-    const mt5 = mt5Input ? mt5Input.value.trim() : '8849201';
-    const pin = pinInput ? pinInput.value.trim() : '8492';
-
-    if (!fullName) {
-      this.showToast('Please enter your full name', 'danger');
-      if (nameInput) nameInput.focus();
-      return;
-    }
-    if (!email || !email.includes('@')) {
-      this.showToast('Please enter a valid email address', 'danger');
-      if (emailInput) emailInput.focus();
-      return;
-    }
-    if (!phone) {
-      this.showToast('Please enter your mobile phone number', 'danger');
-      if (phoneInput) phoneInput.focus();
-      return;
-    }
-    if (!pin || pin.length < 4) {
-      this.showToast('Please create a 4-digit passcode PIN', 'danger');
-      if (pinInput) pinInput.focus();
-      return;
-    }
-
-    if (submitBtn) {
-      submitBtn.disabled = true;
-      submitBtn.innerHTML = '<span class="material-symbols-rounded" style="animation: spin 1s infinite linear;">sync</span> Sending OTP...';
-    }
-
-    try {
-      const response = await fetch('/api/auth/register-send-otp', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          fullName: fullName,
-          email: email,
-          phone: phone,
-          gtcfxMt5Account: mt5,
-          passcode: pin
-        })
-      });
-
-      const data = await response.json();
-      if (data.success) {
-        const step1 = document.getElementById('signupStep1Fields');
-        const step2 = document.getElementById('signupStep2OtpFields');
-        const targetEmailEl = document.getElementById('signupOtpTargetEmail');
-        if (targetEmailEl) targetEmailEl.textContent = email;
-        if (step1) step1.style.display = 'none';
-        if (step2) step2.style.display = 'block';
-
-        this.showToast(`✨ OTP sent to ${email}. Instant Demo Code: 8492`, 'success');
-        const otpInput = document.getElementById('signupOtpInput');
-        if (otpInput) {
-          otpInput.value = data.demoOtp || '8492';
-          otpInput.focus();
-        }
-      } else {
-        this.showToast(data.error || 'Failed to send verification code', 'danger');
-      }
-    } catch (e) {
-      this.showToast('Network error, please retry', 'danger');
-    } finally {
-      if (submitBtn) {
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = '<span>Continue & Send Email OTP 📩</span>';
-      }
-    }
-  }
-
-  async handleRegisterVerifyOtp() {
-    const emailInput = document.getElementById('signupEmailInput');
-    const otpInput = document.getElementById('signupOtpInput');
-    const verifyBtn = document.getElementById('signupVerifyBtn');
-
-    const email = emailInput ? emailInput.value.trim() : '';
-    const otp = otpInput ? otpInput.value.trim() : '8492';
-
-    if (!otp) {
-      this.showToast('Please enter the verification OTP', 'danger');
-      if (otpInput) otpInput.focus();
-      return;
-    }
-
-    if (verifyBtn) {
-      verifyBtn.disabled = true;
-      verifyBtn.innerHTML = '<span class="material-symbols-rounded" style="animation: spin 1s infinite linear;">sync</span> Verifying...';
-    }
-
-    try {
-      const response = await fetch('/api/auth/register-verify-otp', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email, otp: otp })
-      });
-
-      const res = await response.json();
-      if (res.success) {
-        this.state.currentUser = res.user;
-        localStorage.setItem('b_bot_auth_user', JSON.stringify(res.user));
-        this.applyLoggedInUI(res.user);
-        this.showToast(`🎉 Registration Complete! Welcome ${res.user.name}.`, 'success');
-        await this.fetchData();
-      } else {
-        this.showToast(res.error || 'Invalid OTP code', 'danger');
-      }
-    } catch (e) {
-      this.showToast('Registration verification error, please try again.', 'danger');
-    } finally {
-      if (verifyBtn) {
-        verifyBtn.disabled = false;
-        verifyBtn.innerHTML = '<span>Verify & Complete Registration 🚀</span>';
-      }
-    }
-  }
-
-  backToSignupStep1() {
-    const step1 = document.getElementById('signupStep1Fields');
-    const step2 = document.getElementById('signupStep2OtpFields');
-    if (step1) step1.style.display = 'block';
-    if (step2) step2.style.display = 'none';
-  }
-
-  async handleMobileRegisterSendOtp() {
-    const name = document.getElementById('mobileSignupName')?.value.trim();
-    const email = document.getElementById('mobileSignupEmail')?.value.trim();
-    const phone = document.getElementById('mobileSignupPhone')?.value.trim();
-    const mt5 = document.getElementById('mobileSignupMt5')?.value.trim() || '8849201';
-    const pin = document.getElementById('mobileSignupPin')?.value.trim() || '8492';
-
-    if (!name || !email || !phone) {
-      this.showToast('Please fill in all registration fields', 'danger');
-      return;
-    }
-
-    try {
-      const response = await fetch('/api/auth/register-send-otp', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ fullName: name, email: email, phone: phone, gtcfxMt5Account: mt5, passcode: pin })
-      });
-      const data = await response.json();
-      if (data.success) {
-        document.getElementById('mobileSignupStep1').style.display = 'none';
-        document.getElementById('mobileSignupStep2').style.display = 'block';
-        document.getElementById('mobileSignupTargetEmail').textContent = email;
-        this.showToast(`✨ OTP sent to ${email}. Instant Demo Code: 8492`, 'success');
-      } else {
-        this.showToast(data.error || 'Failed to send OTP', 'danger');
-      }
-    } catch (e) {
-      this.showToast('Network error, please retry', 'danger');
-    }
-  }
-
-  async handleMobileRegisterVerifyOtp() {
-    const email = document.getElementById('mobileSignupEmail')?.value.trim();
-    const otp = document.getElementById('mobileSignupOtp')?.value.trim() || '8492';
-
-    try {
-      const response = await fetch('/api/auth/register-verify-otp', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email, otp: otp })
-      });
-      const res = await response.json();
-      if (res.success) {
-        this.state.currentUser = res.user;
-        localStorage.setItem('b_bot_auth_user', JSON.stringify(res.user));
-        this.applyLoggedInUI(res.user);
-        this.showToast(`🎉 Registration Complete! Welcome ${res.user.name}.`, 'success');
-        await this.fetchData();
-      } else {
-        this.showToast(res.error || 'Invalid OTP code', 'danger');
-      }
-    } catch (e) {
-      this.showToast('Verification error, please try again.', 'danger');
-    }
-  }
-
-  backToMobileSignupStep1() {
-    const s1 = document.getElementById('mobileSignupStep1');
-    const s2 = document.getElementById('mobileSignupStep2');
-    if (s1) s1.style.display = 'block';
-    if (s2) s2.style.display = 'none';
   }
 
   renderAvatarIntoElement(element, user) {
@@ -1424,7 +1218,7 @@ class BotHubApp {
   // DESKTOP COMPANY WEBSITE & SIGN-IN PAGE / MODAL HANDLERS
   // -------------------------------------------------------------
   switchAiImage(imageUrl, btnElement) {
-    const mainImg = document.getElementById('aspAiMainImg') || document.getElementById('aslAiMainImg');
+    const mainImg = document.getElementById('aslAiMainImg');
     if (mainImg) {
       mainImg.style.transition = 'opacity 0.2s ease, transform 0.2s ease';
       mainImg.style.opacity = '0.3';
@@ -1435,7 +1229,7 @@ class BotHubApp {
         mainImg.style.transform = 'scale(1)';
       }, 150);
     }
-    const btns = document.querySelectorAll('.asp-switch-btn, .asl-switch-btn');
+    const btns = document.querySelectorAll('.asl-switch-btn');
     btns.forEach(b => b.classList.remove('active'));
     if (btnElement) btnElement.classList.add('active');
   }
@@ -1444,20 +1238,10 @@ class BotHubApp {
     const overlay = document.getElementById('authScreenOverlay');
     if (overlay) {
       overlay.classList.add('active');
-      overlay.classList.remove('auth-active');
+      overlay.classList.remove('signin-active');
+      overlay.classList.remove('welcome-active');
       overlay.classList.add('landing-active');
     }
-    const viewLanding = document.getElementById('viewLandingPage');
-    const viewAuth = document.getElementById('viewAuthPortal');
-    if (viewLanding) {
-      viewLanding.style.display = 'flex';
-      viewLanding.scrollTop = 0;
-    }
-    if (viewAuth) {
-      viewAuth.style.display = 'none';
-    }
-    const scrollBody = document.querySelector('.landing-scroll-body');
-    if (scrollBody) scrollBody.scrollTop = 0;
   }
 
   showSignInPage() {
@@ -1757,9 +1541,9 @@ class BotHubApp {
       });
     });
 
-    // Toggle Fullscreen Web View
+    // Toggle Frame Fullscreen
     const toggleBtn = document.getElementById('toggleViewModeBtn');
-    const frame = document.getElementById('appWebContainer') || document.getElementById('mobileFrame');
+    const frame = document.getElementById('mobileFrame');
     if (toggleBtn && frame) {
       toggleBtn.addEventListener('click', () => {
         this.state.isFullscreen = !this.state.isFullscreen;

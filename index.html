@@ -47,12 +47,14 @@
   <!-- Google Identity Services (Sign-In with Google) -->
   <script src="https://accounts.google.com/gsi/client" async defer></script>
   
-  <link rel="stylesheet" href="style.css?v=4059">
+  <link rel="stylesheet" href="style.css?v=0553">
 </head>
 <body class="theme-dark">
 
-  <!-- Main Web Application Container -->
-  <div class="app-web-container" id="appWebContainer">
+  <div class="app-viewport-wrapper">
+    
+    <!-- Main Application Container (Fits naturally to mobile & web screens) -->
+    <div class="mobile-frame" id="mobileFrame">
 
       <!-- ======================================================== -->
       <!-- SCREEN: FULL DUAL-SCREEN AUTH FLOW (MATCHING ATTACHED IMAGE) -->
@@ -122,14 +124,14 @@
         </div>
 
         <!-- ======================================================== -->
-        <!-- 1. COMPANY WEBSITE HOME VIEW (Desktop, Tablet & Mobile)   -->
+        <!-- 1. DESKTOP COMPANY WEBSITE (Rendered on Monitors / PC)   -->
         <!-- ======================================================== -->
-        <div class="landing-page-view" id="viewLandingPage">
+        <div class="desktop-company-landing" id="desktopCompanyLanding">
           
           <!-- Top Company Navigation Bar -->
           <header class="landing-header">
             <div class="landing-header-inner">
-              <div class="landing-brand-col" onclick="window.botHubApp.showLandingPage()" style="cursor: pointer;">
+              <div class="landing-brand-col">
                 <img src="images/b-magnet-emblem.png" alt="B-Magnet Logo" class="landing-brand-logo">
                 <div class="landing-brand-text">
                   <div class="landing-brand-title">B-Magnet <span class="landing-brand-badge">PRO</span></div>
@@ -137,7 +139,7 @@
                 </div>
               </div>
 
-              <!-- Center Nav Links (Desktop) -->
+              <!-- Center Nav Links -->
               <nav class="landing-nav-links">
                 <a href="#aboutProgramSection" class="landing-nav-link">About Program</a>
                 <a href="#plansSection" class="landing-nav-link">Bot Plans</a>
@@ -145,7 +147,7 @@
                 <a href="#faqSection" class="landing-nav-link">Security & FAQ</a>
               </nav>
 
-              <!-- Top Right Controls: Language Switch, Theme & Launch -->
+              <!-- Top Right Controls: Language Switch, Theme & Corner Login -->
               <div class="landing-header-actions">
                 <div class="lang-switch-pill">
                   <button type="button" class="lang-btn active" onclick="window.botHubApp.setAppLanguage('en')">EN</button>
@@ -156,7 +158,7 @@
                   <span class="material-symbols-rounded theme-icon">dark_mode</span>
                 </button>
 
-                <!-- Corner Login / Launch App Button -->
+                <!-- 🌟 Corner Login / Launch App Button -->
                 <button type="button" class="btn-landing-corner-login" onclick="window.botHubApp.showSignInPage()">
                   <span class="material-symbols-rounded">login</span>
                   <span>Sign In / Launch</span>
@@ -201,222 +203,242 @@
                       <span class="lmc-lbl">Verified Win Rate</span>
                     </div>
                     <div class="landing-metric-card">
-                      <span class="lmc-val">18-23%</span>
-                      <span class="lmc-lbl">Target Monthly ROI</span>
+                      <span class="lmc-val">24/5</span>
+                      <span class="lmc-lbl">Continuous Auto Execution</span>
                     </div>
                     <div class="landing-metric-card">
-                      <span class="lmc-val">30.0%</span>
-                      <span class="lmc-lbl">Max Drawdown Guard</span>
+                      <span class="lmc-val">0.0 Pip</span>
+                      <span class="lmc-lbl">Raw ECN Spread (GTCfx)</span>
                     </div>
                     <div class="landing-metric-card">
-                      <span class="lmc-val">&lt; 15ms</span>
-                      <span class="lmc-lbl">MT5 Execution Latency</span>
+                      <span class="lmc-val">100%</span>
+                      <span class="lmc-lbl">Direct Client Fund Control</span>
                     </div>
                   </div>
                 </div>
 
-                <!-- Right Hero AI Showcase Card -->
                 <div class="landing-hero-right">
-                  <div class="hero-showcase-glass-card">
-                    <div class="hsg-img-wrapper">
-                      <img src="images/ai-trading-bot-visual.jpg" alt="B-Magnet Gold Hunter EA Visual" class="hsg-main-img">
-                      <div class="hsg-chip hsg-chip-top">
-                        <span class="pulse-dot" style="background:#00f2fe;"></span>
-                        <span>Neural Order Flow: Active</span>
+                  <!-- Interactive Glass Trading Card -->
+                  <div class="landing-showcase-card">
+                    <div class="lsc-header">
+                      <div class="lsc-header-left">
+                        <span class="bot-status-dot-live"></span>
+                        <span class="lsc-bot-tag">B-MAGNET GOLD HUNTER PRO EA</span>
                       </div>
-                      <div class="hsg-chip hsg-chip-bottom">
-                        <span class="material-symbols-rounded icon-gold">monetization_on</span>
-                        <span>Gold (XAUUSD) M1/M5 Confluence</span>
+                      <span class="lsc-badge-live">LIVE MT5</span>
+                    </div>
+                    <div class="lsc-price-row">
+                      <div class="lsc-asset">XAUUSD <span class="sub-text">Spot Gold</span></div>
+                      <div class="lsc-price font-mono">2,488.50 <span class="profit-chip">+1.42%</span></div>
+                    </div>
+                    
+                    <!-- Live Trade Triggers Feed -->
+                    <div class="lsc-signal-box">
+                      <div class="lsc-sb-title">Recent Automated Algorithmic Trades</div>
+                      <div class="lsc-trade-item">
+                        <span class="trade-side buy">BUY</span>
+                        <span class="trade-info">XAUUSD 0.20 Lot @ 2,482.10</span>
+                        <span class="trade-profit font-mono">+$185.00</span>
                       </div>
+                      <div class="lsc-trade-item">
+                        <span class="trade-side buy">BUY</span>
+                        <span class="trade-info">XAUUSD 0.15 Lot @ 2,476.40</span>
+                        <span class="trade-profit font-mono">+$142.50</span>
+                      </div>
+                      <div class="lsc-trade-item">
+                        <span class="trade-side buy">BUY</span>
+                        <span class="trade-info">XAUUSD 0.10 Lot @ 2,471.80</span>
+                        <span class="trade-profit font-mono">+$94.20</span>
+                      </div>
+                    </div>
+
+                    <div class="lsc-bottom-features">
+                      <span class="lsc-chip">🛡️ Low Drawdown Protection</span>
+                      <span class="lsc-chip">⚡ Instant MT5 License Sync</span>
                     </div>
                   </div>
                 </div>
               </div>
             </section>
 
-            <!-- ABOUT PROGRAM SECTION -->
-            <section class="landing-about-section" id="aboutProgramSection">
-              <div class="landing-about-inner">
-                <div class="section-tag-center">
-                  <span class="material-symbols-rounded">psychology</span>
-                  <span>QUANTITATIVE ARCHITECTURE</span>
-                </div>
-                <h2 class="section-title-center">Why Trade with B-Magnet Gold Hunter v0.8?</h2>
-                <p class="section-desc-center">Built specifically for high-volatility commodities and gold markets, our proprietary algorithm eliminates emotional trading and protects institutional capital.</p>
+            <!-- ABOUT THE PROGRAM SECTION -->
+            <section class="landing-section" id="aboutProgramSection">
+              <div class="landing-section-header">
+                <span class="landing-section-badge">Architecture & Strategy</span>
+                <h2 class="landing-section-title">All About the B-Magnet EA Program</h2>
+                <p class="landing-section-desc">
+                  Engineered with complete algorithmic transparency. You maintain 100% custody of your funds with your broker while our EA executes algorithmically on your MetaTrader 5 terminal.
+                </p>
+              </div>
 
-                <div class="landing-features-grid">
-                  <div class="lfg-card">
-                    <div class="lfg-icon-box"><span class="material-symbols-rounded">waves</span></div>
-                    <h3>Magnetic Order Flow Detection</h3>
-                    <p>Scans institutional market depth and liquidity imbalance zones in real-time, executing only at high-confluence turning points.</p>
+              <div class="landing-features-grid">
+                <div class="landing-feature-card">
+                  <div class="lfc-icon-box text-cyan">
+                    <span class="material-symbols-rounded">psychology</span>
                   </div>
-                  <div class="lfg-card">
-                    <div class="lfg-icon-box"><span class="material-symbols-rounded">dynamic_form</span></div>
-                    <h3>Adaptive Dynamic Risk Control</h3>
-                    <p>Automatically calculates micro lot sizes relative to account balance, incorporating strict daily trailing stops and drawdown limits.</p>
+                  <h3 class="lfc-title">1. Institutional Order Flow</h3>
+                  <p class="lfc-desc">
+                    Identifies institutional order blocks and liquidity pools on Gold (XAUUSD), entering trades when smart money enters the market.
+                  </p>
+                </div>
+
+                <div class="landing-feature-card">
+                  <div class="lfc-icon-box text-emerald">
+                    <span class="material-symbols-rounded">hub</span>
                   </div>
-                  <div class="lfg-card">
-                    <div class="lfg-icon-box"><span class="material-symbols-rounded">hub</span></div>
-                    <h3>GTCfx Multi-Terminal Execution</h3>
-                    <p>Engineered to synchronize flawlessly across live MT5 broker terminals with sub-15ms low-latency order execution.</p>
+                  <h3 class="lfc-title">2. Multi-Timeframe Confluence</h3>
+                  <p class="lfc-desc">
+                    Scans M1, M5, M15, and H1 timeframes in milliseconds to verify high-probability confluence before opening a position.
+                  </p>
+                </div>
+
+                <div class="landing-feature-card">
+                  <div class="lfc-icon-box text-warning">
+                    <span class="material-symbols-rounded">security</span>
                   </div>
+                  <h3 class="lfc-title">3. Dynamic Risk & Smart Scaling</h3>
+                  <p class="lfc-desc">
+                    Micro-lot sizing calibrated to your exact balance, coupled with strict stop-losses, trailing stops, and profit locking.
+                  </p>
+                </div>
+
+                <div class="landing-feature-card">
+                  <div class="lfc-icon-box text-blue">
+                    <span class="material-symbols-rounded">sync_saved_locally</span>
+                  </div>
+                  <h3 class="lfc-title">4. Instant MT5 Cloud Sync</h3>
+                  <p class="lfc-desc">
+                    Direct integration with your MetaTrader 5 account number. Validated with military-grade SHA-256 Secret Salt license security.
+                  </p>
                 </div>
               </div>
             </section>
-              <div class="landing-plans-inner">
-                <div class="section-tag-center">
-                  <span class="material-symbols-rounded">verified</span>
-                  <span>INSTITUTIONAL TIER MATRIX</span>
+
+            <!-- BOT PLANS & PRICING SECTION -->
+            <section class="landing-section" id="plansSection">
+              <div class="landing-section-header">
+                <span class="landing-section-badge">Licensing & Passes</span>
+                <h2 class="landing-section-title">Select Your Trading Bot Pass</h2>
+                <p class="landing-section-desc">Transparent pricing with instant activation. Connect to live or demo MT5 accounts.</p>
+              </div>
+
+              <div class="landing-plans-grid">
+                <!-- 1 Month Plan -->
+                <div class="landing-plan-card popular">
+                  <div class="lpc-popular-badge">MOST POPULAR</div>
+                  <div class="lpc-header">
+                    <div class="lpc-icon-circle">🌟</div>
+                    <div>
+                      <h4 class="lpc-name">1 Month Pass</h4>
+                      <span class="lpc-period">30-Day Automated Pass</span>
+                    </div>
+                  </div>
+                  <div class="lpc-price-row">
+                    <span class="lpc-price font-mono">$100</span>
+                    <span class="lpc-duration">/ 30 days</span>
+                  </div>
+                  <ul class="lpc-features-list">
+                    <li><span class="material-symbols-rounded check">check_circle</span> Full Gold EA MT5 Engine (30 Days)</li>
+                    <li><span class="material-symbols-rounded check">check_circle</span> 1 MT5 Live or Demo Account</li>
+                    <li><span class="material-symbols-rounded check">check_circle</span> 24/5 Automated Gold Scalping</li>
+                    <li><span class="material-symbols-rounded check">check_circle</span> Telegram Instant Trade Alerts</li>
+                  </ul>
+                  <button type="button" class="btn-plan-select btn-popular" onclick="window.botHubApp.showSignInPage()">Get 1 Month Pass ($100)</button>
                 </div>
-                <h2 class="section-title-center">Choose Your Gold Hunter Bot Pass</h2>
-                <p class="section-desc-center">All passes include full MT5 Expert Advisor access, automated cryptographic license key, and dedicated vendor setup support.</p>
 
-                <!-- 4 Tiers Single Screen Grid -->
-                <div class="landing-plans-grid">
-                  <!-- Tier 1: 2-Day Trial -->
-                  <div class="lp-card">
-                    <div class="lpc-header">
-                      <span class="lpc-tier-badge">Quick Test</span>
-                      <h3 class="lpc-name">Trial Pass</h3>
-                      <div class="lpc-price font-mono"><span>$</span>10</div>
-                      <span class="lpc-duration">2 Days Live Access</span>
+                <!-- 3 Months Plan (Save $50) -->
+                <div class="landing-plan-card">
+                  <div class="lpc-header">
+                    <div class="lpc-icon-circle">⚡</div>
+                    <div>
+                      <h4 class="lpc-name">3 Months Pass</h4>
+                      <span class="lpc-period">90-Day Whitelist</span>
                     </div>
-                    <ul class="lpc-features">
-                      <li><span class="material-symbols-rounded text-emerald">check_circle</span> 2-Day Complete EA Activation</li>
-                      <li><span class="material-symbols-rounded text-emerald">check_circle</span> 1 MT5 Live or Demo Account</li>
-                      <li><span class="material-symbols-rounded text-emerald">check_circle</span> Default Standard Preset</li>
-                      <li><span class="material-symbols-rounded text-emerald">check_circle</span> 24/5 Auto Gold Scalping</li>
-                    </ul>
-                    <button type="button" class="btn-lpc-action" onclick="window.botHubApp.showSignInPage()">
-                      <span>Select Trial ($10)</span>
-                    </button>
                   </div>
+                  <div class="lpc-price-row">
+                    <span class="lpc-price font-mono">$250</span>
+                    <span class="lpc-duration">/ 90 days <span class="save-tag">Save $50</span></span>
+                  </div>
+                  <ul class="lpc-features-list">
+                    <li><span class="material-symbols-rounded check">check_circle</span> Full 90-Day MT5 Algorithm Access</li>
+                    <li><span class="material-symbols-rounded check">check_circle</span> 1 MT5 Account Binding</li>
+                    <li><span class="material-symbols-rounded check">check_circle</span> Dedicated VIP Server Routing</li>
+                    <li><span class="material-symbols-rounded check">check_circle</span> Priority Strategy & Parameter Updates</li>
+                  </ul>
+                  <button type="button" class="btn-plan-select" onclick="window.botHubApp.showSignInPage()">Get 3 Months Pass ($250)</button>
+                </div>
 
-                  <!-- Tier 2: 1 Month (Most Popular) -->
-                  <div class="lp-card featured">
-                    <div class="lpc-popular-pill">MOST POPULAR</div>
-                    <div class="lpc-header">
-                      <span class="lpc-tier-badge text-cyan">Standard</span>
-                      <h3 class="lpc-name">1 Month Pass</h3>
-                      <div class="lpc-price font-mono"><span>$</span>100</div>
-                      <span class="lpc-duration">30 Days Full Access</span>
+                <!-- 1 Year Plan (VIP - Save $300) -->
+                <div class="landing-plan-card">
+                  <div class="lpc-header">
+                    <div class="lpc-icon-circle">👑</div>
+                    <div>
+                      <h4 class="lpc-name">1 Year VIP Pass</h4>
+                      <span class="lpc-period">365-Day Institutional</span>
                     </div>
-                    <ul class="lpc-features">
-                      <li><span class="material-symbols-rounded text-emerald">check_circle</span> 30-Day Unrestricted EA Trading</li>
-                      <li><span class="material-symbols-rounded text-emerald">check_circle</span> 1 MT5 Live Account Whitelist</li>
-                      <li><span class="material-symbols-rounded text-emerald">check_circle</span> Aggressive & Safe Risk Presets</li>
-                      <li><span class="material-symbols-rounded text-emerald">check_circle</span> WhatsApp Priority Support</li>
-                    </ul>
-                    <button type="button" class="btn-lpc-action btn-lpc-featured" onclick="window.botHubApp.showSignInPage()">
-                      <span>Activate 1 Month ($100)</span>
-                    </button>
                   </div>
+                  <div class="lpc-price-row">
+                    <span class="lpc-price font-mono">$900</span>
+                    <span class="lpc-duration">/ 365 days <span class="save-tag">Save $300</span></span>
+                  </div>
+                  <ul class="lpc-features-list">
+                    <li><span class="material-symbols-rounded check">check_circle</span> Full Institutional EA Access (1 Year)</li>
+                    <li><span class="material-symbols-rounded check">check_circle</span> Up to 2 MT5 Account Connections</li>
+                    <li><span class="material-symbols-rounded check">check_circle</span> Unlimited Free Broker Migrations</li>
+                    <li><span class="material-symbols-rounded check">check_circle</span> 1-on-1 Dedicated Setup & VPS Support</li>
+                  </ul>
+                  <button type="button" class="btn-plan-select" onclick="window.botHubApp.showSignInPage()">Get 1 Year VIP ($900)</button>
+                </div>
 
-                  <!-- Tier 3: 3 Months -->
-                  <div class="lp-card">
-                    <div class="lpc-header">
-                      <span class="lpc-tier-badge text-amber">Value Pass</span>
-                      <h3 class="lpc-name">3 Months Pass</h3>
-                      <div class="lpc-price font-mono"><span>$</span>250</div>
-                      <span class="lpc-duration">90 Days Full Access (Save $50)</span>
+                <!-- 2-Day Starter Trial -->
+                <div class="landing-plan-card">
+                  <div class="lpc-header">
+                    <div class="lpc-icon-circle">🎁</div>
+                    <div>
+                      <h4 class="lpc-name">2-Day Starter Trial</h4>
+                      <span class="lpc-period">Live Market Test Pass</span>
                     </div>
-                    <ul class="lpc-features">
-                      <li><span class="material-symbols-rounded text-emerald">check_circle</span> 90-Day Unrestricted License</li>
-                      <li><span class="material-symbols-rounded text-emerald">check_circle</span> 1 MT5 Account Binding</li>
-                      <li><span class="material-symbols-rounded text-emerald">check_circle</span> Neural Volatility Guard Update</li>
-                      <li><span class="material-symbols-rounded text-emerald">check_circle</span> 1-on-1 VPS Cloud Setup Assistance</li>
-                    </ul>
-                    <button type="button" class="btn-lpc-action" onclick="window.botHubApp.showSignInPage()">
-                      <span>Activate 3 Months ($250)</span>
-                    </button>
                   </div>
-
-                  <!-- Tier 4: 1 Year VIP -->
-                  <div class="lp-card">
-                    <div class="lpc-header">
-                      <span class="lpc-tier-badge text-gold">Annual VIP</span>
-                      <h3 class="lpc-name">1 Year VIP</h3>
-                      <div class="lpc-price font-mono"><span>$</span>900</div>
-                      <span class="lpc-duration">365 Days Access (Save $300)</span>
-                    </div>
-                    <ul class="lpc-features">
-                      <li><span class="material-symbols-rounded text-emerald">check_circle</span> 365-Day Unlimited Trading Pass</li>
-                      <li><span class="material-symbols-rounded text-emerald">check_circle</span> 2 MT5 Account Whitelists</li>
-                      <li><span class="material-symbols-rounded text-emerald">check_circle</span> Lifetime Version Upgrades (v0.9/v1.0)</li>
-                      <li><span class="material-symbols-rounded text-emerald">check_circle</span> Direct Algo Developer Hotline</li>
-                    </ul>
-                    <button type="button" class="btn-lpc-action" onclick="window.botHubApp.showSignInPage()">
-                      <span>Activate 1 Year ($900)</span>
-                    </button>
+                  <div class="lpc-price-row">
+                    <span class="lpc-price font-mono">$10</span>
+                    <span class="lpc-duration">/ 2 days</span>
                   </div>
+                  <ul class="lpc-features-list">
+                    <li><span class="material-symbols-rounded check">check_circle</span> Test EA on Live or Demo MT5</li>
+                    <li><span class="material-symbols-rounded check">check_circle</span> 1 MT5 Account Access (2 Days)</li>
+                    <li><span class="material-symbols-rounded check">check_circle</span> Live Spreads & TP/SL Trade Fills</li>
+                    <li><span class="material-symbols-rounded check">check_circle</span> Instant Secret Salt License Generation</li>
+                  </ul>
+                  <button type="button" class="btn-plan-select" onclick="window.botHubApp.showSignInPage()">Start Trial ($10)</button>
                 </div>
               </div>
             </section>
 
             <!-- GTCFX BROKER PARTNERSHIP SECTION -->
-            <section class="landing-gtcfx-section" id="gtcfxSection">
-              <div class="landing-gtcfx-inner">
-                <div class="gtcfx-card-glass">
-                  <div class="gtcfx-inner">
-                    <div class="gtcfx-left">
-                      <div class="gtcfx-badge">OFFICIAL BROKER PARTNERSHIP</div>
-                      <h2 class="gtcfx-title">Optimized Exclusively for GTCfx MT5 Terminals</h2>
-                      <p class="gtcfx-desc">
-                        To guarantee peak latency (< 15ms) and 0.0 pip raw spreads on Gold, register your trading account through our official GTCfx partnership portal.
-                      </p>
-                      <div class="gtcfx-perks-row">
-                        <span class="gtcfx-perk"><span class="material-symbols-rounded text-emerald">check</span> 0.0 Pip Raw Spread</span>
-                        <span class="gtcfx-perk"><span class="material-symbols-rounded text-emerald">check</span> Instant USDT Deposits</span>
-                        <span class="gtcfx-perk"><span class="material-symbols-rounded text-emerald">check</span> Zero Slippage Execution</span>
-                      </div>
-                    </div>
-                    <div class="gtcfx-right">
-                      <a href="https://web.mygtc.app/login/register?ref=Y8JMgpna" target="_blank" rel="noopener noreferrer" class="btn-gtcfx-cta">
-                        <span>Open GTCfx Live MT5 Account</span>
-                        <span class="material-symbols-rounded">open_in_new</span>
-                      </a>
-                      <span class="gtcfx-ref-hint">Referral Code: <strong class="font-mono">Y8JMgpna</strong></span>
-                    </div>
+            <section class="landing-section" id="gtcfxSection">
+              <div class="landing-gtcfx-banner">
+                <div class="lgb-left">
+                  <div class="lgb-icon-box">
+                    <span class="material-symbols-rounded">candlestick_chart</span>
+                  </div>
+                  <div>
+                    <span class="lgb-tag">Recommended Broker</span>
+                    <h3 class="lgb-title">Trade with GTCfx & B-Magnet</h3>
+                    <p class="lgb-desc">Ultra-low raw ECN spreads on Gold (XAUUSD), lightning-fast execution (&lt; 15ms), and fast BEP-20 USDT deposit/withdrawal integration.</p>
                   </div>
                 </div>
+                <a href="https://web.mygtc.app/login/register?ref=Y8JMgpna" target="_blank" rel="noopener noreferrer" class="btn-gtcfx-cta">
+                  <span>Register GTCfx MT5 Account</span>
+                  <span class="material-symbols-rounded">open_in_new</span>
+                </a>
               </div>
             </section>
 
-            <!-- SECURITY & FAQ SECTION -->
-            <section class="landing-faq-section" id="faqSection">
-              <div class="landing-faq-inner">
-                <div class="section-tag-center">
-                  <span class="material-symbols-rounded">security</span>
-                  <span>SECURITY & VERIFICATION</span>
-                </div>
-                <h2 class="section-title-center">Frequently Asked Questions</h2>
-
-                <div class="landing-faq-grid">
-                  <div class="faq-card">
-                    <h4>How does license activation work on MT5?</h4>
-                    <p>When you subscribe, our cryptographic server generates a unique SHA-256 license key bound to your MT5 account number. Attach the EA in MT5, paste your key into InpLicenseKey, and Algo Trading starts immediately.</p>
-                  </div>
-                  <div class="faq-card">
-                    <h4>What is the minimum recommended capital?</h4>
-                    <p>We recommend a minimum balance of $200 – $500 for micro-lot scalping (0.01 lot) on Gold (XAUUSD) to maintain safe drawdown parameters.</p>
-                  </div>
-                  <div class="faq-card">
-                    <h4>Can I run this bot on a VPS cloud server?</h4>
-                    <p>Yes, 24/5 VPS cloud hosting is recommended so your bot trades non-stop during market hours without needing your personal computer on.</p>
-                  </div>
-                  <div class="faq-card">
-                    <h4>How do I get vendor setup support?</h4>
-                    <p>Our technical team is available 24/7 on WhatsApp hotline at <strong>+91 94950 97786</strong> for live remote installation and parameter tuning.</p>
-                  </div>
-                </div>
-              </div>
-            </section>
-
-            <!-- LANDING FOOTER -->
-            <footer class="landing-footer">
+            <!-- FOOTER -->
+            <footer class="landing-footer" id="faqSection">
               <div class="landing-footer-inner">
                 <div class="lfi-left">
-                  <div class="lfi-brand">B-Magnet PRO Algorithm Systems</div>
+                  <div class="lfi-brand">B-Magnet Pro</div>
                   <p class="lfi-copy">© 2026 B-Magnet Trading Systems. Institutional MT5 Algorithmic Technology. All rights reserved.</p>
                 </div>
                 <div class="lfi-right">
@@ -430,184 +452,177 @@
         </div>
 
         <!-- ======================================================== -->
-        <!-- 2. UNIFIED AUTH PORTAL (SIGN IN & SIGN UP WITH EMAIL OTP) -->
+        <!-- 2. FULL AUTH & SIGN-IN VIEWPORT (Desktop Split & Mobile) -->
         <!-- ======================================================== -->
-        <div class="auth-portal-view" id="viewAuthPortal" style="display: none;">
+        <div class="auth-screens-viewport" id="authScreensViewport">
           
-          <div class="auth-portal-container">
+          <!-- 💻 DESKTOP MONITOR SPLIT-SCREEN LAYOUT -->
+          <div class="auth-split-container" id="authSplitContainer">
             
-            <!-- LEFT SHOWCASE PANEL (Desktop & Tablet) -->
-            <div class="auth-showcase-panel">
-              <div class="asp-top-bar">
-                <button type="button" class="btn-portal-home" onclick="window.botHubApp.showLandingPage()" title="Back to Home">
-                  <span class="material-symbols-rounded">home</span>
-                  <span>Home</span>
-                </button>
-                <div class="asp-status-pill">
-                  <span class="pulse-dot" style="background:#10b981;"></span>
-                  <span>Institutional MT5 Engine Active</span>
-                </div>
-              </div>
-
-              <!-- Centered Full Logo (No Extra Texts, No Crop) -->
-              <div class="asp-logo-hero">
-                <img src="images/b-magnet-logo.png" alt="B-Magnet - Perfect business solutions" class="asp-main-logo">
-              </div>
-
-              <div class="asp-hero-text">
-                <h2 class="asp-title">Next-Gen AI Algorithmic Gold Trading</h2>
-                <p class="asp-desc">
-                  Institutional quantitative algorithm engineered for MetaTrader 5 (MT5). Powered by multi-timeframe liquidity confluence, neural order-flow scanning, and automated risk protection on Gold (XAUUSD).
-                </p>
-              </div>
-
-              <!-- AI Visual Graphic Card -->
-              <div class="asp-ai-card">
-                <div class="asp-img-wrap">
-                  <img src="images/ai-trading-bot-visual.jpg" alt="AI Bot Matrix" class="asp-ai-img" id="aspAiMainImg">
-                  <div class="asp-chip chip-1">
-                    <span class="material-symbols-rounded icon-teal">auto_graph</span>
-                    <div>
-                      <span class="asp-chip-lbl">Win Rate</span>
-                      <strong class="font-mono">89.4%</strong>
-                    </div>
-                  </div>
-                  <div class="asp-chip chip-2">
-                    <span class="material-symbols-rounded icon-gold">trending_up</span>
-                    <div>
-                      <span class="asp-chip-lbl">Monthly ROI</span>
-                      <strong class="font-mono">18% - 23%</strong>
-                    </div>
-                  </div>
-                  <div class="asp-chip chip-3">
-                    <span class="material-symbols-rounded icon-blue">shield</span>
-                    <div>
-                      <span class="asp-chip-lbl">Max DD</span>
-                      <strong class="font-mono">30% Guard</strong>
-                    </div>
-                  </div>
-                  <div class="asp-chip chip-4">
-                    <span class="material-symbols-rounded icon-emerald">bolt</span>
-                    <div>
-                      <span class="asp-chip-lbl">Latency</span>
-                      <strong class="font-mono">&lt; 15ms</strong>
-                    </div>
-                  </div>
-                </div>
-                <div class="asp-img-switcher">
-                  <button type="button" class="asp-switch-btn active" onclick="window.botHubApp.switchAiImage('images/ai-trading-bot-visual.jpg', this)">
-                    <span class="material-symbols-rounded">candlestick_chart</span>
-                    <span>AI Gold Matrix</span>
-                  </button>
-                  <button type="button" class="asp-switch-btn" onclick="window.botHubApp.switchAiImage('images/ai-bot-core-visual.jpg', this)">
-                    <span class="material-symbols-rounded">memory</span>
-                    <span>Neural Core</span>
-                  </button>
-                </div>
-              </div>
-
-              <!-- 4 Feature Pillars Grid -->
-              <div class="asp-features-grid">
-                <div class="asp-feat-item">
-                  <div class="afi-icon"><span class="material-symbols-rounded">waves</span></div>
-                  <div>
-                    <h6>Order Flow Liquidity</h6>
-                    <p>Detects institutional voids before market sweeps.</p>
-                  </div>
-                </div>
-                <div class="asp-feat-item">
-                  <div class="afi-icon"><span class="material-symbols-rounded">sync</span></div>
-                  <div>
-                    <h6>Multi-Timeframe M1-H1</h6>
-                    <p>Filters out false breakouts in real-time.</p>
-                  </div>
-                </div>
-                <div class="asp-feat-item">
-                  <div class="afi-icon"><span class="material-symbols-rounded">tune</span></div>
-                  <div>
-                    <h6>Dynamic Risk Sizing</h6>
-                    <p>Calculates micro lots per equity volatility.</p>
-                  </div>
-                </div>
-                <div class="asp-feat-item">
-                  <div class="afi-icon"><span class="material-symbols-rounded">key</span></div>
-                  <div>
-                    <h6>Cryptographic MT5 Pass</h6>
-                    <p>SHA-256 licensed direct in MT5 inputs.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- RIGHT / MAIN AUTH CARD (Universal for Desktop & Mobile) -->
-            <div class="auth-card-panel">
-              <div class="auth-card-inner">
+            <!-- LEFT WIDE AREA: BOT DETAILS & AI PICS -->
+            <div class="auth-split-left-area">
+              <div class="asl-inner">
                 
-                <!-- Card Top Bar: Home Button (Visible on Mobile), Language & Theme Switch -->
-                <div class="auth-card-top-bar">
-                  <button type="button" class="btn-portal-home mobile-home-btn" onclick="window.botHubApp.showLandingPage()" title="Back to Home">
+                <!-- Top Brand Bar & Return to Home Button -->
+                <div class="asl-top-bar">
+                  <button type="button" class="btn-top-back-landing" onclick="window.botHubApp.showLandingPage()" title="Back to Home">
                     <span class="material-symbols-rounded">home</span>
                     <span>Home</span>
                   </button>
 
-                  <div class="auth-card-top-right">
-                    <div class="lang-switch-pill">
-                      <button type="button" class="lang-btn active" onclick="window.botHubApp.setAppLanguage('en')">EN</button>
-                      <button type="button" class="lang-btn" onclick="window.botHubApp.setAppLanguage('ar')">عربي</button>
+                  <div class="asl-live-status-pill">
+                    <span class="pulse-dot" style="background:#10b981;"></span>
+                    <span class="asl-badge-text">B-MAGNET GOLD HUNTER EA v0.8 • MT5 ACTIVE</span>
+                  </div>
+                </div>
+
+                <!-- Centered Maximum Size Logo (Above Content, No Extra Texts, No Crop) -->
+                <div class="asl-center-logo-hero">
+                  <img src="images/b-magnet-logo.png" alt="B-Magnet - Perfect business solutions" class="asl-main-hero-logo">
+                </div>
+
+                <!-- Bot Headline & Description -->
+                <div class="asl-hero-block">
+                  <h2 class="asl-hero-title">Next-Gen AI Algorithmic Gold Trading</h2>
+                  <p class="asl-hero-desc">
+                    Institutional quantitative algorithm engineered for MetaTrader 5 (MT5). Powered by multi-timeframe liquidity confluence, neural order-flow scanning, and automated risk protection on Gold (XAUUSD).
+                  </p>
+                </div>
+
+                <!-- 🤖 AI PICTURES & VISUAL SHOWCASE CARD -->
+                <div class="asl-ai-showcase-card">
+                  <div class="asl-ai-img-wrapper">
+                    <img src="images/ai-trading-bot-visual.jpg" alt="AI Algorithmic Trading Bot Engine" class="asl-ai-main-img" id="aslAiMainImg">
+                    <div class="asl-ai-img-overlay"></div>
+                    
+                    <!-- Floating Live AI HUD Chips on Image -->
+                    <div class="asl-floating-chip chip-top-left">
+                      <span class="material-symbols-rounded icon-teal">auto_graph</span>
+                      <div>
+                        <span class="afc-label">Win Rate</span>
+                        <span class="afc-val font-mono">89.4% Verified</span>
+                      </div>
                     </div>
 
-                    <button type="button" class="theme-toggle-pill" onclick="window.botHubApp.toggleTheme()" title="Toggle Dark / Light Mode">
-                      <span class="material-symbols-rounded theme-icon">dark_mode</span>
+                    <div class="asl-floating-chip chip-top-right">
+                      <span class="material-symbols-rounded icon-gold">trending_up</span>
+                      <div>
+                        <span class="afc-label">Monthly ROI</span>
+                        <span class="afc-val font-mono">18% - 23%</span>
+                      </div>
+                    </div>
+
+                    <div class="asl-floating-chip chip-bottom-left">
+                      <span class="material-symbols-rounded icon-blue">shield</span>
+                      <div>
+                        <span class="afc-label">Max Drawdown</span>
+                        <span class="afc-val font-mono">30.0% Guard</span>
+                      </div>
+                    </div>
+
+                    <div class="asl-floating-chip chip-bottom-right">
+                      <span class="material-symbols-rounded icon-emerald">bolt</span>
+                      <div>
+                        <span class="afc-label">Execution Latency</span>
+                        <span class="afc-val font-mono">&lt; 15ms MT5</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- AI Visual Gallery Switcher Tabs -->
+                  <div class="asl-gallery-switcher">
+                    <button type="button" class="asl-switch-btn active" id="aslSwitchBtn1" onclick="window.botHubApp.switchAiImage('images/ai-trading-bot-visual.jpg', this)">
+                      <span class="material-symbols-rounded">candlestick_chart</span>
+                      <span>AI Gold Engine Matrix</span>
+                    </button>
+                    <button type="button" class="asl-switch-btn" id="aslSwitchBtn2" onclick="window.botHubApp.switchAiImage('images/ai-bot-core-visual.jpg', this)">
+                      <span class="material-symbols-rounded">memory</span>
+                      <span>MT5 Quantum Neural Core</span>
                     </button>
                   </div>
                 </div>
 
-                <!-- Mobile Logo Display -->
-                <div class="auth-card-mobile-logo">
-                  <img src="images/b-magnet-logo.png" alt="B-Magnet Logo" class="auth-card-logo-img">
-                </div>
-
-                <!-- Segmented Auth Mode Switcher (Sign In vs Sign Up) -->
-                <div class="auth-mode-segmented">
-                  <button type="button" class="ams-btn active" id="tabBtnSignIn" onclick="window.botHubApp.switchAuthMode('signin')">
-                    <span class="material-symbols-rounded">login</span>
-                    <span>Sign In</span>
-                  </button>
-                  <button type="button" class="ams-btn" id="tabBtnSignUp" onclick="window.botHubApp.switchAuthMode('signup')">
-                    <span class="material-symbols-rounded">person_add</span>
-                    <span>Sign Up</span>
-                  </button>
-                </div>
-
-                <!-- 1. SIGN IN FORM -->
-                <div id="authSignInFormSection" class="auth-form-section">
-                  <div class="auth-form-header">
-                    <h3 class="afh-title">Sign In to Your Account</h3>
-                    <p class="afh-sub">Access your automated bot passes, MT5 whitelists & trading wallet</p>
+                <!-- 4 Bot Pillar Highlight Cards -->
+                <div class="asl-features-grid">
+                  <div class="asl-feat-card">
+                    <div class="afc-icon-circle"><span class="material-symbols-rounded">waves</span></div>
+                    <div class="afc-info">
+                      <h5>Magnetic Order Flow</h5>
+                      <p>Detects institutional liquidity voids and sweep levels before high-probability bounces.</p>
+                    </div>
                   </div>
 
-                  <div class="auth-form-body">
-                    <div class="auth-input-group">
-                      <label class="auth-input-label">Account ID / Email</label>
-                      <input type="text" id="loginEmailInput" class="auth-form-input" placeholder="e.g. hanaan.trader@gmail.com" value="hanaan.trader@gmail.com" onkeydown="if(event.key==='Enter') window.botHubApp.handleCleanSignIn();">
+                  <div class="asl-feat-card">
+                    <div class="afc-icon-circle"><span class="material-symbols-rounded">sync</span></div>
+                    <div class="afc-info">
+                      <h5>M1-H1 Multi-Timeframe</h5>
+                      <p>Synchronizes high-speed scalping with macro trends to filter false breakouts.</p>
                     </div>
+                  </div>
 
-                    <div class="auth-input-group">
-                      <label class="auth-input-label">Passcode PIN</label>
-                      <input type="text" id="loginOtpInput" class="auth-form-input secure-auth-input" placeholder="4-Digit PIN" value="8492" onkeydown="if(event.key==='Enter') window.botHubApp.handleCleanSignIn();">
+                  <div class="asl-feat-card">
+                    <div class="afc-icon-circle"><span class="material-symbols-rounded">tune</span></div>
+                    <div class="afc-info">
+                      <h5>Dynamic Risk Sizing</h5>
+                      <p>Auto-calculates micro lots based on equity balance and market volatility.</p>
                     </div>
+                  </div>
 
-                    <button type="button" class="btn-auth-primary" id="loginMainSubmitBtn" onclick="window.botHubApp.handleCleanSignIn();">
-                      <span id="txtSigninSubmitBtn">Sign In / Launch App</span>
-                    </button>
-
-                    <div class="auth-helper-row">
-                      <a href="#" class="auth-helper-link" id="txtForgotPwd" onclick="event.preventDefault(); window.botHubApp.fillDemoCredentials();">Forgot passcode? (Demo PIN: 8492)</a>
+                  <div class="asl-feat-card">
+                    <div class="afc-icon-circle"><span class="material-symbols-rounded">key</span></div>
+                    <div class="afc-info">
+                      <h5>Secret Salt Gate</h5>
+                      <p>Automated SHA-256 cryptographic license activation directly in MT5 parameters.</p>
                     </div>
+                  </div>
+                </div>
 
-                    <div class="auth-divider"><span>OR</span></div>
+              </div>
+            </div>
 
-                    <button type="button" class="btn-auth-google" id="btnGoogleLogin" onclick="window.botHubApp.handleGoogleLogin()">
+            <!-- RIGHT SIDE: DEDICATED LOGIN TAB / CARD -->
+            <div class="auth-split-right-login">
+              <div class="asr-login-card">
+                
+                <!-- Card Header with Language & Theme Switch -->
+                <div class="asr-card-top-bar">
+                  <div class="lang-switch-pill">
+                    <button type="button" class="lang-btn active" onclick="window.botHubApp.setAppLanguage('en')">EN</button>
+                    <button type="button" class="lang-btn" onclick="window.botHubApp.setAppLanguage('ar')">عربي</button>
+                  </div>
+
+                  <button type="button" class="theme-toggle-pill" onclick="window.botHubApp.toggleTheme()" title="Toggle Dark / Light Mode">
+                    <span class="material-symbols-rounded theme-icon">dark_mode</span>
+                  </button>
+                </div>
+
+                <!-- Logo & Sign In Titles -->
+                <div class="asr-login-header">
+                  <img src="images/b-magnet-emblem.png" alt="B-Magnet Emblem" class="asr-login-logo">
+                  <h3 class="asr-login-title">Sign In to Your Account</h3>
+                  <p class="asr-login-sub">Access your automated bot passes, MT5 whitelists & trading wallet</p>
+                </div>
+
+                <!-- Clean Sign In Form -->
+                <div class="signin-clean-form">
+                  <div class="signin-input-wrapper">
+                    <input type="text" id="loginEmailInput" class="signin-clean-input" placeholder="Account ID / Username" value="hanaan.trader@gmail.com" onkeydown="if(event.key==='Enter') window.botHubApp.handleCleanSignIn();">
+                  </div>
+
+                  <div class="signin-input-wrapper">
+                    <input type="text" id="loginOtpInput" class="signin-clean-input secure-auth-input" placeholder="Passcode PIN" value="8492" onkeydown="if(event.key==='Enter') window.botHubApp.handleCleanSignIn();">
+                  </div>
+
+                  <button type="button" class="btn-clean-navy btn-signin-block" id="loginMainSubmitBtn" onclick="window.botHubApp.handleCleanSignIn();">
+                    <span id="txtSigninSubmitBtn">Sign In / Launch App</span>
+                  </button>
+
+                  <div class="signin-forgot-row">
+                    <a href="#" class="signin-forgot-link" id="txtForgotPwd" onclick="event.preventDefault(); window.botHubApp.fillDemoCredentials();">Forgot passcode? (Demo PIN: 8492)</a>
+                  </div>
+
+                  <div class="signin-social-row">
+                    <button type="button" class="signin-social-btn btn-google-single" id="btnGoogleLogin" onclick="window.botHubApp.handleGoogleLogin()">
                       <svg class="google-svg-icon" viewBox="0 0 24 24" width="18" height="18">
                         <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
                         <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
@@ -617,80 +632,137 @@
                       <span id="txtGoogleSignIn">Sign In with Google</span>
                     </button>
                   </div>
-                </div>
 
-                <!-- 2. SIGN UP / REGISTRATION FORM WITH EMAIL OTP -->
-                <div id="authSignUpFormSection" class="auth-form-section" style="display: none;">
-                  <div class="auth-form-header">
-                    <h3 class="afh-title">Create New Account</h3>
-                    <p class="afh-sub">Register with email verification to activate MT5 bot access</p>
-                  </div>
-
-                  <!-- STEP 1: Personal Details -->
-                  <div id="signupStep1Fields" class="auth-form-body">
-                    <div class="auth-input-group">
-                      <label class="auth-input-label">Full Name</label>
-                      <input type="text" id="signupNameInput" class="auth-form-input" placeholder="e.g. Hanaan Junaid">
-                    </div>
-
-                    <div class="auth-input-group">
-                      <label class="auth-input-label">Email Address</label>
-                      <input type="email" id="signupEmailInput" class="auth-form-input" placeholder="e.g. hanaan@gmail.com">
-                    </div>
-
-                    <div class="auth-input-group">
-                      <label class="auth-input-label">Mobile Phone Number</label>
-                      <input type="tel" id="signupPhoneInput" class="auth-form-input" placeholder="e.g. +91 94950 97786">
-                    </div>
-
-                    <div class="auth-input-group">
-                      <label class="auth-input-label">GTCfx MT5 Account # (Optional)</label>
-                      <input type="text" id="signupMt5Input" class="auth-form-input font-mono" placeholder="e.g. 8849201" value="8849201">
-                    </div>
-
-                    <div class="auth-input-group">
-                      <label class="auth-input-label">Create 4-Digit Passcode PIN</label>
-                      <input type="password" id="signupPinInput" class="auth-form-input secure-auth-input" placeholder="4-Digit PIN" maxlength="6" value="8492">
-                    </div>
-
-                    <button type="button" class="btn-auth-primary" id="signupSubmitBtn" onclick="window.botHubApp.handleRegisterSendOtp()">
-                      <span>Continue & Send Email OTP 📩</span>
-                    </button>
-                  </div>
-
-                  <!-- STEP 2: Email OTP Verification -->
-                  <div id="signupStep2OtpFields" class="auth-form-body" style="display: none;">
-                    <div class="signup-otp-banner">
-                      <div class="sob-icon"><span class="material-symbols-rounded">mark_email_read</span></div>
-                      <div class="sob-text">
-                        <span class="sob-lbl">Verification Code Sent</span>
-                        <strong class="sob-email font-mono" id="signupOtpTargetEmail">user@gmail.com</strong>
-                      </div>
-                    </div>
-
-                    <div class="signup-demo-hint">
-                      <span class="pulse-dot" style="background:#00a896;"></span>
-                      <span>Instant Demo OTP: <strong class="font-mono text-cyan">8492</strong></span>
-                    </div>
-
-                    <div class="auth-input-group">
-                      <label class="auth-input-label">Enter 4-Digit OTP Code</label>
-                      <input type="text" id="signupOtpInput" class="auth-form-input font-mono" placeholder="Enter Code" maxlength="6" style="text-align: center; font-size: 18px; letter-spacing: 4px;" value="8492">
-                    </div>
-
-                    <button type="button" class="btn-auth-primary" id="signupVerifyBtn" onclick="window.botHubApp.handleRegisterVerifyOtp()">
-                      <span>Verify & Complete Registration 🚀</span>
-                    </button>
-
-                    <div class="auth-helper-row" style="justify-content: space-between;">
-                      <a href="#" class="auth-helper-link" onclick="event.preventDefault(); window.botHubApp.backToSignupStep1()">← Edit Details</a>
-                      <a href="#" class="auth-helper-link text-cyan" onclick="event.preventDefault(); window.botHubApp.handleRegisterSendOtp()">Resend OTP</a>
-                    </div>
+                  <div class="signin-footer-row">
+                    <span class="asr-security-badge">🛡️ SHA-256 Encrypted License Server</span>
                   </div>
                 </div>
 
-                <div class="auth-card-footer">
-                  <span class="asr-security-badge">🛡️ SHA-256 Encrypted License Server</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- 📱 MOBILE PHONE AUTH VIEWPORT (< 768px) -->
+          <div class="auth-mobile-slides-wrapper" id="authMobileSlidesWrapper">
+            
+            <!-- SCREEN 1: WELCOME SCREEN -->
+            <div class="auth-screen-slide active" id="authWelcomeScreen">
+              <div class="welcome-screen-inner">
+                
+                <!-- Welcome Top Utilities -->
+                <div class="welcome-top-bar">
+                  <button type="button" class="btn-top-back-landing" onclick="window.botHubApp.showLandingPage()" title="Back to Home">
+                    <span class="material-symbols-rounded">home</span>
+                    <span>Home</span>
+                  </button>
+
+                  <div class="welcome-top-right-group">
+                    <div class="lang-switch-pill" id="welcomeLangSwitch">
+                      <button type="button" class="lang-btn active" id="langBtnEn" onclick="window.botHubApp.setAppLanguage('en')">
+                        <span>EN</span>
+                      </button>
+                      <button type="button" class="lang-btn" id="langBtnAr" onclick="window.botHubApp.setAppLanguage('ar')">
+                        <span>عربي</span>
+                      </button>
+                    </div>
+
+                    <button type="button" class="theme-toggle-pill" id="welcomeThemeToggle" onclick="window.botHubApp.toggleTheme()" title="Toggle Dark / Light Mode">
+                      <span class="material-symbols-rounded theme-icon" id="welcomeThemeIcon">dark_mode</span>
+                      <span class="theme-label" id="welcomeThemeLabel">Dark</span>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Top Greeting -->
+                <div class="welcome-header">
+                  <h1 class="welcome-title" id="txtWelcomeTitle">HELLO</h1>
+                  <p class="welcome-subtitle" id="txtWelcomeSubtitle">Sign in to access your automated trading passes</p>
+                </div>
+
+                <!-- Center Logo Display -->
+                <div class="welcome-logo-center-wrapper">
+                  <img src="images/b-magnet-logo.png" alt="B-Magnet - Perfect business solutions" class="bmagnet-hero-logo-img">
+                </div>
+
+                <!-- Bottom Buttons on Screen 1 -->
+                <div class="welcome-actions">
+                  <button type="button" class="btn-clean-navy" onclick="window.botHubApp.showSignInScreen()">
+                    <span id="txtSignInBtn">Sign In</span>
+                  </button>
+                  <button type="button" class="btn-clean-white" onclick="window.botHubApp.handleGoogleLogin()">
+                    <span id="txtSignUpBtn">Sign Up</span>
+                  </button>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- SCREEN 2: SIGN IN SCREEN -->
+            <div class="auth-screen-slide" id="authSignInScreen">
+              <div class="signin-screen-inner">
+                
+                <!-- Top Header with Back to Website / Back to Welcome & EA Badge -->
+                <div class="signin-top-hero">
+                  <div class="signin-top-actions-row">
+                    <button type="button" class="signin-back-btn" onclick="window.botHubApp.showLandingPage()" title="Back to Home">
+                      <span class="material-symbols-rounded">home</span>
+                      <span>Home</span>
+                    </button>
+
+                    <div class="lang-switch-pill" style="transform: scale(0.9);">
+                      <button type="button" class="lang-btn active" onclick="window.botHubApp.setAppLanguage('en')">EN</button>
+                      <button type="button" class="lang-btn" onclick="window.botHubApp.setAppLanguage('ar')">عربي</button>
+                    </div>
+                  </div>
+
+                  <div class="signin-bot-details-card">
+                    <div class="signin-bot-badge-row">
+                      <span class="bot-status-dot-live"></span>
+                      <span class="bot-badge-label font-mono">B-MAGNET GOLD HUNTER EA</span>
+                    </div>
+                    <h2 class="signin-bot-title" id="txtSigninBotTitle">Institutional MT5 Automated Trading</h2>
+                    <div class="signin-bot-tags-row">
+                      <span class="signin-bot-chip">✨ 89.4% Win Rate</span>
+                      <span class="signin-bot-chip">⚡ 24/5 Auto Gold</span>
+                      <span class="signin-bot-chip">🛡️ Low Drawdown</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Bottom Curved Pure-White Sheet -->
+                <div class="signin-white-sheet">
+                  <div class="signin-clean-form">
+                    
+                    <div class="signin-input-wrapper">
+                      <input type="text" id="loginMobileEmailInput" class="signin-clean-input" placeholder="Account ID / Username" value="hanaan.trader@gmail.com" onkeydown="if(event.key==='Enter') window.botHubApp.handleCleanSignIn();">
+                    </div>
+
+                    <div class="signin-input-wrapper">
+                      <input type="text" id="loginMobileOtpInput" class="signin-clean-input secure-auth-input" placeholder="Passcode PIN" value="8492" onkeydown="if(event.key==='Enter') window.botHubApp.handleCleanSignIn();">
+                    </div>
+
+                    <button type="button" class="btn-clean-navy btn-signin-block" id="loginMobileSubmitBtn" onclick="window.botHubApp.handleCleanSignIn();">
+                      <span>Sign In</span>
+                    </button>
+
+                    <div class="signin-forgot-row">
+                      <a href="#" class="signin-forgot-link" onclick="event.preventDefault(); window.botHubApp.fillDemoCredentials();">Forgot passcode? (Demo PIN: 8492)</a>
+                    </div>
+
+                    <div class="signin-social-row">
+                      <button type="button" class="signin-social-btn btn-google-single" onclick="window.botHubApp.handleGoogleLogin()">
+                        <svg class="google-svg-icon" viewBox="0 0 24 24" width="18" height="18">
+                          <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                          <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                          <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"/>
+                          <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"/>
+                        </svg>
+                        <span>Sign In with Google</span>
+                      </button>
+                    </div>
+
+                  </div>
                 </div>
 
               </div>
@@ -717,7 +789,7 @@
             </div>
           </div>
 
-          <!-- Desktop Center Navigation Bar -->
+          <!-- Desktop Center Navigation Bar (Visible on Computers/Monitors) -->
           <nav class="desktop-nav-menu" id="desktopNavMenu">
             <button type="button" class="desktop-nav-link active" data-view="explore" onclick="window.botHubApp.switchView('explore')">
               <span class="material-symbols-rounded">explore</span>
@@ -732,10 +804,6 @@
               <span class="material-symbols-rounded">storefront</span>
               <span>Market</span>
             </button>
-            <button type="button" class="desktop-nav-link" data-view="database" onclick="window.botHubApp.switchView('database')">
-              <span class="material-symbols-rounded">database</span>
-              <span>CRM Database</span>
-            </button>
             <button type="button" class="desktop-nav-link" data-view="settings" onclick="window.botHubApp.switchView('settings')">
               <span class="material-symbols-rounded">manage_accounts</span>
               <span>Account</span>
@@ -743,21 +811,10 @@
           </nav>
 
           <div class="header-right">
-            <!-- Language Switcher -->
-            <div class="lang-switch-pill">
-              <button type="button" class="lang-btn active" onclick="window.botHubApp.setAppLanguage('en')">EN</button>
-              <button type="button" class="lang-btn" onclick="window.botHubApp.setAppLanguage('ar')">عربي</button>
-            </div>
-
-            <!-- Dark / Light Theme Pill -->
-            <button type="button" class="theme-toggle-pill" onclick="window.botHubApp.toggleTheme()" title="Toggle Dark / Light Mode">
-              <span class="material-symbols-rounded theme-icon">dark_mode</span>
-            </button>
-
             <!-- Desktop Live Engine Status Badge -->
             <div class="desktop-status-pill">
               <span class="pulse-dot" style="background: #10b981;"></span>
-              <span class="dsp-text">MT5 Live</span>
+              <span class="dsp-text">MT5 Engine Live</span>
             </div>
 
             <!-- Compact Corner Wallet Asset with Logged-in User Name -->
@@ -769,17 +826,6 @@
                 <span class="wallet-user-title" id="headerUserPhoneText">Hanaan</span>
                 <span class="wallet-user-amt font-mono" id="headerWalletBalance">250.00 USDT</span>
               </div>
-            </button>
-
-            <!-- Direct Home / Website Button -->
-            <button type="button" class="btn-portal-home" onclick="window.botHubApp.showLandingPage()" title="Back to Website Homepage">
-              <span class="material-symbols-rounded">home</span>
-              <span>Home</span>
-            </button>
-
-            <!-- Logout Button -->
-            <button type="button" class="btn-header-logout" id="logoutBtn" onclick="window.botHubApp.handleLogout()" title="Secure Logout" style="display: none;">
-              <span class="material-symbols-rounded">logout</span>
             </button>
           </div>
         </div>
@@ -1504,6 +1550,31 @@
         </div>
       </div>
 
+      <!-- Bottom Mobile Navigation Bar (Full Glass Transparent Dock) -->
+      <nav class="bottom-nav">
+        <button class="nav-item active" data-view="explore" onclick="window.botHubApp.switchView('explore')" title="Explore Marketplace">
+          <span class="material-symbols-rounded nav-icon">explore</span>
+          <span class="nav-label">Explore</span>
+        </button>
+
+        <button class="nav-item" data-view="subscriptions" onclick="window.botHubApp.switchView('subscriptions')" title="My Bots & Passes">
+          <span class="material-symbols-rounded nav-icon">bolt</span>
+          <span class="nav-label">My Bots</span>
+          <span class="nav-badge" id="navBadgeSubCount">1</span>
+        </button>
+
+        <button class="nav-item" data-view="creator" onclick="window.botHubApp.switchView('creator')" title="Market & Creator Hub">
+          <span class="material-symbols-rounded nav-icon">storefront</span>
+          <span class="nav-label">Market</span>
+        </button>
+
+        <button class="nav-item" data-view="settings" onclick="window.botHubApp.switchView('settings')" title="Account & Settings">
+          <span class="material-symbols-rounded nav-icon">manage_accounts</span>
+          <span class="nav-label">Account</span>
+        </button>
+      </nav>
+
+    </div>
   </div>
 
 
@@ -2480,6 +2551,6 @@
 
   <!-- App Scripts -->
   <script src="qrcode.js"></script>
-  <script src="app.js?v=4059"></script>
+  <script src="app.js?v=0553"></script>
 </body>
 </html>
