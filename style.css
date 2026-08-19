@@ -4896,6 +4896,7 @@ body.theme-dark .toast {
   bottom: 0;
   width: 100vw;
   height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
   background: 
     radial-gradient(circle at 10% 0%, rgba(0, 201, 167, 0.14) 0%, transparent 45%),
     radial-gradient(circle at 90% 25%, rgba(59, 130, 246, 0.12) 0%, transparent 45%),
@@ -4944,9 +4945,14 @@ body.theme-dark .toast {
 .desktop-company-landing {
   display: flex;
   flex-direction: column;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  min-height: 100dvh;
+  min-height: calc(var(--vh, 1vh) * 100);
+  overflow-x: hidden;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  overscroll-behavior-y: contain;
   position: relative;
   z-index: 10;
   background: 
@@ -6187,9 +6193,14 @@ body.theme-dark .signin-back-btn {
 .auth-overlay.landing-active .desktop-company-landing {
   display: flex !important;
   flex-direction: column !important;
-  width: 100vw !important;
-  height: 100vh !important;
-  overflow: hidden !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 100dvh !important;
+  min-height: calc(var(--vh, 1vh) * 100) !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  overscroll-behavior-y: contain !important;
   position: relative !important;
   z-index: 10 !important;
 }
@@ -6205,8 +6216,12 @@ body.theme-dark .signin-back-btn {
 
 .auth-overlay.signin-active .auth-screens-viewport {
   display: flex !important;
-  width: 100vw !important;
-  height: 100vh !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 100dvh !important;
+  min-height: calc(var(--vh, 1vh) * 100) !important;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch !important;
   position: relative !important;
   z-index: 20 !important;
 }
@@ -10608,5 +10623,59 @@ html, body {
   overflow-x: hidden !important;
   touch-action: manipulation;
 }
+
+/* ======================================================== */
+/* AUTOMATIC CROSS-PLATFORM DEVICE SMOOTHNESS ENGINE       */
+/* (Android / iOS / Safari / Chrome / Web / 2K / 4K)       */
+/* ======================================================== */
+
+/* 1. iOS Safari Dynamic Height & Momentum Touch Engine */
+.platform-ios,
+.browser-safari {
+  -webkit-overflow-scrolling: touch !important;
+  touch-action: pan-y !important;
+}
+
+.platform-ios .auth-overlay,
+.browser-safari .auth-overlay,
+.platform-ios .desktop-company-landing,
+.browser-safari .desktop-company-landing {
+  min-height: -webkit-fill-available !important;
+}
+
+/* 2. Android Chrome GPU Hardware Acceleration Engine */
+.platform-android,
+.browser-chrome {
+  will-change: transform, scroll-position;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.platform-android .landing-scroll-body,
+.browser-chrome .landing-scroll-body,
+.platform-android .view-container,
+.browser-chrome .view-container {
+  transform: translateZ(0);
+}
+
+/* 3. Touch Button Target Minimum 44px Guarantee */
+.touch-device button,
+.touch-device a,
+.platform-mobile button,
+.platform-mobile a {
+  min-height: 44px;
+  touch-action: manipulation;
+}
+
+/* 4. Global Smooth Touch Scroll Guarantee */
+.landing-scroll-body,
+.view-container,
+.app-scroll-viewport,
+.desktop-company-landing {
+  -webkit-overflow-scrolling: touch !important;
+  overscroll-behavior-y: contain !important;
+  touch-action: pan-y !important;
+}
+
 
 
