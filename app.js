@@ -447,6 +447,27 @@ const TRANSLATIONS = {
   }
 };
 
+
+function safeGetStorage(key, fallback = null) {
+  try {
+    return localStorage.getItem(key) || fallback;
+  } catch (e) {
+    return fallback;
+  }
+}
+
+function safeSetStorage(key, val) {
+  try {
+    localStorage.setItem(key, val);
+  } catch (e) {}
+}
+
+function safeRemoveStorage(key) {
+  try {
+    localStorage.removeItem(key);
+  } catch (e) {}
+}
+
 class BotHubApp {
   constructor() {
     this.apiBase = '';
@@ -470,8 +491,8 @@ class BotHubApp {
       lastPaymentResult: null,
       isAdminUnlocked: false,
       selectedExplorePlanId: 'bot_bmagnet_1m',
-      theme: localStorage.getItem('b_bot_theme') || 'light',
-      lang: localStorage.getItem('b_bot_lang') || 'en'
+      theme: safeGetStorage('b_bot_theme', 'light'),
+      lang: safeGetStorage('b_bot_lang', 'en')
     };
 
     this.init();
@@ -738,7 +759,7 @@ class BotHubApp {
 
   applyTheme(theme) {
     this.state.theme = theme;
-    localStorage.setItem('b_bot_theme', theme);
+    safeSetStorage('b_bot_theme', theme);
     
     if (theme === 'dark') {
       document.body.classList.add('theme-dark');
@@ -800,7 +821,7 @@ class BotHubApp {
 
   setAppLanguage(lang) {
     this.state.lang = lang;
-    localStorage.setItem('b_bot_lang', lang);
+    safeSetStorage('b_bot_lang', lang);
 
     const isAr = lang === 'ar';
     const root = document.documentElement;
@@ -1267,11 +1288,11 @@ class BotHubApp {
     const crmTitle = document.querySelector('#viewDatabase .database-title');
     const crmSub = document.querySelector('#viewDatabase .database-sub');
     const crmStatus = document.querySelector('#viewDatabase .database-status-pill');
-    const crmLockBtn = document.getElementById('btnLockAdminCrm');
+    const crmLockBtn = document.querySelector('#viewDatabase .btn-lock-crm-pill');
     if (crmTitle) crmTitle.textContent = t.dbTitle;
     if (crmSub) crmSub.textContent = t.dbSub;
     if (crmStatus) crmStatus.innerHTML = `<span class="live-dot-green"></span> ${t.dbStatus}`;
-    if (crmLockBtn) crmLockBtn.innerHTML = `<span class="material-symbols-rounded">lock</span> ${t.btnLockCrm}`;
+    if (crmLockBtn) crmLockBtn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> ${t.btnLockCrm}`;
 
     // Admin PIN Lock Modal
     const adminLockTitleEl = document.querySelector('#crmAdminLockModal .admin-lock-title');
@@ -1279,7 +1300,7 @@ class BotHubApp {
     const adminUnlockBtnEl = document.querySelector('#crmAdminLockModal .btn-admin-unlock');
     if (adminLockTitleEl) adminLockTitleEl.textContent = t.adminLockTitle;
     if (adminLockDescEl) adminLockDescEl.textContent = t.adminLockDesc;
-    if (adminUnlockBtnEl) adminUnlockBtnEl.innerHTML = `<span class="material-symbols-rounded">lock_open</span> ${t.adminUnlockBtn}`;
+    if (adminUnlockBtnEl) adminUnlockBtnEl.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg> ${t.adminUnlockBtn}`;
 
     // iOS Guide Modal
     const iosGuideTitleEl = document.querySelector('#pwaIosGuideModal .pwa-ios-modal-header h3');
@@ -1351,11 +1372,11 @@ class BotHubApp {
   async initAuth() {
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.has('login') || urlParams.has('reset')) {
-      localStorage.removeItem('b_bot_auth_user');
+      safeRemoveStorage('b_bot_auth_user');
       try { await fetch('/api/auth/logout', { method: 'POST' }); } catch (e) {}
     }
 
-    const savedUserStr = localStorage.getItem('b_bot_auth_user');
+    const savedUserStr = safeGetStorage('b_bot_auth_user');
     let user = null;
 
     if (savedUserStr) {
@@ -1590,7 +1611,7 @@ class BotHubApp {
       const res = await response.json();
       if (res.success) {
         this.state.currentUser = res.user;
-        localStorage.setItem('b_bot_auth_user', JSON.stringify(res.user));
+        safeSetStorage('b_bot_auth_user', JSON.stringify(res.user));
         this.applyLoggedInUI(res.user);
         this.showToast(`🎉 Registration Complete! Welcome ${res.user.name}.`, 'success');
         await this.fetchData();
@@ -1806,7 +1827,7 @@ class BotHubApp {
         this.state.currentUser.avatarUrl = dataUrl;
         this.state.currentUser.avatarIcon = null;
 
-        localStorage.setItem('b_bot_auth_user', JSON.stringify(this.state.currentUser));
+        safeSetStorage('b_bot_auth_user', JSON.stringify(this.state.currentUser));
         this.applyLoggedInUI(this.state.currentUser);
         this.showToast('✅ Profile picture updated successfully!', 'success');
       };
@@ -1830,7 +1851,7 @@ class BotHubApp {
     this.state.currentUser.avatarIcon = icon;
     this.state.currentUser.avatarUrl = null;
 
-    localStorage.setItem('b_bot_auth_user', JSON.stringify(this.state.currentUser));
+    safeSetStorage('b_bot_auth_user', JSON.stringify(this.state.currentUser));
     this.applyLoggedInUI(this.state.currentUser);
 
     const tray = document.getElementById('presetAvatarTray');
@@ -1844,7 +1865,7 @@ class BotHubApp {
     this.state.currentUser.avatarUrl = null;
     this.state.currentUser.avatarIcon = null;
 
-    localStorage.setItem('b_bot_auth_user', JSON.stringify(this.state.currentUser));
+    safeSetStorage('b_bot_auth_user', JSON.stringify(this.state.currentUser));
     this.applyLoggedInUI(this.state.currentUser);
 
     const tray = document.getElementById('presetAvatarTray');
@@ -1877,7 +1898,7 @@ class BotHubApp {
     this.state.currentUser.telegram = telegram;
     this.state.currentUser.gtcfxMt5Account = gtcfxMt5;
 
-    localStorage.setItem('b_bot_auth_user', JSON.stringify(this.state.currentUser));
+    safeSetStorage('b_bot_auth_user', JSON.stringify(this.state.currentUser));
 
     // Update UI elements immediately
     this.applyLoggedInUI(this.state.currentUser);
@@ -2014,7 +2035,7 @@ class BotHubApp {
 
       if (res.success) {
         this.state.currentUser = res.user;
-        localStorage.setItem('b_bot_auth_user', JSON.stringify(res.user));
+        safeSetStorage('b_bot_auth_user', JSON.stringify(res.user));
         this.applyLoggedInUI(res.user);
         this.showToast(`🎉 Signed in with Google as ${res.user.name} (${res.user.email})!`, 'success');
         await this.fetchData();
@@ -2032,7 +2053,7 @@ class BotHubApp {
         isLoggedIn: true
       };
       this.state.currentUser = mockGoogle;
-      localStorage.setItem('b_bot_auth_user', JSON.stringify(mockGoogle));
+      safeSetStorage('b_bot_auth_user', JSON.stringify(mockGoogle));
       this.applyLoggedInUI(mockGoogle);
       this.showToast(`Welcome ${mockGoogle.name}!`, 'success');
     }
@@ -2053,7 +2074,7 @@ class BotHubApp {
     const submitBtn = document.getElementById('loginMainSubmitBtn') || document.getElementById('loginMobileSubmitBtn');
     if (submitBtn) {
       submitBtn.disabled = true;
-      submitBtn.innerHTML = '<span class="material-symbols-rounded" style="animation: spin 1s infinite linear; font-size: 18px;">sync</span> Signing in...';
+      submitBtn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="animation: spin 1s infinite linear; vertical-align: middle; margin-right: 6px;"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg> Signing in...';
     }
 
     try {
@@ -2066,7 +2087,7 @@ class BotHubApp {
       const res = await response.json();
       if (res.success) {
         this.state.currentUser = res.user;
-        localStorage.setItem('b_bot_auth_user', JSON.stringify(res.user));
+        safeSetStorage('b_bot_auth_user', JSON.stringify(res.user));
         this.applyLoggedInUI(res.user);
         this.showToast(`🎉 Welcome to B-Magnet Trading Pro, ${res.user.name || 'Trader'}!`, 'success');
         await this.fetchData();
@@ -2082,7 +2103,7 @@ class BotHubApp {
           isLoggedIn: true
         };
         this.state.currentUser = mockUser;
-        localStorage.setItem('b_bot_auth_user', JSON.stringify(mockUser));
+        safeSetStorage('b_bot_auth_user', JSON.stringify(mockUser));
         this.applyLoggedInUI(mockUser);
         this.showToast(`🎉 Welcome ${mockUser.name}!`, 'success');
         await this.fetchData();
@@ -2099,7 +2120,7 @@ class BotHubApp {
         isLoggedIn: true
       };
       this.state.currentUser = mockUser;
-      localStorage.setItem('b_bot_auth_user', JSON.stringify(mockUser));
+      safeSetStorage('b_bot_auth_user', JSON.stringify(mockUser));
       this.applyLoggedInUI(mockUser);
       this.showToast(`Welcome ${mockUser.name}!`, 'success');
       await this.fetchData();
@@ -2228,7 +2249,7 @@ class BotHubApp {
       const res = await response.json();
       if (res.success) {
         this.state.currentUser = res.user;
-        localStorage.setItem('b_bot_auth_user', JSON.stringify(res.user));
+        safeSetStorage('b_bot_auth_user', JSON.stringify(res.user));
         this.closeDesktopLoginModal();
         this.applyLoggedInUI(res.user);
         this.showToast(`🎉 Welcome to B-Magnet Trading Pro, ${res.user.name || 'Trader'}!`, 'success');
@@ -2245,7 +2266,7 @@ class BotHubApp {
           isLoggedIn: true
         };
         this.state.currentUser = mockUser;
-        localStorage.setItem('b_bot_auth_user', JSON.stringify(mockUser));
+        safeSetStorage('b_bot_auth_user', JSON.stringify(mockUser));
         this.closeDesktopLoginModal();
         this.applyLoggedInUI(mockUser);
         this.showToast(`🎉 Welcome to B-Magnet Trading Pro, ${mockUser.name}!`, 'success');
@@ -2263,7 +2284,7 @@ class BotHubApp {
         isLoggedIn: true
       };
       this.state.currentUser = mockUser;
-      localStorage.setItem('b_bot_auth_user', JSON.stringify(mockUser));
+      safeSetStorage('b_bot_auth_user', JSON.stringify(mockUser));
       this.closeDesktopLoginModal();
       this.applyLoggedInUI(mockUser);
       this.showToast(`Welcome ${mockUser.name}!`, 'success');
@@ -2360,7 +2381,7 @@ class BotHubApp {
       const res = await response.json();
       if (res.success) {
         this.state.currentUser = res.user;
-        localStorage.setItem('b_bot_auth_user', JSON.stringify(res.user));
+        safeSetStorage('b_bot_auth_user', JSON.stringify(res.user));
         this.applyLoggedInUI(res.user);
         this.showToast(`🎉 Welcome to B-Bot Pro, ${res.user.name}! Top up your BEP-20 wallet to activate EAs.`, 'success');
         await this.fetchData();
@@ -2377,7 +2398,7 @@ class BotHubApp {
         isLoggedIn: true
       };
       this.state.currentUser = mockUser;
-      localStorage.setItem('b_bot_auth_user', JSON.stringify(mockUser));
+      safeSetStorage('b_bot_auth_user', JSON.stringify(mockUser));
       this.applyLoggedInUI(mockUser);
       this.showToast(`Welcome ${mockUser.name}!`, 'success');
     } finally {
@@ -2402,7 +2423,7 @@ class BotHubApp {
     try {
       await fetch('/api/auth/logout', { method: 'POST' });
     } catch (e) {}
-    localStorage.removeItem('b_bot_auth_user');
+    safeRemoveStorage('b_bot_auth_user');
     this.state.currentUser = null;
     this.showLoginScreen();
     const t = TRANSLATIONS[this.state.lang] || TRANSLATIONS.en;
@@ -2960,7 +2981,7 @@ class BotHubApp {
     let planFullTitle = isAr ? 'تصريح تداول شهر واحد (30 يوماً)' : '1 Month Full Trading Pass (30 Days)';
     let planPriceBig = '100 USDT';
     let planSavings = isAr ? '30 يوماً تداول آلي كامل' : '30 Days Automated Execution';
-    let planBtnText = isAr ? 'تفعيل اشتراك 100$ • تصريح شهر' : 'Subscribe Now • 1 Month Pass ($100)';
+    let planBtnText = isAr ? 'تفعيل الاشتراك الآن ($100)' : 'Subscribe Now ($100)';
     let planCategoryDisplay = isAr ? 'تداول الذهب XAUUSD' : 'Gold Hunter • MT5 Institutional';
 
     let featuresList = [
@@ -2976,7 +2997,7 @@ class BotHubApp {
       planFullTitle = isAr ? 'تصريح تجريبي حي لمدة يومين (48 ساعة)' : '2-Day Live Starter Trial Pass (48 Hours)';
       planPriceBig = '10 USDT';
       planSavings = isAr ? 'تجربة حية كاملة • ائتمان 100%' : 'Full Live Execution • 100% Rebate';
-      planBtnText = isAr ? 'بدء التجربة الحية • 10$' : 'Start 2-Day Live Trial • $10';
+      planBtnText = isAr ? 'بدء التجربة الحية ($10)' : 'Start Live Trial ($10)';
       featuresList = [
         { icon: 'science', text: isAr ? 'تجربة حية لمدة يومين كاملين (48 ساعة) على حسابك الحقيقي أو التجريبي' : '48-Hour Full Live Execution Test on Your MT5 Demo or Live Account' },
         { icon: 'bolt', text: isAr ? 'اختبار دقة وسرعة التنفيذ والفروقات السعرية (Spreads) في السوق الحي' : 'Verify Real Market Spreads, Execution Latency & Algorithmic Fills' },
@@ -2988,7 +3009,7 @@ class BotHubApp {
       planFullTitle = isAr ? 'تصريح ربع سنوي شامل (3 أشهر / 90 يوماً)' : '3 Months Quarterly VIP Pass (90 Days)';
       planPriceBig = '250 USDT';
       planSavings = isAr ? 'وفر 50$ (83.33$ شهرياً فقط)' : 'Save $50 ($83.33/mo equivalent)';
-      planBtnText = isAr ? 'تفعيل اشتراك 250$ • تصريح 3 أشهر' : 'Subscribe Now • 3 Months Pass ($250)';
+      planBtnText = isAr ? 'تفعيل الاشتراك الآن ($250)' : 'Subscribe Now ($250)';
       featuresList = [
         { icon: 'verified_user', text: isAr ? 'ترخيص ربع سنوي كامل لمدة 90 يوماً متواصلة بدون أي انقطاع' : 'Full 90-Day Quarterly Algorithm Pass (3 Months Uninterrupted Access)' },
         { icon: 'savings', text: isAr ? 'توفير فوري قدره 50$ مقارنة بالتجديد الشهري (83.33$ شهرياً فقط)' : 'Instant $50 Savings vs Monthly Renewal ($83.33/month equivalent)' },
@@ -3001,7 +3022,7 @@ class BotHubApp {
       planFullTitle = isAr ? 'تصريح مؤسسي سنوي VIP كامل (365 يوماً)' : '1 Year Institutional VIP Pass (365 Days)';
       planPriceBig = '900 USDT';
       planSavings = isAr ? 'أعلى توفير: وفر 300$ (75$ شهرياً)' : 'Maximum Savings: Save $300 ($75/mo)';
-      planBtnText = isAr ? 'تفعيل تصريح سنوي 900$ VIP' : 'Subscribe Now • 1 Year VIP Pass ($900)';
+      planBtnText = isAr ? 'تفعيل الاشتراك الآن ($900)' : 'Subscribe Now ($900)';
       featuresList = [
         { icon: 'workspace_premium', text: isAr ? 'تصريح مؤسسي سنوي VIP كامل لمدة 365 يوماً من التداول الآلي' : 'Institutional VIP Pass: 365 Days Uninterrupted Auto-Trading' },
         { icon: 'diamond', text: isAr ? 'أعلى نسبة توفير: وفر 300$ كاملة (75.00$ شهرياً فقط بدلاً من 100$)' : 'Maximum Savings: Save $300 ($75.00/mo vs $100/mo regular)' },
@@ -3168,7 +3189,8 @@ class BotHubApp {
       </div>
 
       <button class="btn-primary btn-block btn-lg" onclick="window.botHubApp.closeModal('botDetailsModal'); window.botHubApp.openSubscribeModal('${bot.id}')">
-        <span class="material-symbols-rounded">bolt</span> Subscribe via BEP-20 Wallet
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 6px;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        <span>${isAr ? 'تفعيل الاشتراك بواسطة محفظة BEP-20' : 'Subscribe via BEP-20 Wallet'}</span>
       </button>
     `;
 
@@ -3841,7 +3863,7 @@ Hello, here are my subscription and license details. Please verify my GTCfx MT5 
     if (this.state.subscriptions.length === 0) {
       container.innerHTML = `
         <div style="text-align: center; padding: 40px 20px; color: var(--text-muted); background: var(--surface-card); border: 1px solid var(--border-subtle); border-radius: 20px;">
-          <span class="material-symbols-rounded" style="font-size: 48px; margin-bottom: 8px; color: var(--brand-cyan);">bolt</span>
+          <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="#00f2fe" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 8px;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
           <h4>${isAr ? 'لا توجد اشتراكات نشطة بعد' : 'No Active Subscriptions'}</h4>
           <p style="font-size: 12px; margin: 4px 0 16px;">${isAr ? 'تصفح المتجر واشترك في أحد بوتات MT5 الآلية للذهب أو ناسخ الصفقات.' : 'Explore our marketplace and subscribe to automated MT5 EAs or Signal Copiers.'}</p>
           <button class="btn-primary btn-sm" onclick="window.botHubApp.switchView('explore')">${isAr ? 'استكشاف البوتات' : 'Explore Bots'}</button>
@@ -3867,7 +3889,7 @@ Hello, here are my subscription and license details. Please verify my GTCfx MT5 
           <div class="bot-gtcfx-attached-banner">
             <div class="bga-left">
               <div class="bga-icon-circle">
-                <span class="material-symbols-rounded" style="font-size: 18px;">link</span>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
               </div>
               <div>
                 <span class="bga-label">${isAr ? 'حساب التداول المربوط' : 'ATTACHED TRADING ACCOUNT'}</span>
@@ -3885,7 +3907,7 @@ Hello, here are my subscription and license details. Please verify my GTCfx MT5 
               <span class="license-key-text font-mono">${sub.licenseKey}</span>
             </div>
             <button class="btn-copy-license" onclick="window.botHubApp.copyText('${sub.licenseKey}', 'License Key copied!')" title="Copy Key">
-              <span class="material-symbols-rounded">content_copy</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
             </button>
           </div>
 
@@ -3900,17 +3922,21 @@ Hello, here are my subscription and license details. Please verify my GTCfx MT5 
           </div>
 
           <div class="sub-actions-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
-            <button class="btn-sm btn-whatsapp" style="padding: 8px 8px; font-size: 11px;" onclick="window.botHubApp.sendSubscriptionToWhatsApp('${sub.id}')">
-              <span class="material-symbols-rounded" style="font-size: 15px;">chat</span> ${isAr ? 'واتساب' : 'WhatsApp'}
+            <button class="btn-sm btn-whatsapp" style="padding: 8px 8px; font-size: 11px; display:inline-flex; align-items:center; justify-center; gap:5px;" onclick="window.botHubApp.sendSubscriptionToWhatsApp('${sub.id}')">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+              <span>${isAr ? 'واتساب' : 'WhatsApp'}</span>
             </button>
-            <button class="btn-sm btn-outline" style="padding: 8px 6px; font-size: 11px;" onclick="window.botHubApp.openLicenseSetupModal('${sub.id}')">
-              <span class="material-symbols-rounded" style="font-size: 15px;">terminal</span> ${isAr ? 'إعداد MT5' : 'GTCfx MT5'}
+            <button class="btn-sm btn-outline" style="padding: 8px 6px; font-size: 11px; display:inline-flex; align-items:center; justify-center; gap:5px;" onclick="window.botHubApp.openLicenseSetupModal('${sub.id}')">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+              <span>${isAr ? 'إعداد MT5' : 'GTCfx MT5'}</span>
             </button>
-            <button class="btn-sm btn-key-gen-small" style="padding: 8px 6px; font-size: 11px;" onclick="window.botHubApp.openLicenseGeneratorForSub('${sub.id}')">
-              <span class="material-symbols-rounded" style="font-size: 15px;">key</span> ${isAr ? 'توليد المفتاح' : 'Key Gen'}
+            <button class="btn-sm btn-key-gen-small" style="padding: 8px 6px; font-size: 11px; display:inline-flex; align-items:center; justify-center; gap:5px;" onclick="window.botHubApp.openLicenseGeneratorForSub('${sub.id}')">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.778-7.778zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>
+              <span>${isAr ? 'توليد المفتاح' : 'Key Gen'}</span>
             </button>
-            <button class="btn-sm btn-primary" style="padding: 8px 6px; font-size: 11px; background: linear-gradient(135deg, #0284c7 0%, #00a896 100%);" onclick="window.botHubApp.openSubscribeModal('${sub.botId}', '${sub.planKey}')" title="Purchase the same plan again for another MT5 account">
-              <span class="material-symbols-rounded" style="font-size: 15px;">add_circle</span> ${isAr ? 'شراء لحساب آخر' : 'Buy Again'}
+            <button class="btn-sm btn-primary" style="padding: 8px 6px; font-size: 11px; background: linear-gradient(135deg, #0284c7 0%, #00a896 100%); display:inline-flex; align-items:center; justify-center; gap:5px;" onclick="window.botHubApp.openSubscribeModal('${sub.botId}', '${sub.planKey}')" title="Purchase the same plan again for another MT5 account">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+              <span>${isAr ? 'شراء لحساب آخر' : 'Buy Again'}</span>
             </button>
           </div>
         </div>
@@ -3954,149 +3980,7 @@ Hello, here are my subscription and license details. Please verify my GTCfx MT5 
           return `
             <div style="display: flex; align-items: center; justify-content: space-between; background: var(--surface-card); border: 1.5px solid var(--border-subtle); border-radius: 14px; padding: 12px 14px; gap: 10px;">
               <div style="display: flex; align-items: center; gap: 10px; min-width: 0;">
-                <div style="width: 38px; height: 38px; border-radius: 10px; background: ${bot.color}15; border: 1px solid ${bot.color}35; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                  ${botSvg}
-                </div>
-                <div style="min-width: 0;">
-                  <h5 style="font-size: 13px; font-weight: 700; margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${bot.name}</h5>
-                  <span style="font-size: 11px; color: var(--text-muted);">${durText}</span>
-                </div>
-              </div>
-              <div style="display: flex; align-items: center; gap: 10px; flex-shrink: 0;">
-                <span style="font-size: 13px; font-weight: 800; color: #fbbf24;" class="font-mono">${priceText}</span>
-                <button class="btn-primary btn-sm" onclick="window.botHubApp.closeModal('purchaseAdditionalModal'); window.botHubApp.openSubscribeModal('${bot.id}', '${planKey}')">
-                  <span class="material-symbols-rounded" style="font-size: 15px;">bolt</span> Buy Plan
-                </button>
-              </div>
-            </div>
-          `;
-        }).join('')}
-      </div>
-    `;
-
-    this.openModal('purchaseAdditionalModal');
-  }
-
-  openLicenseSetupModal(subId) {
-    const sub = this.state.subscriptions.find(s => s.id === subId);
-    if (!sub) return;
-
-    const gtcfxAcc = sub.gtcfxMt5Account || sub.mt5Account || '8849201';
-
-    const body = document.getElementById('licenseModalBody');
-    body.innerHTML = `
-      <div style="margin-bottom: 16px;">
-        <h4 style="font-size: 15px; font-weight: 700;">${sub.botName}</h4>
-        <span style="font-size: 12px; color: var(--text-muted);">GTCfx Broker MT5 Whitelist & Terminal Setup</span>
-      </div>
-
-      <div class="license-box" style="margin-bottom: 16px;">
-        <div>
-          <span style="font-size: 10px; color: var(--text-muted); display: block;">ACTIVE LICENSE KEY</span>
-          <span class="license-key-text">${sub.licenseKey}</span>
-        </div>
-        <button class="btn-copy-license" onclick="window.botHubApp.copyText('${sub.licenseKey}', 'License Key copied!')">
-          <span class="material-symbols-rounded">content_copy</span>
-        </button>
-      </div>
-
-      <div class="form-group">
-        <label class="form-label" for="modalMt5Input">
-          <span>GTCfx MT5 Account Number</span>
-          <span class="label-hint">GTCfx Live or Demo Account</span>
-        </label>
-        <input type="text" id="modalMt5Input" class="form-input font-mono" value="${gtcfxAcc}" placeholder="e.g. 8849201">
-      </div>
-
-      <div style="background: rgba(234, 179, 8, 0.08); border: 1px solid rgba(234, 179, 8, 0.25); border-radius: 12px; padding: 12px; margin-bottom: 16px; font-size: 11px; color: var(--text-secondary); line-height: 1.4;">
-        <strong style="color: #fbbf24;">GTCfx Installation Guide:</strong>
-        <ol style="margin-left: 16px; margin-top: 4px;">
-          <li>Copy your License Key above.</li>
-          <li>In your GTCfx MT5 terminal, attach the EA to XAUUSD chart.</li>
-          <li>Enter your License Key in EA Inputs and enable 'Allow Algo Trading'.</li>
-        </ol>
-      </div>
-
-      <button class="btn-primary btn-block btn-lg" onclick="window.botHubApp.submitMt5Binding('${sub.id}')">
-        <span class="material-symbols-rounded">check</span> Save GTCfx MT5 Account
-      </button>
-
-      <button class="btn-whatsapp btn-block" style="margin-top: 10px;" onclick="window.botHubApp.sendSubscriptionToWhatsApp('${sub.id}')">
-        <svg class="wa-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-          <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm0 18.15c-1.49 0-2.95-.4-4.22-1.15l-.3-.18-3.13.82.83-3.05-.2-.31a8.167 8.167 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24 2.2 0 4.27.86 5.82 2.42a8.188 8.188 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.19 8.24zm4.51-6.17c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.15.17-.25.25-.42.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.53.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.07-.12-.23-.19-.48-.31z"/>
-        </svg>
-        <span>Send to WhatsApp (+919495097786)</span>
-      </button>
-    `;
-
-    this.openModal('licenseModal');
-  }
-
-  async submitMt5Binding(subId) {
-    const input = document.getElementById('modalMt5Input');
-    const acc = input ? input.value.trim() : '';
-    if (!acc) {
-      this.showToast('Please enter a valid GTCfx MT5 Account Number', 'danger');
-      return;
-    }
-
-    try {
-      const response = await fetch('/api/subscriptions/update-gtcfx', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          subscriptionId: subId,
-          gtcfxMt5Account: acc
-        })
-      });
-
-      const res = await response.json();
-      if (res.success) {
-        this.showToast(`GTCfx MT5 Account #${acc} whitelisted!`, 'success');
-        this.closeModal('licenseModal');
-        await this.fetchData();
-      }
-    } catch (e) {
-      this.closeModal('licenseModal');
-      this.showToast('Account bound locally!', 'success');
-    }
-  }
-
-  // -------------------------------------------------------------
-  // 5. CREATOR STUDIO & AFFILIATE HUB
-  // -------------------------------------------------------------
-  // 7. CREATOR STUDIO & AFFILIATE HUB
-  // -------------------------------------------------------------
-  renderCreatorHub() {
-    const creator = this.state.creator;
-    if (!creator) return;
-    const isAr = this.state.lang === 'ar';
-    const t = TRANSLATIONS[this.state.lang] || TRANSLATIONS.en;
-
-    const mrrEl = document.getElementById('creatorMrr');
-    if (mrrEl) mrrEl.textContent = `$${(creator.mrr || 4820).toFixed(2)}`;
-
-    const subsEl = document.getElementById('creatorSubscribers');
-    if (subsEl) subsEl.textContent = creator.totalSubscribers || 64;
-
-    const activeBotsEl = document.getElementById('creatorActiveBots');
-    if (activeBotsEl) activeBotsEl.textContent = creator.activeBots || 2;
-
-    const payoutEl = document.getElementById('creatorPayoutBalance');
-    if (payoutEl) payoutEl.textContent = `$${(creator.payoutBalance || 3480).toFixed(2)}`;
-
-    // Update Headings and Labels
-    const creatorTitle = document.querySelector('#viewCreator .panel-title');
-    const creatorSub = document.querySelector('#viewCreator .panel-subtitle');
-    const mrrLabel = document.querySelector('#viewCreator .rev-label');
-    const payoutBtn = document.querySelector('#viewCreator .btn-payout');
-    const affTitle = document.querySelector('#viewCreator .affiliate-title');
-    const affDesc = document.querySelector('#viewCreator .affiliate-desc');
-
-    if (creatorTitle) creatorTitle.textContent = t.creatorTitle;
-    if (creatorSub) creatorSub.textContent = t.creatorSub;
-    if (mrrLabel) mrrLabel.textContent = t.creatorMrrLabel;
-    if (payoutBtn) payoutBtn.innerHTML = `<span class="material-symbols-rounded">payments</span> ${t.btnPayout}`;
+                <div style="width: 38px; height: 38px; border-radius: 10px; background: ${bot.color}15; border: 1px solid ${bot.color}35;    if (payoutBtn) payoutBtn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 6px;"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg> ${t.btnPayout}`;
     if (affTitle) affTitle.textContent = t.affiliateTitle;
     if (affDesc) affDesc.innerHTML = isAr ? 'اربح <strong>20% عمولة متكررة</strong> عن كل مستخدم يشترك عبر رابطك الخاص.' : 'Earn <strong>20% recurring commission</strong> for every user who subscribes with your link.';
 
@@ -4176,7 +4060,7 @@ Hello, here are my subscription and license details. Please verify my GTCfx MT5 
         <div class="pm-item" style="border-color: rgba(240, 185, 11, 0.35); background: linear-gradient(135deg, rgba(240, 185, 11, 0.08) 0%, rgba(12, 16, 26, 0.95) 100%);">
           <div class="pm-left">
             <div class="pm-icon-box" style="background: rgba(240, 185, 11, 0.2); color: #F0B90B; border: 1px solid rgba(240, 185, 11, 0.4);">
-              <span class="material-symbols-rounded">currency_bitcoin</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F0B90B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><line x1="12" y1="6" x2="12" y2="18"/></svg>
             </div>
             <div>
               <div class="pm-title" style="display: flex; align-items: center; gap: 6px;">
@@ -4189,7 +4073,7 @@ Hello, here are my subscription and license details. Please verify my GTCfx MT5 
             </div>
           </div>
           <button class="btn-copy-code" onclick="window.botHubApp.copyText('${bep20Addr}', 'Deposit Address copied!')" title="Copy Address">
-            <span class="material-symbols-rounded" style="font-size: 16px;">content_copy</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
           </button>
         </div>
       `;
@@ -4203,7 +4087,175 @@ Hello, here are my subscription and license details. Please verify my GTCfx MT5 
           <div class="inv-item">
             <div class="inv-left">
               <div class="pm-icon-box" style="color: var(--color-success);">
-                <span class="material-symbols-rounded">receipt_long</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+              </div>
+              <div>
+                <div class="inv-title">${inv.botName} (${inv.plan})</div>
+                <div class="inv-sub">${inv.id} • ${new Date(inv.date).toLocaleDateString()} • ${inv.paymentMethod}</div>
+              </div>
+            </div>`;pdate-gtcfx', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          subscriptionId: subId,
+          gtcfxMt5Account: acc
+        })
+      });
+
+      const res = await response.json();
+      if (res.success) {
+        this.showToast(`GTCfx MT5 Account #${acc} whitelisted!`, 'success');
+        this.closeModal('licenseModal');
+        await this.fetchData();
+      }
+    } catch (e) {
+      this.closeModal('licenseModal');
+      this.showToast('Account bound locally!', 'success');
+    }
+  }
+
+  // -------------------------------------------------------------
+  // 5. CREATOR STUDIO & AFFILIATE HUB
+  // -------------------------------------------------------------
+  // 7. CREATOR STUDIO & AFFILIATE HUB
+  // -------------------------------------------------------------
+  renderCreatorHub() {
+    const creator = this.state.creator;
+    if (!creator) return;
+    const isAr = this.state.lang === 'ar';
+    const t = TRANSLATIONS[this.state.lang] || TRANSLATIONS.en;
+
+    const mrrEl = document.getElementById('creatorMrr');
+    if (mrrEl) mrrEl.textContent = `$${(creator.mrr || 4820).toFixed(2)}`;
+
+    const subsEl = document.getElementById('creatorSubscribers');
+    if (subsEl) subsEl.textContent = creator.totalSubscribers || 64;
+
+    const activeBotsEl = document.getElementById('creatorActiveBots');
+    if (activeBotsEl) activeBotsEl.textContent = creator.activeBots || 2;
+
+    const payoutEl = document.getElementById('creatorPayoutBalance');
+    if (payoutEl) payoutEl.textContent = `$${(creator.payoutBalance || 3480).toFixed(2)}`;
+
+    // Update Headings and Labels
+    const creatorTitle = document.querySelector('#viewCreator .panel-title');
+    const creatorSub = document.querySelector('#viewCreator .panel-subtitle');
+    const mrrLabel = document.querySelector('#viewCreator .rev-label');
+    const payoutBtn = document.querySelector('#viewCreator .btn-payout');
+    const affTitle = document.querySelector('#viewCreator .affiliate-title');
+    const affDesc = document.querySelector('#viewCreator .affiliate-desc');
+
+    if (creatorTitle) creatorTitle.textContent = t.creatorTitle;
+    if (creatorSub) creatorSub.textContent = t.creatorSub;
+    if (mrrLabel) mrrLabel.textContent = t.creatorMrrLabel;
+    if (payoutBtn) payoutBtn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 6px;"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg> ${t.btnPayout}`;
+    if (affTitle) affTitle.textContent = t.affiliateTitle;
+    if (affDesc) affDesc.innerHTML = isAr ? 'اربح <strong>20% عمولة متكررة</strong> عن كل مستخدم يشترك عبر رابطك الخاص.' : 'Earn <strong>20% recurring commission</strong> for every user who subscribes with your link.';
+
+    const publishedList = document.getElementById('publishedBotsList');
+    if (publishedList && creator.publishedBots) {
+      publishedList.innerHTML = creator.publishedBots.map(bot => `
+        <div style="background: var(--surface-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 14px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <h4 style="font-size: 14px; font-weight: 700;">${bot.name}</h4>
+            <span style="font-size: 11px; color: var(--text-muted);">${bot.subscribers} ${isAr ? 'مشترك نشط' : 'Active Subscribers'} • $${bot.monthlyRevenue.toFixed(2)}/${isAr ? 'شهرياً' : 'mo'}</span>
+          </div>
+          <span style="font-size: 10px; font-weight: 700; background: var(--color-success-bg); color: var(--color-success); padding: 3px 8px; border-radius: 20px;">
+            ${isAr ? 'نشط' : bot.status}
+          </span>
+        </div>
+      `).join('');
+    }
+  }
+
+  copyReferralLink() {
+    const input = document.getElementById('affiliateLinkInput');
+    if (input) {
+      navigator.clipboard.writeText(input.value);
+      this.showToast(this.state.lang === 'ar' ? 'تم نسخ رابط الإحالة! ستحصل على 20% عمولة عن كل مشترك.' : 'Affiliate referral link copied! Earn 20% on every subscriber.', 'success');
+    }
+  }
+
+  openPublishModal() {
+    this.openModal('publishModal');
+  }
+
+  async submitPublishBot() {
+    const name = document.getElementById('pubBotName')?.value?.trim() || '';
+    const tagline = document.getElementById('pubBotTagline')?.value?.trim() || '';
+    const category = document.getElementById('pubCategory')?.value || 'Scalper';
+    const riskLevel = document.getElementById('pubRiskLevel')?.value || 'Medium';
+    const winRate = document.getElementById('pubWinRate')?.value || '85%';
+    const monthlyRoi = document.getElementById('pubMonthlyRoi')?.value || '15-20%';
+    const monthlyPrice = document.getElementById('pubMonthlyPrice')?.value || '100';
+    const description = document.getElementById('pubDescription')?.value?.trim() || '';
+
+    if (!name || !tagline) {
+      this.showToast('Please provide a Bot Name and Tagline', 'danger');
+      return;
+    }
+
+    try {
+      const response = await fetch('/api/bots/publish', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name, tagline, category, riskLevel, winRate, monthlyRoi, monthlyPrice, description
+        })
+      });
+      const res = await response.json();
+      if (res.success) {
+        this.closeModal('publishModal');
+        this.showToast(`🚀 ${name} published to marketplace!`, 'success');
+        await this.fetchData();
+        this.switchView('explore');
+      }
+    } catch (e) {
+      this.closeModal('publishModal');
+      this.showToast('Bot published successfully in local mode!', 'success');
+    }
+  }
+
+  // -------------------------------------------------------------
+  // 6. BILLING & INVOICES
+  // -------------------------------------------------------------
+  renderBilling() {
+    // Connected BEP-20 Asset Card & Payment Methods
+    const pmContainer = document.getElementById('paymentMethodsList');
+    if (pmContainer) {
+      const bep20Addr = '0x26B5E776b4e3f40378b440Dfb2ACD675938B480b';
+      pmContainer.innerHTML = `
+        <div class="pm-item" style="border-color: rgba(240, 185, 11, 0.35); background: linear-gradient(135deg, rgba(240, 185, 11, 0.08) 0%, rgba(12, 16, 26, 0.95) 100%);">
+          <div class="pm-left">
+            <div class="pm-icon-box" style="background: rgba(240, 185, 11, 0.2); color: #F0B90B; border: 1px solid rgba(240, 185, 11, 0.4);">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F0B90B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><line x1="12" y1="6" x2="12" y2="18"/></svg>
+            </div>
+            <div>
+              <div class="pm-title" style="display: flex; align-items: center; gap: 6px;">
+                <span>USDT (BEP-20)</span>
+                <span class="bsc-coin-badge">BSC</span>
+              </div>
+              <div class="pm-sub font-mono font-xs" style="color: #fbbf24; word-break: break-all; margin-top: 2px;">
+                ${bep20Addr}
+              </div>
+            </div>
+          </div>
+          <button class="btn-copy-code" onclick="window.botHubApp.copyText('${bep20Addr}', 'Deposit Address copied!')" title="Copy Address">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          </button>
+        </div>
+      `;
+    }
+
+    // Invoices
+    const invContainer = document.getElementById('invoicesListContainer');
+    if (invContainer) {
+      invContainer.innerHTML = this.state.invoices.map(inv => {
+        return `
+          <div class="inv-item">
+            <div class="inv-left">
+              <div class="pm-icon-box" style="color: var(--color-success);">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
               </div>
               <div>
                 <div class="inv-title">${inv.botName} (${inv.plan})</div>
@@ -4437,7 +4489,7 @@ Hello, here are my subscription and license details. Please verify my GTCfx MT5 
 
     // Saved webhook in input
     const webhookInput = document.getElementById('googleSheetWebhookInput');
-    const savedUrl = localStorage.getItem('b_bot_google_webhook_url');
+    const savedUrl = safeGetStorage('b_bot_google_webhook_url');
     if (webhookInput && savedUrl && !webhookInput.value) {
       webhookInput.value = savedUrl;
     }
@@ -4542,20 +4594,20 @@ Hello, here are my subscription and license details. Please verify my GTCfx MT5 
         timeline.innerHTML = `<div style="text-align:center; color: var(--text-muted); padding: 12px;">${isAr ? 'لا يوجد نشاط مسجل بعد.' : 'No activity logged yet.'}</div>`;
       } else {
         timeline.innerHTML = notifications.slice(0, 10).map(n => {
-          let icon = 'notifications';
+          let svgIcon = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00f2fe" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>`;
           let iconClass = 'login';
           if (n.type === 'NEW_SUBSCRIPTION') {
-            icon = 'rocket_launch';
+            svgIcon = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-3.95 11a22.35 22.35 0 0 1-3.95 2z"/></svg>`;
             iconClass = 'sub';
           } else if (n.type === 'WALLET_TOPUP') {
-            icon = 'currency_bitcoin';
+            svgIcon = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><line x1="12" y1="6" x2="12" y2="18"/></svg>`;
             iconClass = 'topup';
           }
 
           return `
             <div class="timeline-item">
               <div class="tl-icon ${iconClass}">
-                <span class="material-symbols-rounded" style="font-size: 18px;">${icon}</span>
+                ${svgIcon}
               </div>
               <div class="tl-content">
                 <div class="tl-header">
@@ -4576,13 +4628,13 @@ Hello, here are my subscription and license details. Please verify my GTCfx MT5 
     const webhookUrl = input ? input.value.trim() : '';
 
     if (webhookUrl) {
-      localStorage.setItem('b_bot_google_webhook_url', webhookUrl);
+      safeSetStorage('b_bot_google_webhook_url', webhookUrl);
     }
 
     const btn = document.getElementById('btnSyncGoogleSheet');
     if (btn) {
       btn.disabled = true;
-      btn.innerHTML = '<span class="material-symbols-rounded" style="animation: spin 1s infinite linear;">sync</span> Syncing...';
+      btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="animation: spin 1s infinite linear;"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg> Syncing...';
     }
 
     try {
@@ -4629,7 +4681,7 @@ Hello, here are my subscription and license details. Please verify my GTCfx MT5 
     } finally {
       if (btn) {
         btn.disabled = false;
-        btn.innerHTML = '<span class="material-symbols-rounded">sync</span> Sync';
+        btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg> Sync';
       }
     }
   }
@@ -5327,7 +5379,15 @@ Hello, here are my subscription and license details. Please verify my GTCfx MT5 
   }
 }
 
-// Global App Initializer
-window.addEventListener('DOMContentLoaded', () => {
-  window.botHubApp = new BotHubApp();
-});
+// Global App Initializer (Immediate & Safe DOMReady Handshake)
+function initBotHubApp() {
+  if (!window.botHubApp) {
+    window.botHubApp = new BotHubApp();
+  }
+}
+
+if (document.readyState === 'loading') {
+  window.addEventListener('DOMContentLoaded', initBotHubApp);
+} else {
+  initBotHubApp();
+}

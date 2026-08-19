@@ -27,8 +27,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="B-Magnet PRO">
 
-  <!-- Security: Force HTTPS & Upgrade Insecure HTTP Requests -->
-  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  <!-- Security & Protocol Upgrade -->
   <script>
     // Automatic HTTPS upgrade to fix security errors and enable 1-tap PWA Home Screen install
     if (location.protocol === 'http:' && location.hostname !== 'localhost' && location.hostname !== '127.0.0.1' && !location.hostname.endsWith('.local')) {
@@ -49,7 +48,7 @@
   <!-- Google Identity Services (Sign-In with Google) -->
   <script src="https://accounts.google.com/gsi/client" async defer></script>
   
-  <link rel="stylesheet" href="style.css?v=3107">
+  <link rel="stylesheet" href="style.css?v=8042">
 </head>
 <body class="theme-dark">
 
@@ -144,14 +143,10 @@
                 <a href="#faqSection" class="landing-nav-link" id="landingNavFaq">FAQ</a>
               </nav>
 
-              <!-- Top Right Controls: Login Text Link, Yellow Sign Up Pill, Language & Theme -->
+              <!-- Top Right Controls: Yellow Login Banner Button, Language & Theme -->
               <div class="landing-header-actions">
-                <button type="button" class="btn-skipio-login-link" id="landingLoginBtn" onclick="window.botHubApp.showSignInPage()">
+                <button type="button" class="btn-skipio-yellow-nav" id="landingYellowLoginBtn" onclick="window.botHubApp.showSignInPage()">
                   Login
-                </button>
-
-                <button type="button" class="btn-skipio-yellow-nav" id="landingSignUpBtn" onclick="window.botHubApp.showSignUpScreen()">
-                  Sign Up
                 </button>
 
                 <!-- Globe Icon Language Dropdown -->
@@ -1495,16 +1490,7 @@
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron-svg"><polyline points="9 18 15 12 9 6"/></svg>
                 </div>
 
-                <div class="setting-item" onclick="window.botHubApp.openLicenseGeneratorModal()">
-                  <div class="setting-icon-box text-cyan">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00f2fe" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>
-                  </div>
-                  <div class="setting-info">
-                    <div class="setting-name font-bold">MT5 Key Generator</div>
-                    <div class="setting-sub">Generate and copy B-Magnet Gold EA activation keys</div>
-                  </div>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron-svg"><polyline points="9 18 15 12 9 6"/></svg>
-                </div>
+
 
                 <div class="setting-item" onclick="window.botHubApp.toggleTheme()">
                   <div class="setting-icon-box text-warning" id="accountThemeSettingIcon">
@@ -1575,7 +1561,10 @@
             <div class="db-banner-top">
               <div style="display: flex; align-items: center; gap: 12px;">
                 <div class="db-brand-icon">
-                  <span class="material-symbols-rounded">admin_panel_settings</span>
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    <circle cx="12" cy="11" r="3"/>
+                  </svg>
                 </div>
                 <div>
                   <div class="db-pill-status">
@@ -1587,11 +1576,11 @@
               </div>
               <div style="display: flex; align-items: center; gap: 8px;">
                 <button type="button" class="btn-xs btn-outline" onclick="window.botHubApp.switchView('settings')" title="Back to Account Settings" style="display: inline-flex; align-items: center; gap: 4px; padding: 5px 10px; border-radius: 8px;">
-                  <span class="material-symbols-rounded" style="font-size: 15px;">arrow_back</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
                   <span>Account</span>
                 </button>
                 <button type="button" class="btn-lock-crm-pill" onclick="window.botHubApp.lockAdminCrm()" title="Lock CRM Security Gate">
-                  <span class="material-symbols-rounded" style="font-size: 15px;">lock</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
                   <span>Lock CRM</span>
                 </button>
               </div>
@@ -1612,7 +1601,7 @@
               <div class="gsc-input-row">
                 <input type="text" id="googleSheetWebhookInput" class="form-input font-mono font-xs" placeholder="Paste: https://script.google.com/macros/s/.../exec">
                 <button class="btn-primary btn-sm" id="btnSyncGoogleSheet" onclick="window.botHubApp.syncToGoogleSheet()" title="Synchronize Database to Google Sheet">
-                  <span class="material-symbols-rounded">sync</span> Sync
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg> Sync
                 </button>
               </div>
             </div>
@@ -1643,19 +1632,18 @@
           </div>
 
           <!-- Hosted Vendor License Key Generator Program (Inside Admin CRM) -->
-          <div class="card admin-keygen-card" id="adminKeygenProgramCard" style="margin-bottom: 20px;">
-            <div class="card-header flex-between">
-              <div class="akg-title-wrap">
-                <div class="akg-icon-badge">
-                  <span class="material-symbols-rounded">vpn_key</span>
-                </div>
-                <div>
-                  <h3 class="card-title" style="font-size: 15px;">MT5 Vendor License Key Generator</h3>
-                  <p class="akg-sub">Generate and issue live activation keys for B-Magnet Gold Hunter v0.8</p>
-                </div>
+          <div class="card admin-keygen-card" id="adminKeygenProgramCard" style="margin-bottom: 24px;">
+            <div class="card-header akg-header-centered">
+              <div class="akg-icon-badge-centered">
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#00f2fe" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/>
+                  <circle cx="7.5" cy="16.5" r="1.5" fill="#00f2fe"/>
+                </svg>
               </div>
-              <span class="badge-featured" style="background: rgba(0, 229, 255, 0.12); color: #00e5ff; border: 1px solid rgba(0, 229, 255, 0.25); font-size: 9.5px;">
-                🔐 SHA-FNV1a Engine Active
+              <h3 class="card-title" style="font-size: 18px; font-weight: 800; color: #ffffff; text-align: center; margin-bottom: 4px;">MT5 Vendor License Key Generator</h3>
+              <p class="akg-sub" style="font-size: 13px; color: #94a3b8; text-align: center; max-width: 480px; margin: 0 auto 10px auto;">Generate and issue live activation keys for B-Magnet Gold Hunter v0.8</p>
+              <span class="badge-featured" style="background: rgba(0, 242, 254, 0.15); color: #00f2fe; border: 1px solid rgba(0, 242, 254, 0.35); font-size: 10px; font-weight: 800; padding: 3px 10px; border-radius: 12px;">
+                ⚡ SHA-256 / FNV1a Quantum Engine Active
               </span>
             </div>
 
@@ -1717,7 +1705,7 @@
               <div class="akg-result-box" id="adminKeyGenResultBox">
                 <div class="akg-res-header">
                   <div class="akg-res-badge">
-                    <span class="material-symbols-rounded" style="font-size: 16px;">key</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00f2fe" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>
                     <span>GENERATED CLIENT ACTIVATION KEY</span>
                   </div>
                   <span class="akg-dur-pill" id="adminKeyGenDurPill">1 Month ($100)</span>
@@ -1749,19 +1737,19 @@
                 <!-- Action Button Controls -->
                 <div class="akg-actions-grid">
                   <button type="button" class="btn-akg-action btn-akg-copy" onclick="window.botHubApp.copyAdminKey()">
-                    <span class="material-symbols-rounded">content_copy</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
                     <span>Copy Key</span>
                   </button>
                   <button type="button" class="btn-akg-action btn-akg-wa-msg" onclick="window.botHubApp.copyAdminWhatsAppMsg()">
-                    <span class="material-symbols-rounded">chat</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
                     <span>Copy WA Msg</span>
                   </button>
                   <button type="button" class="btn-akg-action btn-akg-wa-send" onclick="window.botHubApp.sendAdminWhatsAppDirect()">
-                    <span class="material-symbols-rounded">send</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
                     <span>Send WA</span>
                   </button>
                   <button type="button" class="btn-akg-action btn-akg-save-crm" onclick="window.botHubApp.saveAdminKeyToCrm()">
-                    <span class="material-symbols-rounded">save</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
                     <span>Save to CRM</span>
                   </button>
                 </div>
@@ -1772,8 +1760,8 @@
           <!-- Section 1: Customer Registry -->
           <div class="card" style="margin-bottom: 16px;">
             <div class="card-header flex-between">
-              <h3 class="card-title">
-                <span class="material-symbols-rounded" style="color: #10B981;">group</span>
+              <h3 class="card-title" style="display: flex; align-items: center; gap: 8px;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
                 Customer Registry (Phones & Balances)
               </h3>
               <button class="btn-xs btn-outline" onclick="window.botHubApp.exportCustomersCsv()">Export CSV</button>
@@ -1800,8 +1788,8 @@
           <!-- Section 2: Active Subscriptions & Expiry -->
           <div class="card" style="margin-bottom: 16px;">
             <div class="card-header flex-between">
-              <h3 class="card-title">
-                <span class="material-symbols-rounded" style="color: #F0B90B;">verified</span>
+              <h3 class="card-title" style="display: flex; align-items: center; gap: 8px;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F0B90B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
                 Bot Purchases & Expiry Tracker
               </h3>
               <span class="badge-featured" style="font-size: 10px;">1M / 3M / 1Y</span>
@@ -1829,8 +1817,8 @@
           <!-- Section 3: Live Owner Audit & Alert Log -->
           <div class="card">
             <div class="card-header flex-between">
-              <h3 class="card-title">
-                <span class="material-symbols-rounded" style="color: #6366F1;">notifications_active</span>
+              <h3 class="card-title" style="display: flex; align-items: center; gap: 8px;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6366F1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
                 Live Activity & Notification Stream
               </h3>
               <button class="btn-xs btn-outline" onclick="window.botHubApp.fetchAdminDatabase()">Refresh</button>
@@ -1891,10 +1879,15 @@
         </button>
         <button type="button" class="nav-item" data-view="subscriptions" onclick="window.botHubApp.switchView('subscriptions')">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="nav-svg">
-            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+            <rect x="3" y="8" width="18" height="12" rx="4"/>
+            <line x1="12" y1="3" x2="12" y2="8"/>
+            <circle cx="12" cy="2" r="1.2" fill="currentColor"/>
+            <circle cx="8" cy="13" r="1.5" fill="currentColor"/>
+            <circle cx="16" cy="13" r="1.5" fill="currentColor"/>
+            <path d="M9 17h6"/>
           </svg>
           <span class="nav-label">My Bots</span>
-          <span class="bottom-nav-badge" id="mobileNavBadgeSubCount">1</span>
+          <span class="nav-badge bottom-nav-badge" id="mobileNavBadgeSubCount">1</span>
         </button>
         <button type="button" class="nav-item" data-view="creator" onclick="window.botHubApp.switchView('creator')">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="nav-svg">
@@ -2179,8 +2172,11 @@
       <div class="sheet-handle"></div>
       <div class="modal-header">
         <h3 class="modal-title" id="detailBotTitle">Bot Details</h3>
-        <button class="modal-close-btn" onclick="window.botHubApp.closeModal('botDetailsModal')">
-          <span class="material-symbols-rounded">close</span>
+        <button class="modal-close-btn" onclick="window.botHubApp.closeModal('botDetailsModal')" title="Close Modal" aria-label="Close">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
         </button>
       </div>
       <div class="modal-body" id="detailBotBody">
@@ -2790,7 +2786,11 @@
   <div class="modal-backdrop" id="crmAdminLockModal">
     <div class="modal-dialog-card admin-lock-card" onclick="event.stopPropagation()">
       <div class="admin-lock-shield-icon">
-        <span class="material-symbols-rounded">shield_lock</span>
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          <rect x="9" y="11" width="6" height="5" rx="1"/>
+          <path d="M10 11V9a2 2 0 1 1 4 0v2"/>
+        </svg>
       </div>
 
       <div class="dialog-badge-chip" style="background: rgba(239, 68, 68, 0.12); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.25);">
@@ -2827,7 +2827,10 @@
           <span>Cancel</span>
         </button>
         <button type="button" class="btn-clean-navy btn-admin-unlock" onclick="window.botHubApp.verifyAdminLockCode()">
-          <span class="material-symbols-rounded">lock_open</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+            <path d="M7 11V7a5 5 0 0 1 9.9-1"/>
+          </svg>
           <span id="txtAdminUnlockBtn">Unlock CRM</span>
         </button>
       </div>
@@ -2888,6 +2891,6 @@
 
   <!-- App Scripts -->
   <script src="qrcode.js"></script>
-  <script src="app.js?v=3107"></script>
+  <script src="app.js?v=8042"></script>
 </body>
 </html>

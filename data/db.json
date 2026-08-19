@@ -350,8 +350,8 @@
     "picture": "https://lh3.googleusercontent.com/a/default-user=s96-c",
     "authProvider": "google",
     "isLoggedIn": true,
-    "token": "tok_goog_a647aa6c15bf28fcd97306cd27819e45",
-    "loginTime": "2026-08-19T04:17:40Z"
+    "token": "tok_goog_cad6573d49de40c9c18b42dac1fa0221",
+    "loginTime": "2026-08-19T04:42:09Z"
   },
   "customers": {
     "hanaan.trader@gmail.com": {
@@ -366,13 +366,63 @@
       "gtcfxMt5Account": "8849201",
       "subscriptions": [],
       "registeredAt": "2026-08-16T14:40:17Z",
-      "lastLoginAt": "2026-08-19T04:17:40Z",
-      "loginCount": 40,
+      "lastLoginAt": "2026-08-19T04:42:09Z",
+      "loginCount": 45,
       "googleEmail": "hanaan.trader@gmail.com",
       "picture": "https://lh3.googleusercontent.com/a/default-user=s96-c"
     }
   },
   "notifications": [
+    {
+      "id": "notif_1787114529_540",
+      "type": "GOOGLE_LOGIN",
+      "title": "\ud83d\udd11 Google Sign-In",
+      "message": "User: Hanaan Junaid (hanaan.trader@gmail.com) signed in with Google. Wallet: 140.00 USDT",
+      "customerPhone": "+91 94950 84201",
+      "customerEmail": "hanaan.trader@gmail.com",
+      "timestamp": "2026-08-19T04:42:09Z",
+      "unread": true
+    },
+    {
+      "id": "notif_1787114201_829",
+      "type": "GOOGLE_LOGIN",
+      "title": "\ud83d\udd11 Google Sign-In",
+      "message": "User: Hanaan Junaid (hanaan.trader@gmail.com) signed in with Google. Wallet: 140.00 USDT",
+      "customerPhone": "+91 94950 84201",
+      "customerEmail": "hanaan.trader@gmail.com",
+      "timestamp": "2026-08-19T04:36:41Z",
+      "unread": true
+    },
+    {
+      "id": "notif_1787113975_627",
+      "type": "GOOGLE_LOGIN",
+      "title": "\ud83d\udd11 Google Sign-In",
+      "message": "User: Hanaan Junaid (hanaan.trader@gmail.com) signed in with Google. Wallet: 140.00 USDT",
+      "customerPhone": "+91 94950 84201",
+      "customerEmail": "hanaan.trader@gmail.com",
+      "timestamp": "2026-08-19T04:32:55Z",
+      "unread": true
+    },
+    {
+      "id": "notif_1787113740_913",
+      "type": "GOOGLE_LOGIN",
+      "title": "\ud83d\udd11 Google Sign-In",
+      "message": "User: Hanaan Junaid (hanaan.trader@gmail.com) signed in with Google. Wallet: 140.00 USDT",
+      "customerPhone": "+91 94950 84201",
+      "customerEmail": "hanaan.trader@gmail.com",
+      "timestamp": "2026-08-19T04:29:00Z",
+      "unread": true
+    },
+    {
+      "id": "notif_1787113270_155",
+      "type": "GOOGLE_LOGIN",
+      "title": "\ud83d\udd11 Google Sign-In",
+      "message": "User: Hanaan Junaid (hanaan.trader@gmail.com) signed in with Google. Wallet: 140.00 USDT",
+      "customerPhone": "+91 94950 84201",
+      "customerEmail": "hanaan.trader@gmail.com",
+      "timestamp": "2026-08-19T04:21:10Z",
+      "unread": true
+    },
     {
       "id": "notif_1787113060_687",
       "type": "GOOGLE_LOGIN",
