@@ -47,7 +47,7 @@
   <!-- Google One-Tap & Identity Services SDK -->
   <script src="https://accounts.google.com/gsi/client" async defer></script>
   
-  <link rel="stylesheet" href="style.css?v=8593">
+  <link rel="stylesheet" href="style.css?v=9342">
 </head>
 <body class="theme-light">
 
@@ -161,11 +161,27 @@
                 <a href="#faqSection" class="landing-nav-link">Security & FAQ</a>
               </nav>
 
-              <!-- Top Right Controls: Language Switch, Theme & Corner Login -->
+              <!-- Top Right Controls: Globe Language Switcher, Theme & Corner Login -->
               <div class="landing-header-actions">
-                <div class="lang-switch-pill">
-                  <button type="button" class="lang-btn active" onclick="window.botHubApp.setAppLanguage('en')">EN</button>
-                  <button type="button" class="lang-btn" onclick="window.botHubApp.setAppLanguage('ar')">عربي</button>
+                <!-- 🌐 Globe Icon Language Selector Dropdown -->
+                <div class="lang-globe-dropdown-wrapper">
+                  <button type="button" class="lang-globe-btn" onclick="window.botHubApp.toggleLanguageDropdown(event)" title="Select Language / اختر اللغة">
+                    <span class="material-symbols-rounded globe-icon">language</span>
+                    <span class="lang-current-label">EN</span>
+                    <span class="material-symbols-rounded dropdown-arrow">expand_more</span>
+                  </button>
+                  <div class="lang-dropdown-menu">
+                    <div class="lang-option-item active" data-lang="en" onclick="window.botHubApp.selectAppLanguage('en')">
+                      <span class="flag-icon">🇺🇸</span>
+                      <span>English</span>
+                      <span class="material-symbols-rounded check-icon">check</span>
+                    </div>
+                    <div class="lang-option-item" data-lang="ar" onclick="window.botHubApp.selectAppLanguage('ar')">
+                      <span class="flag-icon">🇦🇪</span>
+                      <span>العربية</span>
+                      <span class="material-symbols-rounded check-icon">check</span>
+                    </div>
+                  </div>
                 </div>
 
                 <button type="button" class="theme-toggle-pill" onclick="window.botHubApp.toggleTheme()" title="Toggle Dark / Light Mode">
@@ -764,9 +780,25 @@
                       <span>Home</span>
                     </button>
 
-                    <div class="lang-switch-pill" style="transform: scale(0.9);">
-                      <button type="button" class="lang-btn active" onclick="window.botHubApp.setAppLanguage('en')">EN</button>
-                      <button type="button" class="lang-btn" onclick="window.botHubApp.setAppLanguage('ar')">عربي</button>
+                    <!-- 🌐 Globe Icon Language Selector Dropdown -->
+                    <div class="lang-globe-dropdown-wrapper">
+                      <button type="button" class="lang-globe-btn" onclick="window.botHubApp.toggleLanguageDropdown(event)" title="Select Language / اختر اللغة">
+                        <span class="material-symbols-rounded globe-icon">language</span>
+                        <span class="lang-current-label">EN</span>
+                        <span class="material-symbols-rounded dropdown-arrow">expand_more</span>
+                      </button>
+                      <div class="lang-dropdown-menu">
+                        <div class="lang-option-item active" data-lang="en" onclick="window.botHubApp.selectAppLanguage('en')">
+                          <span class="flag-icon">🇺🇸</span>
+                          <span>English</span>
+                          <span class="material-symbols-rounded check-icon">check</span>
+                        </div>
+                        <div class="lang-option-item" data-lang="ar" onclick="window.botHubApp.selectAppLanguage('ar')">
+                          <span class="flag-icon">🇦🇪</span>
+                          <span>العربية</span>
+                          <span class="material-symbols-rounded check-icon">check</span>
+                        </div>
+                      </div>
                     </div>
                   </div>
 
@@ -2653,6 +2685,6 @@
 
   <!-- App Scripts -->
   <script src="qrcode.js"></script>
-  <script src="app.js?v=8593"></script>
+  <script src="app.js?v=9342"></script>
 </body>
 </html>

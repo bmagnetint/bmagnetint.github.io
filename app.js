@@ -330,23 +330,24 @@ class BotHubApp {
       if (body) body.classList.add(cls);
     });
 
-    // 4. Dynamic Viewport Geometry & Resolution Calibration
+    // 4. Dynamic Viewport Geometry & Automatic Mobile Screen Calibration
     const updateViewportGeometry = () => {
-      const w = window.innerWidth;
-      const h = window.innerHeight;
+      const w = window.innerWidth || document.documentElement.clientWidth || 360;
+      const h = window.innerHeight || document.documentElement.clientHeight || 640;
 
       // Dynamic CSS variables for bulletproof mobile height
       root.style.setProperty('--vh', `${h * 0.01}px`);
       root.style.setProperty('--vw', `${w * 0.01}px`);
 
-      const modeClasses = ['mode-mobile', 'mode-tablet', 'mode-desktop', 'device-mobile', 'device-tablet', 'device-desktop'];
+      const modeClasses = ['mode-mobile', 'mode-tablet', 'mode-desktop', 'device-mobile', 'device-tablet', 'device-desktop', 'is-mobile-viewport', 'is-small-screen'];
       root.classList.remove(...modeClasses);
       if (body) body.classList.remove(...modeClasses);
 
       let currentMode = [];
-      if (w <= 560) {
-        currentMode = ['mode-mobile', 'device-mobile'];
-      } else if (w <= 960) {
+      if (w <= 768 || isIOS || isAndroid) {
+        currentMode = ['mode-mobile', 'device-mobile', 'is-mobile-viewport'];
+        if (w <= 480) currentMode.push('is-small-screen');
+      } else if (w <= 1024) {
         currentMode = ['mode-tablet', 'device-tablet'];
       } else {
         currentMode = ['mode-desktop', 'device-desktop'];
@@ -356,6 +357,12 @@ class BotHubApp {
         root.classList.add(cls);
         if (body) body.classList.add(cls);
       });
+
+      // Ensure smooth mobile Home Page touch scrolling
+      const landingBody = document.querySelector('.landing-scroll-body');
+      if (landingBody) {
+        landingBody.style.webkitOverflowScrolling = 'touch';
+      }
     };
 
     updateViewportGeometry();
@@ -407,9 +414,33 @@ class BotHubApp {
     }
   }
 
-  toggleLanguage() {
+  toggleLanguage(e) {
+    if (e && e.target && e.target.closest('.lang-globe-dropdown-wrapper')) {
+      this.toggleLanguageDropdown(e);
+      return;
+    }
     const newLang = this.state.lang === 'ar' ? 'en' : 'ar';
     this.setAppLanguage(newLang);
+  }
+
+  toggleLanguageDropdown(e) {
+    if (e) {
+      e.stopPropagation();
+    }
+    const targetWrapper = e ? e.currentTarget.closest('.lang-globe-dropdown-wrapper') : null;
+    const allWrappers = document.querySelectorAll('.lang-globe-dropdown-wrapper');
+    allWrappers.forEach(w => {
+      if (w === targetWrapper) {
+        w.classList.toggle('open');
+      } else {
+        w.classList.remove('open');
+      }
+    });
+  }
+
+  selectAppLanguage(lang) {
+    this.setAppLanguage(lang);
+    document.querySelectorAll('.lang-globe-dropdown-wrapper').forEach(w => w.classList.remove('open'));
   }
 
   setAppLanguage(lang) {
@@ -420,6 +451,21 @@ class BotHubApp {
     const btnAr = document.getElementById('langBtnAr');
     const headerLangText = document.getElementById('headerLangText');
     const activeLangDisplay = document.getElementById('activeLangDisplay');
+
+    // Update Globe Dropdown current label & option items
+    const labels = document.querySelectorAll('.lang-current-label');
+    labels.forEach(lbl => {
+      lbl.textContent = (lang === 'ar' ? 'AR' : 'EN');
+    });
+
+    const optionItems = document.querySelectorAll('.lang-option-item');
+    optionItems.forEach(item => {
+      if (item.getAttribute('data-lang') === lang) {
+        item.classList.add('active');
+      } else {
+        item.classList.remove('active');
+      }
+    });
 
     if (lang === 'ar') {
       document.documentElement.setAttribute('dir', 'rtl');
