@@ -1,78 +1,9 @@
 {
-  "bots": [
-    {
-      "id": "bot_bmagnet_1m",
-      "name": "B-Magnet Gold Hunter EA (1 Month Pass)",
-      "tagline": "Full MT5 Automated Gold Trading Algorithm (30 Days Pass)",
-      "creator": "B-Magnet Labs",
-      "category": "xauusd",
-      "winRate": "89.4%",
-      "price": 49.0,
-      "duration": "1 Month Pass",
-      "subscribers": 1420,
-      "rating": 4.9,
-      "badge": "Institutional Gold Bot",
-      "img": "images/b-magnet-gold-algo-hero.jpg",
-      "desc": "Institutional quantitative algorithm engineered specifically for Gold (XAUUSD) trading on MT5. Deploys multi-timeframe order-flow magnetics, dynamic risk buffers, and sub-15ms execution."
-    },
-    {
-      "id": "bot_bmagnet_3m",
-      "name": "B-Magnet Gold Hunter EA (3 Month Pass)",
-      "tagline": "Full MT5 Automated Gold Trading Algorithm (90 Days Pass)",
-      "creator": "B-Magnet Labs",
-      "category": "xauusd",
-      "winRate": "89.4%",
-      "price": 129.0,
-      "duration": "3 Months Pass",
-      "subscribers": 890,
-      "rating": 4.9,
-      "badge": "Quarterly Saver Pass",
-      "img": "images/b-magnet-gold-algo-hero.jpg",
-      "desc": "Quarterly institutional pass for B-Magnet Gold Hunter EA on MetaTrader 5. Provides 90 days of continuous algorithmic execution with automated license key validation."
-    },
-    {
-      "id": "bot_bmagnet_6m",
-      "name": "B-Magnet Gold Hunter EA (6 Month Pass)",
-      "tagline": "Full MT5 Automated Gold Trading Algorithm (180 Days Pass)",
-      "creator": "B-Magnet Labs",
-      "category": "xauusd",
-      "winRate": "89.4%",
-      "price": 229.0,
-      "duration": "6 Months Pass",
-      "subscribers": 610,
-      "rating": 5.0,
-      "badge": "Popular VIP Pass",
-      "img": "images/b-magnet-gold-algo-hero.jpg",
-      "desc": "Half-year VIP institutional pass for B-Magnet Gold Hunter EA on MetaTrader 5. Includes priority GTCfx server routing and dedicated vendor WhatsApp support."
-    },
-    {
-      "id": "bot_bmagnet_1y",
-      "name": "B-Magnet Gold Hunter EA (1 Year Pass)",
-      "tagline": "Full MT5 Automated Gold Trading Algorithm (365 Days Pass)",
-      "creator": "B-Magnet Labs",
-      "category": "xauusd",
-      "winRate": "89.4%",
-      "price": 399.0,
-      "duration": "1 Year Pass",
-      "subscribers": 430,
-      "rating": 5.0,
-      "badge": "Best Value Annual Pass",
-      "img": "images/b-magnet-gold-algo-hero.jpg",
-      "desc": "Full 1-Year annual access pass for B-Magnet Gold Hunter EA on MetaTrader 5. Unlocks full multi-timeframe quantitative magnetics, free EA updates, and 1-on-1 setup assistance."
-    }
-  ],
+  "bots": [],
   "subscriptions": [],
   "wallet": {
-    "balance": 250.0,
-    "currency": "USDT (BEP-20)"
+    "balance": 0.0,
+    "currency": "USDT"
   },
-  "users": [],
-  "creator": {
-    "name": "B-Magnet Labs",
-    "verified": true,
-    "totalBots": 4,
-    "totalSubscribers": 3350
-  },
-  "invoices": [],
-  "notifications": []
+  "users": []
 }
