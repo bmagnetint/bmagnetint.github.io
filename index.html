@@ -47,7 +47,7 @@
   <!-- Google One-Tap & Identity Services SDK -->
   <script src="https://accounts.google.com/gsi/client" async defer></script>
   
-  <link rel="stylesheet" href="style.css?v=5006">
+  <link rel="stylesheet" href="style.css?v=7594">
 </head>
 <body class="theme-light">
 
@@ -170,6 +170,81 @@
           <!-- Landing Page Scroll Container -->
           <div class="landing-scroll-body">
             
+            <!-- EXPLAINED B-MAGNET COMPANY PROFILE BOX WITH LOGO STAGE AS BACKGROUND -->
+            <div class="b-magnet-company-profile-box" id="companyProfileBox">
+              
+              <!-- EMBEDDED BACKGROUND 3D MOUSE GRAVITY LOGO STAGE -->
+              <div class="top-brand-profile-hero bg-embedded" id="topBrandProfileHero">
+                <!-- Moving Circle Radial Glow -->
+                <div class="tbph-ambient-glow"></div>
+                
+                <!-- Spinning Dashed Circle Ring -->
+                <div class="tbph-moving-circle-ring"></div>
+
+                <!-- Interactive 3D Mouse Gravity Logo -->
+                <div class="tbph-logo-pivot" id="tbphBigLogo">
+                  <img src="images/b-magnet-logo.png" alt="B-Magnet Logo" class="tbph-big-logo">
+                  
+                  <!-- Orbiting Cluster Chips -->
+                  <div class="cluster-chip chip-left">
+                    <span class="chip-dot"></span>
+                    <span>MT5 Connected</span>
+                  </div>
+                  <div class="cluster-chip chip-right-top">
+                    <span>SHA-256 Validated</span>
+                  </div>
+                  <div class="cluster-chip chip-right-bottom">
+                    <span>GTCfx Liquidity</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- FOREGROUND PROFILE EXPLAINING CONTENT -->
+              <div class="cmp-foreground-content">
+                <div class="cmp-header-tag">
+                  <span class="pulse-dot" style="background:#10b981;"></span>
+                  <span>B-MAGNET LABS OFFICIAL COMPANY PROFILE</span>
+                </div>
+
+                <h2 class="cmp-title">
+                  Institutional MT5 Gold Trading Algorithm<br>
+                  <span>B-Magnet Gold Hunter EA v0.8</span>
+                </h2>
+
+                <p class="cmp-lead">
+                  Welcome to <strong>B-Magnet Labs</strong>. We are an institutional quantitative software engineering firm creating high-performance Expert Advisors (EA) for MetaTrader 5. Designed specifically for Gold (XAUUSD) trading, our proprietary algorithms deploy multi-timeframe order-flow magnetics, SHA-256 cryptographic license security, and sub-15ms execution.
+                </p>
+
+                <!-- 4 EXPLANATORY CARDS FOR NEW CLIENTS -->
+                <div class="cmp-features-grid">
+                  <div class="cmp-card">
+                    <div class="cmp-card-icon">🏛️</div>
+                    <h4>100% Client Fund Custody</h4>
+                    <p>Your trading capital remains 100% safe in your own verified MetaTrader 5 broker account (e.g. GTCfx). We never take deposits or manage client funds directly.</p>
+                  </div>
+
+                  <div class="cmp-card">
+                    <div class="cmp-card-icon">🛡️</div>
+                    <h4>SHA-256 License Security</h4>
+                    <p>Each access pass generates a unique cryptographic SHA-256 license key bound directly to your specific MT5 account ID for maximum security.</p>
+                  </div>
+
+                  <div class="cmp-card">
+                    <div class="cmp-card-icon">⚡</div>
+                    <h4>Sub-15ms Execution Speed</h4>
+                    <p>Pre-tuned for GTCfx raw ECN liquidity servers, executing trades within sub-15ms latency with dynamic drawdown risk buffers.</p>
+                  </div>
+
+                  <div class="cmp-card">
+                    <div class="cmp-card-icon">📱</div>
+                    <h4>24/7 Vendor Setup Hotline</h4>
+                    <p>Direct 1-on-1 technical setup and parameter tuning support available on WhatsApp at <strong>+91 94950 97786</strong>.</p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
             <!-- HERO SECTION -->
             <section class="landing-hero-section" id="heroSection">
               <div class="landing-hero-inner">
@@ -584,12 +659,12 @@
             <div class="auth-split-right-login">
               <div class="asr-login-card">
                 
-                <!-- Card Header with Language & Theme Switch -->
+                <!-- Card Header with Home Button & Theme Switch -->
                 <div class="asr-card-top-bar">
-                  <div class="lang-switch-pill">
-                    <button type="button" class="lang-btn active" onclick="window.botHubApp.setAppLanguage('en')">EN</button>
-                    <button type="button" class="lang-btn" onclick="window.botHubApp.setAppLanguage('ar')">عربي</button>
-                  </div>
+                  <button type="button" class="btn-top-back-landing" onclick="window.botHubApp.showLandingPage()" title="Back to Home">
+                    <span class="material-symbols-rounded">home</span>
+                    <span>Home</span>
+                  </button>
 
                   <button type="button" class="theme-toggle-pill" onclick="window.botHubApp.toggleTheme()" title="Toggle Dark / Light Mode">
                     <span class="material-symbols-rounded theme-icon">dark_mode</span>
@@ -658,15 +733,6 @@
                   </button>
 
                   <div class="welcome-top-right-group">
-                    <div class="lang-switch-pill" id="welcomeLangSwitch">
-                      <button type="button" class="lang-btn active" id="langBtnEn" onclick="window.botHubApp.setAppLanguage('en')">
-                        <span>EN</span>
-                      </button>
-                      <button type="button" class="lang-btn" id="langBtnAr" onclick="window.botHubApp.setAppLanguage('ar')">
-                        <span>عربي</span>
-                      </button>
-                    </div>
-
                     <button type="button" class="theme-toggle-pill" id="welcomeThemeToggle" onclick="window.botHubApp.toggleTheme()" title="Toggle Dark / Light Mode">
                       <span class="material-symbols-rounded theme-icon" id="welcomeThemeIcon">dark_mode</span>
                       <span class="theme-label" id="welcomeThemeLabel">Dark</span>
@@ -2551,6 +2617,6 @@
 
   <!-- App Scripts -->
   <script src="qrcode.js"></script>
-  <script src="app.js?v=5006"></script>
+  <script src="app.js?v=7594"></script>
 </body>
 </html>

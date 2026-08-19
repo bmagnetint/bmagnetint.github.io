@@ -698,11 +698,8 @@ class BotHubApp {
       overlay.classList.add('landing-active');
     }
 
-    if (window.innerWidth <= 768) {
-      this.showWelcomeScreen();
-    } else {
-      this.showLandingPage();
-    }
+    // ALWAYS SHOW HOME PAGE AS DEFAULT (ON ALL WINDOW SIZES & BOOT)
+    this.showLandingPage();
 
     const logoutBtn = document.getElementById('logoutBtn');
     if (logoutBtn) logoutBtn.style.display = 'none';
@@ -729,6 +726,10 @@ class BotHubApp {
   }
 
   showSignInScreen() {
+    document.body.classList.remove('logged-in');
+    // AUTOMATICALLY SWITCH LOGIN PAGE TO DARK THEME MATCHING BRAND COLOURS
+    this.applyTheme('dark');
+
     const overlay = document.getElementById('authScreenOverlay');
     if (overlay) {
       overlay.classList.add('active');
@@ -770,6 +771,7 @@ class BotHubApp {
   }
 
   applyLoggedInUI(user) {
+    document.body.classList.add('logged-in');
     const overlay = document.getElementById('authScreenOverlay');
     if (overlay) overlay.classList.remove('active');
 
@@ -1235,6 +1237,7 @@ class BotHubApp {
   }
 
   showLandingPage() {
+    document.body.classList.remove('logged-in');
     const overlay = document.getElementById('authScreenOverlay');
     if (overlay) {
       overlay.classList.add('active');
@@ -4337,7 +4340,57 @@ Hello, here are my subscription and license details. Please verify my GTCfx MT5 
   }
 }
 
-// Global App Initializer
+// Global App Initializer & 3D Mouse Gravity Physics
+function initHeroMouseGravityPhysics() {
+  const pivot = document.getElementById('tbphBigLogo');
+  if (!pivot) return;
+
+  let mouse = { x: 0, y: 0, targetX: 0, targetY: 0 };
+  let time = 0;
+
+  window.addEventListener('mousemove', (e) => {
+    const w = window.innerWidth || 1200;
+    const h = window.innerHeight || 800;
+    const x = e.clientX - w / 2;
+    const y = e.clientY - h / 2;
+    mouse.targetX = Math.max(-1.4, Math.min(1.4, x / (w / 2)));
+    mouse.targetY = Math.max(-1.4, Math.min(1.4, y / (h / 2)));
+  }, { passive: true });
+
+  window.addEventListener('touchmove', (e) => {
+    if (e.touches && e.touches[0]) {
+      const w = window.innerWidth || 1200;
+      const h = window.innerHeight || 800;
+      const x = e.touches[0].clientX - w / 2;
+      const y = e.touches[0].clientY - h / 2;
+      mouse.targetX = Math.max(-1.4, Math.min(1.4, x / (w / 2)));
+      mouse.targetY = Math.max(-1.4, Math.min(1.4, y / (h / 2)));
+    }
+  }, { passive: true });
+
+  function renderLoop() {
+    time += 0.025;
+    const idleX = Math.sin(time * 0.7) * 0.12;
+    const idleY = Math.cos(time * 0.9) * 0.12;
+
+    mouse.x += (mouse.targetX + idleX - mouse.x) * 0.075;
+    mouse.y += (mouse.targetY + idleY - mouse.y) * 0.075;
+
+    const rotY = mouse.x * 22;
+    const rotX = -mouse.y * 18;
+    const rotZ = mouse.x * mouse.y * 8;
+    const transX = mouse.x * 20;
+    const transY = mouse.y * 14;
+
+    pivot.style.transform = `translate3d(${transX.toFixed(2)}px, ${transY.toFixed(2)}px, 0) rotateX(${rotX.toFixed(2)}deg) rotateY(${rotY.toFixed(2)}deg) rotateZ(${rotZ.toFixed(2)}deg)`;
+
+    requestAnimationFrame(renderLoop);
+  }
+
+  requestAnimationFrame(renderLoop);
+}
+
 window.addEventListener('DOMContentLoaded', () => {
   window.botHubApp = new BotHubApp();
+  setTimeout(initHeroMouseGravityPhysics, 100);
 });
