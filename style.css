@@ -11031,15 +11031,23 @@ body.theme-dark .lang-option-item {
   opacity: 1;
 }
 
-/* AUTOMATIC PANEL ALIGNMENT ENGINE (DEVICE & RESOLUTION COMPATIBILITY) */
+/* AUTOMATIC PANEL & SCREEN ALIGNMENT ENGINE (4K / 2K / DESKTOP / TABLET / MOBILE) */
 .b-magnet-company-profile-box,
 .view-panel,
 .crm-panel-card,
-.auth-card-container {
+.auth-card-container,
+.landing-hero-inner,
+.landing-section,
+.landing-header-inner,
+#companyProfileBox,
+#heroSection,
+#aboutProgramSection,
+#plansSection,
+#faqSection {
   margin-left: auto !important;
   margin-right: auto !important;
   box-sizing: border-box !important;
-  transition: all 0.25s ease !important;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
 /* 4K / 2K Ultra-Wide Monitors (> 1600px) */
@@ -11047,7 +11055,10 @@ body.theme-dark .lang-option-item {
   .b-magnet-company-profile-box,
   .landing-header-inner,
   .view-panel,
-  #aboutProgramSection {
+  .landing-hero-inner,
+  #aboutProgramSection,
+  #plansSection,
+  #faqSection {
     max-width: 1480px !important;
   }
 
@@ -11057,67 +11068,7 @@ body.theme-dark .lang-option-item {
     grid-template-columns: repeat(4, 1fr) !important;
     gap: 24px !important;
   }
-}
 
-/* Standard Desktop / Laptops (992px - 1599px) */
-@media (min-width: 992px) and (max-width: 1599px) {
-  .b-magnet-company-profile-box,
-  .landing-header-inner,
-  .view-panel,
-  #aboutProgramSection {
-    max-width: 1200px !important;
-  }
-
-  .landing-features-grid {
-    grid-template-columns: repeat(4, 1fr) !important;
-    gap: 20px !important;
-  }
-}
-
-/* Tablets & iPads (768px - 991px) */
-@media (min-width: 768px) and (max-width: 991px) {
-  .b-magnet-company-profile-box,
-  .view-panel,
-  #aboutProgramSection {
-    max-width: 92vw !important;
-    padding: 24px 20px !important;
-  }
-
-  .cmp-features-grid,
-  .landing-features-grid,
-  .landing-plans-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 16px !important;
-  }
-}
-
-/* Mobile Devices (< 767px) */
-@media (max-width: 767px) {
-  .b-magnet-company-profile-box,
-  .view-panel,
-  #aboutProgramSection {
-    width: 100% !important;
-    max-width: 100% !important;
-    padding: 18px 14px !important;
-  }
-
-  .cmp-features-grid,
-  .landing-features-grid,
-  .landing-plans-grid,
-  .plans-grid {
-    grid-template-columns: 1fr !important;
-    gap: 12px !important;
-    width: 100% !important;
-  }
-
-  .landing-feature-card {
-    padding: 18px 16px !important;
-    border-radius: 18px !important;
-  }
-}
-
-/* SIGN IN PAGE RESOLUTION AUTO-ALIGNMENT & DEVICE COMPATIBILITY (4K / 2K / DESKTOP / TABLET / MOBILE) */
-@media (min-width: 1600px) {
   .signin-screen-inner {
     max-width: 520px !important;
   }
@@ -11138,7 +11089,23 @@ body.theme-dark .lang-option-item {
   }
 }
 
+/* Standard Desktop / Laptops (992px - 1599px) */
 @media (min-width: 992px) and (max-width: 1599px) {
+  .b-magnet-company-profile-box,
+  .landing-header-inner,
+  .view-panel,
+  .landing-hero-inner,
+  #aboutProgramSection,
+  #plansSection,
+  #faqSection {
+    max-width: 1200px !important;
+  }
+
+  .landing-features-grid {
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 20px !important;
+  }
+
   .signin-screen-inner {
     max-width: 460px !important;
   }
@@ -11148,7 +11115,25 @@ body.theme-dark .lang-option-item {
   }
 }
 
+/* Tablets & iPads (768px - 991px) */
 @media (min-width: 768px) and (max-width: 991px) {
+  .b-magnet-company-profile-box,
+  .view-panel,
+  .landing-hero-inner,
+  #aboutProgramSection,
+  #plansSection,
+  #faqSection {
+    max-width: 92vw !important;
+    padding: 24px 20px !important;
+  }
+
+  .cmp-features-grid,
+  .landing-features-grid,
+  .landing-plans-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 16px !important;
+  }
+
   .signin-screen-inner {
     max-width: 420px !important;
   }
@@ -11158,22 +11143,146 @@ body.theme-dark .lang-option-item {
   }
 }
 
+/* Small Screen Devices & Mobile Phones (< 767px) */
 @media (max-width: 767px) {
+  .b-magnet-company-profile-box,
+  .view-panel,
+  .landing-hero-inner,
+  #aboutProgramSection,
+  #plansSection,
+  #faqSection {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 16px 12px !important;
+    box-sizing: border-box !important;
+  }
+
+  .cmp-features-grid,
+  .landing-features-grid,
+  .landing-plans-grid,
+  .plans-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+    width: 100% !important;
+  }
+
+  .landing-feature-card,
+  .cmp-card {
+    padding: 16px 14px !important;
+    border-radius: 16px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Sign In Screen Small Screen Mobile Alignment */
+  .auth-overlay.signin-active .auth-screens-viewport {
+    padding: 0 !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
   .signin-screen-inner {
     width: 100% !important;
     max-width: 100% !important;
     height: 100% !important;
+    min-height: 100vh !important;
+    padding: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    align-items: stretch !important;
+    box-sizing: border-box !important;
   }
+
+  .signin-top-actions-row {
+    position: relative !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    padding: 12px 16px 8px 16px !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    box-sizing: border-box !important;
+    z-index: 30 !important;
+  }
+
+  .signin-back-btn,
+  .lang-globe-btn {
+    height: 38px !important;
+    min-height: 38px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .signin-top-hero {
+    padding-top: 8px !important;
+    padding-bottom: 12px !important;
+    min-height: auto !important;
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+
   .signin-bot-details-card {
     width: 92% !important;
     max-width: 360px !important;
-    padding: 14px 16px !important;
+    padding: 12px 14px !important;
+    border-radius: 20px !important;
+    box-sizing: border-box !important;
   }
+
   .signin-white-sheet {
     width: 100% !important;
     max-width: 100% !important;
-    padding: 24px 18px 20px 18px !important;
-    border-radius: 32px 32px 0 0 !important;
+    padding: 20px 16px 24px 16px !important;
+    border-radius: 28px 28px 0 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  .signin-clean-form {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    box-sizing: border-box !important;
+  }
+
+  .signin-input-wrapper {
+    width: 100% !important;
+    margin-bottom: 12px !important;
+    box-sizing: border-box !important;
+  }
+
+  .signin-clean-input {
+    width: 100% !important;
+    height: 46px !important;
+    min-height: 46px !important;
+    font-size: 13.5px !important;
+    border-radius: 18px !important;
+    padding: 0 16px !important;
+    box-sizing: border-box !important;
+  }
+
+  .btn-signin-block,
+  .btn-google-single {
+    width: 100% !important;
+    height: 46px !important;
+    min-height: 46px !important;
+    border-radius: 18px !important;
+    font-size: 13.5px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-sizing: border-box !important;
+  }
+
+  .signin-forgot-row {
+    margin: 10px 0 12px 0 !important;
+  }
+
+  .signin-forgot-link {
+    font-size: 11.5px !important;
   }
 }
 
