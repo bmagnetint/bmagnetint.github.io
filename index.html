@@ -2,206 +2,347 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>B-Magnet PRO - Financial Technology & MT5 Algorithmic Systems (Port 8080)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#f8fafc">
+  <title>B-Magnet PRO - Official MT5 Algorithmic Systems & Company Profile</title>
   
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="style.css?v=8805">
+  <link rel="stylesheet" href="style.css?v=0605">
 </head>
-<body class="theme-dark">
+<body class="theme-light">
 
-  <!-- Navigation Header -->
+  <!-- OFFICIAL CORPORATE NAVBAR HEADER -->
   <header class="app-header">
-    <div class="header-container">
-      <div class="brand-group" onclick="location.reload()">
-        <div class="brand-logo-icon">⚡</div>
-        <div class="brand-text">
-          <span class="brand-name">B-MAGNET <span>PRO</span></span>
-          <span class="brand-sub">Algorithmic Financial Systems</span>
-        </div>
+    <div class="site-container header-inner">
+      <!-- Brand Logo -->
+      <div class="brand-logo-wrap" onclick="location.reload()" title="B-Magnet PRO Home">
+        <img src="images/b-magnet-logo.png" alt="B-Magnet - Business Solutions" class="brand-logo-img">
       </div>
 
-      <nav class="header-nav">
-        <a href="#features" class="nav-link">Capabilities</a>
-        <a href="#terminal" class="nav-link">Live Terminal</a>
-        <a href="#pricing" class="nav-link">EA Passes</a>
-        <a href="#support" class="nav-link">Support</a>
+      <!-- Navigation Links -->
+      <nav class="nav-menu">
+        <a href="#companyProfile" class="nav-item">Company Profile</a>
+        <a href="#architectureSection" class="nav-item">Architecture</a>
+        <a href="#plansSection" class="nav-item">Pricing Passes</a>
+        <a href="#gtcfxSection" class="nav-item">GTCfx Broker</a>
+        <a href="#faqSection" class="nav-item">FAQ</a>
       </nav>
 
-      <div class="header-controls">
-        <button type="button" class="btn-theme-pill" onclick="toggleTheme8080()" title="Toggle Theme">
-          <span id="themeToggleIcon">🌙</span>
+      <!-- Header Controls -->
+      <div class="header-actions">
+        <!-- Prominent Yellow Login Button -->
+        <button type="button" class="btn-yellow-login" id="landingYellowLoginBtn" onclick="openOfficialAuthModal('signin')">
+          <span>Login</span>
         </button>
-        <button type="button" class="btn-gold-action" onclick="openLoginModal8080()">
-          <span>Launch Portal (Port 8080)</span>
+
+        <!-- Theme Switcher Key (Default Light Mode, Dark Mode on Click) -->
+        <button type="button" class="ctrl-pill-btn" onclick="toggleOfficialTheme()" title="Toggle Dark Mode" aria-label="Toggle Dark Mode">
+          <span id="themePillIcon">🌙</span>
+        </button>
+
+        <!-- Language Selector -->
+        <button type="button" class="ctrl-pill-btn lang-btn" onclick="toggleOfficialLang()" id="langPillBtn">
+          <span>🇬🇧 EN</span>
         </button>
       </div>
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <section class="hero-section">
-    <div class="hero-container">
-      <div class="hero-status-pill">
+  <!-- HERO & OFFICIAL COMPANY PROFILE SECTION -->
+  <section class="hero-section" id="companyProfile">
+    <div class="site-container hero-inner">
+      
+      <!-- Top Status Pill -->
+      <div class="status-pill-badge">
         <span class="status-dot"></span>
-        <span>PORT 8080 HOME SYSTEM ACTIVE</span>
+        <span>OFFICIAL B-MAGNET LABS FINANCIAL TECHNOLOGY PLATFORM</span>
       </div>
 
-      <h1 class="hero-heading">Institutional MT5 <span>Algorithmic Execution</span></h1>
-      <p class="hero-description">Next-generation quantitative trading algorithm engineered for Gold (XAUUSD) on MetaTrader 5. Delivers order-flow magnetics, sub-15ms execution, and cryptographic SHA-256 license binding.</p>
+      <!-- OFFICIAL COMPANY PROFILE BOX -->
+      <div class="company-profile-card" id="heroCompanyProfileBox">
+        <div class="cpc-header">
+          <div class="cpc-tag">
+            <span class="status-dot"></span>
+            <span>B-MAGNET LABS COMPANY PROFILE</span>
+          </div>
+          <h1 class="cpc-title" id="txtHeroTitle">
+            Institutional MT5 Gold Trading Algorithm<br>
+            <span>B-Magnet Gold Hunter EA v0.8</span>
+          </h1>
+          <p class="cpc-description" id="txtHeroSubtitle">
+            B-Magnet Labs is an institutional quantitative software firm engineering precision Expert Advisors for MetaTrader 5. Our flagship algorithm deploys multi-timeframe order-flow magnetics, SHA-256 cryptographic license verification, and sub-15ms execution.
+          </p>
+        </div>
 
-      <div class="hero-actions">
-        <button type="button" class="btn-primary-gold" onclick="openLoginModal8080()">
-          <span>Access Trading Portal 🚀</span>
-        </button>
-        <a href="#terminal" class="btn-secondary-glass">
-          <span>View Live Terminal</span>
+        <!-- 4 VERIFIED METRICS GRID -->
+        <div class="metrics-grid">
+          <div class="metric-card">
+            <div class="m-val text-emerald">$3.8M+</div>
+            <div class="m-lbl">Automated Capital</div>
+          </div>
+          <div class="metric-card">
+            <div class="m-val text-gold">89.4%</div>
+            <div class="m-lbl">Verified Win Rate</div>
+          </div>
+          <div class="metric-card">
+            <div class="m-val text-cyan">3,350+</div>
+            <div class="m-lbl">Global Subscribers</div>
+          </div>
+          <div class="metric-card">
+            <div class="m-val text-slate">&lt; 15ms</div>
+            <div class="m-lbl">Execution Speed</div>
+          </div>
+        </div>
+
+        <!-- HERO CALL TO ACTION BUTTONS -->
+        <div class="hero-cta-row">
+          <button type="button" class="btn-yellow-hero" onclick="openOfficialAuthModal('signin')">
+            <span>Login to Platform 🚀</span>
+          </button>
+          <a href="#plansSection" class="btn-secondary-outline">
+            <span>Explore EA Passes</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- INTERACTIVE 3D MOUSE GRAVITY LOGO PANEL -->
+      <div class="gravity-logo-panel" id="topBrandProfileHero">
+        <!-- Moving Radial Background Glow -->
+        <div class="tbph-ambient-glow"></div>
+        <!-- Spinning Dashed Circle Ring -->
+        <div class="tbph-moving-circle-ring"></div>
+
+        <div class="gravity-logo-pivot" id="tbphBigLogo">
+          <img src="images/b-magnet-logo.png" alt="B-Magnet 3D Logo" class="gravity-logo-img">
+          
+          <!-- Orbiting Cluster Chips -->
+          <div class="cluster-chip chip-left">
+            <span class="chip-dot"></span>
+            <span>MT5 Connected</span>
+          </div>
+          <div class="cluster-chip chip-right-top">
+            <span>SHA-256 Validated</span>
+          </div>
+          <div class="cluster-chip chip-right-bottom">
+            <span>GTCfx Liquidity</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CORE ARCHITECTURE FEATURES -->
+  <section class="section-block" id="architectureSection">
+    <div class="site-container">
+      <div class="section-header-wrap">
+        <h2 class="section-heading">Core Platform Architecture</h2>
+        <p class="section-subheading">Engineered for institutional quantitative accuracy and low-latency automated execution</p>
+      </div>
+
+      <div class="features-4col-grid">
+        <div class="feature-box">
+          <div class="fb-icon">📈</div>
+          <h3>Order-Flow Magnetics</h3>
+          <p>Scans multi-timeframe institutional liquidity pools for Gold (XAUUSD) with high win-rate signals.</p>
+        </div>
+
+        <div class="feature-box">
+          <div class="fb-icon">🛡️</div>
+          <h3>SHA-256 License Gate</h3>
+          <p>Cryptographic license verification algorithm binds your pass directly to your verified MT5 account ID.</p>
+        </div>
+
+        <div class="feature-box">
+          <div class="fb-icon">⚡</div>
+          <h3>GTCfx Low Latency</h3>
+          <p>Sub-15ms socket routing connected with GTCfx liquidity servers for optimal trade execution filled.</p>
+        </div>
+
+        <div class="feature-box">
+          <div class="fb-icon">💼</div>
+          <h3>Dynamic Risk Buffers</h3>
+          <p>Automated drawdown buffer controls and lot-scaling algorithms protect your trading capital 24/5.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSTITUTIONAL PRICING PASSES -->
+  <section class="section-block bg-subtle" id="plansSection">
+    <div class="site-container">
+      <div class="section-header-wrap">
+        <h2 class="section-heading">Institutional EA Access Passes</h2>
+        <p class="section-subheading">Select an official access pass for B-Magnet Gold Hunter EA on MetaTrader 5</p>
+      </div>
+
+      <div class="pricing-4col-grid">
+        <!-- 1 Month -->
+        <div class="pricing-card">
+          <div class="pc-badge">Starter Pass</div>
+          <h3 class="pc-title">1 Month Pass</h3>
+          <div class="pc-price">$49 <span class="pc-period">/ 30 Days</span></div>
+          <ul class="pc-list">
+            <li>✓ Full MT5 Gold EA Access</li>
+            <li>✓ Automated License Binding</li>
+            <li>✓ Sub-15ms Server Routing</li>
+            <li>✓ WhatsApp Technical Support</li>
+          </ul>
+          <button type="button" class="btn-card-buy" onclick="openOfficialAuthModal('signin')">Login & Subscribe</button>
+        </div>
+
+        <!-- 3 Months -->
+        <div class="pricing-card">
+          <div class="pc-badge">Quarterly Pass</div>
+          <h3 class="pc-title">3 Months Pass</h3>
+          <div class="pc-price">$129 <span class="pc-period">/ 90 Days</span></div>
+          <ul class="pc-list">
+            <li>✓ Full MT5 Gold EA Access</li>
+            <li>✓ Save 12% on Monthly Rate</li>
+            <li>✓ Automated License Key Gate</li>
+            <li>✓ 24/5 Technical Support</li>
+          </ul>
+          <button type="button" class="btn-card-buy" onclick="openOfficialAuthModal('signin')">Login & Subscribe</button>
+        </div>
+
+        <!-- 6 Months VIP -->
+        <div class="pricing-card featured-pricing">
+          <div class="pc-badge badge-gold">VIP Choice</div>
+          <h3 class="pc-title">6 Months Pass</h3>
+          <div class="pc-price">$229 <span class="pc-period">/ 180 Days</span></div>
+          <ul class="pc-list">
+            <li>✓ Full MT5 Gold EA Access</li>
+            <li>✓ Priority GTCfx Server Routing</li>
+            <li>✓ Free Performance Updates</li>
+            <li>✓ 1-on-1 Remote Assistance</li>
+          </ul>
+          <button type="button" class="btn-card-buy btn-yellow-card" onclick="openOfficialAuthModal('signin')">Get VIP Access</button>
+        </div>
+
+        <!-- 1 Year -->
+        <div class="pricing-card">
+          <div class="pc-badge">Best Value</div>
+          <h3 class="pc-title">1 Year Pass</h3>
+          <div class="pc-price">$399 <span class="pc-period">/ 365 Days</span></div>
+          <ul class="pc-list">
+            <li>✓ Full 365 Days Access</li>
+            <li>✓ Multi-Timeframe Signals</li>
+            <li>✓ Free Lifetime EA Updates</li>
+            <li>✓ VIP WhatsApp Support</li>
+          </ul>
+          <button type="button" class="btn-card-buy" onclick="openOfficialAuthModal('signin')">Login & Subscribe</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GTCFX BROKER INTEGRATION -->
+  <section class="section-block" id="gtcfxSection">
+    <div class="site-container">
+      <div class="gtcfx-banner-card">
+        <span class="gtcfx-tag">Official Broker Integration</span>
+        <h2 class="gtcfx-title">Optimized for GTCfx Global Broker</h2>
+        <p class="gtcfx-text">B-Magnet Gold Hunter EA is pre-tuned for GTCfx MetaTrader 5 server infrastructure, delivering tight spreads and ultra-fast execution on XAUUSD.</p>
+        <a href="https://wa.me/919495097786?text=Hi%20B-Magnet%20Team%2C%20I%20want%20to%20connect%20my%20GTCfx%20MT5%20Account" target="_blank" class="btn-gtcfx-wa">
+          <span>Connect GTCfx Account on WhatsApp ↗</span>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- Feature Grid -->
-  <section class="features-section" id="features">
-    <div class="section-container">
-      <h2 class="section-title">Core Platform Architecture</h2>
-      <p class="section-subtitle">Designed for high-frequency precision and quantitative automated execution</p>
+  <!-- FREQUENTLY ASKED QUESTIONS -->
+  <section class="section-block bg-subtle" id="faqSection">
+    <div class="site-container">
+      <div class="section-header-wrap">
+        <h2 class="section-heading">Frequently Asked Questions</h2>
+        <p class="section-subheading">Common questions about algorithm installation, licensing, and account setup</p>
+      </div>
 
-      <div class="features-grid">
-        <div class="feature-card">
-          <div class="feature-icon">🤖</div>
-          <h3>Automated Gold EA</h3>
-          <p>Institutional multi-timeframe quantitative algorithm built specifically for Gold (XAUUSD) trading on MT5.</p>
+      <div class="faq-3col-grid">
+        <div class="faq-card">
+          <h4>How does MT5 license activation work?</h4>
+          <p>Our cryptographic server generates a unique SHA-256 license key bound to your MT5 account number. Attach the EA in MT5, enter your key, and automated trading begins.</p>
         </div>
 
-        <div class="feature-card">
-          <div class="feature-icon">🛡️</div>
-          <h3>SHA-256 License Gate</h3>
-          <p>Cryptographic key generator binds your access pass directly to your verified MetaTrader 5 account ID.</p>
+        <div class="faq-card">
+          <h4>What is the minimum recommended capital?</h4>
+          <p>We recommend a minimum balance of $200 – $500 for micro-lot scalping (0.01 lot) on Gold (XAUUSD) to maintain safe drawdown parameters.</p>
         </div>
 
-        <div class="feature-card">
-          <div class="feature-icon">⚡</div>
-          <h3>Sub-15ms Speed</h3>
-          <p>Direct low-latency socket routing connected with GTCfx liquidity servers for rapid trade execution.</p>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-icon">📊</div>
-          <h3>Live Telemetry</h3>
-          <p>Real-time performance tracking, drawdown buffers, and automated lot-size risk management.</p>
+        <div class="faq-card">
+          <h4>How do I get vendor setup support?</h4>
+          <p>Our technical team is available 24/7 on WhatsApp hotline at <strong>+91 94950 97786</strong> for live remote setup and parameter tuning.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Live Terminal Section -->
-  <section class="terminal-section" id="terminal">
-    <div class="section-container">
-      <div class="terminal-card">
-        <div class="terminal-header">
-          <div class="terminal-dots">
-            <span class="dot dot-red"></span>
-            <span class="dot dot-yellow"></span>
-            <span class="dot dot-green"></span>
-          </div>
-          <div class="terminal-title">B-Magnet Live Telemetry Terminal [XAUUSD]</div>
-          <div class="terminal-badge">LIVE 8080 STREAM</div>
+  <!-- OFFICIAL AUTH PORTAL MODAL (LOGIN / SIGN UP) -->
+  <div class="modal-backdrop-layer" id="officialAuthModal">
+    <div class="modal-card-box">
+      <div class="modal-card-header">
+        <div class="tab-group-pills">
+          <button type="button" class="tab-pill active" id="btnTabSignIn" onclick="switchAuthTab('signin')">Sign In</button>
+          <button type="button" class="tab-pill" id="btnTabSignUp" onclick="switchAuthTab('signup')">Sign Up</button>
         </div>
-
-        <div class="terminal-body">
-          <div class="terminal-row">
-            <span class="t-time">[20:58:33]</span>
-            <span class="t-tag tag-info">SIGNAL</span>
-            <span class="t-msg">Order-flow Magnetics calculated buy liquidity pool at $2,654.20</span>
-          </div>
-          <div class="terminal-row">
-            <span class="t-time">[20:58:34]</span>
-            <span class="t-tag tag-success">EXECUTION</span>
-            <span class="t-msg">MT5 Order #8849201 Buy 0.10 Lot Gold executed @ 2654.25 (Latency: 11.4ms)</span>
-          </div>
-          <div class="terminal-row">
-            <span class="t-time">[20:58:35]</span>
-            <span class="t-tag tag-gold">LICENSE</span>
-            <span class="t-msg">SHA-256 License Verification Passed [Key: 8F92-41A0-D9E8]</span>
-          </div>
-        </div>
+        <button type="button" class="btn-modal-close" onclick="closeOfficialAuthModal()" title="Close">✕</button>
       </div>
-    </div>
-  </section>
 
-  <!-- EA Passes Pricing Section -->
-  <section class="pricing-section" id="pricing">
-    <div class="section-container">
-      <h2 class="section-title">Institutional EA Passes</h2>
-      <p class="section-subtitle">Select access pass for B-Magnet Gold Hunter EA on MetaTrader 5</p>
-
-      <div class="pricing-grid">
-        <div class="pricing-card">
-          <span class="p-badge">1 Month</span>
-          <h3>Starter Access</h3>
-          <div class="p-price">$49 <span>/ 30 Days</span></div>
-          <ul class="p-features">
-            <li>✓ Full MT5 Gold EA Access</li>
-            <li>✓ Automated Account Binding</li>
-            <li>✓ WhatsApp Technical Support</li>
-          </ul>
-          <button type="button" class="btn-pricing-action" onclick="openLoginModal8080()">Select Pass</button>
+      <!-- SIGN IN FORM -->
+      <div class="auth-panel-body active" id="panelSignIn">
+        <h3>Sign In to Official B-Magnet Platform</h3>
+        <p class="auth-subtext">Enter your email or mobile phone to receive a 6-digit access PIN.</p>
+        
+        <div class="field-group">
+          <label class="field-label">Email or Mobile Account</label>
+          <input type="text" id="signInAccountInput" class="field-input" placeholder="name@example.com or +971501234567" value="trader@bmagnet.pro">
         </div>
 
-        <div class="pricing-card featured-pricing">
-          <span class="p-badge badge-amber">Popular VIP</span>
-          <h3>6 Months Pass</h3>
-          <div class="p-price">$229 <span>/ 180 Days</span></div>
-          <ul class="p-features">
-            <li>✓ Full MT5 Gold EA Access</li>
-            <li>✓ Priority GTCfx Server Routing</li>
-            <li>✓ Free EA Performance Updates</li>
-          </ul>
-          <button type="button" class="btn-pricing-action btn-gold" onclick="openLoginModal8080()">Get VIP Access</button>
-        </div>
-
-        <div class="pricing-card">
-          <span class="p-badge">1 Year</span>
-          <h3>Annual Pass</h3>
-          <div class="p-price">$399 <span>/ 365 Days</span></div>
-          <ul class="p-features">
-            <li>✓ Full 1-Year EA License</li>
-            <li>✓ Multi-Timeframe Signals</li>
-            <li>✓ 1-on-1 Remote Setup Assistance</li>
-          </ul>
-          <button type="button" class="btn-pricing-action" onclick="openLoginModal8080()">Select Annual</button>
-        </div>
+        <button type="button" class="btn-yellow-hero btn-full" style="margin-top: 20px;" onclick="handleOfficialSignIn()">
+          <span>Send Access Passcode</span>
+        </button>
       </div>
-    </div>
-  </section>
 
-  <!-- Login Modal -->
-  <div class="modal-backdrop" id="loginModal8080">
-    <div class="modal-box">
-      <div class="modal-top">
-        <h3>Sign In to Port 8080 Portal</h3>
-        <button type="button" class="btn-close" onclick="closeLoginModal8080()">✕</button>
-      </div>
-      <div class="modal-content">
-        <p>Enter your email or mobile phone to receive an instant access passcode.</p>
-        <div class="input-group">
-          <label>Email or Mobile Account</label>
-          <input type="text" id="loginInput8080" placeholder="trader@bmagnet.pro or +971501234567" value="trader@bmagnet.pro">
+      <!-- SIGN UP FORM -->
+      <div class="auth-panel-body" id="panelSignUp">
+        <h3>Create Your B-Magnet Account</h3>
+        <p class="auth-subtext">Enter your details to generate your official trading profile.</p>
+
+        <div class="field-group">
+          <label class="field-label">Full Name</label>
+          <input type="text" id="signUpNameInput" class="field-input" placeholder="John Doe">
         </div>
-        <button type="button" class="btn-submit-gold" onclick="submitLogin8080()">Send Access Passcode</button>
+
+        <div class="field-group" style="margin-top: 14px;">
+          <label class="field-label">Email Address</label>
+          <input type="email" id="signUpEmailInput" class="field-input" placeholder="name@example.com">
+        </div>
+
+        <button type="button" class="btn-yellow-hero btn-full" style="margin-top: 20px;" onclick="handleOfficialSignUp()">
+          <span>Create Account & Verify</span>
+        </button>
       </div>
     </div>
   </div>
 
-  <footer class="app-footer">
-    <p>© 2026 B-Magnet PRO Financial Systems. Running on Port 8080. All rights reserved.</p>
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="site-container footer-inner">
+      <div class="footer-col-left">
+        <div class="footer-title">B-Magnet PRO Official Platform</div>
+        <p>© 2026 B-Magnet Trading Systems. Institutional MT5 Technology. All rights reserved.</p>
+      </div>
+      <div class="footer-col-right">
+        <span>🛡️ SHA-256 License Gate</span>
+        <span>⚡ MT5 Connected</span>
+      </div>
+    </div>
   </footer>
 
-  <script src="app.js?v=8805"></script>
+  <script src="app.js?v=0605"></script>
 </body>
 </html>
