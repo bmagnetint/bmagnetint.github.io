@@ -10834,20 +10834,19 @@ html, body {
 .lang-globe-btn {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  min-height: 38px;
   background: rgba(255, 255, 255, 0.65);
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
   border: 1px solid rgba(0, 168, 150, 0.3);
   box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
-  border-radius: 99px;
-  padding: 6px 12px;
-  font-size: 12.5px;
-  font-weight: 700;
-  color: #0f172a;
+  border-radius: 50%;
+  padding: 0;
   cursor: pointer;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  min-height: 36px;
 }
 
 body.theme-dark .lang-globe-btn {
@@ -10857,13 +10856,13 @@ body.theme-dark .lang-globe-btn {
 }
 
 .lang-globe-btn:hover, .lang-globe-btn.active {
-  background: rgba(0, 168, 150, 0.12);
+  background: rgba(0, 168, 150, 0.15);
   border-color: #00a896;
   transform: translateY(-1px);
 }
 
 .lang-globe-btn .globe-icon {
-  font-size: 18px;
+  font-size: 20px;
   color: #00a896;
   transition: transform 0.3s ease;
 }

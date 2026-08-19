@@ -47,7 +47,7 @@
   <!-- Google One-Tap & Identity Services SDK -->
   <script src="https://accounts.google.com/gsi/client" async defer></script>
   
-  <link rel="stylesheet" href="style.css?v=9342">
+  <link rel="stylesheet" href="style.css?v=0191">
 </head>
 <body class="theme-light">
 
@@ -161,14 +161,12 @@
                 <a href="#faqSection" class="landing-nav-link">Security & FAQ</a>
               </nav>
 
-              <!-- Top Right Controls: Globe Language Switcher, Theme & Corner Login -->
+              <!-- Top Right Controls: Globe Language Switcher, Theme & Corner Access -->
               <div class="landing-header-actions">
-                <!-- 🌐 Globe Icon Language Selector Dropdown -->
+                <!-- 🌐 Globe Icon Language Selector Dropdown (Icon Only) -->
                 <div class="lang-globe-dropdown-wrapper">
                   <button type="button" class="lang-globe-btn" onclick="window.botHubApp.toggleLanguageDropdown(event)" title="Select Language / اختر اللغة">
                     <span class="material-symbols-rounded globe-icon">language</span>
-                    <span class="lang-current-label">EN</span>
-                    <span class="material-symbols-rounded dropdown-arrow">expand_more</span>
                   </button>
                   <div class="lang-dropdown-menu">
                     <div class="lang-option-item active" data-lang="en" onclick="window.botHubApp.selectAppLanguage('en')">
@@ -188,10 +186,10 @@
                   <span class="material-symbols-rounded theme-icon">dark_mode</span>
                 </button>
 
-                <!-- 🌟 Corner Login / Launch App Button -->
+                <!-- 🌟 Corner Access Button -->
                 <button type="button" class="btn-landing-corner-login" onclick="window.botHubApp.showSignInPage()">
                   <span class="material-symbols-rounded">login</span>
-                  <span>Sign In / Launch</span>
+                  <span>Access</span>
                 </button>
               </div>
             </div>
@@ -780,12 +778,10 @@
                       <span>Home</span>
                     </button>
 
-                    <!-- 🌐 Globe Icon Language Selector Dropdown -->
+                    <!-- 🌐 Globe Icon Language Selector Dropdown (Icon Only) -->
                     <div class="lang-globe-dropdown-wrapper">
                       <button type="button" class="lang-globe-btn" onclick="window.botHubApp.toggleLanguageDropdown(event)" title="Select Language / اختر اللغة">
                         <span class="material-symbols-rounded globe-icon">language</span>
-                        <span class="lang-current-label">EN</span>
-                        <span class="material-symbols-rounded dropdown-arrow">expand_more</span>
                       </button>
                       <div class="lang-dropdown-menu">
                         <div class="lang-option-item active" data-lang="en" onclick="window.botHubApp.selectAppLanguage('en')">
@@ -2685,6 +2681,6 @@
 
   <!-- App Scripts -->
   <script src="qrcode.js"></script>
-  <script src="app.js?v=9342"></script>
+  <script src="app.js?v=0191"></script>
 </body>
 </html>
