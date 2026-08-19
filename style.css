@@ -5550,47 +5550,64 @@ body.theme-dark .desktop-company-landing {
     color: #94a3b8;
   }
 
-  /* Features Grid (iOS 27 Liquid Glass) */
+  /* Features Grid - Institutional Order Flow Architecture (iOS 27 Liquid Glass) */
   .landing-features-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 24px;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 24px;
   }
 
   .landing-feature-card {
-    background: rgba(255, 255, 255, 0.40);
+    background: rgba(255, 255, 255, 0.70);
     backdrop-filter: blur(28px) saturate(200%);
     -webkit-backdrop-filter: blur(28px) saturate(200%);
-    border: 1px solid rgba(255, 255, 255, 0.75);
-    border-radius: 26px;
-    padding: 28px 24px;
+    border: 1px solid rgba(0, 168, 150, 0.25);
+    border-radius: 22px;
+    padding: 26px 22px;
     box-shadow: 0 10px 30px rgba(25, 39, 80, 0.05), inset 0 1.5px 1.5px rgba(255, 255, 255, 0.85);
-    transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    box-sizing: border-box;
   }
 
   body.theme-dark .landing-feature-card {
-    background: rgba(15, 23, 42, 0.45);
-    border-color: rgba(255, 255, 255, 0.14);
+    background: rgba(15, 23, 42, 0.75);
+    border-color: rgba(0, 201, 167, 0.3);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.12);
   }
 
   .landing-feature-card:hover {
     transform: translateY(-4px);
-    border-color: rgba(0, 168, 150, 0.5);
-    box-shadow: 0 16px 40px rgba(25, 39, 80, 0.08), inset 0 1.5px 1.5px #fff;
+    border-color: #00a896;
+    box-shadow: 0 18px 42px rgba(0, 168, 150, 0.18), inset 0 1.5px 1.5px #fff;
+  }
+
+  body.theme-dark .landing-feature-card:hover {
+    border-color: #00c9a7;
+    box-shadow: 0 18px 42px rgba(0, 201, 167, 0.24);
   }
 
   .lfc-icon-box {
-    width: 52px;
-    height: 52px;
-    border-radius: 18px;
+    width: 50px;
+    height: 50px;
+    border-radius: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 18px;
-    background: rgba(2, 132, 199, 0.12);
-    color: #0284c7;
+    margin-bottom: 16px;
+    background: rgba(0, 168, 150, 0.12);
+    color: #00a896;
     box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.7);
+  }
+
+  body.theme-dark .lfc-icon-box {
+    background: rgba(0, 201, 167, 0.18);
+    color: #00c9a7;
   }
 
   .lfc-icon-box .material-symbols-rounded {
@@ -5600,12 +5617,25 @@ body.theme-dark .desktop-company-landing {
   .lfc-title {
     font-size: 17px;
     font-weight: 800;
-    color: #192750;
+    color: #0f172a;
     margin: 0 0 10px 0;
+    line-height: 1.3;
   }
 
   body.theme-dark .lfc-title {
-    color: #ffffff;
+    color: #f8fafc;
+  }
+
+  .lfc-desc {
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: #475569;
+    margin: 0;
+    flex: 1;
+  }
+
+  body.theme-dark .lfc-desc {
+    color: #94a3b8;
   }
 
   .lfc-desc {
@@ -7152,41 +7182,59 @@ body.theme-dark .theme-icon {
   transform: scale(0.98);
 }
 
-/* SCREEN 2: SIGN IN SCREEN (RIGHT IMAGE) */
+/* SCREEN 2: SIGN IN SCREEN (AUTO-ALIGNED FOR ALL RESOLUTIONS & 2K / 4K) */
 .signin-screen-inner {
   width: 100%;
   height: 100%;
+  max-width: 480px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   box-sizing: border-box;
+  position: relative;
 }
 
 .signin-top-hero {
   position: relative;
   width: 100%;
   flex: 1;
-  min-height: 120px;
+  min-height: 140px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-top: 20px;
+  padding-top: 60px;
+  padding-bottom: 12px;
+  box-sizing: border-box;
+}
+
+.signin-top-actions-row {
+  position: absolute;
+  top: 16px;
+  left: 0;
+  right: 0;
+  width: 100%;
+  padding: 0 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 20;
+  box-sizing: border-box;
 }
 
 .signin-back-btn {
-  position: absolute;
-  top: 24px;
-  left: 20px;
   height: 38px;
   padding: 0 14px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.45);
+  background: rgba(255, 255, 255, 0.55);
   backdrop-filter: blur(24px) saturate(180%);
   -webkit-backdrop-filter: blur(24px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  color: #192750;
+  border: 1px solid rgba(0, 168, 150, 0.3);
+  color: #0f172a;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
   cursor: pointer;
   z-index: 10;
@@ -10998,14 +11046,16 @@ body.theme-dark .lang-option-item {
 @media (min-width: 1600px) {
   .b-magnet-company-profile-box,
   .landing-header-inner,
-  .view-panel {
+  .view-panel,
+  #aboutProgramSection {
     max-width: 1480px !important;
   }
 
   .cmp-features-grid,
+  .landing-features-grid,
   .landing-plans-grid {
     grid-template-columns: repeat(4, 1fr) !important;
-    gap: 20px !important;
+    gap: 24px !important;
   }
 }
 
@@ -11013,20 +11063,28 @@ body.theme-dark .lang-option-item {
 @media (min-width: 992px) and (max-width: 1599px) {
   .b-magnet-company-profile-box,
   .landing-header-inner,
-  .view-panel {
+  .view-panel,
+  #aboutProgramSection {
     max-width: 1200px !important;
+  }
+
+  .landing-features-grid {
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 20px !important;
   }
 }
 
 /* Tablets & iPads (768px - 991px) */
 @media (min-width: 768px) and (max-width: 991px) {
   .b-magnet-company-profile-box,
-  .view-panel {
+  .view-panel,
+  #aboutProgramSection {
     max-width: 92vw !important;
     padding: 24px 20px !important;
   }
 
   .cmp-features-grid,
+  .landing-features-grid,
   .landing-plans-grid {
     grid-template-columns: repeat(2, 1fr) !important;
     gap: 16px !important;
@@ -11036,19 +11094,215 @@ body.theme-dark .lang-option-item {
 /* Mobile Devices (< 767px) */
 @media (max-width: 767px) {
   .b-magnet-company-profile-box,
-  .view-panel {
+  .view-panel,
+  #aboutProgramSection {
     width: 100% !important;
     max-width: 100% !important;
     padding: 18px 14px !important;
   }
 
   .cmp-features-grid,
+  .landing-features-grid,
   .landing-plans-grid,
   .plans-grid {
     grid-template-columns: 1fr !important;
     gap: 12px !important;
     width: 100% !important;
   }
+
+  .landing-feature-card {
+    padding: 18px 16px !important;
+    border-radius: 18px !important;
+  }
+}
+
+/* SIGN IN PAGE RESOLUTION AUTO-ALIGNMENT & DEVICE COMPATIBILITY (4K / 2K / DESKTOP / TABLET / MOBILE) */
+@media (min-width: 1600px) {
+  .signin-screen-inner {
+    max-width: 520px !important;
+  }
+  .signin-bot-details-card {
+    max-width: 440px !important;
+    padding: 22px 26px !important;
+  }
+  .signin-white-sheet {
+    max-width: 500px !important;
+    padding: 36px 32px 32px 32px !important;
+    border-radius: 36px !important;
+  }
+  .signin-clean-input,
+  .btn-signin-block,
+  .btn-google-single {
+    height: 54px !important;
+    font-size: 15px !important;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1599px) {
+  .signin-screen-inner {
+    max-width: 460px !important;
+  }
+  .signin-white-sheet {
+    max-width: 440px !important;
+    padding: 30px 26px 26px 26px !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .signin-screen-inner {
+    max-width: 420px !important;
+  }
+  .signin-white-sheet {
+    max-width: 400px !important;
+    padding: 26px 22px 22px 22px !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .signin-screen-inner {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 100% !important;
+  }
+  .signin-bot-details-card {
+    width: 92% !important;
+    max-width: 360px !important;
+    padding: 14px 16px !important;
+  }
+  .signin-white-sheet {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 24px 18px 20px 18px !important;
+    border-radius: 32px 32px 0 0 !important;
+  }
+}
+
+/* VERIFIED ORGANIZATION SSL SECURITY CERTIFICATE & BADGES SUITE */
+.org-security-cert-banner {
+  margin-top: 24px;
+  background: rgba(16, 185, 129, 0.08);
+  backdrop-filter: blur(24px) saturate(190%);
+  -webkit-backdrop-filter: blur(24px) saturate(190%);
+  border: 1.5px solid rgba(16, 185, 129, 0.35);
+  box-shadow: 0 12px 32px rgba(16, 185, 129, 0.08);
+  border-radius: 20px;
+  padding: 20px 24px;
+  box-sizing: border-box;
+}
+
+body.theme-dark .org-security-cert-banner {
+  background: rgba(6, 78, 59, 0.25);
+  border-color: rgba(52, 211, 153, 0.4);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+}
+
+.org-cert-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding-bottom: 14px;
+  border-bottom: 1px dashed rgba(16, 185, 129, 0.3);
+}
+
+.org-cert-badge-pulse {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.org-cert-badge-pulse .cert-shield-icon {
+  font-size: 22px;
+  color: #10b981;
+}
+
+body.theme-dark .org-cert-badge-pulse .cert-shield-icon {
+  color: #34d399;
+}
+
+.cert-status-tag {
+  font-size: 13px;
+  font-weight: 800;
+  color: #065f46;
+  letter-spacing: 0.5px;
+}
+
+body.theme-dark .cert-status-tag {
+  color: #a7f3d0;
+}
+
+.org-cert-issuer {
+  font-size: 12px;
+  color: #047857;
+  font-weight: 600;
+}
+
+body.theme-dark .org-cert-issuer {
+  color: #6ee7b7;
+}
+
+.org-cert-badges-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+@media (max-width: 991px) {
+  .org-cert-badges-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 539px) {
+  .org-cert-badges-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.org-badge-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  border-radius: 14px;
+  padding: 10px 14px;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+}
+
+body.theme-dark .org-badge-item {
+  background: rgba(15, 23, 42, 0.6);
+  border-color: rgba(52, 211, 153, 0.25);
+}
+
+.org-badge-icon {
+  font-size: 22px;
+}
+
+.org-badge-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.org-badge-text strong {
+  font-size: 12.5px;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+body.theme-dark .org-badge-text strong {
+  color: #f8fafc;
+}
+
+.org-badge-text span {
+  font-size: 11px;
+  color: #64748b;
+}
+
+body.theme-dark .org-badge-text span {
+  color: #94a3b8;
 }
 
 
