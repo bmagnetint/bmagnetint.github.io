@@ -1441,14 +1441,24 @@ class BotHubApp {
   showSignInScreen() {
     const overlay = document.getElementById('authScreenOverlay');
     if (overlay) {
-      overlay.classList.add('active');
-      overlay.classList.remove('landing-active');
-      overlay.classList.add('auth-active');
+      overlay.className = 'auth-overlay active auth-active';
+      overlay.style.setProperty('display', 'flex', 'important');
+      overlay.style.setProperty('opacity', '1', 'important');
+      overlay.style.setProperty('visibility', 'visible', 'important');
     }
     const viewLanding = document.getElementById('viewLandingPage');
     const viewAuth = document.getElementById('viewAuthPortal');
-    if (viewLanding) viewLanding.style.display = 'none';
-    if (viewAuth) viewAuth.style.display = 'flex';
+    if (viewLanding) {
+      viewLanding.style.setProperty('display', 'none', 'important');
+    }
+    if (viewAuth) {
+      viewAuth.style.setProperty('display', 'flex', 'important');
+      viewAuth.style.setProperty('opacity', '1', 'important');
+      viewAuth.style.setProperty('visibility', 'visible', 'important');
+    }
+
+    const bottomNav = document.getElementById('mobileBottomNav');
+    if (bottomNav) bottomNav.style.setProperty('display', 'none', 'important');
 
     this.switchAuthMode('signin');
     const emailInput = document.getElementById('loginEmailInput');
@@ -1463,14 +1473,24 @@ class BotHubApp {
   showSignUpScreen() {
     const overlay = document.getElementById('authScreenOverlay');
     if (overlay) {
-      overlay.classList.add('active');
-      overlay.classList.remove('landing-active');
-      overlay.classList.add('auth-active');
+      overlay.className = 'auth-overlay active auth-active';
+      overlay.style.setProperty('display', 'flex', 'important');
+      overlay.style.setProperty('opacity', '1', 'important');
+      overlay.style.setProperty('visibility', 'visible', 'important');
     }
     const viewLanding = document.getElementById('viewLandingPage');
     const viewAuth = document.getElementById('viewAuthPortal');
-    if (viewLanding) viewLanding.style.display = 'none';
-    if (viewAuth) viewAuth.style.display = 'flex';
+    if (viewLanding) {
+      viewLanding.style.setProperty('display', 'none', 'important');
+    }
+    if (viewAuth) {
+      viewAuth.style.setProperty('display', 'flex', 'important');
+      viewAuth.style.setProperty('opacity', '1', 'important');
+      viewAuth.style.setProperty('visibility', 'visible', 'important');
+    }
+
+    const bottomNav = document.getElementById('mobileBottomNav');
+    if (bottomNav) bottomNav.style.setProperty('display', 'none', 'important');
 
     this.switchAuthMode('signup');
     const nameInput = document.getElementById('signupNameInput');
@@ -5379,15 +5399,19 @@ Hello, here are my subscription and license details. Please verify my GTCfx MT5 
   }
 }
 
-// Global App Initializer (Immediate & Safe DOMReady Handshake)
-function initBotHubApp() {
+// Global App Initializer (Immediate Execution & Safe Fallback)
+try {
   if (!window.botHubApp) {
     window.botHubApp = new BotHubApp();
   }
+} catch (e) {
+  console.error("BotHubApp immediate instantiation error:", e);
 }
 
 if (document.readyState === 'loading') {
-  window.addEventListener('DOMContentLoaded', initBotHubApp);
-} else {
-  initBotHubApp();
+  window.addEventListener('DOMContentLoaded', () => {
+    if (!window.botHubApp) {
+      window.botHubApp = new BotHubApp();
+    }
+  });
 }
