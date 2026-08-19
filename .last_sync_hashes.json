@@ -9,7 +9,7 @@
   "public/key-generator.html": "7ea88d078fea2d1a965692f5b606a328c71da2383bf45d88d580b5a11913fdde",
   "public/manifest.json": "b331d91b9eded6a5d5846dd3ed8d74a2fe4e29129f9788db8e9703c764c31858",
   "public/qrcode.js": "a536da9afe90f6807ee63298ad883798c681d15170dc027510ea07169ddadbdf",
-  "public/style.css": "7745053b727ae64355381e8c5a64382d0b39c18ffd9122524952e8bb02a2be9b",
+  "public/style.css": "f06901c56d001d5d9930aafa253360fd2cb32ff66c7469f645a7890853659af4",
   "public/sw.js": "e29f8ab7d878ab323e8976f0b49833d24007af4edd7c8ef4d1c6143d9817f92b",
   "public/images/ai-bot-core-visual.jpg": "895803d28fbe6620cdf3f118d715aaa5df2c7bb6438e479d41f9431e510f0f71",
   "public/images/ai-trading-bot-visual.jpg": "cc47a181d7c5c6dd744ac8759f107332d7645f1772c3e7dd3aa8d84f822a2119",
@@ -19,5 +19,5 @@
   "public/images/b-magnet-logo.png": "a125d7354da80f5e8dd48e92b09995c179a599a7ba26f2b8fed4eeef9e601dab",
   "public/images/b-magnet-neural-brain.jpg": "773ff34c5275c38f4b6c75224d81d55665dfe768a7b31327e425e5b75b07da59",
   "public/images/hero-trader-skipio.jpg": "92dbf03b4c9f3ce932382fada39e7974fa9574622de2dc93d4040b89f89204aa",
-  "data/db.json": "d59a2926b5438b4e92469264b449be90cba20ed4d025a2d1354e57691d7fcbb7"
+  "data/db.json": "18c18210b1ad6f6839d077f751345fec6ec3a084bc312d4923f87e9c4df82036"
 }
