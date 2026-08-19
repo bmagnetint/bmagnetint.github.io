@@ -7441,33 +7441,57 @@ body.theme-dark .btn-google-single {
   border: 2px solid #0a0d14;
 }
 
+/* ==========================================================================
+   ULTRA-PROFESSIONAL SIMPLE CRM DESIGN SYSTEM
+   ========================================================================== */
 .db-header-banner {
-  background: linear-gradient(135deg, rgba(16, 185, 129, 0.12) 0%, rgba(13, 18, 31, 0.95) 100%);
-  border: 1px solid rgba(16, 185, 129, 0.3);
-  border-radius: var(--radius-lg);
-  padding: 16px;
-  margin-bottom: 16px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(28px) saturate(200%);
+  -webkit-backdrop-filter: blur(28px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-radius: 24px;
+  padding: 24px;
+  margin-bottom: 20px;
+  box-shadow: 0 12px 36px rgba(15, 23, 42, 0.06), inset 0 1.5px 1.5px rgba(255, 255, 255, 0.95);
+}
+
+body.theme-dark .db-header-banner {
+  background: rgba(14, 20, 34, 0.6);
+  border-color: rgba(255, 255, 255, 0.16);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5), inset 0 1.5px 1.5px rgba(255, 255, 255, 0.15);
 }
 
 .db-banner-top {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 8px;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.db-header-brand-wrap {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.db-header-actions-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .db-brand-icon {
-  width: 44px;
-  height: 44px;
-  background: rgba(16, 185, 129, 0.2);
-  border: 1px solid rgba(16, 185, 129, 0.4);
-  border-radius: 12px;
+  width: 48px;
+  height: 48px;
+  background: rgba(0, 168, 150, 0.12);
+  border: 1px solid rgba(0, 168, 150, 0.3);
+  border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #10B981;
-  font-size: 24px;
+  color: #00a896;
+  font-size: 26px;
   flex-shrink: 0;
 }
 
@@ -7475,62 +7499,89 @@ body.theme-dark .btn-google-single {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: 10px;
-  font-weight: 700;
-  color: #10B981;
-  background: rgba(16, 185, 129, 0.15);
-  padding: 2px 8px;
-  border-radius: 12px;
-  margin-bottom: 2px;
+  font-size: 11px;
+  font-weight: 800;
+  color: #00a896;
+  background: rgba(0, 168, 150, 0.12);
+  padding: 3px 10px;
+  border-radius: 99px;
+  margin-bottom: 4px;
 }
 
 .db-title {
-  font-size: 16px;
-  font-weight: 800;
-  color: #ffffff;
+  font-size: 20px;
+  font-weight: 900;
+  color: #0f172a;
   margin: 0;
 }
 
-.db-subtitle {
-  font-size: 11px;
-  color: var(--text-muted);
-  line-height: 1.4;
-  margin-bottom: 12px;
+body.theme-dark .db-title {
+  color: #ffffff;
 }
 
 .google-sync-card {
-  background: rgba(0, 0, 0, 0.4);
-  border: 1px dashed rgba(16, 185, 129, 0.35);
-  border-radius: var(--radius-sm);
-  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(0, 168, 150, 0.25);
+  border-radius: 16px;
+  padding: 14px 18px;
 }
 
-.gsc-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 8px;
+body.theme-dark .google-sync-card {
+  background: rgba(17, 28, 56, 0.5);
+  border-color: rgba(0, 201, 167, 0.3);
 }
 
 .gsc-logo {
   display: flex;
   align-items: center;
-  gap: 6px;
-  font-size: 11.5px;
-  font-weight: 700;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+body.theme-dark .gsc-logo {
   color: #ffffff;
 }
 
-.gsc-input-row {
-  display: flex;
-  gap: 8px;
+.btn-sync-sheets {
+  border-radius: 99px !important;
+  font-weight: 800 !important;
 }
 
 .db-kpi-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  margin-bottom: 16px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 900px) {
+  .db-kpi-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .db-kpi-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.kpi-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.kpi-icon {
+  font-size: 20px;
+  color: #00a896;
+}
+
+.crm-pro-card {
+  border-radius: 24px !important;
 }
 
 .table-responsive {
@@ -10014,55 +10065,93 @@ body.theme-dark .cluster-chip {
   100% { transform: translateY(-6px); }
 }
 
-.top-brand-profile-hero.bg-embedded {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  border: none;
-  border-radius: 24px;
+.top-brand-profile-hero.bg-embedded,
+#topBrandProfileHero {
+  position: fixed !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  width: 100vw !important;
+  max-width: 100vw !important;
+  height: 100vh !important;
+  max-height: 100vh !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  border-radius: 0 !important;
   background: transparent !important;
   box-shadow: none !important;
-  opacity: 0.85;
-  z-index: 1;
-  pointer-events: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  opacity: 1.0 !important;
+  z-index: 10000 !important;
+  pointer-events: none !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.desktop-company-landing,
+.auth-card-container {
+  position: relative;
+  z-index: 10001 !important;
+}
+
+/* LOGGED-IN DASHBOARD ELEMENTS MUST BE 100% HIDDEN UNLESS LOGGED IN */
+body:not(.logged-in) .app-header,
+body:not(.logged-in) #appMain,
+body:not(.logged-in) .bottom-nav,
+body:not(.logged-in) .view-panel {
+  display: none !important;
+}
+
+body.logged-in .app-header {
+  display: flex !important;
+  position: relative;
+  z-index: 10001 !important;
+}
+
+body.logged-in .bottom-nav {
+  display: flex !important;
+  z-index: 10001 !important;
+}
+
+body.logged-in #appMain,
+body.logged-in .view-panel {
+  position: relative;
+  z-index: 10001 !important;
 }
 
 .top-brand-profile-hero.bg-embedded .tbph-big-logo {
-  height: 380px;
-  max-height: 92%;
-  width: auto;
-  max-width: 90%;
-  object-fit: contain;
-  opacity: 0.28;
-  filter: drop-shadow(0 20px 45px rgba(0, 168, 150, 0.45));
+  height: 650px !important;
+  max-height: 80vh !important;
+  width: auto !important;
+  max-width: 90vw !important;
+  object-fit: contain !important;
+  opacity: 0.08 !important;
+  filter: drop-shadow(0 20px 45px rgba(0, 168, 150, 0.25)) !important;
 }
 
 .top-brand-profile-hero.bg-embedded .tbph-ambient-glow {
-  width: 720px;
-  height: 720px;
-  filter: blur(56px);
-  opacity: 0.9;
+  width: 1100px !important;
+  height: 1100px !important;
+  filter: blur(90px) !important;
+  opacity: 0.35 !important;
 }
 
 .top-brand-profile-hero.bg-embedded .tbph-moving-circle-ring {
-  width: 520px;
-  height: 520px;
-  border: 2px dashed rgba(0, 168, 150, 0.45);
+  width: 850px !important;
+  height: 850px !important;
+  border: 1.5px dashed rgba(0, 168, 150, 0.2) !important;
+  opacity: 0.35 !important;
 }
 
 body.theme-dark .top-brand-profile-hero.bg-embedded {
-  opacity: 0.95;
+  opacity: 1.0 !important;
   background: transparent !important;
 }
 
 body.theme-dark .top-brand-profile-hero.bg-embedded .tbph-big-logo {
-  opacity: 0.35;
-  filter: drop-shadow(0 20px 50px rgba(0, 201, 167, 0.55));
+  opacity: 0.12 !important;
+  filter: drop-shadow(0 20px 50px rgba(0, 201, 167, 0.35)) !important;
 }
 
 /* EXPLAINED COMPANY PROFILE BOX WITH IOS 27 LIQUID GLASS LOOK */
@@ -10434,6 +10523,82 @@ body.theme-dark .cmp-card p {
   .bottom-nav .nav-label {
     font-size: 12px !important;
   }
+}
+
+.pwa-install-banner {
+  display: none !important;
+}
+
+/* ==========================================================================
+   ONE-BY-ONE CRM MODULAR PANEL DESIGN SYSTEM
+   ========================================================================== */
+.crm-panel-card {
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(28px) saturate(200%);
+  -webkit-backdrop-filter: blur(28px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-radius: 26px;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 14px 40px rgba(15, 23, 42, 0.06), inset 0 1.5px 1.5px rgba(255, 255, 255, 0.95);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+body.theme-dark .crm-panel-card {
+  background: rgba(14, 20, 34, 0.6);
+  border-color: rgba(255, 255, 255, 0.16);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.5), inset 0 1.5px 1.5px rgba(255, 255, 255, 0.15);
+}
+
+.crm-panel-card:hover {
+  box-shadow: 0 20px 50px rgba(0, 168, 150, 0.12), inset 0 1.5px 1.5px rgba(255, 255, 255, 0.95);
+}
+
+.crm-panel-tag {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(0, 168, 150, 0.15);
+}
+
+.panel-num-badge {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.5px;
+  background: #00a896;
+  color: #ffffff;
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+
+.panel-title-chip {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  color: #00a896;
+}
+
+body.theme-dark .panel-title-chip {
+  color: #00c9a7;
+}
+
+/* CRM ACCESS SECURITY GATE MODAL */
+.crm-access-card {
+  border-radius: 32px !important;
+  padding: 30px !important;
+  background: rgba(255, 255, 255, 0.92) !important;
+  backdrop-filter: blur(36px) saturate(210%) !important;
+  box-shadow: 0 30px 80px rgba(15, 23, 42, 0.18), inset 0 1.5px 1.5px rgba(255, 255, 255, 0.95) !important;
+}
+
+body.theme-dark .crm-access-card {
+  background: rgba(15, 23, 42, 0.92) !important;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7), inset 0 1.5px 1.5px rgba(255, 255, 255, 0.16) !important;
 }
 
 /* UNIVERSAL CROSS-PLATFORM OVERFLOW & TOUCH SAFETY */

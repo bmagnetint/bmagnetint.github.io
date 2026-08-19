@@ -727,8 +727,10 @@ class BotHubApp {
 
   showSignInScreen() {
     document.body.classList.remove('logged-in');
-    // AUTOMATICALLY SWITCH LOGIN PAGE TO DARK THEME MATCHING BRAND COLOURS
-    this.applyTheme('dark');
+    // DEFAULT TO LIGHT THEME MATCHING WHOLE SITE (TURNS TO DARK ONLY BY TOGGLE BUTTON)
+    if (!localStorage.getItem('b_bot_theme')) {
+      this.applyTheme('light');
+    }
 
     const overlay = document.getElementById('authScreenOverlay');
     if (overlay) {
@@ -3886,24 +3888,8 @@ Hello, here are my subscription and license details. Please verify my GTCfx MT5 
   }
 
   openLicenseGeneratorModal() {
-    this.initModalKeygenState();
-    
-    // Populate client/subscription select if available
-    const select = document.getElementById('modalKeyGenClientSelect');
-    if (select) {
-      const activeSubs = this.state.subscriptions || [];
-      if (activeSubs.length > 0) {
-        let optHtml = `<option value="">⚡ Quick-fill Active Subscriptions (${activeSubs.length})...</option>`;
-        activeSubs.forEach(s => {
-          const acc = s.gtcfxMt5Account || s.mt5Account || '8849201';
-          optHtml += `<option value="${acc}">${s.botName || 'Gold EA'} — MT5 #${acc} (${s.planName || 'Pass'})</option>`;
-        });
-        select.innerHTML = optHtml;
-      }
-    }
-    
-    this.generateModalKey();
-    this.openModal('licenseGeneratorModal');
+    // REDIRECT EXCLUSIVELY TO ADMIN PANEL (PANEL 03: KEY GENERATOR)
+    this.switchView('database');
   }
 
   initModalKeygenState() {

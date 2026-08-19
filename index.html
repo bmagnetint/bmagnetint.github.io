@@ -47,12 +47,26 @@
   <!-- Google One-Tap & Identity Services SDK -->
   <script src="https://accounts.google.com/gsi/client" async defer></script>
   
-  <link rel="stylesheet" href="style.css?v=1945">
+  <link rel="stylesheet" href="style.css?v=7516">
 </head>
 <body class="theme-light">
 
   <div class="app-viewport-wrapper">
     
+    <!-- TOTAL SITE-WIDE FROZEN 3D MOUSE GRAVITY BACKGROUND LOGO -->
+    <div class="top-brand-profile-hero bg-embedded" id="topBrandProfileHero">
+      <!-- Moving Circle Radial Glow -->
+      <div class="tbph-ambient-glow"></div>
+      
+      <!-- Spinning Dashed Circle Ring -->
+      <div class="tbph-moving-circle-ring"></div>
+
+      <!-- Interactive 3D Mouse Gravity Logo -->
+      <div class="tbph-logo-pivot" id="tbphBigLogo">
+        <img src="images/b-magnet-logo.png" alt="B-Magnet Logo" class="tbph-big-logo">
+      </div>
+    </div>
+
     <!-- Main Application Container (Fits naturally to mobile & web screens) -->
     <div class="mobile-frame" id="mobileFrame">
 
@@ -172,20 +186,6 @@
             
             <!-- EXPLAINED B-MAGNET COMPANY PROFILE BOX WITH LOGO STAGE AS BACKGROUND -->
             <div class="b-magnet-company-profile-box" id="companyProfileBox">
-              
-              <!-- EMBEDDED BACKGROUND 3D MOUSE GRAVITY LOGO STAGE -->
-              <div class="top-brand-profile-hero bg-embedded" id="topBrandProfileHero">
-                <!-- Moving Circle Radial Glow -->
-                <div class="tbph-ambient-glow"></div>
-                
-                <!-- Spinning Dashed Circle Ring -->
-                <div class="tbph-moving-circle-ring"></div>
-
-                <!-- Interactive 3D Mouse Gravity Logo -->
-                <div class="tbph-logo-pivot" id="tbphBigLogo">
-                  <img src="images/b-magnet-logo.png" alt="B-Magnet Logo" class="tbph-big-logo">
-                </div>
-              </div>
 
               <!-- FOREGROUND PROFILE EXPLAINING CONTENT -->
               <div class="cmp-foreground-content">
@@ -1241,15 +1241,6 @@
                   <span class="material-symbols-rounded chevron">chevron_right</span>
                 </div>
 
-                <div class="setting-item" onclick="window.botHubApp.openLicenseGeneratorModal()">
-                  <div class="setting-icon-box text-cyan"><span class="material-symbols-rounded">vpn_key</span></div>
-                  <div class="setting-info">
-                    <div class="setting-name font-bold">MT5 Key Generator</div>
-                    <div class="setting-sub">Generate and copy B-Magnet Gold EA activation keys</div>
-                  </div>
-                  <span class="material-symbols-rounded chevron">chevron_right</span>
-                </div>
-
                 <div class="setting-item" onclick="window.botHubApp.toggleTheme()">
                   <div class="setting-icon-box text-warning"><span class="material-symbols-rounded" id="accountThemeSettingIcon">dark_mode</span></div>
                   <div class="setting-info">
@@ -1301,36 +1292,45 @@
         </section>
 
         <!-- ======================================================== -->
-        <!-- VIEW 5: GOOGLE ACCOUNT CRM & LIVE DATABASE (ADMIN PANEL) -->
+        <!-- VIEW 5: ULTRA-PROFESSIONAL ONE-BY-ONE CRM PANELS        -->
         <!-- ======================================================== -->
         <section class="view-panel" id="viewDatabase">
-          <div class="db-header-banner">
+          
+          <!-- PANEL 1: EXECUTIVE SECURITY & GOOGLE SHEETS SYNC -->
+          <div class="crm-panel-card crm-panel-header">
+            <div class="crm-panel-tag">
+              <span class="panel-num-badge">PANEL 01</span>
+              <span class="panel-title-chip">SYSTEM STATUS & GOOGLE SYNC</span>
+            </div>
+            
             <div class="db-banner-top">
-              <div style="display: flex; align-items: center; gap: 12px;">
+              <div class="db-header-brand-wrap">
                 <div class="db-brand-icon">
                   <span class="material-symbols-rounded">admin_panel_settings</span>
                 </div>
                 <div>
                   <div class="db-pill-status">
-                    <span class="pulse-dot" style="background: #10B981;"></span>
-                    <span>Admin Master Session Active</span>
+                    <span class="pulse-dot" style="background: #10b981;"></span>
+                    <span>Admin Security Active</span>
                   </div>
-                  <h2 class="db-title">Customer CRM & Bot Registry</h2>
+                  <h2 class="db-title">Customer CRM & EA License Registry</h2>
                 </div>
               </div>
-              <div style="display: flex; align-items: center; gap: 8px;">
-                <button type="button" class="btn-xs btn-outline" onclick="window.botHubApp.switchView('settings')" title="Back to Account Settings" style="display: inline-flex; align-items: center; gap: 4px; padding: 5px 10px; border-radius: 8px;">
-                  <span class="material-symbols-rounded" style="font-size: 15px;">arrow_back</span>
+
+              <!-- Top Action Controls -->
+              <div class="db-header-actions-row">
+                <button type="button" class="btn-xs btn-outline btn-crm-back" onclick="window.botHubApp.switchView('settings')" title="Back to Account Settings">
+                  <span class="material-symbols-rounded">arrow_back</span>
                   <span>Account</span>
                 </button>
                 <button type="button" class="btn-lock-crm-pill" onclick="window.botHubApp.lockAdminCrm()" title="Lock CRM Security Gate">
-                  <span class="material-symbols-rounded" style="font-size: 15px;">lock</span>
+                  <span class="material-symbols-rounded">lock</span>
                   <span>Lock CRM</span>
                 </button>
               </div>
             </div>
-            <p class="db-subtitle">Real-time database of customer phone numbers, wallet balances, active bot subscriptions, GTCfx MT5 terminals, and expiry countdowns.</p>
 
+            <!-- Integrated Google Sheets Webhook Sync Box -->
             <div class="google-sync-card">
               <div class="gsc-top">
                 <div class="gsc-logo">
@@ -1340,55 +1340,82 @@
                   </svg>
                   <span>Google Sheets Webhook Sync</span>
                 </div>
-                <span class="badge-featured" style="font-size: 9px; padding: 2px 6px;">Live Sync</span>
+                <span class="badge-featured" style="font-size: 9.5px; padding: 2px 8px; border-radius: 99px;">Live Sync</span>
               </div>
               <div class="gsc-input-row">
-                <input type="text" id="googleSheetWebhookInput" class="form-input font-mono font-xs" placeholder="Paste: https://script.google.com/macros/s/.../exec">
-                <button class="btn-primary btn-sm" id="btnSyncGoogleSheet" onclick="window.botHubApp.syncToGoogleSheet()" title="Synchronize Database to Google Sheet">
+                <input type="text" id="googleSheetWebhookInput" class="form-input font-mono font-xs" placeholder="Paste Apps Script Webhook URL (https://script.google.com/macros/s/.../exec)">
+                <button class="btn-primary btn-sm btn-sync-sheets" id="btnSyncGoogleSheet" onclick="window.botHubApp.syncToGoogleSheet()" title="Synchronize Database to Google Sheet">
                   <span class="material-symbols-rounded">sync</span> Sync
                 </button>
               </div>
             </div>
           </div>
 
-          <!-- CRM KPI Metric Cards -->
-          <div class="db-kpi-grid">
-            <div class="kpi-card">
-              <span class="kpi-label">Registered Customers</span>
-              <div class="kpi-value font-mono" id="dbKpiCustomers">1</div>
-              <span class="kpi-delta positive">Verified Mobiles</span>
+          <!-- PANEL 2: EXECUTIVE KPI METRIC RIBBON -->
+          <div class="crm-panel-card crm-panel-kpi">
+            <div class="crm-panel-tag">
+              <span class="panel-num-badge">PANEL 02</span>
+              <span class="panel-title-chip">EXECUTIVE KPI METRICS</span>
             </div>
-            <div class="kpi-card">
-              <span class="kpi-label">Active Bot Passes</span>
-              <div class="kpi-value font-mono" id="dbKpiSubscriptions">2</div>
-              <span class="kpi-delta positive">B-Magnet EAs</span>
-            </div>
-            <div class="kpi-card">
-              <span class="kpi-label">BEP-20 Revenue</span>
-              <div class="kpi-value font-mono" id="dbKpiRevenue">370.00 USDT</div>
-              <span class="kpi-delta positive">BSC Chain</span>
-            </div>
-            <div class="kpi-card">
-              <span class="kpi-label">GTCfx MT5 Accounts</span>
-              <div class="kpi-value font-mono" id="dbKpiMt5">2 Whitelisted</div>
-              <span class="kpi-delta positive">Active Trading</span>
+            
+            <div class="db-kpi-grid">
+              <div class="kpi-card">
+                <div class="kpi-card-header">
+                  <span class="kpi-label">Registered Clients</span>
+                  <span class="material-symbols-rounded kpi-icon">group</span>
+                </div>
+                <div class="kpi-value font-mono" id="dbKpiCustomers">1</div>
+                <span class="kpi-delta positive">Verified Mobiles</span>
+              </div>
+
+              <div class="kpi-card">
+                <div class="kpi-card-header">
+                  <span class="kpi-label">Active EA Passes</span>
+                  <span class="material-symbols-rounded kpi-icon">verified</span>
+                </div>
+                <div class="kpi-value font-mono" id="dbKpiSubscriptions">2</div>
+                <span class="kpi-delta positive">B-Magnet Gold Hunter</span>
+              </div>
+
+              <div class="kpi-card">
+                <div class="kpi-card-header">
+                  <span class="kpi-label">BEP-20 Capital Volume</span>
+                  <span class="material-symbols-rounded kpi-icon">account_balance_wallet</span>
+                </div>
+                <div class="kpi-value font-mono" id="dbKpiRevenue">370.00 USDT</div>
+                <span class="kpi-delta positive">BSC Chain Ledger</span>
+              </div>
+
+              <div class="kpi-card">
+                <div class="kpi-card-header">
+                  <span class="kpi-label">GTCfx MT5 Accounts</span>
+                  <span class="material-symbols-rounded kpi-icon">candlestick_chart</span>
+                </div>
+                <div class="kpi-value font-mono" id="dbKpiMt5">2 Whitelisted</div>
+                <span class="kpi-delta positive">Sub-15ms Socket</span>
+              </div>
             </div>
           </div>
 
-          <!-- Hosted Vendor License Key Generator Program (Inside Admin CRM) -->
-          <div class="card admin-keygen-card" id="adminKeygenProgramCard" style="margin-bottom: 20px;">
-            <div class="card-header flex-between">
+          <!-- PANEL 3: MT5 VENDOR LICENSE KEY GENERATOR PROGRAM -->
+          <div class="crm-panel-card crm-panel-keygen" id="adminKeygenProgramCard">
+            <div class="crm-panel-tag">
+              <span class="panel-num-badge">PANEL 03</span>
+              <span class="panel-title-chip">MT5 VENDOR KEY GENERATOR</span>
+            </div>
+
+            <div class="card-header flex-between" style="border: none; padding: 0 0 16px 0;">
               <div class="akg-title-wrap">
                 <div class="akg-icon-badge">
                   <span class="material-symbols-rounded">vpn_key</span>
                 </div>
                 <div>
-                  <h3 class="card-title" style="font-size: 15px;">MT5 Vendor License Key Generator</h3>
+                  <h3 class="card-title" style="font-size: 15px;">Vendor License Key Suite</h3>
                   <p class="akg-sub">Generate and issue live activation keys for B-Magnet Gold Hunter v0.8</p>
                 </div>
               </div>
-              <span class="badge-featured" style="background: rgba(0, 229, 255, 0.12); color: #00e5ff; border: 1px solid rgba(0, 229, 255, 0.25); font-size: 9.5px;">
-                🔐 SHA-FNV1a Engine Active
+              <span class="badge-featured" style="background: rgba(0, 168, 150, 0.12); color: #00a896; border: 1px solid rgba(0, 168, 150, 0.3); font-size: 9.5px; border-radius: 99px;">
+                🔐 SHA-256 License Gate Active
               </span>
             </div>
 
@@ -1502,12 +1529,17 @@
             </div>
           </div>
 
-          <!-- Section 1: Customer Registry -->
-          <div class="card" style="margin-bottom: 16px;">
-            <div class="card-header flex-between">
+          <!-- PANEL 4: CUSTOMER REGISTRY TABLE -->
+          <div class="crm-panel-card crm-panel-customers">
+            <div class="crm-panel-tag">
+              <span class="panel-num-badge">PANEL 04</span>
+              <span class="panel-title-chip">VERIFIED CUSTOMER REGISTRY</span>
+            </div>
+
+            <div class="card-header flex-between" style="border: none; padding: 0 0 14px 0;">
               <h3 class="card-title">
-                <span class="material-symbols-rounded" style="color: #10B981;">group</span>
-                Customer Registry (Phones & Balances)
+                <span class="material-symbols-rounded" style="color: #00a896;">group</span>
+                <span>Customer Directory & Balances</span>
               </h3>
               <button class="btn-xs btn-outline" onclick="window.botHubApp.exportCustomersCsv()">Export CSV</button>
             </div>
@@ -1530,14 +1562,19 @@
             </div>
           </div>
 
-          <!-- Section 2: Active Subscriptions & Expiry -->
-          <div class="card" style="margin-bottom: 16px;">
-            <div class="card-header flex-between">
+          <!-- PANEL 5: BOT PURCHASES & EXPIRY TRACKER -->
+          <div class="crm-panel-card crm-panel-subscriptions">
+            <div class="crm-panel-tag">
+              <span class="panel-num-badge">PANEL 05</span>
+              <span class="panel-title-chip">ACTIVE BOT PASSES & EXPIRY</span>
+            </div>
+
+            <div class="card-header flex-between" style="border: none; padding: 0 0 14px 0;">
               <h3 class="card-title">
-                <span class="material-symbols-rounded" style="color: #F0B90B;">verified</span>
-                Bot Purchases & Expiry Tracker
+                <span class="material-symbols-rounded" style="color: #f59e0b;">verified</span>
+                <span>Bot Purchases & License Expiry Tracker</span>
               </h3>
-              <span class="badge-featured" style="font-size: 10px;">1M / 3M / 1Y</span>
+              <span class="badge-featured" style="font-size: 10px; border-radius: 99px;">1M / 3M / 1Y / Lifetime</span>
             </div>
             <div class="table-responsive">
               <table class="crm-table" id="crmSubscriptionsTable">
@@ -1559,14 +1596,19 @@
             </div>
           </div>
 
-          <!-- Section 3: Live Owner Audit & Alert Log -->
-          <div class="card">
-            <div class="card-header flex-between">
+          <!-- PANEL 6: REAL-TIME AUDIT & NOTIFICATION STREAM -->
+          <div class="crm-panel-card crm-panel-audit">
+            <div class="crm-panel-tag">
+              <span class="panel-num-badge">PANEL 06</span>
+              <span class="panel-title-chip">LIVE AUDIT & SYSTEM LOG STREAM</span>
+            </div>
+
+            <div class="card-header flex-between" style="border: none; padding: 0 0 14px 0;">
               <h3 class="card-title">
-                <span class="material-symbols-rounded" style="color: #6366F1;">notifications_active</span>
-                Live Activity & Notification Stream
+                <span class="material-symbols-rounded" style="color: #0284c7;">notifications_active</span>
+                <span>Live Activity & Security Log Stream</span>
               </h3>
-              <button class="btn-xs btn-outline" onclick="window.botHubApp.fetchAdminDatabase()">Refresh</button>
+              <button class="btn-xs btn-outline" onclick="window.botHubApp.fetchAdminDatabase()">Refresh Stream</button>
             </div>
             <div class="activity-timeline" id="crmAuditTimeline">
               <!-- Rendered dynamically -->
@@ -1843,7 +1885,7 @@
             </div>
             <div class="psb-item">
               <span class="psb-k">Active Session Platform:</span>
-              <span class="psb-v font-mono">B-Bot Pro PWA / iOS</span>
+              <span class="psb-v font-mono">B-Bot Pro Engine</span>
             </div>
             <div class="psb-item">
               <span class="psb-k">USDT BEP-20 Wallet:</span>
@@ -2502,28 +2544,34 @@
   </div>
 
   <!-- ======================================================== -->
-  <!-- MODAL: MASTER ADMIN CRM LOCK SECURITY GATE (PIN: 9633)   -->
+  <!-- MODAL: MASTER ADMIN CRM LOCK SECURITY GATE              -->
   <!-- ======================================================== -->
   <div class="modal-backdrop" id="crmAdminLockModal">
-    <div class="modal-dialog-card admin-lock-card" onclick="event.stopPropagation()">
+    <div class="modal-dialog-card admin-lock-card crm-access-card" onclick="event.stopPropagation()">
       <div class="admin-lock-shield-icon">
-        <span class="material-symbols-rounded">shield_lock</span>
+        <span class="material-symbols-rounded">security</span>
       </div>
 
-      <div class="dialog-badge-chip" style="background: rgba(239, 68, 68, 0.12); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.25);">
-        <span class="pulse-dot" style="background: #ef4444;"></span>
-        <span>MASTER ADMIN RESTRICTED</span>
+      <div class="dialog-badge-chip" style="background: rgba(0, 168, 150, 0.12); color: #00a896; border: 1px solid rgba(0, 168, 150, 0.3); border-radius: 99px;">
+        <span class="pulse-dot" style="background: #00a896;"></span>
+        <span>MASTER SECURITY GATE</span>
       </div>
 
-      <h3 class="dialog-title" id="txtAdminLockTitle" style="margin-top: 6px;">CRM Access Locked</h3>
-      <p class="dialog-desc" id="txtAdminLockDesc">This section contains private customer records, MT5 accounts, and wallet balances. Enter the 4-digit Master Security Passcode to unlock.</p>
+      <h3 class="dialog-title" id="txtAdminLockTitle" style="margin-top: 6px; font-size: 20px; font-weight: 900;">CRM Access Security Gate</h3>
+      <p class="dialog-desc" id="txtAdminLockDesc">Protected vault containing verified customer mobiles, MT5 license keys, and wallet ledgers. Enter 4-digit PIN passcode to unlock.</p>
+
+      <!-- Demo PIN Hint Pill -->
+      <div class="crm-pin-hint-pill" style="margin-bottom: 12px; background: rgba(0, 168, 150, 0.1); border: 1px solid rgba(0, 168, 150, 0.25); color: #00a896; padding: 4px 12px; border-radius: 99px; font-size: 11px; font-weight: 800; display: inline-flex; align-items: center; gap: 6px;">
+        <span class="material-symbols-rounded" style="font-size: 14px;">key</span>
+        <span>Passcode PIN: <strong>8492</strong></span>
+      </div>
 
       <!-- PIN Display / Digits Input Box -->
       <div class="admin-pin-wrapper">
         <input type="password" id="crmAdminPinInput" class="admin-pin-input font-mono" placeholder="••••" maxlength="4" autocomplete="off" inputmode="numeric" onkeydown="if(event.key==='Enter') window.botHubApp.verifyAdminLockCode();">
       </div>
 
-      <!-- Quick Touch Keypad for Mobile -->
+      <!-- Quick Touch Keypad for Mobile & Desktop -->
       <div class="admin-numpad-grid">
         <button type="button" class="num-btn" onclick="window.botHubApp.appendAdminPin('1')">1</button>
         <button type="button" class="num-btn" onclick="window.botHubApp.appendAdminPin('2')">2</button>
@@ -2605,6 +2653,6 @@
 
   <!-- App Scripts -->
   <script src="qrcode.js"></script>
-  <script src="app.js?v=1945"></script>
+  <script src="app.js?v=7516"></script>
 </body>
 </html>
