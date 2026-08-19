@@ -10399,6 +10399,60 @@ body.theme-dark .auth-overlay {
     linear-gradient(180deg, #09101f 0%, #0d172e 50%, #080e1b 100%) !important;
 }
 
+html.theme-dark,
+body.theme-dark {
+  background-color: #070e1c !important;
+  color: #f8fafc !important;
+}
+
+body.theme-dark .landing-page-view {
+  background: 
+    radial-gradient(circle at 10% 0%, rgba(0, 201, 167, 0.16) 0%, transparent 45%),
+    radial-gradient(circle at 90% 25%, rgba(59, 130, 246, 0.14) 0%, transparent 45%),
+    radial-gradient(circle at 30% 65%, rgba(10, 17, 32, 0.95) 0%, transparent 55%),
+    linear-gradient(180deg, #070e1c 0%, #0c1830 50%, #061124 100%) !important;
+  color: #f8fafc !important;
+}
+
+body.theme-dark .landing-hero-title,
+body.theme-dark .hcpb-heading,
+body.theme-dark .tbph-title,
+body.theme-dark .landing-section-title,
+body.theme-dark .lpc-title,
+body.theme-dark .faq-q {
+  color: #ffffff !important;
+}
+
+body.theme-dark .landing-hero-desc,
+body.theme-dark .hcpb-text,
+body.theme-dark .tbph-desc,
+body.theme-dark .landing-section-sub,
+body.theme-dark .faq-a {
+  color: #cbd5e1 !important;
+}
+
+body.theme-dark .landing-header {
+  background: rgba(10, 17, 32, 0.88) !important;
+  border-bottom-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+body.theme-dark .auth-card-panel,
+body.theme-dark .auth-showcase-panel {
+  background: rgba(12, 22, 42, 0.88) !important;
+  border-color: rgba(255, 255, 255, 0.16) !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.65) !important;
+}
+
+body.theme-dark .hero-company-profile-box,
+body.theme-dark .top-brand-profile-hero,
+body.theme-dark .landing-feature-card,
+body.theme-dark .landing-price-card,
+body.theme-dark .faq-item {
+  background: rgba(15, 23, 42, 0.82) !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+  color: #f8fafc !important;
+}
+
 body.theme-dark .welcome-header .welcome-title {
   color: #ffffff !important;
 }

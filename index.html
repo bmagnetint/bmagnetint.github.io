@@ -44,7 +44,7 @@
       }
     });
 
-    // Global Safe Fallback Proxy to capture early click calls before app.js?v=5205 initializes
+    // Global Safe Fallback Proxy to capture early click calls before app.js?v=7004 initializes
     window.botHubApp = window.botHubApp || new Proxy({}, {
       get(target, prop) {
         if (prop in target) return target[prop];
@@ -59,7 +59,7 @@
   <!-- Google Identity Services (Sign-In with Google) -->
   <script src="https://accounts.google.com/gsi/client" async defer></script>
   
-  <link rel="stylesheet" href="style.css?v=5205">
+  <link rel="stylesheet" href="style.css?v=7004">
 </head>
 <body class="theme-dark">
 
@@ -2902,6 +2902,6 @@
 
   <!-- App Scripts -->
   <script src="qrcode.js"></script>
-  <script src="app.js?v=5205"></script>
+  <script src="app.js?v=7004"></script>
 </body>
 </html>

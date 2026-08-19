@@ -1,15 +1,15 @@
 {
-  "public/app.js": "1b50a7ab40c7601671bea6374ea11c3a242136d3297595d2160ff7ef1faaf146",
+  "public/app.js": "52056c18d79e2ce82c020a2e4f26d8448290aa046a2f1f9669cfdccdf5687845",
   "public/apple-touch-icon-precomposed.png": "cef73be89c60058c66ae1dba85ff02061bc73b50d7c1909e1c8ca27f88dd43e1",
   "public/apple-touch-icon.png": "cef73be89c60058c66ae1dba85ff02061bc73b50d7c1909e1c8ca27f88dd43e1",
   "public/favicon.ico": "423bac49d3d23c03bc41521aa93c38e06865e8551dbc7895cc81786b9ae1d193",
   "public/icon-192.png": "380066ca2faab5d914f553212f177c45fcc0f40e28b38caf739295e53edb56a1",
   "public/icon-512.png": "ac95a64054c37c680d0acef4d90cb3c2f732dded4b5f86799ced2eb45a97f2d6",
-  "public/index.html": "690075f9d490afe529eb0328c5433a4186bce093cb655f4b5b519716b2261b5c",
+  "public/index.html": "7425d55038cfca15abe6db4c22fb10973eac903dda85fb98edd3b0d01fd707b3",
   "public/key-generator.html": "7ea88d078fea2d1a965692f5b606a328c71da2383bf45d88d580b5a11913fdde",
   "public/manifest.json": "b331d91b9eded6a5d5846dd3ed8d74a2fe4e29129f9788db8e9703c764c31858",
   "public/qrcode.js": "a536da9afe90f6807ee63298ad883798c681d15170dc027510ea07169ddadbdf",
-  "public/style.css": "610b68826b351d5e4cda5ba9915f7b0b13dc70eb0f472cb214e5fc7a1b25c96d",
+  "public/style.css": "221d86c92dc08d8f2da4b4a75a5abd794338ace54ab1db10ace5582281ccc9fb",
   "public/sw.js": "e29f8ab7d878ab323e8976f0b49833d24007af4edd7c8ef4d1c6143d9817f92b",
   "public/images/ai-bot-core-visual.jpg": "895803d28fbe6620cdf3f118d715aaa5df2c7bb6438e479d41f9431e510f0f71",
   "public/images/ai-trading-bot-visual.jpg": "cc47a181d7c5c6dd744ac8759f107332d7645f1772c3e7dd3aa8d84f822a2119",
@@ -19,5 +19,5 @@
   "public/images/b-magnet-logo.png": "a125d7354da80f5e8dd48e92b09995c179a599a7ba26f2b8fed4eeef9e601dab",
   "public/images/b-magnet-neural-brain.jpg": "773ff34c5275c38f4b6c75224d81d55665dfe768a7b31327e425e5b75b07da59",
   "public/images/hero-trader-skipio.jpg": "92dbf03b4c9f3ce932382fada39e7974fa9574622de2dc93d4040b89f89204aa",
-  "data/db.json": "ec478793119603a250070872be61e4dfcbabf4c2086c8baec31263ae7b4cd9e5"
+  "data/db.json": "66c70a3b26fbfe523478fd10a5d378c81db968870f1b6c13803bef51a1baa48d"
 }
