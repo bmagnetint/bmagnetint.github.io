@@ -4902,10 +4902,30 @@ body.theme-dark .toast {
 }
 
 /* ==========================================================================
-   DESKTOP COMPANY LANDING WEBSITE & HERO EXPLANATIONS (Monitors & PC)
+   UNIVERSAL COMPANY LANDING WEBSITE & HERO EXPLANATIONS (Mobile, PC, 2K, 4K)
    ========================================================================== */
 .desktop-company-landing {
-  display: none;
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  z-index: 10;
+  background: 
+    radial-gradient(circle at 15% 10%, rgba(0, 168, 150, 0.12) 0%, transparent 45%),
+    radial-gradient(circle at 85% 20%, rgba(2, 132, 199, 0.12) 0%, transparent 45%),
+    radial-gradient(circle at 50% 80%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
+    linear-gradient(180deg, #d8ebfa 0%, #edf5fd 60%, #e0f0fd 100%);
+  color: #192750;
+}
+
+body.theme-dark .desktop-company-landing {
+  background: 
+    radial-gradient(circle at 15% 10%, rgba(0, 168, 150, 0.16) 0%, transparent 45%),
+    radial-gradient(circle at 85% 20%, rgba(2, 132, 199, 0.14) 0%, transparent 45%),
+    linear-gradient(180deg, #060b14 0%, #09101f 50%, #0d172e 100%) !important;
+  color: #f8fafc;
 }
 
 .desktop-login-modal-backdrop {
@@ -4917,32 +4937,9 @@ body.theme-dark .toast {
     display: none !important;
   }
 
-  .desktop-company-landing {
-    display: flex;
-    flex-direction: column;
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-    position: relative;
-    z-index: 10;
-    background: 
-      radial-gradient(circle at 15% 10%, rgba(0, 168, 150, 0.12) 0%, transparent 45%),
-      radial-gradient(circle at 85% 20%, rgba(2, 132, 199, 0.12) 0%, transparent 45%),
-      radial-gradient(circle at 50% 80%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
-      linear-gradient(180deg, #d8ebfa 0%, #edf5fd 60%, #e0f0fd 100%);
-    color: #192750;
-  }
-
-  body.theme-dark .desktop-company-landing {
-    background: 
-      radial-gradient(circle at 15% 10%, rgba(0, 168, 150, 0.16) 0%, transparent 45%),
-      radial-gradient(circle at 85% 20%, rgba(2, 132, 199, 0.14) 0%, transparent 45%),
-      linear-gradient(180deg, #060b14 0%, #09101f 50%, #0d172e 100%) !important;
-    color: #f8fafc;
-  }
-
   /* Landing Header (iOS 27 Liquid Glass) */
   .landing-header {
+
     width: 100%;
     height: 72px;
     background: rgba(255, 255, 255, 0.35);
@@ -6146,42 +6143,87 @@ body.theme-dark .signin-back-btn {
   box-sizing: border-box;
 }
 
-/* Mobile Phone View (< 768px) */
+/* ==========================================================================
+   UNIVERSAL HOME PAGE FIRST ENGINE (Android / iPhone / Chrome / Safari / 2K / 4K)
+   ========================================================================== */
+.auth-overlay:not(.signin-active) .desktop-company-landing,
+.auth-overlay.landing-active .desktop-company-landing {
+  display: flex !important;
+  flex-direction: column !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  overflow: hidden !important;
+  position: relative !important;
+  z-index: 10 !important;
+}
+
+.auth-overlay:not(.signin-active) .auth-screens-viewport,
+.auth-overlay.landing-active .auth-screens-viewport {
+  display: none !important;
+}
+
+.auth-overlay.signin-active .desktop-company-landing {
+  display: none !important;
+}
+
+.auth-overlay.signin-active .auth-screens-viewport {
+  display: flex !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  position: relative !important;
+  z-index: 20 !important;
+}
+
+/* Mobile Phone View (< 768px) Home Page Responsive Adjustments */
 @media (max-width: 768px) {
-  .desktop-company-landing {
+  .landing-nav-links {
     display: none !important;
   }
-  .auth-screens-viewport {
-    display: block !important;
-    width: 100% !important;
-    height: 100% !important;
+  .landing-header-inner {
+    padding: 0 14px !important;
   }
-  .auth-split-container {
-    display: none !important;
+  .landing-brand-logo {
+    height: 32px !important;
+  }
+  .landing-brand-title {
+    font-size: 15px !important;
+  }
+  .btn-landing-corner-login {
+    padding: 8px 14px !important;
+    font-size: 12.5px !important;
+  }
+  .landing-hero-section {
+    padding: 30px 16px 50px 16px !important;
+  }
+  .landing-hero-inner {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+  .landing-hero-title {
+    font-size: 28px !important;
+    line-height: 1.18 !important;
+  }
+  .landing-hero-desc {
+    font-size: 14.5px !important;
+  }
+  .cmp-features-grid {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+  .landing-metrics-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
   }
   .auth-mobile-slides-wrapper {
     display: block !important;
     width: 100% !important;
     height: 100% !important;
-    max-width: 100% !important;
-    margin: 0 !important;
-    border-radius: 0 !important;
-    box-shadow: none !important;
-    background: transparent !important;
   }
 }
 
 /* Desktop Monitor View (min-width: 769px) */
 @media (min-width: 769px) {
-  /* Default / Landing Home Page Active: Show Full Company Website */
-  .auth-overlay:not(.signin-active) .desktop-company-landing,
-  .auth-overlay.landing-active .desktop-company-landing {
-    display: flex !important;
-  }
-  .auth-overlay:not(.signin-active) .auth-screens-viewport,
-  .auth-overlay.landing-active .auth-screens-viewport {
-    display: none !important;
-  }
+
 
   /* Sign-In Split View Active: Left AI Showcase & Right Dedicated Login Card */
   .auth-overlay.signin-active .desktop-company-landing {

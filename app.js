@@ -657,12 +657,12 @@ class BotHubApp {
       } catch (e) {}
     }
 
-    if (user && user.isLoggedIn && !urlParams.has('login')) {
+    if (user && user.isLoggedIn) {
       this.state.currentUser = user;
-      this.applyLoggedInUI(user);
-    } else {
-      this.showLoginScreen();
     }
+
+    // ALWAYS SHOW HOME PAGE FIRST ON ALL PLATFORMS (ANDROID/IPHONE/CHROME/SAFARI/2K/4K)
+    this.showLandingPage();
 
     // Initialize Google Identity Services
     this.initGoogleIdentity();
