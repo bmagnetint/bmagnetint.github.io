@@ -531,6 +531,17 @@ class BotHubApp {
     await this.fetchData();
     this.startLiveSignalSimulation();
 
+    // Flush any pending calls buffered during initial page load
+    if (window._pendingBotHubCalls && window._pendingBotHubCalls.length > 0) {
+      const calls = window._pendingBotHubCalls.slice();
+      window._pendingBotHubCalls = [];
+      calls.forEach(c => {
+        if (typeof this[c.prop] === 'function') {
+          try { this[c.prop].apply(this, c.args); } catch (e) {}
+        }
+      });
+    }
+
     // Register Service Worker for PWA (with root scope)
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
@@ -2493,6 +2504,30 @@ class BotHubApp {
   setupEventListeners() {
     // Universal Event Delegation Engine (Guarantees 100% button response regardless of DOM ready timing)
     document.addEventListener('click', (e) => {
+      // 0a. Theme Toggle Pill
+      const themeToggle = e.target.closest('.theme-toggle-pill');
+      if (themeToggle) {
+        e.preventDefault();
+        this.toggleTheme();
+        return;
+      }
+
+      // 0b. Language Globe Dropdown Button
+      const langGlobe = e.target.closest('.lang-globe-btn');
+      if (langGlobe) {
+        e.preventDefault();
+        this.toggleLanguageDropdown(e, langGlobe);
+        return;
+      }
+
+      // 0c. Language Dropdown Select Item
+      const langItem = e.target.closest('.lang-drop-item');
+      if (langItem && langItem.dataset && langItem.dataset.lang) {
+        e.preventDefault();
+        this.selectLanguage(langItem.dataset.lang);
+        return;
+      }
+
       // Auto-close language dropdowns when clicking outside
       if (!e.target.closest('.lang-dropdown-wrapper')) {
         document.querySelectorAll('.lang-dropdown-wrapper').forEach(w => w.classList.remove('open'));

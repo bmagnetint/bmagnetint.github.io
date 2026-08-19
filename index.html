@@ -43,12 +43,23 @@
         window.botHubApp.checkPwaInstallBanner();
       }
     });
+
+    // Global Safe Fallback Proxy to capture early click calls before app.js?v=4604 initializes
+    window.botHubApp = window.botHubApp || new Proxy({}, {
+      get(target, prop) {
+        if (prop in target) return target[prop];
+        return function(...args) {
+          window._pendingBotHubCalls = window._pendingBotHubCalls || [];
+          window._pendingBotHubCalls.push({ prop, args });
+        };
+      }
+    });
   </script>
 
   <!-- Google Identity Services (Sign-In with Google) -->
   <script src="https://accounts.google.com/gsi/client" async defer></script>
   
-  <link rel="stylesheet" href="style.css?v=2805">
+  <link rel="stylesheet" href="style.css?v=4604">
 </head>
 <body class="theme-dark">
 
@@ -2891,6 +2902,6 @@
 
   <!-- App Scripts -->
   <script src="qrcode.js"></script>
-  <script src="app.js?v=2805"></script>
+  <script src="app.js?v=4604"></script>
 </body>
 </html>
