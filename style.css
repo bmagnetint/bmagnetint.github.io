@@ -638,6 +638,20 @@ body.theme-dark .app-header {
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.1) !important;
 }
 
+/* MOBILE ONLY: EXTEND TOP LOGO BAR FOR IPHONE NOTCH & DYNAMIC ISLAND SAFE AREA */
+@media (max-width: 767px) {
+  .app-header {
+    min-height: calc(64px + env(safe-area-inset-top, 34px)) !important;
+    padding-top: max(env(safe-area-inset-top, 36px), 34px) !important;
+    padding-bottom: 12px !important;
+  }
+}
+
+.platform-ios .app-header {
+  min-height: calc(68px + env(safe-area-inset-top, 38px)) !important;
+  padding-top: max(env(safe-area-inset-top, 38px), 36px) !important;
+}
+
 .header-left {
   display: flex;
   align-items: center;
@@ -7215,28 +7229,29 @@ body.theme-dark .theme-icon {
   box-sizing: border-box;
 }
 
-.signin-sheet-header-row {
+.signin-sheet-footer-row {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
-  margin-bottom: 12px;
+  margin-top: 14px;
   width: 100%;
 }
 
 .signin-card-home-btn {
-  height: 34px;
-  padding: 0 14px;
-  border-radius: 999px;
-  background: rgba(0, 168, 150, 0.1);
+  height: 42px;
+  width: 100%;
+  padding: 0 16px;
+  border-radius: 14px;
+  background: rgba(0, 168, 150, 0.08);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(0, 168, 150, 0.3);
+  border: 1px solid rgba(0, 168, 150, 0.25);
   color: #00a896;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  font-size: 12px;
+  gap: 8px;
+  font-size: 13px;
   font-weight: 800;
   cursor: pointer;
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
@@ -7244,8 +7259,8 @@ body.theme-dark .theme-icon {
 }
 
 body.theme-dark .signin-card-home-btn {
-  background: rgba(0, 201, 167, 0.15);
-  border-color: rgba(0, 201, 167, 0.4);
+  background: rgba(0, 201, 167, 0.12);
+  border-color: rgba(0, 201, 167, 0.35);
   color: #00c9a7;
 }
 
@@ -7254,7 +7269,7 @@ body.theme-dark .signin-card-home-btn {
   border-color: #00a896;
   color: #ffffff;
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0, 168, 150, 0.25);
+  box-shadow: 0 4px 14px rgba(0, 168, 150, 0.25);
 }
 
 .signin-top-actions-row {
@@ -10407,6 +10422,16 @@ body.logged-in .app-header {
   display: flex !important;
   position: relative;
   z-index: 10001 !important;
+}
+
+/* AFTER LOGGED IN, STRICTLY HIDE ALL GREEN LIVE BADGES, STATUS PILLS & TICKERS */
+body.logged-in .desktop-status-pill,
+body.logged-in .live-ticker-container,
+body.logged-in .xauusd-moving-badge-container,
+body.logged-in .cmp-header-tag,
+body.logged-in .landing-hero-badge,
+body.logged-in .live-green-bar {
+  display: none !important;
 }
 
 body.logged-in .bottom-nav {

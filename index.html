@@ -47,7 +47,7 @@
   <!-- Google One-Tap & Identity Services SDK -->
   <script src="https://accounts.google.com/gsi/client" async defer></script>
   
-  <link rel="stylesheet" href="style.css?v=5674">
+  <link rel="stylesheet" href="style.css?v=8059">
 </head>
 <body class="theme-light">
 
@@ -834,17 +834,9 @@
                   </div>
                 </div>
 
-                <!-- Bottom Curved Pure-White Sheet (Login Credentials Area with Home Icon) -->
+                <!-- Bottom Curved Pure-White Sheet (Login Credentials Area) -->
                 <div class="signin-white-sheet">
                   <div class="signin-clean-form">
-                    
-                    <!-- Home Icon inside Login Credential Area -->
-                    <div class="signin-sheet-header-row">
-                      <button type="button" class="signin-card-home-btn" onclick="window.botHubApp.showLandingPage()" title="Home">
-                        <span class="material-symbols-rounded">home</span>
-                        <span>Home</span>
-                      </button>
-                    </div>
 
                     <div class="signin-input-wrapper">
                       <input type="text" id="loginMobileEmailInput" class="signin-clean-input" placeholder="Account ID / Username" value="hanaan.trader@gmail.com" onkeydown="if(event.key==='Enter') window.botHubApp.handleCleanSignIn();">
@@ -871,6 +863,14 @@
                           <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"/>
                         </svg>
                         <span>Sign In with Google</span>
+                      </button>
+                    </div>
+
+                    <!-- Home Button Aligned at Bottom Side of Login Panel -->
+                    <div class="signin-sheet-footer-row">
+                      <button type="button" class="signin-card-home-btn" onclick="window.botHubApp.showLandingPage()" title="Back to Home">
+                        <span class="material-symbols-rounded">home</span>
+                        <span>Back to Home</span>
                       </button>
                     </div>
 
@@ -2887,6 +2887,6 @@
 
   <!-- App Scripts -->
   <script src="qrcode.js"></script>
-  <script src="app.js?v=5674"></script>
+  <script src="app.js?v=8059"></script>
 </body>
 </html>
