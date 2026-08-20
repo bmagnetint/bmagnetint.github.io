@@ -7205,14 +7205,13 @@ body.theme-dark .theme-icon {
 .signin-top-hero {
   position: relative;
   width: 100%;
-  flex: 1;
-  min-height: 140px;
+  flex: 0 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding-top: 60px;
-  padding-bottom: 12px;
+  justify-content: flex-start;
+  padding-top: 52px;
+  padding-bottom: 16px;
   box-sizing: border-box;
 }
 
@@ -7384,6 +7383,7 @@ body.theme-dark .signin-back-btn.icon-only-home-btn {
   position: relative;
   z-index: 2;
   box-sizing: border-box;
+  margin-top: auto;
 }
 
 body.theme-dark .signin-white-sheet {
@@ -10526,6 +10526,85 @@ body.theme-dark .gtcfx-banner-card {
 
 body.theme-dark .cmp-header-tag {
   color: #00c9a7;
+}
+
+/* GREEN LIVE MOVING BADGE FOR XAUUSD NEWS, RUNNING POSITION & TREND */
+.xauusd-moving-badge-container {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  max-width: 100% !important;
+  overflow: hidden !important;
+  background: rgba(16, 185, 129, 0.09) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  border: 1px solid rgba(16, 185, 129, 0.35) !important;
+  box-shadow: 0 4px 16px rgba(16, 185, 129, 0.12) !important;
+  border-radius: 99px !important;
+  padding: 6px 16px !important;
+  margin-bottom: 14px !important;
+}
+
+body.theme-dark .xauusd-moving-badge-container {
+  background: rgba(6, 78, 59, 0.25) !important;
+  border-color: rgba(52, 211, 153, 0.4) !important;
+}
+
+.xauusd-marquee-wrapper {
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+  position: relative;
+  mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+}
+
+.xauusd-marquee-track {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  white-space: nowrap;
+  animation: xauusdMarqueeScroll 28s linear infinite;
+  will-change: transform;
+}
+
+.xauusd-marquee-track:hover {
+  animation-play-state: paused;
+}
+
+.xauusd-badge-item {
+  font-size: 12px;
+  font-weight: 700;
+  color: #065f46;
+  letter-spacing: 0.2px;
+}
+
+body.theme-dark .xauusd-badge-item {
+  color: #34d399;
+}
+
+.xauusd-badge-item strong {
+  color: #047857;
+  font-weight: 800;
+}
+
+body.theme-dark .xauusd-badge-item strong {
+  color: #a7f3d0;
+}
+
+.badge-separator {
+  color: rgba(16, 185, 129, 0.4);
+  font-weight: 300;
+  font-size: 12px;
+}
+
+@keyframes xauusdMarqueeScroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 .cmp-title {
