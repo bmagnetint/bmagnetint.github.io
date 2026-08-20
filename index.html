@@ -47,7 +47,7 @@
   <!-- Google One-Tap & Identity Services SDK -->
   <script src="https://accounts.google.com/gsi/client" async defer></script>
   
-  <link rel="stylesheet" href="style.css?v=5170">
+  <link rel="stylesheet" href="style.css?v=5674">
 </head>
 <body class="theme-light">
 
@@ -818,14 +818,8 @@
             <div class="auth-screen-slide" id="authSignInScreen">
               <div class="signin-screen-inner">
                 
-                <!-- Top Header with Back to Website (Home Icon Only at Top Upper Side) & EA Badge -->
+                <!-- Top Header (Clean EA Badge Card) -->
                 <div class="signin-top-hero">
-                  <div class="signin-top-actions-row">
-                    <button type="button" class="signin-back-btn icon-only-home-btn" onclick="window.botHubApp.showLandingPage()" title="Home">
-                      <span class="material-symbols-rounded">home</span>
-                    </button>
-                  </div>
-
                   <div class="signin-bot-details-card">
                     <div class="signin-bot-badge-row">
                       <span class="bot-status-dot-live"></span>
@@ -840,10 +834,18 @@
                   </div>
                 </div>
 
-                <!-- Bottom Curved Pure-White Sheet -->
+                <!-- Bottom Curved Pure-White Sheet (Login Credentials Area with Home Icon) -->
                 <div class="signin-white-sheet">
                   <div class="signin-clean-form">
                     
+                    <!-- Home Icon inside Login Credential Area -->
+                    <div class="signin-sheet-header-row">
+                      <button type="button" class="signin-card-home-btn" onclick="window.botHubApp.showLandingPage()" title="Home">
+                        <span class="material-symbols-rounded">home</span>
+                        <span>Home</span>
+                      </button>
+                    </div>
+
                     <div class="signin-input-wrapper">
                       <input type="text" id="loginMobileEmailInput" class="signin-clean-input" placeholder="Account ID / Username" value="hanaan.trader@gmail.com" onkeydown="if(event.key==='Enter') window.botHubApp.handleCleanSignIn();">
                     </div>
@@ -2885,6 +2887,6 @@
 
   <!-- App Scripts -->
   <script src="qrcode.js"></script>
-  <script src="app.js?v=5170"></script>
+  <script src="app.js?v=5674"></script>
 </body>
 </html>

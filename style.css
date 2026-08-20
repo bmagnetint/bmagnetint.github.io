@@ -7210,9 +7210,51 @@ body.theme-dark .theme-icon {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding-top: 52px;
+  padding-top: 24px;
   padding-bottom: 16px;
   box-sizing: border-box;
+}
+
+.signin-sheet-header-row {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 12px;
+  width: 100%;
+}
+
+.signin-card-home-btn {
+  height: 34px;
+  padding: 0 14px;
+  border-radius: 999px;
+  background: rgba(0, 168, 150, 0.1);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(0, 168, 150, 0.3);
+  color: #00a896;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 8px rgba(0, 168, 150, 0.08);
+}
+
+body.theme-dark .signin-card-home-btn {
+  background: rgba(0, 201, 167, 0.15);
+  border-color: rgba(0, 201, 167, 0.4);
+  color: #00c9a7;
+}
+
+.signin-card-home-btn:hover {
+  background: #00a896;
+  border-color: #00a896;
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 168, 150, 0.25);
 }
 
 .signin-top-actions-row {
