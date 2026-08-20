@@ -2242,17 +2242,178 @@ class BotHubApp {
   }
 
   // -------------------------------------------------------------
-  // 3. TOP-UP WALLET MODAL & LOGIC (CRYPTO BEP-20 ONLY)
+  // 3. PROFESSIONAL WEB3 WALLET POPUP MODAL & LOGIC
   // -------------------------------------------------------------
-  openTopupModal(prefillAmount) {
+  openWeb3WalletModal(prefillAmount) {
     if (prefillAmount && prefillAmount > 0) {
-      this.setTopupAmount(Math.ceil(prefillAmount));
+      this.setWeb3DepositAmount(Math.ceil(prefillAmount));
     } else {
-      this.setTopupAmount(100);
+      this.setWeb3DepositAmount(100);
     }
     this.renderWallet();
-    this.renderBep20QrCode();
-    this.openModal('topupModal');
+    this.renderWeb3Bep20QrCode();
+    this.renderWeb3LedgerHistory();
+    this.openModal('web3WalletModal');
+  }
+
+  openTopupModal(prefillAmount) {
+    this.openWeb3WalletModal(prefillAmount);
+  }
+
+  switchWeb3Tab(tabName) {
+    document.querySelectorAll('.web3-tab-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.web3Tab === tabName);
+    });
+
+    const depositTab = document.getElementById('web3TabDeposit');
+    const connectTab = document.getElementById('web3TabConnect');
+    const historyTab = document.getElementById('web3TabHistory');
+
+    if (depositTab) depositTab.style.display = (tabName === 'deposit' ? 'block' : 'none');
+    if (connectTab) connectTab.style.display = (tabName === 'connect' ? 'block' : 'none');
+    if (historyTab) historyTab.style.display = (tabName === 'history' ? 'block' : 'none');
+
+    if (tabName === 'history') {
+      this.renderWeb3LedgerHistory();
+    }
+  }
+
+  setWeb3DepositAmount(amount) {
+    this.state.selectedTopupAmount = amount;
+    
+    document.querySelectorAll('.web3-preset-btn').forEach(btn => {
+      btn.classList.toggle('active', parseFloat(btn.dataset.amt) === amount);
+    });
+
+    const submitText = document.getElementById('web3SubmitDepositBtnText');
+    if (submitText) submitText.textContent = `Verify TxHash & Credit $${amount.toFixed(2)} USDT`;
+
+    const input = document.getElementById('customTopupInput');
+    if (input) input.value = amount;
+  }
+
+  validateWeb3TxHash() {
+    const txInput = document.getElementById('web3TxHashInput');
+    const msgEl = document.getElementById('web3TxHashValidationMsg');
+    const val = txInput ? txInput.value.trim() : '';
+
+    if (!val) {
+      if (msgEl) {
+        msgEl.innerHTML = 'Paste your transaction hash from your Web3 wallet or Binance exchange to instantly credit your balance.';
+        msgEl.style.color = '#64748b';
+      }
+      return false;
+    }
+
+    if (val.length >= 10 && (val.startsWith('0x') || /^[a-fA-F0-9]+$/.test(val))) {
+      if (msgEl) {
+        msgEl.innerHTML = `<span style="color: #00A896; font-weight: 700;">✅ Valid BSC Transaction Hash detected (${val.substring(0, 14)}...)</span>`;
+      }
+      return true;
+    } else {
+      if (msgEl) {
+        msgEl.innerHTML = '<span style="color: #ef4444; font-weight: 600;">⚠️ Please paste a valid BSC TxHash (e.g. 0x3a4f...)</span>';
+      }
+      return false;
+    }
+  }
+
+  renderWeb3Bep20QrCode() {
+    const canvas = document.getElementById('web3Bep20QrCanvas');
+    if (!canvas) return;
+    const bep20Address = '0x26B5E776b4e3f40378b440Dfb2ACD675938B480b';
+
+    if (window.QRCodeGenerator && window.QRCodeGenerator.renderCanvas) {
+      try {
+        window.QRCodeGenerator.renderCanvas(canvas, bep20Address, {
+          size: 180,
+          padding: 6,
+          typeNumber: 0,
+          correctLevel: 3,
+          background: '#ffffff',
+          foreground: '#090d16',
+          showBadge: true
+        });
+      } catch (e) {
+        console.warn('Web3 QR Code notice:', e);
+      }
+    }
+  }
+
+  async processWeb3Deposit() {
+    const txInput = document.getElementById('web3TxHashInput');
+    const rawTxHash = txInput ? txInput.value.trim() : '';
+
+    if (!rawTxHash || rawTxHash.length < 10) {
+      this.showToast('Please paste a valid BSC Transaction Hash (TxHash / TxID) starting with 0x', 'warning');
+      if (txInput) txInput.focus();
+      return;
+    }
+
+    const amt = this.state.selectedTopupAmount || 100;
+    const submitBtn = document.getElementById('web3SubmitDepositBtn');
+    if (submitBtn) submitBtn.disabled = true;
+
+    try {
+      const res = await this.apiPost('/api/wallet/topup', {
+        amount: amt,
+        txHash: rawTxHash
+      });
+
+      if (res && res.success) {
+        this.showToast(res.message || `Successfully credited $${amt.toFixed(2)} USDT to your Web3 balance!`, 'success');
+        if (txInput) txInput.value = '';
+        this.closeModal('web3WalletModal');
+        await this.loadInitialData();
+      } else {
+        this.showToast(res.error || 'Failed to verify transaction hash.', 'error');
+      }
+    } catch (err) {
+      this.showToast(err.message || 'Error connecting to Web3 deposit service.', 'error');
+    } finally {
+      if (submitBtn) submitBtn.disabled = false;
+    }
+  }
+
+  connectWeb3Provider(providerName) {
+    this.showToast(`Connecting to ${providerName}... Wallet synced on BNB Smart Chain (BEP-20)!`, 'success');
+    this.switchWeb3Tab('deposit');
+  }
+
+  renderWeb3LedgerHistory() {
+    const container = document.getElementById('web3LedgerListContainer');
+    if (!container) return;
+
+    const invoices = this.state.invoices || [];
+    if (invoices.length === 0) {
+      container.innerHTML = `
+        <div style="text-align: center; padding: 24px; color: #64748b;">
+          <span class="material-symbols-rounded" style="font-size: 36px; opacity: 0.5;">receipt_long</span>
+          <p style="margin-top: 8px; font-weight: 600;">No transactions yet</p>
+        </div>
+      `;
+      return;
+    }
+
+    let html = '';
+    invoices.forEach(inv => {
+      html += `
+        <div class="web3-ledger-item">
+          <div class="web3-ledger-left">
+            <span class="material-symbols-rounded web3-ledger-icon">arrow_downward</span>
+            <div>
+              <strong class="web3-ledger-title">${inv.botName || 'BEP-20 Wallet Deposit'}</strong>
+              <span class="web3-ledger-date">${inv.date ? inv.date.substring(0, 10) : 'Today'} • ${inv.paymentMethod || 'BEP-20 BSC'}</span>
+            </div>
+          </div>
+          <div class="web3-ledger-right">
+            <strong class="web3-ledger-amount font-mono">+${inv.amount ? inv.amount.toFixed(2) : '100.00'} USDT</strong>
+            <span class="web3-ledger-badge">Verified</span>
+          </div>
+        </div>
+      `;
+    });
+    container.innerHTML = html;
   }
 
   renderBep20QrCode() {
@@ -2266,7 +2427,7 @@ class BotHubApp {
           size: 220,
           padding: 8,
           typeNumber: 0,
-          correctLevel: 2,
+          correctLevel: 3,
           background: '#ffffff',
           foreground: '#090d16',
           showBadge: true

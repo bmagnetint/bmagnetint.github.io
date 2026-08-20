@@ -47,7 +47,7 @@
   <!-- Google One-Tap & Identity Services SDK -->
   <script src="https://accounts.google.com/gsi/client" async defer></script>
   
-  <link rel="stylesheet" href="style.css?v=6491">
+  <link rel="stylesheet" href="style.css?v=5170">
 </head>
 <body class="theme-light">
 
@@ -2006,6 +2006,182 @@
 
 
   <!-- ======================================================== -->
+  <!-- MODAL: PROFESSIONAL WEB3 WALLET POPUP WINDOW             -->
+  <!-- ======================================================== -->
+  <div class="modal-backdrop web3-modal-backdrop" id="web3WalletModal">
+    <div class="web3-modal-container">
+      
+      <!-- Glassmorphism Gradient Top Border -->
+      <div class="web3-modal-top-glow"></div>
+
+      <!-- Web3 Modal Header -->
+      <div class="web3-modal-header">
+        <div class="web3-modal-header-title-group">
+          <div class="web3-app-badge">
+            <span class="material-symbols-rounded web3-shield-icon">account_balance_wallet</span>
+            <span class="web3-title-text">B-Magnet Web3 Vault</span>
+          </div>
+          <span class="web3-chain-chip">
+            <span class="pulse-dot" style="background:#F0B90B;"></span>
+            <span>BNB Smart Chain (BEP-20)</span>
+          </span>
+        </div>
+        <button class="web3-modal-close-btn" onclick="window.botHubApp.closeModal('web3WalletModal')" title="Close Web3 Wallet">
+          <span class="material-symbols-rounded">close</span>
+        </button>
+      </div>
+
+      <!-- Web3 Navigation Tabs -->
+      <div class="web3-modal-tabs">
+        <button class="web3-tab-btn active" data-web3-tab="deposit" onclick="window.botHubApp.switchWeb3Tab('deposit')">
+          <span class="material-symbols-rounded">add_card</span>
+          <span>Deposit USDT</span>
+        </button>
+        <button class="web3-tab-btn" data-web3-tab="connect" onclick="window.botHubApp.switchWeb3Tab('connect')">
+          <span class="material-symbols-rounded">hub</span>
+          <span>Connect Web3</span>
+        </button>
+        <button class="web3-tab-btn" data-web3-tab="history" onclick="window.botHubApp.switchWeb3Tab('history')">
+          <span class="material-symbols-rounded">history</span>
+          <span>Ledger History</span>
+        </button>
+      </div>
+
+      <div class="web3-modal-body">
+
+        <!-- TAB 1: DEPOSIT USDT (BEP-20) -->
+        <div class="web3-tab-content active" id="web3TabDeposit">
+          
+          <!-- Balance Hero Card -->
+          <div class="web3-balance-card">
+            <div class="web3-balance-top">
+              <span class="web3-balance-lbl">AVAILABLE BEP-20 USDT BALANCE</span>
+              <span class="web3-verified-badge">⚡ Instant 1:1 USD Credit</span>
+            </div>
+            <div class="web3-balance-amount-row">
+              <span class="web3-amount-val font-mono" id="web3WalletBalanceDisplay">250.00</span>
+              <span class="web3-amount-currency">USDT</span>
+            </div>
+            <div class="web3-balance-footer">
+              <span>Network Fee: <strong>~$0.03 BNB</strong></span>
+              <span>Custody: <strong>Non-Custodial Multi-Sig</strong></span>
+            </div>
+          </div>
+
+          <!-- Quick Deposit Amount Presets -->
+          <div class="web3-section-title">Select Deposit Amount</div>
+          <div class="web3-presets-grid">
+            <button class="web3-preset-btn" data-amt="50" onclick="window.botHubApp.setWeb3DepositAmount(50)">+$50</button>
+            <button class="web3-preset-btn active" data-amt="100" onclick="window.botHubApp.setWeb3DepositAmount(100)">+$100</button>
+            <button class="web3-preset-btn" data-amt="250" onclick="window.botHubApp.setWeb3DepositAmount(250)">+$250</button>
+            <button class="web3-preset-btn" data-amt="500" onclick="window.botHubApp.setWeb3DepositAmount(500)">+$500</button>
+            <button class="web3-preset-btn" data-amt="1000" onclick="window.botHubApp.setWeb3DepositAmount(1000)">+$1,000</button>
+            <button class="web3-preset-btn" data-amt="2500" onclick="window.botHubApp.setWeb3DepositAmount(2500)">+$2,500</button>
+          </div>
+
+          <!-- Deposit Address & Scannable QR Code -->
+          <div class="web3-deposit-address-card">
+            <div class="web3-qr-stage">
+              <canvas id="web3Bep20QrCanvas" width="180" height="180" class="web3-qr-canvas"></canvas>
+              <div class="web3-qr-hint">Scan with Binance, Trust Wallet, or MetaMask</div>
+            </div>
+
+            <div class="web3-address-field-group">
+              <label class="web3-field-label">Official Deposit Address (BEP-20 Only)</label>
+              <div class="web3-address-input-wrapper">
+                <input type="text" readonly id="web3Bep20AddressInput" class="web3-address-input font-mono" value="0x26B5E776b4e3f40378b440Dfb2ACD675938B480b">
+                <button type="button" class="web3-copy-btn" onclick="window.botHubApp.copyBep20Address()" title="Copy Address">
+                  <span class="material-symbols-rounded">content_copy</span>
+                  <span>Copy</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- TxHash Input Form -->
+          <div class="web3-txhash-group">
+            <label class="web3-field-label">
+              <span>Paste BSC Transaction Hash (TxHash / TxID)</span>
+              <span class="web3-required-tag">Required for Verification</span>
+            </label>
+            <div class="web3-txhash-input-wrapper">
+              <span class="material-symbols-rounded web3-input-icon">receipt_long</span>
+              <input type="text" id="web3TxHashInput" class="web3-txhash-input font-mono" placeholder="Paste 0x... 64-character BSC Transaction Hash" oninput="window.botHubApp.validateWeb3TxHash()">
+            </div>
+            <div id="web3TxHashValidationMsg" class="web3-hint-text">
+              Paste your transaction hash from your Web3 wallet or Binance exchange to instantly credit your balance.
+            </div>
+          </div>
+
+          <!-- Verify & Credit Submit Button -->
+          <button type="button" class="web3-submit-btn" id="web3SubmitDepositBtn" onclick="window.botHubApp.processWeb3Deposit()">
+            <span class="material-symbols-rounded">verified</span>
+            <span id="web3SubmitDepositBtnText">Verify TxHash & Credit $100.00 USDT</span>
+          </button>
+        </div>
+
+        <!-- TAB 2: CONNECT WEB3 WALLET PROVIDERS -->
+        <div class="web3-tab-content" id="web3TabConnect" style="display:none;">
+          <div class="web3-providers-grid">
+            <div class="web3-provider-card" onclick="window.botHubApp.connectWeb3Provider('MetaMask')">
+              <div class="web3-provider-icon">🦊</div>
+              <div class="web3-provider-info">
+                <strong>MetaMask</strong>
+                <span>Connect via Web3 Extension / Mobile App</span>
+              </div>
+              <span class="web3-provider-status">Connect</span>
+            </div>
+
+            <div class="web3-provider-card" onclick="window.botHubApp.connectWeb3Provider('Trust Wallet')">
+              <div class="web3-provider-icon">🛡️</div>
+              <div class="web3-provider-info">
+                <strong>Trust Wallet</strong>
+                <span>Official Multi-Chain Crypto Wallet</span>
+              </div>
+              <span class="web3-provider-status">Connect</span>
+            </div>
+
+            <div class="web3-provider-card" onclick="window.botHubApp.connectWeb3Provider('Binance Web3')">
+              <div class="web3-provider-icon">🟡</div>
+              <div class="web3-provider-info">
+                <strong>Binance Web3 Wallet</strong>
+                <span>Direct Exchange & Self-Custody Sync</span>
+              </div>
+              <span class="web3-provider-status">Connect</span>
+            </div>
+
+            <div class="web3-provider-card" onclick="window.botHubApp.connectWeb3Provider('WalletConnect')">
+              <div class="web3-provider-icon">🔗</div>
+              <div class="web3-provider-info">
+                <strong>WalletConnect v2</strong>
+                <span>Scan QR code with 300+ Mobile Wallets</span>
+              </div>
+              <span class="web3-provider-status">Connect</span>
+            </div>
+
+            <div class="web3-provider-card" onclick="window.botHubApp.connectWeb3Provider('Coinbase Wallet')">
+              <div class="web3-provider-icon">🔵</div>
+              <div class="web3-provider-info">
+                <strong>Coinbase Wallet</strong>
+                <span>Instant Self-Custody Web3 Connection</span>
+              </div>
+              <span class="web3-provider-status">Connect</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 3: WALLET LEDGER HISTORY -->
+        <div class="web3-tab-content" id="web3TabHistory" style="display:none;">
+          <div class="web3-ledger-list" id="web3LedgerListContainer">
+            <!-- Rendered dynamically by JS -->
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================== -->
   <!-- MODAL: TOP UP BEP-20 CRYPTO WALLET                       -->
   <!-- ======================================================== -->
   <div class="modal-backdrop" id="topupModal">
@@ -2709,6 +2885,6 @@
 
   <!-- App Scripts -->
   <script src="qrcode.js"></script>
-  <script src="app.js?v=6491"></script>
+  <script src="app.js?v=5170"></script>
 </body>
 </html>

@@ -438,8 +438,8 @@
       options = options || {};
       var size = options.size || 220;
       
-      // Auto-detect type size with high error correction (Level 2/H) for center badge support
-      var qr = new QRCodeModel(options.typeNumber || 0, options.correctLevel !== undefined ? options.correctLevel : 2);
+      // Auto-detect type size with maximum error correction (Level 3 / H = 30% error recovery) for 100% valid crypto scanner reading
+      var qr = new QRCodeModel(options.typeNumber || 0, 3);
       qr.addData(text);
       qr.make();
 
@@ -451,7 +451,7 @@
       var padding = options.padding !== undefined ? options.padding : 10;
       var cellSize = (size - padding * 2) / count;
 
-      // Crisp background
+      // Crisp pure white background
       ctx.fillStyle = options.background || '#ffffff';
       ctx.fillRect(0, 0, size, size);
 
@@ -470,9 +470,9 @@
         }
       }
 
-      // BSC Gold Center Badge
+      // BSC Gold Center Badge (Subtle 8% radius with white cutout border for 100% scanner compatibility)
       if (options.showBadge !== false) {
-        var badgeRadius = Math.round(size * 0.12);
+        var badgeRadius = Math.round(size * 0.08);
         var centerX = size / 2;
         var centerY = size / 2;
 
@@ -488,10 +488,10 @@
         ctx.fill();
 
         ctx.fillStyle = '#000000';
-        ctx.font = 'bold ' + Math.round(badgeRadius * 0.8) + 'px -apple-system, BlinkMacSystemFont, sans-serif';
+        ctx.font = 'bold ' + Math.round(badgeRadius * 0.85) + 'px -apple-system, BlinkMacSystemFont, sans-serif';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
-        ctx.fillText('BSC', centerX, centerY + 1);
+        ctx.fillText('BSC', centerX, centerY + 0.5);
         ctx.restore();
       }
     }
