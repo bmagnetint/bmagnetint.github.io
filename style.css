@@ -607,38 +607,45 @@ body {
 }
 
 /* Locked Header (Safe from Mobile Screen Notch & Dynamic Island - Full Liquid Glassy) */
+/* Frozen Header (Safe from Mobile Screen Notch & Dynamic Island - Full Liquid Glassy) */
 .app-header {
-  min-height: calc(54px + env(safe-area-inset-top, 0px));
-  padding-top: max(10px, env(safe-area-inset-top, 10px));
-  padding-bottom: 9px;
-  padding-left: max(14px, env(safe-area-inset-left, 14px));
-  padding-right: max(14px, env(safe-area-inset-right, 14px));
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 8px;
-  background: rgba(255, 255, 255, 0.16);
-  backdrop-filter: blur(40px) saturate(200%) brightness(108%);
-  -webkit-backdrop-filter: blur(40px) saturate(200%) brightness(108%);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.45);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04), inset 0 1px 1px rgba(255, 255, 255, 0.6);
-  flex-shrink: 0;
-  position: relative;
-  z-index: 100;
+  position: sticky !important;
+  position: -webkit-sticky !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  min-height: calc(56px + env(safe-area-inset-top, 0px)) !important;
+  padding-top: max(12px, env(safe-area-inset-top, 12px)) !important;
+  padding-bottom: 10px !important;
+  padding-left: max(16px, env(safe-area-inset-left, 16px)) !important;
+  padding-right: max(16px, env(safe-area-inset-right, 16px)) !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  gap: 8px !important;
+  background: rgba(255, 255, 255, 0.75) !important;
+  backdrop-filter: blur(40px) saturate(210%) brightness(106%) !important;
+  -webkit-backdrop-filter: blur(40px) saturate(210%) brightness(106%) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.6) !important;
+  box-shadow: 0 4px 24px rgba(15, 23, 42, 0.06), inset 0 -1px 1px rgba(255, 255, 255, 0.5) !important;
+  flex-shrink: 0 !important;
+  z-index: 10001 !important;
+  box-sizing: border-box !important;
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateZ(0);
   -webkit-transform: translateZ(0);
 }
 
 body.theme-dark .app-header {
-  background: rgba(15, 23, 42, 0.18) !important;
-  backdrop-filter: blur(40px) saturate(200%) brightness(108%) !important;
-  -webkit-backdrop-filter: blur(40px) saturate(200%) brightness(108%) !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.1) !important;
+  background: rgba(15, 23, 42, 0.82) !important;
+  backdrop-filter: blur(40px) saturate(210%) brightness(106%) !important;
+  -webkit-backdrop-filter: blur(40px) saturate(210%) brightness(106%) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.45), inset 0 -1px 1px rgba(255, 255, 255, 0.08) !important;
 }
 
-/* MOBILE ONLY: EXTEND TOP LOGO BAR FOR IPHONE NOTCH & DYNAMIC ISLAND SAFE AREA */
+/* MOBILE ONLY: FROZEN TOP HEADER SAFE AREA CLEARANCE FOR IPHONE NOTCH & DYNAMIC ISLAND */
 @media (max-width: 767px) {
   .app-header {
     min-height: calc(64px + env(safe-area-inset-top, 34px)) !important;
@@ -10420,7 +10427,9 @@ body:not(.logged-in) .view-panel {
 
 body.logged-in .app-header {
   display: flex !important;
-  position: relative;
+  position: sticky !important;
+  position: -webkit-sticky !important;
+  top: 0 !important;
   z-index: 10001 !important;
 }
 

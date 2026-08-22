@@ -5,11 +5,11 @@
   "public/favicon.ico": "423bac49d3d23c03bc41521aa93c38e06865e8551dbc7895cc81786b9ae1d193",
   "public/icon-192.png": "380066ca2faab5d914f553212f177c45fcc0f40e28b38caf739295e53edb56a1",
   "public/icon-512.png": "ac95a64054c37c680d0acef4d90cb3c2f732dded4b5f86799ced2eb45a97f2d6",
-  "public/index.html": "6cb74e8a3b4c21da6468fb4306d2f2b845414a96f2241e1c3f0082f151f7a8fc",
+  "public/index.html": "c4a45164397194e0b27aacb69e55af8ec0298303a30672c89013217bbbcd9f7f",
   "public/key-generator.html": "7ea88d078fea2d1a965692f5b606a328c71da2383bf45d88d580b5a11913fdde",
   "public/manifest.json": "b331d91b9eded6a5d5846dd3ed8d74a2fe4e29129f9788db8e9703c764c31858",
   "public/qrcode.js": "dc1fe07e667ce0632a54da24052d836319116b56335bc5f7d4cd8186e8a6f2c6",
-  "public/style.css": "a7067d8164a21d881f85f5276ecfc8f592a0c9c850afa56a763ecebe54cbb8bb",
+  "public/style.css": "4dd063bf8ec36b63fbb27f48f7cb3bd8a5e0ece7f48336d4185cf46a289dd1c5",
   "public/sw.js": "e29f8ab7d878ab323e8976f0b49833d24007af4edd7c8ef4d1c6143d9817f92b",
   "public/images/ai-bot-core-visual.jpg": "895803d28fbe6620cdf3f118d715aaa5df2c7bb6438e479d41f9431e510f0f71",
   "public/images/ai-trading-bot-visual.jpg": "cc47a181d7c5c6dd744ac8759f107332d7645f1772c3e7dd3aa8d84f822a2119",
@@ -19,5 +19,6 @@
   "public/images/b-magnet-logo.png": "a125d7354da80f5e8dd48e92b09995c179a599a7ba26f2b8fed4eeef9e601dab",
   "public/images/b-magnet-neural-brain.jpg": "773ff34c5275c38f4b6c75224d81d55665dfe768a7b31327e425e5b75b07da59",
   "public/images/hero-trader-skipio.jpg": "92dbf03b4c9f3ce932382fada39e7974fa9574622de2dc93d4040b89f89204aa",
-  "data/db.json": "4476e912b395692a68da40a0aac9c89360e25f4c4ba14d7c622a309ec5a875d9"
+  "public/images/whatsapp_status_cover.jpg": "b8d75a70d2a895da067fc95bc308acca7d3e18b73187248357af7a3fa8e2727d",
+  "data/db.json": "792ce546cbd2ef3851f6e6498b70ae494d98f51487cfc9c9d6ec13c1454f7401"
 }
