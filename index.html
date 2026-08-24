@@ -47,7 +47,7 @@
   <!-- Google One-Tap & Identity Services SDK -->
   <script src="https://accounts.google.com/gsi/client" async defer></script>
   
-  <link rel="stylesheet" href="style.css?v=8949">
+  <link rel="stylesheet" href="style.css?v=9773">
 </head>
 <body class="theme-light">
 
@@ -1704,27 +1704,35 @@
         </div>
       </div>
 
-      <!-- Bottom Mobile Navigation Bar (Full Glass Transparent Dock) -->
+      <!-- Bottom Mobile Navigation Bar (Crypto / FinTech Capsule Dock) -->
       <nav class="bottom-nav">
         <button class="nav-item active" data-view="explore" onclick="window.botHubApp.switchView('explore')" title="Explore Marketplace">
-          <span class="material-symbols-rounded nav-icon">explore</span>
-          <span class="nav-label">Explore</span>
+          <div class="nav-icon-badge">
+            <span class="material-symbols-rounded nav-icon">home</span>
+          </div>
+          <span class="nav-label">Home</span>
         </button>
 
         <button class="nav-item" data-view="subscriptions" onclick="window.botHubApp.switchView('subscriptions')" title="My Bots & Passes">
-          <span class="material-symbols-rounded nav-icon">bolt</span>
+          <div class="nav-icon-badge">
+            <span class="material-symbols-rounded nav-icon">monitoring</span>
+            <span class="nav-badge" id="navBadgeSubCount">1</span>
+          </div>
           <span class="nav-label">My Bots</span>
-          <span class="nav-badge" id="navBadgeSubCount">1</span>
         </button>
 
         <button class="nav-item" data-view="creator" onclick="window.botHubApp.switchView('creator')" title="Market & Creator Hub">
-          <span class="material-symbols-rounded nav-icon">storefront</span>
+          <div class="nav-icon-badge">
+            <span class="material-symbols-rounded nav-icon">swap_horizontal_circle</span>
+          </div>
           <span class="nav-label">Market</span>
         </button>
 
         <button class="nav-item" data-view="settings" onclick="window.botHubApp.switchView('settings')" title="Account & Settings">
-          <span class="material-symbols-rounded nav-icon">manage_accounts</span>
-          <span class="nav-label">Account</span>
+          <div class="nav-icon-badge">
+            <span class="material-symbols-rounded nav-icon">account_balance_wallet</span>
+          </div>
+          <span class="nav-label">Wallet</span>
         </button>
       </nav>
 
@@ -2887,6 +2895,6 @@
 
   <!-- App Scripts -->
   <script src="qrcode.js"></script>
-  <script src="app.js?v=8949"></script>
+  <script src="app.js?v=9773"></script>
 </body>
 </html>

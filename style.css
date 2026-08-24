@@ -3197,44 +3197,45 @@ body.theme-dark .setting-name {
 /* ==========================================================================
    MACOS-STYLE FLOATING BOTTOM DOCK (AFTER LOGGED IN)
    ========================================================================== */
-/* HIDE BOTTOM DOCK BY DEFAULT ON HOME PAGE & LOGIN PAGE */
+/* ==========================================================================
+   FINTECH CAPSULE BOTTOM DOCK (CROSS-PLATFORM SPACIOUS & AUTO-SIZING ENGINE)
+   ========================================================================== */
 .bottom-nav {
   display: none !important;
   position: fixed !important;
-  bottom: 22px !important;
+  bottom: max(18px, env(safe-area-inset-bottom, 18px)) !important;
   left: 50% !important;
   transform: translateX(-50%) translateZ(0) !important;
   -webkit-transform: translateX(-50%) translateZ(0) !important;
   width: auto !important;
-  min-width: 380px !important;
-  max-width: 92vw !important;
-  height: 66px !important;
+  min-width: 440px !important;
+  max-width: 90vw !important;
+  height: 68px !important;
   margin: 0 auto !important;
-  background: rgba(255, 255, 255, 0.68) !important;
-  backdrop-filter: blur(36px) saturate(210%) brightness(108%) !important;
-  -webkit-backdrop-filter: blur(36px) saturate(210%) brightness(108%) !important;
-  border: 1px solid rgba(255, 255, 255, 0.85) !important;
-  border-radius: 99px !important;
-  justify-content: center !important;
+  background: rgba(240, 244, 248, 0.94) !important;
+  backdrop-filter: blur(32px) saturate(190%) !important;
+  -webkit-backdrop-filter: blur(32px) saturate(190%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.9) !important;
+  border-radius: 999px !important;
+  justify-content: space-evenly !important;
   align-items: center !important;
   gap: 16px !important;
   padding: 6px 24px !important;
   z-index: 9999 !important;
-  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.18), inset 0 1.5px 1.5px rgba(255, 255, 255, 0.95), inset 0 -1px 1px rgba(255, 255, 255, 0.4) !important;
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.12), 0 2px 8px rgba(15, 23, 42, 0.04) !important;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
-/* SHOW MACOS FLOATING BOTTOM DOCK ONLY AFTER LOGGED IN */
 body.logged-in .bottom-nav {
   display: flex !important;
 }
 
 body.theme-dark .bottom-nav {
-  background: rgba(14, 20, 34, 0.76) !important;
-  backdrop-filter: blur(36px) saturate(210%) !important;
-  -webkit-backdrop-filter: blur(36px) saturate(210%) !important;
-  border: 1px solid rgba(255, 255, 255, 0.18) !important;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.65), inset 0 1.5px 1.5px rgba(255, 255, 255, 0.15) !important;
+  background: rgba(15, 23, 42, 0.92) !important;
+  backdrop-filter: blur(32px) saturate(190%) !important;
+  -webkit-backdrop-filter: blur(32px) saturate(190%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.65), inset 0 1px 1px rgba(255, 255, 255, 0.1) !important;
 }
 
 .nav-item {
@@ -3245,97 +3246,91 @@ body.theme-dark .bottom-nav {
   justify-content: center !important;
   background: transparent !important;
   border: none !important;
-  padding: 6px 16px !important;
-  border-radius: 20px !important;
+  padding: 6px 14px !important;
+  border-radius: 16px !important;
   cursor: pointer !important;
-  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.2s ease !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  flex: 1 !important;
+  touch-action: manipulation !important;
+  -webkit-tap-highlight-color: transparent !important;
 }
 
-.nav-item:hover {
-  transform: translateY(-8px) scale(1.18) !important;
-  background: rgba(255, 255, 255, 0.45) !important;
+/* Inactive Icon Badge: Filled Soft Grey Squircle Chip */
+.nav-icon-badge {
+  position: relative !important;
+  width: 40px !important;
+  height: 32px !important;
+  border-radius: 12px !important;
+  background: #cbd5e1 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
-body.theme-dark .nav-item:hover {
-  background: rgba(255, 255, 255, 0.14) !important;
+body.theme-dark .nav-icon-badge {
+  background: rgba(148, 163, 184, 0.2) !important;
 }
 
 .nav-icon {
-  font-size: 26px !important;
-  color: #334155 !important;
-  transition: color 0.2s ease, transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+  font-size: 20px !important;
+  color: #ffffff !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
 body.theme-dark .nav-icon {
   color: #94a3b8 !important;
 }
 
-.nav-item.active .nav-icon {
-  color: #00a896 !important;
-  transform: scale(1.12) !important;
-}
-
-body.theme-dark .nav-item.active .nav-icon {
-  color: #00c9a7 !important;
-}
-
+/* Inactive Text Label */
 .nav-label {
   font-size: 11px !important;
-  font-weight: 800 !important;
-  color: #475569 !important;
+  font-weight: 600 !important;
+  color: #64748b !important;
   margin-top: 3px !important;
+  transition: all 0.25s ease !important;
+  letter-spacing: 0.1px !important;
 }
 
 body.theme-dark .nav-label {
   color: #94a3b8 !important;
 }
 
+/* ACTIVE DOCK ITEM (MATCHING DESIGN REFERENCE IMAGE) */
+.nav-item.active .nav-icon-badge {
+  background: #0b1329 !important;
+  width: 46px !important;
+  height: 32px !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 12px rgba(11, 19, 41, 0.28) !important;
+}
+
+body.theme-dark .nav-item.active .nav-icon-badge {
+  background: #00f2fe !important;
+  box-shadow: 0 4px 16px rgba(0, 242, 254, 0.4) !important;
+}
+
+.nav-item.active .nav-icon {
+  color: #00f2fe !important;
+  font-weight: 800 !important;
+  transform: scale(1.05) !important;
+}
+
+body.theme-dark .nav-item.active .nav-icon {
+  color: #07090e !important;
+}
+
 .nav-item.active .nav-label {
-  color: #00a896 !important;
+  color: #0f172a !important;
+  font-weight: 800 !important;
 }
 
 body.theme-dark .nav-item.active .nav-label {
-  color: #00c9a7 !important;
+  color: #ffffff !important;
 }
 
-/* macOS Active Indicator Dot */
 .nav-item.active::after {
-  content: '' !important;
-  position: absolute !important;
-  bottom: 0px !important;
-  left: 50% !important;
-  transform: translateX(-50%) !important;
-  width: 5px !important;
-  height: 5px !important;
-  background: #00a896 !important;
-  border-radius: 50% !important;
-  box-shadow: 0 0 8px #00a896 !important;
-}
-
-body.theme-dark .nav-item.active::after {
-  background: #00c9a7 !important;
-  box-shadow: 0 0 8px #00c9a7 !important;
-}
-
-.nav-item:hover {
-  color: #192750;
-}
-
-body.theme-dark .nav-item:hover {
-  color: #f8fafc;
-}
-
-/* Active Floating Pill Highlight */
-.nav-item.active {
-  color: #00a896;
-  background: linear-gradient(135deg, rgba(0, 168, 150, 0.16) 0%, rgba(2, 132, 199, 0.12) 100%);
-  box-shadow: 0 2px 10px rgba(0, 168, 150, 0.14);
-}
-
-body.theme-dark .nav-item.active {
-  color: #00f2fe !important;
-  background: linear-gradient(135deg, rgba(0, 242, 254, 0.22) 0%, rgba(0, 168, 150, 0.18) 100%) !important;
-  box-shadow: 0 2px 14px rgba(0, 242, 254, 0.22) !important;
+  display: none !important;
 }
 
 .nav-icon {
@@ -10870,24 +10865,37 @@ body.theme-dark .cmp-card p {
     line-height: 1.55 !important;
   }
 
-  /* macOS Dock Mobile Responsiveness (< 768px) */
+  /* FinTech Capsule Dock Mobile Responsiveness (< 768px) */
   body.logged-in .bottom-nav {
     width: calc(100% - 24px) !important;
     min-width: unset !important;
-    max-width: 410px !important;
-    height: 60px !important;
-    padding: 4px 12px !important;
-    gap: 6px !important;
+    max-width: 430px !important;
+    height: 64px !important;
+    padding: 5px 14px !important;
+    justify-content: space-evenly !important;
+    gap: 8px !important;
     bottom: max(14px, env(safe-area-inset-bottom, 14px)) !important;
   }
 
   .bottom-nav .nav-item {
-    padding: 4px 10px !important;
-    border-radius: 16px !important;
+    padding: 3px 6px !important;
+    border-radius: 14px !important;
+  }
+
+  .bottom-nav .nav-icon-badge {
+    width: 38px !important;
+    height: 30px !important;
+    border-radius: 10px !important;
+  }
+
+  .bottom-nav .nav-item.active .nav-icon-badge {
+    width: 44px !important;
+    height: 30px !important;
+    border-radius: 10px !important;
   }
 
   .bottom-nav .nav-icon {
-    font-size: 22px !important;
+    font-size: 19.5px !important;
   }
 
   .bottom-nav .nav-label {
@@ -10917,23 +10925,34 @@ body.theme-dark .cmp-card p {
 @media (max-width: 480px) {
   body.logged-in .bottom-nav {
     width: calc(100% - 16px) !important;
-    max-width: 360px !important;
-    height: 56px !important;
-    padding: 2px 8px !important;
-    gap: 4px !important;
-    bottom: max(10px, env(safe-area-inset-bottom, 10px)) !important;
+    max-width: 390px !important;
+    height: 62px !important;
+    padding: 4px 10px !important;
+    justify-content: space-evenly !important;
+    gap: 6px !important;
+    bottom: max(12px, env(safe-area-inset-bottom, 12px)) !important;
   }
 
   .bottom-nav .nav-item {
-    padding: 2px 6px !important;
+    padding: 3px 4px !important;
+  }
+
+  .bottom-nav .nav-icon-badge {
+    width: 36px !important;
+    height: 28px !important;
+  }
+
+  .bottom-nav .nav-item.active .nav-icon-badge {
+    width: 42px !important;
+    height: 28px !important;
   }
 
   .bottom-nav .nav-icon {
-    font-size: 20px !important;
+    font-size: 18.5px !important;
   }
 
   .bottom-nav .nav-label {
-    font-size: 9px !important;
+    font-size: 9.5px !important;
   }
 
   .cmp-card {
@@ -11431,8 +11450,27 @@ body.theme-dark .lang-option-item {
     flex-shrink: 0 !important;
   }
 
+  /* MOBILE PLATFORM SAFE ZONE CLEARANCE FOR SIGN IN PAGE (NOTCH & DYNAMIC ISLAND) */
+  .auth-mobile-slides-wrapper,
+  #authSignInScreen,
+  .signin-screen-inner,
+  #authWelcomeScreen,
+  .welcome-screen-inner {
+    padding-top: max(env(safe-area-inset-top, 40px), 38px) !important;
+    box-sizing: border-box !important;
+  }
+
+  .welcome-top-bar,
+  .signin-header-bar {
+    position: sticky !important;
+    position: -webkit-sticky !important;
+    top: 0 !important;
+    z-index: 100 !important;
+    padding-top: max(env(safe-area-inset-top, 16px), 12px) !important;
+  }
+
   .signin-top-hero {
-    padding-top: 8px !important;
+    padding-top: max(env(safe-area-inset-top, 16px), 12px) !important;
     padding-bottom: 12px !important;
     min-height: auto !important;
     width: 100% !important;
@@ -12495,10 +12533,23 @@ body:not(.theme-dark) .signin-card-home-btn {
   }
 }
 
-/* PLATFORM SPECIFIC TYPOGRAPHY AUTO-ADJUSTMENTS */
+/* PLATFORM SPECIFIC TYPOGRAPHY & SAFE ZONE AUTO-ADJUSTMENTS */
 .platform-ios button {
   font-weight: 700 !important;
   letter-spacing: -0.1px !important;
+}
+
+.platform-ios .auth-mobile-slides-wrapper,
+.platform-ios #authSignInScreen,
+.platform-ios .signin-screen-inner,
+.platform-ios #authWelcomeScreen,
+.platform-ios .welcome-screen-inner {
+  padding-top: max(env(safe-area-inset-top, 44px), 42px) !important;
+}
+
+.platform-ios .signin-header-bar,
+.platform-ios .welcome-top-bar {
+  padding-top: max(env(safe-area-inset-top, 24px), 20px) !important;
 }
 
 .platform-android button {
