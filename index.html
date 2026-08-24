@@ -47,7 +47,7 @@
   <!-- Google One-Tap & Identity Services SDK -->
   <script src="https://accounts.google.com/gsi/client" async defer></script>
   
-  <link rel="stylesheet" href="style.css?v=9773">
+  <link rel="stylesheet" href="style.css?v=0199">
 </head>
 <body class="theme-light">
 
@@ -709,16 +709,36 @@
             <div class="auth-split-right-login">
               <div class="asr-login-card">
                 
-                <!-- Card Header with Home Button & Theme Switch -->
+                <!-- Card Header with Home Button, Language & Theme Switch -->
                 <div class="asr-card-top-bar">
                   <button type="button" class="btn-top-back-landing" onclick="window.botHubApp.showLandingPage()" title="Back to Home">
                     <span class="material-symbols-rounded">home</span>
                     <span>Home</span>
                   </button>
 
-                  <button type="button" class="theme-toggle-pill" onclick="window.botHubApp.toggleTheme()" title="Toggle Dark / Light Mode">
-                    <span class="material-symbols-rounded theme-icon">dark_mode</span>
-                  </button>
+                  <div class="welcome-top-right-group">
+                    <div class="lang-globe-dropdown-wrapper">
+                      <button type="button" class="lang-globe-btn" onclick="window.botHubApp.toggleLanguageDropdown(event)" title="Select Language / اختر اللغة">
+                        <span class="material-symbols-rounded globe-icon">language</span>
+                      </button>
+                      <div class="lang-dropdown-menu">
+                        <div class="lang-option-item active" data-lang="en" onclick="window.botHubApp.selectAppLanguage('en')">
+                          <span class="flag-icon">🇺🇸</span>
+                          <span>English</span>
+                          <span class="material-symbols-rounded check-icon">check</span>
+                        </div>
+                        <div class="lang-option-item" data-lang="ar" onclick="window.botHubApp.selectAppLanguage('ar')">
+                          <span class="flag-icon">🇦🇪</span>
+                          <span>العربية</span>
+                          <span class="material-symbols-rounded check-icon">check</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <button type="button" class="theme-toggle-pill" onclick="window.botHubApp.toggleTheme()" title="Toggle Dark / Light Mode">
+                      <span class="material-symbols-rounded theme-icon">dark_mode</span>
+                    </button>
+                  </div>
                 </div>
 
                 <!-- Logo & Sign In Titles -->
@@ -783,9 +803,26 @@
                   </button>
 
                   <div class="welcome-top-right-group">
+                    <div class="lang-globe-dropdown-wrapper">
+                      <button type="button" class="lang-globe-btn" onclick="window.botHubApp.toggleLanguageDropdown(event)" title="Select Language / اختر اللغة">
+                        <span class="material-symbols-rounded globe-icon">language</span>
+                      </button>
+                      <div class="lang-dropdown-menu">
+                        <div class="lang-option-item active" data-lang="en" onclick="window.botHubApp.selectAppLanguage('en')">
+                          <span class="flag-icon">🇺🇸</span>
+                          <span>English</span>
+                          <span class="material-symbols-rounded check-icon">check</span>
+                        </div>
+                        <div class="lang-option-item" data-lang="ar" onclick="window.botHubApp.selectAppLanguage('ar')">
+                          <span class="flag-icon">🇦🇪</span>
+                          <span>العربية</span>
+                          <span class="material-symbols-rounded check-icon">check</span>
+                        </div>
+                      </div>
+                    </div>
+
                     <button type="button" class="theme-toggle-pill" id="welcomeThemeToggle" onclick="window.botHubApp.toggleTheme()" title="Toggle Dark / Light Mode">
                       <span class="material-symbols-rounded theme-icon" id="welcomeThemeIcon">dark_mode</span>
-                      <span class="theme-label" id="welcomeThemeLabel">Dark</span>
                     </button>
                   </div>
                 </div>
@@ -2895,6 +2932,6 @@
 
   <!-- App Scripts -->
   <script src="qrcode.js"></script>
-  <script src="app.js?v=9773"></script>
+  <script src="app.js?v=0199"></script>
 </body>
 </html>

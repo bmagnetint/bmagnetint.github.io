@@ -12560,5 +12560,126 @@ body:not(.theme-dark) .signin-card-home-btn {
   font-feature-settings: "cv02", "cv03", "cv04" !important;
 }
 
+/* ==========================================================================
+   UNIFIED EXECUTIVE CONTROL BUTTON ARCHITECTURE (HEADER CONTROLS & UTILITIES)
+   ========================================================================== */
+
+/* 1. ICON-ONLY CONTROLS (GLOBE LANGUAGE SWITCH & DARK MODE TOGGLE) */
+.lang-globe-btn,
+.theme-toggle-pill,
+#welcomeThemeToggle {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 38px !important;
+  height: 38px !important;
+  min-height: 38px !important;
+  max-height: 38px !important;
+  padding: 0 !important;
+  border-radius: 12px !important;
+  background: rgba(255, 255, 255, 0.82) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  border: 1px solid rgba(203, 213, 225, 0.85) !important;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.06), inset 0 1px 1px rgba(255, 255, 255, 0.9) !important;
+  color: #0f172a !important;
+  cursor: pointer !important;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  flex-shrink: 0 !important;
+}
+
+body.theme-dark .lang-globe-btn,
+body.theme-dark .theme-toggle-pill,
+body.theme-dark #welcomeThemeToggle {
+  background: rgba(15, 23, 42, 0.75) !important;
+  border: 1px solid rgba(148, 163, 184, 0.22) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.1) !important;
+  color: #f8fafc !important;
+}
+
+.lang-globe-btn:hover,
+.theme-toggle-pill:hover,
+#welcomeThemeToggle:hover {
+  transform: translateY(-1.5px) scale(1.02) !important;
+  border-color: #38bdf8 !important;
+  box-shadow: 0 8px 22px rgba(56, 189, 248, 0.25) !important;
+}
+
+.lang-globe-btn .globe-icon,
+.theme-toggle-pill .theme-icon,
+#welcomeThemeToggle .theme-icon {
+  font-size: 20px !important;
+  color: #0284c7 !important;
+  transition: all 0.25s ease !important;
+}
+
+body.theme-dark .lang-globe-btn .globe-icon,
+body.theme-dark .theme-toggle-pill .theme-icon,
+body.theme-dark #welcomeThemeToggle .theme-icon {
+  color: #00f2fe !important;
+}
+
+/* 2. TEXT + ICON CONTROLS (CORNER ACCESS & HOME NAVIGATION BUTTONS) */
+.btn-landing-corner-login,
+.btn-top-back-landing {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 38px !important;
+  min-height: 38px !important;
+  max-height: 38px !important;
+  padding: 0 16px !important;
+  border-radius: 12px !important;
+  font-size: 13px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.2px !important;
+  cursor: pointer !important;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  flex-shrink: 0 !important;
+  gap: 6px !important;
+}
+
+.btn-top-back-landing {
+  background: rgba(255, 255, 255, 0.82) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  border: 1px solid rgba(203, 213, 225, 0.85) !important;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.06), inset 0 1px 1px rgba(255, 255, 255, 0.9) !important;
+  color: #0f172a !important;
+}
+
+body.theme-dark .btn-top-back-landing {
+  background: rgba(15, 23, 42, 0.75) !important;
+  border: 1px solid rgba(148, 163, 184, 0.22) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.1) !important;
+  color: #f8fafc !important;
+}
+
+.btn-top-back-landing:hover {
+  transform: translateY(-1.5px) scale(1.02) !important;
+  border-color: #38bdf8 !important;
+  color: #38bdf8 !important;
+  box-shadow: 0 8px 22px rgba(56, 189, 248, 0.25) !important;
+}
+
+/* ACCESS BUTTON (EXECUTIVE SAPPHIRE GRADIENT) */
+.btn-landing-corner-login {
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 50%, #0f172a 100%) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(56, 189, 248, 0.4) !important;
+  box-shadow: 0 4px 18px rgba(2, 132, 199, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.3) !important;
+}
+
+.btn-landing-corner-login:hover {
+  transform: translateY(-1.5px) scale(1.02) !important;
+  border-color: #38bdf8 !important;
+  box-shadow: 0 8px 26px rgba(2, 132, 199, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.4) !important;
+}
+
+.btn-landing-corner-login .material-symbols-rounded,
+.btn-top-back-landing .material-symbols-rounded {
+  font-size: 18px !important;
+}
+
 
 
