@@ -4939,7 +4939,7 @@ body.theme-dark .toast {
   width: 100vw;
   height: 100vh;
   height: calc(var(--vh, 1vh) * 100);
-  background: #f8fafc !important;
+  background: transparent !important;
   background-attachment: fixed !important;
   z-index: 9999;
   display: flex;
@@ -4958,7 +4958,7 @@ body.theme-dark .toast {
 
 body.theme-dark .auth-overlay,
 .theme-dark .auth-overlay {
-  background: #080e1a !important;
+  background: transparent !important;
   background-attachment: fixed !important;
 }
 
@@ -13837,46 +13837,56 @@ body.theme-dark .lfg-small-tag {
   overflow: hidden !important;
 }
 
-/* BIG SCREEN / DESKTOP (Vivid, Responsive 3D Mouse Gravity Logo) */
+/* BIG SCREEN / DESKTOP (Vivid, Highly Visible 3D Mouse Gravity Logo) */
 @media (min-width: 769px) {
+  .top-brand-profile-hero.bg-embedded,
+  #topBrandProfileHero {
+    z-index: 10 !important;
+  }
+
   .top-brand-profile-hero.bg-embedded .tbph-big-logo {
-    height: 480px !important;
-    max-height: 55vh !important;
+    height: 520px !important;
+    max-height: 62vh !important;
     width: auto !important;
-    max-width: 580px !important;
+    max-width: 650px !important;
     object-fit: contain !important;
-    opacity: 0.35 !important;
-    filter: drop-shadow(0 20px 48px rgba(16, 185, 129, 0.45)) drop-shadow(0 6px 20px rgba(2, 132, 199, 0.35)) !important;
+    opacity: 0.65 !important;
+    filter: drop-shadow(0 24px 60px rgba(16, 185, 129, 0.55)) drop-shadow(0 8px 30px rgba(2, 132, 199, 0.45)) !important;
     transition: opacity 0.3s ease !important;
   }
 
   body.theme-dark .top-brand-profile-hero.bg-embedded .tbph-big-logo {
-    opacity: 0.42 !important;
-    filter: drop-shadow(0 24px 60px rgba(16, 185, 129, 0.55)) drop-shadow(0 8px 24px rgba(56, 189, 248, 0.4)) !important;
+    opacity: 0.75 !important;
+    filter: drop-shadow(0 28px 70px rgba(16, 185, 129, 0.65)) drop-shadow(0 10px 36px rgba(56, 189, 248, 0.55)) !important;
   }
 
   .top-brand-profile-hero.bg-embedded .tbph-ambient-glow {
     display: block !important;
     visibility: visible !important;
-    width: 800px !important;
-    height: 800px !important;
-    background: radial-gradient(circle, rgba(16, 185, 129, 0.28) 0%, rgba(2, 132, 199, 0.16) 45%, transparent 70%) !important;
+    width: 950px !important;
+    height: 950px !important;
+    background: radial-gradient(circle, rgba(16, 185, 129, 0.35) 0%, rgba(2, 132, 199, 0.22) 45%, transparent 70%) !important;
     filter: blur(80px) !important;
-    opacity: 0.35 !important;
+    opacity: 0.45 !important;
   }
 
   .top-brand-profile-hero.bg-embedded .tbph-moving-circle-ring {
     display: block !important;
     visibility: visible !important;
-    width: 620px !important;
-    height: 620px !important;
-    border: 1.5px dashed rgba(16, 185, 129, 0.3) !important;
-    opacity: 0.3 !important;
+    width: 720px !important;
+    height: 720px !important;
+    border: 2px dashed rgba(16, 185, 129, 0.4) !important;
+    opacity: 0.4 !important;
   }
 }
 
 /* MOBILE SCREEN (Tamed, Subtle Watermark - Non-Intrusive) */
 @media (max-width: 768px) {
+  .top-brand-profile-hero.bg-embedded,
+  #topBrandProfileHero {
+    z-index: 2 !important;
+  }
+
   .top-brand-profile-hero.bg-embedded .tbph-big-logo {
     height: 160px !important;
     max-height: 20vh !important;
