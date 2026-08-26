@@ -48,7 +48,7 @@
   <script src="https://accounts.google.com/gsi/client" async defer></script>
   <meta name="google-signin-client_id" content="193074652385-prup7faehlgodh890o06ehfaujblvvni.apps.googleusercontent.com">
   
-  <link rel="stylesheet" href="style.css?v=5636">
+  <link rel="stylesheet" href="style.css?v=5818">
 </head>
 <body class="theme-light">
   <!-- Google One-Tap Automatic Credentials Container -->
@@ -87,64 +87,7 @@
       <!-- ======================================================== -->
       <div class="auth-overlay active landing-active" id="authScreenOverlay">
         
-        <!-- Fullscreen Faded Trading Chart Background (Spans Entire Screen) -->
-        <div class="auth-fullscreen-faded-chart">
-          <svg viewBox="0 0 400 700" fill="none" xmlns="http://www.w3.org/2000/svg" class="faded-trading-chart-svg" preserveAspectRatio="xMidYMid slice">
-            <defs>
-              <filter id="bg_chart_blur" x="-20%" y="-20%" width="140%" height="140%">
-                <feGaussianBlur stdDeviation="3" />
-              </filter>
-              <linearGradient id="bg_chart_grad" x1="0" y1="0" x2="0" y2="700" gradientUnits="userSpaceOnUse">
-                <stop stop-color="#00F2FE" stop-opacity="0.35"/>
-                <stop offset="0.6" stop-color="#3B82F6" stop-opacity="0.15"/>
-                <stop offset="1" stop-color="#93c5fd" stop-opacity="0.0"/>
-              </linearGradient>
-            </defs>
 
-            <!-- Faded Chart Grid & Candlesticks -->
-            <g filter="url(#bg_chart_blur)" opacity="0.5">
-              <line x1="10" y1="60" x2="390" y2="60" stroke="#93c5fd" stroke-width="1" stroke-dasharray="6 6" stroke-opacity="0.4"/>
-              <line x1="10" y1="140" x2="390" y2="140" stroke="#93c5fd" stroke-width="1" stroke-dasharray="6 6" stroke-opacity="0.4"/>
-              <line x1="10" y1="220" x2="390" y2="220" stroke="#93c5fd" stroke-width="1" stroke-dasharray="6 6" stroke-opacity="0.4"/>
-              <line x1="10" y1="300" x2="390" y2="300" stroke="#93c5fd" stroke-width="1" stroke-dasharray="6 6" stroke-opacity="0.4"/>
-              <line x1="10" y1="380" x2="390" y2="380" stroke="#93c5fd" stroke-width="1" stroke-dasharray="6 6" stroke-opacity="0.4"/>
-              <line x1="10" y1="460" x2="390" y2="460" stroke="#93c5fd" stroke-width="1" stroke-dasharray="6 6" stroke-opacity="0.4"/>
-              <line x1="10" y1="540" x2="390" y2="540" stroke="#93c5fd" stroke-width="1" stroke-dasharray="6 6" stroke-opacity="0.4"/>
-
-              <line x1="80" y1="20" x2="80" y2="680" stroke="#93c5fd" stroke-width="1" stroke-dasharray="6 6" stroke-opacity="0.25"/>
-              <line x1="160" y1="20" x2="160" y2="680" stroke="#93c5fd" stroke-width="1" stroke-dasharray="6 6" stroke-opacity="0.25"/>
-              <line x1="240" y1="20" x2="240" y2="680" stroke="#93c5fd" stroke-width="1" stroke-dasharray="6 6" stroke-opacity="0.25"/>
-              <line x1="320" y1="20" x2="320" y2="680" stroke="#93c5fd" stroke-width="1" stroke-dasharray="6 6" stroke-opacity="0.25"/>
-
-              <!-- Candlesticks Array -->
-              <line x1="40" y1="340" x2="40" y2="420" stroke="#10B981" stroke-width="2"/>
-              <rect x="34" y="360" width="12" height="40" rx="2" fill="#10B981"/>
-              <line x1="75" y1="300" x2="75" y2="390" stroke="#10B981" stroke-width="2"/>
-              <rect x="69" y="320" width="12" height="50" rx="2" fill="#10B981"/>
-              <line x1="110" y1="320" x2="110" y2="380" stroke="#EF4444" stroke-width="2"/>
-              <rect x="104" y="335" width="12" height="30" rx="2" fill="#EF4444"/>
-              <line x1="145" y1="260" x2="145" y2="350" stroke="#10B981" stroke-width="2"/>
-              <rect x="139" y="280" width="12" height="55" rx="2" fill="#10B981"/>
-              <line x1="180" y1="240" x2="180" y2="330" stroke="#10B981" stroke-width="2"/>
-              <rect x="174" y="255" width="12" height="50" rx="2" fill="#10B981"/>
-              <line x1="215" y1="270" x2="215" y2="320" stroke="#EF4444" stroke-width="2"/>
-              <rect x="209" y="275" width="12" height="30" rx="2" fill="#EF4444"/>
-              <line x1="250" y1="200" x2="250" y2="290" stroke="#10B981" stroke-width="2"/>
-              <rect x="244" y="215" width="12" height="55" rx="2" fill="#10B981"/>
-              <line x1="285" y1="170" x2="285" y2="260" stroke="#10B981" stroke-width="2"/>
-              <rect x="279" y="185" width="12" height="60" rx="2" fill="#10B981"/>
-              <line x1="320" y1="140" x2="320" y2="230" stroke="#10B981" stroke-width="2"/>
-              <rect x="314" y="155" width="12" height="55" rx="2" fill="#10B981"/>
-              <line x1="355" y1="110" x2="355" y2="190" stroke="#10B981" stroke-width="2"/>
-              <rect x="349" y="120" width="12" height="50" rx="2" fill="#10B981"/>
-
-              <!-- Primary Indicator Waves -->
-              <path d="M10 420 C 80 380, 140 280, 220 260 C 300 240, 340 130, 390 90" stroke="#00F2FE" stroke-width="5" stroke-linecap="round" fill="none"/>
-              <path d="M10 420 C 80 380, 140 280, 220 260 C 300 240, 340 130, 390 90 L 390 700 L 10 700 Z" fill="url(#bg_chart_grad)"/>
-              <path d="M10 440 C 90 410, 160 310, 240 290 C 320 270, 350 160, 390 120" stroke="#F59E0B" stroke-width="3.5" stroke-linecap="round" fill="none"/>
-            </g>
-          </svg>
-        </div>
 
         <!-- ======================================================== -->
         <!-- 1. DESKTOP COMPANY WEBSITE (Rendered on Monitors / PC)   -->
@@ -2941,6 +2884,6 @@
 
   <!-- App Scripts -->
   <script src="qrcode.js"></script>
-  <script src="app.js?v=5636"></script>
+  <script src="app.js?v=5818"></script>
 </body>
 </html>

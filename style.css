@@ -4965,24 +4965,13 @@ body.theme-dark .auth-overlay,
   visibility: visible;
 }
 
-/* Full-Screen Faded Trading Chart Background */
-.auth-fullscreen-faded-chart {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 0;
-  overflow: hidden;
-}
-
-.faded-trading-chart-svg {
-  width: 100%;
-  height: 100%;
-  display: block;
+/* Full-Screen Faded Trading Chart & Background Glow Removal */
+.auth-fullscreen-faded-chart,
+.tbph-ambient-glow {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
 }
 
 /* ==========================================================================
