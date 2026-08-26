@@ -13403,33 +13403,61 @@ body.theme-dark .landing-header {
 .landing-gtcfx-banner {
   background: #ffffff !important;
   color: #0f172a !important;
-  border: 2px solid #0284c7 !important;
+  border: 1.5px solid #e2e8f0 !important;
+  border-radius: 16px !important;
   padding: 36px 32px !important;
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.04) !important;
 }
 
 body.theme-dark .landing-gtcfx-banner {
   background: rgba(17, 27, 49, 0.95) !important;
   color: #ffffff !important;
   border: 1.5px solid rgba(255, 255, 255, 0.14) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45) !important;
 }
 
-/* Organization SSL Security Audit Banner (Bright White in Light Theme) */
+/* Organization SSL Security Audit Banner (Matching Uniform White Surface) */
 .org-security-cert-banner {
   background: #ffffff !important;
   color: #0f172a !important;
-  border: 2px solid #10b981 !important;
+  border: 1.5px solid #e2e8f0 !important;
+  border-radius: 16px !important;
   padding: 28px !important;
+  margin-top: 28px !important;
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.04) !important;
 }
 
 body.theme-dark .org-security-cert-banner {
   background: rgba(17, 27, 49, 0.95) !important;
   color: #ffffff !important;
   border: 1.5px solid rgba(255, 255, 255, 0.14) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45) !important;
+}
+
+.org-badge-item {
+  background: #f8fafc !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 12px !important;
+  padding: 12px 14px !important;
+}
+
+body.theme-dark .org-badge-item {
+  background: rgba(30, 41, 59, 0.5) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
 }
 
 .org-cert-badge-pulse {
-  background: #10b981 !important;
-  color: #ffffff !important;
+  background: rgba(16, 185, 129, 0.12) !important;
+  color: #059669 !important;
+  border: 1px solid rgba(16, 185, 129, 0.3) !important;
+  border-radius: 99px !important;
+  padding: 4px 12px !important;
+}
+
+body.theme-dark .org-cert-badge-pulse {
+  background: rgba(16, 185, 129, 0.2) !important;
+  color: #34d399 !important;
+  border-color: rgba(52, 211, 153, 0.4) !important;
 }
 
 .org-cert-issuer {
