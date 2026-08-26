@@ -12859,57 +12859,61 @@ body.theme-dark .btn-top-back-landing {
   box-sizing: border-box !important;
   -webkit-transform: translateZ(0) !important;
   transform: translateZ(0) !important;
-  background: rgba(255, 255, 255, 0.88) !important;
-  backdrop-filter: blur(40px) saturate(220%) brightness(108%) !important;
-  -webkit-backdrop-filter: blur(40px) saturate(220%) brightness(108%) !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.75) !important;
-  box-shadow: 0 8px 32px rgba(15, 23, 42, 0.08), inset 0 -1px 1px rgba(255, 255, 255, 0.5) !important;
+  background: rgba(255, 255, 255, 0.92) !important;
+  backdrop-filter: blur(24px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8) !important;
+  box-shadow: 0 4px 20px -4px rgba(15, 23, 42, 0.04) !important;
+  padding-top: env(safe-area-inset-top, 0px) !important;
+  padding-left: env(safe-area-inset-left, 0px) !important;
+  padding-right: env(safe-area-inset-right, 0px) !important;
+  padding-bottom: 0 !important;
+  height: auto !important;
+  margin: 0 !important;
   transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease !important;
 }
 
 body.theme-dark .app-header,
 body.theme-dark .landing-header {
-  background: rgba(15, 23, 42, 0.92) !important;
-  backdrop-filter: blur(40px) saturate(220%) brightness(108%) !important;
-  -webkit-backdrop-filter: blur(40px) saturate(220%) brightness(108%) !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.14) !important;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.55), inset 0 -1px 1px rgba(255, 255, 255, 0.1) !important;
+  background: rgba(9, 14, 26, 0.92) !important;
+  backdrop-filter: blur(24px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.4) !important;
 }
 
-/* 2. DESKTOP & WIDE SCREEN HEADER SAFE AREA DIMENSIONS (> 767px) */
-@media (min-width: 768px) {
-  .app-header,
-  .landing-header {
-    min-height: calc(58px + env(safe-area-inset-top, 0px)) !important;
-    padding-top: max(12px, env(safe-area-inset-top, 12px)) !important;
-    padding-bottom: 10px !important;
-    padding-left: max(24px, env(safe-area-inset-left, 24px)) !important;
-    padding-right: max(24px, env(safe-area-inset-right, 24px)) !important;
-  }
+/* 2. INNER HEADER BAR (Vertically Centered Content) */
+.landing-header-inner,
+.header-inner {
+  max-width: 1320px !important;
+  margin: 0 auto !important;
+  width: 100% !important;
+  height: 64px !important;
+  padding: 0 24px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  box-sizing: border-box !important;
+}
 
+/* 3. DESKTOP BODY OFFSET FOR FROZEN HEADER (> 768px) */
+@media (min-width: 769px) {
   #appMain,
   .view-panel,
   .landing-scroll-body,
-  .desktop-company-landing {
-    padding-top: calc(72px + env(safe-area-inset-top, 0px)) !important;
+  .desktop-company-landing,
+  #authWelcomeScreen,
+  #authSignInScreen {
+    padding-top: calc(64px + env(safe-area-inset-top, 0px)) !important;
   }
 }
 
-/* 3. MOBILE & TABLET DEVICE NOTCH & DYNAMIC ISLAND SAFE AREA ENGINE (< 768px & PLATFORM CLASSIFICATION) */
-@media (max-width: 767px) {
-  .app-header,
-  .landing-header {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    width: 100% !important;
-    min-height: calc(66px + env(safe-area-inset-top, 36px)) !important;
-    padding-top: max(env(safe-area-inset-top, 38px), 36px) !important;
-    padding-bottom: 10px !important;
-    padding-left: max(16px, env(safe-area-inset-left, 16px)) !important;
-    padding-right: max(16px, env(safe-area-inset-right, 16px)) !important;
-    z-index: 10005 !important;
+/* 4. MOBILE / NOTCH / DYNAMIC ISLAND RESPONSIVE SCALING (<= 768px) */
+@media (max-width: 768px) {
+  .landing-header-inner,
+  .header-inner {
+    height: 56px !important;
+    padding: 0 16px !important;
   }
 
   #appMain,
@@ -12918,50 +12922,8 @@ body.theme-dark .landing-header {
   .desktop-company-landing,
   #authWelcomeScreen,
   #authSignInScreen {
-    padding-top: calc(78px + env(safe-area-inset-top, 36px)) !important;
+    padding-top: calc(56px + env(safe-area-inset-top, 0px)) !important;
   }
-}
-
-/* 4. PLATFORM-SPECIFIC OVERRIDES (iOS SAFARI, ANDROID CHROME, WINDOWS & MACOS) */
-.platform-ios .app-header,
-.platform-ios .landing-header {
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  width: 100% !important;
-  min-height: calc(70px + env(safe-area-inset-top, 40px)) !important;
-  padding-top: max(env(safe-area-inset-top, 40px), 38px) !important;
-  padding-bottom: 10px !important;
-  z-index: 10005 !important;
-}
-
-.platform-ios #appMain,
-.platform-ios .view-panel,
-.platform-ios .landing-scroll-body,
-.platform-ios .desktop-company-landing,
-.platform-ios #authWelcomeScreen,
-.platform-ios #authSignInScreen {
-  padding-top: calc(82px + env(safe-area-inset-top, 40px)) !important;
-}
-
-.platform-android .app-header,
-.platform-android .landing-header {
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  width: 100% !important;
-  min-height: calc(64px + env(safe-area-inset-top, 24px)) !important;
-  padding-top: max(env(safe-area-inset-top, 24px), 20px) !important;
-  z-index: 10005 !important;
-}
-
-.platform-android #appMain,
-.platform-android .view-panel,
-.platform-android .landing-scroll-body,
-.platform-android .desktop-company-landing {
-  padding-top: calc(74px + env(safe-area-inset-top, 24px)) !important;
 }
 
 /* ==========================================================================
