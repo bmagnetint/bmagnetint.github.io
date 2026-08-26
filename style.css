@@ -6264,21 +6264,28 @@ body.theme-dark .signin-back-btn {
   min-height: 100dvh !important;
   min-height: calc(var(--vh, 1vh) * 100) !important;
   height: auto !important;
-  overflow: visible !important;
   overflow-x: hidden !important;
   overflow-y: visible !important;
   position: relative !important;
   z-index: 10 !important;
   flex: 1 0 auto !important;
+  visibility: visible !important;
+  opacity: 1 !important;
 }
 
 .auth-overlay:not(.signin-active) .auth-screens-viewport,
 .auth-overlay.landing-active .auth-screens-viewport {
   display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
 }
 
 .auth-overlay.signin-active .desktop-company-landing {
   display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
 }
 
 .auth-overlay.signin-active .auth-screens-viewport {
@@ -6295,7 +6302,14 @@ body.theme-dark .signin-back-btn {
   overflow-y: auto !important;
   -webkit-overflow-scrolling: touch !important;
   z-index: 10000 !important;
-  background: inherit !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  background: #f8fafc !important;
+}
+
+body.theme-dark .auth-overlay.signin-active .auth-screens-viewport {
+  background: #080e1a !important;
 }
 
 /* Universal Mobile Phone & Tablet (< 768px & Automatic Mobile Device Detection) */

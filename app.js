@@ -784,9 +784,8 @@ class BotHubApp {
 
     const overlay = document.getElementById('authScreenOverlay');
     const desktopLanding = document.getElementById('desktopCompanyLanding');
-    
     if (desktopLanding) {
-      desktopLanding.style.display = 'none';
+      desktopLanding.style.display = '';
     }
 
     if (overlay) {
