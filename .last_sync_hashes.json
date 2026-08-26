@@ -5,12 +5,12 @@
   "public/favicon.ico": "423bac49d3d23c03bc41521aa93c38e06865e8551dbc7895cc81786b9ae1d193",
   "public/icon-192.png": "380066ca2faab5d914f553212f177c45fcc0f40e28b38caf739295e53edb56a1",
   "public/icon-512.png": "ac95a64054c37c680d0acef4d90cb3c2f732dded4b5f86799ced2eb45a97f2d6",
-  "public/index.html": "1f8079e13387f0d7bb59d8f36437dd58167c276430b5ccda19eef251bcf3ae04",
+  "public/index.html": "7ad30714af3b6aec8d39cfbce877869f3a85bd8439965de22b4ca58c25d5e814",
   "public/key-generator.html": "7ea88d078fea2d1a965692f5b606a328c71da2383bf45d88d580b5a11913fdde",
   "public/manifest.json": "b331d91b9eded6a5d5846dd3ed8d74a2fe4e29129f9788db8e9703c764c31858",
   "public/qrcode.js": "dc1fe07e667ce0632a54da24052d836319116b56335bc5f7d4cd8186e8a6f2c6",
-  "public/signinpage.html": "36bca7eba1179850881668a2bf1467e3f9a20aa0db062b08a17391849301af42",
-  "public/style.css": "efa2f62ddc9ebb05b79aa575cc9767a107d5d89ea351adf93f3dcb89a1762e7f",
+  "public/signinpage.html": "f0fd69d475a139786f002e8a3b099a9cf9d68725b22a9a3da1391d2c4fb20adb",
+  "public/style.css": "70db597a60a880453e314f652a6726685ca88a0fbd1c5e7ef8367f9194905638",
   "public/sw.js": "e29f8ab7d878ab323e8976f0b49833d24007af4edd7c8ef4d1c6143d9817f92b",
   "public/images/ai-bot-core-visual.jpg": "895803d28fbe6620cdf3f118d715aaa5df2c7bb6438e479d41f9431e510f0f71",
   "public/images/ai-trading-bot-visual.jpg": "cc47a181d7c5c6dd744ac8759f107332d7645f1772c3e7dd3aa8d84f822a2119",
@@ -21,6 +21,6 @@
   "public/images/b-magnet-neural-brain.jpg": "773ff34c5275c38f4b6c75224d81d55665dfe768a7b31327e425e5b75b07da59",
   "public/images/hero-trader-skipio.jpg": "92dbf03b4c9f3ce932382fada39e7974fa9574622de2dc93d4040b89f89204aa",
   "public/images/whatsapp_status_cover.jpg": "b8d75a70d2a895da067fc95bc308acca7d3e18b73187248357af7a3fa8e2727d",
-  "public/signinpage/index.html": "36bca7eba1179850881668a2bf1467e3f9a20aa0db062b08a17391849301af42",
+  "public/signinpage/index.html": "f0fd69d475a139786f002e8a3b099a9cf9d68725b22a9a3da1391d2c4fb20adb",
   "data/db.json": "77ad6688889bfb85cf7711d442ff2db9bb48305447da81c7c87c30faed2e4a24"
 }
