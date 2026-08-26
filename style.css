@@ -10399,36 +10399,32 @@ body.theme-dark .top-brand-profile-hero {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 320px;
-  height: 320px;
-  background: radial-gradient(circle, rgba(0, 168, 150, 0.32) 0%, rgba(245, 158, 11, 0.18) 45%, transparent 70%);
+  width: 1400px;
+  height: 1400px;
+  max-width: 150vw;
+  max-height: 150vh;
+  background: radial-gradient(circle, 
+    rgba(16, 185, 129, 0.28) 0%, 
+    rgba(2, 132, 199, 0.20) 35%, 
+    rgba(245, 158, 11, 0.10) 60%, 
+    transparent 78%
+  );
   border-radius: 50%;
-  filter: blur(38px);
+  filter: blur(120px);
   pointer-events: none;
-  animation: pulseMovingCircle 6s ease-in-out infinite alternate;
+  opacity: 0.6;
+  animation: pulseMovingCircle 10s ease-in-out infinite alternate;
 }
 
 @keyframes pulseMovingCircle {
-  0% { transform: translate(-50%, -50%) scale(0.85); opacity: 0.7; }
-  100% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.95; }
+  0% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.5; }
+  100% { transform: translate(-50%, -50%) scale(1.15); opacity: 0.75; }
 }
 
 .tbph-moving-circle-ring {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 240px;
-  height: 240px;
-  border: 1.5px dashed rgba(0, 168, 150, 0.35);
-  border-radius: 50%;
-  pointer-events: none;
-  animation: spinCircleRing 24s linear infinite;
-}
-
-@keyframes spinCircleRing {
-  from { transform: translate(-50%, -50%) rotate(0deg); }
-  to { transform: translate(-50%, -50%) rotate(360deg); }
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
 }
 
 .tbph-logo-pivot {
@@ -13837,7 +13833,7 @@ body.theme-dark .lfg-small-tag {
   overflow: hidden !important;
 }
 
-/* BIG SCREEN / DESKTOP (Vivid, Highly Visible 3D Mouse Gravity Logo) */
+/* BIG SCREEN / DESKTOP (Faded Elegant 3D Mouse Gravity Logo & Spread Colors) */
 @media (min-width: 769px) {
   .top-brand-profile-hero.bg-embedded,
   #topBrandProfileHero {
@@ -13850,37 +13846,54 @@ body.theme-dark .lfg-small-tag {
     width: auto !important;
     max-width: 650px !important;
     object-fit: contain !important;
-    opacity: 0.65 !important;
-    filter: drop-shadow(0 24px 60px rgba(16, 185, 129, 0.55)) drop-shadow(0 8px 30px rgba(2, 132, 199, 0.45)) !important;
+    opacity: 0.20 !important;
+    filter: drop-shadow(0 14px 36px rgba(16, 185, 129, 0.28)) drop-shadow(0 4px 14px rgba(2, 132, 199, 0.22)) !important;
     transition: opacity 0.3s ease !important;
   }
 
   body.theme-dark .top-brand-profile-hero.bg-embedded .tbph-big-logo {
-    opacity: 0.75 !important;
-    filter: drop-shadow(0 28px 70px rgba(16, 185, 129, 0.65)) drop-shadow(0 10px 36px rgba(56, 189, 248, 0.55)) !important;
+    opacity: 0.26 !important;
+    filter: drop-shadow(0 16px 40px rgba(16, 185, 129, 0.35)) drop-shadow(0 6px 18px rgba(56, 189, 248, 0.28)) !important;
   }
 
   .top-brand-profile-hero.bg-embedded .tbph-ambient-glow {
     display: block !important;
     visibility: visible !important;
-    width: 950px !important;
-    height: 950px !important;
-    background: radial-gradient(circle, rgba(16, 185, 129, 0.35) 0%, rgba(2, 132, 199, 0.22) 45%, transparent 70%) !important;
-    filter: blur(80px) !important;
-    opacity: 0.45 !important;
+    width: 1400px !important;
+    height: 1400px !important;
+    max-width: 150vw !important;
+    max-height: 150vh !important;
+    background: radial-gradient(circle, 
+      rgba(16, 185, 129, 0.32) 0%, 
+      rgba(2, 132, 199, 0.22) 35%, 
+      rgba(245, 158, 11, 0.12) 60%, 
+      transparent 78%
+    ) !important;
+    filter: blur(130px) !important;
+    opacity: 0.65 !important;
+    animation: pulseMovingCircle 10s ease-in-out infinite alternate !important;
   }
 
-  .top-brand-profile-hero.bg-embedded .tbph-moving-circle-ring {
-    display: block !important;
-    visibility: visible !important;
-    width: 720px !important;
-    height: 720px !important;
-    border: 2px dashed rgba(16, 185, 129, 0.4) !important;
-    opacity: 0.4 !important;
+  body.theme-dark .top-brand-profile-hero.bg-embedded .tbph-ambient-glow {
+    background: radial-gradient(circle, 
+      rgba(16, 185, 129, 0.36) 0%, 
+      rgba(56, 189, 248, 0.26) 35%, 
+      rgba(251, 191, 36, 0.15) 60%, 
+      transparent 78%
+    ) !important;
+    opacity: 0.75 !important;
+    filter: blur(140px) !important;
+  }
+
+  .top-brand-profile-hero.bg-embedded .tbph-moving-circle-ring,
+  .tbph-moving-circle-ring {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
   }
 }
 
-/* MOBILE SCREEN (Tamed, Subtle Watermark - Non-Intrusive) */
+/* MOBILE SCREEN (Subtle Faded Watermark & Soft Spread Color) */
 @media (max-width: 768px) {
   .top-brand-profile-hero.bg-embedded,
   #topBrandProfileHero {
@@ -13894,7 +13907,7 @@ body.theme-dark .lfg-small-tag {
     max-width: 65vw !important;
     object-fit: contain !important;
     opacity: 0.08 !important;
-    filter: drop-shadow(0 8px 20px rgba(16, 185, 129, 0.2)) !important;
+    filter: drop-shadow(0 6px 16px rgba(16, 185, 129, 0.15)) !important;
   }
 
   body.theme-dark .top-brand-profile-hero.bg-embedded .tbph-big-logo {
@@ -13904,18 +13917,22 @@ body.theme-dark .lfg-small-tag {
   .top-brand-profile-hero.bg-embedded .tbph-ambient-glow {
     display: block !important;
     visibility: visible !important;
-    width: 280px !important;
-    height: 280px !important;
-    filter: blur(40px) !important;
-    opacity: 0.1 !important;
+    width: 650px !important;
+    height: 650px !important;
+    background: radial-gradient(circle, 
+      rgba(16, 185, 129, 0.25) 0%, 
+      rgba(2, 132, 199, 0.16) 40%, 
+      rgba(245, 158, 11, 0.08) 65%, 
+      transparent 80%
+    ) !important;
+    filter: blur(70px) !important;
+    opacity: 0.5 !important;
   }
 
-  .top-brand-profile-hero.bg-embedded .tbph-moving-circle-ring {
-    display: block !important;
-    visibility: visible !important;
-    width: 220px !important;
-    height: 220px !important;
-    border: 1px dashed rgba(16, 185, 129, 0.2) !important;
-    opacity: 0.12 !important;
+  .top-brand-profile-hero.bg-embedded .tbph-moving-circle-ring,
+  .tbph-moving-circle-ring {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
   }
 }
