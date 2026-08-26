@@ -45,9 +45,9 @@
   --color-danger: #e11d48;
   --color-danger-bg: rgba(225, 29, 72, 0.12);
   --color-warning: #d97706;
-  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-logo: 'Cinzel Decorative', 'Cinzel', serif;
-  --font-heading: 'Cinzel', 'Cinzel Decorative', serif;
+  --font-sans: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-logo: 'Space Grotesk', 'Sora', sans-serif;
+  --font-heading: 'Sora', 'Space Grotesk', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 
   --radius-sm: 10px;
@@ -13197,7 +13197,7 @@ p,
 }
 
 body {
-  font-family: 'Plus Jakarta Sans', -apple-system, sans-serif !important;
+  font-family: 'Manrope', -apple-system, sans-serif !important;
   background-color: #FFFFFF !important;
   color: #111827 !important;
 }
@@ -13207,7 +13207,7 @@ body.theme-dark {
   color: #F9FAFB !important;
 }
 
-/* 2. Luxury Elegant FinTech Typography Hierarchy (Cinzel Decorative & Cinzel) */
+/* 2. Elegant Executive FinTech Typography Hierarchy (Sora & Space Grotesk) */
 h1, h2, h3, h4, h5, h6,
 .landing-hero-title,
 .landing-section-title,
@@ -13215,9 +13215,9 @@ h1, h2, h3, h4, h5, h6,
 .cmp-profile-title,
 .welcome-title,
 .signin-title {
-  font-family: 'Cinzel', 'Cinzel Decorative', serif !important;
-  font-weight: 800 !important;
-  letter-spacing: -0.01em !important;
+  font-family: 'Sora', 'Space Grotesk', sans-serif !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.02em !important;
 }
 
 /* 3. Header Bar (Flat Solid Color Block) */
@@ -13235,10 +13235,10 @@ body.theme-dark .landing-header {
 }
 
 .landing-brand-title {
-  font-family: 'Cinzel Decorative', 'Cinzel', serif !important;
+  font-family: 'Space Grotesk', 'Sora', sans-serif !important;
   color: #111827 !important;
-  font-weight: 900 !important;
-  letter-spacing: 0.5px !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.5px !important;
 }
 
 body.theme-dark .landing-brand-title {
@@ -13328,7 +13328,7 @@ body.theme-dark .btn-clean-white:hover {
 
 /* 1. Canvas Background matching Gold Emblem Logo Concept */
 body {
-  font-family: 'Plus Jakarta Sans', -apple-system, sans-serif !important;
+  font-family: 'Manrope', -apple-system, sans-serif !important;
   background: #fafbfd !important;
   color: #0f172a !important;
 }
