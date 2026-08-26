@@ -1261,7 +1261,7 @@ class BotHubApp {
     } finally {
       if (submitBtn) {
         submitBtn.disabled = false;
-        submitBtn.innerHTML = '<span id="txtSigninSubmitBtn">Sign In to Terminal</span><span class="material-symbols-rounded btn-arrow">arrow_forward</span>';
+        submitBtn.innerHTML = '<span id="txtSigninSubmitBtn">Launch Bot Terminal</span><span class="material-symbols-rounded btn-arrow">arrow_forward</span>';
       }
     }
   }
