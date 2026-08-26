@@ -12926,8 +12926,6 @@ html, body {
 
 #appShell,
 #appMain,
-#desktopCompanyLanding,
-.desktop-company-landing,
 .landing-scroll-body,
 .app-content {
   width: 100% !important;
@@ -12936,6 +12934,52 @@ html, body {
   display: flex !important;
   flex-direction: column !important;
   box-sizing: border-box !important;
+}
+
+.auth-overlay:not(.signin-active) #desktopCompanyLanding,
+.auth-overlay.landing-active #desktopCompanyLanding,
+.auth-overlay:not(.signin-active) .desktop-company-landing,
+.auth-overlay.landing-active .desktop-company-landing {
+  width: 100% !important;
+  min-height: 100dvh !important;
+  flex: 1 0 auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  box-sizing: border-box !important;
+}
+
+.auth-overlay.signin-active #desktopCompanyLanding,
+.auth-overlay.signin-active .desktop-company-landing {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+}
+
+.auth-overlay.signin-active .auth-screens-viewport {
+  display: flex !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  min-height: 100dvh !important;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  z-index: 100000 !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  background: #f8fafc !important;
+}
+
+body.theme-dark .auth-overlay.signin-active .auth-screens-viewport {
+  background: #080e1a !important;
 }
 
 /* 2. AUTO-SIZING INSTITUTIONAL PANELS & EVEN CARDS */
