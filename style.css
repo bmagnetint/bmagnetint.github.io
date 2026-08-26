@@ -5396,6 +5396,52 @@ body.theme-dark .desktop-company-landing {
     margin-bottom: 18px;
   }
 
+  /* Welcome Screen FinTech Chips Grid */
+  .welcome-metrics-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin: 14px 0 18px 0;
+    width: 100%;
+  }
+
+  .welcome-metric-chip {
+    background: #ffffff !important;
+    border: 1.5px solid #e2e8f0 !important;
+    border-radius: 12px;
+    padding: 8px 6px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+  }
+
+  body.theme-dark .welcome-metric-chip {
+    background: rgba(17, 27, 49, 0.95) !important;
+    border: 1.5px solid rgba(255, 255, 255, 0.12) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  }
+
+  .wmc-val {
+    display: block;
+    font-family: var(--font-logo) !important;
+    font-size: 14px;
+    font-weight: 900;
+    color: #059669;
+  }
+
+  body.theme-dark .wmc-val {
+    color: #10b981;
+  }
+
+  .wmc-lbl {
+    font-size: 9.5px;
+    font-weight: 700;
+    color: #64748b;
+  }
+
+  body.theme-dark .wmc-lbl {
+    color: #94a3b8;
+  }
+
   .lsc-asset {
     font-size: 18px;
     font-weight: 800;
