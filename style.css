@@ -4967,9 +4967,8 @@ body.theme-dark .auth-overlay,
   visibility: visible;
 }
 
-/* Full-Screen Faded Trading Chart & Background Glow Removal */
-.auth-fullscreen-faded-chart,
-.tbph-ambient-glow {
+/* Full-Screen Faded Trading Chart Removal */
+.auth-fullscreen-faded-chart {
   display: none !important;
   visibility: hidden !important;
   opacity: 0 !important;
@@ -10553,38 +10552,77 @@ body.logged-in .view-panel {
   z-index: 10001 !important;
 }
 
-.top-brand-profile-hero.bg-embedded .tbph-big-logo {
-  height: 650px !important;
-  max-height: 80vh !important;
-  width: auto !important;
-  max-width: 90vw !important;
-  object-fit: contain !important;
-  opacity: 0.14 !important;
-  filter: drop-shadow(0 16px 40px rgba(0, 168, 150, 0.35)) drop-shadow(0 4px 16px rgba(2, 132, 199, 0.25)) !important;
+/* BIG SCREEN / DESKTOP (Vivid, Responsive 3D Mouse Gravity Logo in Safari/Chrome) */
+@media (min-width: 769px) {
+  .top-brand-profile-hero.bg-embedded .tbph-big-logo {
+    height: 480px !important;
+    max-height: 55vh !important;
+    width: auto !important;
+    max-width: 580px !important;
+    object-fit: contain !important;
+    opacity: 0.35 !important;
+    filter: drop-shadow(0 20px 48px rgba(16, 185, 129, 0.45)) drop-shadow(0 6px 20px rgba(2, 132, 199, 0.35)) !important;
+    transition: opacity 0.3s ease !important;
+  }
+
+  body.theme-dark .top-brand-profile-hero.bg-embedded .tbph-big-logo {
+    opacity: 0.42 !important;
+    filter: drop-shadow(0 24px 60px rgba(16, 185, 129, 0.55)) drop-shadow(0 8px 24px rgba(56, 189, 248, 0.4)) !important;
+  }
+
+  .top-brand-profile-hero.bg-embedded .tbph-ambient-glow {
+    display: block !important;
+    visibility: visible !important;
+    width: 800px !important;
+    height: 800px !important;
+    background: radial-gradient(circle, rgba(16, 185, 129, 0.28) 0%, rgba(2, 132, 199, 0.16) 45%, transparent 70%) !important;
+    filter: blur(80px) !important;
+    opacity: 0.35 !important;
+  }
+
+  .top-brand-profile-hero.bg-embedded .tbph-moving-circle-ring {
+    display: block !important;
+    visibility: visible !important;
+    width: 620px !important;
+    height: 620px !important;
+    border: 1.5px dashed rgba(16, 185, 129, 0.3) !important;
+    opacity: 0.3 !important;
+  }
 }
 
-.top-brand-profile-hero.bg-embedded .tbph-ambient-glow {
-  width: 1100px !important;
-  height: 1100px !important;
-  filter: blur(100px) !important;
-  opacity: 0.12 !important;
-}
+/* MOBILE SCREEN (Tamed, Subtle Watermark - Non-Intrusive) */
+@media (max-width: 768px) {
+  .top-brand-profile-hero.bg-embedded .tbph-big-logo {
+    height: 160px !important;
+    max-height: 20vh !important;
+    width: auto !important;
+    max-width: 65vw !important;
+    object-fit: contain !important;
+    opacity: 0.08 !important;
+    filter: drop-shadow(0 8px 20px rgba(16, 185, 129, 0.2)) !important;
+  }
 
-.top-brand-profile-hero.bg-embedded .tbph-moving-circle-ring {
-  width: 850px !important;
-  height: 850px !important;
-  border: 1.5px dashed rgba(0, 168, 150, 0.25) !important;
-  opacity: 0.15 !important;
-}
+  body.theme-dark .top-brand-profile-hero.bg-embedded .tbph-big-logo {
+    opacity: 0.12 !important;
+  }
 
-body.theme-dark .top-brand-profile-hero.bg-embedded {
-  opacity: 1.0 !important;
-  background: transparent !important;
-}
+  .top-brand-profile-hero.bg-embedded .tbph-ambient-glow {
+    display: block !important;
+    visibility: visible !important;
+    width: 280px !important;
+    height: 280px !important;
+    filter: blur(40px) !important;
+    opacity: 0.1 !important;
+  }
 
-body.theme-dark .top-brand-profile-hero.bg-embedded .tbph-big-logo {
-  opacity: 0.18 !important;
-  filter: drop-shadow(0 16px 50px rgba(0, 201, 167, 0.45)) drop-shadow(0 4px 18px rgba(59, 130, 246, 0.3)) !important;
+  .top-brand-profile-hero.bg-embedded .tbph-moving-circle-ring {
+    display: block !important;
+    visibility: visible !important;
+    width: 220px !important;
+    height: 220px !important;
+    border: 1px dashed rgba(16, 185, 129, 0.2) !important;
+    opacity: 0.12 !important;
+  }
 }
 
 /* EXPLAINED COMPANY PROFILE BOX WITH IOS 27 LIQUID GLASS LOOK */
@@ -13799,4 +13837,105 @@ body.theme-dark .lfg-copy {
 body.theme-dark .lfg-small-tag {
   background: #1E293B !important;
   color: #CBD5E1 !important;
+}
+
+/* ==========================================================================
+   AUTHORITATIVE 3D MOUSE GRAVITY LOGO ENGINE (SAFARI & CHROME DESKTOP OPTIMIZED)
+   ========================================================================== */
+.top-brand-profile-hero.bg-embedded,
+#topBrandProfileHero {
+  position: fixed !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  width: 100vw !important;
+  max-width: 100vw !important;
+  height: 100vh !important;
+  max-height: 100vh !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  z-index: 1 !important;
+  pointer-events: none !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  perspective: 1200px !important;
+  overflow: hidden !important;
+}
+
+/* BIG SCREEN / DESKTOP (Vivid, Responsive 3D Mouse Gravity Logo) */
+@media (min-width: 769px) {
+  .top-brand-profile-hero.bg-embedded .tbph-big-logo {
+    height: 480px !important;
+    max-height: 55vh !important;
+    width: auto !important;
+    max-width: 580px !important;
+    object-fit: contain !important;
+    opacity: 0.35 !important;
+    filter: drop-shadow(0 20px 48px rgba(16, 185, 129, 0.45)) drop-shadow(0 6px 20px rgba(2, 132, 199, 0.35)) !important;
+    transition: opacity 0.3s ease !important;
+  }
+
+  body.theme-dark .top-brand-profile-hero.bg-embedded .tbph-big-logo {
+    opacity: 0.42 !important;
+    filter: drop-shadow(0 24px 60px rgba(16, 185, 129, 0.55)) drop-shadow(0 8px 24px rgba(56, 189, 248, 0.4)) !important;
+  }
+
+  .top-brand-profile-hero.bg-embedded .tbph-ambient-glow {
+    display: block !important;
+    visibility: visible !important;
+    width: 800px !important;
+    height: 800px !important;
+    background: radial-gradient(circle, rgba(16, 185, 129, 0.28) 0%, rgba(2, 132, 199, 0.16) 45%, transparent 70%) !important;
+    filter: blur(80px) !important;
+    opacity: 0.35 !important;
+  }
+
+  .top-brand-profile-hero.bg-embedded .tbph-moving-circle-ring {
+    display: block !important;
+    visibility: visible !important;
+    width: 620px !important;
+    height: 620px !important;
+    border: 1.5px dashed rgba(16, 185, 129, 0.3) !important;
+    opacity: 0.3 !important;
+  }
+}
+
+/* MOBILE SCREEN (Tamed, Subtle Watermark - Non-Intrusive) */
+@media (max-width: 768px) {
+  .top-brand-profile-hero.bg-embedded .tbph-big-logo {
+    height: 160px !important;
+    max-height: 20vh !important;
+    width: auto !important;
+    max-width: 65vw !important;
+    object-fit: contain !important;
+    opacity: 0.08 !important;
+    filter: drop-shadow(0 8px 20px rgba(16, 185, 129, 0.2)) !important;
+  }
+
+  body.theme-dark .top-brand-profile-hero.bg-embedded .tbph-big-logo {
+    opacity: 0.12 !important;
+  }
+
+  .top-brand-profile-hero.bg-embedded .tbph-ambient-glow {
+    display: block !important;
+    visibility: visible !important;
+    width: 280px !important;
+    height: 280px !important;
+    filter: blur(40px) !important;
+    opacity: 0.1 !important;
+  }
+
+  .top-brand-profile-hero.bg-embedded .tbph-moving-circle-ring {
+    display: block !important;
+    visibility: visible !important;
+    width: 220px !important;
+    height: 220px !important;
+    border: 1px dashed rgba(16, 185, 129, 0.2) !important;
+    opacity: 0.12 !important;
+  }
 }
