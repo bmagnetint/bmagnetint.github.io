@@ -6301,6 +6301,16 @@ body.theme-dark .signin-back-btn {
     -webkit-overflow-scrolling: touch !important;
   }
 
+  .auth-overlay.signin-active .auth-split-container {
+    display: none !important;
+  }
+
+  .auth-overlay.signin-active .auth-mobile-slides-wrapper {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+
   .desktop-company-landing {
     display: flex !important;
     flex-direction: column !important;
