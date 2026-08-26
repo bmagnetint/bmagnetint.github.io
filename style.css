@@ -10441,7 +10441,7 @@ body.theme-dark .cluster-chip {
   background: transparent !important;
   box-shadow: none !important;
   opacity: 1.0 !important;
-  z-index: 10000 !important;
+  z-index: 1 !important;
   pointer-events: none !important;
   display: flex !important;
   align-items: center !important;

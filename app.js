@@ -4591,4 +4591,18 @@ function initHeroMouseGravityPhysics() {
 window.addEventListener('DOMContentLoaded', () => {
   window.botHubApp = new BotHubApp();
   setTimeout(initHeroMouseGravityPhysics, 100);
+
+  // Universal Passive Mouse Wheel & Trackpad Scroll Normalizer across All Pages & Contents
+  window.addEventListener('wheel', (e) => {
+    const authOverlay = document.getElementById('authScreenOverlay');
+    if (authOverlay && authOverlay.classList.contains('active') && !authOverlay.classList.contains('signin-active')) {
+      authOverlay.scrollTop += e.deltaY;
+      return;
+    }
+
+    const activeViewport = document.querySelector('.app-scroll-viewport.active, .view-container.active');
+    if (activeViewport) {
+      activeViewport.scrollTop += e.deltaY;
+    }
+  }, { passive: true });
 });
