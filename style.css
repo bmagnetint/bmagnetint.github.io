@@ -13252,15 +13252,20 @@ body.theme-dark .landing-brand-title {
   color: #FFFFFF !important;
 }
 
-/* 3. Section Containers & Modern Frame Spacing */
+/* 3. Section Containers (Transparent Canvas Wrappers) */
+.landing-section,
 .landing-hero-section,
 .b-magnet-company-profile-box,
 #aboutProgramSection,
 #plansSection,
 #gtcfxSection {
   max-width: 1320px !important;
-  margin: 32px auto !important;
+  margin: 36px auto !important;
+  padding: 0 24px !important;
   box-sizing: border-box !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
 }
 
 /* 4. Modern Fresh Card Frames & Surfaces */
@@ -13269,7 +13274,6 @@ body.theme-dark .landing-brand-title {
 .landing-metric-card,
 .landing-plan-card,
 .landing-showcase-card,
-.b-magnet-company-profile-box,
 .org-security-cert-banner,
 .landing-gtcfx-banner,
 .welcome-metric-chip {
@@ -13286,7 +13290,6 @@ body.theme-dark .landing-feature-card,
 body.theme-dark .landing-metric-card,
 body.theme-dark .landing-plan-card,
 body.theme-dark .landing-showcase-card,
-body.theme-dark .b-magnet-company-profile-box,
 body.theme-dark .org-security-cert-banner,
 body.theme-dark .landing-gtcfx-banner,
 body.theme-dark .welcome-metric-chip {
