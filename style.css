@@ -12328,52 +12328,81 @@ body.theme-dark .mobile-frame {
 }
 
 /* 2. INSTITUTIONAL EXECUTIVE PANELS & CARDS */
-.b-magnet-company-profile-box,
+.b-magnet-company-profile-box {
+  background: rgba(255, 255, 255, 0.88) !important;
+  backdrop-filter: blur(32px) saturate(210%) brightness(104%) !important;
+  -webkit-backdrop-filter: blur(32px) saturate(210%) brightness(104%) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.95) !important;
+  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.08), inset 0 1.5px 1.5px rgba(255, 255, 255, 0.95) !important;
+  border-radius: 28px !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+body.theme-dark .b-magnet-company-profile-box {
+  background: rgba(15, 23, 42, 0.88) !important;
+  backdrop-filter: blur(32px) saturate(210%) !important;
+  -webkit-backdrop-filter: blur(32px) saturate(210%) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.16) !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), inset 0 1.5px 1.5px rgba(255, 255, 255, 0.16) !important;
+  border-radius: 28px !important;
+}
+
 .cmp-card,
 .plan-card,
 .bot-card,
 .espp-card,
 .web3-wallet-modal-card,
-.signin-white-sheet,
-.auth-white-sheet,
 .admin-crm-panel-card,
 .creator-hub-card,
 .subscription-card,
 .profile-card,
-.affiliate-card {
-  border: 1px solid rgba(148, 163, 184, 0.14) !important;
-  background: rgba(15, 23, 42, 0.76) !important;
-  backdrop-filter: blur(32px) saturate(160%) !important;
-  -webkit-backdrop-filter: blur(32px) saturate(160%) !important;
-  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.35), 0 4px 12px -2px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
-  border-radius: 16px !important;
+.affiliate-card,
+.org-security-cert-banner,
+.landing-metric-card,
+.gtcfx-banner-card {
+  background: rgba(255, 255, 255, 0.92) !important;
+  backdrop-filter: blur(24px) saturate(190%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(190%) !important;
+  border: 1px solid rgba(226, 232, 240, 0.88) !important;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04), inset 0 1px 1px rgba(255, 255, 255, 1) !important;
+  border-radius: 20px !important;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
-body:not(.theme-dark) .b-magnet-company-profile-box,
-body:not(.theme-dark) .cmp-card,
-body:not(.theme-dark) .plan-card,
-body:not(.theme-dark) .bot-card,
-body:not(.theme-dark) .espp-card,
-body:not(.theme-dark) .web3-wallet-modal-card,
-body:not(.theme-dark) .signin-white-sheet,
-body:not(.theme-dark) .auth-white-sheet,
-body:not(.theme-dark) .subscription-card,
-body:not(.theme-dark) .profile-card,
-body:not(.theme-dark) .affiliate-card {
-  background: #ffffff !important;
-  border: 1px solid rgba(226, 232, 240, 0.85) !important;
-  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.04), 0 1px 3px rgba(15, 23, 42, 0.02) !important;
-  border-radius: 16px !important;
+body.theme-dark .cmp-card,
+body.theme-dark .plan-card,
+body.theme-dark .bot-card,
+body.theme-dark .espp-card,
+body.theme-dark .web3-wallet-modal-card,
+body.theme-dark .admin-crm-panel-card,
+body.theme-dark .creator-hub-card,
+body.theme-dark .subscription-card,
+body.theme-dark .profile-card,
+body.theme-dark .affiliate-card,
+body.theme-dark .org-security-cert-banner,
+body.theme-dark .landing-metric-card,
+body.theme-dark .gtcfx-banner-card {
+  background: rgba(17, 28, 52, 0.82) !important;
+  backdrop-filter: blur(24px) saturate(190%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(190%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45), inset 0 1px 1px rgba(255, 255, 255, 0.12) !important;
+  border-radius: 20px !important;
 }
 
 .plan-card.popular,
 .cmp-card.highlight-card {
-  border: 1.5px solid rgba(217, 119, 6, 0.55) !important;
-  box-shadow: 0 12px 35px -5px rgba(217, 119, 6, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+  border: 2px solid rgba(16, 185, 129, 0.85) !important;
+  box-shadow: 0 16px 40px rgba(16, 185, 129, 0.22), inset 0 1.5px 1.5px rgba(255, 255, 255, 1) !important;
 }
 
-/* 3. PROFESSIONAL EXECUTIVE PRIMARY BUTTONS (SAPPHIRE CYAN & ONYX) */
+body.theme-dark .plan-card.popular,
+body.theme-dark .cmp-card.highlight-card {
+  border: 2px solid rgba(52, 211, 153, 0.85) !important;
+  box-shadow: 0 16px 45px rgba(16, 185, 129, 0.35), inset 0 1.5px 1.5px rgba(255, 255, 255, 0.2) !important;
+}
+
+/* 3. PROFESSIONAL EXECUTIVE PRIMARY BUTTONS (TEAL & EMERALD GRADIENT) */
 .btn-primary,
 .btn-hero-primary,
 .btn-plan-select,
@@ -12382,7 +12411,20 @@ body:not(.theme-dark) .affiliate-card {
 .web3-tab-btn.active,
 .btn-save-profile,
 .btn-save-mt5-account {
-  background: linear-gradient(135deg, #0284c7 0%, #0369a1 50%, #0f172a 100%) !important;
+  background: linear-gradient(135deg, #00a896 0%, #0284c7 100%) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.6) !important;
+  border-radius: 99px !important;
+  box-shadow: 0 8px 24px rgba(0, 168, 150, 0.35), inset 0 1.5px 1.5px rgba(255, 255, 255, 0.75) !important;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease !important;
+}
+
+.btn-primary:hover,
+.btn-hero-primary:hover,
+.btn-plan-select:hover {
+  transform: translateY(-2px) scale(1.02) !important;
+  box-shadow: 0 12px 32px rgba(0, 168, 150, 0.48), inset 0 1.5px 1.5px #ffffff !important;
+}
   color: #ffffff !important;
   font-weight: 800 !important;
   letter-spacing: 0.3px !important;
