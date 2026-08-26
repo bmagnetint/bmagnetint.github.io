@@ -45,8 +45,9 @@
   --color-danger: #e11d48;
   --color-danger-bg: rgba(225, 29, 72, 0.12);
   --color-warning: #d97706;
-  --font-sans: 'Alterhard', 'Saira Condensed', 'Barlow Semi Condensed', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-logo: 'Outfit', 'Plus Jakarta Sans', -apple-system, sans-serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-logo: 'Cinzel Decorative', 'Cinzel', serif;
+  --font-heading: 'Cinzel', 'Cinzel Decorative', serif;
   --font-mono: 'JetBrains Mono', monospace;
 
   --radius-sm: 10px;
@@ -13196,7 +13197,7 @@ p,
 }
 
 body {
-  font-family: 'Outfit', sans-serif !important;
+  font-family: 'Plus Jakarta Sans', -apple-system, sans-serif !important;
   background-color: #FFFFFF !important;
   color: #111827 !important;
 }
@@ -13206,16 +13207,17 @@ body.theme-dark {
   color: #F9FAFB !important;
 }
 
-/* 2. Bold Graphic Typography Hierarchy */
+/* 2. Luxury Elegant FinTech Typography Hierarchy (Cinzel Decorative & Cinzel) */
 h1, h2, h3, h4, h5, h6,
 .landing-hero-title,
 .landing-section-title,
 .cmp-title,
+.cmp-profile-title,
 .welcome-title,
 .signin-title {
-  font-family: 'Outfit', sans-serif !important;
+  font-family: 'Cinzel', 'Cinzel Decorative', serif !important;
   font-weight: 800 !important;
-  letter-spacing: -0.02em !important;
+  letter-spacing: -0.01em !important;
 }
 
 /* 3. Header Bar (Flat Solid Color Block) */
@@ -13233,8 +13235,10 @@ body.theme-dark .landing-header {
 }
 
 .landing-brand-title {
+  font-family: 'Cinzel Decorative', 'Cinzel', serif !important;
   color: #111827 !important;
-  font-weight: 800 !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.5px !important;
 }
 
 body.theme-dark .landing-brand-title {
