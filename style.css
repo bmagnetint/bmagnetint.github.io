@@ -15170,36 +15170,27 @@ body.theme-dark .satoshi-signup-link::after {
 }
 
 /* ==========================================================================
-   PREMIUM DARK GLASSMORPHISM DESIGN SYSTEM (Space Grotesk + Inter)
+   PREMIUM DARK GLASSMORPHISM & AURORA ACCENTS (SCOPED STRICTLY TO SIGN-IN PAGE)
    Background: Solid Ink #0b0f14 | Accents: Neon Aqua #2dd4bf & Magenta #e879f9
    ========================================================================== */
 
-/* 1. Global Ink Ground & Typography Foundation */
-html,
-body,
-.app-viewport-wrapper,
-.mobile-frame,
-.desktop-company-landing,
-.landing-scroll-body {
+/* 1. Sign In Overlay Canvas & Typography */
+.auth-overlay.signin-active,
+.auth-overlay.signin-active .auth-screens-viewport,
+.auth-overlay.signin-active .satoshi-auth-split-container {
   background-color: #0b0f14 !important;
   color: #e7ecf2 !important;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  font-family: 'Inter', 'Satoshi', -apple-system, BlinkMacSystemFont, sans-serif !important;
   -webkit-font-smoothing: antialiased !important;
-  -moz-osx-font-smoothing: grayscale !important;
   text-rendering: optimizeLegibility !important;
 }
 
-/* 2. Display Headings (Space Grotesk 600-700 with Tight Tracking) */
-h1, h2, h3, h4, h5, h6,
-.landing-hero-title,
-.landing-section-title,
-.cmp-title,
-.lgb-title,
-.landing-brand-title,
-.lsc-asset,
-.lmc-val,
-.landing-plan-price,
-.plan-name {
+/* 2. Display Headings on Sign In Page (Space Grotesk 600-700 with Tight Tracking) */
+.auth-overlay.signin-active .satoshi-heading,
+.auth-overlay.signin-active .satoshi-mobile-title,
+.auth-overlay.signin-active h1,
+.auth-overlay.signin-active h2,
+.auth-overlay.signin-active h3 {
   font-family: 'Space Grotesk', sans-serif !important;
   font-weight: 700 !important;
   letter-spacing: -0.025em !important;
@@ -15207,11 +15198,9 @@ h1, h2, h3, h4, h5, h6,
 }
 
 /* 3. Headlines Emphasized Gradient Text (Neon Aqua to Magenta Aurora) */
-.landing-text-highlight,
-.text-aurora,
-.gradient-clip-text,
-.landing-hero-title span,
-.landing-section-title span.text-highlight {
+.auth-overlay.signin-active .text-aurora,
+.auth-overlay.signin-active .gradient-clip-text,
+.auth-overlay.signin-active .satoshi-heading span {
   background: linear-gradient(100deg, #2dd4bf 0%, #7dd3fc 38%, #e879f9 100%) !important;
   -webkit-background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
@@ -15219,23 +15208,19 @@ h1, h2, h3, h4, h5, h6,
   display: inline-block !important;
 }
 
-/* 4. Body Copy & UI Text */
-p,
-.landing-hero-desc,
-.landing-section-desc,
-.cmp-lead,
-.lgb-desc,
-.lsc-sb-title,
-.lfg-brand-desc,
-.lfg-link-item,
-.lfg-copyright {
+/* 4. Subtext & Body Copy on Sign In Page */
+.auth-overlay.signin-active .satoshi-subtext,
+.auth-overlay.signin-active .satoshi-mobile-sub,
+.auth-overlay.signin-active .asl-brand-caption,
+.auth-overlay.signin-active .satoshi-remember-text,
+.auth-overlay.signin-active .satoshi-footer-text {
   font-family: 'Inter', sans-serif !important;
   color: #94a3b8 !important;
-  line-height: 1.65 !important;
 }
 
-/* 5. 🌌 Drifting Aurora Orbs Behind Glass (Aqua & Magenta Radials) */
-.aurora-orbs-stage {
+/* 5. 🌌 Drifting Aurora Orbs Behind Glass on Sign In View */
+.auth-overlay.signin-active .aurora-orbs-stage {
+  display: block !important;
   position: absolute;
   top: 0;
   left: 0;
@@ -15244,6 +15229,10 @@ p,
   overflow: hidden;
   pointer-events: none;
   z-index: 1;
+}
+
+.auth-overlay:not(.signin-active) .aurora-orbs-stage {
+  display: none !important;
 }
 
 .aurora-orb {
@@ -15318,73 +15307,36 @@ p,
   100% { transform: translate(45px, -45px) scale(0.97); }
 }
 
-/* 6. Frosted Glass Surfaces (150deg translucent fills, 28px blur, 1px white hairline, layered shadow) */
-.landing-section,
-.landing-showcase-card,
-.cmp-card,
-.landing-feature-card,
-.landing-metric-card,
-.landing-plan-card,
-.org-security-cert-banner,
-.landing-gtcfx-banner,
-.landing-footer,
-.b-magnet-company-profile-box {
-  background: linear-gradient(150deg, rgba(255, 255, 255, 0.10) 0%, rgba(255, 255, 255, 0.02) 100%) !important;
+/* 6. Sign In Frosted Glass Surfaces */
+.auth-overlay.signin-active .satoshi-visual-brand-area {
+  background: rgba(11, 15, 20, 0.75) !important;
   backdrop-filter: blur(28px) saturate(140%) !important;
   -webkit-backdrop-filter: blur(28px) saturate(140%) !important;
-  border: 1px solid rgba(255, 255, 255, 0.14) !important;
-  box-shadow: 0 30px 80px -30px rgba(0, 0, 0, 0.85), inset 0 1px 0 rgba(255, 255, 255, 0.18) !important;
-  border-radius: 24px !important;
-  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease !important;
+  border-right: 1px solid rgba(255, 255, 255, 0.08) !important;
 }
 
-.cmp-card:hover,
-.landing-feature-card:hover,
-.landing-plan-card:hover,
-.landing-showcase-card:hover {
-  transform: translateY(-2px) !important;
-  border-color: rgba(45, 212, 191, 0.38) !important;
-  box-shadow: 0 30px 80px -30px rgba(0, 0, 0, 0.9), 0 0 30px -10px rgba(45, 212, 191, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.28) !important;
+.auth-overlay.signin-active .satoshi-form-column {
+  background: rgba(15, 23, 42, 0.65) !important;
+  backdrop-filter: blur(28px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(140%) !important;
 }
 
-/* 7. Lighter Glass-Soft Variant (rgba 0.045 fill, 16px blur, 1px 0.08 border) */
-.glass-soft,
-.lsc-signal-box,
-.lsc-trade-item,
-.org-badge-item,
-.lfg-badge-chip,
-.lfg-status-pill,
-.asl-feat-card,
-.landing-metric-card,
-.welcome-metric-chip {
-  background: rgba(255, 255, 255, 0.045) !important;
-  backdrop-filter: blur(16px) !important;
-  -webkit-backdrop-filter: blur(16px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.08) !important;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+.auth-overlay.signin-active .satoshi-mobile-sheet {
+  background: rgba(15, 23, 42, 0.92) !important;
+  backdrop-filter: blur(28px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(140%) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.12) !important;
 }
 
-/* 8. Hairline Dividers (rgba 255,255,255,0.08) */
-.lsc-header,
-.lfg-bottom-bar,
-.landing-footer-grid,
-hr,
-.hairline-divider {
-  border-color: rgba(255, 255, 255, 0.08) !important;
-}
-
-/* 9. Primary CTA (Pill Button with Aqua-to-Magenta Aurora Gradient & Dark Ink Text #04110f) */
-.btn-hero-primary,
-.btn-plan-select,
-.btn-gtcfx-cta,
-.btn-clean-navy,
-.btn-satoshi-login {
+/* 7. Sign In Primary CTA Button (Pill Button with Aqua-to-Magenta Aurora Gradient & Dark Ink Text #04110f) */
+.auth-overlay.signin-active .btn-satoshi-login,
+.auth-overlay.signin-active #loginMainSubmitBtn,
+.auth-overlay.signin-active #loginMobileSubmitBtn {
   background: linear-gradient(100deg, #2dd4bf 0%, #34d3c4 50%, #e879f9 140%) !important;
   color: #04110f !important;
   font-family: 'Space Grotesk', sans-serif !important;
   font-weight: 700 !important;
   font-size: 14.5px !important;
-  letter-spacing: 0.01em !important;
   border: none !important;
   border-radius: 9999px !important;
   box-shadow: 0 12px 40px -12px rgba(45, 212, 191, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
@@ -15392,28 +15344,22 @@ hr,
   cursor: pointer !important;
 }
 
-.btn-hero-primary:hover,
-.btn-plan-select:hover,
-.btn-gtcfx-cta:hover,
-.btn-clean-navy:hover,
-.btn-satoshi-login:hover {
+.auth-overlay.signin-active .btn-satoshi-login:hover,
+.auth-overlay.signin-active #loginMainSubmitBtn:hover,
+.auth-overlay.signin-active #loginMobileSubmitBtn:hover {
   transform: translateY(-2px) !important;
   box-shadow: 0 16px 48px -10px rgba(45, 212, 191, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.6) !important;
   filter: brightness(1.05) !important;
 }
 
-.btn-hero-primary:active,
-.btn-plan-select:active,
-.btn-gtcfx-cta:active,
-.btn-clean-navy:active,
-.btn-satoshi-login:active {
+.auth-overlay.signin-active .btn-satoshi-login:active,
+.auth-overlay.signin-active #loginMainSubmitBtn:active,
+.auth-overlay.signin-active #loginMobileSubmitBtn:active {
   transform: scale(0.98) !important;
 }
 
-/* 10. Secondary CTA (Glass Pill with 1px Hairline & Soft Hover Glow) */
-.btn-hero-secondary,
-.btn-clean-white,
-.btn-satoshi-google {
+/* 8. Sign In Secondary CTA & Social Buttons */
+.auth-overlay.signin-active .btn-satoshi-google {
   background: rgba(255, 255, 255, 0.05) !important;
   backdrop-filter: blur(16px) !important;
   -webkit-backdrop-filter: blur(16px) !important;
@@ -15424,26 +15370,18 @@ hr,
   font-weight: 600 !important;
   font-size: 14px !important;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
-  transition: all 0.2s ease !important;
 }
 
-.btn-hero-secondary:hover,
-.btn-clean-white:hover,
-.btn-satoshi-google:hover {
+.auth-overlay.signin-active .btn-satoshi-google:hover {
   background: rgba(255, 255, 255, 0.10) !important;
   border-color: rgba(45, 212, 191, 0.4) !important;
   color: #5eead4 !important;
   transform: translateY(-2px) !important;
 }
 
-/* 11. Eyebrow Tags & Badges (Aqua-Tinted Pills with #5eead4 text) */
-.landing-hero-badge,
-.landing-section-badge,
-.cmp-badge-pill,
-.org-cert-badge-pulse,
-.lfg-status-pill,
-.asl-live-status-pill,
-.landing-brand-badge {
+/* 9. Sign In Eyebrow Badges & Pulse Dots */
+.auth-overlay.signin-active .asl-live-status-pill,
+.auth-overlay.signin-active .satoshi-security-badge {
   background: rgba(45, 212, 191, 0.10) !important;
   border: 1px solid rgba(45, 212, 191, 0.28) !important;
   color: #5eead4 !important;
@@ -15452,78 +15390,17 @@ hr,
   font-weight: 600 !important;
   font-size: 12px !important;
   letter-spacing: 0.05em !important;
-  padding: 6px 14px !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 6px !important;
 }
 
-.pulse-dot {
-  width: 8px !important;
-  height: 8px !important;
-  border-radius: 50% !important;
-  background: #2dd4bf !important;
-  box-shadow: 0 0 12px #2dd4bf !important;
+.auth-overlay.signin-active .satoshi-input {
+  color: #e7ecf2 !important;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.12) !important;
 }
 
-/* 12. Top Navigation Bar Frosted Glass */
-.landing-header {
-  background: rgba(11, 15, 20, 0.75) !important;
-  backdrop-filter: blur(28px) saturate(160%) !important;
-  -webkit-backdrop-filter: blur(28px) saturate(160%) !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+.auth-overlay.signin-active .satoshi-underline {
+  background: linear-gradient(100deg, #2dd4bf 0%, #e879f9 100%) !important;
 }
 
-.landing-nav-link {
-  color: #94a3b8 !important;
-  font-family: 'Inter', sans-serif !important;
-  font-weight: 500 !important;
-  font-size: 14px !important;
-  transition: color 0.2s ease !important;
-}
-
-.landing-nav-link:hover {
-  color: #2dd4bf !important;
-}
-
-.btn-landing-corner-login {
-  background: linear-gradient(100deg, #2dd4bf 0%, #e879f9 140%) !important;
-  color: #04110f !important;
-  font-family: 'Space Grotesk', sans-serif !important;
-  font-weight: 700 !important;
-  border: none !important;
-  border-radius: 9999px !important;
-  box-shadow: 0 4px 20px rgba(45, 212, 191, 0.4) !important;
-  transition: all 0.2s ease !important;
-}
-
-.btn-landing-corner-login:hover {
-  transform: translateY(-1px) !important;
-  box-shadow: 0 6px 24px rgba(45, 212, 191, 0.6) !important;
-}
-
-/* 13. Live Trading Card & Highlights Glow */
-.lsc-price-row .profit-chip {
-  background: rgba(45, 212, 191, 0.15) !important;
-  border: 1px solid rgba(45, 212, 191, 0.3) !important;
-  color: #2dd4bf !important;
-  border-radius: 9999px !important;
-  padding: 4px 10px !important;
-}
-
-.trade-profit {
-  color: #2dd4bf !important;
-  font-weight: 700 !important;
-}
-
-.trade-side.buy {
-  background: rgba(45, 212, 191, 0.2) !important;
-  color: #2dd4bf !important;
-  border-radius: 6px !important;
-}
-
-.trade-side.sell {
-  background: rgba(232, 121, 249, 0.2) !important;
-  color: #e879f9 !important;
-  border-radius: 6px !important;
+.auth-overlay.signin-active .satoshi-signup-link {
+  color: #5eead4 !important;
 }
