@@ -4943,12 +4943,15 @@ body.theme-dark .toast {
     linear-gradient(180deg, #d8ebfa 0%, #b8dcfa 50%, #edf5fd 100%);
   z-index: 9999;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease, background 0.35s ease;
-  overflow: hidden;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  touch-action: pan-y !important;
   padding: 0;
   box-sizing: border-box;
 }
@@ -6262,15 +6265,17 @@ body.theme-dark .signin-back-btn {
   display: flex !important;
   flex-direction: column !important;
   width: 100% !important;
-  height: 100% !important;
   min-height: 100dvh !important;
   min-height: calc(var(--vh, 1vh) * 100) !important;
+  height: auto !important;
   overflow-x: hidden !important;
   overflow-y: auto !important;
   -webkit-overflow-scrolling: touch !important;
-  overscroll-behavior-y: contain !important;
+  touch-action: pan-y !important;
+  overscroll-behavior-y: auto !important;
   position: relative !important;
   z-index: 10 !important;
+  flex: 1 0 auto !important;
 }
 
 .auth-overlay:not(.signin-active) .auth-screens-viewport,
@@ -6315,13 +6320,14 @@ body.theme-dark .signin-back-btn {
     display: flex !important;
     flex-direction: column !important;
     width: 100% !important;
-    height: 100% !important;
+    height: auto !important;
     min-height: 100dvh !important;
     min-height: calc(var(--vh, 1vh) * 100) !important;
     overflow-x: hidden !important;
     overflow-y: auto !important;
     -webkit-overflow-scrolling: touch !important;
     touch-action: pan-y !important;
+    overscroll-behavior-y: auto !important;
     box-sizing: border-box !important;
   }
 
