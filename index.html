@@ -6,10 +6,10 @@
   <meta name="theme-color" content="#f8fafc">
   <title>B-Bot App - Institutional MT5 Algorithmic Systems & Bot Marketplace</title>
   
-  <!-- Fonts & Icons (Headings: Space Grotesk, UI/Body: Inter, Logo: Impact/Raleway, Arabic: GE Flow/Cairo, Satoshi) -->
+  <!-- Fonts & Icons (Auth/Plume: Nunito, Headings: Space Grotesk, UI/Body: Inter, Logo: Impact/Raleway, Arabic: GE Flow/Cairo, Satoshi) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&family=Raleway:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700;800&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&family=Nunito:wght@400;600;700;800;900;1000&family=Raleway:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700;800&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet">
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
   
@@ -50,7 +50,7 @@
   <script src="https://accounts.google.com/gsi/client" async defer></script>
   <meta name="google-signin-client_id" content="193074652385-prup7faehlgodh890o06ehfaujblvvni.apps.googleusercontent.com">
   
-  <link rel="stylesheet" href="style.css?v=2289">
+  <link rel="stylesheet" href="style.css?v=2636">
 </head>
 <body class="theme-light">
   <!-- Google One-Tap Automatic Credentials Container -->
@@ -585,207 +585,383 @@
         <!-- ======================================================== -->
         <!-- 2. FULL AUTH & SIGN-IN VIEWPORT (Desktop Split & Mobile) -->
         <!-- ======================================================== -->
-        <div class="auth-screens-viewport" id="authScreensViewport">
+        <!-- ======================================================== -->
+        <!-- 2. FULL AUTH & SIGN-IN VIEWPORT (Warm Illustrated SaaS)   -->
+        <!-- ======================================================== -->
+        <div class="auth-screens-viewport plume-auth-viewport" id="authScreensViewport">
           
-          <!-- 💻 DUAL-COLUMN GEOMETRIC BRUTALIST & MINIMALIST AUTH (Satoshi Design System) -->
-          <div class="auth-split-container satoshi-auth-split-container" id="authSplitContainer">
+          <!-- 🌟 Floating Ghost Ambient Blobs -->
+          <div class="ghost-blob ghost-blob-1"></div>
+          <div class="ghost-blob ghost-blob-2"></div>
+          <div class="ghost-blob ghost-blob-3"></div>
+
+          <div class="plume-auth-page-container dotgrid">
             
-            <!-- LEFT / TOP: VISUAL BRANDING SECTION (#F3F4F6 with Whimsical Geometric Characters) -->
-            <div class="auth-split-left-area satoshi-visual-brand-area" id="authVisualBranding">
-              <div class="asl-brand-inner">
-                
-                <!-- Top Brand Return & Live Pill -->
-                <div class="asl-top-bar">
-                  <button type="button" class="btn-top-back-landing" onclick="window.botHubApp.showLandingPage()" title="Back to Home">
-                    <span class="material-symbols-rounded">arrow_back</span>
-                    <span>Home Stage</span>
+            <!-- 1. Sticky Frosted Nav -->
+            <header class="plume-sticky-nav">
+              <div class="plume-nav-inner max-w-6xl">
+                <!-- Left: Brand Lockup -->
+                <div class="plume-brand-lockup" onclick="window.botHubApp.showLandingPage()">
+                  <div class="plume-logo-tile">
+                    <span class="material-symbols-rounded">feather</span>
+                  </div>
+                  <span class="plume-wordmark">B-Magnet</span>
+                </div>
+
+                <!-- Center: Nav Links -->
+                <nav class="plume-nav-links">
+                  <a href="#plumeFeatures" class="plume-nav-item">Features</a>
+                  <a href="#plumeShowcase" class="plume-nav-item">Prompt library</a>
+                  <a href="#plumeShowcase" class="plume-nav-item">Showcase</a>
+                  <a href="#plumePricing" class="plume-nav-item">Pricing</a>
+                </nav>
+
+                <!-- Right: Nav Actions -->
+                <div class="plume-nav-actions">
+                  <button type="button" class="plume-nav-login-link" onclick="window.botHubApp.fillDemoCredentials()">Demo Auto-Fill</button>
+                  <button type="button" class="plume-btn-pill-dark" onclick="window.botHubApp.showLandingPage()">
+                    <span>Return to Site</span>
+                    <span class="material-symbols-rounded">arrow_forward</span>
                   </button>
+                </div>
+              </div>
+            </header>
 
-                  <div class="asl-live-status-pill">
-                    <span class="pulse-dot" style="background:#10b981;"></span>
-                    <span class="asl-badge-text">B-MAGNET PRO v0.8</span>
+            <!-- 2. Full-Bleed Sky-Gradient Hero (Two-Column Pitch + Two-Panel Sign-In Card) -->
+            <section class="plume-hero-section max-w-6xl">
+              
+              <!-- Left: Pitch Column -->
+              <div class="plume-hero-pitch">
+                <div class="plume-eyebrow-badge">
+                  <span class="material-symbols-rounded text-coral">sparkles</span>
+                  <span>Now with one-prompt trading algorithm generation</span>
+                </div>
+
+                <h1 class="plume-hero-title">
+                  Design what you're <span class="text-sky-500">imagining</span>, in plain <span class="plume-swoosh-wrap">words<svg class="plume-coral-swoosh" viewBox="0 0 160 20" fill="none"><path d="M4 14C45 4 115 2 156 12" stroke="#fb7185" stroke-width="4.5" stroke-linecap="round"/></svg></span>.
+                </h1>
+
+                <p class="plume-hero-subhead">
+                  A warm, intelligent design & trading partner that turns your workflow into shippable institutional-grade MT5 automation. Fast, intuitive, and delightful.
+                </p>
+
+                <!-- 3 Feature Check Ticks -->
+                <div class="plume-check-ticks-row">
+                  <div class="plume-tick-item">
+                    <span class="material-symbols-rounded text-sky-400">check_circle</span>
+                    <span>Free to start</span>
+                  </div>
+                  <div class="plume-tick-item">
+                    <span class="material-symbols-rounded text-sky-400">check_circle</span>
+                    <span>No card needed</span>
+                  </div>
+                  <div class="plume-tick-item">
+                    <span class="material-symbols-rounded text-sky-400">check_circle</span>
+                    <span>Export to MT5 code</span>
                   </div>
                 </div>
 
-                <!-- 🎭 WHIMSICAL ABSTRACT GEOMETRIC CHARACTER COMPOSITION -->
-                <div class="geom-character-stage">
-                  <div class="geom-character-canvas">
+                <!-- Social Proof Row -->
+                <div class="plume-social-proof-row">
+                  <div class="plume-avatar-stack">
+                    <div class="plume-avatar av-1">👨‍💻</div>
+                    <div class="plume-avatar av-2">👩‍💼</div>
+                    <div class="plume-avatar av-3">🧑‍🎨</div>
+                    <div class="plume-avatar av-plus">+9k</div>
+                  </div>
+                  <span class="plume-social-proof-text">Builders shipping UI & bot pipelines every week.</span>
+                </div>
+              </div>
+
+              <!-- Right: Signature Two-Panel Sign-In Card -->
+              <div class="plume-hero-card-wrapper">
+                <div class="plume-gradient-halo"></div>
+                
+                <div class="plume-sign-in-card" id="authSplitContainer">
+                  
+                  <!-- Left Illustration Aside (200px) -->
+                  <div class="plume-card-aside">
+                    <div class="plume-aside-top">
+                      <div class="plume-aside-logo-tile">
+                        <span class="material-symbols-rounded">feather</span>
+                      </div>
+                      <div class="plume-beta-pill">
+                        <span class="material-symbols-rounded">bolt</span>
+                        <span>beta</span>
+                      </div>
+                    </div>
+
+                    <!-- Decorative Horizon & Cloud Shapes -->
+                    <div class="plume-aside-graphic">
+                      <div class="plume-sun-circle"></div>
+                      <div class="plume-horizon-arc"></div>
+                      <div class="plume-cloud-pill"></div>
+                    </div>
+
+                    <div class="plume-aside-bottom">
+                      <h4>Build the front-end you've been imagining.</h4>
+                      <p>Idea to shippable UI, fast.</p>
+                    </div>
+                  </div>
+
+                  <!-- Right Form Panel -->
+                  <div class="plume-card-form-panel">
                     
-                    <!-- 1. Purple Rectangle Character (#8B5CF6, 128x160px, float 0s) -->
-                    <div class="geom-char geom-purple-rect" title="Algo Character">
-                      <div class="char-face">
-                        <div class="char-eyes">
-                          <span class="char-eye"><span class="char-pupil"></span></span>
-                          <span class="char-eye"><span class="char-pupil"></span></span>
-                        </div>
-                        <div class="char-cheeks">
-                          <span class="char-blush"></span>
-                          <span class="char-blush"></span>
-                        </div>
+                    <div class="plume-form-header">
+                      <div class="plume-form-title-row">
+                        <h2>Sign in</h2>
+                        <span class="plume-welcome-back">welcome back <span class="plume-smiley">◡̈</span></span>
                       </div>
+                      <p class="plume-create-account-sub">
+                        New here? <a href="#" class="plume-sky-link" onclick="event.preventDefault(); window.botHubApp.showToast('Select a plan to start your free account!'); window.botHubApp.showLandingPage();">Create an account</a>
+                      </p>
                     </div>
 
-                    <!-- 2. Black Rounded Rectangle Character (#111827, 144x176px, float 2s) -->
-                    <div class="geom-char geom-black-rect" title="Trader Character">
-                      <div class="char-face">
-                        <div class="char-eyes-happy">
-                          <span class="char-eye-arch"></span>
-                          <span class="char-eye-arch"></span>
+                    <div class="plume-auth-form-fields">
+                      
+                      <!-- Work Email Input -->
+                      <div class="plume-input-group">
+                        <label class="plume-label">Work email</label>
+                        <div class="plume-input-pill-wrap">
+                          <span class="material-symbols-rounded plume-leading-icon">mail</span>
+                          <input type="text" id="loginEmailInput" class="plume-pill-input" placeholder="you@studio.com" value="hanaan.trader@gmail.com" onkeydown="if(event.key==='Enter') window.botHubApp.handleCleanSignIn();">
                         </div>
-                        <div class="char-smile-curve"></div>
                       </div>
-                    </div>
 
-                    <!-- 3. Orange Semicircle Character (#F97316, 160x80px, float 4s) -->
-                    <div class="geom-char geom-orange-semi" title="Scout Character">
-                      <div class="char-face">
-                        <div class="char-eyes-blink">
-                          <span class="char-eye-dot"></span>
-                          <span class="char-eye-dot"></span>
+                      <!-- Password Input -->
+                      <div class="plume-input-group">
+                        <div class="plume-label-row">
+                          <label class="plume-label">Password</label>
+                          <a href="#" class="plume-forgot-link" onclick="event.preventDefault(); window.botHubApp.fillDemoCredentials();">Forgot? (PIN: 8492)</a>
+                        </div>
+                        <div class="plume-input-pill-wrap">
+                          <span class="material-symbols-rounded plume-leading-icon">lock</span>
+                          <input type="password" id="loginOtpInput" class="plume-pill-input" placeholder="••••••••" value="8492" onkeydown="if(event.key==='Enter') window.botHubApp.handleCleanSignIn();">
+                          <button type="button" class="plume-eye-btn" onclick="const p=document.getElementById('loginOtpInput'); p.type = p.type==='password'?'text':'password';" title="Toggle Password">
+                            <span class="material-symbols-rounded">visibility</span>
+                          </button>
                         </div>
                       </div>
-                    </div>
 
-                    <!-- 4. Yellow Organic Blob Character (#FACC15, 144x144px, float 1s) -->
-                    <div class="geom-char geom-yellow-blob" title="Magnet Character">
-                      <div class="char-face">
-                        <div class="char-eyes-wide">
-                          <span class="char-eye-round"><span class="char-pupil-sparkle"></span></span>
-                          <span class="char-eye-round"><span class="char-pupil-sparkle"></span></span>
-                        </div>
-                        <div class="char-open-smile"></div>
+                      <!-- Primary Submit Button -->
+                      <button type="button" class="plume-btn-gradient-submit" id="loginMainSubmitBtn" onclick="window.botHubApp.handleCleanSignIn();">
+                        <span>Continue</span>
+                        <span class="material-symbols-rounded btn-arrow">arrow_forward</span>
+                      </button>
+
+                      <!-- Or Divider -->
+                      <div class="plume-or-divider">
+                        <span>or</span>
                       </div>
+
+                      <!-- Social Login Buttons Grid -->
+                      <div class="plume-social-grid">
+                        <button type="button" class="plume-social-btn" id="btnGoogleLogin" onclick="window.botHubApp.handleGoogleLogin()">
+                          <svg class="google-svg-icon" viewBox="0 0 24 24" width="18" height="18">
+                            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                            <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"/>
+                            <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"/>
+                          </svg>
+                          <span>Google</span>
+                        </button>
+
+                        <button type="button" class="plume-social-btn" onclick="window.botHubApp.fillDemoCredentials(); window.botHubApp.handleCleanSignIn();">
+                          <span class="material-symbols-rounded text-sky-600">terminal</span>
+                          <span>GitHub</span>
+                        </button>
+                      </div>
+
                     </div>
 
                   </div>
+
                 </div>
 
-                <!-- Visual Section Footnote -->
-                <div class="asl-brand-footer">
-                  <p class="asl-brand-caption">
-                    Institutional MT5 Algorithmic Systems • Automated Precision Execution
-                  </p>
+                <!-- Floating Overlapping SOC 2 Chip -->
+                <div class="plume-soc-chip">
+                  <span class="material-symbols-rounded text-sky-500">verified_user</span>
+                  <span>SOC 2 secure / Your work stays yours</span>
                 </div>
+              </div>
 
+            </section>
+
+            <!-- 3. Logo Trust Strip -->
+            <div class="plume-trust-strip">
+              <div class="plume-trust-inner max-w-6xl">
+                <span class="plume-trust-label">LOVED BY TEAMS AT</span>
+                <div class="plume-logos-row">
+                  <div class="plume-logo-item"><span class="material-symbols-rounded">public</span> Orbit</div>
+                  <div class="plume-logo-item"><span class="material-symbols-rounded">deployed_code</span> Stackly</div>
+                  <div class="plume-logo-item"><span class="material-symbols-rounded">bolt</span> Boltline</div>
+                  <div class="plume-logo-item"><span class="material-symbols-rounded">eco</span> Fernly</div>
+                  <div class="plume-logo-item"><span class="material-symbols-rounded">diamond</span> Prism</div>
+                </div>
               </div>
             </div>
 
-            <!-- RIGHT / BOTTOM: HIGH-UTILITY MINIMALIST AUTHENTICATION FORM (#FFFFFF) -->
-            <div class="auth-split-right-login satoshi-form-column" id="authFormColumn">
-              <div class="asr-login-card satoshi-form-card">
-                
-                <!-- Top Utility Bar (Back to Home, Language & Dark Mode) -->
-                <div class="asr-card-top-bar">
-                  <button type="button" class="btn-top-back-landing mobile-show-back" onclick="window.botHubApp.showLandingPage()" title="Back to Home">
-                    <span class="material-symbols-rounded">arrow_back</span>
-                    <span>Home</span>
-                  </button>
+            <!-- 4. Three-Up Feature Grid -->
+            <section class="plume-features-section max-w-6xl" id="plumeFeatures">
+              <div class="plume-section-head">
+                <div class="plume-pill-tag">Why builders pick Plume</div>
+                <h2 class="plume-section-title">A design partner that actually keeps up.</h2>
+                <p class="plume-section-sub">Everything you need to go from idea to production-ready UI in minutes.</p>
+              </div>
 
-                  <div class="welcome-top-right-group">
-                    <div class="lang-globe-dropdown-wrapper">
-                      <button type="button" class="lang-globe-btn" onclick="window.botHubApp.toggleLanguageDropdown(event)" title="Select Language / اختر اللغة">
-                        <span class="material-symbols-rounded globe-icon">language</span>
-                      </button>
-                      <div class="lang-dropdown-menu">
-                        <div class="lang-option-item active" data-lang="en" onclick="window.botHubApp.selectAppLanguage('en')">
-                          <span class="flag-icon">🇺🇸</span>
-                          <span>English</span>
-                          <span class="material-symbols-rounded check-icon">check</span>
-                        </div>
-                        <div class="lang-option-item" data-lang="ar" onclick="window.botHubApp.selectAppLanguage('ar')">
-                          <span class="flag-icon">🇦🇪</span>
-                          <span>العربية</span>
-                          <span class="material-symbols-rounded check-icon">check</span>
-                        </div>
+              <div class="plume-features-grid-3">
+                <div class="plume-feat-card">
+                  <div class="plume-icon-tile sky-tile">
+                    <span class="material-symbols-rounded">auto_fix_high</span>
+                  </div>
+                  <h3>Prompt to mockup</h3>
+                  <p>Describe your components and screen flow in natural language. Watch full layouts render in real time.</p>
+                </div>
+
+                <div class="plume-feat-card">
+                  <div class="plume-icon-tile coral-tile">
+                    <span class="material-symbols-rounded">all_inclusive</span>
+                  </div>
+                  <h3>Infinite canvas</h3>
+                  <p>Pan, zoom, and orchestrate multiple screen flows together without hitting bounding-box limits.</p>
+                </div>
+
+                <div class="plume-feat-card">
+                  <div class="plume-icon-tile sky-tile">
+                    <span class="material-symbols-rounded">code</span>
+                  </div>
+                  <h3>Export to code</h3>
+                  <p>Clean HTML, Tailwind CSS, and React JSX ready to copy directly into your production repository.</p>
+                </div>
+              </div>
+            </section>
+
+            <!-- 5. Full-Bleed Gradient Showcase / Prompt-Library Band -->
+            <section class="plume-showcase-band" id="plumeShowcase">
+              <div class="plume-showcase-inner max-w-6xl">
+                
+                <div class="plume-showcase-left">
+                  <div class="plume-translucent-pill">Prompt library</div>
+                  <h2 class="plume-showcase-title">Start from something worth sharing.</h2>
+                  <p class="plume-showcase-sub">Browse hundreds of community-crafted prompts, templates, and pre-built design systems ready to remix.</p>
+                  <button type="button" class="plume-btn-white-pill" onclick="window.botHubApp.showLandingPage()">
+                    <span>Explore the library</span>
+                    <span class="material-symbols-rounded">north_east</span>
+                  </button>
+                </div>
+
+                <div class="plume-showcase-right">
+                  <div class="plume-prompt-mini-grid">
+                    <div class="plume-mini-card mini-1">
+                      <div class="pmc-icon"><span class="material-symbols-rounded">monitoring</span></div>
+                      <div class="pmc-info">
+                        <h4>Analytics dashboard</h4>
+                        <span>1,420 remixes</span>
                       </div>
                     </div>
+                    <div class="plume-mini-card mini-2">
+                      <div class="pmc-icon"><span class="material-symbols-rounded">sentiment_satisfied</span></div>
+                      <div class="pmc-info">
+                        <h4>Friendly login</h4>
+                        <span>2,850 remixes</span>
+                      </div>
+                    </div>
+                    <div class="plume-mini-card mini-3">
+                      <div class="pmc-icon"><span class="material-symbols-rounded">shopping_bag</span></div>
+                      <div class="pmc-info">
+                        <h4>Checkout flow</h4>
+                        <span>980 remixes</span>
+                      </div>
+                    </div>
+                    <div class="plume-mini-card mini-4">
+                      <div class="pmc-icon"><span class="material-symbols-rounded">chat</span></div>
+                      <div class="pmc-info">
+                        <h4>Onboarding chat</h4>
+                        <span>3,120 remixes</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
-                    <button type="button" class="theme-toggle-pill" onclick="window.botHubApp.toggleTheme()" title="Toggle Dark / Light Mode">
-                      <span class="material-symbols-rounded theme-icon">dark_mode</span>
+              </div>
+            </section>
+
+            <!-- 6. Centered Soft CTA Card -->
+            <section class="plume-cta-section max-w-6xl" id="plumePricing">
+              <div class="plume-cta-card">
+                <div class="plume-cta-icon-tile">
+                  <span class="material-symbols-rounded">feather</span>
+                </div>
+                <h2 class="plume-cta-title">Your next screen is one sentence away.</h2>
+                <p class="plume-cta-sub">Start free, no credit card required. Generate your first UI in under 30 seconds.</p>
+                <div class="plume-cta-buttons-row">
+                  <button type="button" class="plume-btn-cta-primary" onclick="window.botHubApp.fillDemoCredentials(); window.botHubApp.handleCleanSignIn();">Create your canvas</button>
+                  <button type="button" class="plume-btn-cta-secondary" onclick="window.botHubApp.showLandingPage()">See how it works</button>
+                </div>
+              </div>
+            </section>
+
+            <!-- 7. Full-Bleed Dark Footer -->
+            <footer class="plume-dark-footer">
+              <div class="plume-footer-inner max-w-6xl">
+                
+                <div class="plume-footer-col brand-col">
+                  <div class="plume-brand-lockup footer-brand">
+                    <div class="plume-logo-tile">
+                      <span class="material-symbols-rounded">feather</span>
+                    </div>
+                    <span class="plume-wordmark light">B-Magnet</span>
+                  </div>
+                  <p class="plume-footer-blurb">The warm, intelligent product design agent for modern software teams.</p>
+                  <div class="plume-social-icons-row">
+                    <a href="#" class="plume-social-icon-box" title="X / Twitter"><span class="material-symbols-rounded">tag</span></a>
+                    <a href="#" class="plume-social-icon-box" title="GitHub"><span class="material-symbols-rounded">code</span></a>
+                    <a href="#" class="plume-social-icon-box" title="Discord"><span class="material-symbols-rounded">forum</span></a>
+                  </div>
+                </div>
+
+                <div class="plume-footer-col">
+                  <h5>Product</h5>
+                  <a href="#plumeFeatures">Features</a>
+                  <a href="#plumeShowcase">Prompt Library</a>
+                  <a href="#plumeShowcase">Templates</a>
+                  <a href="#plumePricing">Pricing</a>
+                </div>
+
+                <div class="plume-footer-col">
+                  <h5>Company</h5>
+                  <a href="#heroSection" onclick="window.botHubApp.showLandingPage()">About Us</a>
+                  <a href="#companyProfileBox" onclick="window.botHubApp.showLandingPage()">Security</a>
+                  <a href="#gtcfxSection" onclick="window.botHubApp.showLandingPage()">Partners</a>
+                  <a href="#faqSection" onclick="window.botHubApp.showLandingPage()">Contact</a>
+                </div>
+
+                <div class="plume-footer-col">
+                  <h5>Stay in the loop</h5>
+                  <p class="plume-newsletter-desc">Get the latest design prompts and release notes every Thursday.</p>
+                  <div class="plume-newsletter-form">
+                    <input type="email" placeholder="you@studio.com" class="plume-newsletter-input">
+                    <button type="button" class="plume-newsletter-btn" onclick="window.botHubApp.showToast('Subscribed to newsletter!', 'success')">
+                      <span class="material-symbols-rounded">send</span>
                     </button>
                   </div>
                 </div>
 
-                <!-- Form Heading (36px Bold, Slate-500 Subtext) -->
-                <div class="satoshi-form-header">
-                  <h1 class="satoshi-heading">Welcome Back</h1>
-                  <p class="satoshi-subtext">Enter your credentials to access your trading bots & wallet</p>
-                </div>
-
-                <!-- Minimalist High-Utility Form -->
-                <div class="satoshi-form-body">
-                  
-                  <!-- Animated Underline Input 1: Account ID / Email -->
-                  <div class="satoshi-input-group">
-                    <label for="loginEmailInput" class="satoshi-label">ACCOUNT ID / USERNAME</label>
-                    <div class="satoshi-input-wrapper">
-                      <input type="text" id="loginEmailInput" class="satoshi-input" placeholder="e.g. hanaan.trader@gmail.com" value="hanaan.trader@gmail.com" autocomplete="username" onkeydown="if(event.key==='Enter') window.botHubApp.handleCleanSignIn();">
-                      <span class="satoshi-underline"></span>
-                    </div>
-                  </div>
-
-                  <!-- Animated Underline Input 2: Passcode PIN / Password -->
-                  <div class="satoshi-input-group">
-                    <label for="loginOtpInput" class="satoshi-label">PASSCODE PIN / PASSWORD</label>
-                    <div class="satoshi-input-wrapper">
-                      <input type="password" id="loginOtpInput" class="satoshi-input secure-auth-input" placeholder="Enter PIN (Demo: 8492)" value="8492" autocomplete="current-password" onkeydown="if(event.key==='Enter') window.botHubApp.handleCleanSignIn();">
-                      <span class="satoshi-underline"></span>
-                    </div>
-                  </div>
-
-                  <!-- Row: Custom Styled Checkbox & Forgot Password Link -->
-                  <div class="satoshi-options-row">
-                    <label class="satoshi-checkbox-label">
-                      <input type="checkbox" id="chkRememberMe" class="satoshi-checkbox-hidden" checked>
-                      <span class="satoshi-checkbox-custom">
-                        <svg class="satoshi-check-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                          <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>
-                      </span>
-                      <span class="satoshi-remember-text">Remember me</span>
-                    </label>
-
-                    <a href="#" class="satoshi-forgot-link" id="txtForgotPwd" onclick="event.preventDefault(); window.botHubApp.fillDemoCredentials();">Forgot passcode?</a>
-                  </div>
-
-                  <!-- Full-Width Black Login Button -->
-                  <button type="button" class="btn-satoshi-login" id="loginMainSubmitBtn" onclick="window.botHubApp.handleCleanSignIn();">
-                    <span id="txtSigninSubmitBtn">Sign In</span>
-                    <span class="material-symbols-rounded btn-arrow">arrow_forward</span>
-                  </button>
-
-                  <!-- Google OAuth Social Sign In Button -->
-                  <div class="satoshi-social-divider">
-                    <span>or continue with</span>
-                  </div>
-
-                  <button type="button" class="btn-satoshi-google" id="btnGoogleLogin" onclick="window.botHubApp.handleGoogleLogin()">
-                    <svg class="google-svg-icon" viewBox="0 0 24 24" width="18" height="18">
-                      <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-                      <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-                      <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"/>
-                      <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"/>
-                    </svg>
-                    <span id="txtGoogleSignIn">Sign In with Google</span>
-                  </button>
-
-                  <!-- Bottom Footer Navigation Row (Sign Up) -->
-                  <div class="satoshi-footer-action">
-                    <span class="satoshi-footer-text">Don't have an account?</span>
-                    <a href="#" class="satoshi-signup-link" onclick="event.preventDefault(); window.botHubApp.showToast('Please select a bot plan to register your account.'); window.botHubApp.showLandingPage();">Sign Up</a>
-                  </div>
-
-                  <div class="satoshi-security-badge">
-                    <span class="material-symbols-rounded">lock</span>
-                    <span>256-Bit Cryptographic SSL Protected</span>
-                  </div>
-
-                </div>
-
               </div>
-            </div>
+
+              <div class="plume-footer-bottom-bar max-w-6xl">
+                <span>© 2026 Plume Labs. Made with care, not em-dashes.</span>
+                <div class="plume-footer-legal-links">
+                  <a href="#">Privacy</a>
+                  <a href="#">Terms</a>
+                  <a href="#">Status</a>
+                </div>
+              </div>
+            </footer>
 
           </div>
+
+        </div>
 
           <!-- 📱 MOBILE PHONE AUTH VIEWPORT (< 768px) -->
           <div class="auth-mobile-slides-wrapper" id="authMobileSlidesWrapper">
@@ -2970,6 +3146,6 @@
 
   <!-- App Scripts -->
   <script src="qrcode.js"></script>
-  <script src="app.js?v=2289"></script>
+  <script src="app.js?v=2636"></script>
 </body>
 </html>
