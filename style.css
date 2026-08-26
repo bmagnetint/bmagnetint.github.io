@@ -15151,35 +15151,59 @@ body.theme-dark .satoshi-signup-link::after {
     margin: 0 !important;
   }
 
-  .satoshi-mobile-sheet {
+  .satoshi-mobile-sheet, .zodiak-mobile-sheet {
     flex: 1 !important;
     background: #FFFFFF !important;
     border-radius: 28px 28px 0 0 !important;
-    padding: 32px 20px 40px 20px !important;
+    padding: 28px 20px 40px 20px !important;
     box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.05) !important;
   }
 
-  body.theme-dark .satoshi-mobile-sheet {
-    background: #0B0F17 !important;
+  body.theme-dark .satoshi-mobile-sheet, body.theme-dark .zodiak-mobile-sheet {
+    background: #181c1f !important;
     box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.4) !important;
   }
 
+  .zodiak-mobile-title {
+    font-family: 'Zodiak', 'Playfair Display', Georgia, serif !important;
+    font-weight: 700 !important;
+    font-size: 24px !important;
+    color: #1a1a1a !important;
+    margin: 0 0 6px 0 !important;
+  }
+
+  body.theme-dark .zodiak-mobile-title {
+    color: #f4f4f5 !important;
+  }
+
+  .zodiak-mobile-sub {
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+    font-size: 13.5px !important;
+    color: #718096 !important;
+    margin: 0 !important;
+  }
+
+  body.theme-dark .zodiak-mobile-sub {
+    color: #a0aec0 !important;
+  }
+
   .mobile-form-body {
-    gap: 22px !important;
+    gap: 18px !important;
   }
 }
 
 /* ==========================================================================
-   WARM ILLUSTRATED SAAS MARKETING-PLUS-SIGN-IN PAGE (Plume Design System)
-   Palette: Cloud #f7fbff | Sky-400 #38bdf8 | Coral-500 #f43f5e | Ink #0f2030
-   Typography: Nunito (Weights 600-900) | Large Radii 2rem-2.75rem (rounded-4xl/5xl)
+   ZODIAK & PLUS JAKARTA SANS TEAL AUTH DESIGN SYSTEM
+   Palette: Primary Teal #2d9b88 | Dark Charcoal #1a1a1a | Light Gray #f4f4f5
+   Typography: Zodiak (Serif Headings 700 / 700i) & Plus Jakarta Sans (400-700)
+   Pattern-Grid (24px) | Shadow Glows (0 0 20px rgba(45,155,136,0.25)) | Floating Keyframes
    ========================================================================== */
 
-/* 1. Global Viewport & Background */
-.auth-screens-viewport.plume-auth-viewport {
-  background-color: #f7fbff !important;
-  color: #0f2030 !important;
-  font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+/* 1. Viewport & Canvas Background */
+.auth-screens-viewport.zodiak-teal-viewport {
+  background-color: #f4f4f5 !important;
+  color: #1a1a1a !important;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
   -webkit-font-smoothing: antialiased !important;
   text-rendering: optimizeLegibility !important;
   position: relative !important;
@@ -15188,966 +15212,354 @@ body.theme-dark .satoshi-signup-link::after {
   width: 100% !important;
 }
 
-/* 2. Subtle Sky Radial Dot-Grid Texture */
-.plume-auth-page-container.dotgrid {
-  background-image: radial-gradient(#38bdf8 1.5px, transparent 1.5px);
-  background-size: 22px 22px;
-  background-position: 0 0, 11px 11px;
-  position: relative;
-  z-index: 2;
-  min-height: 100vh;
+body.theme-dark .auth-screens-viewport.zodiak-teal-viewport {
+  background-color: #121517 !important;
+  color: #f4f4f5 !important;
 }
 
-/* 3. Floating Ambient Ghost Pastel Blobs */
-.ghost-blob {
+/* 2. Pattern-Grid Texture (1px radial-gradients spaced at 24px) */
+.zodiak-auth-page-container.pattern-grid {
+  background-image: radial-gradient(rgba(45, 155, 136, 0.22) 1.2px, transparent 1.2px) !important;
+  background-size: 24px 24px !important;
+  background-position: 0 0, 12px 12px !important;
+  position: relative !important;
+  z-index: 2 !important;
+  min-height: 100vh !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+}
+
+body.theme-dark .zodiak-auth-page-container.pattern-grid {
+  background-image: radial-gradient(rgba(45, 155, 136, 0.28) 1.2px, transparent 1.2px) !important;
+}
+
+/* 3. Floating Ambient Glow Orbs (translate(20px, -20px) over 10s-15s) */
+.zodiak-ambient-orb {
   position: absolute;
   border-radius: 9999px;
-  filter: blur(48px);
+  filter: blur(60px);
   pointer-events: none;
   z-index: 1;
-  opacity: 0.65;
+  opacity: 0.55;
+  will-change: transform;
 }
 
-.ghost-blob-1 {
+.zodiak-orb-1 {
   width: 480px;
   height: 480px;
-  background: radial-gradient(circle, #bae6fd 0%, transparent 70%);
-  top: 8%;
-  left: -100px;
-  animation: floatBlob1 8s ease-in-out infinite alternate;
+  background: radial-gradient(circle, rgba(45, 155, 136, 0.35) 0%, rgba(45, 155, 136, 0.1) 50%, transparent 70%);
+  top: 5%;
+  left: -80px;
+  animation: zodiakFloat1 12s ease-in-out infinite alternate;
 }
 
-.ghost-blob-2 {
+.zodiak-orb-2 {
   width: 520px;
   height: 520px;
-  background: radial-gradient(circle, #fda4af 0%, transparent 70%);
-  top: 22%;
-  right: -80px;
-  animation: floatBlob2 9s ease-in-out infinite alternate;
+  background: radial-gradient(circle, rgba(64, 184, 163, 0.30) 0%, rgba(45, 155, 136, 0.08) 50%, transparent 70%);
+  top: 30%;
+  right: -100px;
+  animation: zodiakFloat2 15s ease-in-out infinite alternate;
 }
 
-.ghost-blob-3 {
+.zodiak-orb-3 {
   width: 440px;
   height: 440px;
-  background: radial-gradient(circle, #7dd3fc 0%, transparent 70%);
-  bottom: 14%;
-  left: 25%;
-  animation: floatBlob3 7s ease-in-out infinite alternate;
+  background: radial-gradient(circle, rgba(45, 155, 136, 0.28) 0%, transparent 70%);
+  bottom: 10%;
+  left: 30%;
+  animation: zodiakFloat3 10s ease-in-out infinite alternate;
 }
 
-@keyframes floatBlob1 {
-  0% { transform: translateY(0) rotate(0deg); }
-  100% { transform: translateY(40px) rotate(8deg); }
+@keyframes zodiakFloat1 {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(20px, -20px); }
 }
 
-@keyframes floatBlob2 {
-  0% { transform: translateY(0) rotate(0deg); }
-  100% { transform: translateY(-45px) rotate(-6deg); }
+@keyframes zodiakFloat2 {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(-20px, 20px); }
 }
 
-@keyframes floatBlob3 {
-  0% { transform: translateY(0) scale(1); }
-  100% { transform: translateY(35px) scale(1.08); }
+@keyframes zodiakFloat3 {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(20px, -15px) scale(1.05); }
 }
 
-/* 4. Sticky Frosted Navigation */
-.plume-sticky-nav {
+/* 4. Top Utility Navigation */
+.zodiak-top-nav {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid #e0f2fe;
+  background: rgba(244, 244, 245, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(45, 155, 136, 0.15);
 }
 
-.plume-nav-inner {
-  max-width: 72rem;
+body.theme-dark .zodiak-top-nav {
+  background: rgba(18, 21, 23, 0.85);
+  border-bottom: 1px solid rgba(45, 155, 136, 0.2);
+}
+
+.zodiak-nav-inner {
+  max-width: 76rem;
   margin: 0 auto;
-  height: 68px;
+  height: 70px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 24px;
+  padding: 0 28px;
 }
 
-.plume-brand-lockup {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  cursor: pointer;
-}
-
-.plume-logo-tile {
-  width: 38px;
-  height: 38px;
-  border-radius: 14px;
-  background: linear-gradient(135deg, #38bdf8 0%, #fb7185 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #ffffff;
-  box-shadow: 0 6px 16px -4px rgba(56, 189, 248, 0.4);
-}
-
-.plume-logo-tile .material-symbols-rounded {
-  font-size: 20px;
-}
-
-.plume-wordmark {
-  font-family: 'Nunito', sans-serif;
-  font-weight: 900;
-  font-size: 21px;
-  color: #0f2030;
-  letter-spacing: -0.02em;
-}
-
-.plume-nav-links {
-  display: flex;
-  align-items: center;
-  gap: 28px;
-}
-
-.plume-nav-item {
-  font-family: 'Nunito', sans-serif;
-  font-weight: 700;
-  font-size: 15px;
-  color: #33485c;
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-.plume-nav-item:hover {
-  color: #0ea5e9;
-}
-
-.plume-nav-actions {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.plume-nav-login-link {
-  background: none;
-  border: none;
-  font-family: 'Nunito', sans-serif;
-  font-weight: 800;
-  font-size: 14.5px;
-  color: #0369a1;
-  cursor: pointer;
-  transition: color 0.2s ease;
-}
-
-.plume-nav-login-link:hover {
-  color: #0ea5e9;
-}
-
-.plume-btn-pill-dark {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: #0f2030;
-  color: #ffffff;
-  font-family: 'Nunito', sans-serif;
-  font-weight: 900;
-  font-size: 14px;
-  padding: 10px 20px;
-  border-radius: 9999px;
-  border: none;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.plume-btn-pill-dark:hover {
-  background: #0ea5e9;
-  transform: translateY(-2px);
-  box-shadow: 0 10px 25px -5px rgba(14, 165, 233, 0.4);
-}
-
-/* 5. Hero Section (Pitch + Sign-In Card) */
-.plume-hero-section {
-  max-width: 72rem;
-  margin: 40px auto 60px auto;
-  padding: 0 24px;
-  display: grid;
-  grid-template-columns: 1.05fr 1fr;
-  gap: 48px;
-  align-items: center;
-}
-
-.plume-eyebrow-badge {
+.btn-zodiak-back {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: #ffffff;
-  border: 1px solid #e0f2fe;
-  padding: 6px 14px;
-  border-radius: 9999px;
-  font-family: 'Nunito', sans-serif;
-  font-weight: 800;
-  font-size: 13px;
-  color: #0c4a6e;
-  box-shadow: 0 4px 12px rgba(15, 32, 48, 0.04);
-  margin-bottom: 20px;
-}
-
-.text-coral {
-  color: #f43f5e !important;
-  font-size: 16px !important;
-}
-
-.plume-hero-title {
-  font-family: 'Nunito', sans-serif !important;
-  font-weight: 900 !important;
-  font-size: 46px !important;
-  line-height: 1.15 !important;
-  color: #0f2030 !important;
-  letter-spacing: -0.03em !important;
-  margin: 0 0 18px 0 !important;
-}
-
-.text-sky-500 {
-  color: #0ea5e9 !important;
-}
-
-.plume-swoosh-wrap {
-  position: relative;
-  display: inline-block;
-}
-
-.plume-coral-swoosh {
-  position: absolute;
-  bottom: -8px;
-  left: 0;
-  width: 100%;
-  height: 18px;
-  pointer-events: none;
-}
-
-.plume-hero-subhead {
-  font-family: 'Nunito', sans-serif !important;
-  font-weight: 600 !important;
-  font-size: 17px !important;
-  line-height: 1.6 !important;
-  color: #5b7184 !important;
-  margin: 0 0 28px 0 !important;
-  max-width: 520px !important;
-}
-
-.plume-check-ticks-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  margin-bottom: 32px;
-}
-
-.plume-tick-item {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-family: 'Nunito', sans-serif;
-  font-weight: 800;
-  font-size: 14px;
-  color: #33485c;
-}
-
-.text-sky-400 {
-  color: #38bdf8 !important;
-  font-size: 18px !important;
-}
-
-.plume-social-proof-row {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-
-.plume-avatar-stack {
-  display: flex;
-  align-items: center;
-}
-
-.plume-avatar {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  border: 2px solid #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 15px;
-  margin-left: -8px;
-}
-
-.av-1 {
-  margin-left: 0;
-  background: #e0f2fe;
-}
-
-.av-2 {
-  background: #fda4af;
-}
-
-.av-3 {
-  background: #bae6fd;
-}
-
-.av-plus {
-  background: #0f2030;
-  color: #ffffff;
-  font-weight: 900;
-  font-size: 11px;
-}
-
-.plume-social-proof-text {
-  font-family: 'Nunito', sans-serif;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(45, 155, 136, 0.2);
+  color: #1a1a1a;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 700;
   font-size: 13.5px;
-  color: #5b7184;
+  padding: 8px 16px;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
-/* 6. Signature Two-Panel Sign-In Card */
-.plume-hero-card-wrapper {
-  position: relative;
+body.theme-dark .btn-zodiak-back {
+  background: rgba(26, 26, 26, 0.8);
+  border-color: rgba(45, 155, 136, 0.3);
+  color: #f4f4f5;
 }
 
-.plume-gradient-halo {
-  position: absolute;
-  inset: -12px;
-  border-radius: 48px;
-  background: linear-gradient(135deg, #bae6fd 0%, #fda4af 100%);
-  filter: blur(20px);
-  opacity: 0.7;
-  z-index: 1;
-  pointer-events: none;
+.btn-zodiak-back:hover {
+  transform: translateY(-2px);
+  border-color: #2d9b88;
+  color: #2d9b88;
+  box-shadow: 0 0 20px rgba(45, 155, 136, 0.25);
 }
 
-.plume-sign-in-card {
-  position: relative;
-  z-index: 2;
-  background: #ffffff;
-  border-radius: 44px;
-  box-shadow: 0 40px 90px -30px rgba(15, 32, 48, 0.30);
-  border: 1px solid #e0f2fe;
-  display: flex;
-  overflow: hidden;
-}
-
-/* Left Illustration Aside */
-.plume-card-aside {
-  width: 210px;
-  flex-shrink: 0;
-  background: linear-gradient(135deg, #0369a1 0%, #0284c7 45%, #e11d48 100%);
-  padding: 28px 22px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  position: relative;
-  overflow: hidden;
-  color: #ffffff;
-}
-
-.plume-aside-top {
+/* Center Pulsing Logo */
+.zodiak-brand-center {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  position: relative;
-  z-index: 2;
+  gap: 12px;
+  cursor: pointer;
 }
 
-.plume-aside-logo-tile {
-  width: 34px;
-  height: 34px;
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(8px);
+.zodiak-logo-icon-wrap {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: #1a1a1a;
+  padding: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #ffffff;
-  font-size: 18px;
+  box-shadow: 0 0 20px rgba(45, 155, 136, 0.25);
+  animation: zodiakLogoPulse 3s ease-in-out infinite alternate;
 }
 
-.plume-beta-pill {
+@keyframes zodiakLogoPulse {
+  0% {
+    box-shadow: 0 0 12px rgba(45, 155, 136, 0.2);
+    transform: scale(1);
+  }
+  100% {
+    box-shadow: 0 0 24px rgba(45, 155, 136, 0.5);
+    transform: scale(1.03);
+  }
+}
+
+.zodiak-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.zodiak-brand-text {
   display: flex;
-  align-items: center;
-  gap: 3px;
-  background: rgba(255, 255, 255, 0.2);
-  padding: 3px 8px;
-  border-radius: 9999px;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.zodiak-brand-title {
+  font-family: 'Zodiak', 'Playfair Display', Georgia, serif;
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: -0.02em;
+  color: #1a1a1a;
+}
+
+body.theme-dark .zodiak-brand-title {
+  color: #f4f4f5;
+}
+
+.zodiak-brand-tag {
+  background: rgba(45, 155, 136, 0.12);
+  border: 1px solid rgba(45, 155, 136, 0.3);
+  color: #2d9b88;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700;
   font-size: 11px;
-  font-weight: 800;
-  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 9999px;
   letter-spacing: 0.05em;
 }
 
-.plume-aside-graphic {
-  position: relative;
-  height: 100px;
-  margin: 20px 0;
-}
-
-.plume-sun-circle {
-  position: absolute;
-  right: 10px;
-  top: 0;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.15);
-}
-
-.plume-horizon-arc {
-  position: absolute;
-  bottom: 0;
-  left: -20px;
-  width: 140%;
-  height: 50px;
-  border-top: 2px dashed rgba(255, 255, 255, 0.25);
-  border-radius: 50% 50% 0 0;
-}
-
-.plume-cloud-pill {
-  position: absolute;
-  bottom: 20px;
-  left: 15px;
-  width: 50px;
-  height: 16px;
-  border-radius: 9999px;
-  background: rgba(255, 255, 255, 0.25);
-}
-
-.plume-aside-bottom h4 {
-  font-family: 'Nunito', sans-serif;
-  font-weight: 900;
-  font-size: 15px;
-  line-height: 1.35;
-  margin: 0 0 6px 0;
-  color: #ffffff;
-}
-
-.plume-aside-bottom p {
-  font-family: 'Nunito', sans-serif;
-  font-weight: 600;
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.85);
-  margin: 0;
-}
-
-/* Right Form Panel */
-.plume-card-form-panel {
-  flex: 1;
-  padding: 34px 30px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.plume-form-title-row {
-  display: flex;
-  align-items: baseline;
-  gap: 10px;
-  margin-bottom: 4px;
-}
-
-.plume-form-title-row h2 {
-  font-family: 'Nunito', sans-serif !important;
-  font-weight: 900 !important;
-  font-size: 26px !important;
-  color: #0f2030 !important;
-  margin: 0 !important;
-}
-
-.plume-welcome-back {
-  font-family: 'Nunito', sans-serif;
-  font-weight: 700;
-  font-size: 13px;
-  color: #5b7184;
-}
-
-.plume-smiley {
-  color: #fb7185;
-  font-size: 15px;
-  font-weight: 900;
-}
-
-.plume-create-account-sub {
-  font-family: 'Nunito', sans-serif;
-  font-weight: 700;
-  font-size: 13px;
-  color: #5b7184;
-  margin: 0 0 20px 0;
-}
-
-.plume-sky-link {
-  color: #0369a1;
-  text-decoration: none;
-  font-weight: 800;
-}
-
-.plume-sky-link:hover {
-  text-decoration: underline;
-}
-
-.plume-auth-form-fields {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.plume-input-group {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.plume-label-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.plume-label {
-  font-family: 'Nunito', sans-serif;
-  font-weight: 800;
-  font-size: 12.5px;
-  color: #0f2030;
-}
-
-.plume-forgot-link {
-  font-family: 'Nunito', sans-serif;
-  font-weight: 800;
-  font-size: 12px;
-  color: #0369a1;
-  text-decoration: none;
-}
-
-.plume-input-pill-wrap {
-  position: relative;
+.zodiak-nav-utilities {
   display: flex;
   align-items: center;
-}
-
-.plume-leading-icon {
-  position: absolute;
-  left: 14px;
-  font-size: 18px;
-  color: #0ea5e9;
-  pointer-events: none;
-}
-
-.plume-pill-input {
-  width: 100%;
-  height: 46px;
-  background: #f0f9ff;
-  border: 2px solid #e0f2fe;
-  border-radius: 16px;
-  padding: 0 40px 0 42px;
-  font-family: 'Nunito', sans-serif;
-  font-weight: 700;
-  font-size: 14px;
-  color: #0f2030;
-  outline: none;
-  transition: all 0.2s ease;
-}
-
-.plume-pill-input:focus {
-  border-color: #38bdf8;
-  background: #ffffff;
-  box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.18);
-}
-
-.plume-eye-btn {
-  position: absolute;
-  right: 12px;
-  background: none;
-  border: none;
-  color: #5b7184;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  padding: 4px;
-}
-
-.plume-btn-gradient-submit {
-  height: 48px;
-  border-radius: 16px;
-  background: linear-gradient(100deg, #0369a1 0%, #0284c7 45%, #e11d48 100%);
-  color: #ffffff;
-  font-family: 'Nunito', sans-serif;
-  font-weight: 900;
-  font-size: 15px;
-  border: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  cursor: pointer;
-  box-shadow: 0 20px 45px -15px rgba(56, 189, 248, 0.45);
-  transition: all 0.2s ease;
-}
-
-.plume-btn-gradient-submit:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 24px 60px -15px rgba(225, 29, 72, 0.4);
-  filter: brightness(1.05);
-}
-
-.plume-btn-gradient-submit:hover .btn-arrow {
-  transform: translateX(3px);
-}
-
-.btn-arrow {
-  transition: transform 0.2s ease;
-  font-size: 18px;
-}
-
-.plume-btn-gradient-submit:active {
-  transform: scale(0.98);
-}
-
-.plume-or-divider {
-  display: flex;
-  align-items: center;
-  text-align: center;
-  margin: 4px 0;
-}
-
-.plume-or-divider::before,
-.plume-or-divider::after {
-  content: '';
-  flex: 1;
-  border-bottom: 1px solid #e0f2fe;
-}
-
-.plume-or-divider span {
-  padding: 0 10px;
-  font-family: 'Nunito', sans-serif;
-  font-weight: 800;
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: #5b7184;
-}
-
-.plume-social-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
   gap: 12px;
 }
 
-.plume-social-btn {
-  height: 44px;
-  background: #ffffff;
-  border: 2px solid #e0f2fe;
-  border-radius: 14px;
+.zodiak-glass-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(45, 155, 136, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  font-family: 'Nunito', sans-serif;
-  font-weight: 800;
-  font-size: 13.5px;
-  color: #0f2030;
+  color: #1a1a1a;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
-.plume-social-btn:hover {
-  border-color: #38bdf8;
-  background: #f0f9ff;
-  transform: translateY(-1px);
+body.theme-dark .zodiak-glass-btn {
+  background: rgba(26, 26, 26, 0.8);
+  border-color: rgba(45, 155, 136, 0.3);
+  color: #f4f4f5;
 }
 
-/* Floating Overlapping SOC 2 Chip */
-.plume-soc-chip {
-  position: absolute;
-  bottom: -14px;
-  left: 24px;
-  z-index: 3;
-  background: #ffffff;
-  border: 1px solid #e0f2fe;
-  border-radius: 9999px;
-  padding: 6px 14px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-family: 'Nunito', sans-serif;
-  font-weight: 800;
-  font-size: 12px;
-  color: #0c4a6e;
-  box-shadow: 0 10px 25px -5px rgba(15, 32, 48, 0.12);
+.zodiak-glass-btn:hover {
+  transform: translateY(-2px);
+  border-color: #2d9b88;
+  box-shadow: 0 0 20px rgba(45, 155, 136, 0.25);
+  color: #2d9b88;
 }
 
-/* 7. Logo Trust Strip */
-.plume-trust-strip {
-  background: #ffffff;
-  border-top: 1px solid #e0f2fe;
-  border-bottom: 1px solid #e0f2fe;
-  padding: 24px 0;
-  margin-top: 50px;
-}
-
-.plume-trust-inner {
-  max-width: 72rem;
-  margin: 0 auto;
-  padding: 0 24px;
-  text-align: center;
-}
-
-.plume-trust-label {
-  font-family: 'Nunito', sans-serif;
-  font-weight: 900;
-  font-size: 12px;
-  letter-spacing: 0.12em;
-  color: #5b7184;
-  display: block;
-  margin-bottom: 14px;
-  opacity: 0.75;
-}
-
-.plume-logos-row {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 40px;
-}
-
-.plume-logo-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-family: 'Nunito', sans-serif;
-  font-weight: 900;
-  font-size: 18px;
-  color: #5b7184;
-  opacity: 0.7;
-  transition: opacity 0.2s ease;
-}
-
-.plume-logo-item:hover {
-  opacity: 1;
-  color: #0ea5e9;
-}
-
-/* 8. Three-Up Feature Grid */
-.plume-features-section {
-  max-width: 72rem;
-  margin: 70px auto;
-  padding: 0 24px;
-}
-
-.plume-section-head {
-  margin-bottom: 40px;
-}
-
-.plume-pill-tag {
-  display: inline-block;
-  background: #e0f2fe;
-  color: #0284c7;
-  padding: 4px 12px;
-  border-radius: 9999px;
-  font-family: 'Nunito', sans-serif;
-  font-weight: 800;
-  font-size: 12.5px;
-  margin-bottom: 12px;
-}
-
-.plume-section-title {
-  font-family: 'Nunito', sans-serif !important;
-  font-weight: 900 !important;
-  font-size: 34px !important;
-  color: #0f2030 !important;
-  letter-spacing: -0.025em !important;
-  margin: 0 0 10px 0 !important;
-}
-
-.plume-section-sub {
-  font-family: 'Nunito', sans-serif !important;
-  font-weight: 600 !important;
-  font-size: 16px !important;
-  color: #5b7184 !important;
-  margin: 0 !important;
-}
-
-.plume-features-grid-3 {
+/* 5. Main Split Container */
+.zodiak-auth-split-stage {
+  max-width: 76rem;
+  margin: 40px auto 60px auto;
+  padding: 0 28px;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 52px;
+  align-items: center;
 }
 
-.plume-feat-card {
-  background: #ffffff;
-  border-radius: 32px;
-  border: 1px solid #e0f2fe;
-  padding: 32px 26px;
-  box-shadow: 0 20px 40px -15px rgba(15, 32, 48, 0.08);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.plume-feat-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 30px 60px -20px rgba(14, 165, 233, 0.25);
-}
-
-.plume-icon-tile {
-  width: 56px;
-  height: 56px;
-  border-radius: 20px;
+/* Left Pitch Column */
+.zodiak-pitch-column {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 26px;
-  margin-bottom: 20px;
-  transition: all 0.25s ease;
+  flex-direction: column;
 }
 
-.sky-tile {
-  background: #f0f9ff;
-  color: #0ea5e9;
-}
-
-.coral-tile {
-  background: #fff1f2;
-  color: #f43f5e;
-}
-
-.plume-feat-card:hover .sky-tile {
-  background: #0ea5e9;
-  color: #ffffff;
-}
-
-.plume-feat-card:hover .coral-tile {
-  background: #f43f5e;
-  color: #ffffff;
-}
-
-.plume-feat-card h3 {
-  font-family: 'Nunito', sans-serif;
-  font-weight: 900;
-  font-size: 20px;
-  color: #0f2030;
-  margin: 0 0 10px 0;
-}
-
-.plume-feat-card p {
-  font-family: 'Nunito', sans-serif;
-  font-weight: 600;
-  font-size: 14.5px;
-  line-height: 1.6;
-  color: #5b7184;
-  margin: 0;
-}
-
-/* 9. Showcase / Prompt-Library Band */
-.plume-showcase-band {
-  background: linear-gradient(135deg, #0369a1 0%, #0284c7 45%, #e11d48 100%);
-  color: #ffffff;
-  padding: 80px 0;
-  position: relative;
-  overflow: hidden;
-}
-
-.plume-showcase-inner {
-  max-width: 72rem;
-  margin: 0 auto;
-  padding: 0 24px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 48px;
-  align-items: center;
-}
-
-.plume-translucent-pill {
-  display: inline-block;
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(8px);
-  padding: 5px 14px;
-  border-radius: 9999px;
-  font-family: 'Nunito', sans-serif;
-  font-weight: 800;
-  font-size: 13px;
-  margin-bottom: 16px;
-}
-
-.plume-showcase-title {
-  font-family: 'Nunito', sans-serif !important;
-  font-weight: 900 !important;
-  font-size: 38px !important;
-  line-height: 1.2 !important;
-  margin: 0 0 16px 0 !important;
-  letter-spacing: -0.025em !important;
-  color: #ffffff !important;
-}
-
-.plume-showcase-sub {
-  font-family: 'Nunito', sans-serif !important;
-  font-weight: 600 !important;
-  font-size: 16.5px !important;
-  line-height: 1.6 !important;
-  color: rgba(255, 255, 255, 0.9) !important;
-  margin: 0 0 28px 0 !important;
-}
-
-.plume-btn-white-pill {
+.zodiak-eyebrow-pill {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: #ffffff;
-  color: #0369a1;
-  font-family: 'Nunito', sans-serif;
-  font-weight: 900;
-  font-size: 15px;
-  padding: 12px 24px;
+  background: rgba(45, 155, 136, 0.1);
+  border: 1px solid rgba(45, 155, 136, 0.28);
+  padding: 6px 14px;
   border-radius: 9999px;
-  border: none;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: #2d9b88;
+  margin-bottom: 22px;
+  align-self: flex-start;
 }
 
-.plume-btn-white-pill:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 16px 35px rgba(0, 0, 0, 0.25);
+.zodiak-pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #2d9b88;
+  box-shadow: 0 0 10px #2d9b88;
 }
 
-.plume-prompt-mini-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
+.zodiak-main-heading {
+  font-family: 'Zodiak', 'Playfair Display', Georgia, serif !important;
+  font-weight: 700 !important;
+  font-size: 48px !important;
+  line-height: 1.16 !important;
+  color: #1a1a1a !important;
+  letter-spacing: -0.025em !important;
+  margin: 0 0 20px 0 !important;
 }
 
-.plume-mini-card {
-  background: #ffffff;
-  color: #0f2030;
-  border-radius: 24px;
-  padding: 20px 18px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+body.theme-dark .zodiak-main-heading {
+  color: #f4f4f5 !important;
+}
+
+.zodiak-main-heading em {
+  font-family: 'Zodiak', 'Playfair Display', Georgia, serif !important;
+  font-style: italic !important;
+  font-weight: 700 !important;
+  color: #2d9b88 !important;
+}
+
+.zodiak-main-subtext {
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 16.5px !important;
+  line-height: 1.65 !important;
+  color: #4a5568 !important;
+  margin: 0 0 34px 0 !important;
+  max-width: 540px !important;
+}
+
+body.theme-dark .zodiak-main-subtext {
+  color: #a0aec0 !important;
+}
+
+/* Features Grid */
+.zodiak-features-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 34px;
+}
+
+.zodiak-feat-chip {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(45, 155, 136, 0.15);
+  border-radius: 18px;
+  padding: 14px 18px;
   display: flex;
   align-items: center;
-  gap: 14px;
-  transition: transform 0.25s ease;
+  gap: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 0.25s ease;
 }
 
-.mini-1, .mini-3 {
-  transform: translateY(-8px);
+body.theme-dark .zodiak-feat-chip {
+  background: rgba(26, 26, 26, 0.7);
+  border-color: rgba(45, 155, 136, 0.22);
 }
 
-.mini-2, .mini-4 {
-  transform: translateY(8px);
+.zodiak-feat-chip:hover {
+  transform: translateY(-2px);
+  border-color: rgba(45, 155, 136, 0.4);
+  box-shadow: 0 0 20px rgba(45, 155, 136, 0.2);
 }
 
-.plume-mini-card:hover {
-  transform: translateY(0) scale(1.03);
-}
-
-.pmc-icon {
-  width: 44px;
-  height: 44px;
-  border-radius: 14px;
-  background: #f0f9ff;
-  color: #0ea5e9;
+.zfc-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: rgba(45, 155, 136, 0.12);
+  color: #2d9b88;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -16155,343 +15567,494 @@ body.theme-dark .satoshi-signup-link::after {
   flex-shrink: 0;
 }
 
-.pmc-info h4 {
-  font-family: 'Nunito', sans-serif;
-  font-weight: 900;
-  font-size: 15px;
-  margin: 0 0 2px 0;
-  color: #0f2030;
-}
-
-.pmc-info span {
-  font-family: 'Nunito', sans-serif;
-  font-weight: 700;
-  font-size: 12px;
-  color: #5b7184;
-}
-
-/* 10. Centered Soft CTA Card */
-.plume-cta-section {
-  max-width: 58rem;
-  margin: 80px auto;
-  padding: 0 24px;
-}
-
-.plume-cta-card {
-  background: #ffffff;
-  border-radius: 44px;
-  border: 1px solid #e0f2fe;
-  box-shadow: 0 40px 90px -30px rgba(15, 32, 48, 0.30);
-  padding: 50px 30px;
-  text-align: center;
+.zfc-text {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  gap: 2px;
 }
 
-.plume-cta-icon-tile {
-  width: 58px;
-  height: 58px;
-  border-radius: 18px;
-  background: linear-gradient(135deg, #38bdf8 0%, #fb7185 100%);
-  color: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 28px;
-  margin-bottom: 20px;
-  box-shadow: 0 10px 25px -5px rgba(56, 189, 248, 0.4);
-}
-
-.plume-cta-title {
-  font-family: 'Nunito', sans-serif !important;
-  font-weight: 900 !important;
-  font-size: 34px !important;
-  color: #0f2030 !important;
-  margin: 0 0 10px 0 !important;
-  letter-spacing: -0.025em !important;
-}
-
-.plume-cta-sub {
-  font-family: 'Nunito', sans-serif !important;
-  font-weight: 600 !important;
-  font-size: 16px !important;
-  color: #5b7184 !important;
-  margin: 0 0 28px 0 !important;
-  max-width: 500px !important;
-}
-
-.plume-cta-buttons-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-  justify-content: center;
-}
-
-.plume-btn-cta-primary {
-  background: linear-gradient(100deg, #0369a1 0%, #0284c7 45%, #e11d48 100%);
-  color: #ffffff;
-  font-family: 'Nunito', sans-serif;
-  font-weight: 900;
-  font-size: 15px;
-  padding: 14px 28px;
-  border-radius: 9999px;
-  border: none;
-  cursor: pointer;
-  box-shadow: 0 20px 45px -15px rgba(56, 189, 248, 0.45);
-  transition: all 0.2s ease;
-}
-
-.plume-btn-cta-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 24px 60px -15px rgba(225, 29, 72, 0.4);
-}
-
-.plume-btn-cta-secondary {
-  background: #ffffff;
-  color: #0f2030;
-  border: 2px solid #e0f2fe;
-  font-family: 'Nunito', sans-serif;
-  font-weight: 800;
-  font-size: 15px;
-  padding: 12px 26px;
-  border-radius: 9999px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.plume-btn-cta-secondary:hover {
-  border-color: #38bdf8;
-  background: #f0f9ff;
-  transform: translateY(-2px);
-}
-
-/* 11. Dark Footer */
-.plume-dark-footer {
-  background: #0f2030;
-  color: #f0f9ff;
-  padding: 60px 0 30px 0;
-}
-
-.plume-footer-inner {
-  max-width: 72rem;
-  margin: 0 auto;
-  padding: 0 24px;
-  display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr 1.5fr;
-  gap: 40px;
-  margin-bottom: 40px;
-}
-
-.plume-wordmark.light {
-  color: #ffffff;
-}
-
-.plume-footer-blurb {
-  font-family: 'Nunito', sans-serif;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 1.6;
-  color: #bae6fd;
-  margin: 14px 0 20px 0;
-  max-width: 260px;
-}
-
-.plume-social-icons-row {
-  display: flex;
-  gap: 10px;
-}
-
-.plume-social-icon-box {
-  width: 36px;
-  height: 36px;
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.08);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #f0f9ff;
-  text-decoration: none;
-  font-size: 16px;
-  transition: all 0.2s ease;
-}
-
-.plume-social-icon-box:hover {
-  background: #38bdf8;
-  color: #0f2030;
-  transform: translateY(-2px);
-}
-
-.plume-footer-col h5 {
-  font-family: 'Nunito', sans-serif;
-  font-weight: 900;
-  font-size: 15px;
-  color: #ffffff;
-  margin: 0 0 16px 0;
-}
-
-.plume-footer-col a {
-  display: block;
-  font-family: 'Nunito', sans-serif;
+.zfc-text strong {
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 700;
-  font-size: 14px;
-  color: #bae6fd;
-  text-decoration: none;
-  margin-bottom: 10px;
-  transition: color 0.2s ease;
+  font-size: 14.5px;
+  color: #1a1a1a;
 }
 
-.plume-footer-col a:hover {
-  color: #38bdf8;
+body.theme-dark .zfc-text strong {
+  color: #f4f4f5;
 }
 
-.plume-newsletter-desc {
-  font-family: 'Nunito', sans-serif;
-  font-weight: 600;
-  font-size: 13.5px;
-  color: #bae6fd;
-  margin: 0 0 12px 0;
-}
-
-.plume-newsletter-form {
-  display: flex;
-  gap: 8px;
-}
-
-.plume-newsletter-input {
-  flex: 1;
-  height: 42px;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 12px;
-  padding: 0 14px;
-  color: #ffffff;
-  font-family: 'Nunito', sans-serif;
-  font-weight: 700;
+.zfc-text span {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 500;
   font-size: 13px;
-  outline: none;
+  color: #718096;
 }
 
-.plume-newsletter-btn {
-  width: 42px;
-  height: 42px;
-  background: #38bdf8;
-  color: #0f2030;
-  border: none;
-  border-radius: 12px;
+body.theme-dark .zfc-text span {
+  color: #a0aec0;
+}
+
+.zodiak-pitch-footer {
+  margin-top: 10px;
+}
+
+.zodiak-cert-shield {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+  font-size: 12.5px;
+  color: #2d9b88;
+}
+
+/* 6. Right Column: Glassmorphism Auth Card */
+.zodiak-form-column {
+  position: relative;
+}
+
+.zodiak-glass-card {
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(45, 155, 136, 0.2);
+  border-radius: 28px;
+  box-shadow: 0 24px 60px -15px rgba(0, 0, 0, 0.08), 0 0 20px rgba(45, 155, 136, 0.12);
+  padding: 38px 34px;
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+body.theme-dark .zodiak-glass-card {
+  background: rgba(24, 28, 31, 0.88);
+  border-color: rgba(45, 155, 136, 0.28);
+  box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.6), 0 0 20px rgba(45, 155, 136, 0.15);
+}
+
+.zodiak-card-header {
+  margin-bottom: 24px;
+}
+
+.zodiak-card-title {
+  font-family: 'Zodiak', 'Playfair Display', Georgia, serif !important;
+  font-weight: 700 !important;
+  font-size: 28px !important;
+  color: #1a1a1a !important;
+  margin: 0 0 6px 0 !important;
+  letter-spacing: -0.02em !important;
+}
+
+body.theme-dark .zodiak-card-title {
+  color: #f4f4f5 !important;
+}
+
+.zodiak-card-sub {
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+  color: #718096 !important;
+  margin: 0 !important;
+}
+
+body.theme-dark .zodiak-card-sub {
+  color: #a0aec0 !important;
+}
+
+/* 🌟 PROMINENT GOOGLE AUTH ONLY */
+.zodiak-google-auth-area {
+  margin-bottom: 20px;
+}
+
+.btn-zodiak-google-primary {
+  width: 100%;
+  height: 52px;
+  border-radius: 16px;
+  background: #ffffff;
+  border: 1.5px solid rgba(45, 155, 136, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 12px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  color: #1a1a1a;
   cursor: pointer;
-  transition: all 0.2s ease;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.plume-newsletter-btn:hover {
-  background: #7dd3fc;
-  transform: translateY(-1px);
+body.theme-dark .btn-zodiak-google-primary {
+  background: #1a1a1a;
+  border-color: rgba(45, 155, 136, 0.35);
+  color: #f4f4f5;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
 }
 
-.plume-footer-bottom-bar {
-  max-width: 72rem;
-  margin: 0 auto;
-  padding: 24px 24px 0 24px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+.btn-zodiak-google-primary:hover {
+  transform: translateY(-4px);
+  border-color: #2d9b88;
+  box-shadow: 0 0 20px rgba(45, 155, 136, 0.35), 0 12px 28px rgba(0, 0, 0, 0.08);
+}
+
+.btn-zodiak-google-primary:active {
+  transform: scale(0.95);
+}
+
+/* Divider */
+.zodiak-divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 18px 0;
+}
+
+.zodiak-divider::before,
+.zodiak-divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid rgba(45, 155, 136, 0.15);
+}
+
+body.theme-dark .zodiak-divider::before,
+body.theme-dark .zodiak-divider::after {
+  border-color: rgba(45, 155, 136, 0.2);
+}
+
+.zodiak-divider span {
+  padding: 0 12px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+  font-size: 11.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #718096;
+}
+
+body.theme-dark .zodiak-divider span {
+  color: #a0aec0;
+}
+
+/* Form Inputs */
+.zodiak-form-body {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.zodiak-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.zodiak-label-split {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-family: 'Nunito', sans-serif;
-  font-weight: 600;
-  font-size: 13px;
-  color: #7dd3fc;
 }
 
-.plume-footer-legal-links {
+.zodiak-label {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: #1a1a1a;
+}
+
+body.theme-dark .zodiak-label {
+  color: #f4f4f5;
+}
+
+.zodiak-forgot-link {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  color: #2d9b88;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.zodiak-forgot-link:hover {
+  text-decoration: underline;
+  color: #40b8a3;
+}
+
+.zodiak-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.zodiak-input-icon {
+  position: absolute;
+  left: 14px;
+  font-size: 19px;
+  color: #2d9b88;
+  pointer-events: none;
+}
+
+.zodiak-input {
+  width: 100%;
+  height: 48px;
+  background: rgba(244, 244, 245, 0.7);
+  border: 1.5px solid rgba(45, 155, 136, 0.2);
+  border-radius: 14px;
+  padding: 0 42px 0 44px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: #1a1a1a;
+  outline: none;
+  transition: all 0.25s ease;
+}
+
+body.theme-dark .zodiak-input {
+  background: rgba(18, 21, 23, 0.7);
+  border-color: rgba(45, 155, 136, 0.25);
+  color: #f4f4f5;
+}
+
+.zodiak-input:focus {
+  border-color: #2d9b88;
+  background: #ffffff;
+  box-shadow: 0 0 20px rgba(45, 155, 136, 0.25);
+}
+
+body.theme-dark .zodiak-input:focus {
+  background: #1a1a1a;
+  box-shadow: 0 0 20px rgba(45, 155, 136, 0.35);
+}
+
+.zodiak-eye-btn {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  color: #718096;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 4px;
+}
+
+/* Checkbox */
+.zodiak-options-row {
+  display: flex;
+  align-items: center;
+}
+
+.zodiak-checkbox-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  cursor: pointer;
+}
+
+.zodiak-checkbox-hidden {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.zodiak-checkbox-custom {
+  width: 18px;
+  height: 18px;
+  border-radius: 6px;
+  border: 1.5px solid rgba(45, 155, 136, 0.4);
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.zodiak-checkbox-custom .check-icon {
+  font-size: 14px;
+  color: #ffffff;
+  opacity: 0;
+  transform: scale(0.6);
+  transition: all 0.2s ease;
+}
+
+.zodiak-checkbox-hidden:checked + .zodiak-checkbox-custom {
+  background: #2d9b88;
+  border-color: #2d9b88;
+  box-shadow: 0 0 10px rgba(45, 155, 136, 0.3);
+}
+
+.zodiak-checkbox-hidden:checked + .zodiak-checkbox-custom .check-icon {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.zodiak-remember-text {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+  color: #4a5568;
+}
+
+body.theme-dark .zodiak-remember-text {
+  color: #a0aec0;
+}
+
+/* Primary Teal Submit Button */
+.btn-zodiak-primary-submit {
+  height: 52px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #2d9b88 0%, #237a6b 100%);
+  color: #ffffff;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.01em;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  box-shadow: 0 14px 34px -10px rgba(45, 155, 136, 0.5);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-zodiak-primary-submit:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 20px rgba(45, 155, 136, 0.4), 0 18px 40px -10px rgba(45, 155, 136, 0.65);
+  filter: brightness(1.06);
+}
+
+.btn-zodiak-primary-submit:active {
+  transform: scale(0.95);
+}
+
+.btn-zodiak-primary-submit:hover .btn-arrow {
+  transform: translateX(4px);
+}
+
+.btn-arrow {
+  transition: transform 0.2s ease;
+  font-size: 18px;
+}
+
+/* Footer Link */
+.zodiak-footer-action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+  font-size: 13.5px;
+  margin-top: 4px;
+}
+
+.zodiak-footer-text {
+  color: #718096;
+}
+
+body.theme-dark .zodiak-footer-text {
+  color: #a0aec0;
+}
+
+.zodiak-signup-link {
+  color: #2d9b88;
+  text-decoration: none;
+  font-weight: 700;
+  transition: color 0.2s ease;
+}
+
+.zodiak-signup-link:hover {
+  text-decoration: underline;
+  color: #40b8a3;
+}
+
+/* 7. Bottom Page Disclaimer */
+.zodiak-page-footer {
+  border-top: 1px solid rgba(45, 155, 136, 0.15);
+  padding: 24px 28px;
+  background: rgba(244, 244, 245, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+body.theme-dark .zodiak-page-footer {
+  background: rgba(18, 21, 23, 0.7);
+  border-color: rgba(45, 155, 136, 0.2);
+}
+
+.zodiak-footer-content {
+  max-width: 76rem;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+  color: #718096;
+}
+
+body.theme-dark .zodiak-footer-content {
+  color: #a0aec0;
+}
+
+.zodiak-legal-links {
   display: flex;
   gap: 20px;
 }
 
-.plume-footer-legal-links a {
-  color: #7dd3fc;
+.zodiak-legal-links a {
+  color: #2d9b88;
   text-decoration: none;
+  font-weight: 600;
 }
 
-.plume-footer-legal-links a:hover {
-  color: #ffffff;
+.zodiak-legal-links a:hover {
+  text-decoration: underline;
 }
 
-/* 12. Responsive Breakpoints */
+/* 8. Mobile Responsiveness */
 @media (max-width: 900px) {
-  .plume-hero-section {
+  .zodiak-auth-split-stage {
     grid-template-columns: 1fr;
     gap: 40px;
-    text-align: center;
   }
 
-  .plume-hero-pitch {
-    display: flex;
-    flex-direction: column;
+  .zodiak-pitch-column {
+    text-align: center;
     align-items: center;
   }
 
-  .plume-check-ticks-row {
-    justify-content: center;
+  .zodiak-eyebrow-pill {
+    align-self: center;
   }
 
-  .plume-social-proof-row {
-    justify-content: center;
+  .zodiak-main-heading {
+    font-size: 38px !important;
   }
 
-  .plume-features-grid-3 {
-    grid-template-columns: 1fr;
-  }
-
-  .plume-showcase-inner {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-
-  .plume-footer-inner {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .plume-nav-links {
-    display: none;
+  .zodiak-features-grid {
+    width: 100%;
+    max-width: 480px;
   }
 }
 
 @media (max-width: 640px) {
-  .plume-sign-in-card {
-    flex-direction: column;
-  }
-
-  .plume-card-aside {
-    width: 100%;
-    padding: 24px 20px;
-  }
-
-  .plume-card-form-panel {
+  .zodiak-glass-card {
     padding: 28px 20px;
+    border-radius: 22px;
   }
 
-  .plume-hero-title {
-    font-size: 34px !important;
+  .zodiak-main-heading {
+    font-size: 32px !important;
   }
 
-  .plume-prompt-mini-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .mini-1, .mini-2, .mini-3, .mini-4 {
-    transform: none;
-  }
-
-  .plume-footer-inner {
-    grid-template-columns: 1fr;
-  }
-
-  .plume-footer-bottom-bar {
+  .zodiak-footer-content {
     flex-direction: column;
     gap: 12px;
     text-align: center;
   }
 }
+

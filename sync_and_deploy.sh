@@ -43,8 +43,11 @@ if os.path.exists(HASH_CACHE_FILE):
         last_hashes = {}
 
 if current_hashes != last_hashes:
-    with open(HASH_CACHE_FILE, "w") as fp:
-        json.dump(current_hashes, fp, indent=2)
+    try:
+        with open(HASH_CACHE_FILE, "w") as fp:
+            json.dump(current_hashes, fp, indent=2)
+    except Exception:
+        pass
     print("YES")
 else:
     print("NO")
@@ -59,12 +62,12 @@ echo "🚀 [$(date '+%Y-%m-%d %H:%M:%S')] New changes detected in B-Bot App! Syn
 
 # 2. Copy updated files
 if [ -d "$SOURCE_DIR/public" ]; then
-  cp -rf "$SOURCE_DIR/public/"* "$DEST_DIR/"
+  cp -R "$SOURCE_DIR/public/"* "$DEST_DIR/" 2>/dev/null || true
 fi
 
 if [ -d "$SOURCE_DIR/data" ]; then
   mkdir -p "$DEST_DIR/data"
-  cp -rf "$SOURCE_DIR/data/"* "$DEST_DIR/data/"
+  cp -R "$SOURCE_DIR/data/"* "$DEST_DIR/data/" 2>/dev/null || true
 fi
 
 # 3. Inject static fallback in app.js if not already present
