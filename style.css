@@ -6283,14 +6283,19 @@ body.theme-dark .signin-back-btn {
 
 .auth-overlay.signin-active .auth-screens-viewport {
   display: flex !important;
-  width: 100% !important;
-  height: 100% !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
   min-height: 100dvh !important;
   min-height: calc(var(--vh, 1vh) * 100) !important;
   overflow-y: auto !important;
   -webkit-overflow-scrolling: touch !important;
-  position: relative !important;
-  z-index: 20 !important;
+  z-index: 10000 !important;
+  background: inherit !important;
 }
 
 /* Universal Mobile Phone & Tablet (< 768px & Automatic Mobile Device Detection) */

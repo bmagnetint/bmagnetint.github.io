@@ -778,18 +778,24 @@ class BotHubApp {
 
   showSignInScreen() {
     document.body.classList.remove('logged-in');
-    // DEFAULT TO LIGHT THEME MATCHING WHOLE SITE (TURNS TO DARK ONLY BY TOGGLE BUTTON)
     if (!localStorage.getItem('b_bot_theme')) {
       this.applyTheme('light');
     }
 
     const overlay = document.getElementById('authScreenOverlay');
+    const desktopLanding = document.getElementById('desktopCompanyLanding');
+    
+    if (desktopLanding) {
+      desktopLanding.style.display = 'none';
+    }
+
     if (overlay) {
+      overlay.scrollTop = 0;
+      window.scrollTo(0, 0);
       overlay.classList.add('active');
       overlay.classList.remove('landing-active');
       overlay.classList.remove('welcome-active');
       overlay.classList.add('signin-active');
-      overlay.scrollTop = 0;
     }
     const welcome = document.getElementById('authWelcomeScreen');
     const signin = document.getElementById('authSignInScreen');
@@ -1293,7 +1299,15 @@ class BotHubApp {
   showLandingPage() {
     document.body.classList.remove('logged-in');
     const overlay = document.getElementById('authScreenOverlay');
+    const desktopLanding = document.getElementById('desktopCompanyLanding');
+    
+    if (desktopLanding) {
+      desktopLanding.style.display = '';
+    }
+
     if (overlay) {
+      overlay.scrollTop = 0;
+      window.scrollTo(0, 0);
       overlay.classList.add('active');
       overlay.classList.remove('signin-active');
       overlay.classList.remove('welcome-active');
