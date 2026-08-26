@@ -45,9 +45,10 @@
   --color-danger: #e11d48;
   --color-danger-bg: rgba(225, 29, 72, 0.12);
   --color-warning: #d97706;
-  --font-sans: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-logo: 'Outfit', 'Plus Jakarta Sans', -apple-system, sans-serif;
-  --font-heading: 'Sora', sans-serif;
+  --font-logo: 'Impact', 'Raleway', sans-serif;
+  --font-heading: 'Raleway', 'Impact', sans-serif;
+  --font-arabic: 'GE Flow', 'Cairo', sans-serif;
+  --font-sans: 'Raleway', 'GE Flow', 'Cairo', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 
   --radius-sm: 10px;
@@ -13204,9 +13205,15 @@ p,
 }
 
 body {
-  font-family: 'Manrope', -apple-system, sans-serif !important;
+  font-family: 'Raleway', 'GE Flow', 'Cairo', -apple-system, sans-serif !important;
   background-color: #FFFFFF !important;
   color: #111827 !important;
+}
+
+[lang="ar"],
+.lang-ar,
+body[dir="rtl"] {
+  font-family: 'GE Flow', 'Cairo', sans-serif !important;
 }
 
 body.theme-dark {
@@ -13214,7 +13221,7 @@ body.theme-dark {
   color: #F9FAFB !important;
 }
 
-/* 2. Elegant Executive FinTech Typography Hierarchy (Sora & Space Grotesk) */
+/* 2. Impact & Raleway Typography Hierarchy */
 h1, h2, h3, h4, h5, h6,
 .landing-hero-title,
 .landing-section-title,
@@ -13222,12 +13229,12 @@ h1, h2, h3, h4, h5, h6,
 .cmp-profile-title,
 .welcome-title,
 .signin-title {
-  font-family: 'Sora', 'Space Grotesk', sans-serif !important;
-  font-weight: 700 !important;
-  letter-spacing: -0.02em !important;
+  font-family: 'Raleway', 'Impact', sans-serif !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.01em !important;
 }
 
-/* 3. Header Bar (Flat Solid Color Block) */
+/* 3. Header Bar & Brand Logo Title (Impact Default) */
 .landing-header {
   background: #FFFFFF !important;
   border-bottom: 2px solid #E5E7EB !important;
@@ -13242,10 +13249,10 @@ body.theme-dark .landing-header {
 }
 
 .landing-brand-title {
-  font-family: var(--font-logo) !important;
+  font-family: 'Impact', 'Raleway', sans-serif !important;
   color: #111827 !important;
-  font-weight: 800 !important;
-  letter-spacing: -0.5px !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.5px !important;
 }
 
 body.theme-dark .landing-brand-title {
@@ -13335,7 +13342,7 @@ body.theme-dark .btn-clean-white:hover {
 
 /* 1. Canvas Background matching Gold Emblem Logo Concept */
 body {
-  font-family: 'Manrope', -apple-system, sans-serif !important;
+  font-family: 'Raleway', 'GE Flow', 'Cairo', -apple-system, sans-serif !important;
   background: #fafbfd !important;
   color: #0f172a !important;
 }
