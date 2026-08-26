@@ -10,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Raleway:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet">
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
   
   <!-- Android PWA, iOS Safari & Play Store Manifest -->
@@ -49,7 +50,7 @@
   <script src="https://accounts.google.com/gsi/client" async defer></script>
   <meta name="google-signin-client_id" content="193074652385-prup7faehlgodh890o06ehfaujblvvni.apps.googleusercontent.com">
   
-  <link rel="stylesheet" href="style.css?v=0146">
+  <link rel="stylesheet" href="style.css?v=1068">
 </head>
 <body class="theme-light">
   <!-- Google One-Tap Automatic Credentials Container -->
@@ -578,138 +579,97 @@
         <!-- ======================================================== -->
         <div class="auth-screens-viewport" id="authScreensViewport">
           
-          <!-- 💻 DESKTOP MONITOR SPLIT-SCREEN LAYOUT -->
-          <div class="auth-split-container" id="authSplitContainer">
+          <!-- 💻 DUAL-COLUMN GEOMETRIC BRUTALIST & MINIMALIST AUTH (Satoshi Design System) -->
+          <div class="auth-split-container satoshi-auth-split-container" id="authSplitContainer">
             
-            <!-- LEFT WIDE AREA: BOT DETAILS & AI PICS -->
-            <div class="auth-split-left-area">
-              <div class="asl-inner">
+            <!-- LEFT / TOP: VISUAL BRANDING SECTION (#F3F4F6 with Whimsical Geometric Characters) -->
+            <div class="auth-split-left-area satoshi-visual-brand-area" id="authVisualBranding">
+              <div class="asl-brand-inner">
                 
-                <!-- Top Brand Bar & Return to Home Button -->
+                <!-- Top Brand Return & Live Pill -->
                 <div class="asl-top-bar">
                   <button type="button" class="btn-top-back-landing" onclick="window.botHubApp.showLandingPage()" title="Back to Home">
-                    <span class="material-symbols-rounded">home</span>
-                    <span>Home</span>
+                    <span class="material-symbols-rounded">arrow_back</span>
+                    <span>Home Stage</span>
                   </button>
 
                   <div class="asl-live-status-pill">
                     <span class="pulse-dot" style="background:#10b981;"></span>
-                    <span class="asl-badge-text">B-MAGNET GOLD HUNTER EA v0.8 • MT5 ACTIVE</span>
+                    <span class="asl-badge-text">B-MAGNET PRO v0.8</span>
                   </div>
                 </div>
 
-                <!-- Centered Maximum Size Logo (Above Content, No Extra Texts, No Crop) -->
-                <div class="asl-center-logo-hero">
-                  <img src="images/b-magnet-logo.png" alt="B-Magnet - Perfect business solutions" class="asl-main-hero-logo">
-                </div>
-
-                <!-- Bot Headline & Description -->
-                <div class="asl-hero-block">
-                  <h2 class="asl-hero-title">Next-Gen AI Algorithmic Gold Trading</h2>
-                  <p class="asl-hero-desc">
-                    Institutional quantitative algorithm engineered for MetaTrader 5 (MT5). Powered by multi-timeframe liquidity confluence, neural order-flow scanning, and automated risk protection on Gold (XAUUSD).
-                  </p>
-                </div>
-
-                <!-- 🤖 AI PICTURES & VISUAL SHOWCASE CARD -->
-                <div class="asl-ai-showcase-card">
-                  <div class="asl-ai-img-wrapper">
-                    <img src="images/ai-trading-bot-visual.jpg" alt="AI Algorithmic Trading Bot Engine" class="asl-ai-main-img" id="aslAiMainImg">
-                    <div class="asl-ai-img-overlay"></div>
+                <!-- 🎭 WHIMSICAL ABSTRACT GEOMETRIC CHARACTER COMPOSITION -->
+                <div class="geom-character-stage">
+                  <div class="geom-character-canvas">
                     
-                    <!-- Floating Live AI HUD Chips on Image -->
-                    <div class="asl-floating-chip chip-top-left">
-                      <span class="material-symbols-rounded icon-teal">auto_graph</span>
-                      <div>
-                        <span class="afc-label">Win Rate</span>
-                        <span class="afc-val font-mono">89.4% Verified</span>
+                    <!-- 1. Purple Rectangle Character (#8B5CF6, 128x160px, float 0s) -->
+                    <div class="geom-char geom-purple-rect" title="Algo Character">
+                      <div class="char-face">
+                        <div class="char-eyes">
+                          <span class="char-eye"><span class="char-pupil"></span></span>
+                          <span class="char-eye"><span class="char-pupil"></span></span>
+                        </div>
+                        <div class="char-cheeks">
+                          <span class="char-blush"></span>
+                          <span class="char-blush"></span>
+                        </div>
                       </div>
                     </div>
 
-                    <div class="asl-floating-chip chip-top-right">
-                      <span class="material-symbols-rounded icon-gold">trending_up</span>
-                      <div>
-                        <span class="afc-label">Monthly ROI</span>
-                        <span class="afc-val font-mono">18% - 23%</span>
+                    <!-- 2. Black Rounded Rectangle Character (#111827, 144x176px, float 2s) -->
+                    <div class="geom-char geom-black-rect" title="Trader Character">
+                      <div class="char-face">
+                        <div class="char-eyes-happy">
+                          <span class="char-eye-arch"></span>
+                          <span class="char-eye-arch"></span>
+                        </div>
+                        <div class="char-smile-curve"></div>
                       </div>
                     </div>
 
-                    <div class="asl-floating-chip chip-bottom-left">
-                      <span class="material-symbols-rounded icon-blue">shield</span>
-                      <div>
-                        <span class="afc-label">Max Drawdown</span>
-                        <span class="afc-val font-mono">30.0% Guard</span>
+                    <!-- 3. Orange Semicircle Character (#F97316, 160x80px, float 4s) -->
+                    <div class="geom-char geom-orange-semi" title="Scout Character">
+                      <div class="char-face">
+                        <div class="char-eyes-blink">
+                          <span class="char-eye-dot"></span>
+                          <span class="char-eye-dot"></span>
+                        </div>
                       </div>
                     </div>
 
-                    <div class="asl-floating-chip chip-bottom-right">
-                      <span class="material-symbols-rounded icon-emerald">bolt</span>
-                      <div>
-                        <span class="afc-label">Execution Latency</span>
-                        <span class="afc-val font-mono">&lt; 15ms MT5</span>
+                    <!-- 4. Yellow Organic Blob Character (#FACC15, 144x144px, float 1s) -->
+                    <div class="geom-char geom-yellow-blob" title="Magnet Character">
+                      <div class="char-face">
+                        <div class="char-eyes-wide">
+                          <span class="char-eye-round"><span class="char-pupil-sparkle"></span></span>
+                          <span class="char-eye-round"><span class="char-pupil-sparkle"></span></span>
+                        </div>
+                        <div class="char-open-smile"></div>
                       </div>
                     </div>
-                  </div>
 
-                  <!-- AI Visual Gallery Switcher Tabs -->
-                  <div class="asl-gallery-switcher">
-                    <button type="button" class="asl-switch-btn active" id="aslSwitchBtn1" onclick="window.botHubApp.switchAiImage('images/ai-trading-bot-visual.jpg', this)">
-                      <span class="material-symbols-rounded">candlestick_chart</span>
-                      <span>AI Gold Engine Matrix</span>
-                    </button>
-                    <button type="button" class="asl-switch-btn" id="aslSwitchBtn2" onclick="window.botHubApp.switchAiImage('images/ai-bot-core-visual.jpg', this)">
-                      <span class="material-symbols-rounded">memory</span>
-                      <span>MT5 Quantum Neural Core</span>
-                    </button>
                   </div>
                 </div>
 
-                <!-- 4 Bot Pillar Highlight Cards -->
-                <div class="asl-features-grid">
-                  <div class="asl-feat-card">
-                    <div class="afc-icon-circle"><span class="material-symbols-rounded">waves</span></div>
-                    <div class="afc-info">
-                      <h5>Magnetic Order Flow</h5>
-                      <p>Detects institutional liquidity voids and sweep levels before high-probability bounces.</p>
-                    </div>
-                  </div>
-
-                  <div class="asl-feat-card">
-                    <div class="afc-icon-circle"><span class="material-symbols-rounded">sync</span></div>
-                    <div class="afc-info">
-                      <h5>M1-H1 Multi-Timeframe</h5>
-                      <p>Synchronizes high-speed scalping with macro trends to filter false breakouts.</p>
-                    </div>
-                  </div>
-
-                  <div class="asl-feat-card">
-                    <div class="afc-icon-circle"><span class="material-symbols-rounded">tune</span></div>
-                    <div class="afc-info">
-                      <h5>Dynamic Risk Sizing</h5>
-                      <p>Auto-calculates micro lots based on equity balance and market volatility.</p>
-                    </div>
-                  </div>
-
-                  <div class="asl-feat-card">
-                    <div class="afc-icon-circle"><span class="material-symbols-rounded">key</span></div>
-                    <div class="afc-info">
-                      <h5>Secret Salt Gate</h5>
-                      <p>Automated SHA-256 cryptographic license activation directly in MT5 parameters.</p>
-                    </div>
-                  </div>
+                <!-- Visual Section Footnote -->
+                <div class="asl-brand-footer">
+                  <p class="asl-brand-caption">
+                    Institutional MT5 Algorithmic Systems • Automated Precision Execution
+                  </p>
                 </div>
 
               </div>
             </div>
 
-            <!-- RIGHT SIDE: DEDICATED LOGIN TAB / CARD -->
-            <div class="auth-split-right-login">
-              <div class="asr-login-card">
+            <!-- RIGHT / BOTTOM: HIGH-UTILITY MINIMALIST AUTHENTICATION FORM (#FFFFFF) -->
+            <div class="auth-split-right-login satoshi-form-column" id="authFormColumn">
+              <div class="asr-login-card satoshi-form-card">
                 
-                <!-- Card Header with Home Button, Language & Theme Switch -->
+                <!-- Top Utility Bar (Back to Home, Language & Dark Mode) -->
                 <div class="asr-card-top-bar">
-                  <button type="button" class="btn-top-back-landing" onclick="window.botHubApp.showLandingPage()" title="Back to Home">
-                    <span class="material-symbols-rounded">home</span>
+                  <button type="button" class="btn-top-back-landing mobile-show-back" onclick="window.botHubApp.showLandingPage()" title="Back to Home">
+                    <span class="material-symbols-rounded">arrow_back</span>
                     <span>Home</span>
                   </button>
 
@@ -738,46 +698,80 @@
                   </div>
                 </div>
 
-                <!-- Logo & Sign In Titles -->
-                <div class="asr-login-header">
-                  <img src="images/b-magnet-emblem.png" alt="B-Magnet Emblem" class="asr-login-logo">
-                  <h3 class="asr-login-title">Sign In to Your Account</h3>
-                  <p class="asr-login-sub">Access your automated bot passes, MT5 whitelists & trading wallet</p>
+                <!-- Form Heading (36px Bold, Slate-500 Subtext) -->
+                <div class="satoshi-form-header">
+                  <h1 class="satoshi-heading">Welcome Back</h1>
+                  <p class="satoshi-subtext">Enter your credentials to access your trading bots & wallet</p>
                 </div>
 
-                <!-- Clean Sign In Form -->
-                <div class="signin-clean-form">
-                  <div class="signin-input-wrapper">
-                    <input type="text" id="loginEmailInput" class="signin-clean-input" placeholder="Account ID / Username" value="hanaan.trader@gmail.com" onkeydown="if(event.key==='Enter') window.botHubApp.handleCleanSignIn();">
+                <!-- Minimalist High-Utility Form -->
+                <div class="satoshi-form-body">
+                  
+                  <!-- Animated Underline Input 1: Account ID / Email -->
+                  <div class="satoshi-input-group">
+                    <label for="loginEmailInput" class="satoshi-label">ACCOUNT ID / USERNAME</label>
+                    <div class="satoshi-input-wrapper">
+                      <input type="text" id="loginEmailInput" class="satoshi-input" placeholder="e.g. hanaan.trader@gmail.com" value="hanaan.trader@gmail.com" autocomplete="username" onkeydown="if(event.key==='Enter') window.botHubApp.handleCleanSignIn();">
+                      <span class="satoshi-underline"></span>
+                    </div>
                   </div>
 
-                  <div class="signin-input-wrapper">
-                    <input type="text" id="loginOtpInput" class="signin-clean-input secure-auth-input" placeholder="Passcode PIN" value="8492" onkeydown="if(event.key==='Enter') window.botHubApp.handleCleanSignIn();">
+                  <!-- Animated Underline Input 2: Passcode PIN / Password -->
+                  <div class="satoshi-input-group">
+                    <label for="loginOtpInput" class="satoshi-label">PASSCODE PIN / PASSWORD</label>
+                    <div class="satoshi-input-wrapper">
+                      <input type="password" id="loginOtpInput" class="satoshi-input secure-auth-input" placeholder="Enter PIN (Demo: 8492)" value="8492" autocomplete="current-password" onkeydown="if(event.key==='Enter') window.botHubApp.handleCleanSignIn();">
+                      <span class="satoshi-underline"></span>
+                    </div>
                   </div>
 
-                  <button type="button" class="btn-clean-navy btn-signin-block" id="loginMainSubmitBtn" onclick="window.botHubApp.handleCleanSignIn();">
-                    <span id="txtSigninSubmitBtn">Sign In / Launch App</span>
+                  <!-- Row: Custom Styled Checkbox & Forgot Password Link -->
+                  <div class="satoshi-options-row">
+                    <label class="satoshi-checkbox-label">
+                      <input type="checkbox" id="chkRememberMe" class="satoshi-checkbox-hidden" checked>
+                      <span class="satoshi-checkbox-custom">
+                        <svg class="satoshi-check-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                      </span>
+                      <span class="satoshi-remember-text">Remember me</span>
+                    </label>
+
+                    <a href="#" class="satoshi-forgot-link" id="txtForgotPwd" onclick="event.preventDefault(); window.botHubApp.fillDemoCredentials();">Forgot passcode?</a>
+                  </div>
+
+                  <!-- Full-Width Black Login Button -->
+                  <button type="button" class="btn-satoshi-login" id="loginMainSubmitBtn" onclick="window.botHubApp.handleCleanSignIn();">
+                    <span id="txtSigninSubmitBtn">Sign In</span>
+                    <span class="material-symbols-rounded btn-arrow">arrow_forward</span>
                   </button>
 
-                  <div class="signin-forgot-row">
-                    <a href="#" class="signin-forgot-link" id="txtForgotPwd" onclick="event.preventDefault(); window.botHubApp.fillDemoCredentials();">Forgot passcode? (Demo PIN: 8492)</a>
+                  <!-- Google OAuth Social Sign In Button -->
+                  <div class="satoshi-social-divider">
+                    <span>or continue with</span>
                   </div>
 
-                  <div class="signin-social-row">
-                    <button type="button" class="signin-social-btn btn-google-single" id="btnGoogleLogin" onclick="window.botHubApp.handleGoogleLogin()">
-                      <svg class="google-svg-icon" viewBox="0 0 24 24" width="18" height="18">
-                        <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-                        <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-                        <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"/>
-                        <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"/>
-                      </svg>
-                      <span id="txtGoogleSignIn">Sign In with Google</span>
-                    </button>
+                  <button type="button" class="btn-satoshi-google" id="btnGoogleLogin" onclick="window.botHubApp.handleGoogleLogin()">
+                    <svg class="google-svg-icon" viewBox="0 0 24 24" width="18" height="18">
+                      <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                      <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                      <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"/>
+                      <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"/>
+                    </svg>
+                    <span id="txtGoogleSignIn">Sign In with Google</span>
+                  </button>
+
+                  <!-- Bottom Footer Navigation Row (Sign Up) -->
+                  <div class="satoshi-footer-action">
+                    <span class="satoshi-footer-text">Don't have an account?</span>
+                    <a href="#" class="satoshi-signup-link" onclick="event.preventDefault(); window.botHubApp.showToast('Please select a bot plan to register your account.'); window.botHubApp.showLandingPage();">Sign Up</a>
                   </div>
 
-                  <div class="signin-footer-row">
-                    <span class="asr-security-badge">🛡️ SHA-256 Encrypted License Server</span>
+                  <div class="satoshi-security-badge">
+                    <span class="material-symbols-rounded">lock</span>
+                    <span>256-Bit Cryptographic SSL Protected</span>
                   </div>
+
                 </div>
 
               </div>
@@ -873,64 +867,78 @@
               </div>
             </div>
 
-            <!-- SCREEN 2: SIGN IN SCREEN -->
+            <!-- SCREEN 2: SIGN IN SCREEN (Satoshi Minimalist & Geometric Mobile View) -->
             <div class="auth-screen-slide" id="authSignInScreen">
-              <div class="signin-screen-inner">
+              <div class="signin-screen-inner satoshi-mobile-auth-inner">
                 
-                <!-- Top Header (Clean EA Badge Card) -->
-                <div class="signin-top-hero">
-                  <div class="signin-bot-details-card">
-                    <div class="signin-bot-badge-row">
-                      <span class="bot-status-dot-live"></span>
-                      <span class="bot-badge-label font-mono">B-MAGNET GOLD HUNTER EA</span>
-                    </div>
-                    <h2 class="signin-bot-title" id="txtSigninBotTitle">Institutional MT5 Automated Trading</h2>
-                    <div class="signin-bot-tags-row">
-                      <span class="signin-bot-chip">✨ 89.4% Win Rate</span>
-                      <span class="signin-bot-chip">⚡ 24/5 Auto Gold</span>
-                      <span class="signin-bot-chip">🛡️ Low Drawdown</span>
-                    </div>
+                <!-- Top Header with Geometric Character Teaser -->
+                <div class="signin-top-hero satoshi-mobile-hero">
+                  <div class="mobile-geom-mini-stage">
+                    <div class="mini-char-purple"><div class="mini-char-eye"></div><div class="mini-char-eye"></div></div>
+                    <div class="mini-char-black"><div class="mini-char-smile"></div></div>
+                    <div class="mini-char-yellow"><div class="mini-char-eye"></div><div class="mini-char-eye"></div></div>
                   </div>
+                  <h2 class="satoshi-mobile-title">Welcome Back</h2>
+                  <p class="satoshi-mobile-sub">Sign in to manage your automated bot passes</p>
                 </div>
 
-                <!-- Bottom Curved Pure-White Sheet (Login Credentials Area) -->
-                <div class="signin-white-sheet">
-                  <div class="signin-clean-form">
+                <!-- Bottom Curved Pure-White Sheet (Satoshi Form Area) -->
+                <div class="signin-white-sheet satoshi-mobile-sheet">
+                  <div class="satoshi-form-body mobile-form-body">
 
-                    <div class="signin-input-wrapper">
-                      <input type="text" id="loginMobileEmailInput" class="signin-clean-input" placeholder="Account ID / Username" value="hanaan.trader@gmail.com" onkeydown="if(event.key==='Enter') window.botHubApp.handleCleanSignIn();">
+                    <!-- Mobile Input 1: Account ID / Email -->
+                    <div class="satoshi-input-group">
+                      <label for="loginMobileEmailInput" class="satoshi-label">ACCOUNT ID / USERNAME</label>
+                      <div class="satoshi-input-wrapper">
+                        <input type="text" id="loginMobileEmailInput" class="satoshi-input" placeholder="e.g. hanaan.trader@gmail.com" value="hanaan.trader@gmail.com" autocomplete="username" onkeydown="if(event.key==='Enter') window.botHubApp.handleCleanSignIn();">
+                        <span class="satoshi-underline"></span>
+                      </div>
                     </div>
 
-                    <div class="signin-input-wrapper">
-                      <input type="text" id="loginMobileOtpInput" class="signin-clean-input secure-auth-input" placeholder="Passcode PIN" value="8492" onkeydown="if(event.key==='Enter') window.botHubApp.handleCleanSignIn();">
+                    <!-- Mobile Input 2: Passcode PIN / Password -->
+                    <div class="satoshi-input-group">
+                      <label for="loginMobileOtpInput" class="satoshi-label">PASSCODE PIN / PASSWORD</label>
+                      <div class="satoshi-input-wrapper">
+                        <input type="password" id="loginMobileOtpInput" class="satoshi-input secure-auth-input" placeholder="Enter PIN (Demo: 8492)" value="8492" autocomplete="current-password" onkeydown="if(event.key==='Enter') window.botHubApp.handleCleanSignIn();">
+                        <span class="satoshi-underline"></span>
+                      </div>
                     </div>
 
-                    <button type="button" class="btn-clean-navy btn-signin-block" id="loginMobileSubmitBtn" onclick="window.botHubApp.handleCleanSignIn();">
+                    <!-- Mobile Checkbox & Forgot Password -->
+                    <div class="satoshi-options-row">
+                      <label class="satoshi-checkbox-label">
+                        <input type="checkbox" id="chkMobileRememberMe" class="satoshi-checkbox-hidden" checked>
+                        <span class="satoshi-checkbox-custom">
+                          <svg class="satoshi-check-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                          </svg>
+                        </span>
+                        <span class="satoshi-remember-text">Remember me</span>
+                      </label>
+
+                      <a href="#" class="satoshi-forgot-link" onclick="event.preventDefault(); window.botHubApp.fillDemoCredentials();">Forgot passcode?</a>
+                    </div>
+
+                    <!-- Mobile Black Login Button -->
+                    <button type="button" class="btn-satoshi-login" id="loginMobileSubmitBtn" onclick="window.botHubApp.handleCleanSignIn();">
                       <span>Sign In</span>
+                      <span class="material-symbols-rounded btn-arrow">arrow_forward</span>
                     </button>
 
-                    <div class="signin-forgot-row">
-                      <a href="#" class="signin-forgot-link" onclick="event.preventDefault(); window.botHubApp.fillDemoCredentials();">Forgot passcode? (Demo PIN: 8492)</a>
-                    </div>
+                    <!-- Google OAuth Social Button -->
+                    <button type="button" class="btn-satoshi-google" onclick="window.botHubApp.handleGoogleLogin()">
+                      <svg class="google-svg-icon" viewBox="0 0 24 24" width="18" height="18">
+                        <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                        <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                        <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"/>
+                        <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"/>
+                      </svg>
+                      <span>Sign In with Google</span>
+                    </button>
 
-                    <div class="signin-social-row">
-                      <button type="button" class="signin-social-btn btn-google-single" onclick="window.botHubApp.handleGoogleLogin()">
-                        <svg class="google-svg-icon" viewBox="0 0 24 24" width="18" height="18">
-                          <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-                          <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-                          <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"/>
-                          <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"/>
-                        </svg>
-                        <span>Sign In with Google</span>
-                      </button>
-                    </div>
-
-                    <!-- Home Button Aligned at Bottom Side of Login Panel -->
-                    <div class="signin-sheet-footer-row">
-                      <button type="button" class="signin-card-home-btn" onclick="window.botHubApp.showLandingPage()" title="Back to Home">
-                        <span class="material-symbols-rounded">home</span>
-                        <span>Back to Home</span>
-                      </button>
+                    <!-- Footer Return Home -->
+                    <div class="satoshi-footer-action">
+                      <a href="#" class="satoshi-signup-link" onclick="event.preventDefault(); window.botHubApp.showLandingPage();">← Return to Home Website</a>
                     </div>
 
                   </div>
@@ -2954,6 +2962,6 @@
 
   <!-- App Scripts -->
   <script src="qrcode.js"></script>
-  <script src="app.js?v=0146"></script>
+  <script src="app.js?v=1068"></script>
 </body>
 </html>

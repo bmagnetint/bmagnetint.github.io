@@ -14300,3 +14300,871 @@ body.theme-dark .lfg-small-tag {
     justify-content: center !important;
   }
 }
+
+/* ==========================================================================
+   SATOSHI GEOMETRIC BRUTALIST & MINIMALIST DUAL-COLUMN AUTH SYSTEM
+   ========================================================================== */
+
+/* 1. Global Satoshi Typography & Reset for Auth View */
+.satoshi-auth-split-container,
+.satoshi-form-wrapper,
+.satoshi-mobile-auth-inner {
+  font-family: 'Satoshi', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  color: #111827;
+  box-sizing: border-box;
+}
+
+body.theme-dark .satoshi-auth-split-container,
+body.theme-dark .satoshi-mobile-auth-inner {
+  color: #F8FAFC;
+}
+
+/* 2. Desktop 50/50 Dual-Column Container */
+@media (min-width: 769px) {
+  .auth-overlay.signin-active .satoshi-auth-split-container {
+    display: flex !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    height: 100vh !important;
+    min-height: 100dvh !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    gap: 0 !important;
+    background: #FFFFFF !important;
+    overflow: hidden !important;
+    position: relative !important;
+    z-index: 10005 !important;
+  }
+
+  body.theme-dark .auth-overlay.signin-active .satoshi-auth-split-container {
+    background: #0B0F17 !important;
+  }
+
+  /* Left 50%: Visual Branding & Characters */
+  .satoshi-visual-brand-area {
+    flex: 1 1 50% !important;
+    width: 50% !important;
+    height: 100vh !important;
+    background: #F3F4F6 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    padding: 36px 44px !important;
+    border-radius: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    position: relative !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+  }
+
+  body.theme-dark .satoshi-visual-brand-area {
+    background: #111827 !important;
+    border-right: 1px solid #1E293B !important;
+  }
+
+  /* Right 50%: Minimalist Form Column */
+  .satoshi-form-column {
+    flex: 1 1 50% !important;
+    width: 50% !important;
+    height: 100vh !important;
+    background: #FFFFFF !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 40px 48px !important;
+    border-radius: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    overflow-y: auto !important;
+    box-sizing: border-box !important;
+  }
+
+  body.theme-dark .satoshi-form-column {
+    background: #0B0F17 !important;
+  }
+}
+
+/* 3. Left Visual Brand Inner Elements */
+.asl-brand-inner {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+.asl-brand-footer {
+  text-align: center;
+  padding-top: 14px;
+}
+
+.asl-brand-caption {
+  font-family: 'Satoshi', sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  color: #94A3B8 !important;
+  letter-spacing: 0.02em !important;
+  margin: 0 !important;
+}
+
+/* 4. 🎭 WHIMSICAL ABSTRACT GEOMETRIC CHARACTERS COMPOSITION */
+.geom-character-stage {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  margin: 16px 0;
+}
+
+.geom-character-canvas {
+  position: relative;
+  width: 380px;
+  height: 380px;
+}
+
+/* Floating Keyframe Motion (6s organic float loop) */
+@keyframes floatChar {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(2deg);
+  }
+}
+
+.geom-char {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  animation: floatChar 6s ease-in-out infinite;
+  user-select: none;
+  cursor: grab;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.geom-char:hover {
+  filter: brightness(1.05);
+}
+
+.geom-char:active {
+  cursor: grabbing;
+  transform: scale(0.95) !important;
+}
+
+/* Character 1: Purple Rectangle (#8B5CF6, 128x160px, delay 0s) */
+.geom-purple-rect {
+  width: 128px;
+  height: 160px;
+  background: #8B5CF6;
+  border-radius: 28px;
+  top: 15px;
+  left: 20px;
+  z-index: 3;
+  animation-delay: 0s;
+  box-shadow: 0 20px 35px -8px rgba(139, 92, 246, 0.42), 0 8px 16px -4px rgba(0, 0, 0, 0.05);
+}
+
+.geom-purple-rect .char-face {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.geom-purple-rect .char-eyes {
+  display: flex;
+  gap: 20px;
+}
+
+.char-eye {
+  width: 18px;
+  height: 18px;
+  background: #FFFFFF;
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.char-pupil {
+  width: 8px;
+  height: 8px;
+  background: #111827;
+  border-radius: 50%;
+  transform: translate(2px, 0);
+  transition: transform 0.3s ease;
+}
+
+.char-cheeks {
+  display: flex;
+  gap: 40px;
+}
+
+.char-blush {
+  width: 10px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 99px;
+}
+
+/* Character 2: Black Rounded Rectangle (#111827, 144x176px, delay 2s) */
+.geom-black-rect {
+  width: 144px;
+  height: 176px;
+  background: #111827;
+  border-radius: 36px;
+  top: 40px;
+  right: 15px;
+  z-index: 2;
+  animation-delay: 2s;
+  box-shadow: 0 25px 45px -10px rgba(17, 24, 39, 0.5), 0 10px 20px -4px rgba(0, 0, 0, 0.08);
+}
+
+.geom-black-rect .char-face {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.char-eyes-happy {
+  display: flex;
+  gap: 24px;
+}
+
+.char-eye-arch {
+  width: 16px;
+  height: 8px;
+  border-top: 3.5px solid #FFFFFF;
+  border-radius: 16px 16px 0 0;
+}
+
+.char-smile-curve {
+  width: 24px;
+  height: 12px;
+  border-bottom: 3.5px solid #FFFFFF;
+  border-radius: 0 0 24px 24px;
+}
+
+/* Character 3: Orange Semicircle (#F97316, 160x80px, delay 4s) */
+.geom-orange-semi {
+  width: 160px;
+  height: 80px;
+  background: #F97316;
+  border-radius: 160px 160px 0 0;
+  bottom: 25px;
+  left: 15px;
+  z-index: 4;
+  animation-delay: 4s;
+  box-shadow: 0 20px 35px -8px rgba(249, 115, 22, 0.42);
+}
+
+.geom-orange-semi .char-face {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 14px;
+}
+
+.char-eyes-blink {
+  display: flex;
+  gap: 28px;
+}
+
+.char-eye-dot {
+  width: 10px;
+  height: 10px;
+  background: #FFFFFF;
+  border-radius: 50%;
+  animation: charBlink 4s infinite;
+}
+
+@keyframes charBlink {
+  0%, 90%, 100% { transform: scaleY(1); }
+  95% { transform: scaleY(0.1); }
+}
+
+/* Character 4: Yellow Organic Blob (#FACC15, 144x144px, delay 1s) */
+.geom-yellow-blob {
+  width: 144px;
+  height: 144px;
+  background: #FACC15;
+  border-radius: 46% 54% 68% 32% / 42% 48% 52% 58%;
+  bottom: 20px;
+  right: 25px;
+  z-index: 5;
+  animation-delay: 1s;
+  box-shadow: 0 20px 35px -8px rgba(250, 204, 21, 0.45);
+}
+
+.geom-yellow-blob .char-face {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.char-eyes-wide {
+  display: flex;
+  gap: 18px;
+}
+
+.char-eye-round {
+  width: 18px;
+  height: 18px;
+  background: #FFFFFF;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+}
+
+.char-pupil-sparkle {
+  width: 8px;
+  height: 8px;
+  background: #111827;
+  border-radius: 50%;
+}
+
+.char-open-smile {
+  width: 22px;
+  height: 11px;
+  background: #111827;
+  border-radius: 0 0 22px 22px;
+}
+
+/* 5. Right Form Column & Satoshi Form Card */
+.satoshi-form-card {
+  width: 100%;
+  max-width: 448px;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  display: flex;
+  flex-direction: column;
+}
+
+.satoshi-form-header {
+  margin-bottom: 32px;
+  text-align: left;
+}
+
+.satoshi-heading {
+  font-family: 'Satoshi', sans-serif !important;
+  font-size: 36px !important;
+  font-weight: 700 !important;
+  line-height: 1.15 !important;
+  letter-spacing: -0.03em !important;
+  color: #111827 !important;
+  margin: 0 0 8px 0 !important;
+}
+
+body.theme-dark .satoshi-heading {
+  color: #F8FAFC !important;
+}
+
+.satoshi-subtext {
+  font-family: 'Satoshi', sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 400 !important;
+  line-height: 1.5 !important;
+  color: #64748B !important;
+  margin: 0 !important;
+}
+
+body.theme-dark .satoshi-subtext {
+  color: #94A3B8 !important;
+}
+
+.satoshi-form-body {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  width: 100%;
+}
+
+/* 6. Animated Underline Input Group */
+.satoshi-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+  position: relative;
+}
+
+.satoshi-label {
+  font-family: 'Satoshi', sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.1em !important;
+  color: #475569 !important;
+}
+
+body.theme-dark .satoshi-label {
+  color: #94A3B8 !important;
+}
+
+.satoshi-input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.satoshi-input {
+  width: 100% !important;
+  border: none !important;
+  border-bottom: 2px solid #F1F5F9 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  padding: 12px 0 10px 0 !important;
+  font-family: 'Satoshi', sans-serif !important;
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  color: #111827 !important;
+  outline: none !important;
+  transition: border-color 0.2s ease !important;
+  box-sizing: border-box !important;
+}
+
+.satoshi-input::placeholder {
+  color: #94A3B8 !important;
+  font-weight: 400 !important;
+}
+
+body.theme-dark .satoshi-input {
+  border-bottom: 2px solid #1E293B !important;
+  color: #F8FAFC !important;
+}
+
+/* Animated 2px Black Underline that Expands from 0% to 100% on Focus */
+.satoshi-underline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  background: #000000;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+body.theme-dark .satoshi-underline {
+  background: #38BDF8;
+}
+
+.satoshi-input-wrapper:focus-within .satoshi-underline {
+  width: 100% !important;
+}
+
+/* 7. Custom Styled Checkbox & Forgot Password Row */
+.satoshi-options-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: -6px;
+}
+
+.satoshi-checkbox-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.satoshi-checkbox-hidden {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.satoshi-checkbox-custom {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #CBD5E1;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #FFFFFF;
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  flex-shrink: 0;
+}
+
+body.theme-dark .satoshi-checkbox-custom {
+  border-color: #475569;
+  background: #1E293B;
+}
+
+.satoshi-checkbox-hidden:checked + .satoshi-checkbox-custom {
+  background: #000000 !important;
+  border-color: #000000 !important;
+}
+
+body.theme-dark .satoshi-checkbox-hidden:checked + .satoshi-checkbox-custom {
+  background: #38BDF8 !important;
+  border-color: #38BDF8 !important;
+}
+
+.satoshi-check-svg {
+  width: 13px;
+  height: 13px;
+  stroke: #FFFFFF;
+  transform: scale(0);
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+body.theme-dark .satoshi-check-svg {
+  stroke: #0F172A;
+}
+
+.satoshi-checkbox-hidden:checked + .satoshi-checkbox-custom .satoshi-check-svg {
+  transform: scale(1);
+}
+
+.satoshi-remember-text {
+  font-family: 'Satoshi', sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  color: #334155 !important;
+}
+
+body.theme-dark .satoshi-remember-text {
+  color: #CBD5E1 !important;
+}
+
+.satoshi-forgot-link {
+  font-family: 'Satoshi', sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  color: #64748B !important;
+  text-decoration: none !important;
+  transition: color 0.2s ease !important;
+}
+
+.satoshi-forgot-link:hover {
+  color: #000000 !important;
+  text-decoration: underline !important;
+}
+
+body.theme-dark .satoshi-forgot-link:hover {
+  color: #38BDF8 !important;
+}
+
+/* 8. Full-Width Black Login Button with Active Feedback */
+.btn-satoshi-login {
+  width: 100% !important;
+  height: 52px !important;
+  background: #000000 !important;
+  color: #FFFFFF !important;
+  border: none !important;
+  border-radius: 12px !important;
+  font-family: 'Satoshi', sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.02em !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  cursor: pointer !important;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease !important;
+  box-shadow: 0 10px 24px -6px rgba(0, 0, 0, 0.3) !important;
+}
+
+.btn-satoshi-login:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 14px 28px -6px rgba(0, 0, 0, 0.4) !important;
+}
+
+.btn-satoshi-login:active {
+  transform: scale(0.98) !important;
+  box-shadow: 0 6px 16px -4px rgba(0, 0, 0, 0.25) !important;
+}
+
+body.theme-dark .btn-satoshi-login {
+  background: #F8FAFC !important;
+  color: #0F172A !important;
+  box-shadow: 0 10px 24px -6px rgba(255, 255, 255, 0.2) !important;
+}
+
+body.theme-dark .btn-satoshi-login:hover {
+  background: #FFFFFF !important;
+  box-shadow: 0 14px 28px -6px rgba(255, 255, 255, 0.28) !important;
+}
+
+.btn-satoshi-login .btn-arrow {
+  font-size: 18px !important;
+  transition: transform 0.2s ease !important;
+}
+
+.btn-satoshi-login:hover .btn-arrow {
+  transform: translateX(3px) !important;
+}
+
+/* 9. Google OAuth Social Button */
+.satoshi-social-divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: -6px 0;
+}
+
+.satoshi-social-divider::before,
+.satoshi-social-divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid #E2E8F0;
+}
+
+body.theme-dark .satoshi-social-divider::before,
+body.theme-dark .satoshi-social-divider::after {
+  border-bottom-color: #1E293B;
+}
+
+.satoshi-social-divider span {
+  padding: 0 12px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #94A3B8;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.btn-satoshi-google {
+  width: 100% !important;
+  height: 48px !important;
+  background: #FFFFFF !important;
+  color: #334155 !important;
+  border: 1.5px solid #E2E8F0 !important;
+  border-radius: 12px !important;
+  font-family: 'Satoshi', sans-serif !important;
+  font-size: 14.5px !important;
+  font-weight: 600 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 10px !important;
+  cursor: pointer !important;
+  transition: all 0.15s ease !important;
+  box-sizing: border-box !important;
+}
+
+.btn-satoshi-google:hover {
+  background: #F8FAFC !important;
+  border-color: #CBD5E1 !important;
+}
+
+.btn-satoshi-google:active {
+  transform: scale(0.98) !important;
+}
+
+body.theme-dark .btn-satoshi-google {
+  background: #1E293B !important;
+  border-color: #334155 !important;
+  color: #F1F5F9 !important;
+}
+
+body.theme-dark .btn-satoshi-google:hover {
+  background: #273549 !important;
+}
+
+/* 10. Secondary Navigation & Footer Actions */
+.satoshi-footer-action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 15px;
+}
+
+.satoshi-footer-text {
+  font-family: 'Satoshi', sans-serif !important;
+  color: #64748B !important;
+  font-weight: 400 !important;
+}
+
+.satoshi-signup-link {
+  font-family: 'Satoshi', sans-serif !important;
+  font-weight: 700 !important;
+  color: #000000 !important;
+  text-decoration: none !important;
+  position: relative !important;
+  transition: color 0.2s ease !important;
+}
+
+.satoshi-signup-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: #000000;
+  transition: width 0.25s ease;
+}
+
+.satoshi-signup-link:hover::after {
+  width: 100%;
+}
+
+body.theme-dark .satoshi-signup-link {
+  color: #F8FAFC !important;
+}
+
+body.theme-dark .satoshi-signup-link::after {
+  background: #F8FAFC;
+}
+
+.satoshi-security-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-family: 'Satoshi', sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  color: #94A3B8 !important;
+  margin-top: 4px;
+}
+
+.satoshi-security-badge span.material-symbols-rounded {
+  font-size: 15px !important;
+  color: #10B981 !important;
+}
+
+/* 11. Mobile Auth Responsive Stack (< 768px) */
+@media (max-width: 768px) {
+  .satoshi-mobile-auth-inner {
+    padding: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    min-height: 100vh !important;
+    background: #F3F4F6 !important;
+  }
+
+  body.theme-dark .satoshi-mobile-auth-inner {
+    background: #111827 !important;
+  }
+
+  .satoshi-mobile-hero {
+    padding: 24px 20px 20px 20px !important;
+    text-align: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+
+  .mobile-geom-mini-stage {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 12px !important;
+    margin-bottom: 16px !important;
+  }
+
+  .mini-char-purple {
+    width: 38px;
+    height: 48px;
+    background: #8B5CF6;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    box-shadow: 0 8px 16px rgba(139, 92, 246, 0.4);
+    animation: floatChar 4s ease-in-out infinite;
+  }
+
+  .mini-char-black {
+    width: 44px;
+    height: 54px;
+    background: #111827;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 16px rgba(17, 24, 39, 0.4);
+    animation: floatChar 4s ease-in-out infinite;
+    animation-delay: 1.5s;
+  }
+
+  .mini-char-yellow {
+    width: 40px;
+    height: 40px;
+    background: #FACC15;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    box-shadow: 0 8px 16px rgba(250, 204, 21, 0.4);
+    animation: floatChar 4s ease-in-out infinite;
+    animation-delay: 0.8s;
+  }
+
+  .mini-char-eye {
+    width: 6px;
+    height: 6px;
+    background: #FFFFFF;
+    border-radius: 50%;
+  }
+
+  .mini-char-smile {
+    width: 12px;
+    height: 6px;
+    border-bottom: 2px solid #FFFFFF;
+    border-radius: 0 0 12px 12px;
+  }
+
+  .satoshi-mobile-title {
+    font-family: 'Satoshi', sans-serif !important;
+    font-size: 26px !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.02em !important;
+    color: #111827 !important;
+    margin: 0 0 6px 0 !important;
+  }
+
+  body.theme-dark .satoshi-mobile-title {
+    color: #F8FAFC !important;
+  }
+
+  .satoshi-mobile-sub {
+    font-family: 'Satoshi', sans-serif !important;
+    font-size: 13.5px !important;
+    color: #64748B !important;
+    margin: 0 !important;
+  }
+
+  .satoshi-mobile-sheet {
+    flex: 1 !important;
+    background: #FFFFFF !important;
+    border-radius: 28px 28px 0 0 !important;
+    padding: 32px 20px 40px 20px !important;
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.05) !important;
+  }
+
+  body.theme-dark .satoshi-mobile-sheet {
+    background: #0B0F17 !important;
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.4) !important;
+  }
+
+  .mobile-form-body {
+    gap: 22px !important;
+  }
+}
