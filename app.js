@@ -789,6 +789,7 @@ class BotHubApp {
       overlay.classList.remove('landing-active');
       overlay.classList.remove('welcome-active');
       overlay.classList.add('signin-active');
+      overlay.scrollTop = 0;
     }
     const welcome = document.getElementById('authWelcomeScreen');
     const signin = document.getElementById('authSignInScreen');

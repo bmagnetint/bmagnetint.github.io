@@ -6310,7 +6310,8 @@ body.theme-dark .signin-back-btn {
     height: 100% !important;
   }
 
-  .desktop-company-landing {
+  .auth-overlay:not(.signin-active) .desktop-company-landing,
+  .auth-overlay.landing-active .desktop-company-landing {
     display: flex !important;
     flex-direction: column !important;
     width: 100% !important;
@@ -6321,6 +6322,13 @@ body.theme-dark .signin-back-btn {
     overflow-x: hidden !important;
     overflow-y: visible !important;
     box-sizing: border-box !important;
+  }
+
+  .auth-overlay.signin-active .desktop-company-landing {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
   }
 
   .landing-header {
