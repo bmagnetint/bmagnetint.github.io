@@ -12681,5 +12681,500 @@ body.theme-dark .btn-top-back-landing {
   font-size: 18px !important;
 }
 
+/* ==========================================================================
+   CROSS-PLATFORM NOTCH & DYNAMIC ISLAND FROZEN HEADER ENGINE
+   ========================================================================== */
+
+/* 1. UNIVERSAL FROZEN TOP HEADER (.app-header & .landing-header) */
+.app-header,
+.landing-header {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  z-index: 10005 !important;
+  box-sizing: border-box !important;
+  -webkit-transform: translateZ(0) !important;
+  transform: translateZ(0) !important;
+  background: rgba(255, 255, 255, 0.88) !important;
+  backdrop-filter: blur(40px) saturate(220%) brightness(108%) !important;
+  -webkit-backdrop-filter: blur(40px) saturate(220%) brightness(108%) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.75) !important;
+  box-shadow: 0 8px 32px rgba(15, 23, 42, 0.08), inset 0 -1px 1px rgba(255, 255, 255, 0.5) !important;
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+body.theme-dark .app-header,
+body.theme-dark .landing-header {
+  background: rgba(15, 23, 42, 0.92) !important;
+  backdrop-filter: blur(40px) saturate(220%) brightness(108%) !important;
+  -webkit-backdrop-filter: blur(40px) saturate(220%) brightness(108%) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.55), inset 0 -1px 1px rgba(255, 255, 255, 0.1) !important;
+}
+
+/* 2. DESKTOP & WIDE SCREEN HEADER SAFE AREA DIMENSIONS (> 767px) */
+@media (min-width: 768px) {
+  .app-header,
+  .landing-header {
+    min-height: calc(58px + env(safe-area-inset-top, 0px)) !important;
+    padding-top: max(12px, env(safe-area-inset-top, 12px)) !important;
+    padding-bottom: 10px !important;
+    padding-left: max(24px, env(safe-area-inset-left, 24px)) !important;
+    padding-right: max(24px, env(safe-area-inset-right, 24px)) !important;
+  }
+
+  #appMain,
+  .view-panel,
+  .landing-scroll-body,
+  .desktop-company-landing {
+    padding-top: calc(72px + env(safe-area-inset-top, 0px)) !important;
+  }
+}
+
+/* 3. MOBILE & TABLET DEVICE NOTCH & DYNAMIC ISLAND SAFE AREA ENGINE (< 768px & PLATFORM CLASSIFICATION) */
+@media (max-width: 767px) {
+  .app-header,
+  .landing-header {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    min-height: calc(66px + env(safe-area-inset-top, 36px)) !important;
+    padding-top: max(env(safe-area-inset-top, 38px), 36px) !important;
+    padding-bottom: 10px !important;
+    padding-left: max(16px, env(safe-area-inset-left, 16px)) !important;
+    padding-right: max(16px, env(safe-area-inset-right, 16px)) !important;
+    z-index: 10005 !important;
+  }
+
+  #appMain,
+  .view-panel,
+  .landing-scroll-body,
+  .desktop-company-landing,
+  #authWelcomeScreen,
+  #authSignInScreen {
+    padding-top: calc(78px + env(safe-area-inset-top, 36px)) !important;
+  }
+}
+
+/* 4. PLATFORM-SPECIFIC OVERRIDES (iOS SAFARI, ANDROID CHROME, WINDOWS & MACOS) */
+.platform-ios .app-header,
+.platform-ios .landing-header {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  min-height: calc(70px + env(safe-area-inset-top, 40px)) !important;
+  padding-top: max(env(safe-area-inset-top, 40px), 38px) !important;
+  padding-bottom: 10px !important;
+  z-index: 10005 !important;
+}
+
+.platform-ios #appMain,
+.platform-ios .view-panel,
+.platform-ios .landing-scroll-body,
+.platform-ios .desktop-company-landing,
+.platform-ios #authWelcomeScreen,
+.platform-ios #authSignInScreen {
+  padding-top: calc(82px + env(safe-area-inset-top, 40px)) !important;
+}
+
+.platform-android .app-header,
+.platform-android .landing-header {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  min-height: calc(64px + env(safe-area-inset-top, 24px)) !important;
+  padding-top: max(env(safe-area-inset-top, 24px), 20px) !important;
+  z-index: 10005 !important;
+}
+
+.platform-android #appMain,
+.platform-android .view-panel,
+.platform-android .landing-scroll-body,
+.platform-android .desktop-company-landing {
+  padding-top: calc(74px + env(safe-area-inset-top, 24px)) !important;
+}
+
+/* ==========================================================================
+   WIDESCREEN & BIG FONT AUTO-SIZING ENGINE (MACOS / WINDOWS / MOBILE / TABLET)
+   ========================================================================== */
+
+/* 1. WIDESCREEN LAYOUT EXPANSION (UP TO 1600PX FOR MACBOOK PRO, 4K & DESKTOP MONITORS) */
+@media (min-width: 1200px) {
+  .app-content,
+  .landing-header-inner,
+  .landing-hero-section,
+  .b-magnet-company-profile-box,
+  .landing-section,
+  .live-ticker-container,
+  .desktop-company-landing {
+    max-width: 1600px !important;
+    width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  .bots-grid {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 24px !important;
+  }
+}
+
+/* 2. BIG FONT TYPOGRAPHY HARMONIZATION (HIGH LEGIBILITY & PROFESSIONALISM) */
+
+/* Hero Titles & Brand Headlines */
+.landing-hero-title,
+.cmp-profile-title,
+.welcome-title,
+.signin-title {
+  font-size: clamp(32px, 3.8vw, 52px) !important;
+  line-height: 1.15 !important;
+  font-weight: 900 !important;
+  letter-spacing: -0.8px !important;
+}
+
+/* Section & Card Headings */
+.landing-section-title,
+.cmp-title,
+.bot-card-title,
+.plan-title,
+.asr-login-title,
+.settings-section-title {
+  font-size: clamp(22px, 2.2vw, 30px) !important;
+  line-height: 1.25 !important;
+  font-weight: 800 !important;
+}
+
+/* Subtitles & Lead Paragraphs */
+.landing-hero-subtitle,
+.cmp-lead,
+.welcome-subtitle,
+.landing-section-sub,
+.asr-login-sub {
+  font-size: clamp(15px, 1.4vw, 18.5px) !important;
+  line-height: 1.6 !important;
+  font-weight: 500 !important;
+}
+
+/* General Body Copy, Paragraphs & Card Descriptions */
+body,
+p,
+.cmp-para,
+.bot-card-desc,
+.plan-desc,
+.faq-answer,
+.landing-nav-link {
+  font-size: 15.5px !important;
+  line-height: 1.62 !important;
+}
+
+/* Button Labels & Action CTAs */
+.btn-yellow-hero,
+.btn-yellow-card,
+.btn-card-buy,
+.btn-clean-navy,
+.btn-gtcfx-cta,
+.btn-landing-corner-login {
+  font-size: 15px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.2px !important;
+}
+
+/* Monospace Values & Financial Figures */
+.font-mono,
+.wallet-user-amt,
+.metric-num,
+.stat-value,
+.price-tag {
+  font-size: clamp(16px, 1.6vw, 24px) !important;
+  font-weight: 800 !important;
+}
+
+/* 3. PLATFORM SPECIFIC FONT & VIEW ENHANCEMENTS (MACOS & WINDOWS) */
+.platform-windows {
+  font-size: 16px !important;
+}
+
+.platform-windows body {
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+}
+
+.platform-ios {
+  -webkit-text-size-adjust: 100% !important;
+}
+
+/* ==========================================================================
+   FULL-PAGE CONTENT FILL ENGINE (EDGE-TO-EDGE & FULL HEIGHT ACROSS ALL PAGES)
+   ========================================================================== */
+
+/* 1. ROOT & SHELL FULL-HEIGHT STRETCH */
+html, body {
+  width: 100% !important;
+  min-height: 100% !important;
+  min-height: 100dvh !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+#appShell,
+#appMain {
+  width: 100% !important;
+  flex: 1 0 auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  min-height: 100dvh !important;
+  box-sizing: border-box !important;
+}
+
+/* 2. MAIN SCROLL CONTAINER & VIEW PANELS FILL 100% */
+.app-content {
+  flex: 1 0 auto !important;
+  width: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  min-height: calc(100dvh - 72px) !important;
+  box-sizing: border-box !important;
+}
+
+.view-panel.active {
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 0 auto !important;
+  width: 100% !important;
+  min-height: calc(100dvh - 120px) !important;
+  box-sizing: border-box !important;
+}
+
+/* ==========================================================================
+   UNIVERSAL HOME PAGE & LANDING PAGE SMOOTH VERTICAL SCROLL ENGINE
+   ========================================================================== */
+
+/* 1. ALLOW UNIMPEDED VERTICAL SCROLLING ON OVERLAY & BODY */
+html, body {
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  height: auto !important;
+  min-height: 100% !important;
+  min-height: 100dvh !important;
+  scroll-behavior: smooth !important;
+}
+
+#authOverlay,
+.auth-overlay {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 100dvh !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  overscroll-behavior-y: contain !important;
+}
+
+/* 2. MAIN LANDING CONTAINER IS THE SINGLE ACTIVE SCROLL SURFACE */
+.desktop-company-landing {
+  display: flex !important;
+  flex-direction: column !important;
+  width: 100% !important;
+  min-height: 100dvh !important;
+  height: auto !important;
+  overflow-y: visible !important;
+  overflow-x: hidden !important;
+  position: relative !important;
+  box-sizing: border-box !important;
+}
+
+/* 3. INNER LANDING BODY FLOWS NATURAL HEIGHT WITHOUT SCROLL LOCK */
+.landing-scroll-body {
+  display: flex !important;
+  flex-direction: column !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: auto !important;
+  overflow: visible !important;
+  flex: 1 0 auto !important;
+  box-sizing: border-box !important;
+}
+
+/* 4. LANDING SECTIONS & COMPANY PROFILE BOX HAVE PROPER CLEARANCE */
+.b-magnet-company-profile-box,
+.landing-section,
+.landing-hero-section {
+  width: 100% !important;
+  height: auto !important;
+  box-sizing: border-box !important;
+  scroll-margin-top: 80px !important;
+}
+
+/* 4. AUTH & SIGN-IN SCREEN FULL PAGE FILL */
+#authSignInScreen,
+#authWelcomeScreen,
+.auth-split-layout,
+.signin-screen-inner,
+.welcome-screen-inner {
+  width: 100% !important;
+  min-height: 100dvh !important;
+  flex: 1 0 auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  box-sizing: border-box !important;
+}
+
+/* 5. CARDS & GRID FULL HEIGHT EXPANSION */
+.bots-grid {
+  display: grid !important;
+  width: 100% !important;
+  align-items: stretch !important;
+}
+
+.bot-card,
+.plan-card,
+.cmp-card,
+.profile-card,
+.subscription-card,
+.web3-wallet-modal-card {
+  height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  box-sizing: border-box !important;
+}
+
+/* ==========================================================================
+   LOGGED-IN DASHBOARD WIDESCREEN & BIG FONT AUTO-ALIGNMENT ENGINE
+   ========================================================================== */
+
+/* 1. LOGGED-IN CONTAINER WIDESCREEN EXPANSION (UP TO 1600PX FOR MACBOOK PRO, 4K & DESKTOP MONITORS) */
+body.logged-in #appMain,
+body.logged-in .app-content,
+body.logged-in .view-panel {
+  max-width: 1600px !important;
+  width: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  box-sizing: border-box !important;
+}
+
+body.logged-in .app-content {
+  min-height: calc(100dvh - 76px) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 0 auto !important;
+}
+
+body.logged-in .view-panel.active {
+  min-height: calc(100dvh - 120px) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 0 auto !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* 2. AUTO-ALIGNING RESPONSIVE GRID ENGINE */
+@media (min-width: 1200px) {
+  body.logged-in .bots-grid {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 24px !important;
+    align-items: stretch !important;
+  }
+}
+
+@media (min-width: 900px) and (max-width: 1199px) {
+  body.logged-in .bots-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 20px !important;
+    align-items: stretch !important;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 899px) {
+  body.logged-in .bots-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 16px !important;
+    align-items: stretch !important;
+  }
+}
+
+@media (max-width: 599px) {
+  body.logged-in .bots-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+    align-items: stretch !important;
+  }
+}
+
+/* 3. LOGGED-IN BIG FONT TYPOGRAPHY SCALE */
+body.logged-in h1,
+body.logged-in h2,
+body.logged-in .view-title,
+body.logged-in .section-title,
+body.logged-in .cmp-title {
+  font-size: clamp(24px, 2.5vw, 34px) !important;
+  font-weight: 900 !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.5px !important;
+}
+
+body.logged-in h3,
+body.logged-in .bot-card-title,
+body.logged-in .plan-title {
+  font-size: clamp(20px, 2vw, 26px) !important;
+  font-weight: 800 !important;
+  line-height: 1.25 !important;
+}
+
+body.logged-in p,
+body.logged-in .view-subtitle,
+body.logged-in .cmp-lead,
+body.logged-in .bot-card-desc,
+body.logged-in .plan-desc {
+  font-size: clamp(15.5px, 1.4vw, 18.5px) !important;
+  line-height: 1.62 !important;
+}
+
+body.logged-in .wallet-user-amt,
+body.logged-in .stat-value,
+body.logged-in .metric-num,
+body.logged-in .font-mono {
+  font-size: clamp(18px, 1.8vw, 28px) !important;
+  font-weight: 800 !important;
+  font-family: var(--font-mono) !important;
+}
+
+body.logged-in .btn,
+body.logged-in .btn-yellow-hero,
+body.logged-in .btn-yellow-card,
+body.logged-in .btn-card-buy,
+body.logged-in .btn-gtcfx-cta,
+body.logged-in .btn-clean-navy {
+  min-height: 50px !important;
+  font-size: 15.5px !important;
+  font-weight: 800 !important;
+  padding: 12px 26px !important;
+  border-radius: 999px !important;
+}
+
 
 
