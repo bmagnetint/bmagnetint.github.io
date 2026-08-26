@@ -13175,13 +13175,343 @@ p,
   }
 }
 
-@media (max-width: 599px) {
   .bots-grid {
     display: grid !important;
     grid-template-columns: 1fr !important;
     gap: 14px !important;
     align-items: stretch !important;
   }
+}
+
+/* ==========================================================================
+   BOLD GRAPHIC FLAT DESIGN SYSTEM (SPECIFICATION COMPLIANT)
+   ========================================================================== */
+
+/* 1. Global Zero Artificial Depth & Flat Design Tokens */
+*, ::before, ::after {
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  text-shadow: none !important;
+}
+
+body {
+  font-family: 'Outfit', sans-serif !important;
+  background-color: #FFFFFF !important;
+  color: #111827 !important;
+}
+
+body.theme-dark {
+  background-color: #111827 !important;
+  color: #F9FAFB !important;
+}
+
+/* 2. Bold Graphic Typography Hierarchy */
+h1, h2, h3, h4, h5, h6,
+.landing-hero-title,
+.landing-section-title,
+.cmp-title,
+.welcome-title,
+.signin-title {
+  font-family: 'Outfit', sans-serif !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.02em !important;
+}
+
+/* 3. Header Bar (Flat Solid Color Block) */
+.landing-header {
+  background: #FFFFFF !important;
+  border-bottom: 2px solid #E5E7EB !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+}
+
+body.theme-dark .landing-header {
+  background: #111827 !important;
+  border-bottom: 2px solid #374151 !important;
+  box-shadow: none !important;
+}
+
+.landing-brand-title {
+  color: #111827 !important;
+  font-weight: 800 !important;
+}
+
+body.theme-dark .landing-brand-title {
+  color: #FFFFFF !important;
+}
+
+.landing-nav-link {
+  color: #374151 !important;
+  font-weight: 600 !important;
+  border-radius: 6px !important;
+  transition: transform 0.2s ease, background-color 0.2s ease !important;
+}
+
+.landing-nav-link:hover {
+  background: #F3F4F6 !important;
+  color: #3B82F6 !important;
+  transform: scale(1.05) !important;
+}
+
+body.theme-dark .landing-nav-link {
+  color: #D1D5DB !important;
+}
+
+body.theme-dark .landing-nav-link:hover {
+  background: #1F2937 !important;
+  color: #60A5FA !important;
+}
+
+/* 4. Buttons (Solid Colors, Zero Shadows, Scale Hover Feedback) */
+.btn-hero-primary,
+.btn-landing-corner-login,
+.btn-clean-navy,
+.btn-popular,
+.btn-plan-select {
+  background: #3B82F6 !important;
+  color: #FFFFFF !important;
+  border: 0 !important;
+  border-radius: 6px !important;
+  font-weight: 700 !important;
+  box-shadow: none !important;
+  transition: transform 0.2s ease, background-color 0.2s ease !important;
+  cursor: pointer !important;
+}
+
+.btn-hero-primary:hover,
+.btn-landing-corner-login:hover,
+.btn-clean-navy:hover,
+.btn-popular:hover,
+.btn-plan-select:hover {
+  background: #2563EB !important;
+  transform: scale(1.05) !important;
+  box-shadow: none !important;
+}
+
+.btn-hero-secondary,
+.btn-clean-white {
+  background: #F3F4F6 !important;
+  color: #111827 !important;
+  border: 0 !important;
+  border-radius: 6px !important;
+  font-weight: 700 !important;
+  box-shadow: none !important;
+  transition: transform 0.2s ease, background-color 0.2s ease !important;
+  cursor: pointer !important;
+}
+
+body.theme-dark .btn-hero-secondary,
+body.theme-dark .btn-clean-white {
+  background: #374151 !important;
+  color: #FFFFFF !important;
+}
+
+.btn-hero-secondary:hover,
+.btn-clean-white:hover {
+  background: #E5E7EB !important;
+  transform: scale(1.05) !important;
+}
+
+body.theme-dark .btn-hero-secondary:hover,
+body.theme-dark .btn-clean-white:hover {
+  background: #4B5563 !important;
+}
+
+/* 5. Alternating Color Block Sections */
+.landing-hero-section {
+  background: #FFFFFF !important;
+}
+
+body.theme-dark .landing-hero-section {
+  background: #111827 !important;
+}
+
+.b-magnet-company-profile-box {
+  background: #F3F4F6 !important;
+  border: 0 !important;
+  border-radius: 8px !important;
+  box-shadow: none !important;
+  padding: 40px !important;
+}
+
+body.theme-dark .b-magnet-company-profile-box {
+  background: #1F2937 !important;
+}
+
+#aboutProgramSection {
+  background: #FFFFFF !important;
+}
+
+body.theme-dark #aboutProgramSection {
+  background: #111827 !important;
+}
+
+#plansSection {
+  background: #F3F4F6 !important;
+  padding-top: 48px !important;
+  padding-bottom: 48px !important;
+}
+
+body.theme-dark #plansSection {
+  background: #1F2937 !important;
+}
+
+/* 6. Feature Cards & Color Blocks (Zero Shadow, Scale Hover) */
+.cmp-card,
+.landing-feature-card,
+.landing-metric-card,
+.landing-plan-card,
+.landing-showcase-card {
+  background: #FFFFFF !important;
+  border: 0 !important;
+  border-radius: 8px !important;
+  box-shadow: none !important;
+  padding: 24px !important;
+  transition: transform 0.2s ease, background-color 0.2s ease !important;
+}
+
+body.theme-dark .cmp-card,
+body.theme-dark .landing-feature-card,
+body.theme-dark .landing-metric-card,
+body.theme-dark .landing-plan-card,
+body.theme-dark .landing-showcase-card {
+  background: #111827 !important;
+}
+
+.cmp-card:hover,
+.landing-feature-card:hover,
+.landing-metric-card:hover,
+.landing-plan-card:hover,
+.landing-showcase-card:hover {
+  transform: scale(1.02) !important;
+  background: #FFFFFF !important;
+}
+
+body.theme-dark .cmp-card:hover,
+body.theme-dark .landing-feature-card:hover,
+body.theme-dark .landing-metric-card:hover,
+body.theme-dark .landing-plan-card:hover,
+body.theme-dark .landing-showcase-card:hover {
+  background: #1F2937 !important;
+}
+
+/* Popular Plan Card Bold Border Specification */
+.landing-plan-card.popular {
+  border: 4px solid #10B981 !important;
+  transform: scale(1.03) !important;
+}
+
+.landing-plan-card.popular:hover {
+  transform: scale(1.05) !important;
+}
+
+/* 7. Multi-Color Metric Figures */
+.lmc-val,
+.wmc-val {
+  font-family: 'Outfit', sans-serif !important;
+  font-size: 26px !important;
+  font-weight: 800 !important;
+  color: #3B82F6 !important;
+}
+
+.landing-metric-card:nth-child(2) .lmc-val { color: #10B981 !important; }
+.landing-metric-card:nth-child(3) .lmc-val { color: #F59E0B !important; }
+.landing-metric-card:nth-child(4) .lmc-val { color: #8B5CF6 !important; }
+
+/* 8. Live XAUUSD News Ticker Banner Block */
+.cmp-header-tag,
+.xauusd-moving-badge-container {
+  background: #10B981 !important;
+  color: #FFFFFF !important;
+  border-radius: 6px !important;
+  padding: 10px 16px !important;
+  box-shadow: none !important;
+  font-weight: 700 !important;
+}
+
+/* 9. Solid Poster Block GTCfx Banner */
+.landing-gtcfx-banner {
+  background: #1E40AF !important;
+  color: #FFFFFF !important;
+  border: 0 !important;
+  border-radius: 8px !important;
+  box-shadow: none !important;
+  padding: 40px !important;
+}
+
+body.theme-dark .landing-gtcfx-banner {
+  background: #1E3A8A !important;
+}
+
+/* 10. Organization SSL Security Audit Banner */
+.org-security-cert-banner {
+  background: #111827 !important;
+  color: #FFFFFF !important;
+  border: 0 !important;
+  border-radius: 8px !important;
+  box-shadow: none !important;
+  padding: 28px !important;
+  margin-top: 28px !important;
+}
+
+.org-cert-badge-pulse {
+  background: #10B981 !important;
+  color: #FFFFFF !important;
+  border-radius: 6px !important;
+  padding: 4px 10px !important;
+}
+
+/* 11. FAQ Thick Dividers & Clean Inputs */
+.faq-item {
+  border-bottom: 2px solid #E5E7EB !important;
+  padding: 16px 0 !important;
+}
+
+body.theme-dark .faq-item {
+  border-bottom: 2px solid #374151 !important;
+}
+
+.signin-clean-input {
+  background: #F3F4F6 !important;
+  border: 0 !important;
+  border-radius: 6px !important;
+  color: #111827 !important;
+  padding: 14px 16px !important;
+}
+
+body.theme-dark .signin-clean-input {
+  background: #374151 !important;
+  color: #FFFFFF !important;
+}
+
+.signin-clean-input:focus {
+  background: #FFFFFF !important;
+  border: 2px solid #3B82F6 !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* 12. Solid Poster Dark Footer */
+.landing-footer {
+  background: #111827 !important;
+  color: #9CA3AF !important;
+  border-top: 2px solid #1F2937 !important;
+  padding: 48px 28px !important;
+}
+
+.landing-footer-title {
+  color: #FFFFFF !important;
+  font-weight: 800 !important;
+}
+
+.landing-footer-link {
+  color: #D1D5DB !important;
+  transition: color 0.2s ease !important;
+}
+
+.landing-footer-link:hover {
+  color: #3B82F6 !important;
 }
 
 
