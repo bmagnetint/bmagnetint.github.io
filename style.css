@@ -12828,28 +12828,112 @@ body.theme-dark .landing-header {
   }
 }
 
-/* 2. BIG FONT TYPOGRAPHY HARMONIZATION (HIGH LEGIBILITY & PROFESSIONALISM) */
+/* ==========================================================================
+   HARMONIZED FULL-SCREEN CONTENT & NORMAL FONT SIZING ENGINE
+   ========================================================================== */
 
-/* Hero Titles & Brand Headlines */
+/* 1. FULL-SCREEN FILL WITHOUT OVERSIZED MARGINS ACROSS ALL PAGES */
+html, body {
+  width: 100% !important;
+  min-height: 100% !important;
+  min-height: 100dvh !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  scroll-behavior: smooth !important;
+}
+
+#appShell,
+#appMain,
+#desktopCompanyLanding,
+.desktop-company-landing,
+.landing-scroll-body,
+.app-content {
+  width: 100% !important;
+  min-height: 100dvh !important;
+  flex: 1 0 auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  box-sizing: border-box !important;
+}
+
+/* 2. AUTO-SIZING INSTITUTIONAL PANELS & EVEN CARDS */
+.cmp-card,
+.plan-card,
+.bot-card,
+.espp-card,
+.profile-card,
+.subscription-card,
+.web3-wallet-modal-card,
+.asr-login-card {
+  border-radius: 16px !important;
+  padding: 20px 22px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  height: 100% !important;
+  box-sizing: border-box !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* Panel Background & Outlines (Theme Harmonization) */
+.cmp-card,
+.plan-card,
+.bot-card,
+.espp-card,
+.profile-card,
+.subscription-card,
+.web3-wallet-modal-card,
+.asr-login-card {
+  background: rgba(255, 255, 255, 0.88) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(203, 213, 225, 0.8) !important;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.06) !important;
+}
+
+body.theme-dark .cmp-card,
+body.theme-dark .plan-card,
+body.theme-dark .bot-card,
+body.theme-dark .espp-card,
+body.theme-dark .profile-card,
+body.theme-dark .subscription-card,
+body.theme-dark .web3-wallet-modal-card,
+body.theme-dark .asr-login-card {
+  background: rgba(15, 23, 42, 0.85) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45) !important;
+}
+
+/* 3. EXECUTIVE NORMAL TYPOGRAPHY SCALE (BALANCED & STYLISH ACROSS ALL PLATFORMS) */
+
+/* Page Headlines & Main Titles */
 .landing-hero-title,
 .cmp-profile-title,
 .welcome-title,
-.signin-title {
-  font-size: clamp(32px, 3.8vw, 52px) !important;
-  line-height: 1.15 !important;
-  font-weight: 900 !important;
-  letter-spacing: -0.8px !important;
+.signin-title,
+body.logged-in h1,
+body.logged-in h2,
+body.logged-in .view-title {
+  font-size: clamp(24px, 2.4vw, 34px) !important;
+  line-height: 1.2 !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.5px !important;
 }
 
-/* Section & Card Headings */
+/* Panel & Card Headings */
 .landing-section-title,
 .cmp-title,
 .bot-card-title,
 .plan-title,
 .asr-login-title,
-.settings-section-title {
-  font-size: clamp(22px, 2.2vw, 30px) !important;
-  line-height: 1.25 !important;
+.settings-section-title,
+body.logged-in h3 {
+  font-size: clamp(17px, 1.5vw, 20px) !important;
+  line-height: 1.3 !important;
   font-weight: 800 !important;
 }
 
@@ -12858,9 +12942,10 @@ body.theme-dark .landing-header {
 .cmp-lead,
 .welcome-subtitle,
 .landing-section-sub,
-.asr-login-sub {
-  font-size: clamp(15px, 1.4vw, 18.5px) !important;
-  line-height: 1.6 !important;
+.asr-login-sub,
+.view-subtitle {
+  font-size: clamp(13.5px, 1.2vw, 15.5px) !important;
+  line-height: 1.55 !important;
   font-weight: 500 !important;
 }
 
@@ -12872,243 +12957,58 @@ p,
 .plan-desc,
 .faq-answer,
 .landing-nav-link {
-  font-size: 15.5px !important;
-  line-height: 1.62 !important;
+  font-size: 14px !important;
+  line-height: 1.55 !important;
 }
 
-/* Button Labels & Action CTAs */
+/* Buttons & Touch Targets */
+.btn,
 .btn-yellow-hero,
 .btn-yellow-card,
 .btn-card-buy,
 .btn-clean-navy,
 .btn-gtcfx-cta,
 .btn-landing-corner-login {
-  font-size: 15px !important;
-  font-weight: 800 !important;
+  font-size: 13.5px !important;
+  font-weight: 700 !important;
   letter-spacing: 0.2px !important;
+  min-height: 44px !important;
+  padding: 10px 22px !important;
+  border-radius: 999px !important;
 }
 
-/* Monospace Values & Financial Figures */
+/* Financial Figures & Monospace Badges */
 .font-mono,
 .wallet-user-amt,
 .metric-num,
 .stat-value,
 .price-tag {
-  font-size: clamp(16px, 1.6vw, 24px) !important;
+  font-size: clamp(16px, 1.5vw, 22px) !important;
   font-weight: 800 !important;
+  font-family: var(--font-mono) !important;
 }
 
-/* 3. PLATFORM SPECIFIC FONT & VIEW ENHANCEMENTS (MACOS & WINDOWS) */
-.platform-windows {
-  font-size: 16px !important;
-}
-
-.platform-windows body {
-  -webkit-font-smoothing: antialiased !important;
-  -moz-osx-font-smoothing: grayscale !important;
-  text-rendering: optimizeLegibility !important;
-}
-
-.platform-ios {
-  -webkit-text-size-adjust: 100% !important;
-}
-
-/* ==========================================================================
-   FULL-PAGE CONTENT FILL ENGINE (EDGE-TO-EDGE & FULL HEIGHT ACROSS ALL PAGES)
-   ========================================================================== */
-
-/* 1. ROOT & SHELL FULL-HEIGHT STRETCH */
-html, body {
-  width: 100% !important;
-  min-height: 100% !important;
-  min-height: 100dvh !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  display: flex !important;
-  flex-direction: column !important;
-}
-
-#appShell,
-#appMain {
-  width: 100% !important;
-  flex: 1 0 auto !important;
-  display: flex !important;
-  flex-direction: column !important;
-  min-height: 100dvh !important;
-  box-sizing: border-box !important;
-}
-
-/* 2. MAIN SCROLL CONTAINER & VIEW PANELS FILL 100% */
-.app-content {
-  flex: 1 0 auto !important;
-  width: 100% !important;
-  display: flex !important;
-  flex-direction: column !important;
-  min-height: calc(100dvh - 72px) !important;
-  box-sizing: border-box !important;
-}
-
-.view-panel.active {
-  display: flex !important;
-  flex-direction: column !important;
-  flex: 1 0 auto !important;
-  width: 100% !important;
-  min-height: calc(100dvh - 120px) !important;
-  box-sizing: border-box !important;
-}
-
-/* ==========================================================================
-   UNIVERSAL HOME PAGE & LANDING PAGE SMOOTH VERTICAL SCROLL ENGINE
-   ========================================================================== */
-
-/* 1. ALLOW UNIMPEDED VERTICAL SCROLLING ON OVERLAY & BODY */
-html, body {
-  overflow-x: hidden !important;
-  overflow-y: auto !important;
-  height: auto !important;
-  min-height: 100% !important;
-  min-height: 100dvh !important;
-  scroll-behavior: smooth !important;
-}
-
-#authOverlay,
-.auth-overlay {
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
-  min-height: 100dvh !important;
-  overflow-x: hidden !important;
-  overflow-y: auto !important;
-  -webkit-overflow-scrolling: touch !important;
-  overscroll-behavior-y: contain !important;
-}
-
-/* 2. MAIN LANDING CONTAINER IS THE SINGLE ACTIVE SCROLL SURFACE */
-.desktop-company-landing {
-  display: flex !important;
-  flex-direction: column !important;
-  width: 100% !important;
-  min-height: 100dvh !important;
-  height: auto !important;
-  overflow-y: visible !important;
-  overflow-x: hidden !important;
-  position: relative !important;
-  box-sizing: border-box !important;
-}
-
-/* 3. INNER LANDING BODY FLOWS NATURAL HEIGHT WITHOUT SCROLL LOCK */
-.landing-scroll-body {
-  display: flex !important;
-  flex-direction: column !important;
-  width: 100% !important;
-  height: auto !important;
-  min-height: auto !important;
-  overflow: visible !important;
-  flex: 1 0 auto !important;
-  box-sizing: border-box !important;
-}
-
-/* 4. LANDING SECTIONS & COMPANY PROFILE BOX HAVE PROPER CLEARANCE */
-.b-magnet-company-profile-box,
-.landing-section,
-.landing-hero-section {
-  width: 100% !important;
-  height: auto !important;
-  box-sizing: border-box !important;
-  scroll-margin-top: 80px !important;
-}
-
-/* 4. AUTH & SIGN-IN SCREEN FULL PAGE FILL */
-#authSignInScreen,
-#authWelcomeScreen,
-.auth-split-layout,
-.signin-screen-inner,
-.welcome-screen-inner {
-  width: 100% !important;
-  min-height: 100dvh !important;
-  flex: 1 0 auto !important;
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: center !important;
-  box-sizing: border-box !important;
-}
-
-/* 5. CARDS & GRID FULL HEIGHT EXPANSION */
-.bots-grid {
-  display: grid !important;
-  width: 100% !important;
-  align-items: stretch !important;
-}
-
-.bot-card,
-.plan-card,
-.cmp-card,
-.profile-card,
-.subscription-card,
-.web3-wallet-modal-card {
-  height: 100% !important;
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: space-between !important;
-  box-sizing: border-box !important;
-}
-
-/* ==========================================================================
-   LOGGED-IN DASHBOARD WIDESCREEN & BIG FONT AUTO-ALIGNMENT ENGINE
-   ========================================================================== */
-
-/* 1. LOGGED-IN CONTAINER WIDESCREEN EXPANSION (UP TO 1600PX FOR MACBOOK PRO, 4K & DESKTOP MONITORS) */
-body.logged-in #appMain,
-body.logged-in .app-content,
-body.logged-in .view-panel {
-  max-width: 1600px !important;
-  width: 100% !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  box-sizing: border-box !important;
-}
-
-body.logged-in .app-content {
-  min-height: calc(100dvh - 76px) !important;
-  display: flex !important;
-  flex-direction: column !important;
-  flex: 1 0 auto !important;
-}
-
-body.logged-in .view-panel.active {
-  min-height: calc(100dvh - 120px) !important;
-  display: flex !important;
-  flex-direction: column !important;
-  flex: 1 0 auto !important;
-  width: 100% !important;
-  box-sizing: border-box !important;
-}
-
-/* 2. AUTO-ALIGNING RESPONSIVE GRID ENGINE */
+/* 4. AUTO-ALIGNING RESPONSIVE GRID ENGINE */
 @media (min-width: 1200px) {
-  body.logged-in .bots-grid {
+  .bots-grid {
     display: grid !important;
     grid-template-columns: repeat(4, 1fr) !important;
-    gap: 24px !important;
-    align-items: stretch !important;
-  }
-}
-
-@media (min-width: 900px) and (max-width: 1199px) {
-  body.logged-in .bots-grid {
-    display: grid !important;
-    grid-template-columns: repeat(3, 1fr) !important;
     gap: 20px !important;
     align-items: stretch !important;
   }
 }
 
+@media (min-width: 900px) and (max-width: 1199px) {
+  .bots-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 18px !important;
+    align-items: stretch !important;
+  }
+}
+
 @media (min-width: 600px) and (max-width: 899px) {
-  body.logged-in .bots-grid {
+  .bots-grid {
     display: grid !important;
     grid-template-columns: repeat(2, 1fr) !important;
     gap: 16px !important;
@@ -13117,63 +13017,12 @@ body.logged-in .view-panel.active {
 }
 
 @media (max-width: 599px) {
-  body.logged-in .bots-grid {
+  .bots-grid {
     display: grid !important;
     grid-template-columns: 1fr !important;
     gap: 14px !important;
     align-items: stretch !important;
   }
-}
-
-/* 3. LOGGED-IN BIG FONT TYPOGRAPHY SCALE */
-body.logged-in h1,
-body.logged-in h2,
-body.logged-in .view-title,
-body.logged-in .section-title,
-body.logged-in .cmp-title {
-  font-size: clamp(24px, 2.5vw, 34px) !important;
-  font-weight: 900 !important;
-  line-height: 1.2 !important;
-  letter-spacing: -0.5px !important;
-}
-
-body.logged-in h3,
-body.logged-in .bot-card-title,
-body.logged-in .plan-title {
-  font-size: clamp(20px, 2vw, 26px) !important;
-  font-weight: 800 !important;
-  line-height: 1.25 !important;
-}
-
-body.logged-in p,
-body.logged-in .view-subtitle,
-body.logged-in .cmp-lead,
-body.logged-in .bot-card-desc,
-body.logged-in .plan-desc {
-  font-size: clamp(15.5px, 1.4vw, 18.5px) !important;
-  line-height: 1.62 !important;
-}
-
-body.logged-in .wallet-user-amt,
-body.logged-in .stat-value,
-body.logged-in .metric-num,
-body.logged-in .font-mono {
-  font-size: clamp(18px, 1.8vw, 28px) !important;
-  font-weight: 800 !important;
-  font-family: var(--font-mono) !important;
-}
-
-body.logged-in .btn,
-body.logged-in .btn-yellow-hero,
-body.logged-in .btn-yellow-card,
-body.logged-in .btn-card-buy,
-body.logged-in .btn-gtcfx-cta,
-body.logged-in .btn-clean-navy {
-  min-height: 50px !important;
-  font-size: 15.5px !important;
-  font-weight: 800 !important;
-  padding: 12px 26px !important;
-  border-radius: 999px !important;
 }
 
 

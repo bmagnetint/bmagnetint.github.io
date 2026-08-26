@@ -9,7 +9,7 @@
   "public/key-generator.html": "7ea88d078fea2d1a965692f5b606a328c71da2383bf45d88d580b5a11913fdde",
   "public/manifest.json": "b331d91b9eded6a5d5846dd3ed8d74a2fe4e29129f9788db8e9703c764c31858",
   "public/qrcode.js": "dc1fe07e667ce0632a54da24052d836319116b56335bc5f7d4cd8186e8a6f2c6",
-  "public/style.css": "91c785308d68bc4aba34b8b16837835520a3321251c010abc7f12d2bbef78f89",
+  "public/style.css": "83f2e36b9e7d6ade469e87fc423e3159f78313a3551b6feeead8d4ae242f8751",
   "public/sw.js": "e29f8ab7d878ab323e8976f0b49833d24007af4edd7c8ef4d1c6143d9817f92b",
   "public/images/ai-bot-core-visual.jpg": "895803d28fbe6620cdf3f118d715aaa5df2c7bb6438e479d41f9431e510f0f71",
   "public/images/ai-trading-bot-visual.jpg": "cc47a181d7c5c6dd744ac8759f107332d7645f1772c3e7dd3aa8d84f822a2119",
@@ -20,5 +20,5 @@
   "public/images/b-magnet-neural-brain.jpg": "773ff34c5275c38f4b6c75224d81d55665dfe768a7b31327e425e5b75b07da59",
   "public/images/hero-trader-skipio.jpg": "92dbf03b4c9f3ce932382fada39e7974fa9574622de2dc93d4040b89f89204aa",
   "public/images/whatsapp_status_cover.jpg": "b8d75a70d2a895da067fc95bc308acca7d3e18b73187248357af7a3fa8e2727d",
-  "data/db.json": "2cf9b91ce5f277de312f83d7be595ed6126325e045ec32f9b8b0e4ce9ece2f36"
+  "data/db.json": "e9e06ae66dd1d7214250af6d24f7468397c17d6dbe44e5a751d1e0d6733fe346"
 }
