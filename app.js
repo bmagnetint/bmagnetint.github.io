@@ -712,8 +712,18 @@ class BotHubApp {
       this.state.currentUser = user;
     }
 
-    // ALWAYS SHOW HOME PAGE FIRST ON ALL PLATFORMS (ANDROID/IPHONE/CHROME/SAFARI/2K/4K)
-    this.showLandingPage();
+    const isStandaloneSignIn = window.location.pathname.includes('signinpage') || document.body.classList.contains('standalone-signin-page');
+    if (!isStandaloneSignIn) {
+      if (user && user.isLoggedIn && urlParams.has('logged_in')) {
+        this.applyLoggedInUI(user);
+        this.showToast(`🎉 Welcome back, ${user.name || 'Trader'}!`, 'success');
+      } else {
+        // ALWAYS SHOW HOME PAGE FIRST ON MAIN DOMAIN
+        this.showLandingPage();
+      }
+    } else {
+      document.body.classList.remove('logged-in');
+    }
 
     // Initialize Google Identity Services
     this.initGoogleIdentity();
@@ -830,6 +840,13 @@ class BotHubApp {
   }
 
   applyLoggedInUI(user) {
+    if (window.location.pathname.includes('signinpage') || document.body.classList.contains('standalone-signin-page')) {
+      setTimeout(() => {
+        window.location.href = '/?logged_in=1';
+      }, 350);
+      return;
+    }
+
     document.body.classList.add('logged-in');
     const overlay = document.getElementById('authScreenOverlay');
     if (overlay) overlay.classList.remove('active');
@@ -1314,7 +1331,11 @@ class BotHubApp {
   }
 
   showSignInPage() {
-    this.showSignInScreen();
+    if (!window.location.pathname.includes('signinpage')) {
+      window.location.href = '/signinpage/';
+    } else {
+      this.showSignInScreen();
+    }
   }
 
   openDesktopLoginModal() {
