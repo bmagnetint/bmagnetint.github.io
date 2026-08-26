@@ -13192,22 +13192,23 @@ p,
   }
 }
 
+
+
 /* ==========================================================================
-   BOLD GRAPHIC FLAT DESIGN SYSTEM (SPECIFICATION COMPLIANT)
+   MODERN & FRESH FINTECH DESIGN SYSTEM (THEME, COLOR PALETTE & FRAMES)
    ========================================================================== */
 
-/* 1. Global Zero Artificial Depth & Flat Design Tokens */
-*, ::before, ::after {
-  box-shadow: none !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-  text-shadow: none !important;
-}
-
+/* 1. Fresh Ambient Canvas Background */
 body {
-  font-family: 'Raleway', 'GE Flow', 'Cairo', -apple-system, sans-serif !important;
-  background-color: #FFFFFF !important;
-  color: #111827 !important;
+  font-family: 'Raleway', 'GE Flow', 'Cairo', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  background-color: #F8FAFC !important;
+  background-image: 
+    radial-gradient(ellipse at 10% 0%, rgba(16, 185, 129, 0.06) 0%, transparent 55%),
+    radial-gradient(ellipse at 90% 10%, rgba(2, 132, 199, 0.06) 0%, transparent 55%),
+    radial-gradient(ellipse at 50% 90%, rgba(245, 158, 11, 0.04) 0%, transparent 65%) !important;
+  background-attachment: fixed !important;
+  color: #0F172A !important;
+  -webkit-font-smoothing: antialiased;
 }
 
 [lang="ar"],
@@ -13217,40 +13218,32 @@ body[dir="rtl"] {
 }
 
 body.theme-dark {
-  background-color: #111827 !important;
-  color: #F9FAFB !important;
+  background-color: #090E1A !important;
+  background-image: 
+    radial-gradient(ellipse at 10% 0%, rgba(16, 185, 129, 0.09) 0%, transparent 55%),
+    radial-gradient(ellipse at 90% 10%, rgba(2, 132, 199, 0.09) 0%, transparent 55%),
+    radial-gradient(ellipse at 50% 90%, rgba(245, 158, 11, 0.05) 0%, transparent 65%) !important;
+  color: #F8FAFC !important;
 }
 
-/* 2. Impact & Raleway Typography Hierarchy */
-h1, h2, h3, h4, h5, h6,
-.landing-hero-title,
-.landing-section-title,
-.cmp-title,
-.cmp-profile-title,
-.welcome-title,
-.signin-title {
-  font-family: 'Raleway', 'Impact', sans-serif !important;
-  font-weight: 800 !important;
-  letter-spacing: -0.01em !important;
-}
-
-/* 3. Header Bar & Brand Logo Title (Impact Default) */
+/* 2. Modern Floating Header Navbar */
 .landing-header {
-  background: #FFFFFF !important;
-  border-bottom: 2px solid #E5E7EB !important;
-  box-shadow: none !important;
-  backdrop-filter: none !important;
+  background: rgba(255, 255, 255, 0.92) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8) !important;
+  box-shadow: 0 4px 20px -4px rgba(15, 23, 42, 0.03) !important;
 }
 
 body.theme-dark .landing-header {
-  background: #111827 !important;
-  border-bottom: 2px solid #374151 !important;
-  box-shadow: none !important;
+  background: rgba(9, 14, 26, 0.92) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.4) !important;
 }
 
 .landing-brand-title {
   font-family: 'Impact', 'Raleway', sans-serif !important;
-  color: #111827 !important;
+  color: #0F172A !important;
   font-weight: 900 !important;
   letter-spacing: 0.5px !important;
 }
@@ -13259,148 +13252,183 @@ body.theme-dark .landing-brand-title {
   color: #FFFFFF !important;
 }
 
-.landing-nav-link {
-  color: #374151 !important;
-  font-weight: 600 !important;
-  border-radius: 6px !important;
-  transition: transform 0.2s ease, background-color 0.2s ease !important;
-}
-
-.landing-nav-link:hover {
-  background: #F3F4F6 !important;
-  color: #3B82F6 !important;
-  transform: scale(1.05) !important;
-}
-
-body.theme-dark .landing-nav-link {
-  color: #D1D5DB !important;
-}
-
-body.theme-dark .landing-nav-link:hover {
-  background: #1F2937 !important;
-  color: #60A5FA !important;
-}
-
-/* 4. Buttons (Solid Colors, Zero Shadows, Scale Hover Feedback) */
-.btn-hero-primary,
-.btn-landing-corner-login,
-.btn-clean-navy,
-.btn-popular,
-.btn-plan-select {
-  background: #3B82F6 !important;
-  color: #FFFFFF !important;
-  border: 0 !important;
-  border-radius: 6px !important;
-  font-weight: 700 !important;
-  box-shadow: none !important;
-  transition: transform 0.2s ease, background-color 0.2s ease !important;
-  cursor: pointer !important;
-}
-
-.btn-hero-primary:hover,
-.btn-landing-corner-login:hover,
-.btn-clean-navy:hover,
-.btn-popular:hover,
-.btn-plan-select:hover {
-  background: #2563EB !important;
-  transform: scale(1.05) !important;
-  box-shadow: none !important;
-}
-
-.btn-hero-secondary,
-.btn-clean-white {
-  background: #F3F4F6 !important;
-  color: #111827 !important;
-  border: 0 !important;
-  border-radius: 6px !important;
-  font-weight: 700 !important;
-  box-shadow: none !important;
-  transition: transform 0.2s ease, background-color 0.2s ease !important;
-  cursor: pointer !important;
-}
-
-body.theme-dark .btn-hero-secondary,
-body.theme-dark .btn-clean-white {
-  background: #374151 !important;
-  color: #FFFFFF !important;
-}
-
-.btn-hero-secondary:hover,
-.btn-clean-white:hover {
-  background: #E5E7EB !important;
-  transform: scale(1.05) !important;
-}
-
-body.theme-dark .btn-hero-secondary:hover,
-body.theme-dark .btn-clean-white:hover {
-  background: #4B5563 !important;
-}
-
-/* ==========================================================================
-   GOLD & EMERALD ELEGANT LIGHT THEME & UNIFORM WINDOW PANELS ENGINE
-   ========================================================================== */
-
-/* 1. Canvas Background matching Gold Emblem Logo Concept */
-body {
-  font-family: 'Raleway', 'GE Flow', 'Cairo', -apple-system, sans-serif !important;
-  background: #fafbfd !important;
-  color: #0f172a !important;
-}
-
-body.theme-dark {
-  background: #0b1329 !important;
-  color: #f9fafb !important;
-}
-
-/* ==========================================================================
-   UNIFORM SITE-WIDE FRAME & CONTAINER ARCHITECTURE ENGINE
-   ========================================================================== */
-
-/* Outer Section Containers & Frame Spacing */
+/* 3. Section Containers & Modern Frame Spacing */
 .landing-hero-section,
 .b-magnet-company-profile-box,
 #aboutProgramSection,
 #plansSection,
 #gtcfxSection {
   max-width: 1320px !important;
-  margin: 28px auto !important;
+  margin: 32px auto !important;
   box-sizing: border-box !important;
 }
 
-/* Company Profile Box Frame */
-.b-magnet-company-profile-box {
-  background: #ffffff !important;
-  border: 1.5px solid #e2e8f0 !important;
+/* 4. Modern Fresh Card Frames & Surfaces */
+.cmp-card,
+.landing-feature-card,
+.landing-metric-card,
+.landing-plan-card,
+.landing-showcase-card,
+.b-magnet-company-profile-box,
+.org-security-cert-banner,
+.landing-gtcfx-banner,
+.welcome-metric-chip {
+  background: #FFFFFF !important;
+  border: 1px solid rgba(226, 232, 240, 0.9) !important;
   border-radius: 20px !important;
-  padding: 32px !important;
-  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04) !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 10px 24px -2px rgba(15, 23, 42, 0.04) !important;
+  box-sizing: border-box !important;
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
-body.theme-dark .b-magnet-company-profile-box {
-  background: rgba(17, 27, 49, 0.95) !important;
-  border: 1.5px solid rgba(255, 255, 255, 0.14) !important;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45) !important;
+body.theme-dark .cmp-card,
+body.theme-dark .landing-feature-card,
+body.theme-dark .landing-metric-card,
+body.theme-dark .landing-plan-card,
+body.theme-dark .landing-showcase-card,
+body.theme-dark .b-magnet-company-profile-box,
+body.theme-dark .org-security-cert-banner,
+body.theme-dark .landing-gtcfx-banner,
+body.theme-dark .welcome-metric-chip {
+  background: #111B2E !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4) !important;
 }
 
-/* Showcase Terminal Frame (Right Hero Card) */
+.cmp-card:hover,
+.landing-feature-card:hover,
+.landing-metric-card:hover,
+.landing-plan-card:hover,
+.landing-showcase-card:hover {
+  transform: translateY(-4px) !important;
+  border-color: rgba(16, 185, 129, 0.4) !important;
+  box-shadow: 0 20px 32px -4px rgba(16, 185, 129, 0.12), 0 8px 12px -4px rgba(0, 0, 0, 0.03) !important;
+}
+
+/* 5. Modern Hero Section & Showcase Terminal Frame */
+.landing-hero-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 8px 18px !important;
+  background: rgba(16, 185, 129, 0.08) !important;
+  border: 1px solid rgba(16, 185, 129, 0.25) !important;
+  border-radius: 999px !important;
+  font-size: 13px !important;
+  font-weight: 800 !important;
+  color: #047857 !important;
+  letter-spacing: 0.2px !important;
+}
+
+body.theme-dark .landing-hero-badge {
+  background: rgba(16, 185, 129, 0.16) !important;
+  color: #34D399 !important;
+}
+
+.landing-hero-title {
+  font-family: 'Raleway', sans-serif !important;
+  font-size: 46px !important;
+  font-weight: 900 !important;
+  line-height: 1.15 !important;
+  color: #0F172A !important;
+  letter-spacing: -0.02em !important;
+}
+
+body.theme-dark .landing-hero-title {
+  color: #FFFFFF !important;
+}
+
+.landing-text-highlight {
+  background: linear-gradient(135deg, #059669 0%, #0284C7 50%, #2563EB 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+body.theme-dark .landing-text-highlight {
+  background: linear-gradient(135deg, #10B981 0%, #38BDF8 50%, #60A5FA 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+/* 6. Modern Fresh Action Buttons */
+.btn-hero-primary,
+.btn-popular,
+.btn-plan-select.btn-popular {
+  background: linear-gradient(135deg, #10B981 0%, #0284C7 100%) !important;
+  color: #FFFFFF !important;
+  border: none !important;
+  border-radius: 12px !important;
+  padding: 14px 28px !important;
+  font-size: 15px !important;
+  font-weight: 800 !important;
+  cursor: pointer !important;
+  box-shadow: 0 8px 24px -4px rgba(16, 185, 129, 0.4) !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.btn-hero-primary:hover,
+.btn-popular:hover,
+.btn-plan-select.btn-popular:hover {
+  transform: translateY(-2px) scale(1.02) !important;
+  box-shadow: 0 14px 30px -4px rgba(16, 185, 129, 0.5) !important;
+}
+
+.btn-hero-secondary,
+.btn-plan-select {
+  background: #FFFFFF !important;
+  color: #0F172A !important;
+  border: 1.5px solid #E2E8F0 !important;
+  border-radius: 12px !important;
+  padding: 13px 26px !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02) !important;
+  transition: all 0.25s ease !important;
+  text-decoration: none !important;
+}
+
+.btn-hero-secondary:hover,
+.btn-plan-select:hover {
+  background: #F8FAFC !important;
+  border-color: #CBD5E1 !important;
+  color: #059669 !important;
+  transform: translateY(-2px) !important;
+}
+
+body.theme-dark .btn-hero-secondary,
+body.theme-dark .btn-plan-select {
+  background: #1E293B !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+  color: #F8FAFC !important;
+}
+
+body.theme-dark .btn-hero-secondary:hover,
+body.theme-dark .btn-plan-select:hover {
+  background: #334155 !important;
+  color: #34D399 !important;
+}
+
+/* 7. Metric Cards in Hero */
+.lmc-val {
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 26px !important;
+  font-weight: 800 !important;
+  color: #059669 !important;
+}
+
+.landing-metric-card:nth-child(2) .lmc-val { color: #0284C7 !important; }
+.landing-metric-card:nth-child(3) .lmc-val { color: #D97706 !important; }
+.landing-metric-card:nth-child(4) .lmc-val { color: #7C3AED !important; }
+
+/* 8. Showcase Terminal Frame (Right Hero Card) */
 .landing-showcase-card {
-  background: #ffffff !important;
-  border: 1.5px solid #e2e8f0 !important;
-  border-radius: 20px !important;
   padding: 24px !important;
-  box-shadow: 0 8px 30px rgba(15, 23, 42, 0.06) !important;
 }
 
-body.theme-dark .landing-showcase-card {
-  background: rgba(17, 27, 49, 0.95) !important;
-  border: 1.5px solid rgba(255, 255, 255, 0.14) !important;
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5) !important;
-}
-
-/* Sub-card frames inside Showcase Card */
 .lsc-signal-box {
-  background: #f8fafc !important;
-  border: 1px solid #e2e8f0 !important;
+  background: #F8FAFC !important;
+  border: 1px solid #E2E8F0 !important;
   border-radius: 14px !important;
   padding: 16px !important;
 }
@@ -13411,10 +13439,14 @@ body.theme-dark .lsc-signal-box {
 }
 
 .lsc-trade-item {
-  background: #ffffff !important;
-  border: 1px solid #e2e8f0 !important;
+  background: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
   border-radius: 8px !important;
   padding: 8px 12px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 8px !important;
 }
 
 body.theme-dark .lsc-trade-item {
@@ -13422,183 +13454,139 @@ body.theme-dark .lsc-trade-item {
   border-color: rgba(255, 255, 255, 0.08) !important;
 }
 
-/* Live XAUUSD Ticker Frame */
+/* 9. Live XAUUSD News Ticker Frame */
 .xauusd-moving-badge-container {
-  background: #f0fdf4 !important;
-  border: 1.5px solid #bbf7d0 !important;
-  color: #166534 !important;
-  border-radius: 12px !important;
-  padding: 12px 16px !important;
+  background: #ECFDF5 !important;
+  border: 1.5px solid #A7F3D0 !important;
+  color: #065F46 !important;
+  border-radius: 14px !important;
+  padding: 12px 18px !important;
 }
 
 body.theme-dark .xauusd-moving-badge-container {
   background: rgba(6, 78, 59, 0.35) !important;
   border-color: rgba(52, 211, 153, 0.35) !important;
-  color: #6ee7b7 !important;
+  color: #6EE7B7 !important;
 }
 
 .xauusd-badge-item {
-  color: #0f172a !important;
+  color: #0F172A !important;
+  font-family: 'Raleway', sans-serif !important;
+  font-size: 13.5px !important;
 }
 
 body.theme-dark .xauusd-badge-item {
-  color: #f1f5f9 !important;
+  color: #F1F5F9 !important;
 }
 
-/* 2. Uniform Level Window Panels (Identical Surfaces, Radii, Borders & Padding) */
-.cmp-card,
-.landing-feature-card,
-.landing-metric-card,
-.landing-plan-card,
-.welcome-metric-chip {
-  background: #ffffff !important;
-  border: 1.5px solid #e2e8f0 !important;
-  border-radius: 16px !important;
-  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.04) !important;
-  box-sizing: border-box !important;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
-}
-
-body.theme-dark .cmp-card,
-body.theme-dark .landing-feature-card,
-body.theme-dark .landing-metric-card,
-body.theme-dark .landing-plan-card,
-body.theme-dark .welcome-metric-chip {
-  background: rgba(17, 27, 49, 0.95) !important;
-  border: 1.5px solid rgba(255, 255, 255, 0.14) !important;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45) !important;
-}
-
-.cmp-card:hover,
-.landing-feature-card:hover,
-.landing-metric-card:hover,
-.landing-plan-card:hover,
-.landing-showcase-card:hover {
-  transform: translateY(-3px) !important;
-  border-color: #00a896 !important;
-  box-shadow: 0 12px 30px rgba(0, 168, 150, 0.15) !important;
-}
-
-/* Popular Pass Gold/Emerald Highlight */
+/* 10. Fresh Most Popular Plan Card */
 .landing-plan-card.popular {
-  border: 2px solid #10b981 !important;
-  box-shadow: 0 12px 36px rgba(16, 185, 129, 0.2) !important;
+  border: 2px solid #10B981 !important;
+  box-shadow: 0 16px 36px -4px rgba(16, 185, 129, 0.2), 0 4px 6px -1px rgba(0, 0, 0, 0.02) !important;
+  position: relative !important;
 }
 
-/* 3. PURGE ALL DARK PATCHES FROM LIGHT THEME */
-
-/* Header Navbar */
-.landing-header {
-  background: rgba(255, 255, 255, 0.96) !important;
-  border-bottom: 1.5px solid #e2e8f0 !important;
+.lpc-popular-badge {
+  background: linear-gradient(135deg, #10B981 0%, #059669 100%) !important;
+  color: #FFFFFF !important;
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.5px !important;
+  padding: 5px 14px !important;
+  border-radius: 999px !important;
 }
 
-body.theme-dark .landing-header {
-  background: rgba(11, 19, 41, 0.96) !important;
-  border-bottom: 1.5px solid rgba(255, 255, 255, 0.12) !important;
-}
-
-/* GTCfx Broker Banner (Bright White in Light Theme) */
+/* 11. Fresh GTCfx Broker Partnership Banner */
 .landing-gtcfx-banner {
-  background: #ffffff !important;
-  color: #0f172a !important;
-  border: 1.5px solid #e2e8f0 !important;
-  border-radius: 16px !important;
+  background: linear-gradient(135deg, #FFFFFF 0%, #F0FDF4 50%, #F0F9FF 100%) !important;
+  border: 1.5px solid rgba(16, 185, 129, 0.3) !important;
+  border-radius: 20px !important;
   padding: 36px 32px !important;
-  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.04) !important;
+  box-shadow: 0 10px 30px -4px rgba(16, 185, 129, 0.08) !important;
 }
 
 body.theme-dark .landing-gtcfx-banner {
-  background: rgba(17, 27, 49, 0.95) !important;
-  color: #ffffff !important;
-  border: 1.5px solid rgba(255, 255, 255, 0.14) !important;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45) !important;
+  background: linear-gradient(135deg, #111B2E 0%, #064E3B 50%, #0C4A6E 100%) !important;
+  border-color: rgba(52, 211, 153, 0.3) !important;
+  box-shadow: 0 10px 30px -4px rgba(0, 0, 0, 0.4) !important;
 }
 
-/* Organization SSL Security Audit Banner (Matching Uniform White Surface) */
+.btn-gtcfx-cta {
+  background: linear-gradient(135deg, #0284C7 0%, #2563EB 100%) !important;
+  color: #FFFFFF !important;
+  border-radius: 12px !important;
+  padding: 14px 26px !important;
+  font-weight: 800 !important;
+  box-shadow: 0 8px 20px -4px rgba(2, 132, 199, 0.4) !important;
+  transition: all 0.25s ease !important;
+  text-decoration: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+.btn-gtcfx-cta:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 12px 28px -4px rgba(2, 132, 199, 0.5) !important;
+}
+
+/* 12. Verified Organization SSL Security Banner */
 .org-security-cert-banner {
-  background: #ffffff !important;
-  color: #0f172a !important;
-  border: 1.5px solid #e2e8f0 !important;
-  border-radius: 16px !important;
+  background: #FFFFFF !important;
+  border: 1px solid rgba(226, 232, 240, 0.9) !important;
+  border-radius: 20px !important;
   padding: 28px !important;
   margin-top: 28px !important;
   box-shadow: 0 4px 18px rgba(15, 23, 42, 0.04) !important;
 }
 
 body.theme-dark .org-security-cert-banner {
-  background: rgba(17, 27, 49, 0.95) !important;
-  color: #ffffff !important;
-  border: 1.5px solid rgba(255, 255, 255, 0.14) !important;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45) !important;
+  background: #111B2E !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
 }
 
 .org-badge-item {
-  background: #f8fafc !important;
-  border: 1px solid #e2e8f0 !important;
+  background: #F8FAFC !important;
+  border: 1px solid #E2E8F0 !important;
   border-radius: 12px !important;
   padding: 12px 14px !important;
 }
 
 body.theme-dark .org-badge-item {
   background: rgba(30, 41, 59, 0.5) !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
 }
 
 .org-cert-badge-pulse {
-  background: rgba(16, 185, 129, 0.12) !important;
-  color: #059669 !important;
-  border: 1px solid rgba(16, 185, 129, 0.3) !important;
-  border-radius: 99px !important;
-  padding: 4px 12px !important;
+  background: rgba(16, 185, 129, 0.1) !important;
+  color: #047857 !important;
+  border: 1px solid rgba(16, 185, 129, 0.25) !important;
+  border-radius: 999px !important;
+  padding: 5px 14px !important;
+  font-weight: 800 !important;
 }
 
 body.theme-dark .org-cert-badge-pulse {
   background: rgba(16, 185, 129, 0.2) !important;
-  color: #34d399 !important;
+  color: #34D399 !important;
   border-color: rgba(52, 211, 153, 0.4) !important;
 }
 
-.org-cert-issuer {
-  color: #475569 !important;
-}
-
-body.theme-dark .org-cert-issuer {
-  color: #94a3b8 !important;
-}
-
-/* Landing Footer (Bright Light Slate in Light Theme) */
+/* 13. Fresh Corporate Multi-Column Footer */
 .landing-footer {
-  background: #f8fafc !important;
-  color: #475569 !important;
-  border-top: 2px solid #e2e8f0 !important;
-  padding: 48px 28px !important;
-}
-
-body.theme-dark .landing-footer {
-  background: #070d1e !important;
-  color: #94a3b8 !important;
-  border-top: 2px solid rgba(255, 255, 255, 0.12) !important;
-}
-
-.landing-footer-title {
-/* ==========================================================================
-   ELEGANT & IMPRESSIVE CORPORATE MULTI-COLUMN FOOTER ENGINE
-   ========================================================================== */
-.landing-footer {
-  background: #ffffff !important;
-  border-top: 1.5px solid #e2e8f0 !important;
+  background: #FFFFFF !important;
+  border-top: 1px solid #E2E8F0 !important;
   padding: 48px 28px 28px 28px !important;
   box-sizing: border-box !important;
 }
 
 body.theme-dark .landing-footer {
-  background: #0b1329 !important;
-  border-top: 1.5px solid rgba(255, 255, 255, 0.12) !important;
+  background: #090E1A !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
 }
 
 .landing-footer-container {
-  max-width: 1360px !important;
+  max-width: 1320px !important;
   margin: 0 auto !important;
 }
 
@@ -13634,12 +13622,12 @@ body.theme-dark .landing-footer {
   font-family: 'Impact', 'Raleway', sans-serif !important;
   font-size: 20px !important;
   font-weight: 900 !important;
-  color: #0f172a !important;
+  color: #0F172A !important;
   letter-spacing: 0.5px !important;
 }
 
 body.theme-dark .lfg-brand-title {
-  color: #ffffff !important;
+  color: #FFFFFF !important;
 }
 
 .lfg-brand-desc {
@@ -13652,7 +13640,7 @@ body.theme-dark .lfg-brand-title {
 }
 
 body.theme-dark .lfg-brand-desc {
-  color: #94a3b8 !important;
+  color: #94A3B8 !important;
 }
 
 .lfg-status-pill {
@@ -13660,29 +13648,29 @@ body.theme-dark .lfg-brand-desc {
   align-items: center !important;
   gap: 8px !important;
   padding: 6px 14px !important;
-  background: rgba(16, 185, 129, 0.1) !important;
+  background: rgba(16, 185, 129, 0.08) !important;
   border: 1px solid rgba(16, 185, 129, 0.25) !important;
   border-radius: 999px !important;
   font-size: 12px !important;
   font-weight: 700 !important;
-  color: #059669 !important;
+  color: #047857 !important;
 }
 
 body.theme-dark .lfg-status-pill {
   background: rgba(16, 185, 129, 0.16) !important;
-  color: #34d399 !important;
+  color: #34D399 !important;
 }
 
 .lfg-heading {
   font-family: 'Raleway', sans-serif !important;
   font-size: 15px !important;
   font-weight: 800 !important;
-  color: #0f172a !important;
+  color: #0F172A !important;
   margin: 0 0 16px 0 !important;
 }
 
 body.theme-dark .lfg-heading {
-  color: #ffffff !important;
+  color: #FFFFFF !important;
 }
 
 .lfg-links-list {
@@ -13704,7 +13692,7 @@ body.theme-dark .lfg-heading {
 }
 
 body.theme-dark .lfg-link {
-  color: #cbd5e1 !important;
+  color: #CBD5E1 !important;
 }
 
 .lfg-link:hover {
@@ -13730,43 +13718,43 @@ body.theme-dark .lfg-link {
 }
 
 .lfg-badge-chip.emerald {
-  background: #f0fdf4 !important;
-  border: 1.5px solid #bbf7d0 !important;
+  background: #F0FDF4 !important;
+  border: 1.5px solid #BBF7D0 !important;
   color: #166534 !important;
 }
 
 body.theme-dark .lfg-badge-chip.emerald {
   background: rgba(6, 78, 59, 0.4) !important;
   border-color: rgba(52, 211, 153, 0.4) !important;
-  color: #6ee7b7 !important;
+  color: #6EE7B7 !important;
 }
 
 .lfg-badge-chip.cyan {
-  background: #f0f9ff !important;
-  border: 1.5px solid #bae6fd !important;
+  background: #F0F9FF !important;
+  border: 1.5px solid #BAE6FD !important;
   color: #075985 !important;
 }
 
 body.theme-dark .lfg-badge-chip.cyan {
   background: rgba(12, 74, 110, 0.4) !important;
   border-color: rgba(56, 189, 248, 0.4) !important;
-  color: #7dd3fc !important;
+  color: #7DD3FC !important;
 }
 
 .lfg-badge-chip.amber {
-  background: #fffbeb !important;
-  border: 1.5px solid #fef08a !important;
-  color: #854d0e !important;
+  background: #FFFBEB !important;
+  border: 1.5px solid #FEF08A !important;
+  color: #854D0E !important;
 }
 
 body.theme-dark .lfg-badge-chip.amber {
   background: rgba(120, 53, 15, 0.4) !important;
   border-color: rgba(251, 191, 36, 0.4) !important;
-  color: #fde047 !important;
+  color: #FDE047 !important;
 }
 
 .lfg-bottom-bar {
-  border-top: 1.5px solid #e2e8f0 !important;
+  border-top: 1px solid #E2E8F0 !important;
   padding-top: 24px !important;
   display: flex !important;
   align-items: center !important;
@@ -13776,18 +13764,18 @@ body.theme-dark .lfg-badge-chip.amber {
 }
 
 body.theme-dark .lfg-bottom-bar {
-  border-top-color: rgba(255, 255, 255, 0.12) !important;
+  border-top-color: rgba(255, 255, 255, 0.08) !important;
 }
 
 .lfg-copy {
   font-family: 'Raleway', sans-serif !important;
   font-size: 13px !important;
-  color: #64748b !important;
+  color: #64748B !important;
   margin: 0 !important;
 }
 
 body.theme-dark .lfg-copy {
-  color: #94a3b8 !important;
+  color: #94A3B8 !important;
 }
 
 .lfg-bottom-badges {
@@ -13800,15 +13788,12 @@ body.theme-dark .lfg-copy {
   font-size: 11.5px !important;
   font-weight: 700 !important;
   color: #475569 !important;
-  background: #f1f5f9 !important;
+  background: #F1F5F9 !important;
   border-radius: 6px !important;
   padding: 4px 8px !important;
 }
 
 body.theme-dark .lfg-small-tag {
-  background: #1e293b !important;
-  color: #cbd5e1 !important;
+  background: #1E293B !important;
+  color: #CBD5E1 !important;
 }
-
-
-
