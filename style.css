@@ -15168,3 +15168,362 @@ body.theme-dark .satoshi-signup-link::after {
     gap: 22px !important;
   }
 }
+
+/* ==========================================================================
+   PREMIUM DARK GLASSMORPHISM DESIGN SYSTEM (Space Grotesk + Inter)
+   Background: Solid Ink #0b0f14 | Accents: Neon Aqua #2dd4bf & Magenta #e879f9
+   ========================================================================== */
+
+/* 1. Global Ink Ground & Typography Foundation */
+html,
+body,
+.app-viewport-wrapper,
+.mobile-frame,
+.desktop-company-landing,
+.landing-scroll-body {
+  background-color: #0b0f14 !important;
+  color: #e7ecf2 !important;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+}
+
+/* 2. Display Headings (Space Grotesk 600-700 with Tight Tracking) */
+h1, h2, h3, h4, h5, h6,
+.landing-hero-title,
+.landing-section-title,
+.cmp-title,
+.lgb-title,
+.landing-brand-title,
+.lsc-asset,
+.lmc-val,
+.landing-plan-price,
+.plan-name {
+  font-family: 'Space Grotesk', sans-serif !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.025em !important;
+  color: #e7ecf2 !important;
+}
+
+/* 3. Headlines Emphasized Gradient Text (Neon Aqua to Magenta Aurora) */
+.landing-text-highlight,
+.text-aurora,
+.gradient-clip-text,
+.landing-hero-title span,
+.landing-section-title span.text-highlight {
+  background: linear-gradient(100deg, #2dd4bf 0%, #7dd3fc 38%, #e879f9 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  display: inline-block !important;
+}
+
+/* 4. Body Copy & UI Text */
+p,
+.landing-hero-desc,
+.landing-section-desc,
+.cmp-lead,
+.lgb-desc,
+.lsc-sb-title,
+.lfg-brand-desc,
+.lfg-link-item,
+.lfg-copyright {
+  font-family: 'Inter', sans-serif !important;
+  color: #94a3b8 !important;
+  line-height: 1.65 !important;
+}
+
+/* 5. 🌌 Drifting Aurora Orbs Behind Glass (Aqua & Magenta Radials) */
+.aurora-orbs-stage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.aurora-orb {
+  position: absolute;
+  border-radius: 9999px;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  will-change: transform;
+}
+
+.aurora-orb-aqua {
+  width: 650px;
+  height: 650px;
+  background: radial-gradient(circle, rgba(45, 212, 191, 0.42) 0%, rgba(94, 234, 212, 0.22) 40%, transparent 70%);
+  top: 4%;
+  left: 8%;
+  filter: blur(44px);
+  animation: floatAurora1 18s ease-in-out alternate infinite;
+}
+
+.aurora-orb-magenta {
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(232, 121, 249, 0.38) 0%, rgba(245, 208, 254, 0.18) 42%, transparent 70%);
+  top: 38%;
+  right: 6%;
+  filter: blur(48px);
+  animation: floatAurora2 20s ease-in-out alternate infinite;
+}
+
+.aurora-orb-sky {
+  width: 580px;
+  height: 580px;
+  background: radial-gradient(circle, rgba(125, 211, 252, 0.35) 0%, rgba(45, 212, 191, 0.15) 45%, transparent 70%);
+  bottom: 12%;
+  left: 18%;
+  filter: blur(45px);
+  animation: floatAurora3 17s ease-in-out alternate infinite;
+}
+
+.aurora-orb-violet {
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.32) 0%, rgba(232, 121, 249, 0.16) 40%, transparent 70%);
+  bottom: 4%;
+  right: 22%;
+  filter: blur(50px);
+  animation: floatAurora4 19s ease-in-out alternate infinite;
+}
+
+@keyframes floatAurora1 {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(60px, 45px) scale(1.1); }
+  100% { transform: translate(-45px, 80px) scale(0.95); }
+}
+
+@keyframes floatAurora2 {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-70px, -50px) scale(1.08); }
+  100% { transform: translate(55px, 65px) scale(0.92); }
+}
+
+@keyframes floatAurora3 {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(50px, -65px) scale(1.14); }
+  100% { transform: translate(-60px, 35px) scale(0.9); }
+}
+
+@keyframes floatAurora4 {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-55px, 50px) scale(1.06); }
+  100% { transform: translate(45px, -45px) scale(0.97); }
+}
+
+/* 6. Frosted Glass Surfaces (150deg translucent fills, 28px blur, 1px white hairline, layered shadow) */
+.landing-section,
+.landing-showcase-card,
+.cmp-card,
+.landing-feature-card,
+.landing-metric-card,
+.landing-plan-card,
+.org-security-cert-banner,
+.landing-gtcfx-banner,
+.landing-footer,
+.b-magnet-company-profile-box {
+  background: linear-gradient(150deg, rgba(255, 255, 255, 0.10) 0%, rgba(255, 255, 255, 0.02) 100%) !important;
+  backdrop-filter: blur(28px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(140%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  box-shadow: 0 30px 80px -30px rgba(0, 0, 0, 0.85), inset 0 1px 0 rgba(255, 255, 255, 0.18) !important;
+  border-radius: 24px !important;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease !important;
+}
+
+.cmp-card:hover,
+.landing-feature-card:hover,
+.landing-plan-card:hover,
+.landing-showcase-card:hover {
+  transform: translateY(-2px) !important;
+  border-color: rgba(45, 212, 191, 0.38) !important;
+  box-shadow: 0 30px 80px -30px rgba(0, 0, 0, 0.9), 0 0 30px -10px rgba(45, 212, 191, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.28) !important;
+}
+
+/* 7. Lighter Glass-Soft Variant (rgba 0.045 fill, 16px blur, 1px 0.08 border) */
+.glass-soft,
+.lsc-signal-box,
+.lsc-trade-item,
+.org-badge-item,
+.lfg-badge-chip,
+.lfg-status-pill,
+.asl-feat-card,
+.landing-metric-card,
+.welcome-metric-chip {
+  background: rgba(255, 255, 255, 0.045) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+}
+
+/* 8. Hairline Dividers (rgba 255,255,255,0.08) */
+.lsc-header,
+.lfg-bottom-bar,
+.landing-footer-grid,
+hr,
+.hairline-divider {
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* 9. Primary CTA (Pill Button with Aqua-to-Magenta Aurora Gradient & Dark Ink Text #04110f) */
+.btn-hero-primary,
+.btn-plan-select,
+.btn-gtcfx-cta,
+.btn-clean-navy,
+.btn-satoshi-login {
+  background: linear-gradient(100deg, #2dd4bf 0%, #34d3c4 50%, #e879f9 140%) !important;
+  color: #04110f !important;
+  font-family: 'Space Grotesk', sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 14.5px !important;
+  letter-spacing: 0.01em !important;
+  border: none !important;
+  border-radius: 9999px !important;
+  box-shadow: 0 12px 40px -12px rgba(45, 212, 191, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease !important;
+  cursor: pointer !important;
+}
+
+.btn-hero-primary:hover,
+.btn-plan-select:hover,
+.btn-gtcfx-cta:hover,
+.btn-clean-navy:hover,
+.btn-satoshi-login:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 16px 48px -10px rgba(45, 212, 191, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.6) !important;
+  filter: brightness(1.05) !important;
+}
+
+.btn-hero-primary:active,
+.btn-plan-select:active,
+.btn-gtcfx-cta:active,
+.btn-clean-navy:active,
+.btn-satoshi-login:active {
+  transform: scale(0.98) !important;
+}
+
+/* 10. Secondary CTA (Glass Pill with 1px Hairline & Soft Hover Glow) */
+.btn-hero-secondary,
+.btn-clean-white,
+.btn-satoshi-google {
+  background: rgba(255, 255, 255, 0.05) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  color: #e7ecf2 !important;
+  border-radius: 9999px !important;
+  font-family: 'Space Grotesk', sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+  transition: all 0.2s ease !important;
+}
+
+.btn-hero-secondary:hover,
+.btn-clean-white:hover,
+.btn-satoshi-google:hover {
+  background: rgba(255, 255, 255, 0.10) !important;
+  border-color: rgba(45, 212, 191, 0.4) !important;
+  color: #5eead4 !important;
+  transform: translateY(-2px) !important;
+}
+
+/* 11. Eyebrow Tags & Badges (Aqua-Tinted Pills with #5eead4 text) */
+.landing-hero-badge,
+.landing-section-badge,
+.cmp-badge-pill,
+.org-cert-badge-pulse,
+.lfg-status-pill,
+.asl-live-status-pill,
+.landing-brand-badge {
+  background: rgba(45, 212, 191, 0.10) !important;
+  border: 1px solid rgba(45, 212, 191, 0.28) !important;
+  color: #5eead4 !important;
+  border-radius: 9999px !important;
+  font-family: 'Space Grotesk', sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 12px !important;
+  letter-spacing: 0.05em !important;
+  padding: 6px 14px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+}
+
+.pulse-dot {
+  width: 8px !important;
+  height: 8px !important;
+  border-radius: 50% !important;
+  background: #2dd4bf !important;
+  box-shadow: 0 0 12px #2dd4bf !important;
+}
+
+/* 12. Top Navigation Bar Frosted Glass */
+.landing-header {
+  background: rgba(11, 15, 20, 0.75) !important;
+  backdrop-filter: blur(28px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(160%) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.landing-nav-link {
+  color: #94a3b8 !important;
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+  transition: color 0.2s ease !important;
+}
+
+.landing-nav-link:hover {
+  color: #2dd4bf !important;
+}
+
+.btn-landing-corner-login {
+  background: linear-gradient(100deg, #2dd4bf 0%, #e879f9 140%) !important;
+  color: #04110f !important;
+  font-family: 'Space Grotesk', sans-serif !important;
+  font-weight: 700 !important;
+  border: none !important;
+  border-radius: 9999px !important;
+  box-shadow: 0 4px 20px rgba(45, 212, 191, 0.4) !important;
+  transition: all 0.2s ease !important;
+}
+
+.btn-landing-corner-login:hover {
+  transform: translateY(-1px) !important;
+  box-shadow: 0 6px 24px rgba(45, 212, 191, 0.6) !important;
+}
+
+/* 13. Live Trading Card & Highlights Glow */
+.lsc-price-row .profit-chip {
+  background: rgba(45, 212, 191, 0.15) !important;
+  border: 1px solid rgba(45, 212, 191, 0.3) !important;
+  color: #2dd4bf !important;
+  border-radius: 9999px !important;
+  padding: 4px 10px !important;
+}
+
+.trade-profit {
+  color: #2dd4bf !important;
+  font-weight: 700 !important;
+}
+
+.trade-side.buy {
+  background: rgba(45, 212, 191, 0.2) !important;
+  color: #2dd4bf !important;
+  border-radius: 6px !important;
+}
+
+.trade-side.sell {
+  background: rgba(232, 121, 249, 0.2) !important;
+  color: #e879f9 !important;
+  border-radius: 6px !important;
+}
