@@ -239,12 +239,24 @@ class BotHubApp {
 
   async init() {
     this.calibratePlatformAndResolution();
+    this.initThemeAndLanguage();
+    await this.initAuth();
+
+    const isStandaloneSignIn = window.location.pathname.includes('signinpage') || document.body.classList.contains('standalone-signin-page');
+    if (isStandaloneSignIn) {
+      const emailInput = document.getElementById('loginEmailInput');
+      if (emailInput) {
+        setTimeout(() => {
+          emailInput.focus();
+        }, 100);
+      }
+      return;
+    }
+
     this.updateClock();
     setInterval(() => this.updateClock(), 10000);
 
-    this.initThemeAndLanguage();
     this.setupEventListeners();
-    await this.initAuth();
     await this.fetchData();
     this.startLiveSignalSimulation();
 

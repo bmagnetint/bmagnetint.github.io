@@ -15202,9 +15202,11 @@ body.standalone-signin-page {
   margin: 0 !important;
   padding: 0 !important;
   min-height: 100vh !important;
-  background: linear-gradient(135deg, #d8ebfa 0%, #edf5fd 50%, #f0f7fd 100%) !important;
+  background-color: #edf5fd !important;
+  background-image: radial-gradient(rgba(2, 132, 199, 0.18) 1.2px, transparent 1.2px) !important;
+  background-size: 24px 24px !important;
   color: var(--text-primary, #0f172a) !important;
-  font-family: var(--font-sans, 'Raleway', 'Cairo', sans-serif) !important;
+  font-family: 'Plus Jakarta Sans', 'Raleway', 'Cairo', -apple-system, BlinkMacSystemFont, sans-serif !important;
   -webkit-font-smoothing: antialiased !important;
   text-rendering: optimizeLegibility !important;
   overflow-x: hidden !important;
@@ -15212,14 +15214,17 @@ body.standalone-signin-page {
 }
 
 body.standalone-signin-page.theme-dark {
-  background: radial-gradient(circle at 10% 20%, #0e1422 0%, #070b14 100%) !important;
+  background-color: #070b14 !important;
+  background-image: radial-gradient(rgba(0, 168, 150, 0.22) 1.2px, transparent 1.2px) !important;
   color: #f8fafc !important;
 }
 
 .auth-screens-viewport.bot-theme-auth-viewport {
-  background: linear-gradient(135deg, #d8ebfa 0%, #edf5fd 50%, #f0f7fd 100%) !important;
+  background-color: #edf5fd !important;
+  background-image: radial-gradient(rgba(2, 132, 199, 0.18) 1.2px, transparent 1.2px) !important;
+  background-size: 24px 24px !important;
   color: var(--text-primary, #0f172a) !important;
-  font-family: var(--font-sans, 'Raleway', 'Cairo', sans-serif) !important;
+  font-family: 'Plus Jakarta Sans', 'Raleway', 'Cairo', sans-serif !important;
   -webkit-font-smoothing: antialiased !important;
   text-rendering: optimizeLegibility !important;
   position: relative !important;
@@ -15229,7 +15234,8 @@ body.standalone-signin-page.theme-dark {
 }
 
 body.theme-dark .auth-screens-viewport.bot-theme-auth-viewport {
-  background: radial-gradient(circle at 10% 20%, #0e1422 0%, #070b14 100%) !important;
+  background-color: #070b14 !important;
+  background-image: radial-gradient(rgba(0, 168, 150, 0.22) 1.2px, transparent 1.2px) !important;
   color: #f8fafc !important;
 }
 
@@ -15307,7 +15313,7 @@ body.theme-dark .bot-ambient-glow {
   top: 0;
   z-index: 50;
   width: 100%;
-  background: rgba(255, 255, 255, 0.78);
+  background: rgba(255, 255, 255, 0.82);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid rgba(2, 132, 199, 0.15);
@@ -15333,10 +15339,10 @@ body.theme-dark .bot-auth-top-nav {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.92);
   border: 1px solid rgba(2, 132, 199, 0.25);
   color: var(--brand-navy, #192750);
-  font-family: var(--font-sans, 'Raleway', sans-serif);
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 700;
   font-size: 13.5px;
   padding: 8px 18px;
@@ -15378,6 +15384,18 @@ body.theme-dark .btn-bot-nav-back {
   align-items: center;
   justify-content: center;
   box-shadow: 0 0 20px rgba(2, 132, 199, 0.3);
+  animation: botLogoPulse 3s ease-in-out infinite alternate;
+}
+
+@keyframes botLogoPulse {
+  0% {
+    box-shadow: 0 0 12px rgba(2, 132, 199, 0.25);
+    transform: scale(1);
+  }
+  100% {
+    box-shadow: 0 0 24px rgba(0, 168, 150, 0.55);
+    transform: scale(1.04);
+  }
 }
 
 .bot-logo-img {
@@ -15393,8 +15411,8 @@ body.theme-dark .btn-bot-nav-back {
 }
 
 .bot-brand-name {
-  font-family: var(--font-heading, 'Raleway', sans-serif);
-  font-weight: 900;
+  font-family: 'Zodiak', 'Playfair Display', Georgia, serif;
+  font-weight: 700;
   font-size: 22px;
   letter-spacing: -0.02em;
   color: var(--brand-navy, #192750);
@@ -15408,7 +15426,7 @@ body.theme-dark .bot-brand-name {
   background: rgba(2, 132, 199, 0.12);
   border: 1px solid rgba(2, 132, 199, 0.3);
   color: #0284c7;
-  font-family: var(--font-sans, 'Raleway', sans-serif);
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 800;
   font-size: 11px;
   padding: 2px 8px;
@@ -15484,8 +15502,8 @@ body.theme-dark .bot-util-btn {
   border: 1px solid rgba(5, 150, 105, 0.35);
   padding: 6px 14px;
   border-radius: 9999px;
-  font-family: var(--font-sans, 'Raleway', sans-serif);
-  font-weight: 800;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700;
   font-size: 11.5px;
   color: #059669;
   letter-spacing: 0.05em;
@@ -15500,9 +15518,9 @@ body.theme-dark .bot-live-status-badge {
 }
 
 .bot-explainer-heading {
-  font-family: var(--font-heading, 'Raleway', 'Impact', sans-serif) !important;
-  font-weight: 900 !important;
-  font-size: 40px !important;
+  font-family: 'Zodiak', 'Playfair Display', Georgia, serif !important;
+  font-weight: 700 !important;
+  font-size: 44px !important;
   line-height: 1.18 !important;
   color: var(--brand-navy, #0f172a) !important;
   letter-spacing: -0.025em !important;
@@ -15515,14 +15533,16 @@ body.theme-dark .bot-explainer-heading {
 
 .bot-gradient-title,
 .bot-explainer-heading em {
-  font-style: normal !important;
+  font-family: 'Zodiak', 'Playfair Display', Georgia, serif !important;
+  font-style: italic !important;
+  font-weight: 700 !important;
   background: linear-gradient(135deg, #0284c7 0%, #00a896 100%) !important;
   -webkit-background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
 }
 
 .bot-explainer-lead {
-  font-family: var(--font-sans, 'Raleway', sans-serif) !important;
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
   font-weight: 500 !important;
   font-size: 15.5px !important;
   line-height: 1.6 !important;

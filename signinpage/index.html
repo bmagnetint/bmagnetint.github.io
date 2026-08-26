@@ -10,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&family=Nunito:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Raleway:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet">
+  <link href="https://api.fontshare.com/v2/css?f[]=zodiak@700,700i,800,800i&f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
   
   <!-- Manifest & Favicons -->
@@ -64,18 +65,20 @@
 
         <!-- Right: Utility Controls (Language & Theme) -->
         <div class="bot-auth-nav-actions">
-          <div class="language-selector-wrapper" style="position:relative;">
-            <button type="button" class="bot-util-btn" onclick="window.botHubApp ? window.botHubApp.toggleLanguageDropdown(event) : null" title="Select Language">
-              <span class="material-symbols-rounded">translate</span>
+          <div class="lang-globe-dropdown-wrapper">
+            <button type="button" class="lang-globe-btn bot-util-btn" onclick="window.botHubApp ? window.botHubApp.toggleLanguageDropdown(event) : null" title="Select Language / اختر اللغة">
+              <span class="material-symbols-rounded">language</span>
             </button>
-            <div class="language-dropdown-menu" id="botSigninLangDropdown">
-              <div class="lang-option-item active" onclick="window.botHubApp ? window.botHubApp.setLanguage('en') : null">
-                <span class="lang-flag">🇬🇧</span>
-                <span class="lang-name">English</span>
+            <div class="lang-dropdown-menu">
+              <div class="lang-option-item active" data-lang="en" onclick="window.botHubApp ? window.botHubApp.selectAppLanguage('en') : null">
+                <span class="flag-icon">🇬🇧</span>
+                <span>English</span>
+                <span class="material-symbols-rounded check-icon">check</span>
               </div>
-              <div class="lang-option-item" onclick="window.botHubApp ? window.botHubApp.setLanguage('ar') : null">
-                <span class="lang-flag">🇦🇪</span>
-                <span class="lang-name">العربية</span>
+              <div class="lang-option-item" data-lang="ar" onclick="window.botHubApp ? window.botHubApp.selectAppLanguage('ar') : null">
+                <span class="flag-icon">🇦🇪</span>
+                <span>العربية</span>
+                <span class="material-symbols-rounded check-icon">check</span>
               </div>
             </div>
           </div>
