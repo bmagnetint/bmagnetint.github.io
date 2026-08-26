@@ -13352,15 +13352,104 @@ body.theme-dark {
   color: #f9fafb !important;
 }
 
+/* ==========================================================================
+   UNIFORM SITE-WIDE FRAME & CONTAINER ARCHITECTURE ENGINE
+   ========================================================================== */
+
+/* Outer Section Containers & Frame Spacing */
+.landing-hero-section,
+.b-magnet-company-profile-box,
+#aboutProgramSection,
+#plansSection,
+#gtcfxSection {
+  max-width: 1320px !important;
+  margin: 28px auto !important;
+  box-sizing: border-box !important;
+}
+
+/* Company Profile Box Frame */
+.b-magnet-company-profile-box {
+  background: #ffffff !important;
+  border: 1.5px solid #e2e8f0 !important;
+  border-radius: 20px !important;
+  padding: 32px !important;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04) !important;
+}
+
+body.theme-dark .b-magnet-company-profile-box {
+  background: rgba(17, 27, 49, 0.95) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.14) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45) !important;
+}
+
+/* Showcase Terminal Frame (Right Hero Card) */
+.landing-showcase-card {
+  background: #ffffff !important;
+  border: 1.5px solid #e2e8f0 !important;
+  border-radius: 20px !important;
+  padding: 24px !important;
+  box-shadow: 0 8px 30px rgba(15, 23, 42, 0.06) !important;
+}
+
+body.theme-dark .landing-showcase-card {
+  background: rgba(17, 27, 49, 0.95) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.14) !important;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Sub-card frames inside Showcase Card */
+.lsc-signal-box {
+  background: #f8fafc !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 14px !important;
+  padding: 16px !important;
+}
+
+body.theme-dark .lsc-signal-box {
+  background: rgba(11, 19, 41, 0.8) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.lsc-trade-item {
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 8px !important;
+  padding: 8px 12px !important;
+}
+
+body.theme-dark .lsc-trade-item {
+  background: rgba(30, 41, 59, 0.6) !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Live XAUUSD Ticker Frame */
+.xauusd-moving-badge-container {
+  background: #f0fdf4 !important;
+  border: 1.5px solid #bbf7d0 !important;
+  color: #166534 !important;
+  border-radius: 12px !important;
+  padding: 12px 16px !important;
+}
+
+body.theme-dark .xauusd-moving-badge-container {
+  background: rgba(6, 78, 59, 0.35) !important;
+  border-color: rgba(52, 211, 153, 0.35) !important;
+  color: #6ee7b7 !important;
+}
+
+.xauusd-badge-item {
+  color: #0f172a !important;
+}
+
+body.theme-dark .xauusd-badge-item {
+  color: #f1f5f9 !important;
+}
+
 /* 2. Uniform Level Window Panels (Identical Surfaces, Radii, Borders & Padding) */
 .cmp-card,
 .landing-feature-card,
 .landing-metric-card,
 .landing-plan-card,
-.landing-showcase-card,
-.b-magnet-company-profile-box,
-.org-security-cert-banner,
-.landing-gtcfx-banner,
 .welcome-metric-chip {
   background: #ffffff !important;
   border: 1.5px solid #e2e8f0 !important;
@@ -13374,10 +13463,6 @@ body.theme-dark .cmp-card,
 body.theme-dark .landing-feature-card,
 body.theme-dark .landing-metric-card,
 body.theme-dark .landing-plan-card,
-body.theme-dark .landing-showcase-card,
-body.theme-dark .b-magnet-company-profile-box,
-body.theme-dark .org-security-cert-banner,
-body.theme-dark .landing-gtcfx-banner,
 body.theme-dark .welcome-metric-chip {
   background: rgba(17, 27, 49, 0.95) !important;
   border: 1.5px solid rgba(255, 255, 255, 0.14) !important;
