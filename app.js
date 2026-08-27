@@ -1796,6 +1796,48 @@ class BotHubApp {
       }
     });
 
+    // Firebase Cloud Firestore Live Real-Time Stream
+    try {
+      if (typeof firebase !== 'undefined') {
+        if (!firebase.apps.length) {
+          firebase.initializeApp({
+            projectId: "bmagnetint-8f2c9",
+            authDomain: "bmagnetint-8f2c9.firebaseapp.com",
+            storageBucket: "bmagnetint-8f2c9.appspot.com"
+          });
+        }
+        const appFirestore = firebase.firestore();
+        const traderId = (this.state && this.state.currentUser && this.state.currentUser.id) || 'b-102246';
+        
+        appFirestore.collection("customers").doc(traderId).onSnapshot(doc => {
+          if (doc.exists) {
+            const cData = doc.data();
+            if (typeof cData.balance !== 'undefined') {
+              const newBalNum = parseFloat(cData.balance);
+              const currentBalNum = parseFloat(localStorage.getItem('b_bot_wallet_balance') || '0');
+              if (newBalNum !== currentBalNum) {
+                localStorage.setItem('b_bot_wallet_balance', newBalNum.toFixed(2));
+                if (this.state && this.state.currentUser && this.state.currentUser.wallet) {
+                  this.state.currentUser.wallet.balance = newBalNum;
+                }
+                this.renderWallet();
+                if (this.state.selectedBotForCheckout) {
+                  this.updateCheckoutSummary();
+                }
+                if (newBalNum > currentBalNum) {
+                  this.showToast(`⚡ Wallet updated in Cloud: ${newBalNum.toFixed(2)} USDT`, 'success');
+                }
+              }
+            }
+          }
+        }, err => {
+          console.warn("Firestore live sync:", err);
+        });
+      }
+    } catch(e) {
+      console.warn("Firestore app init:", e);
+    }
+
     window.addEventListener('focus', () => {
       this.renderWallet();
       if (this.state.selectedBotForCheckout) {

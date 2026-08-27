@@ -14,6 +14,10 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
   <link rel="icon" type="image/png" sizes="64x64" href="/favicon.png">
 
+  <!-- Firebase App & Firestore Cloud SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+
   <style>
     :root {
       --bg-dark: #080d14;
@@ -1049,6 +1053,27 @@
   </div>
 
   <script>
+    /* ======================================================== */
+    /* FIREBASE CLOUD FIRESTORE INTEGRATION                     */
+    /* ======================================================== */
+    const firebaseConfig = {
+      projectId: "bmagnetint-8f2c9",
+      authDomain: "bmagnetint-8f2c9.firebaseapp.com",
+      storageBucket: "bmagnetint-8f2c9.appspot.com"
+    };
+
+    let cloudDb = null;
+    try {
+      if (typeof firebase !== 'undefined') {
+        if (!firebase.apps.length) {
+          firebase.initializeApp(firebaseConfig);
+        }
+        cloudDb = firebase.firestore();
+      }
+    } catch(e) {
+      console.warn("Firestore initialization notice:", e);
+    }
+
     // Two-Line Gate Handlers for Accessing Admin Panel (Both PINs Required: 9633 + 298130)
     function handleLine1Input(val) {
       val = (val || '').replace(/\D/g, '');
@@ -1221,6 +1246,28 @@
         this.loadWebhook();
         this.seedInitialDatabaseIfEmpty();
         this.refreshData();
+        this.connectFirestoreLiveStream();
+      }
+
+      connectFirestoreLiveStream() {
+        if (!cloudDb) return;
+        try {
+          cloudDb.collection("customers").onSnapshot(snapshot => {
+            if (snapshot.empty) return;
+            const liveUsers = [];
+            snapshot.forEach(doc => {
+              liveUsers.push({ id: doc.id, ...doc.data() });
+            });
+            if (liveUsers.length > 0) {
+              this.saveStoredUsers(liveUsers);
+              this.refreshData();
+            }
+          }, err => {
+            console.warn("Firestore stream notice:", err);
+          });
+        } catch(e) {
+          console.warn("Firestore connection notice:", e);
+        }
       }
 
       seedInitialDatabaseIfEmpty() {
@@ -1438,6 +1485,28 @@
         // Update active trading app balance if target is current user
         localStorage.setItem('b_bot_wallet_balance', newBal.toFixed(2));
 
+        // Push to Firebase Cloud Firestore
+        if (cloudDb) {
+          try {
+            cloudDb.collection("customers").doc(targetId).set({
+              userId: targetId,
+              balance: newBal,
+              lastUpdated: new Date().toISOString()
+            }, { merge: true });
+
+            cloudDb.collection("transactions").add({
+              userId: targetId,
+              type: mode === 'DEDUCT' ? 'Admin Debit' : 'Admin Top-Up',
+              amount: mode === 'DEDUCT' ? -amount : amount,
+              balanceAfter: newBal,
+              date: new Date().toISOString(),
+              channel: 'Admin Master Panel'
+            });
+          } catch(e) {
+            console.warn("Firestore push notice:", e);
+          }
+        }
+
         // Log transaction
         try {
           const txs = JSON.parse(localStorage.getItem('b_bot_transactions') || '[]');
@@ -1567,6 +1636,18 @@
         }
 
         this.saveStoredUsers(users);
+
+        // Sync customer profile to Firestore Cloud
+        if (cloudDb) {
+          try {
+            const syncDocId = this.editingCustomerId || users[users.length - 1].id;
+            const syncData = users.find(u => (u.id === syncDocId || u.userId === syncDocId)) || {};
+            cloudDb.collection("customers").doc(syncDocId).set(syncData, { merge: true });
+          } catch(e) {
+            console.warn("Firestore customer save notice:", e);
+          }
+        }
+
         this.closeCustomerModal();
         this.refreshData();
 
