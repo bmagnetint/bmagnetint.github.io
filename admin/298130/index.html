@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <title>B-Magnet Admin Master Console | Lifelong Customer Database</title>
+  <title>B-Magnet Admin Master Console | Two-Line Security Gate</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,7 +28,7 @@
     }
 
     /* ======================================================== */
-    /* 1. SECRET PIN SECURITY GATE OVERLAY                      */
+    /* 1. TWO-LINE PASSCODE SECURITY GATE OVERLAY               */
     /* ======================================================== */
     .admin-pin-gate-overlay {
       position: fixed;
@@ -51,11 +51,11 @@
 
     .admin-pin-gate-card {
       width: 100%;
-      max-width: 400px;
+      max-width: 420px;
       background: rgba(20, 29, 41, 0.96);
-      border: 1.5px solid rgba(45, 155, 136, 0.4);
+      border: 1.5px solid rgba(45, 155, 136, 0.45);
       border-radius: 26px;
-      padding: 28px 22px;
+      padding: 30px 24px;
       text-align: center;
       box-shadow: 0 25px 70px rgba(0, 0, 0, 0.8), 0 0 35px rgba(45, 155, 136, 0.2);
       animation: gatePopIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
@@ -73,8 +73,8 @@
     }
 
     .gate-icon-box {
-      width: 56px;
-      height: 56px;
+      width: 58px;
+      height: 58px;
       border-radius: 16px;
       background: rgba(45, 155, 136, 0.15);
       border: 1.5px solid rgba(45, 155, 136, 0.4);
@@ -82,71 +82,67 @@
       align-items: center;
       justify-content: center;
       color: #34b39d;
-      margin: 0 auto 12px auto;
+      margin: 0 auto 14px auto;
       box-shadow: 0 4px 20px rgba(45, 155, 136, 0.25);
     }
 
-    .admin-pin-input-container {
-      position: relative;
-      margin: 14px 0 10px 0;
+    .two-line-group {
+      text-align: left;
+      margin-bottom: 14px;
     }
 
-    .admin-pin-main-input {
+    .two-line-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11.5px;
+      font-weight: 800;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+
+    .two-line-label span.req {
+      color: #10b981;
+      font-size: 10.5px;
+    }
+
+    .two-line-input {
       width: 100%;
-      height: 54px;
+      height: 48px;
       background: rgba(0, 0, 0, 0.6);
-      border: 2px solid rgba(45, 155, 136, 0.5);
-      border-radius: 14px;
+      border: 1.5px solid rgba(45, 155, 136, 0.4);
+      border-radius: 12px;
       color: #10b981;
       font-family: 'JetBrains Mono', monospace;
-      font-size: 26px;
+      font-size: 20px;
       font-weight: 800;
-      text-align: center;
-      letter-spacing: 12px;
-      padding: 0 12px;
+      letter-spacing: 6px;
+      padding: 0 14px;
       box-sizing: border-box;
       outline: none;
       transition: all 0.2s ease;
-      box-shadow: inset 0 2px 6px rgba(0,0,0,0.5);
     }
 
-    .admin-pin-main-input:focus {
+    .two-line-input:focus {
       border-color: #10b981;
-      box-shadow: 0 0 18px rgba(16, 185, 129, 0.4), inset 0 2px 6px rgba(0,0,0,0.5);
+      box-shadow: 0 0 16px rgba(16, 185, 129, 0.35);
+      background: rgba(0, 0, 0, 0.8);
     }
 
-    .admin-pin-main-input::placeholder {
-      color: rgba(148, 163, 184, 0.35);
-      letter-spacing: 8px;
-    }
-
-    .gate-pin-dots {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      margin: 12px 0 14px 0;
-    }
-
-    .gate-pin-dot {
-      width: 14px;
-      height: 14px;
-      border-radius: 50%;
-      border: 2px solid rgba(45, 155, 136, 0.45);
-      background: rgba(0, 0, 0, 0.4);
-      transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .gate-pin-dot.filled {
-      background: #10b981;
-      border-color: #10b981;
-      box-shadow: 0 0 12px rgba(16, 185, 129, 0.7);
-      transform: scale(1.2);
+    .two-line-input::placeholder {
+      color: rgba(148, 163, 184, 0.3);
+      letter-spacing: 2px;
+      font-size: 13px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
     }
 
     .gate-unlock-btn {
       width: 100%;
-      height: 48px;
-      border-radius: 12px;
+      height: 50px;
+      border-radius: 14px;
       background: linear-gradient(135deg, #10b981, #059669);
       border: none;
       color: #ffffff;
@@ -160,51 +156,20 @@
       cursor: pointer;
       box-shadow: 0 6px 20px rgba(16, 185, 129, 0.35);
       transition: all 0.2s;
-      margin: 12px 0 14px 0;
+      margin-top: 18px;
     }
 
     .gate-unlock-btn:hover,
     .gate-unlock-btn:active {
       transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(16, 185, 129, 0.5);
-    }
-
-    .gate-keypad {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
-      margin-top: 10px;
-    }
-
-    .gate-keypad-btn {
-      height: 48px;
-      border-radius: 12px;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      color: #ffffff;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 19px;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: all 0.15s;
-      user-select: none;
-    }
-
-    .gate-keypad-btn:active,
-    .gate-keypad-btn:hover {
-      background: rgba(45, 155, 136, 0.25);
-      border-color: rgba(45, 155, 136, 0.5);
-      transform: scale(0.96);
+      box-shadow: 0 8px 25px rgba(16, 185, 129, 0.55);
     }
 
     .gate-error-text {
       color: #ef4444;
       font-size: 12.5px;
       font-weight: 700;
-      margin-top: 8px;
+      margin-top: 10px;
       min-height: 18px;
     }
 
@@ -534,7 +499,7 @@
 <body class="admin-page-body theme-dark">
 
   <!-- ======================================================== -->
-  <!-- 1. SECRET PIN SECURITY GATE OVERLAY (PIN: 298130)        -->
+  <!-- 1. TWO-LINE PASSCODE SECURITY GATE OVERLAY               -->
   <!-- ======================================================== -->
   <div class="admin-pin-gate-overlay" id="adminPinGateOverlay">
     <div class="admin-pin-gate-card">
@@ -543,58 +508,63 @@
       </div>
       
       <h2 style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 20px; font-weight: 800; margin: 0 0 6px 0; color: #ffffff;">Admin Master Console</h2>
-      <p style="font-size: 13px; color: #94a3b8; margin: 0 0 14px 0;">Enter Secret 6-Digit Passcode to Unlock</p>
+      <p style="font-size: 13px; color: #94a3b8; margin: 0 0 18px 0;">Enter Two-Line Passcode to Authenticate</p>
 
-      <!-- Main Direct Input -->
-      <div class="admin-pin-input-container">
+      <!-- Line 1 Passcode Input (PIN: 9633) -->
+      <div class="two-line-group">
+        <div class="two-line-label">
+          <span>1. Master Access PIN</span>
+          <span class="req">Passcode 1</span>
+        </div>
         <input 
           type="password" 
-          id="adminPinInputField" 
-          class="admin-pin-main-input" 
+          id="adminPin1Input" 
+          class="two-line-input" 
           inputmode="numeric" 
           pattern="[0-9]*" 
-          maxlength="6" 
-          placeholder="••••••" 
+          maxlength="10" 
+          placeholder="•••• (Enter 9633)" 
           autocomplete="off" 
           autofocus
-          oninput="handlePinInputChange(this.value)"
-          onkeydown="if(event.key==='Enter') gateController.validate()"
+          oninput="handleLine1Input(this.value)"
+          onkeydown="if(event.key==='Enter') document.getElementById('adminPin2Input').focus()"
         >
       </div>
 
-      <!-- Synchronized 6 Dots -->
-      <div class="gate-pin-dots">
-        <div class="gate-pin-dot" id="pinDot0"></div>
-        <div class="gate-pin-dot" id="pinDot1"></div>
-        <div class="gate-pin-dot" id="pinDot2"></div>
-        <div class="gate-pin-dot" id="pinDot3"></div>
-        <div class="gate-pin-dot" id="pinDot4"></div>
-        <div class="gate-pin-dot" id="pinDot5"></div>
+      <!-- Line 2 Passcode Input (PIN: 298130) -->
+      <div class="two-line-group">
+        <div class="two-line-label">
+          <span>2. Secret Security PIN</span>
+          <span class="req">Passcode 2</span>
+        </div>
+        <input 
+          type="password" 
+          id="adminPin2Input" 
+          class="two-line-input" 
+          inputmode="numeric" 
+          pattern="[0-9]*" 
+          maxlength="10" 
+          placeholder="•••••• (Enter 298130)" 
+          autocomplete="off" 
+          oninput="handleLine2Input(this.value)"
+          onkeydown="if(event.key==='Enter') gateController.validateTwoLinePins()"
+        >
+      </div>
+
+      <!-- View / Hide PINs Toggle -->
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-top:6px;">
+        <label style="font-size:12px; color:#94a3b8; display:flex; align-items:center; gap:6px; cursor:pointer; user-select:none;">
+          <input type="checkbox" id="showPinsCheckbox" onchange="togglePinVisibility(this.checked)">
+          <span>Show Passcodes</span>
+        </label>
+        <span style="font-size:11px; color:#64748b;">9633 + 298130</span>
       </div>
 
       <!-- Big Unlock Button -->
-      <button type="button" class="gate-unlock-btn" onclick="gateController.validate()">
+      <button type="button" class="gate-unlock-btn" onclick="gateController.validateTwoLinePins()">
         <span class="material-symbols-rounded" style="font-size: 20px;">lock_open</span>
-        <span>Unlock Admin Portal</span>
+        <span>Unlock Admin Panel</span>
       </button>
-
-      <!-- On-Screen Numeric Keypad -->
-      <div class="gate-keypad">
-        <button type="button" class="gate-keypad-btn" onclick="gateController.pressKey('1')">1</button>
-        <button type="button" class="gate-keypad-btn" onclick="gateController.pressKey('2')">2</button>
-        <button type="button" class="gate-keypad-btn" onclick="gateController.pressKey('3')">3</button>
-        <button type="button" class="gate-keypad-btn" onclick="gateController.pressKey('4')">4</button>
-        <button type="button" class="gate-keypad-btn" onclick="gateController.pressKey('5')">5</button>
-        <button type="button" class="gate-keypad-btn" onclick="gateController.pressKey('6')">6</button>
-        <button type="button" class="gate-keypad-btn" onclick="gateController.pressKey('7')">7</button>
-        <button type="button" class="gate-keypad-btn" onclick="gateController.pressKey('8')">8</button>
-        <button type="button" class="gate-keypad-btn" onclick="gateController.pressKey('9')">9</button>
-        <button type="button" class="gate-keypad-btn" onclick="gateController.clearPin()" style="font-size: 13px; font-weight: 800; color: #94a3b8;">CLEAR</button>
-        <button type="button" class="gate-keypad-btn" onclick="gateController.pressKey('0')">0</button>
-        <button type="button" class="gate-keypad-btn" onclick="gateController.backspace()" style="color: #94a3b8;">
-          <span class="material-symbols-rounded">backspace</span>
-        </button>
-      </div>
 
       <div class="gate-error-text" id="gateErrorMsg"></div>
 
@@ -617,7 +587,7 @@
         </a>
         <div>
           <h1 class="admin-header-title">ADMIN MASTER PORTAL</h1>
-          <span class="admin-sec-pill"><span class="pulse-dot" style="background:#10b981;"></span> AUTHENTICATED ACCESS</span>
+          <span class="admin-sec-pill"><span class="pulse-dot" style="background:#10b981;"></span> DUAL-PIN AUTHENTICATED (9633 + 298130)</span>
         </div>
       </div>
 
@@ -944,40 +914,62 @@
   </div>
 
   <script>
-    function handlePinInputChange(val) {
-      if (window.gateController) {
-        window.gateController.handleInput(val);
+    function handleLine1Input(val) {
+      val = (val || '').replace(/\D/g, '');
+      const inp = document.getElementById('adminPin1Input');
+      if (inp && inp.value !== val) inp.value = val;
+      if (val === '9633' || val.length >= 4) {
+        const inp2 = document.getElementById('adminPin2Input');
+        if (inp2) inp2.focus();
       }
+      clearGateError();
+    }
+
+    function handleLine2Input(val) {
+      val = (val || '').replace(/\D/g, '');
+      const inp = document.getElementById('adminPin2Input');
+      if (inp && inp.value !== val) inp.value = val;
+      if (val === '298130' || val.length >= 6) {
+        if (window.gateController) {
+          window.gateController.validateTwoLinePins();
+        }
+      }
+      clearGateError();
+    }
+
+    function togglePinVisibility(show) {
+      const inp1 = document.getElementById('adminPin1Input');
+      const inp2 = document.getElementById('adminPin2Input');
+      if (inp1) inp1.type = show ? 'text' : 'password';
+      if (inp2) inp2.type = show ? 'text' : 'password';
+    }
+
+    function clearGateError() {
+      const err = document.getElementById('gateErrorMsg');
+      if (err) err.textContent = '';
     }
 
     /* ======================================================== */
-    /* PIN GATE AUTHENTICATION CONTROLLER (PIN: 298130)         */
+    /* TWO-LINE PIN GATE CONTROLLER (LINE 1: 9633, LINE 2: 298130) */
     /* ======================================================== */
     class AdminPinGateController {
       constructor() {
-        this.enteredPin = '';
-        this.correctPin = '298130';
-        this.init();
+        this.pin1Expected = '9633';
+        this.pin2Expected = '298130';
       }
 
       init() {
-        const auth = sessionStorage.getItem('b_admin_session_auth');
-        const isAuth = (auth === '298130' || auth === '9633');
+        const isAuth = this.isUnlocked();
         if (isAuth) {
           this.unlockConsole();
         } else {
           this.showGate();
         }
-
-        setTimeout(() => {
-          const inp = document.getElementById('adminPinInputField');
-          if (inp && !this.isUnlocked()) inp.focus();
-        }, 150);
       }
 
       isUnlocked() {
-        const auth = sessionStorage.getItem('b_admin_session_auth');
-        return (auth === '298130' || auth === '9633');
+        const auth = sessionStorage.getItem('b_admin_session_auth_v2');
+        return auth === 'AUTH_9633_298130';
       }
 
       showGate() {
@@ -985,72 +977,38 @@
         const stage = document.getElementById('adminMasterConsoleStage');
         if (overlay) overlay.style.display = 'flex';
         if (stage) stage.style.display = 'none';
-        this.clearPin();
+
+        setTimeout(() => {
+          const inp1 = document.getElementById('adminPin1Input');
+          if (inp1) inp1.focus();
+        }, 150);
       }
 
-      handleInput(val) {
-        val = (val || '').replace(/\D/g, '').slice(0, 6);
-        this.enteredPin = val;
-        
-        const inp = document.getElementById('adminPinInputField');
-        if (inp && inp.value !== val) inp.value = val;
+      validateTwoLinePins() {
+        const inp1 = document.getElementById('adminPin1Input');
+        const inp2 = document.getElementById('adminPin2Input');
 
-        this.renderDots();
-        const err = document.getElementById('gateErrorMsg');
-        if (err) err.textContent = '';
+        const p1 = (inp1 ? inp1.value.trim() : '');
+        const p2 = (inp2 ? inp2.value.trim() : '');
 
-        if (this.enteredPin === '298130' || this.enteredPin === '9633' || this.enteredPin.length === 6) {
-          setTimeout(() => this.validate(), 80);
-        }
-      }
+        const isLine1Valid = (p1 === this.pin1Expected);
+        const isLine2Valid = (p2 === this.pin2Expected);
 
-      pressKey(digit) {
-        if (this.enteredPin.length < 6) {
-          this.handleInput(this.enteredPin + digit);
-        }
-      }
-
-      backspace() {
-        if (this.enteredPin.length > 0) {
-          this.handleInput(this.enteredPin.slice(0, -1));
-        }
-      }
-
-      clearPin() {
-        this.enteredPin = '';
-        const inp = document.getElementById('adminPinInputField');
-        if (inp) {
-          inp.value = '';
-          inp.focus();
-        }
-        this.renderDots();
-        const err = document.getElementById('gateErrorMsg');
-        if (err) err.textContent = '';
-      }
-
-      renderDots() {
-        for (let i = 0; i < 6; i++) {
-          const dot = document.getElementById(`pinDot${i}`);
-          if (dot) {
-            dot.classList.toggle('filled', i < this.enteredPin.length);
-          }
-        }
-      }
-
-      validate() {
-        const inp = document.getElementById('adminPinInputField');
-        const pin = (inp ? inp.value.trim() : '') || this.enteredPin;
-
-        if (pin === '298130' || pin === '9633') {
-          sessionStorage.setItem('b_admin_session_auth', this.correctPin);
+        if (isLine1Valid && isLine2Valid) {
+          sessionStorage.setItem('b_admin_session_auth_v2', 'AUTH_9633_298130');
           this.unlockConsole();
         } else {
           const err = document.getElementById('gateErrorMsg');
-          if (err) err.textContent = '❌ Invalid Secret Passcode. Access Denied.';
+          if (!isLine1Valid && !isLine2Valid) {
+            if (err) err.textContent = '❌ Invalid Passcodes in both Line 1 and Line 2.';
+          } else if (!isLine1Valid) {
+            if (err) err.textContent = '❌ Invalid Passcode in Line 1 (Expected: 9633).';
+            if (inp1) inp1.focus();
+          } else {
+            if (err) err.textContent = '❌ Invalid Passcode in Line 2 (Expected: 298130).';
+            if (inp2) inp2.focus();
+          }
           this.shake();
-          setTimeout(() => {
-            this.clearPin();
-          }, 600);
         }
       }
 
@@ -1068,13 +1026,18 @@
         const stage = document.getElementById('adminMasterConsoleStage');
         if (overlay) overlay.style.display = 'none';
         if (stage) stage.style.display = 'block';
-        if (window.adminController) {
+        if (window.adminController && typeof window.adminController.refreshData === 'function') {
           window.adminController.refreshData();
         }
       }
 
       lockSession() {
+        sessionStorage.removeItem('b_admin_session_auth_v2');
         sessionStorage.removeItem('b_admin_session_auth');
+        const inp1 = document.getElementById('adminPin1Input');
+        const inp2 = document.getElementById('adminPin2Input');
+        if (inp1) inp1.value = '';
+        if (inp2) inp2.value = '';
         this.showGate();
       }
     }
@@ -1086,7 +1049,6 @@
       constructor() {
         this.searchQuery = '';
         this.editingCustomerId = null;
-        this.init();
       }
 
       init() {
@@ -1534,8 +1496,23 @@
       }
     }
 
-    const gateController = new AdminPinGateController();
+    // Initialize in safe order
     const adminController = new AdminMasterController();
+    const gateController = new AdminPinGateController();
+
+    window.adminController = adminController;
+    window.gateController = gateController;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      adminController.init();
+      gateController.init();
+    });
+
+    // Fallback trigger if already loaded
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+      adminController.init();
+      gateController.init();
+    }
   </script>
 </body>
 </html>
