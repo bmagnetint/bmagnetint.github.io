@@ -8,7 +8,7 @@
   "public/icon-512.png": "ac95a64054c37c680d0acef4d90cb3c2f732dded4b5f86799ced2eb45a97f2d6",
   "public/index.html": "a9ba730b6ebdc1b51d4da6b8c8585048a18343f8f123c1818a8d686675d28bbc",
   "public/key-generator.html": "2235ce7c4f449a25e611adf081818814d25b17421a595401199407de64cc597b",
-  "public/login.html": "1d23c99596c02d4986ebc9cf670c51b7340bbfb74582d18b3ac56f03d3465bd9",
+  "public/login.html": "d2c2c229f5ef9cc59fa456da2c161a746e43702306d97d5046d4bdba7f41f11f",
   "public/manifest.json": "2bbc3603248cab9221f4a7126474778bbfcd923ee55f0ead6f9e90d2d285c5b1",
   "public/privacy.html": "21eebab04cbd4edd0224299a95266689570866368ace423b837d65973ecc8bfc",
   "public/qrcode.js": "dc1fe07e667ce0632a54da24052d836319116b56335bc5f7d4cd8186e8a6f2c6",
@@ -28,6 +28,6 @@
   "public/images/whatsapp_status_cover.jpg": "b8d75a70d2a895da067fc95bc308acca7d3e18b73187248357af7a3fa8e2727d",
   "public/terms/index.html": "52250e678797b2876f36166fe503d9cf695b9fa214f2f9696cae2ed6399f4d18",
   "public/signinpage/index.html": "1c6fefc77e4eebe3e15b8b6a1cef6ae4b5eb206e58505539070a358f1aca307a",
-  "public/login/index.html": "1d23c99596c02d4986ebc9cf670c51b7340bbfb74582d18b3ac56f03d3465bd9",
+  "public/login/index.html": "d2c2c229f5ef9cc59fa456da2c161a746e43702306d97d5046d4bdba7f41f11f",
   "data/db.json": "77ad6688889bfb85cf7711d442ff2db9bb48305447da81c7c87c30faed2e4a24"
 }
