@@ -898,11 +898,12 @@ class BotHubApp {
     if (!element) return;
     const name = (user && user.name) || 'Hanaan';
     const initial = (name.charAt(0) || 'H').toUpperCase();
+    const picUrl = user ? (user.picture || user.avatarUrl) : null;
 
-    if (user && user.avatarUrl) {
-      element.innerHTML = `<img src="${user.avatarUrl}" alt="${name}" style="width:100%;height:100%;object-fit:cover;border-radius:50%;display:block;" />`;
+    if (picUrl) {
+      element.innerHTML = `<img src="${picUrl}" alt="${name}" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;display:block;" />`;
     } else if (user && user.avatarIcon) {
-      element.innerHTML = `<span style="font-size:1.2em;line-height:1;display:flex;align-items:center;justify-content:center;">${user.avatarIcon}</span>`;
+      element.innerHTML = `<span style="font-size:1.4em;line-height:1;display:flex;align-items:center;justify-content:center;">${user.avatarIcon}</span>`;
     } else {
       element.textContent = initial;
     }
@@ -924,8 +925,10 @@ class BotHubApp {
     const logoutBtn = document.getElementById('logoutBtn');
 
     const displayName = user.name || (user.email ? user.email.split('@')[0] : 'Hanaan');
-    const displayPhone = user.phone || user.fullPhone || user.email || '+91 94950 97786';
+    const displayPhone = user.email || user.phone || user.fullPhone || 'hanaan.trader@gmail.com';
     const displayUid = user.userId || user.id || 'BM-98214';
+    const displayMt5 = user.gtcfxMt5Account || (user.mt5Accounts && user.mt5Accounts[0] && user.mt5Accounts[0].accountNumber) || '8849201';
+    const displayTier = user.tier || 'VIP Institutional';
 
     if (userPhoneText) {
       userPhoneText.textContent = displayName;
@@ -938,16 +941,20 @@ class BotHubApp {
       this.renderAvatarIntoElement(headerAvatar, user);
     }
 
-    // Update Account Settings Profile Card
+    // Update Account Settings Profile Hero Master Card
     const pName = document.getElementById('profileDisplayName');
     const pPhone = document.getElementById('profileDisplayPhone');
     const pAvatar = document.getElementById('profileAvatarText');
     const pUid = document.getElementById('profileDisplayUid');
+    const pMt5 = document.getElementById('profileDisplayMt5');
+    const pTier = document.getElementById('profileDisplayTier');
 
     if (pName) pName.textContent = displayName;
     if (pPhone) pPhone.textContent = displayPhone;
     if (pAvatar) this.renderAvatarIntoElement(pAvatar, user);
     if (pUid) pUid.textContent = `ID: ${displayUid}`;
+    if (pMt5) pMt5.textContent = `#${displayMt5}`;
+    if (pTier) pTier.textContent = displayTier;
 
     // Update Profile Modal avatar if open
     const pmcAvatarBig = document.getElementById('pmcAvatarBig');
