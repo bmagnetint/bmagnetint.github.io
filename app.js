@@ -966,6 +966,27 @@ class BotHubApp {
     }
   }
 
+  formatShortUserId(rawId, email = '', googleId = '') {
+    if (!rawId && !email && !googleId) return 'b-884920';
+    // If it's already in short b-xxxx format (starts with b- or B- followed by 4 to 10 alphanumeric chars), return it cleanly in lowercase
+    if (typeof rawId === 'string' && /^b-[a-z0-9]{4,10}$/i.test(rawId)) {
+      return rawId.toLowerCase();
+    }
+    const cleanId = (googleId || rawId || '').toString().replace(/^usr_g_/i, '').replace(/[^a-zA-Z0-9]/g, '');
+    if (cleanId.length >= 6 && /^\d+$/.test(cleanId)) {
+      return `b-${cleanId.substring(0, 6)}`;
+    }
+    // Fallback: deterministic hash from email or identifier
+    const seed = (email || rawId || 'user').toString().toLowerCase();
+    let hash = 0;
+    for (let i = 0; i < seed.length; i++) {
+      hash = ((hash << 5) - hash) + seed.charCodeAt(i);
+      hash |= 0;
+    }
+    const num = Math.abs(hash) % 900000 + 100000;
+    return `b-${num}`;
+  }
+
   renderAvatarIntoElement(element, user) {
     if (!element) return;
     const name = (user && user.name) || 'Hanaan';
@@ -998,7 +1019,14 @@ class BotHubApp {
 
     const displayName = user.name || (user.email ? user.email.split('@')[0] : 'Hanaan');
     const displayPhone = user.email || user.phone || user.fullPhone || 'hanaan.trader@gmail.com';
-    const displayUid = user.userId || user.id || 'BM-98214';
+    const displayUid = this.formatShortUserId(user.userId || user.id, user.email, user.googleId);
+    user.id = displayUid;
+    user.userId = displayUid;
+    this.state.currentUser = user;
+    try {
+      localStorage.setItem('b_bot_auth_user', JSON.stringify(user));
+    } catch (e) {}
+
     const displayMt5 = user.gtcfxMt5Account || (user.mt5Accounts && user.mt5Accounts[0] && user.mt5Accounts[0].accountNumber) || '8849201';
     const displayTier = user.tier || 'VIP Institutional';
 
@@ -1036,6 +1064,18 @@ class BotHubApp {
 
     // 📲 Display PWA Download/Install to Home Screen Badge
     setTimeout(() => this.checkPwaInstallBanner(), 400);
+
+    // 🎯 Prompt GTCfx MT5 Binding Modal on login
+    if (!sessionStorage.getItem('b_bot_mt5_prompted')) {
+      sessionStorage.setItem('b_bot_mt5_prompted', 'true');
+      setTimeout(() => {
+        const popupInput = document.getElementById('popupBindMt5AccountInput');
+        if (popupInput) {
+          popupInput.value = user.gtcfxMt5Account || (user.mt5Accounts && user.mt5Accounts[0] && user.mt5Accounts[0].accountNumber) || '';
+        }
+        this.openModal('bindMt5Modal');
+      }, 700);
+    }
   }
 
   // -------------------------------------------------------------
@@ -1046,7 +1086,7 @@ class BotHubApp {
     const displayName = user.name || 'Hanaan';
     const displayPhone = user.phone || user.fullPhone || '+91 94950 97786';
     const displayEmail = user.email || 'hanaan@bmagnet.ai';
-    const displayUid = user.userId || user.id || 'BM-98214';
+    const displayUid = this.formatShortUserId(user.userId || user.id, user.email, user.googleId);
     const displayTelegram = user.telegram || '@B_Magnet_Gold_bot';
     const displayMt5 = user.gtcfxMt5Account || '8849201';
 
@@ -1208,7 +1248,7 @@ class BotHubApp {
   }
 
   copyUserId() {
-    const uid = (this.state.currentUser && (this.state.currentUser.userId || this.state.currentUser.id)) || 'BM-98214';
+    const uid = (this.state.currentUser && (this.state.currentUser.userId || this.state.currentUser.id)) || 'b-884920';
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(uid).then(() => {
         this.showToast(`📋 Trader ID ${uid} copied to clipboard!`, 'info');
@@ -1218,6 +1258,66 @@ class BotHubApp {
     } else {
       this.showToast(`Trader ID: ${uid}`, 'info');
     }
+  }
+
+  openBindMt5Modal() {
+    const user = this.state.currentUser || {};
+    const popupInput = document.getElementById('popupBindMt5AccountInput');
+    if (popupInput) {
+      popupInput.value = user.gtcfxMt5Account || (user.mt5Accounts && user.mt5Accounts[0] && user.mt5Accounts[0].accountNumber) || '';
+    }
+    this.openModal('bindMt5Modal');
+  }
+
+  savePopupBindMt5Account() {
+    const input = document.getElementById('popupBindMt5AccountInput');
+    const val = input ? input.value.trim() : '';
+    if (!val || val.length < 4) {
+      this.showToast('Please enter a valid GTCfx MT5 Account Number (at least 4 digits)', 'warning');
+      if (input) input.focus();
+      return;
+    }
+
+    const user = this.state.currentUser || {};
+    user.gtcfxMt5Account = val;
+    if (!user.mt5Accounts) user.mt5Accounts = [];
+    const existingIdx = user.mt5Accounts.findIndex(a => a.broker === 'GTCfx MT5');
+    if (existingIdx >= 0) {
+      user.mt5Accounts[existingIdx].accountNumber = val;
+    } else {
+      user.mt5Accounts.unshift({
+        broker: 'GTCfx MT5',
+        accountNumber: val,
+        server: 'GTC-Live',
+        equity: this.getWalletBalance(),
+        status: 'Active'
+      });
+    }
+
+    this.state.defaultMt5Account = val;
+    this.state.currentUser = user;
+    localStorage.setItem('b_bot_auth_user', JSON.stringify(user));
+
+    // Update in users database
+    try {
+      let usersDb = JSON.parse(localStorage.getItem('b_bot_users_db') || '[]');
+      const idx = usersDb.findIndex(u => u.email && u.email.toLowerCase() === (user.email || '').toLowerCase());
+      if (idx >= 0) {
+        usersDb[idx] = { ...usersDb[idx], gtcfxMt5Account: val, mt5Accounts: user.mt5Accounts };
+        localStorage.setItem('b_bot_users_db', JSON.stringify(usersDb));
+      }
+    } catch (e) {}
+
+    // Update UI fields
+    const pMt5 = document.getElementById('profileDisplayMt5');
+    if (pMt5) pMt5.textContent = `#${val}`;
+    const inputProfileMt5 = document.getElementById('inputProfileMt5');
+    if (inputProfileMt5) inputProfileMt5.value = val;
+    const checkoutMt5Input = document.getElementById('checkoutMt5Input');
+    if (checkoutMt5Input) checkoutMt5Input.value = val;
+
+    this.closeModal('bindMt5Modal');
+    this.showToast(`✅ GTCfx MT5 Account #${val} successfully bound to your profile!`, 'success');
   }
 
   // -------------------------------------------------------------
