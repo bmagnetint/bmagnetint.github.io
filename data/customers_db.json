@@ -1,0 +1,49 @@
+{
+  "version": "1.0.0",
+  "updatedAt": "2026-08-27T23:45:00.000Z",
+  "system": "B-Magnet International Master CRM Database",
+  "customers": [
+    {
+      "id": "b-102246",
+      "userId": "b-102246",
+      "name": "Hanaan Junaid",
+      "email": "bmagnet.int@gmail.com",
+      "phone": "+919495097786",
+      "whatsapp": "+919495097786",
+      "gtcfxMt5Account": "8849201",
+      "tier": "VIP Lifelong Institutional",
+      "status": "Active",
+      "bep20Address": "0x26B5E776b4e3f40378b440Dfb2ACD675938B480b",
+      "balance": 100.0,
+      "currency": "USDT (BEP-20)",
+      "joinedDate": "2026-08-01T00:00:00.000Z",
+      "lastActive": "2026-08-27T23:40:00.000Z",
+      "notes": "Primary Administrator & Master Trader. Lifelong verified GTCfx MT5 live account #8849201.",
+      "subscriptions": [
+        {
+          "id": "sub_bm_gold_8849201",
+          "botId": "bot_bmagnet_1m",
+          "botName": "B-Magnet Gold Hunter EA Pro v1.21",
+          "planName": "1 Month Pass",
+          "planKey": "1month",
+          "price": 100.0,
+          "gtcfxMt5Account": "8849201",
+          "licenseKey": "BM8-8849201-20260927-0F7C0A67",
+          "startDate": "2026-08-27T00:00:00.000Z",
+          "expiresDate": "2026-09-27T23:59:59.000Z",
+          "status": "Active"
+        }
+      ],
+      "transactions": [
+        {
+          "id": "TX_ADM_INIT",
+          "type": "Admin Top-Up",
+          "amount": 100.0,
+          "desc": "Initial Admin Wallet Credit",
+          "date": "2026-08-27T23:30:00.000Z",
+          "channel": "Admin Master Panel"
+        }
+      ]
+    }
+  ]
+}

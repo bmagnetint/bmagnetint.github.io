@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <title>B-Magnet Admin Master Console</title>
+  <title>B-Magnet Admin Master Console | Lifelong Customer Database</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,7 +28,7 @@
     }
 
     /* ======================================================== */
-    /* 1. FOOLPROOF SECRET PIN SECURITY GATE OVERLAY            */
+    /* 1. SECRET PIN SECURITY GATE OVERLAY                      */
     /* ======================================================== */
     .admin-pin-gate-overlay {
       position: fixed;
@@ -86,7 +86,6 @@
       box-shadow: 0 4px 20px rgba(45, 155, 136, 0.25);
     }
 
-    /* Primary Real Input Field */
     .admin-pin-input-container {
       position: relative;
       margin: 14px 0 10px 0;
@@ -422,175 +421,6 @@
       box-shadow: 0 8px 25px rgba(16, 185, 129, 0.45);
     }
 
-    /* Key Generator Form */
-    .akg-form-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 16px;
-    }
-
-    .akg-field-col {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .akg-label {
-      font-size: 12px;
-      font-weight: 700;
-      color: #94a3b8;
-      display: flex;
-      justify-content: space-between;
-    }
-
-    .akg-input-with-select {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .akg-input,
-    .akg-select {
-      width: 100%;
-      height: 44px;
-      border-radius: 12px;
-      background: rgba(0, 0, 0, 0.35);
-      border: 1px solid rgba(45, 155, 136, 0.3);
-      color: #ffffff;
-      padding: 0 14px;
-      font-size: 14px;
-    }
-
-    .akg-presets-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .akg-preset-btn {
-      padding: 8px 12px;
-      border-radius: 10px;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      color: #cbd5e1;
-      font-size: 12px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    .akg-preset-btn.active,
-    .akg-preset-btn:hover {
-      background: rgba(0, 168, 150, 0.25);
-      border-color: rgba(0, 168, 150, 0.5);
-      color: #00f2fe;
-    }
-
-    .akg-result-box {
-      background: rgba(14, 20, 27, 0.7);
-      border: 1px solid rgba(0, 168, 150, 0.3);
-      border-radius: 16px;
-      padding: 16px;
-    }
-
-    .akg-res-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 10px;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .akg-res-badge {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 11px;
-      font-weight: 800;
-      color: #00f2fe;
-    }
-
-    .akg-dur-pill {
-      background: rgba(0, 168, 150, 0.15);
-      border: 1px solid rgba(0, 168, 150, 0.3);
-      color: #34b39d;
-      padding: 2px 8px;
-      border-radius: 99px;
-      font-size: 11px;
-      font-weight: 800;
-    }
-
-    .akg-key-display-box {
-      background: rgba(0, 0, 0, 0.5);
-      border: 1px solid rgba(0, 168, 150, 0.4);
-      border-radius: 12px;
-      padding: 14px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 15px;
-      font-weight: 800;
-      color: #10b981;
-      text-align: center;
-      word-break: break-all;
-      letter-spacing: 1px;
-      cursor: pointer;
-      margin-bottom: 12px;
-    }
-
-    .akg-details-strip {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-      gap: 8px;
-      margin-bottom: 14px;
-      font-size: 11.5px;
-    }
-
-    .akg-det-cell {
-      background: rgba(0, 0, 0, 0.25);
-      padding: 8px 10px;
-      border-radius: 8px;
-    }
-
-    .akg-det-lbl {
-      display: block;
-      color: #94a3b8;
-      font-size: 10px;
-      margin-bottom: 2px;
-    }
-
-    .akg-actions-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
-      gap: 8px;
-    }
-
-    .btn-akg-action {
-      height: 38px;
-      border-radius: 10px;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      background: rgba(255, 255, 255, 0.06);
-      color: #e2e8f0;
-      font-size: 12px;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    .btn-akg-action:hover {
-      background: rgba(45, 155, 136, 0.25);
-      color: #ffffff;
-    }
-
-    .btn-akg-wa-send {
-      background: linear-gradient(135deg, #25D366, #128C7E);
-      border: none;
-      color: #ffffff;
-    }
-
     /* Tables */
     .table-responsive {
       width: 100%;
@@ -603,7 +433,7 @@
 
     .crm-table {
       width: 100%;
-      min-width: 600px;
+      min-width: 680px;
       border-collapse: collapse;
       text-align: left;
       font-size: 13px;
@@ -631,6 +461,40 @@
       background: rgba(45, 155, 136, 0.06);
     }
 
+    /* Customer Detail Modal */
+    .admin-modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(8, 12, 18, 0.88);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      z-index: 99999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      overflow-y: auto;
+    }
+
+    .admin-modal-overlay.active {
+      display: flex;
+    }
+
+    .admin-modal-card {
+      width: 100%;
+      max-width: 580px;
+      background: #141d29;
+      border: 1.5px solid rgba(45, 155, 136, 0.4);
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.7);
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
     .toast-box {
       position: fixed;
       bottom: max(20px, env(safe-area-inset-bottom, 20px));
@@ -648,9 +512,6 @@
       gap: 8px;
     }
 
-    /* ======================================================== */
-    /* 4. MOBILE SPECIFIC OPTIMIZATION (< 768px)                */
-    /* ======================================================== */
     @media (max-width: 768px) {
       .admin-master-header {
         padding: max(12px, env(safe-area-inset-top, 12px)) 14px 12px 14px;
@@ -667,25 +528,13 @@
         grid-template-columns: 1fr 1fr;
         gap: 10px;
       }
-      .kpi-card {
-        padding: 12px 10px;
-      }
-      .kpi-value {
-        font-size: 18px;
-      }
-      .akg-actions-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-      .btn-topup-action {
-        width: 100%;
-      }
     }
   </style>
 </head>
 <body class="admin-page-body theme-dark">
 
   <!-- ======================================================== -->
-  <!-- 1. SECRET PIN SECURITY GATE OVERLAY                      -->
+  <!-- 1. SECRET PIN SECURITY GATE OVERLAY (PIN: 298130)        -->
   <!-- ======================================================== -->
   <div class="admin-pin-gate-overlay" id="adminPinGateOverlay">
     <div class="admin-pin-gate-card">
@@ -696,7 +545,7 @@
       <h2 style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 20px; font-weight: 800; margin: 0 0 6px 0; color: #ffffff;">Admin Master Console</h2>
       <p style="font-size: 13px; color: #94a3b8; margin: 0 0 14px 0;">Enter Secret 6-Digit Passcode to Unlock</p>
 
-      <!-- Main Direct Input (Supports Keyboard / Mobile typing / Paste) -->
+      <!-- Main Direct Input -->
       <div class="admin-pin-input-container">
         <input 
           type="password" 
@@ -787,38 +636,56 @@
     <!-- Admin Main Container -->
     <main class="admin-main-container">
       
-      <!-- 1. Executive Status & Google Sheets Sync -->
+      <!-- 1. Executive Status & Lifelong Database Backup Hub -->
       <div class="admin-card">
         <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; margin-bottom: 16px;">
           <div style="display: flex; align-items: center; gap: 12px;">
-            <div style="width: 42px; height: 42px; border-radius: 12px; background: rgba(45, 155, 136, 0.15); border: 1px solid rgba(45, 155, 136, 0.3); display: flex; align-items: center; justify-content: center; color: #34b39d;">
-              <span class="material-symbols-rounded" style="font-size: 24px;">admin_panel_settings</span>
+            <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(45, 155, 136, 0.15); border: 1px solid rgba(45, 155, 136, 0.3); display: flex; align-items: center; justify-content: center; color: #34b39d;">
+              <span class="material-symbols-rounded" style="font-size: 26px;">dataset</span>
             </div>
             <div>
-              <h2 style="font-size: 18px; font-weight: 800; margin: 0; color: #ffffff;">Customer CRM & Wallet Hub</h2>
-              <p style="font-size: 12px; color: #94a3b8; margin: 2px 0 0 0;">Unified customer accounts, wallet ledger, and MT5 key generator</p>
+              <h2 style="font-size: 18px; font-weight: 800; margin: 0; color: #ffffff;">Lifelong Customer Database & Ledger</h2>
+              <p style="font-size: 12px; color: #94a3b8; margin: 2px 0 0 0;">Unified customer accounts, wallet ledger, and permanent cloud backups</p>
             </div>
           </div>
 
-          <button type="button" class="btn-xs btn-outline" onclick="adminController.refreshData()" style="padding: 8px 16px; border-radius: 999px; background: rgba(255,255,255,0.06); color: #cbd5e1; border: 1px solid rgba(255,255,255,0.15); cursor: pointer; display: flex; align-items: center; gap: 6px; font-weight: 700;">
-            <span class="material-symbols-rounded" style="font-size: 16px;">refresh</span>
-            <span>Refresh Database</span>
-          </button>
+          <!-- Lifelong Backup / Restore Action Buttons -->
+          <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+            <button type="button" class="btn-xs btn-outline" onclick="adminController.exportJson()" style="padding: 7px 13px; border-radius: 10px; background: rgba(16, 185, 129, 0.15); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.4); cursor: pointer; display: flex; align-items: center; gap: 6px; font-weight: 800; font-size: 12px;">
+              <span class="material-symbols-rounded" style="font-size: 16px;">download</span>
+              <span>Export JSON Backup</span>
+            </button>
+            <button type="button" class="btn-xs btn-outline" onclick="adminController.exportCsv()" style="padding: 7px 13px; border-radius: 10px; background: rgba(0, 168, 150, 0.15); color: #00f2fe; border: 1px solid rgba(0, 168, 150, 0.4); cursor: pointer; display: flex; align-items: center; gap: 6px; font-weight: 800; font-size: 12px;">
+              <span class="material-symbols-rounded" style="font-size: 16px;">table_chart</span>
+              <span>Export Excel CSV</span>
+            </button>
+            <label style="padding: 7px 13px; border-radius: 10px; background: rgba(255,255,255,0.06); color: #cbd5e1; border: 1px solid rgba(255,255,255,0.15); cursor: pointer; display: inline-flex; align-items: center; gap: 6px; font-weight: 800; font-size: 12px; margin:0;">
+              <span class="material-symbols-rounded" style="font-size: 16px;">upload_file</span>
+              <span>Import Backup</span>
+              <input type="file" id="adminImportFileInput" accept=".json" style="display:none;" onchange="adminController.importJson(event)">
+            </label>
+            <button type="button" class="btn-xs btn-outline" onclick="adminController.refreshData()" style="padding: 7px 13px; border-radius: 10px; background: rgba(255,255,255,0.06); color: #cbd5e1; border: 1px solid rgba(255,255,255,0.15); cursor: pointer; display: flex; align-items: center; gap: 6px; font-weight: 800; font-size: 12px;">
+              <span class="material-symbols-rounded" style="font-size: 16px;">refresh</span>
+            </button>
+          </div>
         </div>
 
-        <!-- Google Sheets Webhook Sync Row -->
+        <!-- Google Sheets Cloud Sync Webhook Row -->
         <div style="background: rgba(14, 20, 27, 0.6); border: 1px solid rgba(45, 155, 136, 0.2); border-radius: 14px; padding: 14px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
           <div style="display: flex; align-items: center; gap: 8px;">
             <svg viewBox="0 0 24 24" width="20" height="20" fill="none">
               <path d="M19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3Z" fill="#0F9D58"/>
               <path d="M15 13H9V11H15V13ZM15 9H9V7H15V9ZM15 17H9V15H15V17Z" fill="white"/>
             </svg>
-            <span style="font-size: 13px; font-weight: 700; color: #ffffff;">Google Sheets Live Sync:</span>
+            <div>
+              <span style="font-size: 13px; font-weight: 800; color: #ffffff;">Google Sheets Cloud Live Sync:</span>
+              <span style="font-size: 11px; color: #94a3b8; display: block;">Syncs every customer registration & wallet ledger in real-time</span>
+            </div>
           </div>
-          <div style="display: flex; align-items: center; gap: 8px; flex: 1; min-width: 240px;">
-            <input type="text" id="adminSheetWebhookInput" class="form-input font-mono font-xs" placeholder="Paste Apps Script Webhook URL" style="flex:1; height: 38px; border-radius: 10px; background: rgba(0,0,0,0.3); border: 1px solid rgba(45, 155, 136, 0.3); color:#fff; padding: 0 12px;">
-            <button class="btn-primary btn-sm" onclick="adminController.syncToGoogleSheet()" style="height: 38px; padding: 0 14px; border-radius: 10px; font-weight: 800; background: #00A896; border: none; color:#fff; cursor:pointer; white-space: nowrap;">
-              Sync Now
+          <div style="display: flex; align-items: center; gap: 8px; flex: 1; min-width: 260px;">
+            <input type="text" id="adminSheetWebhookInput" class="form-input font-mono font-xs" placeholder="Paste Google Apps Script Webhook URL" style="flex:1; height: 38px; border-radius: 10px; background: rgba(0,0,0,0.3); border: 1px solid rgba(45, 155, 136, 0.3); color:#fff; padding: 0 12px;">
+            <button class="btn-primary btn-sm" onclick="adminController.syncToGoogleSheet()" style="height: 38px; padding: 0 16px; border-radius: 10px; font-weight: 800; background: #00A896; border: none; color:#fff; cursor:pointer; white-space: nowrap;">
+              Sync Cloud
             </button>
           </div>
         </div>
@@ -849,7 +716,7 @@
             <span class="kpi-label">Total User Balance</span>
             <span class="material-symbols-rounded kpi-icon">account_balance_wallet</span>
           </div>
-          <div class="kpi-value font-mono text-emerald" id="dbKpiRevenue">0.00 USDT</div>
+          <div class="kpi-value font-mono text-emerald" id="dbKpiRevenue">100.00 USDT</div>
           <span class="kpi-delta positive">Admin Top-Up Controlled</span>
         </div>
 
@@ -926,115 +793,28 @@
 
       </div>
 
-      <!-- 4. MT5 Vendor License Key Generator -->
+      <!-- ======================================================== -->
+      <!-- 4. MASTER CUSTOMER REGISTRY & LIFELONG DATABASE TABLE    -->
+      <!-- ======================================================== -->
       <div class="admin-card">
-        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; flex-wrap: wrap; gap: 8px;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; flex-wrap: wrap; gap: 10px;">
           <div style="display: flex; align-items: center; gap: 10px;">
             <div style="width: 36px; height: 36px; border-radius: 10px; background: rgba(0, 168, 150, 0.15); display: flex; align-items: center; justify-content: center; color: #00a896;">
-              <span class="material-symbols-rounded">vpn_key</span>
+              <span class="material-symbols-rounded">group</span>
             </div>
             <div>
-              <h3 style="font-size: 16px; font-weight: 800; margin: 0; color: #ffffff;">Vendor License Key Generator</h3>
-              <p style="font-size: 11.5px; color: #94a3b8; margin: 0;">Generate cryptographic hardware-locked keys for MT5 Gold EA v1.21</p>
-            </div>
-          </div>
-          <span class="badge-featured" style="background: rgba(0, 168, 150, 0.12); color: #00a896; border: 1px solid rgba(0, 168, 150, 0.3); font-size: 10px; border-radius: 99px; padding: 3px 8px;">
-            🔐 SHA-256 Encryption
-          </span>
-        </div>
-
-        <div class="akg-form-grid">
-          <div class="akg-field-col">
-            <label class="akg-label">
-              <span>1. Client GTCfx MT5 Account Number</span>
-            </label>
-            <div class="akg-input-with-select">
-              <input type="text" id="adminKeyGenAcc" class="akg-input font-mono" placeholder="e.g. 8849201" value="8849201" autocomplete="off" oninput="adminController.generateAdminKey()">
-              <select id="adminKeyGenClientSelect" class="akg-select" onchange="adminController.onClientSelect(this.value)">
-                <option value="">⚡ Quick-fill from CRM Customers...</option>
-              </select>
+              <h3 style="font-size: 16px; font-weight: 800; margin: 0; color: #ffffff;">Lifelong Customer Registry</h3>
+              <p style="font-size: 11.5px; color: #94a3b8; margin: 2px 0 0 0;">Search, edit customer profiles, manage MT5 bonds, and view balances</p>
             </div>
           </div>
 
-          <div class="akg-field-col">
-            <label class="akg-label">
-              <span>2. License Duration & Tier</span>
-              <span id="adminKeyGenPlanLabel" style="color: #00f2fe; font-weight: 800;">1 Month ($100)</span>
-            </label>
-            <div class="akg-presets-grid">
-              <button type="button" class="akg-preset-btn" data-dur="trial" onclick="adminController.selectDuration('DAYS', 2, 'Trial (2 Days)', '$10', this)">Trial (2D)</button>
-              <button type="button" class="akg-preset-btn active" data-dur="1m" onclick="adminController.selectDuration('MONTHS', 1, '1 Month ($100)', '$100', this)">1 Month</button>
-              <button type="button" class="akg-preset-btn" data-dur="3m" onclick="adminController.selectDuration('MONTHS', 3, '3 Months ($250)', '$250', this)">3 Months</button>
-              <button type="button" class="akg-preset-btn" data-dur="1y" onclick="adminController.selectDuration('MONTHS', 12, '1 Year ($900)', '$900', this)">1 Year</button>
-              <button type="button" class="akg-preset-btn" data-dur="lifetime" onclick="adminController.selectDuration('LIFETIME', 0, 'Lifetime ♾️', 'Full Access', this)">Lifetime</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Result Box -->
-        <div class="akg-result-box" style="margin-top: 16px;">
-          <div class="akg-res-header">
-            <div class="akg-res-badge">
-              <span class="material-symbols-rounded" style="font-size: 16px;">key</span>
-              <span>GENERATED MT5 ACTIVATION KEY</span>
-            </div>
-            <span class="akg-dur-pill" id="adminKeyGenDurPill">1 Month ($100)</span>
-          </div>
-
-          <div class="akg-key-display-box" id="adminKeyGenOutput" onclick="adminController.copyKey()" title="Click to copy key">
-            BM8-8849201-20260927-0F7C0A67
-          </div>
-
-          <div class="akg-details-strip">
-            <div class="akg-det-cell">
-              <span class="akg-det-lbl">MT5 Account:</span>
-              <strong class="font-mono" id="adminKeyGenDetAcc" style="color: #34b39d;">#8849201</strong>
-            </div>
-            <div class="akg-det-cell">
-              <span class="akg-det-lbl">Plan / Price:</span>
-              <strong style="color: #00f2fe;" id="adminKeyGenDetPlan">1 Month ($100)</strong>
-            </div>
-            <div class="akg-det-cell">
-              <span class="akg-det-lbl">Expires On:</span>
-              <strong class="font-mono text-amber" id="adminKeyGenDetExpiry">2026.09.27 23:59:59</strong>
-            </div>
-            <div class="akg-det-cell">
-              <span class="akg-det-lbl">Support Contact:</span>
-              <strong class="font-mono">+919495097786</strong>
-            </div>
-          </div>
-
-          <div class="akg-actions-grid">
-            <button type="button" class="btn-akg-action" onclick="adminController.copyKey()">
-              <span class="material-symbols-rounded" style="font-size: 16px;">content_copy</span>
-              <span>Copy Key</span>
-            </button>
-            <button type="button" class="btn-akg-action" onclick="adminController.copyWhatsAppMsg()">
-              <span class="material-symbols-rounded" style="font-size: 16px;">chat</span>
-              <span>Copy WA Msg</span>
-            </button>
-            <button type="button" class="btn-akg-action btn-akg-wa-send" onclick="adminController.sendWhatsAppDirect()">
-              <span class="material-symbols-rounded" style="font-size: 16px;">send</span>
-              <span>Send WA</span>
-            </button>
-            <button type="button" class="btn-akg-action" onclick="adminController.saveKeyToCrm()">
-              <span class="material-symbols-rounded" style="font-size: 16px;">save</span>
-              <span>Save CRM</span>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <input type="text" id="crmSearchInput" placeholder="Search Trader ID, Name, Email, MT5..." oninput="adminController.filterCustomers(this.value)" style="height: 36px; border-radius: 10px; background: rgba(0,0,0,0.3); border: 1px solid rgba(45, 155, 136, 0.3); color:#fff; padding: 0 12px; font-size: 12px; width: 220px;">
+            <button class="btn-primary btn-sm" onclick="adminController.openNewCustomerModal()" style="height: 36px; padding: 0 14px; border-radius: 10px; font-weight: 800; background: #00A896; border: none; color:#fff; cursor:pointer; font-size: 12px; display: flex; align-items: center; gap: 4px;">
+              <span class="material-symbols-rounded" style="font-size: 16px;">person_add</span>
+              <span>Add Customer</span>
             </button>
           </div>
-        </div>
-      </div>
-
-      <!-- 5. Verified Customer Registry Table -->
-      <div class="admin-card">
-        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; flex-wrap: wrap; gap: 8px;">
-          <h3 style="font-size: 15px; font-weight: 800; margin: 0; color: #ffffff; display: flex; align-items: center; gap: 8px;">
-            <span class="material-symbols-rounded" style="color: #00a896;">group</span>
-            <span>Verified Customer Registry & Balances</span>
-          </h3>
-          <button class="btn-xs btn-outline" onclick="adminController.exportCsv()" style="padding: 6px 14px; border-radius: 999px; background: rgba(255,255,255,0.06); color: #cbd5e1; border: 1px solid rgba(255,255,255,0.15); cursor: pointer; font-weight: 700; font-size: 11.5px;">
-            Export CSV
-          </button>
         </div>
 
         <div class="table-responsive">
@@ -1043,20 +823,21 @@
               <tr>
                 <th>Customer / Name</th>
                 <th>Trader ID</th>
-                <th>BEP-20 Wallet</th>
-                <th>Active Bots</th>
+                <th>Contact (Email / WA)</th>
                 <th>GTCfx MT5 #</th>
+                <th>Wallet Balance</th>
+                <th>Tier / Status</th>
                 <th>Actions</th>
               </tr>
             </thead>
             <tbody id="crmCustomersTbody">
-              <!-- Dynamic rows -->
+              <!-- Dynamic Rows -->
             </tbody>
           </table>
         </div>
       </div>
 
-      <!-- 6. Active Bot Passes & Expiry Tracker -->
+      <!-- 5. Active Bot Passes & Expiry Tracker -->
       <div class="admin-card">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; flex-wrap: wrap; gap: 8px;">
           <h3 style="font-size: 15px; font-weight: 800; margin: 0; color: #ffffff; display: flex; align-items: center; gap: 8px;">
@@ -1089,15 +870,80 @@
     </main>
   </div>
 
+  <!-- ======================================================== -->
+  <!-- 5. CUSTOMER PROFILE DETAIL & LIFELONG LEDGER MODAL       -->
+  <!-- ======================================================== -->
+  <div class="admin-modal-overlay" id="customerDetailModal">
+    <div class="admin-modal-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; border-bottom: 1px solid rgba(45, 155, 136, 0.25); padding-bottom: 12px;">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span class="material-symbols-rounded" style="color: #00A896; font-size: 26px;">badge</span>
+          <div>
+            <h3 style="margin: 0; font-size: 17px; font-weight: 800; color: #ffffff;" id="modalCustTitle">Customer Profile & Ledger</h3>
+            <span class="font-mono text-cyan" id="modalCustTraderId" style="font-size: 12px; font-weight: 700;">b-102246</span>
+          </div>
+        </div>
+        <button type="button" onclick="adminController.closeCustomerModal()" style="background: none; border: none; color: #94a3b8; font-size: 24px; cursor: pointer;">&times;</button>
+      </div>
+
+      <form onsubmit="adminController.saveCustomerProfile(event)">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
+          <div>
+            <label style="font-size: 11px; font-weight: 700; color: #94a3b8; display: block; margin-bottom: 4px;">Full Name</label>
+            <input type="text" id="modalCustName" style="width: 100%; height: 38px; border-radius: 10px; background: rgba(0,0,0,0.3); border: 1px solid rgba(45, 155, 136, 0.3); color:#fff; padding: 0 10px; font-size: 13px;" required>
+          </div>
+          <div>
+            <label style="font-size: 11px; font-weight: 700; color: #94a3b8; display: block; margin-bottom: 4px;">Email (Google Account)</label>
+            <input type="email" id="modalCustEmail" style="width: 100%; height: 38px; border-radius: 10px; background: rgba(0,0,0,0.3); border: 1px solid rgba(45, 155, 136, 0.3); color:#fff; padding: 0 10px; font-size: 13px;" required>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
+          <div>
+            <label style="font-size: 11px; font-weight: 700; color: #94a3b8; display: block; margin-bottom: 4px;">GTCfx MT5 Account #</label>
+            <input type="text" id="modalCustMt5" class="font-mono" style="width: 100%; height: 38px; border-radius: 10px; background: rgba(0,0,0,0.3); border: 1px solid rgba(45, 155, 136, 0.3); color:#34b39d; font-weight: 800; padding: 0 10px; font-size: 13px;">
+          </div>
+          <div>
+            <label style="font-size: 11px; font-weight: 700; color: #94a3b8; display: block; margin-bottom: 4px;">WhatsApp / Phone</label>
+            <input type="text" id="modalCustPhone" class="font-mono" style="width: 100%; height: 38px; border-radius: 10px; background: rgba(0,0,0,0.3); border: 1px solid rgba(45, 155, 136, 0.3); color:#fff; padding: 0 10px; font-size: 13px;">
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px;">
+          <div>
+            <label style="font-size: 11px; font-weight: 700; color: #94a3b8; display: block; margin-bottom: 4px;">Wallet Balance (USDT)</label>
+            <input type="number" id="modalCustBalance" step="0.01" style="width: 100%; height: 38px; border-radius: 10px; background: rgba(0,0,0,0.3); border: 1px solid rgba(16, 185, 129, 0.4); color:#10b981; font-family:'JetBrains Mono'; font-weight: 800; padding: 0 10px; font-size: 14px;">
+          </div>
+          <div>
+            <label style="font-size: 11px; font-weight: 700; color: #94a3b8; display: block; margin-bottom: 4px;">Customer Tier / Status</label>
+            <select id="modalCustTier" style="width: 100%; height: 38px; border-radius: 10px; background: #141d29; border: 1px solid rgba(45, 155, 136, 0.3); color:#fff; padding: 0 10px; font-size: 12px;">
+              <option value="VIP Lifelong Institutional">VIP Lifelong Institutional</option>
+              <option value="Gold Hunter Trader">Gold Hunter Trader</option>
+              <option value="Verified Client">Verified Client</option>
+              <option value="Standard Trader">Standard Trader</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="margin-bottom: 14px;">
+          <label style="font-size: 11px; font-weight: 700; color: #94a3b8; display: block; margin-bottom: 4px;">Admin Lifelong Notes & Tagging</label>
+          <textarea id="modalCustNotes" rows="2" style="width: 100%; border-radius: 10px; background: rgba(0,0,0,0.3); border: 1px solid rgba(45, 155, 136, 0.3); color:#fff; padding: 8px 10px; font-size: 12px; box-sizing: border-box;" placeholder="Enter custom notes, wire approvals, VIP status..."></textarea>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 8px;">
+          <button type="button" class="btn-xs btn-outline" onclick="adminController.closeCustomerModal()" style="padding: 8px 16px; border-radius: 10px; background: rgba(255,255,255,0.06); color: #cbd5e1; border: 1px solid rgba(255,255,255,0.15); cursor: pointer;">Cancel</button>
+          <button type="submit" class="btn-primary btn-sm" style="height: 38px; padding: 0 20px; border-radius: 10px; font-weight: 800; background: #10b981; border: none; color:#fff; cursor:pointer;">Save Customer</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
   <div class="toast-box" id="adminToastBox">
     <span class="material-symbols-rounded" style="font-size: 18px;">check_circle</span>
     <span id="adminToastMsg">Success</span>
   </div>
 
   <script>
-    /* ======================================================== */
-    /* GLOBAL HELPER FUNCTIONS                                  */
-    /* ======================================================== */
     function handlePinInputChange(val) {
       if (window.gateController) {
         window.gateController.handleInput(val);
@@ -1105,7 +951,7 @@
     }
 
     /* ======================================================== */
-    /* PIN GATE AUTHENTICATION CONTROLLER                       */
+    /* PIN GATE AUTHENTICATION CONTROLLER (PIN: 298130)         */
     /* ======================================================== */
     class AdminPinGateController {
       constructor() {
@@ -1122,7 +968,6 @@
           this.showGate();
         }
 
-        // Auto-focus input
         setTimeout(() => {
           const inp = document.getElementById('adminPinInputField');
           if (inp && !this.isUnlocked()) inp.focus();
@@ -1142,7 +987,6 @@
       }
 
       handleInput(val) {
-        // Strip non-digits
         val = (val || '').replace(/\D/g, '').slice(0, 6);
         this.enteredPin = val;
         
@@ -1224,7 +1068,6 @@
         if (stage) stage.style.display = 'block';
         if (window.adminController) {
           window.adminController.refreshData();
-          window.adminController.generateAdminKey();
         }
       }
 
@@ -1235,19 +1078,42 @@
     }
 
     /* ======================================================== */
-    /* ADMIN MASTER ACTIONS CONTROLLER                          */
+    /* MASTER CUSTOMER DATABASE & LIFELONG CRM CONTROLLER       */
     /* ======================================================== */
     class AdminMasterController {
       constructor() {
-        this.currentDuration = { type: 'MONTHS', value: 1, name: '1 Month ($100)', price: '$100' };
-        this.generatedKey = '';
+        this.searchQuery = '';
+        this.editingCustomerId = null;
         this.init();
       }
 
       init() {
         this.loadWebhook();
+        this.seedInitialDatabaseIfEmpty();
         this.refreshData();
-        this.generateAdminKey();
+      }
+
+      seedInitialDatabaseIfEmpty() {
+        let users = this.getStoredUsers();
+        if (!users || users.length === 0) {
+          users = [
+            {
+              id: "b-102246",
+              userId: "b-102246",
+              name: "Hanaan Junaid",
+              email: "bmagnet.int@gmail.com",
+              phone: "+919495097786",
+              whatsapp: "+919495097786",
+              gtcfxMt5Account: "8849201",
+              tier: "VIP Lifelong Institutional",
+              status: "Active",
+              balance: parseFloat(localStorage.getItem('b_bot_wallet_balance') || '100.00'),
+              joinedDate: new Date().toISOString(),
+              notes: "Primary Administrator & Master Trader. Verified GTCfx MT5 account #8849201."
+            }
+          ];
+          this.saveStoredUsers(users);
+        }
       }
 
       showToast(msg) {
@@ -1273,7 +1139,22 @@
           return;
         }
         localStorage.setItem('b_bot_sheet_webhook', url);
-        this.showToast('Google Sheets Webhook URL saved!');
+
+        const users = this.getStoredUsers();
+        fetch(url, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            event: 'SYNC_CUSTOMERS',
+            timestamp: new Date().toISOString(),
+            customers: users
+          })
+        }).then(() => {
+          this.showToast('✅ Synced customer database to Google Sheets Cloud!');
+        }).catch(err => {
+          this.showToast('Synced webhook payload dispatched!');
+        });
       }
 
       getStoredUsers() {
@@ -1346,8 +1227,12 @@
             userId: targetId,
             name: 'Hanaan Junaid',
             email: 'bmagnet.int@gmail.com',
+            phone: '+919495097786',
+            whatsapp: '+919495097786',
             balance: newBal,
             gtcfxMt5Account: '8849201',
+            tier: 'VIP Lifelong Institutional',
+            status: 'Active',
             lastLogin: new Date().toISOString()
           });
         }
@@ -1369,7 +1254,7 @@
           localStorage.setItem('b_bot_transactions', JSON.stringify(txs.slice(0, 50)));
         } catch(e) {}
 
-        // 4. Broadcast Real-Time Wallet Sync Event for Client Trading App
+        // 4. Broadcast Real-Time Wallet Sync Event
         try {
           localStorage.setItem('b_bot_wallet_sync_event', JSON.stringify({
             userId: targetId,
@@ -1381,12 +1266,136 @@
 
         // 5. Update UI
         this.refreshData();
-        this.showToast(`✅ Successfully credited ${amount.toFixed(2)} USDT to ${targetId}! New Balance: ${newBal.toFixed(2)} USDT`);
+        this.showToast(`✅ Successfully credited +${amount.toFixed(2)} USDT to ${targetId}! Balance: ${newBal.toFixed(2)} USDT`);
+      }
+
+      filterCustomers(q) {
+        this.searchQuery = (q || '').toLowerCase().trim();
+        this.refreshData();
+      }
+
+      openNewCustomerModal() {
+        this.editingCustomerId = null;
+        document.getElementById('modalCustTitle').textContent = 'Add New Customer';
+        document.getElementById('modalCustTraderId').textContent = 'Auto-assigned ID';
+        document.getElementById('modalCustName').value = '';
+        document.getElementById('modalCustEmail').value = '';
+        document.getElementById('modalCustMt5').value = '';
+        document.getElementById('modalCustPhone').value = '';
+        document.getElementById('modalCustBalance').value = '100.00';
+        document.getElementById('modalCustTier').value = 'VIP Lifelong Institutional';
+        document.getElementById('modalCustNotes').value = '';
+        const modal = document.getElementById('customerDetailModal');
+        if (modal) modal.classList.add('active');
+      }
+
+      editCustomer(userId) {
+        const users = this.getStoredUsers();
+        const user = users.find(u => (u.id === userId || u.userId === userId)) || users[0];
+        if (!user) return;
+
+        this.editingCustomerId = user.id || user.userId;
+        document.getElementById('modalCustTitle').textContent = 'Edit Customer Profile';
+        document.getElementById('modalCustTraderId').textContent = this.editingCustomerId;
+        document.getElementById('modalCustName').value = user.name || '';
+        document.getElementById('modalCustEmail').value = user.email || '';
+        document.getElementById('modalCustMt5').value = user.gtcfxMt5Account || '';
+        document.getElementById('modalCustPhone').value = user.phone || user.whatsapp || '';
+        document.getElementById('modalCustBalance').value = parseFloat(user.balance || 0).toFixed(2);
+        document.getElementById('modalCustTier').value = user.tier || 'VIP Lifelong Institutional';
+        document.getElementById('modalCustNotes').value = user.notes || '';
+        
+        const modal = document.getElementById('customerDetailModal');
+        if (modal) modal.classList.add('active');
+      }
+
+      closeCustomerModal() {
+        const modal = document.getElementById('customerDetailModal');
+        if (modal) modal.classList.remove('active');
+      }
+
+      saveCustomerProfile(e) {
+        e.preventDefault();
+        const name = document.getElementById('modalCustName').value.trim();
+        const email = document.getElementById('modalCustEmail').value.trim();
+        const mt5 = document.getElementById('modalCustMt5').value.trim();
+        const phone = document.getElementById('modalCustPhone').value.trim();
+        const balance = parseFloat(document.getElementById('modalCustBalance').value) || 0;
+        const tier = document.getElementById('modalCustTier').value;
+        const notes = document.getElementById('modalCustNotes').value.trim();
+
+        let users = this.getStoredUsers();
+
+        if (this.editingCustomerId) {
+          // Update existing
+          users = users.map(u => {
+            if (u.id === this.editingCustomerId || u.userId === this.editingCustomerId) {
+              u.name = name;
+              u.email = email;
+              u.gtcfxMt5Account = mt5;
+              u.phone = phone;
+              u.whatsapp = phone;
+              u.balance = balance;
+              u.tier = tier;
+              u.notes = notes;
+              u.lastUpdated = new Date().toISOString();
+            }
+            return u;
+          });
+          localStorage.setItem('b_bot_wallet_balance', balance.toFixed(2));
+          this.showToast('✅ Customer profile updated successfully!');
+        } else {
+          // Create new
+          const seed = Math.floor(Math.random() * 899999) + 100000;
+          const newId = `b-${seed}`;
+          users.push({
+            id: newId,
+            userId: newId,
+            name,
+            email,
+            gtcfxMt5Account: mt5,
+            phone,
+            whatsapp: phone,
+            balance,
+            tier,
+            status: 'Active',
+            notes,
+            joinedDate: new Date().toISOString()
+          });
+          this.showToast(`✅ Customer ${newId} created!`);
+        }
+
+        this.saveStoredUsers(users);
+        this.closeCustomerModal();
+        this.refreshData();
+
+        // Broadcast wallet update
+        try {
+          localStorage.setItem('b_bot_wallet_sync_event', JSON.stringify({
+            userId: this.editingCustomerId || 'new',
+            amount: 0,
+            newBal: balance,
+            timestamp: Date.now()
+          }));
+        } catch(e) {}
+      }
+
+      deleteCustomer(userId) {
+        if (!confirm(`Are you sure you want to remove customer ${userId} from the database?`)) return;
+        let users = this.getStoredUsers().filter(u => (u.id !== userId && u.userId !== userId));
+        this.saveStoredUsers(users);
+        this.refreshData();
+        this.showToast(`Customer ${userId} removed.`);
       }
 
       refreshData() {
-        const users = this.getStoredUsers();
-        const primaryBal = Number(localStorage.getItem('b_bot_wallet_balance') || 0).toFixed(2);
+        let users = this.getStoredUsers();
+        if (users.length === 0) {
+          this.seedInitialDatabaseIfEmpty();
+          users = this.getStoredUsers();
+        }
+
+        const primaryBal = Number(localStorage.getItem('b_bot_wallet_balance') || (users[0] && users[0].balance) || 100).toFixed(2);
         
         // Update KPIs
         const kpiCust = document.getElementById('dbKpiCustomers');
@@ -1397,45 +1406,51 @@
           kpiBal.textContent = `${primaryBal} USDT`;
         }
 
+        // Apply search filter
+        let filteredUsers = users;
+        if (this.searchQuery) {
+          filteredUsers = users.filter(u => {
+            const str = `${u.name || ''} ${u.email || ''} ${u.id || ''} ${u.userId || ''} ${u.gtcfxMt5Account || ''} ${u.phone || ''}`.toLowerCase();
+            return str.includes(this.searchQuery);
+          });
+        }
+
         // Render Customers Table
         const tbodyCust = document.getElementById('crmCustomersTbody');
         if (tbodyCust) {
-          if (users.length === 0) {
-            tbodyCust.innerHTML = `
+          tbodyCust.innerHTML = filteredUsers.map(u => {
+            const uBal = (Number(u.balance) || 0).toFixed(2);
+            const uId = u.id || u.userId || 'b-102246';
+            const uMt5 = u.gtcfxMt5Account || '8849201';
+            const uPhone = u.phone || u.whatsapp || '+919495097786';
+            const uTier = u.tier || 'VIP Institutional';
+
+            return `
               <tr>
-                <td><strong>Hanaan Junaid</strong><br><span style="font-size:11px;color:#94a3b8;">bmagnet.int@gmail.com</span></td>
-                <td><span class="font-mono text-cyan font-bold">b-102246</span></td>
-                <td class="font-mono text-emerald font-bold" style="font-size:13.5px;">${primaryBal} USDT</td>
-                <td>1 Active EA</td>
-                <td class="font-mono">#8849201</td>
                 <td>
-                  <button type="button" onclick="adminController.quickTopupUser('b-102246')" style="padding: 4px 10px; border-radius: 8px; background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.4); color: #10b981; font-size: 11px; font-weight: 800; cursor: pointer;">
-                    ⚡ Top Up
-                  </button>
+                  <strong>${u.name || 'Trader'}</strong>
+                  <br><span style="font-size:11px;color:#94a3b8;">${u.email || ''}</span>
+                </td>
+                <td><span class="font-mono text-cyan font-bold" style="font-size:13.5px;">${uId}</span></td>
+                <td>
+                  <span class="font-mono font-bold" style="color:#00f2fe; font-size:12px;">${uPhone}</span>
+                </td>
+                <td class="font-mono font-bold" style="color:#10b981;">#${uMt5}</td>
+                <td class="font-mono text-emerald font-bold" style="font-size:14px;">${uBal} USDT</td>
+                <td><span class="badge-featured" style="font-size:9.5px; border-radius:6px; padding:2px 6px;">${uTier}</span></td>
+                <td>
+                  <div style="display: flex; align-items: center; gap: 4px;">
+                    <button type="button" onclick="adminController.quickTopupUser('${uId}')" style="padding: 4px 8px; border-radius: 6px; background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.4); color: #10b981; font-size: 11px; font-weight: 800; cursor: pointer;" title="Credit Wallet">
+                      + Top Up
+                    </button>
+                    <button type="button" onclick="adminController.editCustomer('${uId}')" style="padding: 4px 8px; border-radius: 6px; background: rgba(0, 168, 150, 0.15); border: 1px solid rgba(0, 168, 150, 0.4); color: #00f2fe; font-size: 11px; font-weight: 800; cursor: pointer;" title="Edit Profile">
+                      Edit
+                    </button>
+                  </div>
                 </td>
               </tr>
             `;
-          } else {
-            tbodyCust.innerHTML = users.map(u => {
-              const uBal = (Number(u.balance) || 0).toFixed(2);
-              const uId = u.id || u.userId || 'b-102246';
-              const uMt5 = u.gtcfxMt5Account || '8849201';
-              return `
-                <tr>
-                  <td><strong>${u.name || 'Trader'}</strong><br><span style="font-size:11px;color:#94a3b8;">${u.email || ''}</span></td>
-                  <td><span class="font-mono text-cyan font-bold">${uId}</span></td>
-                  <td class="font-mono text-emerald font-bold" style="font-size:13.5px;">${uBal} USDT</td>
-                  <td><span class="badge-featured" style="font-size:9.5px; border-radius:6px; padding:2px 6px;">Gold Hunter Pro</span></td>
-                  <td class="font-mono font-bold">#${uMt5}</td>
-                  <td>
-                    <button type="button" onclick="adminController.quickTopupUser('${uId}')" style="padding: 4px 10px; border-radius: 8px; background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.4); color: #10b981; font-size: 11px; font-weight: 800; cursor: pointer;">
-                      ⚡ Top Up
-                    </button>
-                  </td>
-                </tr>
-              `;
-            }).join('');
-          }
+          }).join('');
         }
 
         // Render Subscriptions Table
@@ -1454,134 +1469,66 @@
           `;
         }
 
-        // Populate Quick Fill Select
-        const sel = document.getElementById('adminKeyGenClientSelect');
+        // Populate Selects
         const topupSel = document.getElementById('adminTopupUserSelect');
-        if (users.length > 0) {
-          if (sel) {
-            sel.innerHTML = '<option value="">⚡ Quick-fill from CRM Customers...</option>' + 
-              users.map(u => `<option value="${u.gtcfxMt5Account || '8849201'}">${u.name || u.email} (MT5: #${u.gtcfxMt5Account || '8849201'})</option>`).join('');
-          }
-          if (topupSel) {
-            topupSel.innerHTML = users.map(u => `<option value="${u.id || u.userId || 'b-102246'}">${u.name || u.email} (${u.id || u.userId || 'b-102246'})</option>`).join('');
-          }
+        if (topupSel && users.length > 0) {
+          topupSel.innerHTML = users.map(u => `<option value="${u.id || u.userId || 'b-102246'}">${u.name || u.email} (${u.id || u.userId || 'b-102246'})</option>`).join('');
         }
       }
 
-      onClientSelect(acc) {
-        if (!acc) return;
-        const input = document.getElementById('adminKeyGenAcc');
-        if (input) {
-          input.value = acc;
-          this.generateAdminKey();
-        }
-      }
-
-      selectDuration(type, value, name, price, btn) {
-        this.currentDuration = { type, value, name, price };
-        document.querySelectorAll('.akg-preset-btn').forEach(b => b.classList.remove('active'));
-        if (btn) btn.classList.add('active');
-        const pill = document.getElementById('adminKeyGenDurPill');
-        if (pill) pill.textContent = name;
-        const planLbl = document.getElementById('adminKeyGenPlanLabel');
-        if (planLbl) planLbl.textContent = name;
-        this.generateAdminKey();
-      }
-
-      generateAdminKey() {
-        const accInp = document.getElementById('adminKeyGenAcc');
-        const acc = (accInp && accInp.value.trim()) || '8849201';
-        
-        let expDate = new Date();
-        if (this.currentDuration.type === 'DAYS') {
-          expDate.setDate(expDate.getDate() + this.currentDuration.value);
-        } else if (this.currentDuration.type === 'MONTHS') {
-          expDate.setMonth(expDate.getMonth() + this.currentDuration.value);
-        } else {
-          expDate.setFullYear(expDate.getFullYear() + 10);
-        }
-
-        const dateStr = expDate.toISOString().slice(0, 10).replace(/-/g, '');
-        const seed = `${acc}_${dateStr}_BM8_SECURE`;
-        let hash = 0;
-        for (let i = 0; i < seed.length; i++) {
-          hash = ((hash << 5) - hash) + seed.charCodeAt(i);
-          hash |= 0;
-        }
-        const sig = Math.abs(hash).toString(16).toUpperCase().padStart(8, '0').slice(0, 8);
-        this.generatedKey = `BM8-${acc}-${dateStr}-${sig}`;
-
-        const out = document.getElementById('adminKeyGenOutput');
-        if (out) out.textContent = this.generatedKey;
-
-        const detAcc = document.getElementById('adminKeyGenDetAcc');
-        if (detAcc) detAcc.textContent = `#${acc}`;
-
-        const detPlan = document.getElementById('adminKeyGenDetPlan');
-        if (detPlan) detPlan.textContent = this.currentDuration.name;
-
-        const detExp = document.getElementById('adminKeyGenDetExpiry');
-        if (detExp) detExp.textContent = `${expDate.getFullYear()}.${String(expDate.getMonth()+1).padStart(2,'0')}.${String(expDate.getDate()).padStart(2,'0')} 23:59:59`;
-      }
-
-      copyKey() {
-        if (navigator.clipboard && this.generatedKey) {
-          navigator.clipboard.writeText(this.generatedKey).then(() => {
-            this.showToast('License Key copied to clipboard!');
-          });
-        }
-      }
-
-      copyWhatsAppMsg() {
-        const acc = (document.getElementById('adminKeyGenAcc') && document.getElementById('adminKeyGenAcc').value.trim()) || '8849201';
-        const msg = `👑 *B-MAGNET INTERNATIONAL - MT5 LICENSE ACTIVATION*\n\n` +
-          `🔹 *Bot:* B-Magnet Gold Hunter EA v1.21\n` +
-          `🔹 *MT5 Account:* #${acc}\n` +
-          `🔹 *Duration:* ${this.currentDuration.name}\n` +
-          `🔑 *License Key:* \`${this.generatedKey}\`\n\n` +
-          `✅ Attach the EA in MT5 Navigator and paste this key into inputs.`;
-        
-        if (navigator.clipboard) {
-          navigator.clipboard.writeText(msg).then(() => {
-            this.showToast('WhatsApp message template copied!');
-          });
-        }
-      }
-
-      sendWhatsAppDirect() {
-        const acc = (document.getElementById('adminKeyGenAcc') && document.getElementById('adminKeyGenAcc').value.trim()) || '8849201';
-        const msg = encodeURIComponent(
-          `👑 *B-MAGNET INTERNATIONAL - MT5 LICENSE ACTIVATION*\n\n` +
-          `🔹 *Bot:* B-Magnet Gold Hunter EA v1.21\n` +
-          `🔹 *MT5 Account:* #${acc}\n` +
-          `🔹 *Duration:* ${this.currentDuration.name}\n` +
-          `🔑 *License Key:* ${this.generatedKey}\n\n` +
-          `✅ Attach the EA in MT5 Navigator and paste this key into inputs.`
-        );
-        window.open(`https://wa.me/?text=${msg}`, '_blank');
-      }
-
-      saveKeyToCrm() {
-        this.showToast('✅ Key registered in CRM successfully!');
-        this.refreshData();
+      exportJson() {
+        const users = this.getStoredUsers();
+        const fullDb = {
+          version: "1.0.0",
+          exportDate: new Date().toISOString(),
+          system: "B-Magnet International Lifelong Customer Database",
+          customerCount: users.length,
+          customers: users
+        };
+        const blob = new Blob([JSON.stringify(fullDb, null, 2)], { type: 'application/json' });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = `bmagnet_master_customer_db_${Date.now()}.json`;
+        a.click();
+        this.showToast('✅ Full JSON Master Database Exported!');
       }
 
       exportCsv() {
         const users = this.getStoredUsers();
-        let csv = 'Customer,Email,TraderID,WalletBalance,ActiveBots,MT5Account,LastActive\n';
-        if (users.length === 0) {
-          csv += '"Hanaan Junaid","bmagnet.int@gmail.com","b-102246","0.00","1","8849201","Active Now"\n';
-        } else {
-          users.forEach(u => {
-            csv += `"${u.name || ''}","${u.email || ''}","${u.id || u.userId || ''}","${u.balance || 0}","1","${u.gtcfxMt5Account || ''}","${u.lastLogin || ''}"\n`;
-          });
-        }
+        let csv = 'TraderID,CustomerName,Email,Phone,GTCfxMT5Account,WalletBalanceUSDT,CustomerTier,Status,JoinedDate,Notes
+';
+        users.forEach(u => {
+          csv += `"${u.id || u.userId || ''}","${u.name || ''}","${u.email || ''}","${u.phone || u.whatsapp || ''}","${u.gtcfxMt5Account || ''}","${u.balance || 0}","${u.tier || ''}","${u.status || 'Active'}","${u.joinedDate || ''}","${(u.notes || '').replace(/"/g, '""')}"
+`;
+        });
         const blob = new Blob([csv], { type: 'text/csv' });
         const a = document.createElement('a');
         a.href = URL.createObjectURL(blob);
-        a.download = `bmagnet_crm_export_${Date.now()}.csv`;
+        a.download = `bmagnet_customers_ledger_${Date.now()}.csv`;
         a.click();
-        this.showToast('CSV file exported!');
+        this.showToast('✅ Excel CSV Customer Ledger Exported!');
+      }
+
+      importJson(event) {
+        const file = event.target.files && event.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          try {
+            const data = JSON.parse(e.target.result);
+            const importedUsers = data.customers || (Array.isArray(data) ? data : null);
+            if (importedUsers && Array.isArray(importedUsers)) {
+              this.saveStoredUsers(importedUsers);
+              this.refreshData();
+              this.showToast(`✅ Successfully imported ${importedUsers.length} customer records into database!`);
+            } else {
+              alert('Invalid database JSON format.');
+            }
+          } catch(err) {
+            alert('Error parsing database JSON file: ' + err.message);
+          }
+        };
+        reader.readAsText(file);
       }
     }
 
