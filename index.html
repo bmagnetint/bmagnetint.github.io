@@ -50,7 +50,7 @@
   <script src="https://accounts.google.com/gsi/client" async defer></script>
   <meta name="google-signin-client_id" content="193074652385-prup7faehlgodh890o06ehfaujblvvni.apps.googleusercontent.com">
   
-  <link rel="stylesheet" href="style.css?v=5740">
+  <link rel="stylesheet" href="style.css?v=6195">
 </head>
 <body class="theme-light">
   <!-- Google One-Tap Automatic Credentials Container -->
@@ -839,7 +839,7 @@
               <p class="panel-subtitle">Deposit USDT over BNB Smart Chain to activate 1M, 3M & 1Y passes</p>
             </div>
             <button class="btn-sm btn-primary" onclick="window.botHubApp.openTopupModal()">
-              <span class="material-symbols-rounded">add</span> Deposit USDT
+              <span class="material-symbols-rounded">add_card</span> Top Up Wallet
             </button>
           </div>
 
@@ -850,22 +850,92 @@
                 <span class="wallet-hero-lbl">AVAILABLE BEP-20 USDT BALANCE</span>
                 <div class="wallet-hero-amount" id="billingWalletBalance">0.00 USDT</div>
               </div>
-              <button class="btn-topup-hero" onclick="window.botHubApp.openTopupModal()">
-                <span class="material-symbols-rounded">currency_bitcoin</span> Deposit BEP-20
-              </button>
+              <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 6px;">
+                <button class="btn-topup-hero" onclick="window.botHubApp.openTopupModal()">
+                  <span class="material-symbols-rounded">currency_bitcoin</span> Top Up Wallet
+                </button>
+                <span class="font-mono text-cyan" id="billingTraderIdDisplay" style="font-size: 11.5px; font-weight: 800;">Trader ID: b-102246</span>
+              </div>
             </div>
             <div class="wallet-hero-note">
               <span class="bsc-badge-chip">BNB Chain BEP-20</span>
-              <span>All 1-Month, 3-Month & 1-Year plans are charged directly in BEP-20 USDT with instant automated activation.</span>
+              <span>Non-custodial balance. Funds are verified and credited directly by Admin upon transfer proof.</span>
             </div>
           </div>
 
-          <!-- Saved Payment Methods -->
+          <!-- Official BEP-20 Deposit & QR Card (Uniform Grid) -->
           <div class="section-title-row">
-            <h3 class="section-title">Connected BEP-20 Deposit Rail</h3>
+            <h3 class="section-title">Official BEP-20 USDT Deposit Rail & QR Code</h3>
           </div>
-          <div class="payment-methods-list" id="paymentMethodsList">
-            <!-- Rendered by JS -->
+
+          <div class="deposit-rail-showcase-card" style="background: var(--surface-card); border: 1px solid var(--border-subtle); border-radius: 18px; padding: 22px; margin-bottom: 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; align-items: center;">
+              
+              <!-- Left: QR Code & Address -->
+              <div style="display: flex; flex-direction: column; align-items: center; text-align: center; background: rgba(0,0,0,0.25); border: 1px solid rgba(45, 155, 136, 0.25); border-radius: 16px; padding: 20px;">
+                <div class="bep20-network-pill" style="margin-bottom: 12px; background: rgba(240, 185, 11, 0.12); color: #F0B90B; border: 1px solid rgba(240, 185, 11, 0.3); padding: 4px 12px; border-radius: 99px; font-size: 11px; font-weight: 700; display: inline-flex; align-items: center; gap: 6px;">
+                  <span class="material-symbols-rounded" style="font-size: 16px; color: #F0B90B;">token</span>
+                  <span>Network: <strong>BNB Smart Chain (BEP-20 Only)</strong></span>
+                </div>
+                
+                <div class="crypto-qr-container" style="margin: 8px 0; background: #ffffff; padding: 12px; border-radius: 14px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+                  <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=0x26B5E776b4e3f40378b440Dfb2ACD675938B480b" alt="Admin BEP-20 QR" style="width: 180px; height: 180px; display: block; border-radius: 8px;">
+                </div>
+                <span style="font-size: 11px; color: #94a3b8; margin-top: 6px;">Scan via Binance, Trust Wallet, or MetaMask</span>
+
+                <div class="form-group" style="width: 100%; margin-top: 14px;">
+                  <label class="form-label" style="font-size: 11px; text-align: left; margin-bottom: 4px;">Admin BEP-20 Deposit Address:</label>
+                  <div class="input-with-icon" style="width: 100%;">
+                    <input type="text" readonly id="viewBillingBep20Address" class="form-input font-mono font-xs" value="0x26B5E776b4e3f40378b440Dfb2ACD675938B480b" style="font-size: 11px; background: rgba(0,0,0,0.3);">
+                    <button class="copy-inside-btn" onclick="window.botHubApp.copyBep20Address()" title="Copy BEP-20 Address">
+                      <span class="material-symbols-rounded">content_copy</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Right: 3-Step Verification & WhatsApp Submission -->
+              <div style="display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+                <div>
+                  <h4 style="font-size: 16px; font-weight: 800; color: var(--text-main); margin: 0 0 12px 0; display: flex; align-items: center; gap: 8px;">
+                    <span class="material-symbols-rounded" style="color: #10b981;">verified_user</span>
+                    <span>How to Top Up Your Wallet</span>
+                  </h4>
+
+                  <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px;">
+                    <div style="display: flex; gap: 12px; align-items: flex-start;">
+                      <div style="width: 26px; height: 26px; border-radius: 50%; background: rgba(45, 155, 136, 0.15); border: 1px solid rgba(45, 155, 136, 0.4); color: #34b39d; font-size: 12px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+                      <div style="font-size: 12.5px; line-height: 1.4; color: #94a3b8;">
+                        <strong style="color: #ffffff;">Send USDT (BEP-20)</strong> to Admin's deposit address or scan the QR code.
+                      </div>
+                    </div>
+
+                    <div style="display: flex; gap: 12px; align-items: flex-start;">
+                      <div style="width: 26px; height: 26px; border-radius: 50%; background: rgba(45, 155, 136, 0.15); border: 1px solid rgba(45, 155, 136, 0.4); color: #34b39d; font-size: 12px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
+                      <div style="font-size: 12.5px; line-height: 1.4; color: #94a3b8;">
+                        <strong style="color: #ffffff;">Take a Screenshot</strong> of the successful transfer / transaction receipt.
+                      </div>
+                    </div>
+
+                    <div style="display: flex; gap: 12px; align-items: flex-start;">
+                      <div style="width: 26px; height: 26px; border-radius: 50%; background: rgba(45, 155, 136, 0.15); border: 1px solid rgba(45, 155, 136, 0.4); color: #34b39d; font-size: 12px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</div>
+                      <div style="font-size: 12.5px; line-height: 1.4; color: #94a3b8;">
+                        <strong style="color: #ffffff;">Submit on WhatsApp</strong> with your Trader ID (<span class="font-mono text-cyan" id="txtTraderIdStep">b-102246</span>). Admin will verify and top up your wallet!
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="button" class="btn-whatsapp btn-block btn-lg" onclick="window.botHubApp.submitTopupViaWhatsApp()" style="background: linear-gradient(135deg, #25D366 0%, #128C7E 100%); color: #ffffff; font-weight: 800; border: none; border-radius: 14px; padding: 14px 20px; display: flex; align-items: center; justify-content: center; gap: 10px; cursor: pointer; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.35); transition: transform 0.2s;">
+                  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                    <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm0 18.15c-1.49 0-2.95-.4-4.22-1.15l-.3-.18-3.13.82.83-3.05-.2-.31a8.167 8.167 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24 2.2 0 4.27.86 5.82 2.42a8.188 8.188 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.19 8.24zm4.51-6.17c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.15.17-.25.25-.42.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.53.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.07-.12-.23-.19-.48-.31z"/>
+                  </svg>
+                  <span>Submit Payment Screenshot on WhatsApp</span>
+                </button>
+              </div>
+
+            </div>
           </div>
 
           <!-- Billing Invoices History -->
@@ -1531,20 +1601,20 @@
           <div class="web3-balance-card">
             <div class="web3-balance-top">
               <span class="web3-balance-lbl">AVAILABLE BEP-20 USDT BALANCE</span>
-              <span class="web3-verified-badge">⚡ Instant 1:1 USD Credit</span>
+              <span class="web3-verified-badge">⚡ Admin Verified Top-Up</span>
             </div>
             <div class="web3-balance-amount-row">
               <span class="web3-amount-val font-mono" id="web3WalletBalanceDisplay">0.00</span>
               <span class="web3-amount-currency">USDT</span>
             </div>
             <div class="web3-balance-footer">
-              <span>Network Fee: <strong>~$0.03 BNB</strong></span>
-              <span>Custody: <strong>Non-Custodial Multi-Sig</strong></span>
+              <span>Trader ID: <strong class="font-mono text-cyan" id="web3TraderIdStep">b-102246</strong></span>
+              <span>Network: <strong>BNB Smart Chain (BEP-20)</strong></span>
             </div>
           </div>
 
           <!-- Quick Deposit Amount Presets -->
-          <div class="web3-section-title">Select Deposit Amount</div>
+          <div class="web3-section-title">Select USDT Deposit Amount</div>
           <div class="web3-presets-grid">
             <button class="web3-preset-btn" data-amt="50" onclick="window.botHubApp.setWeb3DepositAmount(50)">+$50</button>
             <button class="web3-preset-btn active" data-amt="100" onclick="window.botHubApp.setWeb3DepositAmount(100)">+$100</button>
@@ -1557,12 +1627,12 @@
           <!-- Deposit Address & Scannable QR Code -->
           <div class="web3-deposit-address-card">
             <div class="web3-qr-stage">
-              <canvas id="web3Bep20QrCanvas" width="180" height="180" class="web3-qr-canvas"></canvas>
+              <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=0x26B5E776b4e3f40378b440Dfb2ACD675938B480b" alt="BEP-20 QR" style="width: 150px; height: 150px; border-radius: 8px; background: #fff; padding: 6px; box-sizing: border-box;">
               <div class="web3-qr-hint">Scan with Binance, Trust Wallet, or MetaMask</div>
             </div>
 
             <div class="web3-address-field-group">
-              <label class="web3-field-label">Official Deposit Address (BEP-20 Only)</label>
+              <label class="web3-field-label">Official Admin Deposit Address (BEP-20 Only)</label>
               <div class="web3-address-input-wrapper">
                 <input type="text" readonly id="web3Bep20AddressInput" class="web3-address-input font-mono" value="0x26B5E776b4e3f40378b440Dfb2ACD675938B480b">
                 <button type="button" class="web3-copy-btn" onclick="window.botHubApp.copyBep20Address()" title="Copy Address">
@@ -1570,29 +1640,20 @@
                   <span>Copy</span>
                 </button>
               </div>
+              <div style="font-size: 11px; color: #94a3b8; margin-top: 8px; line-height: 1.4;">
+                Send the USDT transfer, take a screenshot of the receipt, and submit it on WhatsApp to Admin for instant wallet top-up.
+              </div>
             </div>
           </div>
 
-          <!-- TxHash Input Form -->
-          <div class="web3-txhash-group">
-            <label class="web3-field-label">
-              <span>Paste BSC Transaction Hash (TxHash / TxID)</span>
-              <span class="web3-required-tag">Required for Verification</span>
-            </label>
-            <div class="web3-txhash-input-wrapper">
-              <span class="material-symbols-rounded web3-input-icon">receipt_long</span>
-              <input type="text" id="web3TxHashInput" class="web3-txhash-input font-mono" placeholder="Paste 0x... 64-character BSC Transaction Hash" oninput="window.botHubApp.validateWeb3TxHash()">
-            </div>
-            <div id="web3TxHashValidationMsg" class="web3-hint-text">
-              Paste your transaction hash from your Web3 wallet or Binance exchange to instantly credit your balance.
-            </div>
-          </div>
-
-          <!-- Verify & Credit Submit Button -->
-          <button type="button" class="web3-submit-btn" id="web3SubmitDepositBtn" onclick="window.botHubApp.processWeb3Deposit()">
-            <span class="material-symbols-rounded">verified</span>
-            <span id="web3SubmitDepositBtnText">Verify TxHash & Credit $100.00 USDT</span>
+          <!-- WhatsApp Submission Hero Button -->
+          <button type="button" class="web3-submit-btn" style="background: linear-gradient(135deg, #25D366 0%, #128C7E 100%); margin-top: 14px; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.35); display: flex; align-items: center; justify-content: center; gap: 8px;" onclick="window.botHubApp.submitTopupViaWhatsApp()">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+              <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm0 18.15c-1.49 0-2.95-.4-4.22-1.15l-.3-.18-3.13.82.83-3.05-.2-.31a8.167 8.167 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24 2.2 0 4.27.86 5.82 2.42a8.188 8.188 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.19 8.24zm4.51-6.17c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.15.17-.25.25-.42.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.53.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.07-.12-.23-.19-.48-.31z"/>
+            </svg>
+            <span>Submit Payment Screenshot on WhatsApp</span>
           </button>
+
         </div>
 
         <!-- TAB 2: CONNECT WEB3 WALLET PROVIDERS -->
@@ -2306,6 +2367,6 @@
 
   <!-- App Scripts -->
   <script src="qrcode.js"></script>
-  <script src="app.js?v=5740"></script>
+  <script src="app.js?v=6195"></script>
 </body>
 </html>

@@ -1872,6 +1872,16 @@ class BotHubApp {
 
     const checkoutCurrent = document.getElementById('checkoutCurrentBalanceText');
     if (checkoutCurrent) checkoutCurrent.textContent = `${bal} USDT`;
+
+    // Update Trader ID displays
+    const user = this.state.user || {};
+    const shortId = this.formatShortUserId(user.id, user.email, user.googleId) || 'b-102246';
+    const traderIdBilling = document.getElementById('billingTraderIdDisplay');
+    if (traderIdBilling) traderIdBilling.textContent = `Trader ID: ${shortId}`;
+    const traderIdStep = document.getElementById('txtTraderIdStep');
+    if (traderIdStep) traderIdStep.textContent = shortId;
+    const traderIdWeb3 = document.getElementById('web3TraderIdStep');
+    if (traderIdWeb3) traderIdWeb3.textContent = shortId;
   }
 
   updateBadges() {
@@ -2444,6 +2454,28 @@ class BotHubApp {
 
     const input = document.getElementById('customTopupInput');
     if (input) input.value = amount;
+  }
+
+  submitTopupViaWhatsApp(customAmount) {
+    const user = this.state.user || {};
+    const shortId = this.formatShortUserId(user.id, user.email, user.googleId) || 'b-102246';
+    const amt = customAmount || this.state.selectedTopupAmount || 100;
+    const name = user.name || 'B-Magnet Trader';
+    const email = user.email || 'bmagnet.int@gmail.com';
+
+    const msg = `👑 *B-MAGNET INTERNATIONAL - WALLET TOP-UP REQUEST*\n\n` +
+      `🔹 *Trader ID:* ${shortId}\n` +
+      `🔹 *Trader Name:* ${name}\n` +
+      `🔹 *Email:* ${email}\n` +
+      `💰 *Deposit Amount:* $${amt} USDT\n` +
+      `🌐 *Network:* BNB Smart Chain (BEP-20)\n` +
+      `📸 *Payment Screenshot Attached Below:*\n\n` +
+      `Hello Admin, I have transferred $${amt} USDT to the official BEP-20 address. Please verify the attached screenshot and top up my wallet for Trader ID ${shortId}.`;
+
+    const encoded = encodeURIComponent(msg);
+    const waUrl = `https://wa.me/919495097786?text=${encoded}`;
+    window.open(waUrl, '_blank');
+    this.showToast('Opening WhatsApp to submit payment proof to Admin!', 'success');
   }
 
   validateWeb3TxHash() {
