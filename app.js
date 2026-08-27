@@ -750,15 +750,31 @@ class BotHubApp {
       }
     }
   }
-  // MOBILE NUMBER AUTHENTICATION (REQUIRED FIRST)
+  // -------------------------------------------------------------
+  // STRICT GOOGLE AUTHENTICATION SYSTEM (NO DEMO / MOCK ACCESS)
   // -------------------------------------------------------------
   async initAuth() {
     const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.has('login') || urlParams.has('reset')) {
+    if (urlParams.has('login') || urlParams.has('reset') || urlParams.has('logout')) {
       localStorage.removeItem('b_bot_auth_user');
       try { await fetch('/api/auth/logout', { method: 'POST' }); } catch (e) {}
     }
 
+    // 1. Process URL Hash Token (if redirected from Google OAuth 2.0 popup/redirect)
+    if (window.location.hash && window.location.hash.includes('access_token=')) {
+      try {
+        const hashParams = new URLSearchParams(window.location.hash.substring(1));
+        const accessToken = hashParams.get('access_token');
+        if (accessToken) {
+          window.history.replaceState(null, null, window.location.pathname);
+          await this.fetchGoogleUserInfo(accessToken);
+        }
+      } catch (hashErr) {
+        console.error('Hash token error:', hashErr);
+      }
+    }
+
+    // 2. Validate Stored Session (ONLY ACCEPT VERIFIED GOOGLE SESSIONS)
     const savedUserStr = localStorage.getItem('b_bot_auth_user');
     let user = null;
 
@@ -768,24 +784,27 @@ class BotHubApp {
       } catch (e) {}
     }
 
-    if (!user) {
-      try {
-        const res = await fetch('/api/auth/me').then(r => r.json());
-        if (res.success && res.user && res.user.isLoggedIn) {
-          user = res.user;
-        }
-      } catch (e) {}
+    // Strict validation: Must be an authenticated Google account with real email
+    if (user) {
+      const isValidGoogleUser = user.authProvider === 'google' && user.email && user.email.includes('@') && user.isLoggedIn === true;
+      if (!isValidGoogleUser) {
+        console.warn('Purging invalid or demo user session:', user);
+        localStorage.removeItem('b_bot_auth_user');
+        user = null;
+      }
     }
 
     if (user && user.isLoggedIn) {
       this.state.currentUser = user;
+    } else {
+      this.state.currentUser = null;
     }
 
     const isStandaloneSignIn = window.location.pathname.includes('signinpage') || window.location.pathname.includes('login') || document.body.classList.contains('standalone-signin-page') || document.body.classList.contains('aesthetic-login-page');
     if (!isStandaloneSignIn) {
-      if (user && user.isLoggedIn && urlParams.has('logged_in')) {
+      if (user && user.isLoggedIn && (urlParams.has('logged_in') || user.isLoggedIn)) {
         this.applyLoggedInUI(user);
-        this.showToast(`🎉 Welcome back, ${user.name || 'Trader'}!`, 'success');
+        this.showToast(`🎉 Welcome, ${user.name || 'Trader'}!`, 'success');
       } else {
         // ALWAYS SHOW HOME PAGE FIRST ON MAIN DOMAIN
         this.showLandingPage();
@@ -804,19 +823,59 @@ class BotHubApp {
         this.executeGoogleAuth({
           credential: response.credential
         });
+      } else {
+        this.showToast('Google identity credential not received. Please try again.', 'danger');
       }
     };
 
-    if (window.google && window.google.accounts && window.google.accounts.id) {
-      try {
-        window.google.accounts.id.initialize({
-          client_id: GOOGLE_CLIENT_ID,
-          callback: window.handleGoogleCredentialResponse,
-          auto_prompt: false
-        });
-      } catch (err) {
-        console.log('Google Identity initialized:', err);
+    const setupGsi = () => {
+      if (window.google && window.google.accounts && window.google.accounts.id) {
+        try {
+          window.google.accounts.id.initialize({
+            client_id: GOOGLE_CLIENT_ID,
+            callback: window.handleGoogleCredentialResponse,
+            auto_prompt: false,
+            cancel_on_tap_outside: true
+          });
+        } catch (err) {
+          console.warn('Google Identity initialization:', err);
+        }
       }
+    };
+
+    if (window.google && window.google.accounts) {
+      setupGsi();
+    } else {
+      window.addEventListener('load', () => setTimeout(setupGsi, 300));
+    }
+  }
+
+  async fetchGoogleUserInfo(accessToken) {
+    try {
+      const response = await fetch('https://www.googleapis.com/oauth2/v3/userinfo', {
+        headers: {
+          Authorization: `Bearer ${accessToken}`
+        }
+      });
+      if (!response.ok) {
+        throw new Error(`Google API returned status ${response.status}`);
+      }
+      const profile = await response.json();
+      if (profile && (profile.email || profile.sub)) {
+        await this.executeGoogleAuth({
+          googleId: profile.sub,
+          email: profile.email,
+          name: profile.name || `${profile.given_name || ''} ${profile.family_name || ''}`.trim() || profile.email.split('@')[0],
+          picture: profile.picture,
+          emailVerified: profile.email_verified,
+          accessToken: accessToken
+        });
+      } else {
+        this.showToast('Could not retrieve Google profile data. Please try again.', 'danger');
+      }
+    } catch (err) {
+      console.error('Error fetching Google UserInfo:', err);
+      this.showToast('Failed to retrieve user profile from Google.', 'danger');
     }
   }
 
@@ -1207,47 +1266,21 @@ class BotHubApp {
 
   async handleGoogleLogin() {
     const btn = document.getElementById('btnGoogleLogin');
-    if (btn) {
-      btn.disabled = true;
-      btn.innerHTML = `
-        <div class="gag-icon-circle">
-          <span class="material-symbols-rounded" style="animation: spin 1s infinite linear; font-size: 20px; color: var(--primary-teal);">sync</span>
-        </div>
-        <div class="gag-text-wrap">
-          <span class="gag-main-text">Connecting to Google...</span>
-          <span class="gag-sub-text">Securing OAuth 2.0 Token</span>
-        </div>
-        <span class="gag-badge">CONNECTING</span>
-      `;
-    }
-
-    try {
-      if (window.google && window.google.accounts && window.google.accounts.id) {
-        window.google.accounts.id.prompt((notification) => {
-          if (notification.isNotDisplayed() || notification.isSkippedMoment()) {
-            this.executeGoogleAuth({
-              email: "hanaan.trader@gmail.com",
-              name: "Hanaan Junaid",
-              picture: "https://lh3.googleusercontent.com/a/default-user=s96-c"
-            });
-          }
-        });
+    const setBtnLoading = (isLoading) => {
+      if (!btn) return;
+      btn.disabled = isLoading;
+      if (isLoading) {
+        btn.innerHTML = `
+          <div class="gag-icon-circle">
+            <span class="material-symbols-rounded" style="animation: spin 1s infinite linear; font-size: 20px; color: var(--primary-teal);">sync</span>
+          </div>
+          <div class="gag-text-wrap">
+            <span class="gag-main-text">Connecting to Google...</span>
+            <span class="gag-sub-text">Opening Google OAuth 2.0</span>
+          </div>
+          <span class="gag-badge">CONNECTING</span>
+        `;
       } else {
-        await this.executeGoogleAuth({
-          email: "hanaan.trader@gmail.com",
-          name: "Hanaan Junaid",
-          picture: "https://lh3.googleusercontent.com/a/default-user=s96-c"
-        });
-      }
-    } catch (err) {
-      await this.executeGoogleAuth({
-        email: "hanaan.trader@gmail.com",
-        name: "Hanaan Junaid",
-        picture: "https://lh3.googleusercontent.com/a/default-user=s96-c"
-      });
-    } finally {
-      if (btn) {
-        btn.disabled = false;
         btn.innerHTML = `
           <div class="gag-icon-circle">
             <svg class="google-svg-icon" viewBox="0 0 24 24" width="24" height="24">
@@ -1264,10 +1297,71 @@ class BotHubApp {
           <span class="gag-badge">1-CLICK</span>
         `;
       }
+    };
+
+    setBtnLoading(true);
+
+    try {
+      // 1. Google OAuth 2.0 Token Client (Interactive OAuth Popup)
+      if (window.google && window.google.accounts && window.google.accounts.oauth2) {
+        const tokenClient = window.google.accounts.oauth2.initTokenClient({
+          client_id: GOOGLE_CLIENT_ID,
+          scope: 'email profile openid',
+          callback: async (tokenResponse) => {
+            setBtnLoading(false);
+            if (tokenResponse && tokenResponse.access_token) {
+              await this.fetchGoogleUserInfo(tokenResponse.access_token);
+            } else if (tokenResponse && tokenResponse.error) {
+              console.warn('Google Token response error:', tokenResponse.error);
+              this.showToast('Google Sign-In was cancelled or failed.', 'info');
+            }
+          },
+          error_callback: (err) => {
+            setBtnLoading(false);
+            console.warn('Google Token error callback:', err);
+            this.showToast('Google Sign-In prompt closed.', 'info');
+          }
+        });
+        tokenClient.requestAccessToken({ prompt: 'select_account' });
+        return;
+      }
+
+      // 2. Google One Tap Prompt
+      if (window.google && window.google.accounts && window.google.accounts.id) {
+        window.google.accounts.id.prompt((notification) => {
+          if (notification.isNotDisplayed() || notification.isSkippedMoment() || notification.isDismissedMoment()) {
+            setBtnLoading(false);
+            this.openGoogleOAuthPopup();
+          }
+        });
+        return;
+      }
+
+      // 3. Direct OAuth 2.0 Web Popup
+      this.openGoogleOAuthPopup();
+    } catch (err) {
+      console.error('Google Sign-In initialization error:', err);
+      this.openGoogleOAuthPopup();
+    } finally {
+      setTimeout(() => setBtnLoading(false), 2500);
+    }
+  }
+
+  openGoogleOAuthPopup() {
+    const redirectUri = window.location.origin + '/login/';
+    const oauthUrl = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${encodeURIComponent(GOOGLE_CLIENT_ID)}&response_type=token&scope=${encodeURIComponent('email profile openid')}&redirect_uri=${encodeURIComponent(redirectUri)}&prompt=select_account`;
+    const popup = window.open(oauthUrl, 'GoogleAuthWindow', 'width=520,height=630,menubar=no,toolbar=no,status=no,location=no');
+    if (!popup || popup.closed || typeof popup.closed === 'undefined') {
+      window.location.href = oauthUrl;
     }
   }
 
   async executeGoogleAuth(googleUser) {
+    if (!googleUser) {
+      this.showToast('Google authentication failed. Please select your Google account.', 'danger');
+      return;
+    }
+
     try {
       // 1. Decode JWT if credential passed from Google Identity Services
       let profile = { ...googleUser };
@@ -1279,30 +1373,35 @@ class BotHubApp {
             id: `usr_g_${decoded.sub || Date.now()}`,
             googleId: decoded.sub,
             email: decoded.email,
-            name: decoded.name || `${decoded.given_name || ''} ${decoded.family_name || ''}`.trim(),
+            name: decoded.name || `${decoded.given_name || ''} ${decoded.family_name || ''}`.trim() || decoded.email.split('@')[0],
             picture: decoded.picture,
             emailVerified: decoded.email_verified,
             authProvider: 'google',
             isLoggedIn: true
           };
         } catch (jwtErr) {
-          console.warn('JWT Decode notice:', jwtErr);
+          console.error('JWT Decode error:', jwtErr);
         }
       }
 
-      if (!profile.email) profile.email = 'hanaan.trader@gmail.com';
-      if (!profile.name) profile.name = 'Hanaan Junaid';
-      if (!profile.id) profile.id = `usr_${Date.now()}`;
+      // STRICT VALIDATION: Reject any user without a valid Google email
+      if (!profile.email || !profile.email.includes('@')) {
+        this.showToast('Valid Google email required to sign in.', 'danger');
+        return;
+      }
+
       profile.authProvider = 'google';
       profile.isLoggedIn = true;
+      if (!profile.id) profile.id = `usr_g_${profile.googleId || Date.now()}`;
+      if (!profile.name) profile.name = profile.email.split('@')[0];
 
-      // 2. 🗄️ PERSIST & SYNC TO USER DATABASE (localStorage & local DB collections)
+      // 2. PERSIST & SYNC TO USER DATABASE (localStorage & local DB collections)
       let usersDb = [];
       try {
         usersDb = JSON.parse(localStorage.getItem('b_bot_users_db') || '[]');
       } catch (e) { usersDb = []; }
 
-      const existingIndex = usersDb.findIndex(u => u.email.toLowerCase() === profile.email.toLowerCase());
+      const existingIndex = usersDb.findIndex(u => u.email && u.email.toLowerCase() === profile.email.toLowerCase());
       const now = new Date().toISOString();
       let savedUser;
 
@@ -1315,6 +1414,8 @@ class BotHubApp {
         };
         savedUser = usersDb[existingIndex];
       } else {
+        // Derive MT5 ID deterministically from Google ID or email
+        const hashSeed = Math.abs(profile.email.split('').reduce((acc, char) => (acc << 5) - acc + char.charCodeAt(0), 0) % 900000) + 100000;
         savedUser = {
           ...profile,
           createdAt: now,
@@ -1322,9 +1423,10 @@ class BotHubApp {
           role: 'trader',
           tier: 'VIP Institutional',
           balance: 100000.00,
-          fullPhone: '+91 94950 97786',
+          fullPhone: profile.email,
+          gtcfxMt5Account: `88${hashSeed.toString().substring(0, 5)}`,
           mt5Accounts: [
-            { broker: 'GTCfx MT5', accountNumber: '8849201', server: 'GTC-Live', equity: 100000.00, status: 'Active' }
+            { broker: 'GTCfx MT5', accountNumber: `88${hashSeed.toString().substring(0, 5)}`, server: 'GTC-Live', equity: 100000.00, status: 'Active' }
           ],
           subscriptions: [
             { bot: 'B-Magnet Gold Hunter EA v1.21', plan: 'VIP Institutional Pass', status: 'Active', expiry: '2027-12-31' }
@@ -1350,102 +1452,17 @@ class BotHubApp {
       this.showToast(`🎉 Signed in with Google as ${savedUser.name}!`, 'success');
       await this.fetchData();
     } catch (e) {
-      console.warn('Google Auth fallback:', e);
-      const fallbackUser = {
-        id: `usr_${Date.now()}`,
-        name: googleUser.name || 'Hanaan Junaid',
-        email: googleUser.email || 'hanaan.trader@gmail.com',
-        authProvider: 'google',
-        isLoggedIn: true,
-        lastLogin: new Date().toISOString()
-      };
-      this.state.currentUser = fallbackUser;
-      localStorage.setItem('b_bot_auth_user', JSON.stringify(fallbackUser));
-      this.applyLoggedInUI(fallbackUser);
-      this.showToast(`Welcome ${fallbackUser.name}!`, 'success');
+      console.error('Google Auth execution failed:', e);
+      this.showToast('Google authentication encountered an issue. Please try again.', 'danger');
     }
   }
 
-  async handleCleanSignIn() {
-    const emailInput = document.getElementById('loginEmailInput') || document.getElementById('loginMobileEmailInput');
-    const otpInput = document.getElementById('loginOtpInput') || document.getElementById('loginMobileOtpInput');
-
-    const email = emailInput ? emailInput.value.trim() : 'hanaan.trader@gmail.com';
-    const otp = (otpInput && otpInput.value.trim()) ? otpInput.value.trim() : '8492';
-
-    if (!email || !email.includes('@')) {
-      this.showToast('Please enter a valid email address', 'danger');
-      return;
-    }
-
-    const submitBtn = document.getElementById('loginMainSubmitBtn') || document.getElementById('loginMobileSubmitBtn');
-    if (submitBtn) {
-      submitBtn.disabled = true;
-      submitBtn.innerHTML = '<span class="material-symbols-rounded" style="animation: spin 1s infinite linear; font-size: 18px;">sync</span> Signing in...';
-    }
-
-    try {
-      const response = await fetch('/api/auth/verify-otp', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email, otp: otp })
-      });
-
-      const res = await response.json();
-      if (res.success) {
-        this.state.currentUser = res.user;
-        localStorage.setItem('b_bot_auth_user', JSON.stringify(res.user));
-        this.applyLoggedInUI(res.user);
-        this.showToast(`🎉 Welcome to B-Magnet Trading Pro, ${res.user.name || 'Trader'}!`, 'success');
-        await this.fetchData();
-      } else {
-        const namePart = email.split('@')[0];
-        const formattedName = namePart.charAt(0).toUpperCase() + namePart.slice(1);
-        const mockUser = {
-          id: `usr_${Date.now()}`,
-          email: email,
-          name: formattedName,
-          fullPhone: '+91 94950 97786',
-          authProvider: 'clean_auth',
-          isLoggedIn: true
-        };
-        this.state.currentUser = mockUser;
-        localStorage.setItem('b_bot_auth_user', JSON.stringify(mockUser));
-        this.applyLoggedInUI(mockUser);
-        this.showToast(`🎉 Welcome ${mockUser.name}!`, 'success');
-        await this.fetchData();
-      }
-    } catch (e) {
-      const namePart = email.split('@')[0];
-      const formattedName = namePart.charAt(0).toUpperCase() + namePart.slice(1);
-      const mockUser = {
-        id: `usr_${Date.now()}`,
-        email: email,
-        name: formattedName,
-        fullPhone: '+91 94950 97786',
-        authProvider: 'clean_auth',
-        isLoggedIn: true
-      };
-      this.state.currentUser = mockUser;
-      localStorage.setItem('b_bot_auth_user', JSON.stringify(mockUser));
-      this.applyLoggedInUI(mockUser);
-      this.showToast(`Welcome ${mockUser.name}!`, 'success');
-      await this.fetchData();
-    } finally {
-      if (submitBtn) {
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = '<span id="txtSigninSubmitBtn">Launch Bot Terminal</span><span class="material-symbols-rounded btn-arrow">arrow_forward</span>';
-      }
-    }
-  }
-
-  fillDemoCredentials() {
-    const emailInput = document.getElementById('loginEmailInput') || document.getElementById('loginMobileEmailInput');
-    const otpInput = document.getElementById('loginOtpInput') || document.getElementById('loginMobileOtpInput');
-    if (emailInput) emailInput.value = 'hanaan.trader@gmail.com';
-    if (otpInput) otpInput.value = '8492';
-    this.showToast('💡 Filled demo credentials! Click "Sign In"', 'info');
-  }
+  handleCleanSignIn() { return this.handleGoogleLogin(); }
+  handleDesktopCleanSignIn() { return this.handleGoogleLogin(); }
+  handleSendEmailOtp() { return this.handleGoogleLogin(); }
+  handleVerifyEmailOtp() { return this.handleGoogleLogin(); }
+  fillDemoCredentials() { return this.handleGoogleLogin(); }
+  fillDesktopDemoCredentials() { return this.handleGoogleLogin(); }
 
   // -------------------------------------------------------------
   // DESKTOP COMPANY WEBSITE & SIGN-IN PAGE / MODAL HANDLERS
@@ -1504,200 +1521,9 @@ class BotHubApp {
     if (modal) modal.classList.remove('active');
   }
 
-  fillDesktopDemoCredentials() {
-    const emailInput = document.getElementById('loginEmailInput') || document.getElementById('desktopLoginEmailInput');
-    const otpInput = document.getElementById('loginOtpInput') || document.getElementById('desktopLoginOtpInput');
-    if (emailInput) emailInput.value = 'hanaan.trader@gmail.com';
-    if (otpInput) otpInput.value = '8492';
-    this.showToast('💡 Filled demo credentials (PIN: 8492)!', 'info');
-  }
-
-  async handleDesktopCleanSignIn() {
-    const emailInput = document.getElementById('desktopLoginEmailInput');
-    const otpInput = document.getElementById('desktopLoginOtpInput');
-
-    const email = emailInput ? emailInput.value.trim() : 'hanaan.trader@gmail.com';
-    const otp = (otpInput && otpInput.value.trim()) ? otpInput.value.trim() : '8492';
-
-    if (!email || !email.includes('@')) {
-      this.showToast('Please enter a valid email address', 'danger');
-      return;
-    }
-
-    try {
-      const response = await fetch('/api/auth/verify-otp', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email, otp: otp })
-      });
-
-      const res = await response.json();
-      if (res.success) {
-        this.state.currentUser = res.user;
-        localStorage.setItem('b_bot_auth_user', JSON.stringify(res.user));
-        this.closeDesktopLoginModal();
-        this.applyLoggedInUI(res.user);
-        this.showToast(`🎉 Welcome to B-Magnet Trading Pro, ${res.user.name || 'Trader'}!`, 'success');
-        await this.fetchData();
-      } else {
-        const namePart = email.split('@')[0];
-        const formattedName = namePart.charAt(0).toUpperCase() + namePart.slice(1);
-        const mockUser = {
-          id: `usr_${Date.now()}`,
-          email: email,
-          name: formattedName,
-          fullPhone: '+91 94950 97786',
-          authProvider: 'clean_auth',
-          isLoggedIn: true
-        };
-        this.state.currentUser = mockUser;
-        localStorage.setItem('b_bot_auth_user', JSON.stringify(mockUser));
-        this.closeDesktopLoginModal();
-        this.applyLoggedInUI(mockUser);
-        this.showToast(`🎉 Welcome to B-Magnet Trading Pro, ${mockUser.name}!`, 'success');
-        await this.fetchData();
-      }
-    } catch (e) {
-      const namePart = email.split('@')[0];
-      const formattedName = namePart.charAt(0).toUpperCase() + namePart.slice(1);
-      const mockUser = {
-        id: `usr_${Date.now()}`,
-        email: email,
-        name: formattedName,
-        fullPhone: '+91 94950 97786',
-        authProvider: 'clean_auth',
-        isLoggedIn: true
-      };
-      this.state.currentUser = mockUser;
-      localStorage.setItem('b_bot_auth_user', JSON.stringify(mockUser));
-      this.closeDesktopLoginModal();
-      this.applyLoggedInUI(mockUser);
-      this.showToast(`Welcome ${mockUser.name}!`, 'success');
-      await this.fetchData();
-    }
-  }
-
-  async handleSendEmailOtp() {
-    const emailInput = document.getElementById('loginEmailInput');
-    const email = emailInput ? emailInput.value.trim() : '';
-
-    if (!email || !email.includes('@')) {
-      this.showToast('Please enter a valid Gmail / email address', 'danger');
-      return;
-    }
-
-    const sendBtn = document.getElementById('sendEmailOtpBtn');
-    if (sendBtn) {
-      sendBtn.disabled = true;
-      sendBtn.innerHTML = '<span class="material-symbols-rounded" style="animation: spin 1s infinite linear;">sync</span> Sending Gmail Code...';
-    }
-
-    try {
-      const response = await fetch('/api/auth/send-otp', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email })
-      });
-
-      const res = await response.json();
-      const pStep = document.getElementById('authPhoneStep');
-      const oStep = document.getElementById('authOtpStep');
-      const emailDisp = document.getElementById('otpSentEmailDisplay');
-
-      if (res.success) {
-        if (pStep) pStep.style.display = 'none';
-        if (oStep) oStep.style.display = 'block';
-        if (emailDisp) emailDisp.textContent = email;
-        this.showToast(`📩 Verification code sent to ${email}! Instant Code: 8492`, 'success');
-      } else {
-        this.showToast(res.error || 'Failed to send verification code', 'danger');
-      }
-    } catch (e) {
-      const pStep = document.getElementById('authPhoneStep');
-      const oStep = document.getElementById('authOtpStep');
-      const emailDisp = document.getElementById('otpSentEmailDisplay');
-      if (pStep) pStep.style.display = 'none';
-      if (oStep) oStep.style.display = 'block';
-      if (emailDisp) emailDisp.textContent = email;
-      this.showToast(`Instant Gmail Code: 8492`, 'success');
-    } finally {
-      if (sendBtn) {
-        sendBtn.disabled = false;
-        sendBtn.innerHTML = '<span class="material-symbols-rounded">mark_email_unread</span> Send Gmail Verification Code (OTP)';
-      }
-    }
-  }
-
-  editAuthEmail() {
-    const pStep = document.getElementById('authPhoneStep');
-    const oStep = document.getElementById('authOtpStep');
-    if (pStep) pStep.style.display = 'block';
-    if (oStep) oStep.style.display = 'none';
-  }
-
-  async handleVerifyEmailOtp() {
-    const emailInput = document.getElementById('loginEmailInput');
-    const otpInput = document.getElementById('loginOtpInput');
-
-    const email = emailInput ? emailInput.value.trim() : 'hanaan.trader@gmail.com';
-    const otp = otpInput ? otpInput.value.trim() : '8492';
-
-    if (!otp) {
-      this.showToast('Please enter the 4-digit Gmail verification code', 'danger');
-      return;
-    }
-
-    const verifyBtn = document.getElementById('verifyOtpBtn');
-    if (verifyBtn) {
-      verifyBtn.disabled = true;
-      verifyBtn.innerHTML = '<span class="material-symbols-rounded" style="animation: spin 1s infinite linear;">sync</span> Verifying...';
-    }
-
-    try {
-      const response = await fetch('/api/auth/verify-otp', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          email: email,
-          otp: otp
-        })
-      });
-
-      const res = await response.json();
-      if (res.success) {
-        this.state.currentUser = res.user;
-        localStorage.setItem('b_bot_auth_user', JSON.stringify(res.user));
-        this.applyLoggedInUI(res.user);
-        this.showToast(`🎉 Welcome to B-Bot Pro, ${res.user.name}! Top up your BEP-20 wallet to activate EAs.`, 'success');
-        await this.fetchData();
-      } else {
-        this.showToast(res.error || 'Invalid Gmail code', 'danger');
-      }
-    } catch (e) {
-      const mockUser = {
-        id: `usr_${Date.now()}`,
-        email: email,
-        name: email.split('@')[0].capitalize(),
-        fullPhone: '+91 94950 97786',
-        authProvider: 'gmail_otp',
-        isLoggedIn: true
-      };
-      this.state.currentUser = mockUser;
-      localStorage.setItem('b_bot_auth_user', JSON.stringify(mockUser));
-      this.applyLoggedInUI(mockUser);
-      this.showToast(`Welcome ${mockUser.name}!`, 'success');
-    } finally {
-      if (verifyBtn) {
-        verifyBtn.disabled = false;
-        verifyBtn.innerHTML = '<span class="material-symbols-rounded">verified_user</span> Verify & Enter B-Bot Pro';
-      }
-    }
-  }
-
-  // Aliases for compatibility
-  handleSendOtp() { return this.handleSendEmailOtp(); }
-  handleVerifyOtp() { return this.handleVerifyEmailOtp(); }
-  editAuthPhone() { return this.editAuthEmail(); }
+  handleSendOtp() { return this.handleGoogleLogin(); }
+  handleVerifyOtp() { return this.handleGoogleLogin(); }
+  editAuthPhone() { return this.handleGoogleLogin(); }
 
   handleLogout() {
     this.openModal('logoutConfirmModal');
