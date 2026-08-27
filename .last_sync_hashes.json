@@ -1,5 +1,5 @@
 {
-  "public/app.js": "94fb995ddb6aff0cc242a95dbf14f3d3d6ab1233337cfa6406d600ede5958b14",
+  "public/app.js": "9893920eb3bd99694513334eb31b1bf6e4e5f1c31bca1385d5bbc5de1d4e8759",
   "public/apple-touch-icon-precomposed.png": "cef73be89c60058c66ae1dba85ff02061bc73b50d7c1909e1c8ca27f88dd43e1",
   "public/apple-touch-icon.png": "cef73be89c60058c66ae1dba85ff02061bc73b50d7c1909e1c8ca27f88dd43e1",
   "public/favicon.ico": "423bac49d3d23c03bc41521aa93c38e06865e8551dbc7895cc81786b9ae1d193",
@@ -7,11 +7,11 @@
   "public/icon-512.png": "ac95a64054c37c680d0acef4d90cb3c2f732dded4b5f86799ced2eb45a97f2d6",
   "public/index.html": "a00121e5837a1e196dc25f3fea8419548230c3de274952ae1973257ad543ce33",
   "public/key-generator.html": "2235ce7c4f449a25e611adf081818814d25b17421a595401199407de64cc597b",
-  "public/login.html": "aa9f6646b6305b1de8e0371740c5818bd1d656fa513338a70084c9362c4fdcca",
+  "public/login.html": "584620892423b3d113d614bb57a5fdeb33b5298094484584e180aeb2b6dd1345",
   "public/manifest.json": "2bbc3603248cab9221f4a7126474778bbfcd923ee55f0ead6f9e90d2d285c5b1",
   "public/qrcode.js": "dc1fe07e667ce0632a54da24052d836319116b56335bc5f7d4cd8186e8a6f2c6",
   "public/signinpage.html": "1c6fefc77e4eebe3e15b8b6a1cef6ae4b5eb206e58505539070a358f1aca307a",
-  "public/style.css": "5a6b1fe50c04992364714e3ae77072913699b00cadc8f3f469f0037e019c47a3",
+  "public/style.css": "a2c1b23feb975ed4fbba4b3e98e064821bbfd79c559603e07baeed33e71969a9",
   "public/sw.js": "e29f8ab7d878ab323e8976f0b49833d24007af4edd7c8ef4d1c6143d9817f92b",
   "public/images/ai-bot-core-visual.jpg": "895803d28fbe6620cdf3f118d715aaa5df2c7bb6438e479d41f9431e510f0f71",
   "public/images/ai-trading-bot-visual.jpg": "cc47a181d7c5c6dd744ac8759f107332d7645f1772c3e7dd3aa8d84f822a2119",
@@ -23,6 +23,6 @@
   "public/images/hero-trader-skipio.jpg": "92dbf03b4c9f3ce932382fada39e7974fa9574622de2dc93d4040b89f89204aa",
   "public/images/whatsapp_status_cover.jpg": "b8d75a70d2a895da067fc95bc308acca7d3e18b73187248357af7a3fa8e2727d",
   "public/signinpage/index.html": "1c6fefc77e4eebe3e15b8b6a1cef6ae4b5eb206e58505539070a358f1aca307a",
-  "public/login/index.html": "aa9f6646b6305b1de8e0371740c5818bd1d656fa513338a70084c9362c4fdcca",
+  "public/login/index.html": "584620892423b3d113d614bb57a5fdeb33b5298094484584e180aeb2b6dd1345",
   "data/db.json": "77ad6688889bfb85cf7711d442ff2db9bb48305447da81c7c87c30faed2e4a24"
 }

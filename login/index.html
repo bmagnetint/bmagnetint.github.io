@@ -580,385 +580,162 @@
       font-size: 11.5px !important;
       color: #94a3b8 !important;
       margin: 0 !important;
-    }
     body.aesthetic-login-page.theme-light .lspw-sub { color: #64748b !important; }
 
-    /* Segmented Tab Switcher */
-    .aesthetic-tab-switcher {
+    /* Dedicated Google Auth Monolith Body */
+    .google-auth-monolith-body {
       display: flex !important;
-      background: rgba(14, 20, 27, 0.7) !important;
-      border: 1px solid rgba(45, 155, 136, 0.2) !important;
-      border-radius: 12px !important;
-      padding: 3px !important;
-      gap: 3px !important;
-      margin: 14px 0 14px 0 !important;
-    }
-    body.aesthetic-login-page.theme-light .aesthetic-tab-switcher {
-      background: #f1f5f9 !important;
-      border-color: #e2e8f0 !important;
-    }
-    .at-tab-btn {
-      flex: 1 !important;
-      height: 36px !important;
-      border: none !important;
-      background: transparent !important;
-      border-radius: 9px !important;
-      color: #94a3b8 !important;
-      font-size: 11.5px !important;
-      font-weight: 700 !important;
-      display: flex !important;
-      align-items: center !important;
-      justify-content: center !important;
-      gap: 5px !important;
-      cursor: pointer !important;
-      transition: all 0.2s ease !important;
-    }
-    body.aesthetic-login-page.theme-light .at-tab-btn { color: #64748b !important; }
-    .at-tab-btn.active {
-      background: linear-gradient(135deg, rgba(45, 155, 136, 0.4) 0%, rgba(30, 107, 94, 0.55) 100%) !important;
-      color: #ffffff !important;
-      border: 1px solid rgba(45, 155, 136, 0.5) !important;
-      box-shadow: 0 4px 12px rgba(45, 155, 136, 0.3) !important;
-    }
-    body.aesthetic-login-page.theme-light .at-tab-btn.active {
-      background: #ffffff !important;
-      color: var(--primary-teal-dark) !important;
-      border: 1px solid rgba(45, 155, 136, 0.25) !important;
-      box-shadow: 0 2px 8px rgba(45, 155, 136, 0.15) !important;
-    }
-
-    /* 🔒 STATIC FIXED-HEIGHT TAB VIEWPORT (250px) */
-    .aesthetic-tab-body-viewport {
-      width: 100% !important;
-      height: 250px !important;
-      min-height: 250px !important;
-      max-height: 250px !important;
-      position: relative !important;
-      display: block !important;
-      flex-shrink: 0 !important;
-      overflow: hidden !important;
-    }
-
-    .aesthetic-tab-content {
-      width: 100% !important;
-      height: 100% !important;
-      display: none !important;
       flex-direction: column !important;
       justify-content: space-between !important;
-      box-sizing: border-box !important;
-    }
-    .aesthetic-tab-content.active {
-      display: flex !important;
-      animation: tabFadeIn 0.2s ease !important;
-    }
-    @keyframes tabFadeIn {
-      from { opacity: 0; transform: translateY(4px); }
-      to { opacity: 1; transform: translateY(0); }
+      flex: 1 !important;
+      padding: 6px 0 0 0 !important;
     }
 
-    /* Google Button */
-    .aesthetic-google-hero-wrap { margin-bottom: 0 !important; width: 100% !important; }
-    .btn-aesthetic-google {
+    .google-action-box {
       width: 100% !important;
-      height: 52px !important;
-      border-radius: 14px !important;
-      background: rgba(255, 255, 255, 0.06) !important;
-      border: 1px solid rgba(45, 155, 136, 0.25) !important;
+    }
+
+    .btn-aesthetic-google-hero {
+      width: 100% !important;
+      height: 60px !important;
+      border-radius: 16px !important;
+      background: #ffffff !important;
+      border: 1px solid rgba(255, 255, 255, 0.9) !important;
       display: flex !important;
       align-items: center !important;
       justify-content: space-between !important;
       padding: 0 16px !important;
       cursor: pointer !important;
       transition: all 0.25s ease !important;
-      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.2) !important;
+      box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.4), 0 0 20px rgba(45, 155, 136, 0.25) !important;
+      box-sizing: border-box !important;
     }
-    body.aesthetic-login-page.theme-light .btn-aesthetic-google {
+    body.aesthetic-login-page.theme-light .btn-aesthetic-google-hero {
       background: #ffffff !important;
-      border-color: rgba(45, 155, 136, 0.25) !important;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05) !important;
+      border: 1px solid rgba(45, 155, 136, 0.3) !important;
+      box-shadow: 0 8px 24px -4px rgba(25, 39, 80, 0.12), 0 0 16px rgba(45, 155, 136, 0.15) !important;
     }
-    .btn-aesthetic-google:hover {
-      background: rgba(45, 155, 136, 0.12) !important;
-      border-color: var(--primary-teal) !important;
+    .btn-aesthetic-google-hero:hover {
       transform: translateY(-2px) !important;
-      box-shadow: var(--teal-glow) !important;
+      box-shadow: 0 14px 40px -5px rgba(0, 0, 0, 0.5), 0 0 32px rgba(45, 155, 136, 0.45) !important;
     }
-    .btn-google-text-col {
+
+    .gag-icon-circle {
+      width: 36px !important;
+      height: 36px !important;
+      border-radius: 10px !important;
+      background: #f8fafc !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      flex-shrink: 0 !important;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08) !important;
+    }
+
+    .gag-text-wrap {
       display: flex !important;
       flex-direction: column !important;
       text-align: left !important;
       flex: 1 !important;
       margin-left: 12px !important;
     }
-    .btn-google-label {
-      font-size: 13.5px !important;
+    .gag-main-text {
+      font-size: 14px !important;
       font-weight: 800 !important;
-      color: #ffffff !important;
+      color: #0f172a !important;
+      letter-spacing: -0.01em !important;
     }
-    body.aesthetic-login-page.theme-light .btn-google-label { color: #1a1a1a !important; }
-    .btn-google-sub {
-      font-size: 10px !important;
-      font-weight: 500 !important;
-      color: #94a3b8 !important;
+    .gag-sub-text {
+      font-size: 10.5px !important;
+      font-weight: 600 !important;
+      color: #64748b !important;
     }
-    body.aesthetic-login-page.theme-light .btn-google-sub { color: #64748b !important; }
-    .aesthetic-glow-badge {
+
+    .gag-badge {
       background: linear-gradient(135deg, var(--primary-teal) 0%, var(--primary-teal-dark) 100%) !important;
       color: #ffffff !important;
       font-size: 9px !important;
       font-weight: 800 !important;
       padding: 3px 7px !important;
       border-radius: 6px !important;
-      box-shadow: 0 0 10px rgba(45, 155, 136, 0.5) !important;
+      letter-spacing: 0.04em !important;
+      box-shadow: 0 0 10px rgba(45, 155, 136, 0.45) !important;
     }
 
-    /* Switch Helper */
-    .aesthetic-tab-switch-helper {
+    /* User Database Sync Strip */
+    .user-db-status-strip {
       display: flex !important;
       align-items: center !important;
       justify-content: center !important;
-      gap: 6px !important;
-      font-size: 11px !important;
-      color: #94a3b8 !important;
-      padding: 6px 10px !important;
-      background: rgba(255, 255, 255, 0.03) !important;
-      border: 1px dashed rgba(45, 155, 136, 0.2) !important;
-      border-radius: 10px !important;
-      cursor: pointer !important;
-      transition: all 0.2s ease !important;
-    }
-    body.aesthetic-login-page.theme-light .aesthetic-tab-switch-helper {
-      background: #f8fafc !important;
-      border-color: rgba(45, 155, 136, 0.25) !important;
-      color: #64748b !important;
-    }
-    .aesthetic-tab-switch-helper:hover {
+      gap: 7px !important;
+      font-size: 10px !important;
+      font-weight: 700 !important;
+      color: var(--primary-teal-light) !important;
       background: rgba(45, 155, 136, 0.1) !important;
-      border-color: var(--primary-teal) !important;
-      color: var(--primary-teal) !important;
+      border: 1px solid rgba(45, 155, 136, 0.22) !important;
+      border-radius: 9999px !important;
+      padding: 5px 12px !important;
+      margin: 8px 0 !important;
     }
-    .atsh-icon { font-size: 15px !important; }
-
-    /* Quick Demo Callout */
-    .aesthetic-quick-demo-callout {
+    body.aesthetic-login-page.theme-light .user-db-status-strip {
       background: rgba(45, 155, 136, 0.08) !important;
-      border: 1px solid rgba(45, 155, 136, 0.25) !important;
-      border-radius: 14px !important;
-      padding: 10px 14px !important;
-      display: flex !important;
-      align-items: center !important;
-      justify-content: space-between !important;
-      cursor: pointer !important;
-      transition: all 0.2s ease !important;
-      width: 100% !important;
+      color: var(--primary-teal-dark) !important;
+      border-color: rgba(45, 155, 136, 0.25) !important;
     }
-    .aesthetic-quick-demo-callout:hover {
-      background: rgba(45, 155, 136, 0.16) !important;
+    .udb-dot {
+      width: 6px !important;
+      height: 6px !important;
+      border-radius: 50% !important;
+      background: var(--primary-teal) !important;
+      box-shadow: 0 0 8px var(--primary-teal) !important;
+    }
+
+    /* Google Security Features */
+    .google-security-features {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 8px !important;
+    }
+    .gsf-item {
+      display: flex !important;
+      align-items: flex-start !important;
+      gap: 12px !important;
+      background: rgba(24, 34, 48, 0.55) !important;
+      border: 1px solid rgba(45, 155, 136, 0.16) !important;
+      border-radius: 14px !important;
+      padding: 9px 12px !important;
+      transition: transform 0.2s ease, border-color 0.2s ease !important;
+    }
+    body.aesthetic-login-page.theme-light .gsf-item {
+      background: #f8fafc !important;
+      border-color: rgba(45, 155, 136, 0.15) !important;
+    }
+    .gsf-item:hover {
       border-color: var(--primary-teal) !important;
       transform: translateY(-1px) !important;
-      box-shadow: var(--teal-glow) !important;
     }
-    .aqd-left { display: flex !important; align-items: center !important; gap: 10px !important; }
-    .aqd-icon { font-size: 20px !important; color: var(--primary-teal-light) !important; }
-    .aqd-info { display: flex !important; flex-direction: column !important; text-align: left !important; }
-    .aqd-info strong { font-size: 11.5px !important; font-weight: 700 !important; color: #f8fafc !important; }
-    body.aesthetic-login-page.theme-light .aqd-info strong { color: #1a1a1a !important; }
-    .aqd-info span { font-size: 10px !important; color: #94a3b8 !important; }
-    .aqd-arrow { color: var(--primary-teal-light) !important; font-weight: 800 !important; font-size: 15px !important; }
-
-    /* Form Fields */
-    .aesthetic-form {
-      display: flex !important;
-      flex-direction: column !important;
-      justify-content: space-between !important;
-      height: 100% !important;
-      width: 100% !important;
-    }
-    .aesthetic-field-wrap { display: flex !important; flex-direction: column !important; gap: 4px !important; }
-    .afw-header { display: flex !important; align-items: center !important; justify-content: space-between !important; }
-    .afw-label { font-size: 9.5px !important; font-weight: 800 !important; letter-spacing: 0.06em !important; color: #94a3b8 !important; }
-    body.aesthetic-login-page.theme-light .afw-label { color: #475569 !important; }
-    .afw-helper-link { font-size: 10px !important; font-weight: 700 !important; color: var(--primary-teal-light) !important; text-decoration: none !important; }
-    body.aesthetic-login-page.theme-light .afw-helper-link { color: var(--primary-teal-dark) !important; }
-    .afw-helper-link:hover { text-decoration: underline !important; }
-
-    .afw-input-box { position: relative !important; width: 100% !important; }
-    .aesthetic-input {
-      width: 100% !important;
-      height: 44px !important;
-      border-radius: 12px !important;
-      background: rgba(14, 20, 27, 0.6) !important;
-      border: 1px solid rgba(45, 155, 136, 0.22) !important;
-      padding: 0 16px 0 40px !important;
-      color: #ffffff !important;
-      font-size: 13px !important;
-      font-weight: 600 !important;
-      outline: none !important;
-      transition: all 0.2s ease !important;
-      box-sizing: border-box !important;
-    }
-    body.aesthetic-login-page.theme-light .aesthetic-input {
-      background: #ffffff !important;
-      border-color: rgba(45, 155, 136, 0.25) !important;
-      color: #1a1a1a !important;
-    }
-    .aesthetic-input:focus {
-      border-color: var(--primary-teal) !important;
-      box-shadow: 0 0 0 3.5px rgba(45, 155, 136, 0.25), var(--teal-glow) !important;
-      background: rgba(14, 20, 27, 0.85) !important;
-    }
-    body.aesthetic-login-page.theme-light .aesthetic-input:focus {
-      background: #ffffff !important;
-      border-color: var(--primary-teal) !important;
-      box-shadow: 0 0 0 3.5px rgba(45, 155, 136, 0.15) !important;
-    }
-    .afw-icon {
-      position: absolute !important;
-      left: 12px !important;
-      top: 50% !important;
-      transform: translateY(-50%) !important;
-      color: #94a3b8 !important;
-      font-size: 18px !important;
-      pointer-events: none !important;
-    }
-    .afw-eye-toggle {
-      position: absolute !important;
-      right: 12px !important;
-      top: 50% !important;
-      transform: translateY(-50%) !important;
-      background: none !important;
-      border: none !important;
-      color: #94a3b8 !important;
-      cursor: pointer !important;
-      padding: 0 !important;
-      display: flex !important;
-      align-items: center !important;
-    }
-
-    .aesthetic-options-row {
-      display: flex !important;
-      align-items: center !important;
-      justify-content: space-between !important;
-      font-size: 11px !important;
-    }
-    .aesthetic-checkbox-label {
-      display: inline-flex !important;
-      align-items: center !important;
-      gap: 7px !important;
-      color: #94a3b8 !important;
-      font-weight: 500 !important;
-      cursor: pointer !important;
-    }
-    body.aesthetic-login-page.theme-light .aesthetic-checkbox-label { color: #64748b !important; }
-    .aesthetic-checkbox-label input { display: none !important; }
-    .aesthetic-custom-checkbox {
-      width: 16px !important;
-      height: 16px !important;
-      border-radius: 4px !important;
-      border: 1.5px solid rgba(45, 155, 136, 0.3) !important;
-      display: flex !important;
-      align-items: center !important;
-      justify-content: center !important;
-      background: rgba(0, 0, 0, 0.2) !important;
-      transition: all 0.2s ease !important;
-    }
-    body.aesthetic-login-page.theme-light .aesthetic-custom-checkbox {
-      border-color: #cbd5e1 !important;
-      background: #f8fafc !important;
-    }
-    .aesthetic-custom-checkbox span { font-size: 12px !important; color: #ffffff !important; display: none !important; }
-    .aesthetic-checkbox-label input:checked + .aesthetic-custom-checkbox {
-      background: var(--primary-teal) !important;
-      border-color: var(--primary-teal) !important;
-    }
-    .aesthetic-checkbox-label input:checked + .aesthetic-custom-checkbox span { display: block !important; }
-
-    /* Primary Submit Button with Teal Gradient */
-    .btn-aesthetic-primary {
-      width: 100% !important;
-      height: 46px !important;
-      border-radius: 12px !important;
-      background: linear-gradient(135deg, var(--primary-teal) 0%, var(--primary-teal-dark) 100%) !important;
-      color: #ffffff !important;
-      font-size: 14px !important;
-      font-weight: 800 !important;
-      border: 1px solid rgba(255, 255, 255, 0.2) !important;
-      cursor: pointer !important;
-      display: flex !important;
-      align-items: center !important;
-      justify-content: center !important;
-      gap: 8px !important;
-      box-shadow: 0 6px 20px rgba(45, 155, 136, 0.4) !important;
-      transition: all 0.25s ease !important;
-    }
-    .btn-aesthetic-primary:hover {
-      transform: translateY(-2px) !important;
-      box-shadow: 0 10px 26px rgba(45, 155, 136, 0.55) !important;
-      filter: brightness(1.08) !important;
-    }
-
-    /* Demo Showcase Box */
-    .aesthetic-demo-showcase-box {
-      background: rgba(14, 20, 27, 0.6) !important;
-      border: 1px solid rgba(45, 155, 136, 0.22) !important;
-      border-radius: 16px !important;
-      padding: 14px !important;
-      display: flex !important;
-      flex-direction: column !important;
-      justify-content: space-between !important;
-      height: 100% !important;
-      width: 100% !important;
-      box-sizing: border-box !important;
-    }
-    body.aesthetic-login-page.theme-light .aesthetic-demo-showcase-box {
-      background: #f8fafc !important;
-      border-color: rgba(45, 155, 136, 0.2) !important;
-    }
-    .adsb-badge-row { display: flex !important; align-items: center !important; justify-content: space-between !important; }
-    .adsb-live-chip {
-      font-size: 9px !important;
-      font-weight: 800 !important;
+    .gsf-icon {
+      font-size: 19px !important;
       color: var(--primary-teal-light) !important;
-      background: rgba(45, 155, 136, 0.12) !important;
-      padding: 2px 7px !important;
-      border-radius: 9999px !important;
+      margin-top: 1px !important;
+      flex-shrink: 0 !important;
     }
-    .adsb-capital-chip {
-      font-size: 9px !important;
-      font-weight: 800 !important;
-      color: #38bdf8 !important;
-      background: rgba(56, 189, 248, 0.12) !important;
-      padding: 2px 7px !important;
-      border-radius: 9999px !important;
-    }
-    .adsb-title {
-      font-size: 14px !important;
+    body.aesthetic-login-page.theme-light .gsf-icon { color: var(--primary-teal) !important; }
+    .gsf-info { display: flex !important; flex-direction: column !important; }
+    .gsf-info h4 {
+      font-size: 12px !important;
       font-weight: 800 !important;
       color: #ffffff !important;
+      margin: 0 0 2px 0 !important;
+    }
+    body.aesthetic-login-page.theme-light .gsf-info h4 { color: #0f172a !important; }
+    .gsf-info p {
+      font-size: 10.5px !important;
+      line-height: 1.35 !important;
+      color: #94a3b8 !important;
       margin: 0 !important;
     }
-    body.aesthetic-login-page.theme-light .adsb-title { color: #1a1a1a !important; }
-    .adsb-params-grid {
-      display: grid !important;
-      grid-template-columns: 1fr 1fr 1fr !important;
-      gap: 6px !important;
-      background: rgba(0, 0, 0, 0.25) !important;
-      border-radius: 10px !important;
-      padding: 8px !important;
-      margin: 2px 0 !important;
-    }
-    body.aesthetic-login-page.theme-light .adsb-params-grid {
-      background: #ffffff !important;
-      border: 1px solid #e2e8f0 !important;
-    }
-    .adsb-param { display: flex !important; flex-direction: column !important; align-items: center !important; }
-    .adsb-param-lbl { font-size: 9px !important; font-weight: 700 !important; color: #94a3b8 !important; }
-    .adsb-param-val { font-size: 11px !important; font-weight: 800 !important; color: var(--primary-teal-light) !important; margin-top: 2px !important; }
-    body.aesthetic-login-page.theme-light .adsb-param-val { color: var(--primary-teal-dark) !important; }
-    .btn-demo-launch {
-      background: linear-gradient(135deg, var(--primary-teal) 0%, var(--primary-teal-dark) 100%) !important;
-      box-shadow: 0 6px 20px rgba(45, 155, 136, 0.35) !important;
-      height: 44px !important;
+    body.aesthetic-login-page.theme-light .gsf-info p { color: #64748b !important; }nt;
     }
 
     /* Side Panel Footer */
@@ -1204,7 +981,7 @@
       </div>
 
       <!-- ======================================================================
-           RIGHT SIDE: Static-Sized Side Login Panel Window
+           RIGHT SIDE: Dedicated Google Authentication & User DB Gateway
            ====================================================================== -->
       <div class="login-side-panel-window">
         
@@ -1213,138 +990,60 @@
           <div class="lspw-header-text">
             <span class="lspw-badge">INSTITUTIONAL GATEWAY</span>
             <h2 class="lspw-title">Access <em>B-Bot</em></h2>
-            <p class="lspw-sub">Instant authorized launch & algorithmic terminal execution.</p>
-          </div>
-
-          <!-- Interactive 3-Mode Tab Switcher -->
-          <div class="aesthetic-tab-switcher">
-            <button type="button" class="at-tab-btn active" id="tabBtnGoogle" onclick="switchLoginTab('google')">
-              <span class="material-symbols-rounded">bolt</span>
-              <span>1-Click</span>
-            </button>
-            <button type="button" class="at-tab-btn" id="tabBtnTraderId" onclick="switchLoginTab('traderId')">
-              <span class="material-symbols-rounded">badge</span>
-              <span>Trader ID</span>
-            </button>
-            <button type="button" class="at-tab-btn" id="tabBtnDemo" onclick="switchLoginTab('demo')">
-              <span class="material-symbols-rounded">smart_toy</span>
-              <span>Demo</span>
-            </button>
+            <p class="lspw-sub">Sign in with your Google account to access terminal & licenses.</p>
           </div>
         </div>
 
-        <!-- 🔒 STATIC FIXED-HEIGHT TAB VIEWPORT (Rock Solid: 250px) -->
-        <div class="aesthetic-tab-body-viewport">
+        <!-- Dedicated Google Auth Monolith Viewport (Equal Sized 590px Height Architecture) -->
+        <div class="google-auth-monolith-body">
           
-          <!-- TAB 1: 1-Click Access (Default) -->
-          <div class="aesthetic-tab-content active" id="tabContentGoogle">
-            <div class="aesthetic-google-hero-wrap">
-              <button type="button" class="btn-aesthetic-google" id="btnGoogleLogin" onclick="if(window.botHubApp) window.botHubApp.handleGoogleLogin();">
-                <svg class="google-svg-icon" viewBox="0 0 24 24" width="20" height="20">
+          <!-- Large Hero Google Sign-In Button -->
+          <div class="google-action-box">
+            <button type="button" class="btn-aesthetic-google-hero" id="btnGoogleLogin" onclick="if(window.botHubApp) window.botHubApp.handleGoogleLogin();">
+              <div class="gag-icon-circle">
+                <svg class="google-svg-icon" viewBox="0 0 24 24" width="24" height="24">
                   <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
                   <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
                   <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"/>
                   <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"/>
                 </svg>
-                <div class="btn-google-text-col">
-                  <span class="btn-google-label">Continue with Google</span>
-                  <span class="btn-google-sub">1-Click Fast Access to B-Bot Hub</span>
-                </div>
-                <span class="aesthetic-glow-badge">1-CLICK</span>
-              </button>
-            </div>
-
-            <div class="aesthetic-tab-switch-helper" onclick="switchLoginTab('traderId')">
-              <span class="material-symbols-rounded atsh-icon">key</span>
-              <span>Prefer manual credentials? <strong>Use Trader ID / PIN →</strong></span>
-            </div>
-
-            <div class="aesthetic-quick-demo-callout" onclick="switchLoginTab('demo')">
-              <div class="aqd-left">
-                <span class="material-symbols-rounded aqd-icon">candlestick_chart</span>
-                <div class="aqd-info">
-                  <strong>Explore Live Demo Sandbox</strong>
-                  <span>Experience Gold Hunter Pro EA with $100k test liquidity</span>
-                </div>
               </div>
-              <span class="aqd-arrow">→</span>
-            </div>
+              <div class="gag-text-wrap">
+                <span class="gag-main-text" id="txtGoogleHeroMain">Continue with Google</span>
+                <span class="gag-sub-text" id="txtGoogleHeroSub">1-Click Fast & Secure Access</span>
+              </div>
+              <span class="gag-badge">1-CLICK</span>
+            </button>
           </div>
 
-          <!-- TAB 2: Trader ID / PIN Credentials -->
-          <div class="aesthetic-tab-content" id="tabContentTraderId">
-            <form class="aesthetic-form" onsubmit="event.preventDefault(); if(window.botHubApp) window.botHubApp.handleCleanSignIn();">
-              
-              <div class="aesthetic-field-wrap">
-                <div class="afw-header">
-                  <label for="loginEmailInput" class="afw-label">TRADER ACCOUNT ID / EMAIL</label>
-                </div>
-                <div class="afw-input-box">
-                  <span class="material-symbols-rounded afw-icon">account_circle</span>
-                  <input type="text" id="loginEmailInput" class="aesthetic-input" placeholder="e.g. hanaan.trader@gmail.com" value="hanaan.trader@gmail.com" autocomplete="username" required>
-                </div>
-              </div>
-
-              <div class="aesthetic-field-wrap">
-                <div class="afw-header">
-                  <label for="loginOtpInput" class="afw-label">PASSCODE PIN / PASSWORD</label>
-                  <a href="#" class="afw-helper-link" onclick="event.preventDefault(); fillDemoPIN();">Demo PIN: 8492</a>
-                </div>
-                <div class="afw-input-box">
-                  <span class="material-symbols-rounded afw-icon">lock</span>
-                  <input type="password" id="loginOtpInput" class="aesthetic-input" placeholder="Enter 4-Digit PIN or Password" value="8492" autocomplete="current-password" required>
-                  <button type="button" class="afw-eye-toggle" onclick="togglePassVisibility('loginOtpInput')" title="Toggle Password Visibility">
-                    <span class="material-symbols-rounded">visibility</span>
-                  </button>
-                </div>
-              </div>
-
-              <div class="aesthetic-options-row">
-                <label class="aesthetic-checkbox-label">
-                  <input type="checkbox" id="chkRememberMe" checked>
-                  <span class="aesthetic-custom-checkbox">
-                    <span class="material-symbols-rounded">check</span>
-                  </span>
-                  <span>Remember this device</span>
-                </label>
-              </div>
-
-              <button type="submit" class="btn-aesthetic-primary" id="loginMainSubmitBtn">
-                <span>Access to B-Bot Hub</span>
-                <span class="material-symbols-rounded">arrow_forward</span>
-              </button>
-
-            </form>
+          <!-- User Database Sync Pill -->
+          <div class="user-db-status-strip">
+            <span class="udb-dot"></span>
+            <span>Automated User Database Sync • Non-Custodial Session</span>
           </div>
 
-          <!-- TAB 3: Demo Terminal -->
-          <div class="aesthetic-tab-content" id="tabContentDemo">
-            <div class="aesthetic-demo-showcase-box">
-              <div class="adsb-badge-row">
-                <span class="adsb-live-chip">● SIMULATED MT5 FEED</span>
-                <span class="adsb-capital-chip">$100,000 DEMO BALANCE</span>
+          <!-- Google Auth Security & Architecture Features -->
+          <div class="google-security-features">
+            <div class="gsf-item">
+              <span class="material-symbols-rounded gsf-icon">verified_user</span>
+              <div class="gsf-info">
+                <h4>OAuth 2.0 Verified Identity</h4>
+                <p>Protected by Google cryptographic token authentication.</p>
               </div>
-              <h3 class="adsb-title">Gold Hunter Pro EA Sandbox</h3>
-              
-              <div class="adsb-params-grid">
-                <div class="adsb-param">
-                  <span class="adsb-param-lbl">Target Pair</span>
-                  <span class="adsb-param-val">Spot Gold (XAUUSD)</span>
-                </div>
-                <div class="adsb-param">
-                  <span class="adsb-param-lbl">Mode</span>
-                  <span class="adsb-param-val">100% Automated</span>
-                </div>
-                <div class="adsb-param">
-                  <span class="adsb-param-lbl">PIN</span>
-                  <span class="adsb-param-val">8492</span>
-                </div>
+            </div>
+            <div class="gsf-item">
+              <span class="material-symbols-rounded gsf-icon">cable</span>
+              <div class="gsf-info">
+                <h4>Automatic Profile & MT5 Binding</h4>
+                <p>Your user profile and EA licenses sync seamlessly to your email.</p>
               </div>
-
-              <button type="button" class="btn-aesthetic-primary btn-demo-launch" onclick="launchDemoDirectly()">
-                <span class="material-symbols-rounded">rocket_launch</span>
-                <span>Access Demo B-Bot Hub (PIN: 8492)</span>
-              </button>
+            </div>
+            <div class="gsf-item">
+              <span class="material-symbols-rounded gsf-icon">lock</span>
+              <div class="gsf-info">
+                <h4>256-Bit SSL Non-Custodial Bridge</h4>
+                <p>Client funds and broker credentials remain 100% in your hands.</p>
+              </div>
             </div>
           </div>
 
@@ -1354,7 +1053,7 @@
         <div class="lspw-footer">
           <div class="amc-security-strip">
             <span class="material-symbols-rounded amc-sec-icon">verified_user</span>
-            <span>256-Bit SSL • Direct MT5 Bridge • Non-Custodial</span>
+            <span>256-Bit SSL • Google OAuth 2.0 • Non-Custodial</span>
           </div>
 
           <div class="amc-links-row">
@@ -1376,49 +1075,6 @@
     </footer>
 
   </div>
-
-  <!-- Inline Tab & Helper Logic -->
-  <script>
-    function switchLoginTab(tabName) {
-      document.querySelectorAll('.at-tab-btn').forEach(btn => btn.classList.remove('active'));
-      document.querySelectorAll('.aesthetic-tab-content').forEach(content => content.classList.remove('active'));
-
-      if (tabName === 'google') {
-        document.getElementById('tabBtnGoogle')?.classList.add('active');
-        document.getElementById('tabContentGoogle')?.classList.add('active');
-      } else if (tabName === 'traderId') {
-        document.getElementById('tabBtnTraderId')?.classList.add('active');
-        document.getElementById('tabContentTraderId')?.classList.add('active');
-        setTimeout(() => {
-          document.getElementById('loginEmailInput')?.focus();
-        }, 100);
-      } else if (tabName === 'demo') {
-        document.getElementById('tabBtnDemo')?.classList.add('active');
-        document.getElementById('tabContentDemo')?.classList.add('active');
-      }
-    }
-
-    function fillDemoPIN() {
-      const email = document.getElementById('loginEmailInput');
-      const pin = document.getElementById('loginOtpInput');
-      if (email) email.value = 'hanaan.trader@gmail.com';
-      if (pin) pin.value = '8492';
-    }
-
-    function togglePassVisibility(inputId) {
-      const input = document.getElementById(inputId);
-      if (input) {
-        input.type = input.type === 'password' ? 'text' : 'password';
-      }
-    }
-
-    function launchDemoDirectly() {
-      fillDemoPIN();
-      if (window.botHubApp) {
-        window.botHubApp.handleCleanSignIn();
-      }
-    }
-  </script>
 
   <!-- App Core JavaScript Bundle -->
   <script src="/app.js?v=4000"></script>
