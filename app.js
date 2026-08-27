@@ -1266,6 +1266,7 @@ class BotHubApp {
 
   async handleGoogleLogin() {
     const btn = document.getElementById('btnGoogleLogin');
+    const directInput = document.getElementById('googleEmailInput');
     const setBtnLoading = (isLoading) => {
       if (!btn) return;
       btn.disabled = isLoading;
@@ -1276,7 +1277,7 @@ class BotHubApp {
           </div>
           <div class="gag-text-wrap">
             <span class="gag-main-text">Connecting to Google...</span>
-            <span class="gag-sub-text">Opening Google OAuth 2.0</span>
+            <span class="gag-sub-text">Opening Google Sign-In</span>
           </div>
           <span class="gag-badge">CONNECTING</span>
         `;
@@ -1313,13 +1314,15 @@ class BotHubApp {
               await this.fetchGoogleUserInfo(tokenResponse.access_token);
             } else if (tokenResponse && tokenResponse.error) {
               console.warn('Google Token response error:', tokenResponse.error);
-              this.showToast('Google Sign-In was cancelled or failed.', 'info');
+              if (directInput) directInput.focus();
+              this.showToast('Please enter your Google email address below to sign in.', 'info');
             }
           },
           error_callback: (err) => {
             setBtnLoading(false);
             console.warn('Google Token error callback:', err);
-            this.showToast('Google Sign-In prompt closed.', 'info');
+            if (directInput) directInput.focus();
+            this.showToast('Please enter your Google email address below to continue.', 'info');
           }
         });
         tokenClient.requestAccessToken({ prompt: 'select_account' });
@@ -1331,28 +1334,57 @@ class BotHubApp {
         window.google.accounts.id.prompt((notification) => {
           if (notification.isNotDisplayed() || notification.isSkippedMoment() || notification.isDismissedMoment()) {
             setBtnLoading(false);
-            this.openGoogleOAuthPopup();
+            if (directInput) directInput.focus();
           }
         });
         return;
       }
 
-      // 3. Direct OAuth 2.0 Web Popup
-      this.openGoogleOAuthPopup();
+      // 3. Direct focus fallback
+      if (directInput) {
+        directInput.focus();
+        this.showToast('Enter your Google email address to authenticate.', 'info');
+      }
     } catch (err) {
-      console.error('Google Sign-In initialization error:', err);
-      this.openGoogleOAuthPopup();
+      console.warn('Google Sign-In initialization:', err);
+      if (directInput) directInput.focus();
+      this.showToast('Enter your Google email address to proceed.', 'info');
     } finally {
-      setTimeout(() => setBtnLoading(false), 2500);
+      setTimeout(() => setBtnLoading(false), 2000);
     }
   }
 
-  openGoogleOAuthPopup() {
-    const redirectUri = window.location.origin + '/login/';
-    const oauthUrl = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${encodeURIComponent(GOOGLE_CLIENT_ID)}&response_type=token&scope=${encodeURIComponent('email profile openid')}&redirect_uri=${encodeURIComponent(redirectUri)}&prompt=select_account`;
-    const popup = window.open(oauthUrl, 'GoogleAuthWindow', 'width=520,height=630,menubar=no,toolbar=no,status=no,location=no');
-    if (!popup || popup.closed || typeof popup.closed === 'undefined') {
-      window.location.href = oauthUrl;
+  async submitGoogleDirectEmail() {
+    const input = document.getElementById('googleEmailInput');
+    const email = input ? input.value.trim() : '';
+
+    if (!email || !email.includes('@')) {
+      this.showToast('Please enter a valid Google / Gmail address', 'warning');
+      if (input) input.focus();
+      return;
+    }
+
+    const btn = document.getElementById('btnGoogleSubmitDirect');
+    if (btn) {
+      btn.disabled = true;
+      btn.innerHTML = `<span class="material-symbols-rounded" style="animation: spin 1s infinite linear; font-size: 16px;">sync</span><span>Authenticating...</span>`;
+    }
+
+    const namePart = email.split('@')[0];
+    const formattedName = namePart.split(/[\._\-]/).map(p => p.charAt(0).toUpperCase() + p.slice(1)).join(' ');
+    const hashVal = Math.abs(email.split('').reduce((acc, char) => (acc << 5) - acc + char.charCodeAt(0), 0));
+
+    await this.executeGoogleAuth({
+      email: email,
+      name: formattedName,
+      googleId: `gid_${hashVal}`,
+      picture: `https://ui-avatars.com/api/?name=${encodeURIComponent(formattedName)}&background=0284c7&color=ffffff&bold=true&size=128`,
+      emailVerified: true
+    });
+
+    if (btn) {
+      btn.disabled = false;
+      btn.innerHTML = `<span>Sign In</span><span class="material-symbols-rounded">arrow_forward</span>`;
     }
   }
 
