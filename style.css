@@ -16689,3 +16689,59 @@ body.theme-light .setting-sub {
     padding: 10px 10px !important;
   }
 }
+
+/* 10. IPHONE DYNAMIC ISLAND & NOTCH SAFE AREA CLEARANCE (LOGIN & HEADERS) */
+.aesthetic-login-viewport {
+  padding-top: max(calc(env(safe-area-inset-top, 0px) + 16px), 24px) !important;
+  padding-bottom: max(calc(env(safe-area-inset-bottom, 0px) + 16px), 20px) !important;
+  padding-left: max(calc(env(safe-area-inset-left, 0px) + 20px), 20px) !important;
+  padding-right: max(calc(env(safe-area-inset-right, 0px) + 20px), 20px) !important;
+}
+
+@supports (-webkit-touch-callout: none) {
+  .aesthetic-login-viewport {
+    padding-top: max(calc(env(safe-area-inset-top, 48px) + 12px), 56px) !important;
+  }
+}
+
+html[data-platform="ios"] .aesthetic-login-viewport,
+body.platform-ios .aesthetic-login-viewport {
+  padding-top: max(calc(env(safe-area-inset-top, 48px) + 12px), 56px) !important;
+}
+
+@media (max-width: 640px) {
+  .aesthetic-login-viewport {
+    padding-top: max(calc(env(safe-area-inset-top, 48px) + 12px), 54px) !important;
+    padding-bottom: max(calc(env(safe-area-inset-bottom, 20px) + 12px), 20px) !important;
+    padding-left: max(calc(env(safe-area-inset-left, 0px) + 14px), 14px) !important;
+    padding-right: max(calc(env(safe-area-inset-right, 0px) + 14px), 14px) !important;
+  }
+
+  .aesthetic-top-nav {
+    margin: 0 auto 16px auto !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+  }
+
+  .btn-aesthetic-back {
+    padding: 8px 14px !important;
+    font-size: 12px !important;
+    min-height: 38px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+  }
+
+  .atn-right {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+  }
+
+  .aesthetic-icon-btn {
+    width: 38px !important;
+    height: 38px !important;
+    border-radius: 50% !important;
+  }
+}

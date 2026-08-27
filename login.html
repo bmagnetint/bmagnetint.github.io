@@ -122,16 +122,32 @@
       background-image: radial-gradient(rgba(45, 155, 136, 0.12) 1px, transparent 1px) !important;
     }
 
-    /* Viewport Frame */
+    /* Viewport Frame with Dynamic Island & Notch Safe Area Protection */
     .aesthetic-login-viewport {
       position: relative !important;
       z-index: 2 !important;
       min-height: 100vh !important;
+      min-height: 100dvh !important;
       display: flex !important;
       flex-direction: column !important;
       justify-content: space-between !important;
-      padding: 20px 32px !important;
+      padding-top: max(calc(env(safe-area-inset-top, 0px) + 16px), 24px) !important;
+      padding-bottom: max(calc(env(safe-area-inset-bottom, 0px) + 16px), 20px) !important;
+      padding-left: max(calc(env(safe-area-inset-left, 0px) + 20px), 20px) !important;
+      padding-right: max(calc(env(safe-area-inset-right, 0px) + 20px), 20px) !important;
       box-sizing: border-box !important;
+    }
+
+    /* iOS & iPhone Specific Dynamic Island Inset Enforcement */
+    @supports (-webkit-touch-callout: none) {
+      .aesthetic-login-viewport {
+        padding-top: max(calc(env(safe-area-inset-top, 48px) + 12px), 56px) !important;
+      }
+    }
+
+    html[data-platform="ios"] .aesthetic-login-viewport,
+    body.platform-ios .aesthetic-login-viewport {
+      padding-top: max(calc(env(safe-area-inset-top, 48px) + 12px), 56px) !important;
     }
 
     /* Top Floating Header */
@@ -142,6 +158,8 @@
       width: 100% !important;
       max-width: 1240px !important;
       margin: 0 auto 16px auto !important;
+      position: relative !important;
+      z-index: 100 !important;
     }
     .btn-aesthetic-back {
       display: inline-flex !important;
@@ -811,7 +829,34 @@
     }
 
     @media (max-width: 640px) {
-      .aesthetic-login-viewport { padding: 16px 14px !important; }
+      .aesthetic-login-viewport {
+        padding-top: max(calc(env(safe-area-inset-top, 48px) + 12px), 54px) !important;
+        padding-bottom: max(calc(env(safe-area-inset-bottom, 20px) + 12px), 20px) !important;
+        padding-left: max(calc(env(safe-area-inset-left, 0px) + 14px), 14px) !important;
+        padding-right: max(calc(env(safe-area-inset-right, 0px) + 14px), 14px) !important;
+      }
+      .aesthetic-top-nav {
+        margin: 0 auto 16px auto !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        width: 100% !important;
+      }
+      .btn-aesthetic-back {
+        padding: 8px 14px !important;
+        font-size: 12px !important;
+        min-height: 38px !important;
+      }
+      .atn-right {
+        display: flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+      }
+      .aesthetic-icon-btn {
+        width: 38px !important;
+        height: 38px !important;
+        border-radius: 50% !important;
+      }
       .bot-explain-monolith-window {
         padding: 24px 18px !important;
         border-radius: 22px !important;
