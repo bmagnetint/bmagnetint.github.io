@@ -5,9 +5,9 @@
   "public/favicon.ico": "423bac49d3d23c03bc41521aa93c38e06865e8551dbc7895cc81786b9ae1d193",
   "public/icon-192.png": "380066ca2faab5d914f553212f177c45fcc0f40e28b38caf739295e53edb56a1",
   "public/icon-512.png": "ac95a64054c37c680d0acef4d90cb3c2f732dded4b5f86799ced2eb45a97f2d6",
-  "public/index.html": "2b3f762103be28c09906c1fc80a69d78e254301c8fff57c25af5763b24432f4a",
+  "public/index.html": "916c2dc116fa2820bffda94177530bef6a9b578abff3e575b906ff17dc4a0e99",
   "public/key-generator.html": "7ea88d078fea2d1a965692f5b606a328c71da2383bf45d88d580b5a11913fdde",
-  "public/login.html": "369dd14cbcedc4d8e70d88d921f284533161eab4153409fc750dd8cbc574afc6",
+  "public/login.html": "f13c59f1c04b255ff0b16c4ffb55592b8d39a47c46ce60576ee00836e78173c9",
   "public/manifest.json": "b331d91b9eded6a5d5846dd3ed8d74a2fe4e29129f9788db8e9703c764c31858",
   "public/qrcode.js": "dc1fe07e667ce0632a54da24052d836319116b56335bc5f7d4cd8186e8a6f2c6",
   "public/signinpage.html": "1c6fefc77e4eebe3e15b8b6a1cef6ae4b5eb206e58505539070a358f1aca307a",
@@ -23,6 +23,6 @@
   "public/images/hero-trader-skipio.jpg": "92dbf03b4c9f3ce932382fada39e7974fa9574622de2dc93d4040b89f89204aa",
   "public/images/whatsapp_status_cover.jpg": "b8d75a70d2a895da067fc95bc308acca7d3e18b73187248357af7a3fa8e2727d",
   "public/signinpage/index.html": "1c6fefc77e4eebe3e15b8b6a1cef6ae4b5eb206e58505539070a358f1aca307a",
-  "public/login/index.html": "369dd14cbcedc4d8e70d88d921f284533161eab4153409fc750dd8cbc574afc6",
+  "public/login/index.html": "f13c59f1c04b255ff0b16c4ffb55592b8d39a47c46ce60576ee00836e78173c9",
   "data/db.json": "77ad6688889bfb85cf7711d442ff2db9bb48305447da81c7c87c30faed2e4a24"
 }
