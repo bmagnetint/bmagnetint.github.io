@@ -96,21 +96,59 @@
       background: rgba(45, 155, 136, 0.3);
       color: #ffffff;
     }
+    .topup-preset-btn {
+      padding: 8px 14px;
+      border-radius: 10px;
+      background: rgba(45, 155, 136, 0.12);
+      border: 1px solid rgba(45, 155, 136, 0.3);
+      color: #34b39d;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .topup-preset-btn:hover {
+      background: rgba(45, 155, 136, 0.25);
+      color: #ffffff;
+      transform: translateY(-1px);
+    }
+    .btn-topup-action {
+      background: linear-gradient(135deg, #10b981, #059669);
+      border: none;
+      color: #ffffff;
+      padding: 12px 24px;
+      border-radius: 12px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+      transition: all 0.2s;
+    }
+    .btn-topup-action:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(16, 185, 129, 0.45);
+    }
     .toast-box {
       position: fixed;
       bottom: 24px;
       right: 24px;
-      padding: 12px 20px;
-      border-radius: 12px;
-      background: #00a896;
+      padding: 14px 22px;
+      border-radius: 14px;
+      background: #10b981;
       color: #ffffff;
-      font-weight: 700;
-      font-size: 13px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+      font-weight: 800;
+      font-size: 13.5px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.5);
       z-index: 9999;
       display: none;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
     }
   </style>
 </head>
@@ -147,8 +185,8 @@
             <span class="material-symbols-rounded" style="font-size: 24px;">admin_panel_settings</span>
           </div>
           <div>
-            <h2 style="font-size: 19px; font-weight: 800; margin: 0; color: #ffffff;">Customer CRM & EA License Hub</h2>
-            <p style="font-size: 13px; color: #94a3b8; margin: 2px 0 0 0;">Unified customer accounts, MT5 whitelists, and license generator</p>
+            <h2 style="font-size: 19px; font-weight: 800; margin: 0; color: #ffffff;">Customer CRM & Wallet Hub</h2>
+            <p style="font-size: 13px; color: #94a3b8; margin: 2px 0 0 0;">Unified customer accounts, wallet ledger, and license generator</p>
           </div>
         </div>
 
@@ -198,11 +236,11 @@
 
       <div class="kpi-card">
         <div class="kpi-card-header">
-          <span class="kpi-label">BEP-20 Ledger Volume</span>
+          <span class="kpi-label">Total User Balance</span>
           <span class="material-symbols-rounded kpi-icon">account_balance_wallet</span>
         </div>
-        <div class="kpi-value font-mono" id="dbKpiRevenue">0.00 USDT</div>
-        <span class="kpi-delta positive">Verified BSC Balance</span>
+        <div class="kpi-value font-mono text-emerald" id="dbKpiRevenue">0.00 USDT</div>
+        <span class="kpi-delta positive">Admin Top-Up Controlled</span>
       </div>
 
       <div class="kpi-card">
@@ -215,7 +253,70 @@
       </div>
     </div>
 
-    <!-- 3. MT5 Vendor License Key Generator -->
+    <!-- ======================================================== -->
+    <!-- 3. TOP UP USER WALLET SUITE (BY TRADER ID)               -->
+    <!-- ======================================================== -->
+    <div class="admin-card" id="adminTopupCard" style="border: 1px solid rgba(16, 185, 129, 0.4); box-shadow: 0 10px 35px rgba(16, 185, 129, 0.12);">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; flex-wrap: wrap; gap: 12px;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <div style="width: 42px; height: 42px; border-radius: 12px; background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.3); display: flex; align-items: center; justify-content: center; color: #10b981;">
+            <span class="material-symbols-rounded" style="font-size: 24px;">add_card</span>
+          </div>
+          <div>
+            <h3 style="font-size: 17px; font-weight: 800; margin: 0; color: #ffffff;">Admin Direct Wallet Top-Up (By Trader ID)</h3>
+            <p style="font-size: 12.5px; color: #94a3b8; margin: 2px 0 0 0;">Credit a user's wallet using their unique Trader ID (e.g. <code>b-102246</code>)</p>
+          </div>
+        </div>
+        <span class="badge-featured" style="background: rgba(16, 185, 129, 0.12); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.3); font-size: 11px; border-radius: 99px; padding: 4px 12px; font-weight: 800;">
+          ⚡ Admin Only Ledger Credit
+        </span>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-bottom: 20px;">
+        
+        <!-- Input 1: User / Trader ID -->
+        <div>
+          <label style="display: block; font-size: 12px; font-weight: 700; color: #94a3b8; margin-bottom: 8px;">
+            1. User / Trader ID (e.g. <code>b-102246</code>)
+          </label>
+          <div style="display: flex; gap: 8px;">
+            <input type="text" id="adminTopupUserId" class="form-input font-mono" placeholder="e.g. b-102246" value="b-102246" style="flex: 1; height: 44px; border-radius: 12px; background: rgba(0,0,0,0.3); border: 1px solid rgba(45, 155, 136, 0.3); color: #34b39d; font-weight: 800; font-size: 15px; padding: 0 14px;">
+            <select id="adminTopupUserSelect" onchange="adminController.onTopupSelectUser(this.value)" style="height: 44px; border-radius: 12px; background: #141d29; border: 1px solid rgba(45, 155, 136, 0.3); color: #cbd5e1; padding: 0 12px; font-size: 12.5px; cursor: pointer;">
+              <option value="b-102246">Hanaan Junaid (b-102246)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Input 2: Top-Up Amount -->
+        <div>
+          <label style="display: block; font-size: 12px; font-weight: 700; color: #94a3b8; margin-bottom: 8px;">
+            2. Amount to Credit (USDT)
+          </label>
+          <input type="number" id="adminTopupAmount" step="1" min="1" placeholder="100.00" value="100" style="width: 100%; height: 44px; border-radius: 12px; background: rgba(0,0,0,0.3); border: 1px solid rgba(16, 185, 129, 0.4); color: #10b981; font-family: 'JetBrains Mono', monospace; font-weight: 800; font-size: 16px; padding: 0 14px; box-sizing: border-box;">
+        </div>
+
+      </div>
+
+      <!-- Quick Preset Amounts -->
+      <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding: 14px 18px; background: rgba(14, 20, 27, 0.5); border-radius: 14px; border: 1px solid rgba(45, 155, 136, 0.2);">
+        <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+          <span style="font-size: 12px; color: #94a3b8; font-weight: 700; margin-right: 4px;">Quick Presets:</span>
+          <button type="button" class="topup-preset-btn" onclick="adminController.setTopupAmount(50)">+$50</button>
+          <button type="button" class="topup-preset-btn" onclick="adminController.setTopupAmount(100)">+$100</button>
+          <button type="button" class="topup-preset-btn" onclick="adminController.setTopupAmount(250)">+$250</button>
+          <button type="button" class="topup-preset-btn" onclick="adminController.setTopupAmount(500)">+$500</button>
+          <button type="button" class="topup-preset-btn" onclick="adminController.setTopupAmount(1000)">+$1,000</button>
+        </div>
+
+        <button type="button" class="btn-topup-action" onclick="adminController.processTopupById()">
+          <span class="material-symbols-rounded" style="font-size: 20px;">account_balance_wallet</span>
+          <span>Credit User Wallet (+ USDT)</span>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- 4. MT5 Vendor License Key Generator -->
     <div class="admin-card">
       <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px;">
         <div style="display: flex; align-items: center; gap: 10px;">
@@ -314,9 +415,9 @@
       </div>
     </div>
 
-    <!-- 4. Verified Customer Registry Table -->
+    <!-- 5. Verified Customer Registry Table -->
     <div class="admin-card">
-      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; flex-wrap: wrap; gap: 10px;">
         <h3 style="font-size: 16px; font-weight: 800; margin: 0; color: #ffffff; display: flex; align-items: center; gap: 8px;">
           <span class="material-symbols-rounded" style="color: #00a896;">group</span>
           <span>Verified Customer Registry & Balances</span>
@@ -335,7 +436,7 @@
               <th>BEP-20 Wallet</th>
               <th>Active Bots</th>
               <th>GTCfx MT5 #</th>
-              <th>Last Active</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody id="crmCustomersTbody">
@@ -345,7 +446,7 @@
       </div>
     </div>
 
-    <!-- 5. Active Bot Passes & Expiry Tracker -->
+    <!-- 6. Active Bot Passes & Expiry Tracker -->
     <div class="admin-card">
       <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
         <h3 style="font-size: 16px; font-weight: 800; margin: 0; color: #ffffff; display: flex; align-items: center; gap: 8px;">
@@ -378,7 +479,7 @@
   </main>
 
   <div class="toast-box" id="adminToastBox">
-    <span class="material-symbols-rounded" style="font-size: 18px;">check_circle</span>
+    <span class="material-symbols-rounded" style="font-size: 20px;">check_circle</span>
     <span id="adminToastMsg">Success</span>
   </div>
 
@@ -402,7 +503,7 @@
         if (t && m) {
           m.textContent = msg;
           t.style.display = 'flex';
-          setTimeout(() => { t.style.display = 'none'; }, 3000);
+          setTimeout(() => { t.style.display = 'none'; }, 3500);
         }
       }
 
@@ -430,8 +531,100 @@
         }
       }
 
+      saveStoredUsers(users) {
+        localStorage.setItem('b_bot_users_db', JSON.stringify(users));
+      }
+
+      setTopupAmount(amt) {
+        const inp = document.getElementById('adminTopupAmount');
+        if (inp) inp.value = amt;
+      }
+
+      onTopupSelectUser(userId) {
+        const inp = document.getElementById('adminTopupUserId');
+        if (inp) inp.value = userId;
+      }
+
+      quickTopupUser(userId) {
+        const inp = document.getElementById('adminTopupUserId');
+        if (inp) inp.value = userId;
+        const card = document.getElementById('adminTopupCard');
+        if (card) card.scrollIntoView({ behavior: 'smooth' });
+        const amtInp = document.getElementById('adminTopupAmount');
+        if (amtInp) amtInp.focus();
+      }
+
+      processTopupById() {
+        const idInp = document.getElementById('adminTopupUserId');
+        const amtInp = document.getElementById('adminTopupAmount');
+        
+        let targetId = (idInp && idInp.value.trim()) || 'b-102246';
+        let amount = parseFloat((amtInp && amtInp.value) || 0);
+
+        if (isNaN(amount) || amount <= 0) {
+          alert('Please enter a valid positive top-up amount in USDT.');
+          return;
+        }
+
+        // 1. Update localStorage wallet balance
+        const currentBal = parseFloat(localStorage.getItem('b_bot_wallet_balance') || '0');
+        const newBal = currentBal + amount;
+        localStorage.setItem('b_bot_wallet_balance', newBal.toFixed(2));
+
+        // 2. Update user database
+        let users = this.getStoredUsers();
+        let found = false;
+        
+        if (users.length > 0) {
+          users = users.map(u => {
+            const uId = u.id || u.userId || '';
+            if (uId === targetId || uId.includes(targetId.replace('b-', '')) || targetId.includes(uId)) {
+              found = true;
+              u.balance = (parseFloat(u.balance || 0) + amount);
+              u.lastTopup = new Date().toISOString();
+            }
+            return u;
+          });
+        }
+
+        if (!found) {
+          // If not existing, add or ensure record for primary user
+          users.push({
+            id: targetId,
+            userId: targetId,
+            name: 'Hanaan Junaid',
+            email: 'bmagnet.int@gmail.com',
+            balance: newBal,
+            gtcfxMt5Account: '8849201',
+            lastLogin: new Date().toISOString()
+          });
+        }
+
+        this.saveStoredUsers(users);
+
+        // 3. Log transaction
+        try {
+          const txs = JSON.parse(localStorage.getItem('b_bot_transactions') || '[]');
+          txs.unshift({
+            id: 'TX_ADM_' + Date.now().toString(36).toUpperCase(),
+            type: 'Top-Up',
+            desc: `Admin Direct Credit to ${targetId}`,
+            amount: amount,
+            status: 'completed',
+            date: new Date().toISOString(),
+            channel: 'Admin Master Panel'
+          });
+          localStorage.setItem('b_bot_transactions', JSON.stringify(txs.slice(0, 50)));
+        } catch(e) {}
+
+        // 4. Update UI
+        this.refreshData();
+        this.showToast(`✅ Successfully credited ${amount.toFixed(2)} USDT to ${targetId}! New Balance: ${newBal.toFixed(2)} USDT`);
+      }
+
       refreshData() {
         const users = this.getStoredUsers();
+        const primaryBal = Number(localStorage.getItem('b_bot_wallet_balance') || 0).toFixed(2);
         
         // Update KPIs
         const kpiCust = document.getElementById('dbKpiCustomers');
@@ -439,8 +632,7 @@
 
         const kpiBal = document.getElementById('dbKpiRevenue');
         if (kpiBal) {
-          const bal = Number(localStorage.getItem('b_bot_wallet_balance') || 0).toFixed(2);
-          kpiBal.textContent = `${bal} USDT`;
+          kpiBal.textContent = `${primaryBal} USDT`;
         }
 
         // Render Customers Table
@@ -450,24 +642,36 @@
             tbodyCust.innerHTML = `
               <tr>
                 <td><strong>Hanaan Junaid</strong><br><span style="font-size:11px;color:#94a3b8;">bmagnet.int@gmail.com</span></td>
-                <td><span class="font-mono text-cyan">b-102246</span></td>
-                <td class="font-mono text-emerald font-bold">${Number(localStorage.getItem('b_bot_wallet_balance') || 0).toFixed(2)} USDT</td>
-                <td>1 Active</td>
+                <td><span class="font-mono text-cyan font-bold">b-102246</span></td>
+                <td class="font-mono text-emerald font-bold" style="font-size:14px;">${primaryBal} USDT</td>
+                <td>1 Active EA</td>
                 <td class="font-mono">#8849201</td>
-                <td style="font-size:12px;color:#94a3b8;">Active Now</td>
+                <td>
+                  <button type="button" onclick="adminController.quickTopupUser('b-102246')" style="padding: 4px 10px; border-radius: 8px; background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.4); color: #10b981; font-size: 11px; font-weight: 800; cursor: pointer;">
+                    ⚡ Top Up
+                  </button>
+                </td>
               </tr>
             `;
           } else {
-            tbodyCust.innerHTML = users.map(u => `
-              <tr>
-                <td><strong>${u.name || 'Trader'}</strong><br><span style="font-size:11px;color:#94a3b8;">${u.email || u.phone || ''}</span></td>
-                <td><span class="font-mono text-cyan">${u.id || u.userId || 'b-849201'}</span></td>
-                <td class="font-mono text-emerald font-bold">${Number(u.balance || localStorage.getItem('b_bot_wallet_balance') || 0).toFixed(2)} USDT</td>
-                <td>1 Active</td>
-                <td class="font-mono">#${u.gtcfxMt5Account || '8849201'}</td>
-                <td style="font-size:12px;color:#94a3b8;">${new Date(u.lastLogin || Date.now()).toLocaleDateString()}</td>
-              </tr>
-            `).join('');
+            tbodyCust.innerHTML = users.map(u => {
+              const uId = u.id || u.userId || 'b-102246';
+              const bal = Number(u.balance || primaryBal).toFixed(2);
+              return `
+                <tr>
+                  <td><strong>${u.name || 'Trader'}</strong><br><span style="font-size:11px;color:#94a3b8;">${u.email || u.phone || ''}</span></td>
+                  <td><span class="font-mono text-cyan font-bold">${uId}</span></td>
+                  <td class="font-mono text-emerald font-bold" style="font-size:14px;">${bal} USDT</td>
+                  <td>1 Active EA</td>
+                  <td class="font-mono">#${u.gtcfxMt5Account || '8849201'}</td>
+                  <td>
+                    <button type="button" onclick="adminController.quickTopupUser('${uId}')" style="padding: 4px 10px; border-radius: 8px; background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.4); color: #10b981; font-size: 11px; font-weight: 800; cursor: pointer;">
+                      ⚡ Top Up
+                    </button>
+                  </td>
+                </tr>
+              `;
+            }).join('');
           }
         }
 
@@ -489,9 +693,16 @@
 
         // Fill client select
         const sel = document.getElementById('adminKeyGenClientSelect');
-        if (sel && users.length > 0) {
-          sel.innerHTML = '<option value="">⚡ Quick-fill from CRM Customers...</option>' + 
-            users.map(u => `<option value="${u.gtcfxMt5Account || '8849201'}">${u.name || u.email} (MT5: #${u.gtcfxMt5Account || '8849201'})</option>`).join('');
+        const topupSel = document.getElementById('adminTopupUserSelect');
+
+        if (users.length > 0) {
+          if (sel) {
+            sel.innerHTML = '<option value="">⚡ Quick-fill from CRM Customers...</option>' + 
+              users.map(u => `<option value="${u.gtcfxMt5Account || '8849201'}">${u.name || u.email} (MT5: #${u.gtcfxMt5Account || '8849201'})</option>`).join('');
+          }
+          if (topupSel) {
+            topupSel.innerHTML = users.map(u => `<option value="${u.id || u.userId || 'b-102246'}">${u.name || u.email} (${u.id || u.userId || 'b-102246'})</option>`).join('');
+          }
         }
       }
 
