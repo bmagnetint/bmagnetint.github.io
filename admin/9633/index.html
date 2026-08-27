@@ -539,7 +539,7 @@
       <div class="two-line-group">
         <div class="two-line-label">
           <span>1. Master Access PIN</span>
-          <span class="req">Passcode 1 (9633)</span>
+          <span class="req">Line 1</span>
         </div>
         <input 
           type="password" 
@@ -548,7 +548,7 @@
           inputmode="numeric" 
           pattern="[0-9]*" 
           maxlength="10" 
-          placeholder="•••• (9633)" 
+          placeholder="••••" 
           autocomplete="off" 
           autofocus
           oninput="handleLine1Input(this.value)"
@@ -560,7 +560,7 @@
       <div class="two-line-group">
         <div class="two-line-label">
           <span>2. Secret Security PIN</span>
-          <span class="req">Passcode 2 (298130)</span>
+          <span class="req">Line 2</span>
         </div>
         <input 
           type="password" 
@@ -569,7 +569,7 @@
           inputmode="numeric" 
           pattern="[0-9]*" 
           maxlength="10" 
-          placeholder="•••••• (298130)" 
+          placeholder="••••••" 
           autocomplete="off" 
           oninput="handleLine2Input(this.value)"
           onkeydown="if(event.key==='Enter') handleUnlockAction()"
@@ -582,7 +582,7 @@
           <input type="checkbox" id="showPinsCheckbox" onchange="togglePinVisibility(this.checked)">
           <span>Show Passcodes</span>
         </label>
-        <span style="font-size:11px; color:#64748b;">Line 1: 9633 | Line 2: 298130</span>
+        
       </div>
 
       <!-- Big Unlock Button -->
@@ -591,11 +591,7 @@
         <span>Unlock Admin Panel</span>
       </button>
 
-      <!-- 1-Click Fast Unlock -->
-      <button type="button" class="gate-quick-fill-btn" onclick="quickFillAndUnlock()">
-        <span class="material-symbols-rounded" style="font-size: 16px;">bolt</span>
-        <span>⚡ 1-Tap Auto-Fill (9633 + 298130) & Unlock</span>
-      </button>
+
 
       <div class="gate-error-text" id="gateErrorMsg"></div>
 
@@ -1011,7 +1007,7 @@
         doUnlockAndShowAdminStage();
       } else {
         const err = document.getElementById('gateErrorMsg');
-        if (err) err.textContent = '❌ Invalid Passcode(s). Please enter 9633 in Line 1 and 298130 in Line 2.';
+        if (err) err.textContent = '❌ Invalid Passcode(s). Access Denied.';
         shakeGateCard();
       }
     }
