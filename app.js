@@ -1951,24 +1951,14 @@ class BotHubApp {
   }
 
   // -------------------------------------------------------------
-  // MASTER ADMIN CRM PASSCODE LOCK METHODS (CODE: 9633)
+  // MASTER ADMIN CRM PASSCODE LOCK METHODS (CODE: 298130)
   // -------------------------------------------------------------
   openAdminPanelFromSettings() {
-    if (this.state.isAdminUnlocked) {
-      this.switchView('database');
-    } else {
-      this.promptAdminCrmLock();
-    }
+    window.location.href = '/admin/298130/';
   }
 
   promptAdminCrmLock() {
-    const modal = document.getElementById('crmAdminLockModal');
-    const input = document.getElementById('crmAdminPinInput');
-    if (input) input.value = '';
-    if (modal) {
-      modal.classList.add('active');
-      setTimeout(() => { if (input) input.focus(); }, 200);
-    }
+    window.location.href = '/admin/298130/';
   }
 
   appendAdminPin(digit) {

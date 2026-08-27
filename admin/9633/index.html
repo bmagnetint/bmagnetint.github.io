@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <title>B-Magnet Admin Master Console (PIN 298130)</title>
+  <title>B-Magnet Admin Master Console</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,6 +15,7 @@
   <style>
     * {
       box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
     }
     body.admin-page-body {
       background: #090e14 !important;
@@ -27,7 +28,7 @@
     }
 
     /* ======================================================== */
-    /* 1. SECRET PIN SECURITY GATE OVERLAY                      */
+    /* 1. FOOLPROOF SECRET PIN SECURITY GATE OVERLAY            */
     /* ======================================================== */
     .admin-pin-gate-overlay {
       position: fixed;
@@ -37,92 +38,153 @@
       bottom: 0;
       width: 100vw;
       height: 100vh;
-      background: rgba(8, 12, 18, 0.96);
-      backdrop-filter: blur(30px);
-      -webkit-backdrop-filter: blur(30px);
+      background: rgba(8, 12, 18, 0.98);
+      backdrop-filter: blur(35px);
+      -webkit-backdrop-filter: blur(35px);
       z-index: 9999999;
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 16px;
-      box-sizing: border-box;
+      overflow-y: auto;
     }
 
     .admin-pin-gate-card {
       width: 100%;
-      max-width: 380px;
+      max-width: 400px;
       background: rgba(20, 29, 41, 0.96);
-      border: 1.5px solid rgba(45, 155, 136, 0.35);
+      border: 1.5px solid rgba(45, 155, 136, 0.4);
       border-radius: 26px;
-      padding: 32px 24px 28px 24px;
+      padding: 28px 22px;
       text-align: center;
-      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.7), 0 0 30px rgba(45, 155, 136, 0.15);
-      animation: gatePopIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.8), 0 0 35px rgba(45, 155, 136, 0.2);
+      animation: gatePopIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     @keyframes gatePopIn {
-      from { transform: scale(0.92); opacity: 0; }
+      from { transform: scale(0.94); opacity: 0; }
       to { transform: scale(1); opacity: 1; }
     }
 
     @keyframes gateShake {
       0%, 100% { transform: translateX(0); }
-      20%, 60% { transform: translateX(-6px); }
-      40%, 80% { transform: translateX(6px); }
+      20%, 60% { transform: translateX(-8px); }
+      40%, 80% { transform: translateX(8px); }
     }
 
     .gate-icon-box {
-      width: 58px;
-      height: 58px;
-      border-radius: 18px;
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
       background: rgba(45, 155, 136, 0.15);
-      border: 1px solid rgba(45, 155, 136, 0.35);
+      border: 1.5px solid rgba(45, 155, 136, 0.4);
       display: flex;
       align-items: center;
       justify-content: center;
       color: #34b39d;
-      margin: 0 auto 16px auto;
-      box-shadow: 0 4px 15px rgba(45, 155, 136, 0.2);
+      margin: 0 auto 12px auto;
+      box-shadow: 0 4px 20px rgba(45, 155, 136, 0.25);
+    }
+
+    /* Primary Real Input Field */
+    .admin-pin-input-container {
+      position: relative;
+      margin: 14px 0 10px 0;
+    }
+
+    .admin-pin-main-input {
+      width: 100%;
+      height: 54px;
+      background: rgba(0, 0, 0, 0.6);
+      border: 2px solid rgba(45, 155, 136, 0.5);
+      border-radius: 14px;
+      color: #10b981;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 26px;
+      font-weight: 800;
+      text-align: center;
+      letter-spacing: 12px;
+      padding: 0 12px;
+      box-sizing: border-box;
+      outline: none;
+      transition: all 0.2s ease;
+      box-shadow: inset 0 2px 6px rgba(0,0,0,0.5);
+    }
+
+    .admin-pin-main-input:focus {
+      border-color: #10b981;
+      box-shadow: 0 0 18px rgba(16, 185, 129, 0.4), inset 0 2px 6px rgba(0,0,0,0.5);
+    }
+
+    .admin-pin-main-input::placeholder {
+      color: rgba(148, 163, 184, 0.35);
+      letter-spacing: 8px;
     }
 
     .gate-pin-dots {
       display: flex;
       justify-content: center;
-      gap: 12px;
-      margin: 20px 0;
+      gap: 10px;
+      margin: 12px 0 14px 0;
     }
 
     .gate-pin-dot {
-      width: 15px;
-      height: 15px;
+      width: 14px;
+      height: 14px;
       border-radius: 50%;
-      border: 2px solid rgba(45, 155, 136, 0.4);
-      background: rgba(0, 0, 0, 0.3);
-      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      border: 2px solid rgba(45, 155, 136, 0.45);
+      background: rgba(0, 0, 0, 0.4);
+      transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .gate-pin-dot.filled {
       background: #10b981;
       border-color: #10b981;
-      box-shadow: 0 0 12px rgba(16, 185, 129, 0.6);
-      transform: scale(1.15);
+      box-shadow: 0 0 12px rgba(16, 185, 129, 0.7);
+      transform: scale(1.2);
+    }
+
+    .gate-unlock-btn {
+      width: 100%;
+      height: 48px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #10b981, #059669);
+      border: none;
+      color: #ffffff;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(16, 185, 129, 0.35);
+      transition: all 0.2s;
+      margin: 12px 0 14px 0;
+    }
+
+    .gate-unlock-btn:hover,
+    .gate-unlock-btn:active {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(16, 185, 129, 0.5);
     }
 
     .gate-keypad {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin-top: 14px;
+      gap: 8px;
+      margin-top: 10px;
     }
 
     .gate-keypad-btn {
-      height: 52px;
-      border-radius: 14px;
+      height: 48px;
+      border-radius: 12px;
       background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.12);
       color: #ffffff;
       font-family: 'JetBrains Mono', monospace;
-      font-size: 20px;
+      font-size: 19px;
       font-weight: 700;
       display: flex;
       align-items: center;
@@ -130,7 +192,6 @@
       cursor: pointer;
       transition: all 0.15s;
       user-select: none;
-      -webkit-tap-highlight-color: transparent;
     }
 
     .gate-keypad-btn:active,
@@ -142,10 +203,10 @@
 
     .gate-error-text {
       color: #ef4444;
-      font-size: 12px;
+      font-size: 12.5px;
       font-weight: 700;
-      margin-top: 10px;
-      min-height: 16px;
+      margin-top: 8px;
+      min-height: 18px;
     }
 
     /* ======================================================== */
@@ -632,9 +693,27 @@
         <span class="material-symbols-rounded" style="font-size: 30px;">admin_panel_settings</span>
       </div>
       
-      <h2 style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 19px; font-weight: 800; margin: 0 0 6px 0; color: #ffffff;">Admin Master Console</h2>
-      <p style="font-size: 12.5px; color: #94a3b8; margin: 0 0 16px 0;">Enter Master 6-Digit PIN to unlock access</p>
+      <h2 style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 20px; font-weight: 800; margin: 0 0 6px 0; color: #ffffff;">Admin Master Console</h2>
+      <p style="font-size: 13px; color: #94a3b8; margin: 0 0 14px 0;">Enter Secret 6-Digit Passcode to Unlock</p>
 
+      <!-- Main Direct Input (Supports Keyboard / Mobile typing / Paste) -->
+      <div class="admin-pin-input-container">
+        <input 
+          type="password" 
+          id="adminPinInputField" 
+          class="admin-pin-main-input" 
+          inputmode="numeric" 
+          pattern="[0-9]*" 
+          maxlength="6" 
+          placeholder="••••••" 
+          autocomplete="off" 
+          autofocus
+          oninput="handlePinInputChange(this.value)"
+          onkeydown="if(event.key==='Enter') gateController.validate()"
+        >
+      </div>
+
+      <!-- Synchronized 6 Dots -->
       <div class="gate-pin-dots">
         <div class="gate-pin-dot" id="pinDot0"></div>
         <div class="gate-pin-dot" id="pinDot1"></div>
@@ -644,6 +723,13 @@
         <div class="gate-pin-dot" id="pinDot5"></div>
       </div>
 
+      <!-- Big Unlock Button -->
+      <button type="button" class="gate-unlock-btn" onclick="gateController.validate()">
+        <span class="material-symbols-rounded" style="font-size: 20px;">lock_open</span>
+        <span>Unlock Admin Portal</span>
+      </button>
+
+      <!-- On-Screen Numeric Keypad -->
       <div class="gate-keypad">
         <button type="button" class="gate-keypad-btn" onclick="gateController.pressKey('1')">1</button>
         <button type="button" class="gate-keypad-btn" onclick="gateController.pressKey('2')">2</button>
@@ -664,7 +750,7 @@
       <div class="gate-error-text" id="gateErrorMsg"></div>
 
       <div style="margin-top: 14px;">
-        <a href="/" style="font-size: 12px; color: #64748b; text-decoration: none;">← Return to Main Public App</a>
+        <a href="/" style="font-size: 12px; color: #64748b; text-decoration: none;">← Return to Main Trading App</a>
       </div>
     </div>
   </div>
@@ -682,7 +768,7 @@
         </a>
         <div>
           <h1 class="admin-header-title">ADMIN MASTER PORTAL</h1>
-          <span class="admin-sec-pill"><span class="pulse-dot" style="background:#10b981;"></span> PIN 298130 UNLOCKED</span>
+          <span class="admin-sec-pill"><span class="pulse-dot" style="background:#10b981;"></span> AUTHENTICATED ACCESS</span>
         </div>
       </div>
 
@@ -1010,6 +1096,15 @@
 
   <script>
     /* ======================================================== */
+    /* GLOBAL HELPER FUNCTIONS                                  */
+    /* ======================================================== */
+    function handlePinInputChange(val) {
+      if (window.gateController) {
+        window.gateController.handleInput(val);
+      }
+    }
+
+    /* ======================================================== */
     /* PIN GATE AUTHENTICATION CONTROLLER                       */
     /* ======================================================== */
     class AdminPinGateController {
@@ -1027,18 +1122,11 @@
           this.showGate();
         }
 
-        // Listen for keyboard input on desktop
-        window.addEventListener('keydown', (e) => {
-          if (!this.isUnlocked()) {
-            if (e.key >= '0' && e.key <= '9') {
-              this.pressKey(e.key);
-            } else if (e.key === 'Backspace') {
-              this.backspace();
-            } else if (e.key === 'Escape') {
-              this.clearPin();
-            }
-          }
-        });
+        // Auto-focus input
+        setTimeout(() => {
+          const inp = document.getElementById('adminPinInputField');
+          if (inp && !this.isUnlocked()) inp.focus();
+        }, 150);
       }
 
       isUnlocked() {
@@ -1053,27 +1141,42 @@
         this.clearPin();
       }
 
+      handleInput(val) {
+        // Strip non-digits
+        val = (val || '').replace(/\D/g, '').slice(0, 6);
+        this.enteredPin = val;
+        
+        const inp = document.getElementById('adminPinInputField');
+        if (inp && inp.value !== val) inp.value = val;
+
+        this.renderDots();
+        const err = document.getElementById('gateErrorMsg');
+        if (err) err.textContent = '';
+
+        if (this.enteredPin.length === 6) {
+          setTimeout(() => this.validate(), 120);
+        }
+      }
+
       pressKey(digit) {
         if (this.enteredPin.length < 6) {
-          this.enteredPin += digit;
-          this.renderDots();
-          if (this.enteredPin.length === 6) {
-            setTimeout(() => this.validate(), 120);
-          }
+          this.handleInput(this.enteredPin + digit);
         }
       }
 
       backspace() {
         if (this.enteredPin.length > 0) {
-          this.enteredPin = this.enteredPin.slice(0, -1);
-          this.renderDots();
-          const err = document.getElementById('gateErrorMsg');
-          if (err) err.textContent = '';
+          this.handleInput(this.enteredPin.slice(0, -1));
         }
       }
 
       clearPin() {
         this.enteredPin = '';
+        const inp = document.getElementById('adminPinInputField');
+        if (inp) {
+          inp.value = '';
+          inp.focus();
+        }
         this.renderDots();
         const err = document.getElementById('gateErrorMsg');
         if (err) err.textContent = '';
@@ -1089,14 +1192,19 @@
       }
 
       validate() {
-        if (this.enteredPin === this.correctPin) {
+        const inp = document.getElementById('adminPinInputField');
+        const pin = (inp ? inp.value.trim() : '') || this.enteredPin;
+
+        if (pin === this.correctPin) {
           sessionStorage.setItem('b_admin_session_auth', this.correctPin);
           this.unlockConsole();
         } else {
           const err = document.getElementById('gateErrorMsg');
-          if (err) err.textContent = '❌ Invalid Secret PIN. Access Denied.';
+          if (err) err.textContent = '❌ Invalid Secret Passcode. Access Denied.';
           this.shake();
-          setTimeout(() => this.clearPin(), 600);
+          setTimeout(() => {
+            this.clearPin();
+          }, 600);
         }
       }
 
@@ -1416,18 +1524,11 @@
 
       copyWhatsAppMsg() {
         const acc = (document.getElementById('adminKeyGenAcc') && document.getElementById('adminKeyGenAcc').value.trim()) || '8849201';
-        const msg = `👑 *B-MAGNET INTERNATIONAL - MT5 LICENSE ACTIVATION*
-
-` +
-          `🔹 *Bot:* B-Magnet Gold Hunter EA v1.21
-` +
-          `🔹 *MT5 Account:* #${acc}
-` +
-          `🔹 *Duration:* ${this.currentDuration.name}
-` +
-          `🔑 *License Key:* \`${this.generatedKey}\`
-
-` +
+        const msg = `👑 *B-MAGNET INTERNATIONAL - MT5 LICENSE ACTIVATION*\n\n` +
+          `🔹 *Bot:* B-Magnet Gold Hunter EA v1.21\n` +
+          `🔹 *MT5 Account:* #${acc}\n` +
+          `🔹 *Duration:* ${this.currentDuration.name}\n` +
+          `🔑 *License Key:* \`${this.generatedKey}\`\n\n` +
           `✅ Attach the EA in MT5 Navigator and paste this key into inputs.`;
         
         if (navigator.clipboard) {
@@ -1440,18 +1541,11 @@
       sendWhatsAppDirect() {
         const acc = (document.getElementById('adminKeyGenAcc') && document.getElementById('adminKeyGenAcc').value.trim()) || '8849201';
         const msg = encodeURIComponent(
-          `👑 *B-MAGNET INTERNATIONAL - MT5 LICENSE ACTIVATION*
-
-` +
-          `🔹 *Bot:* B-Magnet Gold Hunter EA v1.21
-` +
-          `🔹 *MT5 Account:* #${acc}
-` +
-          `🔹 *Duration:* ${this.currentDuration.name}
-` +
-          `🔑 *License Key:* ${this.generatedKey}
-
-` +
+          `👑 *B-MAGNET INTERNATIONAL - MT5 LICENSE ACTIVATION*\n\n` +
+          `🔹 *Bot:* B-Magnet Gold Hunter EA v1.21\n` +
+          `🔹 *MT5 Account:* #${acc}\n` +
+          `🔹 *Duration:* ${this.currentDuration.name}\n` +
+          `🔑 *License Key:* ${this.generatedKey}\n\n` +
           `✅ Attach the EA in MT5 Navigator and paste this key into inputs.`
         );
         window.open(`https://wa.me/?text=${msg}`, '_blank');
@@ -1464,15 +1558,12 @@
 
       exportCsv() {
         const users = this.getStoredUsers();
-        let csv = 'Customer,Email,TraderID,WalletBalance,ActiveBots,MT5Account,LastActive
-';
+        let csv = 'Customer,Email,TraderID,WalletBalance,ActiveBots,MT5Account,LastActive\n';
         if (users.length === 0) {
-          csv += '"Hanaan Junaid","bmagnet.int@gmail.com","b-102246","0.00","1","8849201","Active Now"
-';
+          csv += '"Hanaan Junaid","bmagnet.int@gmail.com","b-102246","0.00","1","8849201","Active Now"\n';
         } else {
           users.forEach(u => {
-            csv += `"${u.name || ''}","${u.email || ''}","${u.id || u.userId || ''}","${u.balance || 0}","1","${u.gtcfxMt5Account || ''}","${u.lastLogin || ''}"
-`;
+            csv += `"${u.name || ''}","${u.email || ''}","${u.id || u.userId || ''}","${u.balance || 0}","1","${u.gtcfxMt5Account || ''}","${u.lastLogin || ''}"\n`;
           });
         }
         const blob = new Blob([csv], { type: 'text/csv' });
