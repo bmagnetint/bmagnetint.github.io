@@ -1,5 +1,5 @@
 {
-  "public/app.js": "eb74dc041a80d181d0aa2cd998da9019b0618d99469ee4eeab0f574c7ad15208",
+  "public/app.js": "d5992606b9145e415e0559f6e610c8a83d70bd608d702ea378ef8ed0aa166683",
   "public/apple-touch-icon-precomposed.png": "cef73be89c60058c66ae1dba85ff02061bc73b50d7c1909e1c8ca27f88dd43e1",
   "public/apple-touch-icon.png": "cef73be89c60058c66ae1dba85ff02061bc73b50d7c1909e1c8ca27f88dd43e1",
   "public/favicon.ico": "423bac49d3d23c03bc41521aa93c38e06865e8551dbc7895cc81786b9ae1d193",
@@ -7,7 +7,7 @@
   "public/icon-512.png": "ac95a64054c37c680d0acef4d90cb3c2f732dded4b5f86799ced2eb45a97f2d6",
   "public/index.html": "7d537061ec1bdf9663ac725684722e4f085982101886b2310fb1b582be8ef456",
   "public/key-generator.html": "2235ce7c4f449a25e611adf081818814d25b17421a595401199407de64cc597b",
-  "public/login.html": "224166115f181f035d7f52c9499624790bb9e0a08e77491998712427ca4a3bd0",
+  "public/login.html": "21ecb770b869cedc1ceb733c7392510c268e7d8331175a78f62969fe13052750",
   "public/manifest.json": "2bbc3603248cab9221f4a7126474778bbfcd923ee55f0ead6f9e90d2d285c5b1",
   "public/qrcode.js": "dc1fe07e667ce0632a54da24052d836319116b56335bc5f7d4cd8186e8a6f2c6",
   "public/signinpage.html": "1c6fefc77e4eebe3e15b8b6a1cef6ae4b5eb206e58505539070a358f1aca307a",
@@ -23,6 +23,6 @@
   "public/images/hero-trader-skipio.jpg": "92dbf03b4c9f3ce932382fada39e7974fa9574622de2dc93d4040b89f89204aa",
   "public/images/whatsapp_status_cover.jpg": "b8d75a70d2a895da067fc95bc308acca7d3e18b73187248357af7a3fa8e2727d",
   "public/signinpage/index.html": "1c6fefc77e4eebe3e15b8b6a1cef6ae4b5eb206e58505539070a358f1aca307a",
-  "public/login/index.html": "224166115f181f035d7f52c9499624790bb9e0a08e77491998712427ca4a3bd0",
+  "public/login/index.html": "21ecb770b869cedc1ceb733c7392510c268e7d8331175a78f62969fe13052750",
   "data/db.json": "77ad6688889bfb85cf7711d442ff2db9bb48305447da81c7c87c30faed2e4a24"
 }
