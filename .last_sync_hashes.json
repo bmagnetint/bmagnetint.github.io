@@ -1,5 +1,5 @@
 {
-  "public/app.js": "9893920eb3bd99694513334eb31b1bf6e4e5f1c31bca1385d5bbc5de1d4e8759",
+  "public/app.js": "5c975ac31126d7774592fef7b45d32264936da5a58fad9ea85e4c265630e6a9c",
   "public/apple-touch-icon-precomposed.png": "cef73be89c60058c66ae1dba85ff02061bc73b50d7c1909e1c8ca27f88dd43e1",
   "public/apple-touch-icon.png": "cef73be89c60058c66ae1dba85ff02061bc73b50d7c1909e1c8ca27f88dd43e1",
   "public/favicon.ico": "423bac49d3d23c03bc41521aa93c38e06865e8551dbc7895cc81786b9ae1d193",
@@ -11,7 +11,7 @@
   "public/manifest.json": "2bbc3603248cab9221f4a7126474778bbfcd923ee55f0ead6f9e90d2d285c5b1",
   "public/qrcode.js": "dc1fe07e667ce0632a54da24052d836319116b56335bc5f7d4cd8186e8a6f2c6",
   "public/signinpage.html": "1c6fefc77e4eebe3e15b8b6a1cef6ae4b5eb206e58505539070a358f1aca307a",
-  "public/style.css": "a2c1b23feb975ed4fbba4b3e98e064821bbfd79c559603e07baeed33e71969a9",
+  "public/style.css": "d10f556a5788657d1386c37d51928e2a31946b15ed154f2a93c681745b7a3a2e",
   "public/sw.js": "e29f8ab7d878ab323e8976f0b49833d24007af4edd7c8ef4d1c6143d9817f92b",
   "public/images/ai-bot-core-visual.jpg": "895803d28fbe6620cdf3f118d715aaa5df2c7bb6438e479d41f9431e510f0f71",
   "public/images/ai-trading-bot-visual.jpg": "cc47a181d7c5c6dd744ac8759f107332d7645f1772c3e7dd3aa8d84f822a2119",

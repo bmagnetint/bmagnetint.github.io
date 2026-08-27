@@ -289,17 +289,18 @@ class BotHubApp {
   }
 
   // -------------------------------------------------------------
-  // AUTOMATIC BROWSER & PLATFORM CALIBRATION ENGINE
+  // AUTOMATIC BROWSER, PLATFORM, RESOLUTION & SCREEN CALIBRATION
   // -------------------------------------------------------------
   calibratePlatformAndResolution() {
     const ua = navigator.userAgent || '';
     const platform = navigator.platform || '';
     
-    // 1. Detect Operating System & Form Factor
+    // 1. Detect Operating System & Platform Engine
     const isIOS = /iPad|iPhone|iPod/.test(ua) || (platform === 'MacIntel' && navigator.maxTouchPoints > 1);
     const isAndroid = /Android/.test(ua);
-    const isWindows = /Windows/i.test(ua);
+    const isWindows = /Windows|Win32|Win64/i.test(ua);
     const isMac = /Macintosh|MacIntel/i.test(ua) && !isIOS;
+    const isLinux = /Linux/i.test(ua) && !isAndroid;
     const isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
 
     // 2. Detect Browser Engine
@@ -308,64 +309,120 @@ class BotHubApp {
     const isEdge = /Edg/i.test(ua);
     const isFirefox = /Firefox|FxiOS/i.test(ua);
 
-    // 3. Apply semantic classes to root document & body
+    // 3. Platform Identifier
+    let detectedPlatform = 'other';
+    if (isIOS) detectedPlatform = 'ios';
+    else if (isAndroid) detectedPlatform = 'android';
+    else if (isMac) detectedPlatform = 'macos';
+    else if (isWindows) detectedPlatform = 'windows';
+    else if (isLinux) detectedPlatform = 'linux';
+
     const root = document.documentElement;
     const body = document.body;
 
-    const classNamesToRemove = [
-      'platform-ios', 'platform-android', 'platform-windows', 'platform-mac',
-      'device-mobile', 'device-tablet', 'device-desktop',
-      'mode-mobile', 'mode-tablet', 'mode-desktop',
-      'browser-safari', 'browser-chrome', 'browser-edge', 'browser-firefox',
-      'touch-device', 'no-touch'
-    ];
+    root.setAttribute('data-platform', detectedPlatform);
+    root.setAttribute('data-input', isTouch ? 'touch' : 'mouse');
+    if (body) {
+      body.setAttribute('data-platform', detectedPlatform);
+      body.setAttribute('data-input', isTouch ? 'touch' : 'mouse');
+    }
 
-    root.classList.remove(...classNamesToRemove);
-    if (body) body.classList.remove(...classNamesToRemove);
-
-    const activeClasses = [];
-    if (isIOS) activeClasses.push('platform-ios');
-    else if (isAndroid) activeClasses.push('platform-android');
-    else if (isWindows) activeClasses.push('platform-windows');
-    else if (isMac) activeClasses.push('platform-mac');
-
-    if (isTouch) activeClasses.push('touch-device');
-    else activeClasses.push('no-touch');
-
-    if (isSafari) activeClasses.push('browser-safari');
-    else if (isChrome) activeClasses.push('browser-chrome');
-    else if (isEdge) activeClasses.push('browser-edge');
-    else if (isFirefox) activeClasses.push('browser-firefox');
-
-    activeClasses.forEach(cls => {
-      root.classList.add(cls);
-      if (body) body.classList.add(cls);
-    });
-
-    // 4. Dynamic Viewport Geometry & Automatic Mobile Screen Calibration
+    // 4. Dynamic Viewport Geometry, DPR & Responsive Screen Sizing
     const updateViewportGeometry = () => {
       const w = window.innerWidth || document.documentElement.clientWidth || 360;
       const h = window.innerHeight || document.documentElement.clientHeight || 640;
+      const dpr = Math.min(Math.max(window.devicePixelRatio || 1, 1), 4);
+      const isPortrait = h >= w;
 
-      // Dynamic CSS variables for bulletproof mobile height
+      // Screen Size Category
+      let screenSize = 'desktop';
+      let resCategory = 'res-fhd';
+      let baseFontPx = 15;
+
+      if (w < 400) {
+        screenSize = 'mobile-compact';
+        resCategory = 'res-compact';
+        baseFontPx = 13.5;
+      } else if (w < 640) {
+        screenSize = 'mobile';
+        resCategory = 'res-mobile';
+        baseFontPx = 14;
+      } else if (w < 1024) {
+        screenSize = 'tablet';
+        resCategory = 'res-hd';
+        baseFontPx = 14.5;
+      } else if (w < 1440) {
+        screenSize = 'laptop';
+        resCategory = 'res-fhd';
+        baseFontPx = 15;
+      } else if (w < 1920) {
+        screenSize = 'desktop';
+        resCategory = 'res-2k';
+        baseFontPx = 15.5;
+      } else {
+        screenSize = 'ultrawide';
+        resCategory = 'res-4k';
+        baseFontPx = 16.5;
+      }
+
+      const dprCategory = dpr >= 3 ? 'dpr-3' : (dpr >= 2 ? 'dpr-2' : 'dpr-1');
+
+      // Set data attributes on html and body
+      root.setAttribute('data-screen-size', screenSize);
+      root.setAttribute('data-resolution', resCategory);
+      root.setAttribute('data-dpr', dprCategory);
+      root.setAttribute('data-orientation', isPortrait ? 'portrait' : 'landscape');
+
+      if (body) {
+        body.setAttribute('data-screen-size', screenSize);
+        body.setAttribute('data-resolution', resCategory);
+        body.setAttribute('data-dpr', dprCategory);
+        body.setAttribute('data-orientation', isPortrait ? 'portrait' : 'landscape');
+      }
+
+      // Root Dynamic CSS Variables
+      root.style.setProperty('--screen-width', `${w}px`);
+      root.style.setProperty('--screen-height', `${h}px`);
       root.style.setProperty('--vh', `${h * 0.01}px`);
       root.style.setProperty('--vw', `${w * 0.01}px`);
+      root.style.setProperty('--dpr-val', dpr);
+      root.style.setProperty('--calibrated-font-base', `${baseFontPx}px`);
 
-      const modeClasses = ['mode-mobile', 'mode-tablet', 'mode-desktop', 'device-mobile', 'device-tablet', 'device-desktop', 'is-mobile-viewport', 'is-small-screen'];
+      // Class helpers for broad compatibility
+      const modeClasses = [
+        'mode-mobile', 'mode-tablet', 'mode-desktop', 'mode-ultrawide',
+        'device-mobile', 'device-tablet', 'device-desktop',
+        'is-mobile-viewport', 'is-small-screen', 'is-ultrawide-screen',
+        'dpr-1', 'dpr-2', 'dpr-3',
+        'platform-ios', 'platform-android', 'platform-windows', 'platform-mac', 'platform-linux',
+        'touch-device', 'no-touch',
+        'browser-safari', 'browser-chrome', 'browser-edge', 'browser-firefox'
+      ];
       root.classList.remove(...modeClasses);
       if (body) body.classList.remove(...modeClasses);
 
-      let currentMode = [];
-      if (w <= 768 || isIOS || isAndroid) {
-        currentMode = ['mode-mobile', 'device-mobile', 'is-mobile-viewport'];
-        if (w <= 480) currentMode.push('is-small-screen');
-      } else if (w <= 1024) {
-        currentMode = ['mode-tablet', 'device-tablet'];
+      const activeClasses = [];
+      activeClasses.push(`platform-${detectedPlatform}`);
+      activeClasses.push(dprCategory);
+      activeClasses.push(isTouch ? 'touch-device' : 'no-touch');
+
+      if (isSafari) activeClasses.push('browser-safari');
+      else if (isChrome) activeClasses.push('browser-chrome');
+      else if (isEdge) activeClasses.push('browser-edge');
+      else if (isFirefox) activeClasses.push('browser-firefox');
+
+      if (w < 640 || isIOS || isAndroid) {
+        activeClasses.push('mode-mobile', 'device-mobile', 'is-mobile-viewport');
+        if (w < 400) activeClasses.push('is-small-screen');
+      } else if (w < 1024) {
+        activeClasses.push('mode-tablet', 'device-tablet');
+      } else if (w >= 1920) {
+        activeClasses.push('mode-ultrawide', 'device-desktop', 'is-ultrawide-screen');
       } else {
-        currentMode = ['mode-desktop', 'device-desktop'];
+        activeClasses.push('mode-desktop', 'device-desktop');
       }
 
-      currentMode.forEach(cls => {
+      activeClasses.forEach(cls => {
         root.classList.add(cls);
         if (body) body.classList.add(cls);
       });

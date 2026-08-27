@@ -16163,7 +16163,424 @@ body.aesthetic-login-page.theme-light .amc-link {
   }
 }
 
+/* ==========================================================================
+   UNIFIED LOGGED-IN WINDOW PANELS & DYNAMIC MULTI-PLATFORM CLARITY TYPOGRAPHY
+   ========================================================================== */
 
+/* 1. Global Fluid Typography Variables & Crisp Contrast Tokens */
+:root {
+  --fs-3xs: clamp(8.5px, 0.58rem + 0.04vw, 10px);
+  --fs-2xs: clamp(9.5px, 0.65rem + 0.06vw, 11px);
+  --fs-xs: clamp(11px, 0.72rem + 0.08vw, 12.5px);
+  --fs-sm: clamp(12px, 0.8rem + 0.12vw, 13.5px);
+  --fs-base: clamp(13.5px, 0.88rem + 0.16vw, 15px);
+  --fs-md: clamp(15px, 0.98rem + 0.22vw, 17px);
+  --fs-lg: clamp(17.5px, 1.12rem + 0.28vw, 20px);
+  --fs-xl: clamp(20px, 1.3rem + 0.4vw, 24px);
+  --fs-2xl: clamp(24px, 1.55rem + 0.6vw, 30px);
+  --fs-3xl: clamp(28px, 1.85rem + 0.9vw, 38px);
+}
 
+/* 2. Platform-Specific Font Rendering & Subpixel Clarity */
+html[data-platform="ios"],
+html[data-platform="macos"],
+body.platform-ios,
+body.platform-mac {
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+}
 
+html[data-platform="windows"],
+html[data-platform="linux"],
+body.platform-windows,
+body.platform-linux {
+  text-rendering: optimizeLegibility !important;
+  -webkit-font-smoothing: antialiased !important;
+}
 
+html[data-platform="android"],
+body.platform-android {
+  text-rendering: optimizeLegibility !important;
+  -webkit-font-smoothing: antialiased !important;
+}
+
+/* High-DPI / Retina Micro-Contrast Calibration */
+html[data-dpr="dpr-2"] body,
+html[data-dpr="dpr-3"] body {
+  font-weight: 450;
+}
+
+/* 3. Ultra-Wide & 4K Resolution Geometry (Prevents Stretched Ribbons) */
+html[data-screen-size="ultrawide"] body.logged-in #mainContent,
+html[data-screen-size="ultrawide"] body.logged-in .app-content,
+html[data-screen-size="desktop"] body.logged-in #mainContent {
+  max-width: 1240px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  width: 100% !important;
+}
+
+html[data-screen-size="ultrawide"] .view-panel {
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+}
+
+/* 4. UNIFIED PANEL WINDOWS SIZING (Logged-In Hub & Dashboard) */
+body.logged-in .view-panel {
+  padding: clamp(16px, 2vw, 26px) !important;
+  display: none;
+  flex-direction: column !important;
+  gap: 18px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+body.logged-in .view-panel.active {
+  display: flex !important;
+  animation: panelWindowFadeIn 0.25s ease-out !important;
+}
+
+@keyframes panelWindowFadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Unified Panel Headers */
+body.logged-in .panel-header,
+body.logged-in .section-title-row {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding-bottom: 4px !important;
+  margin-bottom: 2px !important;
+  width: 100% !important;
+}
+
+body.logged-in .panel-title,
+body.logged-in .section-title {
+  font-size: clamp(18px, 1.4vw, 22px) !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.015em !important;
+  color: #ffffff !important;
+  margin: 0 !important;
+}
+
+body.logged-in.theme-light .panel-title,
+body.logged-in.theme-light .section-title {
+  color: #0f172a !important;
+}
+
+body.logged-in .panel-subtitle,
+body.logged-in .section-desc {
+  font-size: clamp(11.5px, 0.85vw, 13px) !important;
+  color: #94a3b8 !important;
+  font-weight: 500 !important;
+  margin-top: 2px !important;
+}
+
+body.logged-in.theme-light .panel-subtitle,
+body.logged-in.theme-light .section-desc {
+  color: #64748b !important;
+}
+
+/* Unified Card Panel Windows (Equal Radius, Glass Depth & Equal Height) */
+body.logged-in .explore-selected-plan-panel,
+body.logged-in .creator-revenue-card,
+body.logged-in .affiliate-card,
+body.logged-in .wallet-hero-card,
+body.logged-in .profile-card,
+body.logged-in .settings-group,
+body.logged-in .gtcfx-broker-banner,
+body.logged-in .gtcfx-referral-card,
+body.logged-in .settings-logout-card,
+body.logged-in .crm-panel-card,
+body.logged-in .subscription-card,
+body.logged-in .akg-card {
+  border-radius: 20px !important;
+  padding: clamp(16px, 1.8vw, 24px) !important;
+  background: rgba(14, 20, 27, 0.75) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  border: 1px solid rgba(45, 155, 136, 0.2) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.08) !important;
+  box-sizing: border-box !important;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+body.logged-in.theme-light .explore-selected-plan-panel,
+body.logged-in.theme-light .creator-revenue-card,
+body.logged-in.theme-light .affiliate-card,
+body.logged-in.theme-light .wallet-hero-card,
+body.logged-in.theme-light .profile-card,
+body.logged-in.theme-light .settings-group,
+body.logged-in.theme-light .gtcfx-broker-banner,
+body.logged-in.theme-light .gtcfx-referral-card,
+body.logged-in.theme-light .settings-logout-card,
+body.logged-in.theme-light .crm-panel-card,
+body.logged-in.theme-light .subscription-card,
+body.logged-in.theme-light .akg-card {
+  background: #ffffff !important;
+  border: 1px solid rgba(203, 213, 225, 0.85) !important;
+  box-shadow: 0 6px 24px rgba(25, 39, 80, 0.06), inset 0 1px 1.5px rgba(255, 255, 255, 0.9) !important;
+}
+
+/* 5. VIEW 1 (EXPLORE / BOTS) UNIFORM WINDOWS */
+.explore-plans-tabs-grid {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: 12px !important;
+  width: 100% !important;
+  margin-bottom: 14px !important;
+}
+
+.explore-plan-tab-card {
+  height: 100% !important;
+  min-height: 88px !important;
+  border-radius: 16px !important;
+  padding: 12px 14px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  background: rgba(14, 20, 27, 0.6) !important;
+  border: 1px solid rgba(45, 155, 136, 0.18) !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  box-sizing: border-box !important;
+}
+
+body.theme-light .explore-plan-tab-card {
+  background: #f8fafc !important;
+  border-color: #e2e8f0 !important;
+}
+
+.explore-plan-tab-card.active {
+  border-color: #2d9b88 !important;
+  background: rgba(45, 155, 136, 0.12) !important;
+  box-shadow: 0 4px 16px rgba(45, 155, 136, 0.25) !important;
+}
+
+body.theme-light .explore-plan-tab-card.active {
+  background: #ffffff !important;
+  border-color: #2d9b88 !important;
+  box-shadow: 0 4px 14px rgba(45, 155, 136, 0.18) !important;
+}
+
+/* 6. VIEW 2 (SUBSCRIPTIONS) UNIFORM STATS & CARDS */
+.sub-stats-row {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 12px !important;
+  width: 100% !important;
+  margin-bottom: 16px !important;
+}
+
+.sub-stat-card {
+  height: 100% !important;
+  min-height: 86px !important;
+  border-radius: 16px !important;
+  padding: 14px 16px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: rgba(14, 20, 27, 0.65) !important;
+  border: 1px solid rgba(45, 155, 136, 0.2) !important;
+  text-align: center !important;
+}
+
+body.theme-light .sub-stat-card {
+  background: #ffffff !important;
+  border-color: rgba(203, 213, 225, 0.8) !important;
+  box-shadow: 0 2px 10px rgba(25, 39, 80, 0.04) !important;
+}
+
+.sub-stat-num {
+  font-size: clamp(20px, 1.5vw, 26px) !important;
+  font-weight: 800 !important;
+  font-family: var(--font-mono) !important;
+  line-height: 1.1 !important;
+  color: #34b39d !important;
+}
+
+.sub-stat-lbl {
+  font-size: clamp(10.5px, 0.75vw, 12px) !important;
+  font-weight: 600 !important;
+  color: #94a3b8 !important;
+  margin-top: 4px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.04em !important;
+}
+
+/* 7. UNIFORM METRICS ROWS (4-Column & 3-Column Statistical Grids) */
+.bot-metrics-row,
+.rev-metrics-row,
+.affiliate-stats-row {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(90px, 1fr)) !important;
+  gap: 10px !important;
+  width: 100% !important;
+  margin: 12px 0 !important;
+}
+
+.bot-metric-item,
+.rev-metric,
+.affiliate-stats-row > div {
+  min-height: 68px !important;
+  border-radius: 14px !important;
+  padding: 10px 8px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: rgba(0, 0, 0, 0.25) !important;
+  border: 1px solid rgba(45, 155, 136, 0.14) !important;
+  text-align: center !important;
+  box-sizing: border-box !important;
+}
+
+body.theme-light .bot-metric-item,
+body.theme-light .rev-metric,
+body.theme-light .affiliate-stats-row > div {
+  background: #f8fafc !important;
+  border-color: #e2e8f0 !important;
+}
+
+.bot-metric-num,
+.rev-metric-val,
+.aff-num {
+  font-size: clamp(15px, 1.15vw, 18px) !important;
+  font-weight: 800 !important;
+  font-family: var(--font-mono) !important;
+  line-height: 1.15 !important;
+}
+
+.bot-metric-label,
+.rev-metric-lbl,
+.aff-lbl {
+  font-size: clamp(9.5px, 0.7vw, 11px) !important;
+  font-weight: 600 !important;
+  color: #94a3b8 !important;
+  margin-top: 3px !important;
+  letter-spacing: 0.02em !important;
+}
+
+/* 8. VIEW 5 (SETTINGS) UNIFORM TWO-COLUMN WINDOW GRID */
+.settings-desktop-grid {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 20px !important;
+  width: 100% !important;
+  align-items: start !important;
+}
+
+.settings-col-left,
+.settings-col-right {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 16px !important;
+  width: 100% !important;
+}
+
+.settings-group {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 6px !important;
+}
+
+.setting-item {
+  min-height: 54px !important;
+  border-radius: 14px !important;
+  padding: 8px 12px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  background: rgba(255, 255, 255, 0.03) !important;
+  border: 1px solid rgba(45, 155, 136, 0.12) !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+}
+
+body.theme-light .setting-item {
+  background: #f8fafc !important;
+  border-color: #e2e8f0 !important;
+}
+
+.setting-item:hover {
+  background: rgba(45, 155, 136, 0.1) !important;
+  border-color: rgba(45, 155, 136, 0.35) !important;
+  transform: translateX(2px) !important;
+}
+
+.setting-name {
+  font-size: clamp(12.5px, 0.9vw, 14px) !important;
+  font-weight: 700 !important;
+  color: #ffffff !important;
+}
+
+body.theme-light .setting-name {
+  color: #0f172a !important;
+}
+
+.setting-sub {
+  font-size: clamp(10.5px, 0.75vw, 11.5px) !important;
+  color: #94a3b8 !important;
+  line-height: 1.3 !important;
+}
+
+body.theme-light .setting-sub {
+  color: #64748b !important;
+}
+
+/* 9. RESPONSIVE GEOMETRY ACROSS PLATFORMS (MOBILE & TABLET) */
+@media (max-width: 860px) {
+  .explore-plans-tabs-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+  }
+
+  .settings-desktop-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  .sub-stats-row {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 8px !important;
+  }
+}
+
+@media (max-width: 520px) {
+  body.logged-in .view-panel {
+    padding: 14px 12px 80px 12px !important;
+    gap: 14px !important;
+  }
+
+  .sub-stats-row {
+    grid-template-columns: 1fr 1fr 1fr !important;
+    gap: 6px !important;
+  }
+
+  .sub-stat-card {
+    padding: 10px 6px !important;
+    min-height: 74px !important;
+  }
+
+  .sub-stat-num {
+    font-size: 18px !important;
+  }
+
+  .sub-stat-lbl {
+    font-size: 9.5px !important;
+  }
+
+  .explore-plans-tabs-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px !important;
+  }
+
+  .explore-plan-tab-card {
+    min-height: 78px !important;
+    padding: 10px 10px !important;
+  }
+}
