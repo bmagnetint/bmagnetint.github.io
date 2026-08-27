@@ -1214,22 +1214,24 @@ class BotHubApp {
     this.showToast('Profile photo removed. Showing initials.', 'info');
   }
 
-  saveProfileDetails() {
+  async saveProfileDetails() {
     const inputName = document.getElementById('inputProfileName');
     const inputPhone = document.getElementById('inputProfilePhone');
     const inputEmail = document.getElementById('inputProfileEmail');
     const inputTelegram = document.getElementById('inputProfileTelegram');
     const inputMt5 = document.getElementById('inputProfileMt5');
 
-    const name = inputName ? inputName.value.trim() : 'Hanaan';
+    const name = inputName && inputName.value.trim() ? inputName.value.trim() : 'Hanaan Junaid';
     const phone = inputPhone ? inputPhone.value.trim() : '+91 94950 97786';
-    const email = inputEmail ? inputEmail.value.trim() : 'hanaan@bmagnet.ai';
+    const email = inputEmail ? inputEmail.value.trim() : 'bmagnet.int@gmail.com';
     const telegram = inputTelegram ? inputTelegram.value.trim() : '@B_Magnet_Gold_bot';
-    const gtcfxMt5 = inputMt5 ? inputMt5.value.trim() : '8849201';
+    const gtcfxMt5 = inputMt5 && inputMt5.value.trim() ? inputMt5.value.trim() : '8849201';
 
     if (!this.state.currentUser) {
-      this.state.currentUser = { isLoggedIn: true, userId: 'BM-98214' };
+      this.state.currentUser = { isLoggedIn: true, id: 'b-102246', userId: 'b-102246' };
     }
+
+    const traderId = this.state.currentUser.id || this.state.currentUser.userId || 'b-102246';
 
     this.state.currentUser.name = name;
     this.state.currentUser.phone = phone;
@@ -1237,14 +1239,59 @@ class BotHubApp {
     this.state.currentUser.email = email;
     this.state.currentUser.telegram = telegram;
     this.state.currentUser.gtcfxMt5Account = gtcfxMt5;
+    this.state.defaultMt5Account = gtcfxMt5;
 
+    if (!this.state.currentUser.mt5Accounts) this.state.currentUser.mt5Accounts = [];
+    const mt5Idx = this.state.currentUser.mt5Accounts.findIndex(a => a.broker === 'GTCfx MT5');
+    if (mt5Idx >= 0) {
+      this.state.currentUser.mt5Accounts[mt5Idx].accountNumber = gtcfxMt5;
+    } else {
+      this.state.currentUser.mt5Accounts.unshift({
+        broker: 'GTCfx MT5',
+        accountNumber: gtcfxMt5,
+        server: 'GTC-Live',
+        equity: this.getWalletBalance(),
+        status: 'Active'
+      });
+    }
+
+    // Save locally
     localStorage.setItem('b_bot_auth_user', JSON.stringify(this.state.currentUser));
+
+    // Update database array in localStorage
+    try {
+      let usersDb = JSON.parse(localStorage.getItem('b_bot_users_db') || '[]');
+      const uIdx = usersDb.findIndex(u => (u.id === traderId || u.userId === traderId || (u.email && u.email.toLowerCase() === email.toLowerCase())));
+      if (uIdx >= 0) {
+        usersDb[uIdx] = { ...usersDb[uIdx], ...this.state.currentUser };
+      } else {
+        usersDb.push(this.state.currentUser);
+      }
+      localStorage.setItem('b_bot_users_db', JSON.stringify(usersDb));
+    } catch(e) {}
+
+    // Push updated Name and MT5 Account to Cloud Firestore Database
+    if (typeof firebase !== 'undefined') {
+      try {
+        const fs = firebase.firestore();
+        await fs.collection("customers").doc(traderId).set({
+          name: name,
+          gtcfxMt5Account: gtcfxMt5,
+          phone: phone,
+          telegram: telegram,
+          email: email,
+          lastUpdated: new Date().toISOString()
+        }, { merge: true });
+      } catch(fsErr) {
+        console.warn("Firestore profile update error:", fsErr);
+      }
+    }
 
     // Update UI elements immediately
     this.applyLoggedInUI(this.state.currentUser);
 
     this.closeModal('profileDetailsModal');
-    this.showToast('✅ Account profile updated successfully!', 'success');
+    this.showToast(`✅ Name (${name}) & MT5 (#${gtcfxMt5}) updated successfully!`, 'success');
   }
 
   copyUserId() {

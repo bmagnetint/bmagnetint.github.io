@@ -54,7 +54,7 @@
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
   
-  <link rel="stylesheet" href="style.css?v=6894">
+  <link rel="stylesheet" href="style.css?v=7072">
 </head>
 <body class="theme-light">
   <!-- Google One-Tap Automatic Credentials Container -->
@@ -1397,14 +1397,19 @@
             </div>
           </div>
 
-          <!-- Full Name Field -->
+          <!-- Full Name Field (Editable) -->
           <div class="profile-field-card">
             <div class="pfc-icon-col">
-              <span class="material-symbols-rounded">person</span>
+              <span class="material-symbols-rounded" style="color: #0284c7;">edit</span>
             </div>
             <div class="pfc-content-col">
-              <label class="pfc-label" for="inputProfileName">Full Name / Display Name</label>
-              <input type="text" id="inputProfileName" class="pfc-input" placeholder="Your Name" value="Hanaan">
+              <div style="display:flex; justify-content:space-between; align-items:center;">
+                <label class="pfc-label" for="inputProfileName">Full Name / Display Name</label>
+                <span class="pfc-verified-tag" style="background: rgba(2, 132, 199, 0.1); color: #0284c7; border-color: rgba(2, 132, 199, 0.25);">
+                  <span class="material-symbols-rounded" style="font-size: 13px;">edit_note</span> Editable
+                </span>
+              </div>
+              <input type="text" id="inputProfileName" class="pfc-input" placeholder="Your Full Name" value="Hanaan Junaid" autocomplete="name">
             </div>
           </div>
 
@@ -1447,17 +1452,19 @@
             </div>
           </div>
 
-          <!-- Default MT5 Trading Account -->
+          <!-- Default MT5 Trading Account (Editable) -->
           <div class="profile-field-card">
             <div class="pfc-icon-col">
-              <span class="material-symbols-rounded">candlestick_chart</span>
+              <span class="material-symbols-rounded" style="color: #0284c7;">candlestick_chart</span>
             </div>
             <div class="pfc-content-col">
               <div style="display:flex; justify-content:space-between; align-items:center;">
                 <label class="pfc-label" for="inputProfileMt5">Default GTCfx MT5 Account</label>
-                <span class="pfc-broker-tag">GTC Global Trade</span>
+                <span class="pfc-verified-tag" style="background: rgba(2, 132, 199, 0.1); color: #0284c7; border-color: rgba(2, 132, 199, 0.25);">
+                  <span class="material-symbols-rounded" style="font-size: 13px;">edit</span> Editable
+                </span>
               </div>
-              <input type="text" id="inputProfileMt5" class="pfc-input font-mono" placeholder="8849201" value="8849201">
+              <input type="text" id="inputProfileMt5" class="pfc-input font-mono" placeholder="e.g. 8849201" value="8849201">
             </div>
           </div>
 
@@ -2357,6 +2364,6 @@
 
   <!-- App Scripts -->
   <script src="qrcode.js"></script>
-  <script src="app.js?v=6894"></script>
+  <script src="app.js?v=7072"></script>
 </body>
 </html>
