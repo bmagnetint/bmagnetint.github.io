@@ -94,6 +94,7 @@
     function checkGatePin() {
       const pin = document.getElementById('gatePin').value.trim();
       if (pin === '9633') {
+        sessionStorage.setItem('b_admin_session_auth', '9633');
         window.location.href = '/admin/9633/';
       } else {
         document.getElementById('gateError').style.display = 'block';

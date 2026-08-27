@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <title>B-Magnet Admin Master Console (PIN 9633)</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,6 +13,9 @@
   <link rel="stylesheet" href="/style.css">
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
     body.admin-page-body {
       background: #090e14 !important;
       color: #e2e8f0 !important;
@@ -20,35 +23,169 @@
       margin: 0 !important;
       padding: 0 !important;
       min-height: 100vh !important;
+      overflow-x: hidden !important;
     }
+
+    /* ======================================================== */
+    /* 1. SECRET PIN SECURITY GATE OVERLAY                      */
+    /* ======================================================== */
+    .admin-pin-gate-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(8, 12, 18, 0.96);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      z-index: 9999999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      box-sizing: border-box;
+    }
+
+    .admin-pin-gate-card {
+      width: 100%;
+      max-width: 380px;
+      background: rgba(20, 29, 41, 0.96);
+      border: 1.5px solid rgba(45, 155, 136, 0.35);
+      border-radius: 26px;
+      padding: 32px 24px 28px 24px;
+      text-align: center;
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.7), 0 0 30px rgba(45, 155, 136, 0.15);
+      animation: gatePopIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes gatePopIn {
+      from { transform: scale(0.92); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes gateShake {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-6px); }
+      40%, 80% { transform: translateX(6px); }
+    }
+
+    .gate-icon-box {
+      width: 58px;
+      height: 58px;
+      border-radius: 18px;
+      background: rgba(45, 155, 136, 0.15);
+      border: 1px solid rgba(45, 155, 136, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #34b39d;
+      margin: 0 auto 16px auto;
+      box-shadow: 0 4px 15px rgba(45, 155, 136, 0.2);
+    }
+
+    .gate-pin-dots {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      margin: 20px 0;
+    }
+
+    .gate-pin-dot {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      border: 2px solid rgba(45, 155, 136, 0.4);
+      background: rgba(0, 0, 0, 0.3);
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .gate-pin-dot.filled {
+      background: #10b981;
+      border-color: #10b981;
+      box-shadow: 0 0 12px rgba(16, 185, 129, 0.6);
+      transform: scale(1.15);
+    }
+
+    .gate-keypad {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .gate-keypad-btn {
+      height: 52px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 20px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.15s;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .gate-keypad-btn:active,
+    .gate-keypad-btn:hover {
+      background: rgba(45, 155, 136, 0.25);
+      border-color: rgba(45, 155, 136, 0.5);
+      transform: scale(0.96);
+    }
+
+    .gate-error-text {
+      color: #ef4444;
+      font-size: 12px;
+      font-weight: 700;
+      margin-top: 10px;
+      min-height: 16px;
+    }
+
+    /* ======================================================== */
+    /* 2. ADMIN MASTER HEADER                                   */
+    /* ======================================================== */
     .admin-master-header {
       background: rgba(14, 20, 27, 0.95);
       border-bottom: 1px solid rgba(45, 155, 136, 0.25);
-      padding: 16px 24px;
+      padding: max(14px, env(safe-area-inset-top, 14px)) 20px 14px 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       position: sticky;
       top: 0;
       z-index: 100;
-      backdrop-filter: blur(20px);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      flex-wrap: wrap;
+      gap: 12px;
     }
+
     .admin-header-left {
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 14px;
     }
+
     .admin-logo-img {
-      height: 38px;
+      height: 36px;
       width: auto;
     }
+
     .admin-header-title {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 17px;
+      font-size: 16px;
       font-weight: 800;
       color: #ffffff;
       margin: 0;
     }
+
     .admin-sec-pill {
       display: inline-flex;
       align-items: center;
@@ -56,68 +193,156 @@
       background: rgba(16, 185, 129, 0.12);
       border: 1px solid rgba(16, 185, 129, 0.3);
       color: #10b981;
-      padding: 4px 10px;
+      padding: 3px 8px;
       border-radius: 9999px;
-      font-size: 11px;
+      font-size: 10.5px;
       font-weight: 800;
       letter-spacing: 0.5px;
     }
-    .admin-main-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 24px 20px 60px 20px;
+
+    .admin-header-actions {
       display: flex;
-      flex-direction: column;
-      gap: 20px;
+      align-items: center;
+      gap: 8px;
     }
-    .admin-card {
-      background: rgba(20, 29, 41, 0.85);
-      border: 1px solid rgba(45, 155, 136, 0.25);
-      border-radius: 20px;
-      padding: 24px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-      backdrop-filter: blur(20px);
-    }
-    .admin-btn-back {
+
+    .admin-btn-header {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 8px 16px;
+      padding: 7px 14px;
       border-radius: 9999px;
+      font-size: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: none;
+    }
+
+    .admin-btn-lock {
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid rgba(239, 68, 68, 0.35);
+      color: #f87171;
+    }
+
+    .admin-btn-lock:hover {
+      background: rgba(239, 68, 68, 0.28);
+      color: #ffffff;
+    }
+
+    .admin-btn-back {
       background: rgba(45, 155, 136, 0.15);
       border: 1px solid rgba(45, 155, 136, 0.3);
       color: #34b39d;
-      font-size: 13px;
-      font-weight: 700;
-      text-decoration: none;
-      transition: all 0.2s;
     }
+
     .admin-btn-back:hover {
       background: rgba(45, 155, 136, 0.3);
       color: #ffffff;
     }
+
+    /* ======================================================== */
+    /* 3. MAIN CONTENT CONTAINER & CARDS                        */
+    /* ======================================================== */
+    .admin-main-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px 16px 80px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      width: 100%;
+    }
+
+    .admin-card {
+      background: rgba(20, 29, 41, 0.88);
+      border: 1px solid rgba(45, 155, 136, 0.25);
+      border-radius: 20px;
+      padding: 22px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(20px);
+      width: 100%;
+    }
+
+    /* KPI Grid */
+    .db-kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 14px;
+    }
+
+    .kpi-card {
+      background: rgba(14, 20, 27, 0.6);
+      border: 1px solid rgba(45, 155, 136, 0.2);
+      border-radius: 16px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .kpi-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .kpi-label {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: #94a3b8;
+      text-transform: uppercase;
+    }
+
+    .kpi-icon {
+      font-size: 20px;
+      color: #34b39d;
+    }
+
+    .kpi-value {
+      font-size: 22px;
+      font-weight: 800;
+      color: #ffffff;
+    }
+
+    .kpi-delta {
+      font-size: 11px;
+      font-weight: 700;
+      color: #10b981;
+    }
+
+    /* Presets and Buttons */
+    .topup-presets-container {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
     .topup-preset-btn {
-      padding: 8px 14px;
+      padding: 8px 12px;
       border-radius: 10px;
       background: rgba(45, 155, 136, 0.12);
       border: 1px solid rgba(45, 155, 136, 0.3);
       color: #34b39d;
       font-family: 'JetBrains Mono', monospace;
       font-weight: 700;
-      font-size: 13px;
+      font-size: 12.5px;
       cursor: pointer;
       transition: all 0.2s;
     }
+
     .topup-preset-btn:hover {
       background: rgba(45, 155, 136, 0.25);
       color: #ffffff;
-      transform: translateY(-1px);
     }
+
     .btn-topup-action {
       background: linear-gradient(135deg, #10b981, #059669);
       border: none;
       color: #ffffff;
-      padding: 12px 24px;
+      padding: 12px 22px;
       border-radius: 12px;
       font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: 14px;
@@ -130,360 +355,778 @@
       box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
       transition: all 0.2s;
     }
+
     .btn-topup-action:hover {
       transform: translateY(-2px);
       box-shadow: 0 8px 25px rgba(16, 185, 129, 0.45);
     }
+
+    /* Key Generator Form */
+    .akg-form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    .akg-field-col {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .akg-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: #94a3b8;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .akg-input-with-select {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .akg-input,
+    .akg-select {
+      width: 100%;
+      height: 44px;
+      border-radius: 12px;
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(45, 155, 136, 0.3);
+      color: #ffffff;
+      padding: 0 14px;
+      font-size: 14px;
+    }
+
+    .akg-presets-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .akg-preset-btn {
+      padding: 8px 12px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #cbd5e1;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .akg-preset-btn.active,
+    .akg-preset-btn:hover {
+      background: rgba(0, 168, 150, 0.25);
+      border-color: rgba(0, 168, 150, 0.5);
+      color: #00f2fe;
+    }
+
+    .akg-result-box {
+      background: rgba(14, 20, 27, 0.7);
+      border: 1px solid rgba(0, 168, 150, 0.3);
+      border-radius: 16px;
+      padding: 16px;
+    }
+
+    .akg-res-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .akg-res-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 800;
+      color: #00f2fe;
+    }
+
+    .akg-dur-pill {
+      background: rgba(0, 168, 150, 0.15);
+      border: 1px solid rgba(0, 168, 150, 0.3);
+      color: #34b39d;
+      padding: 2px 8px;
+      border-radius: 99px;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .akg-key-display-box {
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(0, 168, 150, 0.4);
+      border-radius: 12px;
+      padding: 14px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 15px;
+      font-weight: 800;
+      color: #10b981;
+      text-align: center;
+      word-break: break-all;
+      letter-spacing: 1px;
+      cursor: pointer;
+      margin-bottom: 12px;
+    }
+
+    .akg-details-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 8px;
+      margin-bottom: 14px;
+      font-size: 11.5px;
+    }
+
+    .akg-det-cell {
+      background: rgba(0, 0, 0, 0.25);
+      padding: 8px 10px;
+      border-radius: 8px;
+    }
+
+    .akg-det-lbl {
+      display: block;
+      color: #94a3b8;
+      font-size: 10px;
+      margin-bottom: 2px;
+    }
+
+    .akg-actions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+      gap: 8px;
+    }
+
+    .btn-akg-action {
+      height: 38px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.06);
+      color: #e2e8f0;
+      font-size: 12px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-akg-action:hover {
+      background: rgba(45, 155, 136, 0.25);
+      color: #ffffff;
+    }
+
+    .btn-akg-wa-send {
+      background: linear-gradient(135deg, #25D366, #128C7E);
+      border: none;
+      color: #ffffff;
+    }
+
+    /* Tables */
+    .table-responsive {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      border-radius: 12px;
+      background: rgba(14, 20, 27, 0.5);
+      border: 1px solid rgba(45, 155, 136, 0.2);
+    }
+
+    .crm-table {
+      width: 100%;
+      min-width: 600px;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 13px;
+    }
+
+    .crm-table th {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 12px 14px;
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: #94a3b8;
+      letter-spacing: 0.5px;
+      border-bottom: 1px solid rgba(45, 155, 136, 0.2);
+    }
+
+    .crm-table td {
+      padding: 12px 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      color: #e2e8f0;
+      vertical-align: middle;
+    }
+
+    .crm-table tr:hover td {
+      background: rgba(45, 155, 136, 0.06);
+    }
+
     .toast-box {
       position: fixed;
-      bottom: 24px;
-      right: 24px;
-      padding: 14px 22px;
+      bottom: max(20px, env(safe-area-inset-bottom, 20px));
+      right: 20px;
+      padding: 12px 20px;
       border-radius: 14px;
       background: #10b981;
       color: #ffffff;
       font-weight: 800;
-      font-size: 13.5px;
+      font-size: 13px;
       box-shadow: 0 12px 30px rgba(0,0,0,0.5);
-      z-index: 9999;
+      z-index: 99999999;
       display: none;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
+    }
+
+    /* ======================================================== */
+    /* 4. MOBILE SPECIFIC OPTIMIZATION (< 768px)                */
+    /* ======================================================== */
+    @media (max-width: 768px) {
+      .admin-master-header {
+        padding: max(12px, env(safe-area-inset-top, 12px)) 14px 12px 14px;
+      }
+      .admin-main-container {
+        padding: 14px 10px 60px 10px;
+        gap: 14px;
+      }
+      .admin-card {
+        padding: 16px 12px;
+        border-radius: 16px;
+      }
+      .db-kpi-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+      .kpi-card {
+        padding: 12px 10px;
+      }
+      .kpi-value {
+        font-size: 18px;
+      }
+      .akg-actions-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .btn-topup-action {
+        width: 100%;
+      }
     }
   </style>
 </head>
 <body class="admin-page-body theme-dark">
 
-  <!-- Admin Master Header -->
-  <header class="admin-master-header">
-    <div class="admin-header-left">
-      <a href="/" style="display:flex; align-items:center; text-decoration:none;">
-        <img src="/images/b-magnet-logo.png" alt="B-Magnet Logo" class="admin-logo-img">
-      </a>
-      <div>
-        <h1 class="admin-header-title">ADMIN MASTER PORTAL</h1>
-        <span class="admin-sec-pill"><span class="pulse-dot" style="background:#10b981;"></span> PIN 9633 AUTHENTICATED</span>
+  <!-- ======================================================== -->
+  <!-- 1. SECRET PIN SECURITY GATE OVERLAY                      -->
+  <!-- ======================================================== -->
+  <div class="admin-pin-gate-overlay" id="adminPinGateOverlay">
+    <div class="admin-pin-gate-card">
+      <div class="gate-icon-box">
+        <span class="material-symbols-rounded" style="font-size: 30px;">admin_panel_settings</span>
+      </div>
+      
+      <h2 style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 19px; font-weight: 800; margin: 0 0 6px 0; color: #ffffff;">Admin Master Console</h2>
+      <p style="font-size: 12.5px; color: #94a3b8; margin: 0 0 16px 0;">Enter Master 4-Digit PIN to unlock access</p>
+
+      <div class="gate-pin-dots">
+        <div class="gate-pin-dot" id="pinDot0"></div>
+        <div class="gate-pin-dot" id="pinDot1"></div>
+        <div class="gate-pin-dot" id="pinDot2"></div>
+        <div class="gate-pin-dot" id="pinDot3"></div>
+      </div>
+
+      <div class="gate-keypad">
+        <button type="button" class="gate-keypad-btn" onclick="gateController.pressKey('1')">1</button>
+        <button type="button" class="gate-keypad-btn" onclick="gateController.pressKey('2')">2</button>
+        <button type="button" class="gate-keypad-btn" onclick="gateController.pressKey('3')">3</button>
+        <button type="button" class="gate-keypad-btn" onclick="gateController.pressKey('4')">4</button>
+        <button type="button" class="gate-keypad-btn" onclick="gateController.pressKey('5')">5</button>
+        <button type="button" class="gate-keypad-btn" onclick="gateController.pressKey('6')">6</button>
+        <button type="button" class="gate-keypad-btn" onclick="gateController.pressKey('7')">7</button>
+        <button type="button" class="gate-keypad-btn" onclick="gateController.pressKey('8')">8</button>
+        <button type="button" class="gate-keypad-btn" onclick="gateController.pressKey('9')">9</button>
+        <button type="button" class="gate-keypad-btn" onclick="gateController.clearPin()" style="font-size: 13px; font-weight: 800; color: #94a3b8;">CLEAR</button>
+        <button type="button" class="gate-keypad-btn" onclick="gateController.pressKey('0')">0</button>
+        <button type="button" class="gate-keypad-btn" onclick="gateController.backspace()" style="color: #94a3b8;">
+          <span class="material-symbols-rounded">backspace</span>
+        </button>
+      </div>
+
+      <div class="gate-error-text" id="gateErrorMsg"></div>
+
+      <div style="margin-top: 14px;">
+        <a href="/" style="font-size: 12px; color: #64748b; text-decoration: none;">← Return to Main Public App</a>
       </div>
     </div>
+  </div>
 
-    <div style="display: flex; align-items: center; gap: 12px;">
-      <a href="/" class="admin-btn-back">
-        <span class="material-symbols-rounded" style="font-size: 16px;">terminal</span>
-        <span>Open Trading App</span>
-      </a>
-    </div>
-  </header>
-
-  <!-- Admin Main Container -->
-  <main class="admin-main-container">
+  <!-- ======================================================== -->
+  <!-- 2. ADMIN MASTER CONSOLE UI                               -->
+  <!-- ======================================================== -->
+  <div id="adminMasterConsoleStage" style="display: none;">
     
-    <!-- 1. Executive Status & Google Sheets Sync -->
-    <div class="admin-card">
-      <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; margin-bottom: 20px;">
-        <div style="display: flex; align-items: center; gap: 12px;">
-          <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(45, 155, 136, 0.15); border: 1px solid rgba(45, 155, 136, 0.3); display: flex; align-items: center; justify-content: center; color: #34b39d;">
-            <span class="material-symbols-rounded" style="font-size: 24px;">admin_panel_settings</span>
-          </div>
-          <div>
-            <h2 style="font-size: 19px; font-weight: 800; margin: 0; color: #ffffff;">Customer CRM & Wallet Hub</h2>
-            <p style="font-size: 13px; color: #94a3b8; margin: 2px 0 0 0;">Unified customer accounts, wallet ledger, and license generator</p>
-          </div>
-        </div>
-
-        <button type="button" class="btn-xs btn-outline" onclick="adminController.refreshData()" style="padding: 8px 16px; border-radius: 999px; background: rgba(255,255,255,0.06); color: #cbd5e1; border: 1px solid rgba(255,255,255,0.15); cursor: pointer; display: flex; align-items: center; gap: 6px; font-weight: 700;">
-          <span class="material-symbols-rounded" style="font-size: 16px;">refresh</span>
-          <span>Refresh Database</span>
-        </button>
-      </div>
-
-      <!-- Google Sheets Webhook Sync Row -->
-      <div style="background: rgba(14, 20, 27, 0.6); border: 1px solid rgba(45, 155, 136, 0.2); border-radius: 14px; padding: 14px 18px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;">
-        <div style="display: flex; align-items: center; gap: 10px;">
-          <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
-            <path d="M19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3Z" fill="#0F9D58"/>
-            <path d="M15 13H9V11H15V13ZM15 9H9V7H15V9ZM15 17H9V15H15V17Z" fill="white"/>
-          </svg>
-          <span style="font-size: 13.5px; font-weight: 700; color: #ffffff;">Google Sheets Live Sync:</span>
-        </div>
-        <div style="display: flex; align-items: center; gap: 8px; flex: 1; min-width: 260px; max-width: 600px;">
-          <input type="text" id="adminSheetWebhookInput" class="form-input font-mono font-xs" placeholder="Paste Apps Script Webhook URL" style="flex:1; height: 38px; border-radius: 10px; background: rgba(0,0,0,0.3); border: 1px solid rgba(45, 155, 136, 0.3); color:#fff; padding: 0 12px;">
-          <button class="btn-primary btn-sm" onclick="adminController.syncToGoogleSheet()" style="height: 38px; padding: 0 16px; border-radius: 10px; font-weight: 800; background: #00A896; border: none; color:#fff; cursor:pointer;">
-            Sync Now
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <!-- 2. KPI Metrics Ribbon -->
-    <div class="db-kpi-grid">
-      <div class="kpi-card">
-        <div class="kpi-card-header">
-          <span class="kpi-label">Registered Traders</span>
-          <span class="material-symbols-rounded kpi-icon">group</span>
-        </div>
-        <div class="kpi-value font-mono" id="dbKpiCustomers">1</div>
-        <span class="kpi-delta positive">Google OAuth Verified</span>
-      </div>
-
-      <div class="kpi-card">
-        <div class="kpi-card-header">
-          <span class="kpi-label">Active EA Passes</span>
-          <span class="material-symbols-rounded kpi-icon">verified</span>
-        </div>
-        <div class="kpi-value font-mono" id="dbKpiSubscriptions">1</div>
-        <span class="kpi-delta positive">Gold Hunter Pro v1.21</span>
-      </div>
-
-      <div class="kpi-card">
-        <div class="kpi-card-header">
-          <span class="kpi-label">Total User Balance</span>
-          <span class="material-symbols-rounded kpi-icon">account_balance_wallet</span>
-        </div>
-        <div class="kpi-value font-mono text-emerald" id="dbKpiRevenue">0.00 USDT</div>
-        <span class="kpi-delta positive">Admin Top-Up Controlled</span>
-      </div>
-
-      <div class="kpi-card">
-        <div class="kpi-card-header">
-          <span class="kpi-label">Whitelisted MT5 Bridges</span>
-          <span class="material-symbols-rounded kpi-icon">candlestick_chart</span>
-        </div>
-        <div class="kpi-value font-mono" id="dbKpiMt5">1 Whitelisted</div>
-        <span class="kpi-delta positive">GTCfx Live Server</span>
-      </div>
-    </div>
-
-    <!-- ======================================================== -->
-    <!-- 3. TOP UP USER WALLET SUITE (BY TRADER ID)               -->
-    <!-- ======================================================== -->
-    <div class="admin-card" id="adminTopupCard" style="border: 1px solid rgba(16, 185, 129, 0.4); box-shadow: 0 10px 35px rgba(16, 185, 129, 0.12);">
-      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; flex-wrap: wrap; gap: 12px;">
-        <div style="display: flex; align-items: center; gap: 12px;">
-          <div style="width: 42px; height: 42px; border-radius: 12px; background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.3); display: flex; align-items: center; justify-content: center; color: #10b981;">
-            <span class="material-symbols-rounded" style="font-size: 24px;">add_card</span>
-          </div>
-          <div>
-            <h3 style="font-size: 17px; font-weight: 800; margin: 0; color: #ffffff;">Admin Direct Wallet Top-Up (By Trader ID)</h3>
-            <p style="font-size: 12.5px; color: #94a3b8; margin: 2px 0 0 0;">Credit a user's wallet using their unique Trader ID (e.g. <code>b-102246</code>)</p>
-          </div>
-        </div>
-        <span class="badge-featured" style="background: rgba(16, 185, 129, 0.12); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.3); font-size: 11px; border-radius: 99px; padding: 4px 12px; font-weight: 800;">
-          ⚡ Admin Only Ledger Credit
-        </span>
-      </div>
-
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-bottom: 20px;">
-        
-        <!-- Input 1: User / Trader ID -->
+    <!-- Admin Master Header -->
+    <header class="admin-master-header">
+      <div class="admin-header-left">
+        <a href="/" style="display:flex; align-items:center; text-decoration:none;">
+          <img src="/images/b-magnet-logo.png" alt="B-Magnet Logo" class="admin-logo-img" onerror="this.src='/favicon.png'">
+        </a>
         <div>
-          <label style="display: block; font-size: 12px; font-weight: 700; color: #94a3b8; margin-bottom: 8px;">
-            1. User / Trader ID (e.g. <code>b-102246</code>)
-          </label>
-          <div style="display: flex; gap: 8px;">
-            <input type="text" id="adminTopupUserId" class="form-input font-mono" placeholder="e.g. b-102246" value="b-102246" style="flex: 1; height: 44px; border-radius: 12px; background: rgba(0,0,0,0.3); border: 1px solid rgba(45, 155, 136, 0.3); color: #34b39d; font-weight: 800; font-size: 15px; padding: 0 14px;">
-            <select id="adminTopupUserSelect" onchange="adminController.onTopupSelectUser(this.value)" style="height: 44px; border-radius: 12px; background: #141d29; border: 1px solid rgba(45, 155, 136, 0.3); color: #cbd5e1; padding: 0 12px; font-size: 12.5px; cursor: pointer;">
-              <option value="b-102246">Hanaan Junaid (b-102246)</option>
-            </select>
-          </div>
+          <h1 class="admin-header-title">ADMIN MASTER PORTAL</h1>
+          <span class="admin-sec-pill"><span class="pulse-dot" style="background:#10b981;"></span> PIN 9633 UNLOCKED</span>
         </div>
-
-        <!-- Input 2: Top-Up Amount -->
-        <div>
-          <label style="display: block; font-size: 12px; font-weight: 700; color: #94a3b8; margin-bottom: 8px;">
-            2. Amount to Credit (USDT)
-          </label>
-          <input type="number" id="adminTopupAmount" step="1" min="1" placeholder="100.00" value="100" style="width: 100%; height: 44px; border-radius: 12px; background: rgba(0,0,0,0.3); border: 1px solid rgba(16, 185, 129, 0.4); color: #10b981; font-family: 'JetBrains Mono', monospace; font-weight: 800; font-size: 16px; padding: 0 14px; box-sizing: border-box;">
-        </div>
-
       </div>
 
-      <!-- Quick Preset Amounts -->
-      <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding: 14px 18px; background: rgba(14, 20, 27, 0.5); border-radius: 14px; border: 1px solid rgba(45, 155, 136, 0.2);">
-        <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
-          <span style="font-size: 12px; color: #94a3b8; font-weight: 700; margin-right: 4px;">Quick Presets:</span>
-          <button type="button" class="topup-preset-btn" onclick="adminController.setTopupAmount(50)">+$50</button>
-          <button type="button" class="topup-preset-btn" onclick="adminController.setTopupAmount(100)">+$100</button>
-          <button type="button" class="topup-preset-btn" onclick="adminController.setTopupAmount(250)">+$250</button>
-          <button type="button" class="topup-preset-btn" onclick="adminController.setTopupAmount(500)">+$500</button>
-          <button type="button" class="topup-preset-btn" onclick="adminController.setTopupAmount(1000)">+$1,000</button>
-        </div>
-
-        <button type="button" class="btn-topup-action" onclick="adminController.processTopupById()">
-          <span class="material-symbols-rounded" style="font-size: 20px;">account_balance_wallet</span>
-          <span>Credit User Wallet (+ USDT)</span>
+      <div class="admin-header-actions">
+        <button type="button" class="admin-btn-header admin-btn-lock" onclick="gateController.lockSession()">
+          <span class="material-symbols-rounded" style="font-size: 15px;">lock</span>
+          <span>Lock Session</span>
         </button>
+        <a href="/" class="admin-btn-header admin-btn-back">
+          <span class="material-symbols-rounded" style="font-size: 15px;">terminal</span>
+          <span>Trading App</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- Admin Main Container -->
+    <main class="admin-main-container">
+      
+      <!-- 1. Executive Status & Google Sheets Sync -->
+      <div class="admin-card">
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; margin-bottom: 16px;">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <div style="width: 42px; height: 42px; border-radius: 12px; background: rgba(45, 155, 136, 0.15); border: 1px solid rgba(45, 155, 136, 0.3); display: flex; align-items: center; justify-content: center; color: #34b39d;">
+              <span class="material-symbols-rounded" style="font-size: 24px;">admin_panel_settings</span>
+            </div>
+            <div>
+              <h2 style="font-size: 18px; font-weight: 800; margin: 0; color: #ffffff;">Customer CRM & Wallet Hub</h2>
+              <p style="font-size: 12px; color: #94a3b8; margin: 2px 0 0 0;">Unified customer accounts, wallet ledger, and MT5 key generator</p>
+            </div>
+          </div>
+
+          <button type="button" class="btn-xs btn-outline" onclick="adminController.refreshData()" style="padding: 8px 16px; border-radius: 999px; background: rgba(255,255,255,0.06); color: #cbd5e1; border: 1px solid rgba(255,255,255,0.15); cursor: pointer; display: flex; align-items: center; gap: 6px; font-weight: 700;">
+            <span class="material-symbols-rounded" style="font-size: 16px;">refresh</span>
+            <span>Refresh Database</span>
+          </button>
+        </div>
+
+        <!-- Google Sheets Webhook Sync Row -->
+        <div style="background: rgba(14, 20, 27, 0.6); border: 1px solid rgba(45, 155, 136, 0.2); border-radius: 14px; padding: 14px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none">
+              <path d="M19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3Z" fill="#0F9D58"/>
+              <path d="M15 13H9V11H15V13ZM15 9H9V7H15V9ZM15 17H9V15H15V17Z" fill="white"/>
+            </svg>
+            <span style="font-size: 13px; font-weight: 700; color: #ffffff;">Google Sheets Live Sync:</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 8px; flex: 1; min-width: 240px;">
+            <input type="text" id="adminSheetWebhookInput" class="form-input font-mono font-xs" placeholder="Paste Apps Script Webhook URL" style="flex:1; height: 38px; border-radius: 10px; background: rgba(0,0,0,0.3); border: 1px solid rgba(45, 155, 136, 0.3); color:#fff; padding: 0 12px;">
+            <button class="btn-primary btn-sm" onclick="adminController.syncToGoogleSheet()" style="height: 38px; padding: 0 14px; border-radius: 10px; font-weight: 800; background: #00A896; border: none; color:#fff; cursor:pointer; white-space: nowrap;">
+              Sync Now
+            </button>
+          </div>
+        </div>
       </div>
 
-    </div>
-
-    <!-- 4. MT5 Vendor License Key Generator -->
-    <div class="admin-card">
-      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px;">
-        <div style="display: flex; align-items: center; gap: 10px;">
-          <div style="width: 36px; height: 36px; border-radius: 10px; background: rgba(0, 168, 150, 0.15); display: flex; align-items: center; justify-content: center; color: #00a896;">
-            <span class="material-symbols-rounded">vpn_key</span>
+      <!-- 2. KPI Metrics Ribbon -->
+      <div class="db-kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-card-header">
+            <span class="kpi-label">Registered Traders</span>
+            <span class="material-symbols-rounded kpi-icon">group</span>
           </div>
+          <div class="kpi-value font-mono" id="dbKpiCustomers">1</div>
+          <span class="kpi-delta positive">Google OAuth Verified</span>
+        </div>
+
+        <div class="kpi-card">
+          <div class="kpi-card-header">
+            <span class="kpi-label">Active EA Passes</span>
+            <span class="material-symbols-rounded kpi-icon">verified</span>
+          </div>
+          <div class="kpi-value font-mono" id="dbKpiSubscriptions">1</div>
+          <span class="kpi-delta positive">Gold Hunter Pro v1.21</span>
+        </div>
+
+        <div class="kpi-card">
+          <div class="kpi-card-header">
+            <span class="kpi-label">Total User Balance</span>
+            <span class="material-symbols-rounded kpi-icon">account_balance_wallet</span>
+          </div>
+          <div class="kpi-value font-mono text-emerald" id="dbKpiRevenue">0.00 USDT</div>
+          <span class="kpi-delta positive">Admin Top-Up Controlled</span>
+        </div>
+
+        <div class="kpi-card">
+          <div class="kpi-card-header">
+            <span class="kpi-label">Whitelisted MT5 Bridges</span>
+            <span class="material-symbols-rounded kpi-icon">candlestick_chart</span>
+          </div>
+          <div class="kpi-value font-mono" id="dbKpiMt5">1 Whitelisted</div>
+          <span class="kpi-delta positive">GTCfx Live Server</span>
+        </div>
+      </div>
+
+      <!-- ======================================================== -->
+      <!-- 3. TOP UP USER WALLET SUITE (BY TRADER ID)               -->
+      <!-- ======================================================== -->
+      <div class="admin-card" id="adminTopupCard" style="border: 1px solid rgba(16, 185, 129, 0.4); box-shadow: 0 10px 35px rgba(16, 185, 129, 0.12);">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; flex-wrap: wrap; gap: 10px;">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <div style="width: 38px; height: 38px; border-radius: 12px; background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.3); display: flex; align-items: center; justify-content: center; color: #10b981;">
+              <span class="material-symbols-rounded" style="font-size: 22px;">add_card</span>
+            </div>
+            <div>
+              <h3 style="font-size: 16px; font-weight: 800; margin: 0; color: #ffffff;">Admin Direct Wallet Top-Up (By Trader ID)</h3>
+              <p style="font-size: 12px; color: #94a3b8; margin: 2px 0 0 0;">Credit a user's wallet using their Trader ID (e.g. <code>b-102246</code>)</p>
+            </div>
+          </div>
+          <span class="badge-featured" style="background: rgba(16, 185, 129, 0.12); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.3); font-size: 11px; border-radius: 99px; padding: 4px 12px; font-weight: 800;">
+            ⚡ Admin Only Ledger Credit
+          </span>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin-bottom: 16px;">
+          
+          <!-- Input 1: User / Trader ID -->
           <div>
-            <h3 style="font-size: 16px; font-weight: 800; margin: 0; color: #ffffff;">Vendor License Key Generator</h3>
-            <p style="font-size: 12px; color: #94a3b8; margin: 0;">Generate cryptographic hardware-locked keys for MT5 Gold EA v1.21</p>
+            <label style="display: block; font-size: 11.5px; font-weight: 700; color: #94a3b8; margin-bottom: 6px;">
+              1. User / Trader ID (e.g. <code>b-102246</code>)
+            </label>
+            <div style="display: flex; gap: 8px;">
+              <input type="text" id="adminTopupUserId" class="form-input font-mono" placeholder="e.g. b-102246" value="b-102246" style="flex: 1; height: 42px; border-radius: 12px; background: rgba(0,0,0,0.3); border: 1px solid rgba(45, 155, 136, 0.3); color: #34b39d; font-weight: 800; font-size: 14px; padding: 0 12px;">
+              <select id="adminTopupUserSelect" onchange="adminController.onTopupSelectUser(this.value)" style="height: 42px; border-radius: 12px; background: #141d29; border: 1px solid rgba(45, 155, 136, 0.3); color: #cbd5e1; padding: 0 10px; font-size: 12px; cursor: pointer; max-width: 140px;">
+                <option value="b-102246">Hanaan (b-102246)</option>
+              </select>
+            </div>
           </div>
-        </div>
-        <span class="badge-featured" style="background: rgba(0, 168, 150, 0.12); color: #00a896; border: 1px solid rgba(0, 168, 150, 0.3); font-size: 10px; border-radius: 99px; padding: 4px 10px;">
-          🔐 SHA-256 Encryption
-        </span>
-      </div>
 
-      <div class="akg-form-grid">
-        <div class="akg-field-col">
-          <label class="akg-label">
-            <span>1. Client GTCfx MT5 Account Number</span>
-          </label>
-          <div class="akg-input-with-select">
-            <input type="text" id="adminKeyGenAcc" class="akg-input font-mono" placeholder="e.g. 8849201" value="8849201" autocomplete="off" oninput="adminController.generateAdminKey()">
-            <select id="adminKeyGenClientSelect" class="akg-select" onchange="adminController.onClientSelect(this.value)">
-              <option value="">⚡ Quick-fill from CRM Customers...</option>
-            </select>
+          <!-- Input 2: Top-Up Amount -->
+          <div>
+            <label style="display: block; font-size: 11.5px; font-weight: 700; color: #94a3b8; margin-bottom: 6px;">
+              2. Amount to Credit (USDT)
+            </label>
+            <input type="number" id="adminTopupAmount" step="1" min="1" placeholder="100.00" value="100" style="width: 100%; height: 42px; border-radius: 12px; background: rgba(0,0,0,0.3); border: 1px solid rgba(16, 185, 129, 0.4); color: #10b981; font-family: 'JetBrains Mono', monospace; font-weight: 800; font-size: 15px; padding: 0 12px; box-sizing: border-box;">
           </div>
-        </div>
 
-        <div class="akg-field-col">
-          <label class="akg-label">
-            <span>2. License Duration & Tier</span>
-            <span class="akg-label-hint" id="adminKeyGenPlanLabel">1 Month ($100)</span>
-          </label>
-          <div class="akg-presets-grid">
-            <button type="button" class="akg-preset-btn" data-dur="trial" onclick="adminController.selectDuration('DAYS', 2, 'Trial (2 Days)', '$10', this)">Trial (2D)</button>
-            <button type="button" class="akg-preset-btn active" data-dur="1m" onclick="adminController.selectDuration('MONTHS', 1, '1 Month ($100)', '$100', this)">1 Month</button>
-            <button type="button" class="akg-preset-btn" data-dur="3m" onclick="adminController.selectDuration('MONTHS', 3, '3 Months ($250)', '$250', this)">3 Months</button>
-            <button type="button" class="akg-preset-btn" data-dur="1y" onclick="adminController.selectDuration('MONTHS', 12, '1 Year ($900)', '$900', this)">1 Year</button>
-            <button type="button" class="akg-preset-btn" data-dur="lifetime" onclick="adminController.selectDuration('LIFETIME', 0, 'Lifetime ♾️', 'Full Access', this)">Lifetime</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Result Box -->
-      <div class="akg-result-box" style="margin-top: 18px;">
-        <div class="akg-res-header">
-          <div class="akg-res-badge">
-            <span class="material-symbols-rounded" style="font-size: 16px;">key</span>
-            <span>GENERATED MT5 ACTIVATION KEY</span>
-          </div>
-          <span class="akg-dur-pill" id="adminKeyGenDurPill">1 Month ($100)</span>
         </div>
 
-        <div class="akg-key-display-box" id="adminKeyGenOutput" onclick="adminController.copyKey()" title="Click to copy key">
-          BM8-8849201-20260927-0F7C0A67
-        </div>
+        <!-- Quick Preset Amounts & Action Button -->
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding: 12px 14px; background: rgba(14, 20, 27, 0.5); border-radius: 14px; border: 1px solid rgba(45, 155, 136, 0.2);">
+          <div class="topup-presets-container">
+            <span style="font-size: 11.5px; color: #94a3b8; font-weight: 700;">Presets:</span>
+            <button type="button" class="topup-preset-btn" onclick="adminController.setTopupAmount(50)">+$50</button>
+            <button type="button" class="topup-preset-btn" onclick="adminController.setTopupAmount(100)">+$100</button>
+            <button type="button" class="topup-preset-btn" onclick="adminController.setTopupAmount(250)">+$250</button>
+            <button type="button" class="topup-preset-btn" onclick="adminController.setTopupAmount(500)">+$500</button>
+            <button type="button" class="topup-preset-btn" onclick="adminController.setTopupAmount(1000)">+$1,000</button>
+          </div>
 
-        <div class="akg-details-strip">
-          <div class="akg-det-cell">
-            <span class="akg-det-lbl">MT5 Account:</span>
-            <strong class="akg-det-val font-mono" id="adminKeyGenDetAcc">#8849201</strong>
-          </div>
-          <div class="akg-det-cell">
-            <span class="akg-det-lbl">Plan / Price:</span>
-            <strong class="akg-det-val text-cyan" id="adminKeyGenDetPlan">1 Month ($100)</strong>
-          </div>
-          <div class="akg-det-cell">
-            <span class="akg-det-lbl">Expires On:</span>
-            <strong class="akg-det-val font-mono text-amber" id="adminKeyGenDetExpiry">2026.09.27 23:59:59</strong>
-          </div>
-          <div class="akg-det-cell">
-            <span class="akg-det-lbl">Support Contact:</span>
-            <strong class="akg-det-val font-mono">+919495097786</strong>
-          </div>
-        </div>
-
-        <div class="akg-actions-grid">
-          <button type="button" class="btn-akg-action btn-akg-copy" onclick="adminController.copyKey()">
-            <span class="material-symbols-rounded">content_copy</span>
-            <span>Copy Key</span>
-          </button>
-          <button type="button" class="btn-akg-action btn-akg-wa-msg" onclick="adminController.copyWhatsAppMsg()">
-            <span class="material-symbols-rounded">chat</span>
-            <span>Copy WA Msg</span>
-          </button>
-          <button type="button" class="btn-akg-action btn-akg-wa-send" onclick="adminController.sendWhatsAppDirect()">
-            <span class="material-symbols-rounded">send</span>
-            <span>Send WA</span>
-          </button>
-          <button type="button" class="btn-akg-action btn-akg-save-crm" onclick="adminController.saveKeyToCrm()">
-            <span class="material-symbols-rounded">save</span>
-            <span>Save to CRM</span>
+          <button type="button" class="btn-topup-action" onclick="adminController.processTopupById()">
+            <span class="material-symbols-rounded" style="font-size: 18px;">account_balance_wallet</span>
+            <span>Credit User Wallet (+ USDT)</span>
           </button>
         </div>
-      </div>
-    </div>
 
-    <!-- 5. Verified Customer Registry Table -->
-    <div class="admin-card">
-      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; flex-wrap: wrap; gap: 10px;">
-        <h3 style="font-size: 16px; font-weight: 800; margin: 0; color: #ffffff; display: flex; align-items: center; gap: 8px;">
-          <span class="material-symbols-rounded" style="color: #00a896;">group</span>
-          <span>Verified Customer Registry & Balances</span>
-        </h3>
-        <button class="btn-xs btn-outline" onclick="adminController.exportCsv()" style="padding: 6px 14px; border-radius: 999px; background: rgba(255,255,255,0.06); color: #cbd5e1; border: 1px solid rgba(255,255,255,0.15); cursor: pointer; font-weight: 700;">
-          Export CSV
-        </button>
       </div>
 
-      <div class="table-responsive">
-        <table class="crm-table" id="crmCustomersTable">
-          <thead>
-            <tr>
-              <th>Customer Email / Name</th>
-              <th>Trader ID</th>
-              <th>BEP-20 Wallet</th>
-              <th>Active Bots</th>
-              <th>GTCfx MT5 #</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody id="crmCustomersTbody">
-            <!-- Dynamic rows -->
-          </tbody>
-        </table>
-      </div>
-    </div>
+      <!-- 4. MT5 Vendor License Key Generator -->
+      <div class="admin-card">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; flex-wrap: wrap; gap: 8px;">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <div style="width: 36px; height: 36px; border-radius: 10px; background: rgba(0, 168, 150, 0.15); display: flex; align-items: center; justify-content: center; color: #00a896;">
+              <span class="material-symbols-rounded">vpn_key</span>
+            </div>
+            <div>
+              <h3 style="font-size: 16px; font-weight: 800; margin: 0; color: #ffffff;">Vendor License Key Generator</h3>
+              <p style="font-size: 11.5px; color: #94a3b8; margin: 0;">Generate cryptographic hardware-locked keys for MT5 Gold EA v1.21</p>
+            </div>
+          </div>
+          <span class="badge-featured" style="background: rgba(0, 168, 150, 0.12); color: #00a896; border: 1px solid rgba(0, 168, 150, 0.3); font-size: 10px; border-radius: 99px; padding: 3px 8px;">
+            🔐 SHA-256 Encryption
+          </span>
+        </div>
 
-    <!-- 6. Active Bot Passes & Expiry Tracker -->
-    <div class="admin-card">
-      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
-        <h3 style="font-size: 16px; font-weight: 800; margin: 0; color: #ffffff; display: flex; align-items: center; gap: 8px;">
-          <span class="material-symbols-rounded" style="color: #f59e0b;">verified</span>
-          <span>Bot Purchases & License Expiry Tracker</span>
-        </h3>
-        <span class="badge-featured" style="font-size: 10px; border-radius: 99px; padding: 4px 10px;">1M / 3M / 1Y / Lifetime</span>
+        <div class="akg-form-grid">
+          <div class="akg-field-col">
+            <label class="akg-label">
+              <span>1. Client GTCfx MT5 Account Number</span>
+            </label>
+            <div class="akg-input-with-select">
+              <input type="text" id="adminKeyGenAcc" class="akg-input font-mono" placeholder="e.g. 8849201" value="8849201" autocomplete="off" oninput="adminController.generateAdminKey()">
+              <select id="adminKeyGenClientSelect" class="akg-select" onchange="adminController.onClientSelect(this.value)">
+                <option value="">⚡ Quick-fill from CRM Customers...</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="akg-field-col">
+            <label class="akg-label">
+              <span>2. License Duration & Tier</span>
+              <span id="adminKeyGenPlanLabel" style="color: #00f2fe; font-weight: 800;">1 Month ($100)</span>
+            </label>
+            <div class="akg-presets-grid">
+              <button type="button" class="akg-preset-btn" data-dur="trial" onclick="adminController.selectDuration('DAYS', 2, 'Trial (2 Days)', '$10', this)">Trial (2D)</button>
+              <button type="button" class="akg-preset-btn active" data-dur="1m" onclick="adminController.selectDuration('MONTHS', 1, '1 Month ($100)', '$100', this)">1 Month</button>
+              <button type="button" class="akg-preset-btn" data-dur="3m" onclick="adminController.selectDuration('MONTHS', 3, '3 Months ($250)', '$250', this)">3 Months</button>
+              <button type="button" class="akg-preset-btn" data-dur="1y" onclick="adminController.selectDuration('MONTHS', 12, '1 Year ($900)', '$900', this)">1 Year</button>
+              <button type="button" class="akg-preset-btn" data-dur="lifetime" onclick="adminController.selectDuration('LIFETIME', 0, 'Lifetime ♾️', 'Full Access', this)">Lifetime</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Result Box -->
+        <div class="akg-result-box" style="margin-top: 16px;">
+          <div class="akg-res-header">
+            <div class="akg-res-badge">
+              <span class="material-symbols-rounded" style="font-size: 16px;">key</span>
+              <span>GENERATED MT5 ACTIVATION KEY</span>
+            </div>
+            <span class="akg-dur-pill" id="adminKeyGenDurPill">1 Month ($100)</span>
+          </div>
+
+          <div class="akg-key-display-box" id="adminKeyGenOutput" onclick="adminController.copyKey()" title="Click to copy key">
+            BM8-8849201-20260927-0F7C0A67
+          </div>
+
+          <div class="akg-details-strip">
+            <div class="akg-det-cell">
+              <span class="akg-det-lbl">MT5 Account:</span>
+              <strong class="font-mono" id="adminKeyGenDetAcc" style="color: #34b39d;">#8849201</strong>
+            </div>
+            <div class="akg-det-cell">
+              <span class="akg-det-lbl">Plan / Price:</span>
+              <strong style="color: #00f2fe;" id="adminKeyGenDetPlan">1 Month ($100)</strong>
+            </div>
+            <div class="akg-det-cell">
+              <span class="akg-det-lbl">Expires On:</span>
+              <strong class="font-mono text-amber" id="adminKeyGenDetExpiry">2026.09.27 23:59:59</strong>
+            </div>
+            <div class="akg-det-cell">
+              <span class="akg-det-lbl">Support Contact:</span>
+              <strong class="font-mono">+919495097786</strong>
+            </div>
+          </div>
+
+          <div class="akg-actions-grid">
+            <button type="button" class="btn-akg-action" onclick="adminController.copyKey()">
+              <span class="material-symbols-rounded" style="font-size: 16px;">content_copy</span>
+              <span>Copy Key</span>
+            </button>
+            <button type="button" class="btn-akg-action" onclick="adminController.copyWhatsAppMsg()">
+              <span class="material-symbols-rounded" style="font-size: 16px;">chat</span>
+              <span>Copy WA Msg</span>
+            </button>
+            <button type="button" class="btn-akg-action btn-akg-wa-send" onclick="adminController.sendWhatsAppDirect()">
+              <span class="material-symbols-rounded" style="font-size: 16px;">send</span>
+              <span>Send WA</span>
+            </button>
+            <button type="button" class="btn-akg-action" onclick="adminController.saveKeyToCrm()">
+              <span class="material-symbols-rounded" style="font-size: 16px;">save</span>
+              <span>Save CRM</span>
+            </button>
+          </div>
+        </div>
       </div>
 
-      <div class="table-responsive">
-        <table class="crm-table" id="crmSubscriptionsTable">
-          <thead>
-            <tr>
-              <th>Customer</th>
-              <th>Bot Name</th>
-              <th>Plan Tier</th>
-              <th>License Key</th>
-              <th>GTCfx MT5 #</th>
-              <th>Expiry Date</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody id="crmSubscriptionsTbody">
-            <!-- Dynamic rows -->
-          </tbody>
-        </table>
-      </div>
-    </div>
+      <!-- 5. Verified Customer Registry Table -->
+      <div class="admin-card">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; flex-wrap: wrap; gap: 8px;">
+          <h3 style="font-size: 15px; font-weight: 800; margin: 0; color: #ffffff; display: flex; align-items: center; gap: 8px;">
+            <span class="material-symbols-rounded" style="color: #00a896;">group</span>
+            <span>Verified Customer Registry & Balances</span>
+          </h3>
+          <button class="btn-xs btn-outline" onclick="adminController.exportCsv()" style="padding: 6px 14px; border-radius: 999px; background: rgba(255,255,255,0.06); color: #cbd5e1; border: 1px solid rgba(255,255,255,0.15); cursor: pointer; font-weight: 700; font-size: 11.5px;">
+            Export CSV
+          </button>
+        </div>
 
-  </main>
+        <div class="table-responsive">
+          <table class="crm-table" id="crmCustomersTable">
+            <thead>
+              <tr>
+                <th>Customer / Name</th>
+                <th>Trader ID</th>
+                <th>BEP-20 Wallet</th>
+                <th>Active Bots</th>
+                <th>GTCfx MT5 #</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="crmCustomersTbody">
+              <!-- Dynamic rows -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 6. Active Bot Passes & Expiry Tracker -->
+      <div class="admin-card">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; flex-wrap: wrap; gap: 8px;">
+          <h3 style="font-size: 15px; font-weight: 800; margin: 0; color: #ffffff; display: flex; align-items: center; gap: 8px;">
+            <span class="material-symbols-rounded" style="color: #f59e0b;">verified</span>
+            <span>Bot Purchases & License Expiry Tracker</span>
+          </h3>
+          <span class="badge-featured" style="font-size: 10px; border-radius: 99px; padding: 3px 8px;">1M / 3M / 1Y / Lifetime</span>
+        </div>
+
+        <div class="table-responsive">
+          <table class="crm-table" id="crmSubscriptionsTable">
+            <thead>
+              <tr>
+                <th>Customer</th>
+                <th>Bot Name</th>
+                <th>Plan Tier</th>
+                <th>License Key</th>
+                <th>GTCfx MT5 #</th>
+                <th>Expiry Date</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="crmSubscriptionsTbody">
+              <!-- Dynamic rows -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </main>
+  </div>
 
   <div class="toast-box" id="adminToastBox">
-    <span class="material-symbols-rounded" style="font-size: 20px;">check_circle</span>
+    <span class="material-symbols-rounded" style="font-size: 18px;">check_circle</span>
     <span id="adminToastMsg">Success</span>
   </div>
 
   <script>
+    /* ======================================================== */
+    /* PIN GATE AUTHENTICATION CONTROLLER                       */
+    /* ======================================================== */
+    class AdminPinGateController {
+      constructor() {
+        this.enteredPin = '';
+        this.correctPin = '9633';
+        this.init();
+      }
+
+      init() {
+        const isAuth = sessionStorage.getItem('b_admin_session_auth') === this.correctPin;
+        if (isAuth) {
+          this.unlockConsole();
+        } else {
+          this.showGate();
+        }
+
+        // Listen for keyboard input on desktop
+        window.addEventListener('keydown', (e) => {
+          if (!this.isUnlocked()) {
+            if (e.key >= '0' && e.key <= '9') {
+              this.pressKey(e.key);
+            } else if (e.key === 'Backspace') {
+              this.backspace();
+            } else if (e.key === 'Escape') {
+              this.clearPin();
+            }
+          }
+        });
+      }
+
+      isUnlocked() {
+        return sessionStorage.getItem('b_admin_session_auth') === this.correctPin;
+      }
+
+      showGate() {
+        const overlay = document.getElementById('adminPinGateOverlay');
+        const stage = document.getElementById('adminMasterConsoleStage');
+        if (overlay) overlay.style.display = 'flex';
+        if (stage) stage.style.display = 'none';
+        this.clearPin();
+      }
+
+      pressKey(digit) {
+        if (this.enteredPin.length < 4) {
+          this.enteredPin += digit;
+          this.renderDots();
+          if (this.enteredPin.length === 4) {
+            setTimeout(() => this.validate(), 120);
+          }
+        }
+      }
+
+      backspace() {
+        if (this.enteredPin.length > 0) {
+          this.enteredPin = this.enteredPin.slice(0, -1);
+          this.renderDots();
+          const err = document.getElementById('gateErrorMsg');
+          if (err) err.textContent = '';
+        }
+      }
+
+      clearPin() {
+        this.enteredPin = '';
+        this.renderDots();
+        const err = document.getElementById('gateErrorMsg');
+        if (err) err.textContent = '';
+      }
+
+      renderDots() {
+        for (let i = 0; i < 4; i++) {
+          const dot = document.getElementById(`pinDot${i}`);
+          if (dot) {
+            dot.classList.toggle('filled', i < this.enteredPin.length);
+          }
+        }
+      }
+
+      validate() {
+        if (this.enteredPin === this.correctPin) {
+          sessionStorage.setItem('b_admin_session_auth', this.correctPin);
+          this.unlockConsole();
+        } else {
+          const err = document.getElementById('gateErrorMsg');
+          if (err) err.textContent = '❌ Invalid Secret PIN. Access Denied.';
+          this.shake();
+          setTimeout(() => this.clearPin(), 600);
+        }
+      }
+
+      shake() {
+        const card = document.querySelector('.admin-pin-gate-card');
+        if (card) {
+          card.style.animation = 'none';
+          card.offsetHeight;
+          card.style.animation = 'gateShake 0.4s ease';
+        }
+      }
+
+      unlockConsole() {
+        const overlay = document.getElementById('adminPinGateOverlay');
+        const stage = document.getElementById('adminMasterConsoleStage');
+        if (overlay) overlay.style.display = 'none';
+        if (stage) stage.style.display = 'block';
+        if (window.adminController) {
+          window.adminController.refreshData();
+          window.adminController.generateAdminKey();
+        }
+      }
+
+      lockSession() {
+        sessionStorage.removeItem('b_admin_session_auth');
+        this.showGate();
+      }
+    }
+
+    /* ======================================================== */
+    /* ADMIN MASTER ACTIONS CONTROLLER                          */
+    /* ======================================================== */
     class AdminMasterController {
       constructor() {
         this.currentDuration = { type: 'MONTHS', value: 1, name: '1 Month ($100)', price: '$100' };
@@ -588,7 +1231,6 @@
         }
 
         if (!found) {
-          // If not existing, add or ensure record for primary user
           users.push({
             id: targetId,
             userId: targetId,
@@ -643,7 +1285,7 @@
               <tr>
                 <td><strong>Hanaan Junaid</strong><br><span style="font-size:11px;color:#94a3b8;">bmagnet.int@gmail.com</span></td>
                 <td><span class="font-mono text-cyan font-bold">b-102246</span></td>
-                <td class="font-mono text-emerald font-bold" style="font-size:14px;">${primaryBal} USDT</td>
+                <td class="font-mono text-emerald font-bold" style="font-size:13.5px;">${primaryBal} USDT</td>
                 <td>1 Active EA</td>
                 <td class="font-mono">#8849201</td>
                 <td>
@@ -655,15 +1297,16 @@
             `;
           } else {
             tbodyCust.innerHTML = users.map(u => {
+              const uBal = (Number(u.balance) || 0).toFixed(2);
               const uId = u.id || u.userId || 'b-102246';
-              const bal = Number(u.balance || primaryBal).toFixed(2);
+              const uMt5 = u.gtcfxMt5Account || '8849201';
               return `
                 <tr>
-                  <td><strong>${u.name || 'Trader'}</strong><br><span style="font-size:11px;color:#94a3b8;">${u.email || u.phone || ''}</span></td>
+                  <td><strong>${u.name || 'Trader'}</strong><br><span style="font-size:11px;color:#94a3b8;">${u.email || ''}</span></td>
                   <td><span class="font-mono text-cyan font-bold">${uId}</span></td>
-                  <td class="font-mono text-emerald font-bold" style="font-size:14px;">${bal} USDT</td>
-                  <td>1 Active EA</td>
-                  <td class="font-mono">#${u.gtcfxMt5Account || '8849201'}</td>
+                  <td class="font-mono text-emerald font-bold" style="font-size:13.5px;">${uBal} USDT</td>
+                  <td><span class="badge-featured" style="font-size:9.5px; border-radius:6px; padding:2px 6px;">Gold Hunter Pro</span></td>
+                  <td class="font-mono font-bold">#${uMt5}</td>
                   <td>
                     <button type="button" onclick="adminController.quickTopupUser('${uId}')" style="padding: 4px 10px; border-radius: 8px; background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.4); color: #10b981; font-size: 11px; font-weight: 800; cursor: pointer;">
                       ⚡ Top Up
@@ -680,21 +1323,20 @@
         if (tbodySub) {
           tbodySub.innerHTML = `
             <tr>
-              <td><strong>Hanaan Junaid</strong></td>
-              <td>B-Magnet Gold Hunter EA v1.21</td>
-              <td><span class="badge-featured" style="font-size:10px;">1 Month Pass</span></td>
-              <td><span class="font-mono font-bold text-cyan">${this.generatedKey || 'BM8-8849201-20260927-0F7C'}</span></td>
-              <td class="font-mono">#8849201</td>
+              <td><strong>Hanaan Junaid</strong><br><span style="font-size:11px;color:#94a3b8;">b-102246</span></td>
+              <td><strong>B-Magnet Gold Hunter EA Pro v1.21</strong></td>
+              <td><span style="color:#00f2fe; font-weight:700;">1 Month Pro</span></td>
+              <td><span class="font-mono" style="font-size:11px; color:#10b981;">BM8-8849201-20260927-0F7C0A67</span></td>
+              <td class="font-mono font-bold">#8849201</td>
               <td class="font-mono text-amber">2026.09.27</td>
-              <td><span style="color:#10b981;font-weight:700;">● Active</span></td>
+              <td><span class="badge-featured" style="background:rgba(16,185,129,0.15); color:#10b981; border:1px solid rgba(16,185,129,0.3); font-size:10px; border-radius:99px; padding:2px 8px;">Active</span></td>
             </tr>
           `;
         }
 
-        // Fill client select
+        // Populate Quick Fill Select
         const sel = document.getElementById('adminKeyGenClientSelect');
         const topupSel = document.getElementById('adminTopupUserSelect');
-
         if (users.length > 0) {
           if (sel) {
             sel.innerHTML = '<option value="">⚡ Quick-fill from CRM Customers...</option>' + 
@@ -721,6 +1363,8 @@
         if (btn) btn.classList.add('active');
         const pill = document.getElementById('adminKeyGenDurPill');
         if (pill) pill.textContent = name;
+        const planLbl = document.getElementById('adminKeyGenPlanLabel');
+        if (planLbl) planLbl.textContent = name;
         this.generateAdminKey();
       }
 
@@ -770,11 +1414,18 @@
 
       copyWhatsAppMsg() {
         const acc = (document.getElementById('adminKeyGenAcc') && document.getElementById('adminKeyGenAcc').value.trim()) || '8849201';
-        const msg = `👑 *B-MAGNET INTERNATIONAL - MT5 LICENSE ACTIVATION*\n\n` +
-          `🔹 *Bot:* B-Magnet Gold Hunter EA v1.21\n` +
-          `🔹 *MT5 Account:* #${acc}\n` +
-          `🔹 *Duration:* ${this.currentDuration.name}\n` +
-          `🔑 *License Key:* \`${this.generatedKey}\`\n\n` +
+        const msg = `👑 *B-MAGNET INTERNATIONAL - MT5 LICENSE ACTIVATION*
+
+` +
+          `🔹 *Bot:* B-Magnet Gold Hunter EA v1.21
+` +
+          `🔹 *MT5 Account:* #${acc}
+` +
+          `🔹 *Duration:* ${this.currentDuration.name}
+` +
+          `🔑 *License Key:* \`${this.generatedKey}\`
+
+` +
           `✅ Attach the EA in MT5 Navigator and paste this key into inputs.`;
         
         if (navigator.clipboard) {
@@ -787,11 +1438,18 @@
       sendWhatsAppDirect() {
         const acc = (document.getElementById('adminKeyGenAcc') && document.getElementById('adminKeyGenAcc').value.trim()) || '8849201';
         const msg = encodeURIComponent(
-          `👑 *B-MAGNET INTERNATIONAL - MT5 LICENSE ACTIVATION*\n\n` +
-          `🔹 *Bot:* B-Magnet Gold Hunter EA v1.21\n` +
-          `🔹 *MT5 Account:* #${acc}\n` +
-          `🔹 *Duration:* ${this.currentDuration.name}\n` +
-          `🔑 *License Key:* ${this.generatedKey}\n\n` +
+          `👑 *B-MAGNET INTERNATIONAL - MT5 LICENSE ACTIVATION*
+
+` +
+          `🔹 *Bot:* B-Magnet Gold Hunter EA v1.21
+` +
+          `🔹 *MT5 Account:* #${acc}
+` +
+          `🔹 *Duration:* ${this.currentDuration.name}
+` +
+          `🔑 *License Key:* ${this.generatedKey}
+
+` +
           `✅ Attach the EA in MT5 Navigator and paste this key into inputs.`
         );
         window.open(`https://wa.me/?text=${msg}`, '_blank');
@@ -804,12 +1462,15 @@
 
       exportCsv() {
         const users = this.getStoredUsers();
-        let csv = 'Customer,Email,TraderID,WalletBalance,ActiveBots,MT5Account,LastActive\n';
+        let csv = 'Customer,Email,TraderID,WalletBalance,ActiveBots,MT5Account,LastActive
+';
         if (users.length === 0) {
-          csv += '"Hanaan Junaid","bmagnet.int@gmail.com","b-102246","0.00","1","8849201","Active Now"\n';
+          csv += '"Hanaan Junaid","bmagnet.int@gmail.com","b-102246","0.00","1","8849201","Active Now"
+';
         } else {
           users.forEach(u => {
-            csv += `"${u.name || ''}","${u.email || ''}","${u.id || u.userId || ''}","${u.balance || 0}","1","${u.gtcfxMt5Account || ''}","${u.lastLogin || ''}"\n`;
+            csv += `"${u.name || ''}","${u.email || ''}","${u.id || u.userId || ''}","${u.balance || 0}","1","${u.gtcfxMt5Account || ''}","${u.lastLogin || ''}"
+`;
           });
         }
         const blob = new Blob([csv], { type: 'text/csv' });
@@ -821,6 +1482,7 @@
       }
     }
 
+    const gateController = new AdminPinGateController();
     const adminController = new AdminMasterController();
   </script>
 </body>
