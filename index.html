@@ -54,7 +54,7 @@
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
   
-  <link rel="stylesheet" href="style.css?v=7146">
+  <link rel="stylesheet" href="style.css?v=9137">
 </head>
 <body class="theme-light">
   <!-- Google One-Tap Automatic Credentials Container -->
@@ -628,13 +628,13 @@
           <div class="header-right">
 
 
-            <!-- Compact Corner Wallet Asset with Logged-in User Name -->
-            <button class="wallet-compact-corner-btn" id="openTopupBtn" onclick="window.botHubApp.openTopupModal()" title="BEP-20 Wallet & Account">
-              <span class="user-avatar-mini">
-                <span class="material-symbols-rounded">account_circle</span>
+            <!-- Direct BEP-20 Web3 Wallet Opener Button (Dashboard Header) -->
+            <button class="wallet-compact-corner-btn" id="openTopupBtn" onclick="window.botHubApp.openTopupModal()" title="Open USDT BEP-20 Wallet">
+              <span class="user-avatar-mini" style="background: rgba(16, 185, 129, 0.15); border-color: rgba(16, 185, 129, 0.4); color: #10b981;">
+                <span class="material-symbols-rounded" style="font-size: 16px;">account_balance_wallet</span>
               </span>
               <div class="wallet-user-info-col">
-                <span class="wallet-user-title" id="headerUserPhoneText">Hanaan</span>
+                <span class="wallet-user-title" id="headerUserPhoneText">Wallet</span>
                 <span class="wallet-user-amt font-mono" id="headerWalletBalance">0.00 USDT</span>
               </div>
             </button>
@@ -2368,6 +2368,6 @@
 
   <!-- App Scripts -->
   <script src="qrcode.js"></script>
-  <script src="app.js?v=7146"></script>
+  <script src="app.js?v=9137"></script>
 </body>
 </html>

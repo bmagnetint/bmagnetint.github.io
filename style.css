@@ -16886,3 +16886,19 @@ body.logged-in .app-content,
 .landing-header .pulse-dot {
   display: none !important;
 }
+
+
+/* ==========================================================================
+   LOGGED-IN DASHBOARD HEADER: STRICT CLEAN-UP
+   - Only Wallet Button & Brand Logo in Header
+   - Strictly Hide Theme Icon & Language Selector in Dashboard Header
+   ========================================================================== */
+.app-header .theme-toggle-pill,
+.app-header .lang-globe-dropdown-wrapper,
+.app-header .lang-toggle,
+.app-header .language-selector,
+.app-header .header-theme-btn,
+body.logged-in .app-header .theme-toggle-pill,
+body.logged-in .app-header .lang-globe-dropdown-wrapper {
+  display: none !important;
+}
