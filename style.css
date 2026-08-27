@@ -15484,63 +15484,51 @@ body.aesthetic-login-page.theme-light .aesthetic-monolith-card {
   box-shadow: 0 30px 70px -15px rgba(0, 40, 100, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
 }
 
-/* Brand Crown */
+/* Brand Crown (Frameless, Larger, High-Fidelity Logo) */
 .amc-crown {
   text-align: center !important;
   margin-bottom: 12px !important;
   flex-shrink: 0 !important;
-}
-
-.amc-emblem-halo {
-  position: relative !important;
-  width: 58px !important;
-  height: 58px !important;
-  margin: 0 auto 8px auto !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-}
-
-.amc-emblem-box {
-  width: 52px !important;
-  height: 52px !important;
-  border-radius: 14px !important;
-  background: linear-gradient(135deg, #0f172a 0%, #070b14 100%) !important;
-  border: 1px solid rgba(255, 255, 255, 0.18) !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  padding: 6px !important;
-  box-shadow: 0 6px 20px rgba(0, 117, 235, 0.35) !important;
-  box-sizing: border-box !important;
-}
-
-.amc-brand-img {
-  width: 100% !important;
-  height: 100% !important;
-  max-width: 38px !important;
-  max-height: 38px !important;
-  object-fit: contain !important;
-}
-
-.amc-brand-lockup {
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
-  gap: 3px !important;
+  gap: 6px !important;
 }
 
-.amc-brand-title {
-  font-size: 22px !important;
-  font-weight: 900 !important;
-  letter-spacing: -0.02em !important;
-  color: #ffffff !important;
-  margin: 0 !important;
+.amc-brand-hero {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  padding: 2px 0 4px 0 !important;
 }
 
-body.aesthetic-login-page:not(.theme-dark) .amc-brand-title,
-body.aesthetic-login-page.theme-light .amc-brand-title {
-  color: #0f172a !important;
+.amc-frameless-logo {
+  height: 56px !important;
+  max-height: 60px !important;
+  max-width: 220px !important;
+  width: auto !important;
+  object-fit: contain !important;
+  display: block !important;
+  filter: drop-shadow(0 4px 16px rgba(0, 168, 255, 0.4)) brightness(1.05) !important;
+  transition: transform 0.3s ease, filter 0.3s ease !important;
+}
+
+.amc-frameless-logo:hover {
+  transform: scale(1.04) !important;
+  filter: drop-shadow(0 6px 24px rgba(0, 168, 255, 0.6)) brightness(1.1) !important;
+}
+
+body.aesthetic-login-page:not(.theme-dark) .amc-frameless-logo,
+body.aesthetic-login-page.theme-light .amc-frameless-logo {
+  filter: drop-shadow(0 4px 12px rgba(0, 50, 120, 0.15)) !important;
+}
+
+.amc-brand-meta {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 4px !important;
 }
 
 .amc-badge-pill {
@@ -15555,10 +15543,17 @@ body.aesthetic-login-page.theme-light .amc-brand-title {
   display: inline-block !important;
 }
 
+body.aesthetic-login-page:not(.theme-dark) .amc-badge-pill,
+body.aesthetic-login-page.theme-light .amc-badge-pill {
+  color: #0075eb !important;
+  background: rgba(0, 117, 235, 0.08) !important;
+  border-color: rgba(0, 117, 235, 0.25) !important;
+}
+
 .amc-tagline {
-  font-size: 12.5px !important;
+  font-size: 12px !important;
   color: #94a3b8 !important;
-  margin: 6px 0 0 0 !important;
+  margin: 0 !important;
   line-height: 1.4 !important;
   font-weight: 500 !important;
   text-align: center !important;
