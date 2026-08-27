@@ -16940,3 +16940,74 @@ body.logged-in #openTopupBtn {
   pointer-events: auto !important;
   cursor: pointer !important;
 }
+
+
+/* ==========================================================================
+   UNIFORM WALLET MODAL WINDOW ENGINE (ZERO JUMP / FIXED HEIGHT ACROSS TABS)
+   ========================================================================== */
+#web3WalletModal .web3-modal-container,
+.web3-modal-container,
+#topupModal .modal-sheet {
+  width: 100% !important;
+  max-width: 520px !important;
+  height: 640px !important;
+  min-height: 640px !important;
+  max-height: calc(100vh - 40px) !important;
+  margin: auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+  transition: none !important;
+}
+
+#web3WalletModal .web3-modal-header,
+.web3-modal-header {
+  flex-shrink: 0 !important;
+}
+
+#web3WalletModal .web3-modal-tabs,
+.web3-modal-tabs {
+  flex-shrink: 0 !important;
+}
+
+#web3WalletModal .web3-modal-body,
+.web3-modal-body {
+  flex: 1 1 0% !important;
+  height: 100% !important;
+  max-height: 100% !important;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  padding: 20px 24px 24px 24px !important;
+  box-sizing: border-box !important;
+}
+
+.web3-tab-content {
+  box-sizing: border-box !important;
+}
+
+.web3-tab-content.active {
+  display: flex !important;
+  flex-direction: column !important;
+  min-height: 100% !important;
+  animation: fadeInTab 0.18s ease-out !important;
+}
+
+@keyframes fadeInTab {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 600px) {
+  #web3WalletModal .web3-modal-container,
+  .web3-modal-container,
+  #topupModal .modal-sheet {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 85vh !important;
+    min-height: 85vh !important;
+    max-height: 85dvh !important;
+    border-radius: 28px 28px 0 0 !important;
+    margin: 0 !important;
+  }
+}
