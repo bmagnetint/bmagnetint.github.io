@@ -612,6 +612,7 @@
         <div>
           <h1 class="admin-header-title">ADMIN MASTER PORTAL</h1>
           <span class="admin-sec-pill"><span class="pulse-dot"></span> AUTHENTICATED MASTER CONSOLE</span>
+          <span class="admin-sec-pill" style="background: rgba(245, 158, 11, 0.12); border-color: rgba(245, 158, 11, 0.3); color: #f59e0b;"><span class="material-symbols-rounded" style="font-size:12px;">timer</span> Auto-Lock (10m Idle)</span>
         </div>
       </div>
 
@@ -1021,6 +1022,8 @@
         stage.style.opacity = '1';
       }
 
+      startAutoLockWatcher();
+
       document.body.style.overflow = 'auto';
 
       try {
@@ -1032,10 +1035,57 @@
       }
     }
 
-    function lockAdminSession() {
+    /* ======================================================== */
+    /* 10-MINUTE INACTIVITY AUTO-LOCK SYSTEM                    */
+    /* ======================================================== */
+    const AUTO_LOCK_TIMEOUT_MS = 10 * 60 * 1000; // 10 minutes idle limit
+    let lastActivityTimestamp = Date.now();
+    let autoLockInterval = null;
+
+    function resetActivityTimer() {
+      lastActivityTimestamp = Date.now();
+    }
+
+    function startAutoLockWatcher() {
+      lastActivityTimestamp = Date.now();
+      
+      const activityEvents = ['mousemove', 'mousedown', 'keydown', 'touchstart', 'scroll', 'click'];
+      activityEvents.forEach(evt => {
+        window.removeEventListener(evt, resetActivityTimer);
+        window.addEventListener(evt, resetActivityTimer, { passive: true });
+      });
+
+      if (autoLockInterval) clearInterval(autoLockInterval);
+      autoLockInterval = setInterval(() => {
+        const isAuth = sessionStorage.getItem('b_admin_session_auth_v2') === 'AUTH_9633_298130';
+        if (!isAuth) return;
+
+        const elapsed = Date.now() - lastActivityTimestamp;
+        if (elapsed >= AUTO_LOCK_TIMEOUT_MS) {
+          lockAdminSession('⚠️ Session automatically locked due to 10 minutes of inactivity.');
+        }
+      }, 5000);
+    }
+
+    function lockAdminSession(reason) {
       sessionStorage.removeItem('b_admin_session_auth_v2');
       sessionStorage.removeItem('b_admin_session_auth');
+      if (reason) {
+        sessionStorage.setItem('b_admin_lock_reason', reason);
+      }
       window.location.reload();
+    }
+
+    function checkLockReasonNotice() {
+      const reason = sessionStorage.getItem('b_admin_lock_reason');
+      if (reason) {
+        sessionStorage.removeItem('b_admin_lock_reason');
+        const err = document.getElementById('gateErrorMsg');
+        if (err) {
+          err.style.color = '#f59e0b';
+          err.textContent = reason;
+        }
+      }
     }
 
     function shakeGateCard() {
@@ -1512,11 +1562,13 @@
     document.addEventListener('DOMContentLoaded', () => {
       window.adminController.init();
       checkInitialAuth();
+      checkLockReasonNotice();
     });
 
     if (document.readyState === 'complete' || document.readyState === 'interactive') {
       window.adminController.init();
       checkInitialAuth();
+      checkLockReasonNotice();
     }
   </script>
 </body>
