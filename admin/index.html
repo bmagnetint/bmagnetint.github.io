@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <title>B-Magnet Admin Master Console | Dual-Passcode Security</title>
+  <title>B-Magnet Admin Master Console | Wallet & Customer Ledger</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,6 +24,8 @@
       --teal-light: #34b39d;
       --emerald-green: #10b981;
       --emerald-dark: #059669;
+      --amber-color: #f59e0b;
+      --rose-color: #f43f5e;
       --text-white: #ffffff;
       --text-muted: #94a3b8;
     }
@@ -44,7 +46,7 @@
     }
 
     /* ======================================================== */
-    /* 1. TWO-LINE PASSCODE SECURITY GATE OVERLAY               */
+    /* 1. SINGLE PASSCODE SECURITY GATE OVERLAY                 */
     /* ======================================================== */
     .admin-pin-gate-overlay {
       position: fixed;
@@ -64,11 +66,11 @@
 
     .admin-pin-gate-card {
       width: 100%;
-      max-width: 410px;
+      max-width: 400px;
       background: var(--bg-card);
       border: 1.5px solid var(--border-teal);
       border-radius: 26px;
-      padding: 32px 24px;
+      padding: 34px 26px;
       text-align: center;
       box-shadow: 0 25px 70px rgba(0, 0, 0, 0.8), 0 0 35px rgba(45, 155, 136, 0.2);
     }
@@ -80,68 +82,64 @@
     }
 
     .gate-icon-box {
-      width: 58px;
-      height: 58px;
-      border-radius: 16px;
+      width: 60px;
+      height: 60px;
+      border-radius: 18px;
       background: rgba(45, 155, 136, 0.15);
       border: 1.5px solid rgba(45, 155, 136, 0.4);
       display: flex;
       align-items: center;
       justify-content: center;
       color: var(--teal-light);
-      margin: 0 auto 14px auto;
+      margin: 0 auto 16px auto;
       box-shadow: 0 4px 20px rgba(45, 155, 136, 0.25);
     }
 
-    .two-line-group {
+    .single-passcode-group {
       text-align: left;
-      margin-bottom: 14px;
+      margin: 18px 0 16px 0;
     }
 
-    .two-line-label {
+    .single-passcode-label {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 11.5px;
+      font-size: 12px;
       font-weight: 800;
       color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: 0.5px;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
     }
 
-    .two-line-label span.req {
-      color: var(--emerald-green);
-      font-size: 10.5px;
-    }
-
-    .two-line-input {
+    .single-passcode-input {
       width: 100%;
-      height: 50px;
+      height: 52px;
       background: rgba(0, 0, 0, 0.6);
       border: 1.5px solid var(--border-teal);
-      border-radius: 12px;
+      border-radius: 14px;
       color: var(--emerald-green);
       font-family: 'JetBrains Mono', monospace;
-      font-size: 20px;
+      font-size: 22px;
       font-weight: 800;
-      letter-spacing: 6px;
+      letter-spacing: 8px;
+      text-align: center;
       padding: 0 14px;
       box-sizing: border-box;
       outline: none;
       transition: all 0.2s ease;
     }
 
-    .two-line-input:focus {
+    .single-passcode-input:focus {
       border-color: var(--emerald-green);
-      box-shadow: 0 0 16px rgba(16, 185, 129, 0.35);
+      box-shadow: 0 0 18px rgba(16, 185, 129, 0.35);
       background: rgba(0, 0, 0, 0.85);
     }
 
-    .two-line-input::placeholder {
+    .single-passcode-input::placeholder {
       color: rgba(148, 163, 184, 0.25);
-      letter-spacing: 2px;
-      font-size: 13px;
+      letter-spacing: 3px;
+      font-size: 14px;
       font-family: 'Inter', sans-serif;
       font-weight: 500;
     }
@@ -163,7 +161,7 @@
       cursor: pointer;
       box-shadow: 0 6px 20px rgba(16, 185, 129, 0.35);
       transition: all 0.2s;
-      margin-top: 16px;
+      margin-top: 14px;
     }
 
     .gate-unlock-btn:hover,
@@ -291,7 +289,7 @@
     /* 3. MAIN CONTENT CONTAINER & CARDS                        */
     /* ======================================================== */
     .admin-main-container {
-      max-width: 1200px;
+      max-width: 1240px;
       margin: 0 auto;
       padding: 20px 16px 80px 16px;
       display: flex;
@@ -419,21 +417,21 @@
 
     .crm-table {
       width: 100%;
-      min-width: 680px;
+      min-width: 780px;
       border-collapse: collapse;
       text-align: left;
       font-size: 13px;
     }
 
     .crm-table th {
-      background: rgba(0, 0, 0, 0.4);
+      background: rgba(0, 0, 0, 0.45);
       padding: 12px 14px;
       font-size: 11px;
       font-weight: 800;
       text-transform: uppercase;
       color: var(--text-muted);
       letter-spacing: 0.5px;
-      border-bottom: 1px solid rgba(45, 155, 136, 0.2);
+      border-bottom: 1px solid rgba(45, 155, 136, 0.25);
     }
 
     .crm-table td {
@@ -445,6 +443,21 @@
 
     .crm-table tr:hover td {
       background: rgba(45, 155, 136, 0.06);
+    }
+
+    /* Balance Badge */
+    .balance-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px 10px;
+      border-radius: 8px;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      color: #10b981;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 800;
+      font-size: 13.5px;
     }
 
     /* Customer Detail Modal */
@@ -476,6 +489,17 @@
       box-shadow: 0 25px 70px rgba(0, 0, 0, 0.7);
       max-height: 90vh;
       overflow-y: auto;
+    }
+
+    /* Quick Balance Modal */
+    .quick-bal-modal-card {
+      width: 100%;
+      max-width: 440px;
+      background: #141d29;
+      border: 1.5px solid rgba(16, 185, 129, 0.5);
+      border-radius: 22px;
+      padding: 24px;
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.8);
     }
 
     .toast-box {
@@ -523,64 +547,45 @@
 <body class="admin-page-body theme-dark">
 
   <!-- ======================================================== -->
-  <!-- 1. TWO-LINE PASSCODE SECURITY GATE OVERLAY               -->
+  <!-- 1. SINGLE PASSCODE SECURITY GATE OVERLAY                 -->
   <!-- ======================================================== -->
   <div class="admin-pin-gate-overlay" id="adminPinGateOverlay">
     <div class="admin-pin-gate-card">
       <div class="gate-icon-box">
-        <span class="material-symbols-rounded" style="font-size: 30px;">admin_panel_settings</span>
+        <span class="material-symbols-rounded" style="font-size: 32px;">admin_panel_settings</span>
       </div>
       
       <h2 style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 20px; font-weight: 800; margin: 0 0 6px 0; color: #ffffff;">Admin Master Console</h2>
-      <p style="font-size: 13px; color: #94a3b8; margin: 0 0 18px 0;">Enter Two-Line Passcode to Authenticate</p>
+      <p style="font-size: 13px; color: #94a3b8; margin: 0 0 16px 0;">Enter Secret Passcode to Authenticate</p>
 
       <form id="adminGateForm" onsubmit="return handleFormUnlock(event)">
-        <!-- Line 1 Passcode Input -->
-        <div class="two-line-group">
-          <div class="two-line-label">
-            <span>1. Master Access PIN</span>
-            <span class="req">Line 1</span>
+        
+        <div class="single-passcode-group">
+          <div class="single-passcode-label">
+            <span>Admin Secret PIN</span>
+            <span class="material-symbols-rounded" style="font-size: 16px; color: #10b981;">lock</span>
           </div>
           <input 
             type="password" 
-            id="adminPin1Input" 
-            class="two-line-input" 
-            inputmode="numeric" 
-            pattern="[0-9]*" 
-            maxlength="10" 
-            placeholder="••••" 
-            autocomplete="off" 
-            autofocus
-            oninput="handleLine1Input(this.value)"
-            onkeydown="if(event.key==='Enter') document.getElementById('adminPin2Input').focus()"
-          >
-        </div>
-
-        <!-- Line 2 Passcode Input -->
-        <div class="two-line-group">
-          <div class="two-line-label">
-            <span>2. Secret Security PIN</span>
-            <span class="req">Line 2</span>
-          </div>
-          <input 
-            type="password" 
-            id="adminPin2Input" 
-            class="two-line-input" 
+            id="adminSinglePasscodeInput" 
+            class="single-passcode-input" 
             inputmode="numeric" 
             pattern="[0-9]*" 
             maxlength="10" 
             placeholder="••••••" 
             autocomplete="off" 
-            oninput="handleLine2Input(this.value)"
+            autofocus
+            oninput="handlePasscodeInput(this.value)"
           >
         </div>
 
-        <!-- View / Hide PINs Toggle -->
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-top:6px;">
+        <!-- View / Hide PIN Toggle -->
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 12px;">
           <label style="font-size:12px; color:#94a3b8; display:flex; align-items:center; gap:6px; cursor:pointer; user-select:none;">
             <input type="checkbox" id="showPinsCheckbox" onchange="togglePinVisibility(this.checked)">
-            <span>Show Passcodes</span>
+            <span>Show Passcode</span>
           </label>
+          <span style="font-size:11px; color:#64748b;">Instant Verification</span>
         </div>
 
         <!-- Big Unlock Button -->
@@ -592,7 +597,7 @@
 
       <div class="gate-error-text" id="gateErrorMsg"></div>
 
-      <div style="margin-top: 14px;">
+      <div style="margin-top: 16px;">
         <a href="/" style="font-size: 12px; color: #64748b; text-decoration: none;">← Return to Main Trading App</a>
       </div>
     </div>
@@ -611,8 +616,10 @@
         </a>
         <div>
           <h1 class="admin-header-title">ADMIN MASTER PORTAL</h1>
-          <span class="admin-sec-pill"><span class="pulse-dot"></span> AUTHENTICATED MASTER CONSOLE</span>
-          <span class="admin-sec-pill" style="background: rgba(245, 158, 11, 0.12); border-color: rgba(245, 158, 11, 0.3); color: #f59e0b;"><span class="material-symbols-rounded" style="font-size:12px;">timer</span> Auto-Lock (10m Idle)</span>
+          <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap; margin-top:2px;">
+            <span class="admin-sec-pill"><span class="pulse-dot"></span> AUTHENTICATED MASTER CONSOLE</span>
+            <span class="admin-sec-pill" style="background: rgba(245, 158, 11, 0.12); border-color: rgba(245, 158, 11, 0.3); color: #f59e0b;"><span class="material-symbols-rounded" style="font-size:12px;">timer</span> Auto-Lock (10m Idle)</span>
+          </div>
         </div>
       </div>
 
@@ -631,7 +638,195 @@
     <!-- Admin Main Container -->
     <main class="admin-main-container">
       
-      <!-- 1. Executive Status & Lifelong Database Backup Hub -->
+      <!-- 1. KPI Metrics Ribbon -->
+      <div class="db-kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-card-header">
+            <span class="kpi-label">Registered Traders</span>
+            <span class="material-symbols-rounded kpi-icon">group</span>
+          </div>
+          <div class="kpi-value font-mono" id="dbKpiCustomers">1</div>
+          <span class="kpi-delta">Google OAuth Verified</span>
+        </div>
+
+        <div class="kpi-card">
+          <div class="kpi-card-header">
+            <span class="kpi-label">Total Platform Balance</span>
+            <span class="material-symbols-rounded kpi-icon" style="color:#10b981;">account_balance_wallet</span>
+          </div>
+          <div class="kpi-value font-mono text-emerald" id="dbKpiRevenue">100.00 USDT</div>
+          <span class="kpi-delta">Admin Top-Up Controlled</span>
+        </div>
+
+        <div class="kpi-card">
+          <div class="kpi-card-header">
+            <span class="kpi-label">Active EA Passes</span>
+            <span class="material-symbols-rounded kpi-icon">verified</span>
+          </div>
+          <div class="kpi-value font-mono" id="dbKpiSubscriptions">1 Active</div>
+          <span class="kpi-delta">Gold Hunter Pro v1.21</span>
+        </div>
+
+        <div class="kpi-card">
+          <div class="kpi-card-header">
+            <span class="kpi-label">Whitelisted MT5 Bridges</span>
+            <span class="material-symbols-rounded kpi-icon">candlestick_chart</span>
+          </div>
+          <div class="kpi-value font-mono" id="dbKpiMt5">1 Whitelisted</div>
+          <span class="kpi-delta">GTCfx Live Server</span>
+        </div>
+      </div>
+
+      <!-- ======================================================== -->
+      <!-- 2. TOP UP & MANAGE WALLET BALANCE SUITE                  -->
+      <!-- ======================================================== -->
+      <div class="admin-card" id="adminTopupCard" style="border: 1.5px solid rgba(16, 185, 129, 0.4); box-shadow: 0 10px 35px rgba(16, 185, 129, 0.12);">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; flex-wrap: wrap; gap: 10px;">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <div style="width: 40px; height: 40px; border-radius: 12px; background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.3); display: flex; align-items: center; justify-content: center; color: #10b981;">
+              <span class="material-symbols-rounded" style="font-size: 24px;">account_balance_wallet</span>
+            </div>
+            <div>
+              <h3 style="font-size: 17px; font-weight: 800; margin: 0; color: #ffffff;">Admin Wallet Balance Manager</h3>
+              <p style="font-size: 12px; color: #94a3b8; margin: 2px 0 0 0;">Credit, deduct, or set balance for any user with instant live sync</p>
+            </div>
+          </div>
+          <span style="background: rgba(16, 185, 129, 0.12); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.3); font-size: 11px; border-radius: 99px; padding: 4px 12px; font-weight: 800;">
+            ⚡ Instant Balance Synchronization
+          </span>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin-bottom: 16px;">
+          
+          <!-- Input 1: User / Trader ID -->
+          <div>
+            <label style="display: block; font-size: 11.5px; font-weight: 700; color: #94a3b8; margin-bottom: 6px;">
+              1. Target User / Trader ID
+            </label>
+            <div style="display: flex; gap: 8px;">
+              <input type="text" id="adminTopupUserId" class="font-mono" placeholder="e.g. b-102246" value="b-102246" style="flex: 1; height: 42px; border-radius: 12px; background: rgba(0,0,0,0.3); border: 1px solid rgba(45, 155, 136, 0.3); color: #34b39d; font-weight: 800; font-size: 14px; padding: 0 12px;">
+              <select id="adminTopupUserSelect" onchange="adminController.onTopupSelectUser(this.value)" style="height: 42px; border-radius: 12px; background: #141d29; border: 1px solid rgba(45, 155, 136, 0.3); color: #cbd5e1; padding: 0 10px; font-size: 12px; cursor: pointer; max-width: 140px;">
+                <option value="b-102246">Hanaan (b-102246)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Input 2: Action Mode -->
+          <div>
+            <label style="display: block; font-size: 11.5px; font-weight: 700; color: #94a3b8; margin-bottom: 6px;">
+              2. Balance Operation
+            </label>
+            <select id="adminWalletOpMode" style="width: 100%; height: 42px; border-radius: 12px; background: #141d29; border: 1px solid rgba(45, 155, 136, 0.3); color: #ffffff; font-weight: 700; padding: 0 12px; font-size: 13px;">
+              <option value="CREDIT">➕ Credit / Add (+ USDT)</option>
+              <option value="DEDUCT">➖ Deduct / Withdraw (- USDT)</option>
+              <option value="SET">⚙️ Set Exact Balance (= USDT)</option>
+            </select>
+          </div>
+
+          <!-- Input 3: Amount (USDT) -->
+          <div>
+            <label style="display: block; font-size: 11.5px; font-weight: 700; color: #94a3b8; margin-bottom: 6px;">
+              3. Amount (USDT)
+            </label>
+            <input type="number" id="adminTopupAmount" step="1" min="0" placeholder="100.00" value="100" style="width: 100%; height: 42px; border-radius: 12px; background: rgba(0,0,0,0.3); border: 1px solid rgba(16, 185, 129, 0.4); color: #10b981; font-family: 'JetBrains Mono', monospace; font-weight: 800; font-size: 15px; padding: 0 12px; box-sizing: border-box;">
+          </div>
+
+        </div>
+
+        <!-- Quick Preset Amounts & Action Button -->
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding: 12px 14px; background: rgba(14, 20, 27, 0.5); border-radius: 14px; border: 1px solid rgba(45, 155, 136, 0.2);">
+          <div class="topup-presets-container">
+            <span style="font-size: 11.5px; color: #94a3b8; font-weight: 700;">Quick Presets:</span>
+            <button type="button" class="topup-preset-btn" onclick="adminController.setTopupAmount(50)">+$50</button>
+            <button type="button" class="topup-preset-btn" onclick="adminController.setTopupAmount(100)">+$100</button>
+            <button type="button" class="topup-preset-btn" onclick="adminController.setTopupAmount(250)">+$250</button>
+            <button type="button" class="topup-preset-btn" onclick="adminController.setTopupAmount(500)">+$500</button>
+            <button type="button" class="topup-preset-btn" onclick="adminController.setTopupAmount(1000)">+$1,000</button>
+          </div>
+
+          <button type="button" class="btn-topup-action" onclick="adminController.processWalletOperation()">
+            <span class="material-symbols-rounded" style="font-size: 18px;">bolt</span>
+            <span>Update User Balance</span>
+          </button>
+        </div>
+
+      </div>
+
+      <!-- ======================================================== -->
+      <!-- 3. ALL USERS WALLET BALANCES & CUSTOMER LEDGER TABLE     -->
+      <!-- ======================================================== -->
+      <div class="admin-card">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; flex-wrap: wrap; gap: 10px;">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <div style="width: 38px; height: 38px; border-radius: 12px; background: rgba(0, 168, 150, 0.15); display: flex; align-items: center; justify-content: center; color: #00a896;">
+              <span class="material-symbols-rounded">group</span>
+            </div>
+            <div>
+              <h3 style="font-size: 17px; font-weight: 800; margin: 0; color: #ffffff;">All Users Wallet Balances & Customer Ledger</h3>
+              <p style="font-size: 12px; color: #94a3b8; margin: 2px 0 0 0;">Complete directory of all registered traders with live wallet balances and quick management</p>
+            </div>
+          </div>
+
+          <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+            <input type="text" id="crmSearchInput" placeholder="Search Trader ID, Name, Email, MT5..." oninput="adminController.filterCustomers(this.value)" style="height: 38px; border-radius: 10px; background: rgba(0,0,0,0.3); border: 1px solid rgba(45, 155, 136, 0.3); color:#fff; padding: 0 12px; font-size: 12px; width: 230px;">
+            <button onclick="adminController.openNewCustomerModal()" style="height: 38px; padding: 0 14px; border-radius: 10px; font-weight: 800; background: #00A896; border: none; color:#fff; cursor:pointer; font-size: 12px; display: flex; align-items: center; gap: 4px;">
+              <span class="material-symbols-rounded" style="font-size: 16px;">person_add</span>
+              <span>Add User</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="table-responsive">
+          <table class="crm-table" id="crmCustomersTable">
+            <thead>
+              <tr>
+                <th>Customer / Name</th>
+                <th>Trader ID</th>
+                <th>Contact (WhatsApp / Email)</th>
+                <th>GTCfx MT5 #</th>
+                <th>Wallet Balance (USDT)</th>
+                <th>Tier / Status</th>
+                <th>Manage Balance & Profile</th>
+              </tr>
+            </thead>
+            <tbody id="crmCustomersTbody">
+              <!-- Dynamic Rows -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 4. Active Bot Passes & Expiry Tracker -->
+      <div class="admin-card">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; flex-wrap: wrap; gap: 8px;">
+          <h3 style="font-size: 15px; font-weight: 800; margin: 0; color: #ffffff; display: flex; align-items: center; gap: 8px;">
+            <span class="material-symbols-rounded" style="color: #f59e0b;">verified</span>
+            <span>Bot Purchases & License Expiry Tracker</span>
+          </h3>
+          <span style="font-size: 10px; border-radius: 99px; padding: 3px 8px; background: rgba(0, 168, 150, 0.15); color: #00f2fe; font-weight: 800;">1M / 3M / 1Y / Lifetime</span>
+        </div>
+
+        <div class="table-responsive">
+          <table class="crm-table" id="crmSubscriptionsTable">
+            <thead>
+              <tr>
+                <th>Customer</th>
+                <th>Bot Name</th>
+                <th>Plan Tier</th>
+                <th>License Key</th>
+                <th>GTCfx MT5 #</th>
+                <th>Expiry Date</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="crmSubscriptionsTbody">
+              <!-- Dynamic rows -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 5. Executive Backup Hub & Google Sheets Sync -->
       <div class="admin-card">
         <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; margin-bottom: 16px;">
           <div style="display: flex; align-items: center; gap: 12px;">
@@ -639,20 +834,20 @@
               <span class="material-symbols-rounded" style="font-size: 26px;">dataset</span>
             </div>
             <div>
-              <h2 style="font-size: 18px; font-weight: 800; margin: 0; color: #ffffff;">Lifelong Customer Database & Ledger</h2>
-              <p style="font-size: 12px; color: #94a3b8; margin: 2px 0 0 0;">Unified customer accounts, wallet ledger, and permanent cloud backups</p>
+              <h2 style="font-size: 18px; font-weight: 800; margin: 0; color: #ffffff;">Lifelong Customer Database & Backup Hub</h2>
+              <p style="font-size: 12px; color: #94a3b8; margin: 2px 0 0 0;">Export JSON, Excel CSV, and Google Sheets real-time backups</p>
             </div>
           </div>
 
-          <!-- Lifelong Backup / Restore Action Buttons -->
+          <!-- Action Buttons -->
           <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
             <button type="button" onclick="adminController.exportJson()" style="padding: 7px 13px; border-radius: 10px; background: rgba(16, 185, 129, 0.15); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.4); cursor: pointer; display: flex; align-items: center; gap: 6px; font-weight: 800; font-size: 12px;">
               <span class="material-symbols-rounded" style="font-size: 16px;">download</span>
-              <span>Export JSON Backup</span>
+              <span>Export JSON</span>
             </button>
             <button type="button" onclick="adminController.exportCsv()" style="padding: 7px 13px; border-radius: 10px; background: rgba(0, 168, 150, 0.15); color: #00f2fe; border: 1px solid rgba(0, 168, 150, 0.4); cursor: pointer; display: flex; align-items: center; gap: 6px; font-weight: 800; font-size: 12px;">
               <span class="material-symbols-rounded" style="font-size: 16px;">table_chart</span>
-              <span>Export Excel CSV</span>
+              <span>Export CSV</span>
             </button>
             <label style="padding: 7px 13px; border-radius: 10px; background: rgba(255,255,255,0.06); color: #cbd5e1; border: 1px solid rgba(255,255,255,0.15); cursor: pointer; display: inline-flex; align-items: center; gap: 6px; font-weight: 800; font-size: 12px; margin:0;">
               <span class="material-symbols-rounded" style="font-size: 16px;">upload_file</span>
@@ -686,187 +881,11 @@
         </div>
       </div>
 
-      <!-- 2. KPI Metrics Ribbon -->
-      <div class="db-kpi-grid">
-        <div class="kpi-card">
-          <div class="kpi-card-header">
-            <span class="kpi-label">Registered Traders</span>
-            <span class="material-symbols-rounded kpi-icon">group</span>
-          </div>
-          <div class="kpi-value font-mono" id="dbKpiCustomers">1</div>
-          <span class="kpi-delta">Google OAuth Verified</span>
-        </div>
-
-        <div class="kpi-card">
-          <div class="kpi-card-header">
-            <span class="kpi-label">Active EA Passes</span>
-            <span class="material-symbols-rounded kpi-icon">verified</span>
-          </div>
-          <div class="kpi-value font-mono" id="dbKpiSubscriptions">1</div>
-          <span class="kpi-delta">Gold Hunter Pro v1.21</span>
-        </div>
-
-        <div class="kpi-card">
-          <div class="kpi-card-header">
-            <span class="kpi-label">Total User Balance</span>
-            <span class="material-symbols-rounded kpi-icon">account_balance_wallet</span>
-          </div>
-          <div class="kpi-value font-mono text-emerald" id="dbKpiRevenue">100.00 USDT</div>
-          <span class="kpi-delta">Admin Top-Up Controlled</span>
-        </div>
-
-        <div class="kpi-card">
-          <div class="kpi-card-header">
-            <span class="kpi-label">Whitelisted MT5 Bridges</span>
-            <span class="material-symbols-rounded kpi-icon">candlestick_chart</span>
-          </div>
-          <div class="kpi-value font-mono" id="dbKpiMt5">1 Whitelisted</div>
-          <span class="kpi-delta">GTCfx Live Server</span>
-        </div>
-      </div>
-
-      <!-- ======================================================== -->
-      <!-- 3. TOP UP USER WALLET SUITE (BY TRADER ID)               -->
-      <!-- ======================================================== -->
-      <div class="admin-card" id="adminTopupCard" style="border: 1px solid rgba(16, 185, 129, 0.4); box-shadow: 0 10px 35px rgba(16, 185, 129, 0.12);">
-        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; flex-wrap: wrap; gap: 10px;">
-          <div style="display: flex; align-items: center; gap: 10px;">
-            <div style="width: 38px; height: 38px; border-radius: 12px; background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.3); display: flex; align-items: center; justify-content: center; color: #10b981;">
-              <span class="material-symbols-rounded" style="font-size: 22px;">add_card</span>
-            </div>
-            <div>
-              <h3 style="font-size: 16px; font-weight: 800; margin: 0; color: #ffffff;">Admin Direct Wallet Top-Up (By Trader ID)</h3>
-              <p style="font-size: 12px; color: #94a3b8; margin: 2px 0 0 0;">Credit a user's wallet using their Trader ID (e.g. <code>b-102246</code>)</p>
-            </div>
-          </div>
-          <span style="background: rgba(16, 185, 129, 0.12); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.3); font-size: 11px; border-radius: 99px; padding: 4px 12px; font-weight: 800;">
-            ⚡ Admin Only Ledger Credit
-          </span>
-        </div>
-
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin-bottom: 16px;">
-          
-          <!-- Input 1: User / Trader ID -->
-          <div>
-            <label style="display: block; font-size: 11.5px; font-weight: 700; color: #94a3b8; margin-bottom: 6px;">
-              1. User / Trader ID (e.g. <code>b-102246</code>)
-            </label>
-            <div style="display: flex; gap: 8px;">
-              <input type="text" id="adminTopupUserId" class="font-mono" placeholder="e.g. b-102246" value="b-102246" style="flex: 1; height: 42px; border-radius: 12px; background: rgba(0,0,0,0.3); border: 1px solid rgba(45, 155, 136, 0.3); color: #34b39d; font-weight: 800; font-size: 14px; padding: 0 12px;">
-              <select id="adminTopupUserSelect" onchange="adminController.onTopupSelectUser(this.value)" style="height: 42px; border-radius: 12px; background: #141d29; border: 1px solid rgba(45, 155, 136, 0.3); color: #cbd5e1; padding: 0 10px; font-size: 12px; cursor: pointer; max-width: 140px;">
-                <option value="b-102246">Hanaan (b-102246)</option>
-              </select>
-            </div>
-          </div>
-
-          <!-- Input 2: Top-Up Amount -->
-          <div>
-            <label style="display: block; font-size: 11.5px; font-weight: 700; color: #94a3b8; margin-bottom: 6px;">
-              2. Amount to Credit (USDT)
-            </label>
-            <input type="number" id="adminTopupAmount" step="1" min="1" placeholder="100.00" value="100" style="width: 100%; height: 42px; border-radius: 12px; background: rgba(0,0,0,0.3); border: 1px solid rgba(16, 185, 129, 0.4); color: #10b981; font-family: 'JetBrains Mono', monospace; font-weight: 800; font-size: 15px; padding: 0 12px; box-sizing: border-box;">
-          </div>
-
-        </div>
-
-        <!-- Quick Preset Amounts & Action Button -->
-        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding: 12px 14px; background: rgba(14, 20, 27, 0.5); border-radius: 14px; border: 1px solid rgba(45, 155, 136, 0.2);">
-          <div class="topup-presets-container">
-            <span style="font-size: 11.5px; color: #94a3b8; font-weight: 700;">Presets:</span>
-            <button type="button" class="topup-preset-btn" onclick="adminController.setTopupAmount(50)">+$50</button>
-            <button type="button" class="topup-preset-btn" onclick="adminController.setTopupAmount(100)">+$100</button>
-            <button type="button" class="topup-preset-btn" onclick="adminController.setTopupAmount(250)">+$250</button>
-            <button type="button" class="topup-preset-btn" onclick="adminController.setTopupAmount(500)">+$500</button>
-            <button type="button" class="topup-preset-btn" onclick="adminController.setTopupAmount(1000)">+$1,000</button>
-          </div>
-
-          <button type="button" class="btn-topup-action" onclick="adminController.processTopupById()">
-            <span class="material-symbols-rounded" style="font-size: 18px;">account_balance_wallet</span>
-            <span>Credit User Wallet (+ USDT)</span>
-          </button>
-        </div>
-
-      </div>
-
-      <!-- ======================================================== -->
-      <!-- 4. MASTER CUSTOMER REGISTRY & LIFELONG DATABASE TABLE    -->
-      <!-- ======================================================== -->
-      <div class="admin-card">
-        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; flex-wrap: wrap; gap: 10px;">
-          <div style="display: flex; align-items: center; gap: 10px;">
-            <div style="width: 36px; height: 36px; border-radius: 10px; background: rgba(0, 168, 150, 0.15); display: flex; align-items: center; justify-content: center; color: #00a896;">
-              <span class="material-symbols-rounded">group</span>
-            </div>
-            <div>
-              <h3 style="font-size: 16px; font-weight: 800; margin: 0; color: #ffffff;">Lifelong Customer Registry</h3>
-              <p style="font-size: 11.5px; color: #94a3b8; margin: 2px 0 0 0;">Search, edit customer profiles, manage MT5 bonds, and view balances</p>
-            </div>
-          </div>
-
-          <div style="display: flex; align-items: center; gap: 8px;">
-            <input type="text" id="crmSearchInput" placeholder="Search Trader ID, Name, Email, MT5..." oninput="adminController.filterCustomers(this.value)" style="height: 36px; border-radius: 10px; background: rgba(0,0,0,0.3); border: 1px solid rgba(45, 155, 136, 0.3); color:#fff; padding: 0 12px; font-size: 12px; width: 220px;">
-            <button onclick="adminController.openNewCustomerModal()" style="height: 36px; padding: 0 14px; border-radius: 10px; font-weight: 800; background: #00A896; border: none; color:#fff; cursor:pointer; font-size: 12px; display: flex; align-items: center; gap: 4px;">
-              <span class="material-symbols-rounded" style="font-size: 16px;">person_add</span>
-              <span>Add Customer</span>
-            </button>
-          </div>
-        </div>
-
-        <div class="table-responsive">
-          <table class="crm-table" id="crmCustomersTable">
-            <thead>
-              <tr>
-                <th>Customer / Name</th>
-                <th>Trader ID</th>
-                <th>Contact (Email / WA)</th>
-                <th>GTCfx MT5 #</th>
-                <th>Wallet Balance</th>
-                <th>Tier / Status</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody id="crmCustomersTbody">
-              <!-- Dynamic Rows -->
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <!-- 5. Active Bot Passes & Expiry Tracker -->
-      <div class="admin-card">
-        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; flex-wrap: wrap; gap: 8px;">
-          <h3 style="font-size: 15px; font-weight: 800; margin: 0; color: #ffffff; display: flex; align-items: center; gap: 8px;">
-            <span class="material-symbols-rounded" style="color: #f59e0b;">verified</span>
-            <span>Bot Purchases & License Expiry Tracker</span>
-          </h3>
-          <span style="font-size: 10px; border-radius: 99px; padding: 3px 8px; background: rgba(0, 168, 150, 0.15); color: #00f2fe; font-weight: 800;">1M / 3M / 1Y / Lifetime</span>
-        </div>
-
-        <div class="table-responsive">
-          <table class="crm-table" id="crmSubscriptionsTable">
-            <thead>
-              <tr>
-                <th>Customer</th>
-                <th>Bot Name</th>
-                <th>Plan Tier</th>
-                <th>License Key</th>
-                <th>GTCfx MT5 #</th>
-                <th>Expiry Date</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody id="crmSubscriptionsTbody">
-              <!-- Dynamic rows -->
-            </tbody>
-          </table>
-        </div>
-      </div>
-
     </main>
   </div>
 
   <!-- ======================================================== -->
-  <!-- 5. CUSTOMER PROFILE DETAIL & LIFELONG LEDGER MODAL       -->
+  <!-- 6. CUSTOMER PROFILE DETAIL & LIFELONG LEDGER MODAL       -->
   <!-- ======================================================== -->
   <div class="admin-modal-overlay" id="customerDetailModal">
     <div class="admin-modal-card">
@@ -939,35 +958,22 @@
   </div>
 
   <script>
-    // Global Access Handlers
-    function handleLine1Input(val) {
+    // Single Passcode Global Handler
+    function handlePasscodeInput(val) {
       val = (val || '').replace(/\D/g, '');
-      const inp = document.getElementById('adminPin1Input');
+      const inp = document.getElementById('adminSinglePasscodeInput');
       if (inp && inp.value !== val) inp.value = val;
-      if (val === '9633' || val.length >= 4) {
-        const inp2 = document.getElementById('adminPin2Input');
-        if (inp2) inp2.focus();
-      }
-      clearGateError();
-    }
-
-    function handleLine2Input(val) {
-      val = (val || '').replace(/\D/g, '');
-      const inp = document.getElementById('adminPin2Input');
-      if (inp && inp.value !== val) inp.value = val;
-      const inp1 = document.getElementById('adminPin1Input');
-      const p1 = (inp1 ? inp1.value.trim() : '');
-      if (p1 === '9633' && (val === '298130' || val.length >= 6)) {
+      
+      // Auto-unlock when matching either 298130 or 9633
+      if (val === '298130' || val === '9633') {
         setTimeout(handleFormUnlock, 50);
       }
       clearGateError();
     }
 
     function togglePinVisibility(show) {
-      const inp1 = document.getElementById('adminPin1Input');
-      const inp2 = document.getElementById('adminPin2Input');
-      if (inp1) inp1.type = show ? 'text' : 'password';
-      if (inp2) inp2.type = show ? 'text' : 'password';
+      const inp = document.getElementById('adminSinglePasscodeInput');
+      if (inp) inp.type = show ? 'text' : 'password';
     }
 
     function clearGateError() {
@@ -980,25 +986,19 @@
         e.preventDefault();
       }
 
-      const inp1 = document.getElementById('adminPin1Input');
-      const inp2 = document.getElementById('adminPin2Input');
+      const inp = document.getElementById('adminSinglePasscodeInput');
+      const pin = (inp ? inp.value.trim() : '');
 
-      const p1 = (inp1 ? inp1.value.trim() : '');
-      const p2 = (inp2 ? inp2.value.trim() : '');
-
-      // STRICT MANDATORY: BOTH codes MUST be entered exactly
-      if (p1 === '9633' && p2 === '298130') {
-        sessionStorage.setItem('b_admin_session_auth_v2', 'AUTH_9633_298130');
+      // Single Passcode Validation: Accepts 298130 or 9633
+      if (pin === '298130' || pin === '9633') {
+        sessionStorage.setItem('b_admin_session_auth_v2', 'AUTH_ADMIN_OK');
         doUnlockAndShowAdminStage();
         return false;
       } else {
         const err = document.getElementById('gateErrorMsg');
         if (err) {
-          if (!p1 || !p2) {
-            err.textContent = '❌ Both Passcode Line 1 and Line 2 are strictly required.';
-          } else {
-            err.textContent = '❌ Invalid Passcode(s). Access Denied.';
-          }
+          err.style.color = '#ef4444';
+          err.textContent = '❌ Invalid Passcode. Access Denied.';
         }
         shakeGateCard();
         return false;
@@ -1022,8 +1022,6 @@
         stage.style.opacity = '1';
       }
 
-      startAutoLockWatcher();
-
       document.body.style.overflow = 'auto';
 
       try {
@@ -1033,12 +1031,14 @@
       } catch(e) {
         console.warn("adminController error:", e);
       }
+
+      startAutoLockWatcher();
     }
 
     /* ======================================================== */
     /* 10-MINUTE INACTIVITY AUTO-LOCK SYSTEM                    */
     /* ======================================================== */
-    const AUTO_LOCK_TIMEOUT_MS = 10 * 60 * 1000; // 10 minutes idle limit
+    const AUTO_LOCK_TIMEOUT_MS = 10 * 60 * 1000; // 10 minutes
     let lastActivityTimestamp = Date.now();
     let autoLockInterval = null;
 
@@ -1057,7 +1057,7 @@
 
       if (autoLockInterval) clearInterval(autoLockInterval);
       autoLockInterval = setInterval(() => {
-        const isAuth = sessionStorage.getItem('b_admin_session_auth_v2') === 'AUTH_9633_298130';
+        const isAuth = sessionStorage.getItem('b_admin_session_auth_v2') === 'AUTH_ADMIN_OK';
         if (!isAuth) return;
 
         const elapsed = Date.now() - lastActivityTimestamp;
@@ -1069,7 +1069,6 @@
 
     function lockAdminSession(reason) {
       sessionStorage.removeItem('b_admin_session_auth_v2');
-      sessionStorage.removeItem('b_admin_session_auth');
       if (reason) {
         sessionStorage.setItem('b_admin_lock_reason', reason);
       }
@@ -1098,7 +1097,7 @@
     }
 
     /* ======================================================== */
-    /* MASTER CUSTOMER DATABASE & LIFELONG CRM CONTROLLER       */
+    /* MASTER CUSTOMER DATABASE & WALLET CONTROLLER             */
     /* ======================================================== */
     class AdminMasterController {
       constructor() {
@@ -1198,47 +1197,56 @@
         if (inp) inp.value = userId;
       }
 
-      quickTopupUser(userId) {
+      quickTopupUser(userId, mode = 'CREDIT') {
         const inp = document.getElementById('adminTopupUserId');
         if (inp) inp.value = userId;
+        const modeSel = document.getElementById('adminWalletOpMode');
+        if (modeSel) modeSel.value = mode;
         const card = document.getElementById('adminTopupCard');
         if (card) card.scrollIntoView({ behavior: 'smooth' });
         const amtInp = document.getElementById('adminTopupAmount');
         if (amtInp) amtInp.focus();
       }
 
-      processTopupById() {
+      processWalletOperation() {
         const idInp = document.getElementById('adminTopupUserId');
         const amtInp = document.getElementById('adminTopupAmount');
+        const modeSel = document.getElementById('adminWalletOpMode');
         
         let targetId = (idInp && idInp.value.trim()) || 'b-102246';
         let amount = parseFloat((amtInp && amtInp.value) || 0);
+        let mode = (modeSel && modeSel.value) || 'CREDIT';
 
-        if (isNaN(amount) || amount <= 0) {
-          alert('Please enter a valid positive top-up amount in USDT.');
+        if (isNaN(amount) || amount < 0) {
+          alert('Please enter a valid amount in USDT.');
           return;
         }
 
-        // 1. Update localStorage wallet balance
-        const currentBal = parseFloat(localStorage.getItem('b_bot_wallet_balance') || '0');
-        const newBal = currentBal + amount;
-        localStorage.setItem('b_bot_wallet_balance', newBal.toFixed(2));
-
-        // 2. Update user database
         let users = this.getStoredUsers();
-        let found = false;
+        let targetUser = users.find(u => (u.id === targetId || u.userId === targetId || (u.id && u.id.includes(targetId))));
         
-        if (users.length > 0) {
-          users = users.map(u => {
-            const uId = u.id || u.userId || '';
-            if (uId === targetId || uId.includes(targetId.replace('b-', '')) || targetId.includes(uId)) {
-              found = true;
-              u.balance = (parseFloat(u.balance || 0) + amount);
-              u.lastTopup = new Date().toISOString();
-            }
-            return u;
-          });
+        let oldBal = targetUser ? parseFloat(targetUser.balance || 0) : parseFloat(localStorage.getItem('b_bot_wallet_balance') || '100');
+        let newBal = oldBal;
+
+        if (mode === 'CREDIT') {
+          newBal = oldBal + amount;
+        } else if (mode === 'DEDUCT') {
+          newBal = Math.max(0, oldBal - amount);
+        } else if (mode === 'SET') {
+          newBal = amount;
         }
+
+        // Update database
+        let found = false;
+        users = users.map(u => {
+          const uId = u.id || u.userId || '';
+          if (uId === targetId || uId.includes(targetId.replace('b-', '')) || targetId.includes(uId)) {
+            found = true;
+            u.balance = newBal;
+            u.lastUpdated = new Date().toISOString();
+          }
+          return u;
+        });
 
         if (!found) {
           users.push({
@@ -1258,14 +1266,17 @@
 
         this.saveStoredUsers(users);
 
-        // 3. Log transaction
+        // Update active trading app balance if target is current user
+        localStorage.setItem('b_bot_wallet_balance', newBal.toFixed(2));
+
+        // Log transaction
         try {
           const txs = JSON.parse(localStorage.getItem('b_bot_transactions') || '[]');
           txs.unshift({
             id: 'TX_ADM_' + Date.now().toString(36).toUpperCase(),
-            type: 'Top-Up',
-            desc: `Admin Direct Credit to ${targetId}`,
-            amount: amount,
+            type: mode === 'DEDUCT' ? 'Admin Debit' : 'Admin Top-Up',
+            desc: `Admin ${mode} balance on ${targetId}`,
+            amount: mode === 'DEDUCT' ? -amount : amount,
             status: 'completed',
             date: new Date().toISOString(),
             channel: 'Admin Master Panel'
@@ -1273,19 +1284,19 @@
           localStorage.setItem('b_bot_transactions', JSON.stringify(txs.slice(0, 50)));
         } catch(e) {}
 
-        // 4. Broadcast Real-Time Wallet Sync Event
+        // Broadcast Real-Time Sync Event across all browser tabs
         try {
           localStorage.setItem('b_bot_wallet_sync_event', JSON.stringify({
             userId: targetId,
             amount: amount,
+            mode: mode,
             newBal: newBal,
             timestamp: Date.now()
           }));
         } catch(e) {}
 
-        // 5. Update UI
         this.refreshData();
-        this.showToast(`✅ Successfully credited +${amount.toFixed(2)} USDT to ${targetId}! Balance: ${newBal.toFixed(2)} USDT`);
+        this.showToast(`✅ Successfully updated ${targetId} wallet balance to ${newBal.toFixed(2)} USDT!`);
       }
 
       filterCustomers(q) {
@@ -1414,7 +1425,8 @@
           users = this.getStoredUsers();
         }
 
-        const primaryBal = Number(localStorage.getItem('b_bot_wallet_balance') || (users[0] && users[0].balance) || 100).toFixed(2);
+        // Calculate Total System Balance
+        const totalSysBal = users.reduce((sum, u) => sum + (parseFloat(u.balance) || 0), 0);
         
         // Update KPIs
         const kpiCust = document.getElementById('dbKpiCustomers');
@@ -1422,7 +1434,7 @@
 
         const kpiBal = document.getElementById('dbKpiRevenue');
         if (kpiBal) {
-          kpiBal.textContent = `${primaryBal} USDT`;
+          kpiBal.textContent = `${totalSysBal.toFixed(2)} USDT`;
         }
 
         // Apply search filter
@@ -1455,14 +1467,22 @@
                   <span class="font-mono font-bold" style="color:#00f2fe; font-size:12px;">${uPhone}</span>
                 </td>
                 <td class="font-mono font-bold" style="color:#10b981;">#${uMt5}</td>
-                <td class="font-mono text-emerald font-bold" style="font-size:14px;">${uBal} USDT</td>
+                <td>
+                  <span class="balance-badge">
+                    <span>${uBal}</span>
+                    <span style="font-size:10px;">USDT</span>
+                  </span>
+                </td>
                 <td><span style="font-size:9.5px; border-radius:6px; padding:2px 6px; background:rgba(0,168,150,0.15); color:#00f2fe; font-weight:800;">${uTier}</span></td>
                 <td>
-                  <div style="display: flex; align-items: center; gap: 4px;">
-                    <button type="button" onclick="adminController.quickTopupUser('${uId}')" style="padding: 4px 8px; border-radius: 6px; background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.4); color: #10b981; font-size: 11px; font-weight: 800; cursor: pointer;" title="Credit Wallet">
+                  <div style="display: flex; align-items: center; gap: 4px; flex-wrap: wrap;">
+                    <button type="button" onclick="adminController.quickTopupUser('${uId}', 'CREDIT')" style="padding: 4px 8px; border-radius: 6px; background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.4); color: #10b981; font-size: 11px; font-weight: 800; cursor: pointer;" title="Credit / Top Up">
                       + Top Up
                     </button>
-                    <button type="button" onclick="adminController.editCustomer('${uId}')" style="padding: 4px 8px; border-radius: 6px; background: rgba(0, 168, 150, 0.15); border: 1px solid rgba(0, 168, 150, 0.4); color: #00f2fe; font-size: 11px; font-weight: 800; cursor: pointer;" title="Edit Profile">
+                    <button type="button" onclick="adminController.quickTopupUser('${uId}', 'DEDUCT')" style="padding: 4px 8px; border-radius: 6px; background: rgba(244, 63, 94, 0.15); border: 1px solid rgba(244, 63, 94, 0.4); color: #f43f5e; font-size: 11px; font-weight: 800; cursor: pointer;" title="Deduct Balance">
+                      - Deduct
+                    </button>
+                    <button type="button" onclick="adminController.editCustomer('${uId}')" style="padding: 4px 8px; border-radius: 6px; background: rgba(0, 168, 150, 0.15); border: 1px solid rgba(0, 168, 150, 0.4); color: #00f2fe; font-size: 11px; font-weight: 800; cursor: pointer;" title="Edit Customer Profile">
                       Edit
                     </button>
                   </div>
@@ -1491,7 +1511,7 @@
         // Populate Selects
         const topupSel = document.getElementById('adminTopupUserSelect');
         if (topupSel && users.length > 0) {
-          topupSel.innerHTML = users.map(u => `<option value="${u.id || u.userId || 'b-102246'}">${u.name || u.email} (${u.id || u.userId || 'b-102246'})</option>`).join('');
+          topupSel.innerHTML = users.map(u => `<option value="${u.id || u.userId || 'b-102246'}">${u.name || u.email} (${u.id || u.userId || 'b-102246'}) - ${(Number(u.balance)||0).toFixed(2)} USDT</option>`).join('');
         }
       }
 
@@ -1554,7 +1574,7 @@
 
     function checkInitialAuth() {
       const auth = sessionStorage.getItem('b_admin_session_auth_v2');
-      if (auth === 'AUTH_9633_298130') {
+      if (auth === 'AUTH_ADMIN_OK') {
         doUnlockAndShowAdminStage();
       }
     }
