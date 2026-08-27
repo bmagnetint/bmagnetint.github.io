@@ -1369,7 +1369,17 @@
           localStorage.setItem('b_bot_transactions', JSON.stringify(txs.slice(0, 50)));
         } catch(e) {}
 
-        // 4. Update UI
+        // 4. Broadcast Real-Time Wallet Sync Event for Client Trading App
+        try {
+          localStorage.setItem('b_bot_wallet_sync_event', JSON.stringify({
+            userId: targetId,
+            amount: amount,
+            newBal: newBal,
+            timestamp: Date.now()
+          }));
+        } catch(e) {}
+
+        // 5. Update UI
         this.refreshData();
         this.showToast(`✅ Successfully credited ${amount.toFixed(2)} USDT to ${targetId}! New Balance: ${newBal.toFixed(2)} USDT`);
       }

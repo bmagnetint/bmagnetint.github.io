@@ -1778,6 +1778,39 @@ class BotHubApp {
         if (el) el.textContent = val;
       });
     }
+
+    // Real-time Multi-Tab & Admin Top-Up Synchronizer
+    window.addEventListener('storage', (e) => {
+      if (e.key === 'b_bot_wallet_balance' || e.key === 'b_bot_users_db' || e.key === 'b_bot_wallet_sync_event') {
+        const bal = this.getWalletBalance();
+        this.renderWallet();
+        if (this.state.selectedBotForCheckout) {
+          this.updateCheckoutSummary();
+        }
+        if (e.key === 'b_bot_wallet_sync_event' && e.newValue) {
+          try {
+            const data = JSON.parse(e.newValue);
+            this.showToast(`⚡ Wallet credited +${Number(data.amount).toFixed(2)} USDT by Admin! New Balance: ${Number(data.newBal).toFixed(2)} USDT`, 'success');
+          } catch(err) {}
+        }
+      }
+    });
+
+    window.addEventListener('focus', () => {
+      this.renderWallet();
+      if (this.state.selectedBotForCheckout) {
+        this.updateCheckoutSummary();
+      }
+    });
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible') {
+        this.renderWallet();
+        if (this.state.selectedBotForCheckout) {
+          this.updateCheckoutSummary();
+        }
+      }
+    });
   }
 
   async fetchData() {
@@ -1793,12 +1826,15 @@ class BotHubApp {
 
       if (botsRes.success) this.state.bots = botsRes.bots;
       if (subsRes.success) this.state.subscriptions = subsRes.subscriptions;
-      if (walletRes.success) this.state.wallet = walletRes.wallet;
+      if (walletRes.success && walletRes.wallet) {
+        this.state.wallet = walletRes.wallet;
+        localStorage.setItem('b_bot_wallet_balance', Number(walletRes.wallet.balance || 0).toFixed(2));
+      }
       if (pmsRes.success) this.state.paymentMethods = pmsRes.paymentMethods;
       if (invsRes.success) this.state.invoices = invsRes.invoices;
       if (creatorRes.success) this.state.creator = creatorRes.creator;
 
-            // Static Hosting Fallback (loads data/db.json if API is offline)
+      // Static Hosting Fallback (loads data/db.json if API is offline)
       if (!this.state.bots || this.state.bots.length === 0) {
         try {
           const staticDb = await fetch("data/db.json").then(r => r.json()).catch(() => null);
@@ -1838,7 +1874,32 @@ class BotHubApp {
   }
 
   getWalletBalance() {
-    return Number(localStorage.getItem('b_bot_wallet_balance') || (this.state.wallet && this.state.wallet.balance) || 0);
+    const stored = localStorage.getItem('b_bot_wallet_balance');
+    if (stored !== null && !isNaN(parseFloat(stored))) {
+      const bal = parseFloat(stored);
+      if (!this.state.wallet) this.state.wallet = { balance: bal, currency: 'USDT (BEP-20)' };
+      this.state.wallet.balance = bal;
+      return bal;
+    }
+
+    try {
+      const users = JSON.parse(localStorage.getItem('b_bot_users_db') || '[]');
+      const curUser = this.state.currentUser;
+      if (curUser) {
+        const uId = this.formatShortUserId(curUser.userId || curUser.id, curUser.email, curUser.googleId);
+        const found = users.find(u => (u.id === uId || u.userId === uId));
+        if (found && found.balance !== undefined) {
+          const bal = parseFloat(found.balance) || 0;
+          localStorage.setItem('b_bot_wallet_balance', bal.toFixed(2));
+          if (!this.state.wallet) this.state.wallet = { balance: bal, currency: 'USDT (BEP-20)' };
+          this.state.wallet.balance = bal;
+          return bal;
+        }
+      }
+    } catch(e) {}
+
+    const bal = Number((this.state.wallet && this.state.wallet.balance) || 0);
+    return bal;
   }
 
   setWalletBalance(newBal) {
@@ -1846,6 +1907,32 @@ class BotHubApp {
     if (!this.state.wallet) this.state.wallet = { balance: 0, currency: 'USDT (BEP-20)' };
     this.state.wallet.balance = bal;
     localStorage.setItem('b_bot_wallet_balance', bal.toFixed(2));
+
+    try {
+      let users = JSON.parse(localStorage.getItem('b_bot_users_db') || '[]');
+      const curUser = this.state.currentUser;
+      const uId = curUser ? this.formatShortUserId(curUser.userId || curUser.id, curUser.email, curUser.googleId) : 'b-102246';
+      let found = false;
+      users = users.map(u => {
+        if (u.id === uId || u.userId === uId) {
+          found = true;
+          u.balance = bal;
+        }
+        return u;
+      });
+      if (!found && curUser) {
+        users.push({
+          id: uId,
+          userId: uId,
+          name: curUser.name || 'Hanaan Junaid',
+          email: curUser.email || 'bmagnet.int@gmail.com',
+          balance: bal,
+          gtcfxMt5Account: curUser.gtcfxMt5Account || '8849201'
+        });
+      }
+      localStorage.setItem('b_bot_users_db', JSON.stringify(users));
+    } catch(e) {}
+
     this.renderWallet();
     return bal;
   }
@@ -1874,8 +1961,8 @@ class BotHubApp {
     if (checkoutCurrent) checkoutCurrent.textContent = `${bal} USDT`;
 
     // Update Trader ID displays
-    const user = this.state.user || {};
-    const shortId = this.formatShortUserId(user.id, user.email, user.googleId) || 'b-102246';
+    const user = this.state.currentUser || {};
+    const shortId = this.formatShortUserId(user.userId || user.id, user.email, user.googleId) || 'b-102246';
     const traderIdBilling = document.getElementById('billingTraderIdDisplay');
     if (traderIdBilling) traderIdBilling.textContent = `Trader ID: ${shortId}`;
     const traderIdStep = document.getElementById('txtTraderIdStep');
@@ -2879,7 +2966,7 @@ class BotHubApp {
 
     const plan = (bot.plans && bot.plans[this.state.selectedPlanKey]) || { name: '1 Month Pass', price: 100 };
     const price = Number(plan.price || 0);
-    const currentBalance = Number((this.state.wallet && this.state.wallet.balance) || 0);
+    const currentBalance = this.getWalletBalance();
     const remaining = currentBalance - price;
     const hasEnoughFunds = remaining >= 0;
     const shortfall = price - currentBalance;
@@ -2931,13 +3018,13 @@ class BotHubApp {
       }
     } else {
       if (shortfallAlert) shortfallAlert.style.display = 'none';
-      if (btnText) btnText.textContent = `Pay ${price.toFixed(2)} USDT`;
+      if (btnText) btnText.textContent = `Pay ${price.toFixed(2)} USDT & Activate`;
       if (btnIcon) btnIcon.textContent = 'lock';
       if (submitBtn) {
         submitBtn.disabled = false;
         submitBtn.className = 'btn-primary btn-block btn-lg';
-        submitBtn.style.background = '';
-        submitBtn.style.color = '';
+        submitBtn.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
+        submitBtn.style.color = '#ffffff';
       }
     }
   }
@@ -2948,7 +3035,7 @@ class BotHubApp {
 
     const plan = (bot.plans && bot.plans[this.state.selectedPlanKey]) || { name: '1 Month Pass', price: 100, durationDays: 30 };
     const price = Number(plan.price || 0);
-    const currentBalance = Number((this.state.wallet && this.state.wallet.balance) || 0);
+    const currentBalance = this.getWalletBalance();
 
     if (currentBalance < price) {
       const shortfall = price - currentBalance;
