@@ -2093,7 +2093,7 @@ class BotHubApp {
     let planCategoryDisplay = isAr ? 'تداول الذهب XAUUSD' : 'Gold Hunter • MT5 Institutional';
 
     let featuresList = [
-      { icon: 'verified_user', text: isAr ? 'ترخيص بوت MT5 Gold Hunter EA v0.8 كامل لمدة 30 يوماً (حساب حقيقي أو تجريبي)' : 'Full MT5 Gold Hunter EA v0.8 License (Live & Demo Account Support)' },
+      { icon: 'verified_user', text: isAr ? 'ترخيص بوت MT5 Gold Hunter EA v1.21 كامل لمدة 30 يوماً (حساب حقيقي أو تجريبي)' : 'Full MT5 Gold Hunter EA v1.21 License (Live & Demo Account Support)' },
       { icon: 'schedule', text: isAr ? 'تداول آلي على مدار 24/5 للذهب (XAUUSD) خلال جلستي لندن ونيويورك النشطة' : '24/5 Automated Gold (XAUUSD) Trading in Active London & NY Sessions' },
       { icon: 'psychology', text: isAr ? 'كشف تدفق السيولة المؤسسية ونقاط الاختراق المتقدمة مع مرشح الأخبار' : 'Neural Liquidity Flow & Institutional Imbalance Order-Flow Detection' },
       { icon: 'shield', text: isAr ? 'إدارة مخاطر ديناميكية مع وقف خسارة وجني أرباح متعدد المراحل تلقائياً' : 'Automated Dynamic Stop-Loss & Multi-Stage Take-Profit Trailing Guard' },
@@ -4301,7 +4301,7 @@ Hello, here are my subscription and license details. Please verify my GTCfx MT5 
   copyModalWhatsAppMsg() {
     if (!this.modalGeneratedKeyData) this.generateModalKey();
     const d = this.modalGeneratedKeyData;
-    const msg = `🧲 *B-MAGNET GOLD HUNTER v.08 LICENSE ACTIVATION*\n\n` +
+    const msg = `🧲 *B-MAGNET GOLD HUNTER v1.21 LICENSE ACTIVATION*\n\n` +
                 `👤 *Registered MT5 Account:* #${d.account}\n` +
                 `💎 *Plan:* ${d.plan}\n` +
                 `⏳ *Validity Until:* ${d.expiryDesc}\n\n` +
@@ -4326,7 +4326,7 @@ Hello, here are my subscription and license details. Please verify my GTCfx MT5 
   sendModalWhatsAppDirect() {
     if (!this.modalGeneratedKeyData) this.generateModalKey();
     const d = this.modalGeneratedKeyData;
-    const msg = `🧲 *B-MAGNET GOLD HUNTER v.08 LICENSE ACTIVATION*\n\n` +
+    const msg = `🧲 *B-MAGNET GOLD HUNTER v1.21 LICENSE ACTIVATION*\n\n` +
                 `👤 *Registered MT5 Account:* #${d.account}\n` +
                 `💎 *Plan:* ${d.plan}\n` +
                 `⏳ *Validity Until:* ${d.expiryDesc}\n\n` +
@@ -4528,7 +4528,7 @@ Hello, here are my subscription and license details. Please verify my GTCfx MT5 
   copyAdminWhatsAppMsg() {
     if (!this.adminGeneratedKeyData) this.generateAdminKey();
     const d = this.adminGeneratedKeyData;
-    const msg = `🧲 *B-MAGNET GOLD HUNTER v.08 LICENSE ACTIVATION*\n\n` +
+    const msg = `🧲 *B-MAGNET GOLD HUNTER v1.21 LICENSE ACTIVATION*\n\n` +
                 `👤 *Registered MT5 Account:* #${d.account}\n` +
                 `💎 *Plan:* ${d.plan}\n` +
                 `⏳ *Validity Until:* ${d.expiryDesc}\n\n` +
@@ -4553,7 +4553,7 @@ Hello, here are my subscription and license details. Please verify my GTCfx MT5 
   sendAdminWhatsAppDirect() {
     if (!this.adminGeneratedKeyData) this.generateAdminKey();
     const d = this.adminGeneratedKeyData;
-    const msg = `🧲 *B-MAGNET GOLD HUNTER v.08 LICENSE ACTIVATION*\n\n` +
+    const msg = `🧲 *B-MAGNET GOLD HUNTER v1.21 LICENSE ACTIVATION*\n\n` +
                 `👤 *Registered MT5 Account:* #${d.account}\n` +
                 `💎 *Plan:* ${d.plan}\n` +
                 `⏳ *Validity Until:* ${d.expiryDesc}\n\n` +
