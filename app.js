@@ -1973,9 +1973,9 @@ class BotHubApp {
 
   appendAdminPin(digit) {
     const input = document.getElementById('crmAdminPinInput');
-    if (input && input.value.length < 4) {
+    if (input && input.value.length < 6) {
       input.value += digit;
-      if (input.value.length === 4) {
+      if (input.value.length === 6) {
         setTimeout(() => this.verifyAdminLockCode(), 120);
       }
     }
@@ -1997,7 +1997,7 @@ class BotHubApp {
     const input = document.getElementById('crmAdminPinInput');
     const enteredPin = (input ? input.value : '').trim();
 
-    if (enteredPin === '9633') {
+    if (enteredPin === '298130') {
       this.state.isAdminUnlocked = true;
       this.closeModal('crmAdminLockModal');
       this.showToast('🔓 Master Admin Access Granted! Welcome to Admin Panel.', 'success');

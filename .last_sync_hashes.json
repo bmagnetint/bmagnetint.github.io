@@ -1,5 +1,5 @@
 {
-  "public/app.js": "479a75284a9d2bc7df4a1ac02a6c804bacb346ba2aa1d3a1b47e90b3bd34da4e",
+  "public/app.js": "edfdcef42991e95b9ab5dfae9371cfd72fc5861faf172c2fe4d62974038e45d3",
   "public/apple-touch-icon-precomposed.png": "cef73be89c60058c66ae1dba85ff02061bc73b50d7c1909e1c8ca27f88dd43e1",
   "public/apple-touch-icon.png": "cef73be89c60058c66ae1dba85ff02061bc73b50d7c1909e1c8ca27f88dd43e1",
   "public/db.json": "560a1bf3f4da3a3970b1af5c6668ac814b3f617f246c8b46ed5a048df6e55449",
@@ -12,7 +12,7 @@
   "public/manifest.json": "2bbc3603248cab9221f4a7126474778bbfcd923ee55f0ead6f9e90d2d285c5b1",
   "public/privacy.html": "21eebab04cbd4edd0224299a95266689570866368ace423b837d65973ecc8bfc",
   "public/qrcode.js": "dc1fe07e667ce0632a54da24052d836319116b56335bc5f7d4cd8186e8a6f2c6",
-  "public/robots.txt": "a63e3142de1f94bac2770829a86362bd2b71dd7b7ef88d00bc8e8feb690a0f07",
+  "public/robots.txt": "9279270cef3a1b0937a5b7c22c4ae80cdd93a5966036f60a6ca24815fbdfb9e0",
   "public/signinpage.html": "1c6fefc77e4eebe3e15b8b6a1cef6ae4b5eb206e58505539070a358f1aca307a",
   "public/style.css": "04a0f4895e2fc8f3b35a5689b78a64f4347ea701a6acdd589a0099853ed810f5",
   "public/sw.js": "e29f8ab7d878ab323e8976f0b49833d24007af4edd7c8ef4d1c6143d9817f92b",
@@ -28,8 +28,9 @@
   "public/images/hero-trader-skipio.jpg": "92dbf03b4c9f3ce932382fada39e7974fa9574622de2dc93d4040b89f89204aa",
   "public/images/whatsapp_status_cover.jpg": "b8d75a70d2a895da067fc95bc308acca7d3e18b73187248357af7a3fa8e2727d",
   "public/terms/index.html": "52250e678797b2876f36166fe503d9cf695b9fa214f2f9696cae2ed6399f4d18",
-  "public/admin/index.html": "a42262e08ef32c66d928515e7194706e1832c2fc630682a25d7bcc6266f831c8",
-  "public/admin/9633/index.html": "dcfb3b309fdefc8f2a41d10cbf1cf703d37a1fe50179241b05799db41ec63508",
+  "public/admin/index.html": "2e7feb31a6da01e325bbf67159bfc60e00e56b1a7f12260ad14f29c83b63cda5",
+  "public/admin/9633/index.html": "826b90f6fca30f2627dc9f06ced18c470b74cc402fbd10c59125199500b4218d",
+  "public/admin/298130/index.html": "826b90f6fca30f2627dc9f06ced18c470b74cc402fbd10c59125199500b4218d",
   "public/signinpage/index.html": "1c6fefc77e4eebe3e15b8b6a1cef6ae4b5eb206e58505539070a358f1aca307a",
   "public/login/index.html": "d2c2c229f5ef9cc59fa456da2c161a746e43702306d97d5046d4bdba7f41f11f",
   "data/db.json": "77ad6688889bfb85cf7711d442ff2db9bb48305447da81c7c87c30faed2e4a24"

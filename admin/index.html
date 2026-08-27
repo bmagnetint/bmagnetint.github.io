@@ -80,9 +80,9 @@
       <span class="material-symbols-rounded" style="font-size: 28px;">admin_panel_settings</span>
     </div>
     <h2 style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 20px; font-weight: 800; margin: 0 0 6px 0; color: #ffffff;">Admin Security Gate</h2>
-    <p style="font-size: 13px; color: #94a3b8; margin: 0 0 20px 0;">Enter Master 4-digit PIN to unlock the Admin CRM Portal.</p>
+    <p style="font-size: 13px; color: #94a3b8; margin: 0 0 20px 0;">Enter Master 6-digit PIN to unlock the Admin CRM Portal.</p>
     
-    <input type="password" id="gatePin" class="gate-input" maxlength="4" placeholder="••••" autofocus onkeydown="if(event.key==='Enter') checkGatePin();">
+    <input type="password" id="gatePin" class="gate-input" maxlength="6" placeholder="••••••" autofocus onkeydown="if(event.key==='Enter') checkGatePin();">
     <button type="button" class="gate-btn" onclick="checkGatePin()">Unlock Portal</button>
     <div id="gateError" style="color: #ef4444; font-size: 12px; margin-top: 10px; display: none;">Invalid PIN. Please try again.</div>
     <div style="margin-top: 20px;">
@@ -93,9 +93,9 @@
   <script>
     function checkGatePin() {
       const pin = document.getElementById('gatePin').value.trim();
-      if (pin === '9633') {
-        sessionStorage.setItem('b_admin_session_auth', '9633');
-        window.location.href = '/admin/9633/';
+      if (pin === '298130') {
+        sessionStorage.setItem('b_admin_session_auth', '298130');
+        window.location.href = '/admin/298130/';
       } else {
         document.getElementById('gateError').style.display = 'block';
         document.getElementById('gatePin').value = '';

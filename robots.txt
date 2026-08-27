@@ -2,5 +2,6 @@ User-agent: *
 Allow: /
 Disallow: /admin/
 Disallow: /admin/9633/
+Disallow: /admin/298130/
 
 Sitemap: https://bmagnetint.com/sitemap.xml
