@@ -15776,13 +15776,14 @@ body.aesthetic-login-page.theme-light .login-side-panel-window {
 
 .lspw-header-text {
   text-align: center !important;
-  margin-bottom: 14px !important;
+  margin-bottom: 12px !important;
 }
 
 .lspw-badge {
   font-size: 9.5px !important;
   font-weight: 800 !important;
-  letter-spacing: 0.1em !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
   color: #34b39d !important;
   background: rgba(45, 155, 136, 0.12) !important;
   border: 1px solid rgba(45, 155, 136, 0.3) !important;
@@ -15800,16 +15801,35 @@ body.aesthetic-login-page.theme-light .lspw-badge {
 
 .lspw-title {
   font-family: 'Zodiak', serif !important;
-  font-size: 24px !important;
-  font-weight: 700 !important;
-  letter-spacing: -0.01em !important;
+  font-size: 30px !important;
+  font-weight: 800 !important;
+  line-height: 1.15 !important;
+  letter-spacing: -0.02em !important;
   color: #ffffff !important;
-  margin: 0 0 4px 0 !important;
+  margin: 0 0 5px 0 !important;
+}
+
+.lspw-title em {
+  font-style: italic !important;
+  color: #34b39d !important;
+  background: linear-gradient(135deg, #34b39d 0%, #5ce6d0 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  text-shadow: 0 0 24px rgba(45, 155, 136, 0.3) !important;
 }
 
 body.aesthetic-login-page:not(.theme-dark) .lspw-title,
 body.aesthetic-login-page.theme-light .lspw-title {
-  color: #1a1a1a !important;
+  color: #0f172a !important;
+}
+
+body.aesthetic-login-page:not(.theme-dark) .lspw-title em,
+body.aesthetic-login-page.theme-light .lspw-title em {
+  color: #1e6b5e !important;
+  background: linear-gradient(135deg, #1e6b5e 0%, #2d9b88 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  text-shadow: none !important;
 }
 
 .lspw-sub {
