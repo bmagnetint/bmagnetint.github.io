@@ -1954,11 +1954,11 @@ class BotHubApp {
   // MASTER ADMIN CRM PASSCODE LOCK METHODS (CODE: 298130)
   // -------------------------------------------------------------
   openAdminPanelFromSettings() {
-    window.location.href = '/admin/298130/';
+    window.location.href = '/admin/';
   }
 
   promptAdminCrmLock() {
-    window.location.href = '/admin/298130/';
+    window.location.href = '/admin/';
   }
 
   appendAdminPin(digit) {
