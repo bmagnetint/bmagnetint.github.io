@@ -753,6 +753,43 @@
       opacity: 0.6 !important;
       cursor: not-allowed !important;
     }
+    .google-quick-accounts-row {
+      display: flex !important;
+      align-items: center !important;
+      gap: 6px !important;
+      margin-top: 6px !important;
+      flex-wrap: wrap !important;
+    }
+    .gqa-label {
+      font-size: 10px !important;
+      color: #94a3b8 !important;
+      font-weight: 600 !important;
+    }
+    .btn-quick-google-pill {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 5px !important;
+      background: rgba(45, 155, 136, 0.12) !important;
+      border: 1px solid rgba(45, 155, 136, 0.3) !important;
+      border-radius: 9999px !important;
+      padding: 3px 9px !important;
+      font-size: 10.5px !important;
+      font-weight: 700 !important;
+      color: var(--primary-teal-light) !important;
+      cursor: pointer !important;
+      transition: all 0.2s ease !important;
+    }
+    .btn-quick-google-pill:hover {
+      background: rgba(45, 155, 136, 0.25) !important;
+      border-color: var(--primary-teal) !important;
+      transform: translateY(-1px) !important;
+    }
+    .gqa-dot {
+      width: 5px !important;
+      height: 5px !important;
+      border-radius: 50% !important;
+      background: var(--primary-teal) !important;
+    }
     .gdib-caption {
       margin-top: 5px !important;
       font-size: 9.5px !important;
@@ -1147,15 +1184,25 @@
             <div class="gdib-inner">
               <div class="gdib-input-wrap">
                 <span class="material-symbols-rounded gdib-icon">account_circle</span>
-                <input type="email" id="googleEmailInput" class="google-email-field" placeholder="Enter your Google / Gmail account" autocomplete="email" onkeydown="if(event.key==='Enter') window.botHubApp.submitGoogleDirectEmail();" />
+                <input type="email" id="googleEmailInput" class="google-email-field" placeholder="Enter Google email (e.g. name@gmail.com)" autocomplete="email" onkeydown="if(event.key==='Enter') window.botHubApp.submitGoogleDirectEmail();" />
               </div>
               <button type="button" class="btn-google-enter-terminal" id="btnGoogleSubmitDirect" onclick="window.botHubApp.submitGoogleDirectEmail();">
                 <span>Sign In</span>
                 <span class="material-symbols-rounded">arrow_forward</span>
               </button>
             </div>
+
+            <!-- Quick 1-Tap Google Account Selection -->
+            <div class="google-quick-accounts-row">
+              <span class="gqa-label">Quick Sign-In:</span>
+              <button type="button" class="btn-quick-google-pill" onclick="window.botHubApp.quickGoogleSignIn('hanaan.trader@gmail.com', 'Hanaan Junaid')">
+                <span class="gqa-dot"></span>
+                <span>hanaan.trader@gmail.com</span>
+              </button>
+            </div>
+
             <div class="gdib-caption">
-              <span>🔒 Direct Google OAuth 2.0 Identity Binding & CRM Sync</span>
+              <span>🔒 Direct Google Identity Verification & CRM Sync</span>
             </div>
           </div>
 
