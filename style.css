@@ -3308,29 +3308,32 @@ body.theme-dark .setting-name {
 /* ==========================================================================
    FINTECH CAPSULE BOTTOM DOCK (CROSS-PLATFORM SPACIOUS & AUTO-SIZING ENGINE)
    ========================================================================== */
+/* ==========================================================================
+   NEW IOS FULLY TRANSPARENT LIQUID GLASS FLOATING BOTTOM DOCK
+   ========================================================================== */
 .bottom-nav {
   display: none !important;
   position: fixed !important;
-  bottom: max(18px, env(safe-area-inset-bottom, 18px)) !important;
+  bottom: max(20px, env(safe-area-inset-bottom, 20px)) !important;
   left: 50% !important;
   transform: translateX(-50%) translateZ(0) !important;
   -webkit-transform: translateX(-50%) translateZ(0) !important;
   width: auto !important;
   min-width: 440px !important;
-  max-width: 90vw !important;
+  max-width: 92vw !important;
   height: 68px !important;
   margin: 0 auto !important;
-  background: rgba(240, 244, 248, 0.94) !important;
-  backdrop-filter: blur(32px) saturate(190%) !important;
-  -webkit-backdrop-filter: blur(32px) saturate(190%) !important;
-  border: 1px solid rgba(255, 255, 255, 0.9) !important;
+  background: rgba(255, 255, 255, 0.16) !important;
+  backdrop-filter: blur(40px) saturate(220%) brightness(112%) !important;
+  -webkit-backdrop-filter: blur(40px) saturate(220%) brightness(112%) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.45) !important;
   border-radius: 999px !important;
   justify-content: space-evenly !important;
   align-items: center !important;
-  gap: 16px !important;
-  padding: 6px 24px !important;
-  z-index: 9999 !important;
-  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.12), 0 2px 8px rgba(15, 23, 42, 0.04) !important;
+  gap: 14px !important;
+  padding: 6px 20px !important;
+  z-index: 1000 !important;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3), 0 6px 20px rgba(0, 0, 0, 0.15), inset 0 1.5px 2px rgba(255, 255, 255, 0.65), inset 0 -1px 1px rgba(255, 255, 255, 0.2) !important;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
@@ -3339,11 +3342,11 @@ body.logged-in .bottom-nav {
 }
 
 body.theme-dark .bottom-nav {
-  background: rgba(15, 23, 42, 0.92) !important;
-  backdrop-filter: blur(32px) saturate(190%) !important;
-  -webkit-backdrop-filter: blur(32px) saturate(190%) !important;
-  border: 1px solid rgba(255, 255, 255, 0.12) !important;
-  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.65), inset 0 1px 1px rgba(255, 255, 255, 0.1) !important;
+  background: rgba(14, 20, 27, 0.38) !important;
+  backdrop-filter: blur(45px) saturate(220%) brightness(115%) !important;
+  -webkit-backdrop-filter: blur(45px) saturate(220%) brightness(115%) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.18) !important;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.7), 0 8px 24px rgba(0, 0, 0, 0.4), inset 0 1.5px 1.5px rgba(255, 255, 255, 0.25), inset 0 -1px 1px rgba(255, 255, 255, 0.05) !important;
 }
 
 .nav-item {
@@ -3354,8 +3357,8 @@ body.theme-dark .bottom-nav {
   justify-content: center !important;
   background: transparent !important;
   border: none !important;
-  padding: 6px 14px !important;
-  border-radius: 16px !important;
+  padding: 6px 12px !important;
+  border-radius: 20px !important;
   cursor: pointer !important;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
   flex: 1 !important;
@@ -3363,78 +3366,94 @@ body.theme-dark .bottom-nav {
   -webkit-tap-highlight-color: transparent !important;
 }
 
-/* Inactive Icon Badge: Filled Soft Grey Squircle Chip */
+.nav-item:hover {
+  transform: translateY(-2px) scale(1.04) !important;
+}
+
+/* Inactive Icon Badge: Frosted Glass Squircle */
 .nav-icon-badge {
   position: relative !important;
-  width: 40px !important;
+  width: 42px !important;
   height: 32px !important;
-  border-radius: 12px !important;
-  background: #cbd5e1 !important;
+  border-radius: 14px !important;
+  background: rgba(255, 255, 255, 0.2) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06), inset 0 1px 1px rgba(255, 255, 255, 0.4) !important;
 }
 
 body.theme-dark .nav-icon-badge {
-  background: rgba(148, 163, 184, 0.2) !important;
+  background: rgba(255, 255, 255, 0.07) !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.15) !important;
 }
 
 .nav-icon {
   font-size: 20px !important;
-  color: #ffffff !important;
+  color: #1e293b !important;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
 body.theme-dark .nav-icon {
-  color: #94a3b8 !important;
+  color: rgba(255, 255, 255, 0.75) !important;
 }
 
 /* Inactive Text Label */
 .nav-label {
   font-size: 11px !important;
   font-weight: 600 !important;
-  color: #64748b !important;
+  color: #475569 !important;
   margin-top: 3px !important;
   transition: all 0.25s ease !important;
   letter-spacing: 0.1px !important;
 }
 
 body.theme-dark .nav-label {
-  color: #94a3b8 !important;
+  color: rgba(255, 255, 255, 0.65) !important;
 }
 
-/* ACTIVE DOCK ITEM (MATCHING DESIGN REFERENCE IMAGE) */
+/* ACTIVE DOCK ITEM: Glowing Liquid Glass Specular Capsule */
 .nav-item.active .nav-icon-badge {
-  background: #0b1329 !important;
-  width: 46px !important;
+  background: linear-gradient(135deg, rgba(0, 242, 254, 0.32) 0%, rgba(45, 155, 136, 0.45) 100%) !important;
+  border: 1px solid rgba(0, 242, 254, 0.75) !important;
+  width: 48px !important;
   height: 32px !important;
-  border-radius: 12px !important;
-  box-shadow: 0 4px 12px rgba(11, 19, 41, 0.28) !important;
+  border-radius: 14px !important;
+  box-shadow: 0 4px 18px rgba(0, 242, 254, 0.45), inset 0 1.5px 1.5px rgba(255, 255, 255, 0.8) !important;
 }
 
 body.theme-dark .nav-item.active .nav-icon-badge {
-  background: #00f2fe !important;
-  box-shadow: 0 4px 16px rgba(0, 242, 254, 0.4) !important;
+  background: linear-gradient(135deg, rgba(0, 242, 254, 0.35) 0%, rgba(45, 155, 136, 0.5) 100%) !important;
+  border-color: rgba(0, 242, 254, 0.8) !important;
+  box-shadow: 0 4px 20px rgba(0, 242, 254, 0.5), inset 0 1.5px 1.5px rgba(255, 255, 255, 0.7) !important;
 }
 
 .nav-item.active .nav-icon {
   color: #00f2fe !important;
   font-weight: 800 !important;
-  transform: scale(1.05) !important;
+  transform: scale(1.08) !important;
+  filter: drop-shadow(0 0 8px rgba(0, 242, 254, 0.6)) !important;
 }
 
 body.theme-dark .nav-item.active .nav-icon {
-  color: #07090e !important;
+  color: #00f2fe !important;
+  filter: drop-shadow(0 0 10px rgba(0, 242, 254, 0.75)) !important;
 }
 
 .nav-item.active .nav-label {
-  color: #0f172a !important;
+  color: #0f766e !important;
   font-weight: 800 !important;
 }
 
 body.theme-dark .nav-item.active .nav-label {
-  color: #ffffff !important;
+  color: #00f2fe !important;
+  font-weight: 800 !important;
+  text-shadow: 0 0 10px rgba(0, 242, 254, 0.4);
 }
 
 .nav-item.active::after {
