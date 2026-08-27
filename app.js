@@ -1018,7 +1018,11 @@ class BotHubApp {
     const logoutBtn = document.getElementById('logoutBtn');
 
     const displayName = user.name || (user.email ? user.email.split('@')[0] : 'Hanaan');
-    const displayPhone = user.email || user.phone || user.fullPhone || 'hanaan.trader@gmail.com';
+    let cleanPhone = user.phone || user.whatsapp || '';
+    if (cleanPhone.includes('@') || !cleanPhone) {
+      cleanPhone = (user.fullPhone && !user.fullPhone.includes('@')) ? user.fullPhone : '+91 94950 97786';
+    }
+    const displayPhone = cleanPhone;
     const displayUid = this.formatShortUserId(user.userId || user.id, user.email, user.googleId);
     user.id = displayUid;
     user.userId = displayUid;
@@ -1084,7 +1088,11 @@ class BotHubApp {
   openProfileDetailsModal() {
     const user = this.state.currentUser || this.state.user || {};
     const displayName = user.name || 'B-Magnet Trader';
-    const displayPhone = user.phone || user.fullPhone || '+91 94950 97786';
+    let cleanPhone = user.phone || user.whatsapp || '';
+    if (cleanPhone.includes('@') || !cleanPhone) {
+      cleanPhone = (user.fullPhone && !user.fullPhone.includes('@')) ? user.fullPhone : '+91 94950 97786';
+    }
+    const displayPhone = cleanPhone;
     const displayEmail = user.email || 'bmagnet.int@gmail.com';
     const displayUid = this.formatShortUserId(user.userId || user.id, user.email, user.googleId) || 'b-102246';
     const displayTelegram = user.telegram || '@B_Magnet_Gold_bot';
@@ -1217,13 +1225,17 @@ class BotHubApp {
   async saveProfileDetails() {
     const inputName = document.getElementById('inputProfileName');
     const inputPhone = document.getElementById('inputProfilePhone');
-    const inputEmail = document.getElementById('inputProfileEmail');
     const inputTelegram = document.getElementById('inputProfileTelegram');
     const inputMt5 = document.getElementById('inputProfileMt5');
 
     const name = inputName && inputName.value.trim() ? inputName.value.trim() : 'Hanaan Junaid';
-    const phone = inputPhone ? inputPhone.value.trim() : '+91 94950 97786';
-    const email = inputEmail ? inputEmail.value.trim() : 'bmagnet.int@gmail.com';
+    let phoneVal = inputPhone ? inputPhone.value.trim() : '+91 94950 97786';
+    if (phoneVal.includes('@')) {
+      phoneVal = '+91 94950 97786';
+    }
+    const phone = phoneVal;
+    // Email is locked to Google Verified Account
+    const email = (this.state.currentUser && this.state.currentUser.email) || 'bmagnet.int@gmail.com';
     const telegram = inputTelegram ? inputTelegram.value.trim() : '@B_Magnet_Gold_bot';
     const gtcfxMt5 = inputMt5 && inputMt5.value.trim() ? inputMt5.value.trim() : '8849201';
 
@@ -1583,7 +1595,8 @@ class BotHubApp {
           role: 'trader',
           tier: 'VIP Institutional',
           balance: Number(localStorage.getItem('b_bot_wallet_balance') || 0),
-          fullPhone: profile.email,
+          phone: profile.phone || '+91 94950 97786',
+          fullPhone: profile.phone || '+91 94950 97786',
           gtcfxMt5Account: `88${hashSeed.toString().substring(0, 5)}`,
           mt5Accounts: [
             { broker: 'GTCfx MT5', accountNumber: `88${hashSeed.toString().substring(0, 5)}`, server: 'GTC-Live', equity: Number(localStorage.getItem('b_bot_wallet_balance') || 0), status: 'Active' }
