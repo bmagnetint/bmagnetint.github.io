@@ -1082,11 +1082,11 @@ class BotHubApp {
   // PROFILE DETAILS & ACCOUNT SETTINGS (USER ID, PHONE, EMAIL)
   // -------------------------------------------------------------
   openProfileDetailsModal() {
-    const user = this.state.currentUser || {};
-    const displayName = user.name || 'Hanaan';
+    const user = this.state.currentUser || this.state.user || {};
+    const displayName = user.name || 'B-Magnet Trader';
     const displayPhone = user.phone || user.fullPhone || '+91 94950 97786';
-    const displayEmail = user.email || 'hanaan@bmagnet.ai';
-    const displayUid = this.formatShortUserId(user.userId || user.id, user.email, user.googleId);
+    const displayEmail = user.email || 'bmagnet.int@gmail.com';
+    const displayUid = this.formatShortUserId(user.userId || user.id, user.email, user.googleId) || 'b-102246';
     const displayTelegram = user.telegram || '@B_Magnet_Gold_bot';
     const displayMt5 = user.gtcfxMt5Account || '8849201';
 
