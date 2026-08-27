@@ -498,7 +498,7 @@
             email: decoded.email,
             phone: '+91 94950 97786',
             gtcfxMt5Account: '8849201',
-            balance: 100.00,
+            balance: 0.00,
             tier: 'VIP Lifelong Institutional',
             status: 'Active',
             picture: decoded.picture || '',
@@ -508,7 +508,7 @@
           };
 
           localStorage.setItem('b_bot_auth_user', JSON.stringify(userObj));
-          localStorage.setItem('b_bot_wallet_balance', '100.00');
+          localStorage.setItem('b_bot_wallet_balance', '0.00');
 
           showToast("🎉 Signed in with Google! Redirecting to Terminal...");
           setTimeout(() => {
@@ -540,7 +540,7 @@
         email: val.includes('@') ? val : 'bmagnet.int@gmail.com',
         phone: '+91 94950 97786',
         gtcfxMt5Account: '8849201',
-        balance: 100.00,
+        balance: 0.00,
         tier: 'VIP Lifelong Institutional',
         status: 'Active',
         isLoggedIn: true,
@@ -554,7 +554,7 @@
       }
 
       localStorage.setItem('b_bot_auth_user', JSON.stringify(userObj));
-      localStorage.setItem('b_bot_wallet_balance', '100.00');
+      localStorage.setItem('b_bot_wallet_balance', '0.00');
 
       showToast(`⚡ Access granted for ${userObj.name}! Redirecting...`);
       setTimeout(() => {
@@ -580,7 +580,7 @@
               email: profile.email,
               phone: '+91 94950 97786',
               gtcfxMt5Account: '8849201',
-              balance: 100.00,
+              balance: 0.00,
               tier: 'VIP Lifelong Institutional',
               status: 'Active',
               picture: profile.picture || '',
@@ -589,7 +589,7 @@
               lastLogin: new Date().toISOString()
             };
             localStorage.setItem('b_bot_auth_user', JSON.stringify(userObj));
-            localStorage.setItem('b_bot_wallet_balance', '100.00');
+            localStorage.setItem('b_bot_wallet_balance', '0.00');
             showToast("🎉 Google Verified! Redirecting...");
             setTimeout(() => { window.location.href = '/?logged_in=1'; }, 700);
           }).catch(() => {

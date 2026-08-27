@@ -2832,7 +2832,7 @@ class BotHubApp {
             </div>
           </div>
           <div class="web3-ledger-right">
-            <strong class="web3-ledger-amount font-mono">+${inv.amount ? inv.amount.toFixed(2) : '100.00'} USDT</strong>
+            <strong class="web3-ledger-amount font-mono">+${inv.amount ? inv.amount.toFixed(2) : '0.00'} USDT</strong>
             <span class="web3-ledger-badge">Verified</span>
           </div>
         </div>
