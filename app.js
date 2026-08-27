@@ -1012,7 +1012,16 @@ class BotHubApp {
 
     document.body.classList.add('logged-in');
     const overlay = document.getElementById('authScreenOverlay');
-    if (overlay) overlay.classList.remove('active');
+    if (overlay) {
+      overlay.classList.remove('active');
+      overlay.classList.remove('landing-active');
+      overlay.classList.remove('signin-active');
+      overlay.style.display = 'none';
+    }
+    const desktopLanding = document.getElementById('desktopCompanyLanding');
+    if (desktopLanding) {
+      desktopLanding.style.display = 'none';
+    }
 
     const userPhoneText = document.getElementById('headerUserPhoneText');
     const logoutBtn = document.getElementById('logoutBtn');

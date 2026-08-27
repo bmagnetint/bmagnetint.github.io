@@ -16902,3 +16902,41 @@ body.logged-in .app-header .theme-toggle-pill,
 body.logged-in .app-header .lang-globe-dropdown-wrapper {
   display: none !important;
 }
+
+
+/* ==========================================================================
+   STRICT OVERLAY & INTERACTION ISOLATION FOR LOGGED-IN DASHBOARD
+   ========================================================================== */
+body.logged-in #authScreenOverlay,
+body.logged-in #desktopCompanyLanding,
+body.logged-in .desktop-company-landing,
+body.logged-in .landing-header,
+body.logged-in .landing-header-actions,
+body.logged-in .btn-landing-corner-login,
+body.logged-in .theme-toggle-pill,
+body.logged-in .lang-globe-dropdown-wrapper {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  position: static !important;
+  z-index: -9999 !important;
+  opacity: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+}
+
+body.logged-in .app-header {
+  display: flex !important;
+  position: relative !important;
+  z-index: 1000 !important;
+  pointer-events: auto !important;
+}
+
+body.logged-in .wallet-compact-corner-btn,
+body.logged-in #openTopupBtn {
+  position: relative !important;
+  z-index: 1005 !important;
+  pointer-events: auto !important;
+  cursor: pointer !important;
+}

@@ -54,7 +54,7 @@
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
   
-  <link rel="stylesheet" href="style.css?v=9449">
+  <link rel="stylesheet" href="style.css?v=0578">
 </head>
 <body class="theme-light">
   <!-- Google One-Tap Automatic Credentials Container -->
@@ -629,7 +629,7 @@
 
 
             <!-- Direct BEP-20 Web3 Wallet Opener Button (Dashboard Header) -->
-            <button class="wallet-compact-corner-btn" id="openTopupBtn" onclick="window.botHubApp.openTopupModal()" title="Open USDT BEP-20 Wallet">
+            <button type="button" class="wallet-compact-corner-btn" id="openTopupBtn" onclick="event.stopPropagation(); event.preventDefault(); window.botHubApp.openTopupModal();" title="Open USDT BEP-20 Wallet">
               <span class="user-avatar-mini" style="background: rgba(16, 185, 129, 0.15); border-color: rgba(16, 185, 129, 0.4); color: #10b981;">
                 <span class="material-symbols-rounded" style="font-size: 16px;">account_balance_wallet</span>
               </span>
@@ -2368,6 +2368,6 @@
 
   <!-- App Scripts -->
   <script src="qrcode.js"></script>
-  <script src="app.js?v=9449"></script>
+  <script src="app.js?v=0578"></script>
 </body>
 </html>
