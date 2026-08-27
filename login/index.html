@@ -30,7 +30,7 @@
   <script src="https://accounts.google.com/gsi/client" async defer></script>
   <meta name="google-signin-client_id" content="193074652385-prup7faehlgodh890o06ehfaujblvvni.apps.googleusercontent.com">
   
-  <link rel="stylesheet" href="/style.css?v=3900">
+  <link rel="stylesheet" href="/style.css?v=3950">
   <style>
     /* Reset & Viewport */
     *, *::before, *::after { box-sizing: border-box; }
@@ -128,7 +128,7 @@
       justify-content: space-between !important;
       width: 100% !important;
       max-width: 1200px !important;
-      margin: 0 auto 16px auto !important;
+      margin: 0 auto 12px auto !important;
     }
     .btn-aesthetic-back {
       display: inline-flex !important;
@@ -259,7 +259,9 @@
     .lang-option-item .check-icon { margin-left: auto !important; font-size: 16px !important; color: #10b981 !important; display: none !important; }
     .lang-option-item.active .check-icon { display: block !important; }
 
-    /* Center Monolith Stage */
+    /* ==========================================================================
+       CENTERPIECE: The Static-Sized Aesthetic Glass Monolith Card
+       ========================================================================== */
     .aesthetic-monolith-stage {
       display: flex !important;
       flex-direction: column !important;
@@ -267,19 +269,27 @@
       justify-content: center !important;
       width: 100% !important;
       margin: auto 0 !important;
-      padding: 16px 0 !important;
+      padding: 12px 0 !important;
     }
+
+    /* 🔒 STATIC LOCKED WINDOW SIZE (No resizing or shifting across tabs) */
     .aesthetic-monolith-card {
       width: 100% !important;
       max-width: 480px !important;
+      min-height: 590px !important;
+      height: 590px !important;
       background: rgba(13, 19, 33, 0.85) !important;
       backdrop-filter: blur(36px) saturate(180%) !important;
       border: 1px solid rgba(255, 255, 255, 0.12) !important;
       border-radius: 28px !important;
-      padding: 36px 36px 28px 36px !important;
+      padding: 30px 32px 22px 32px !important;
       box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 0 40px -10px rgba(0, 117, 235, 0.18) !important;
       box-sizing: border-box !important;
       position: relative !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: space-between !important;
+      overflow: hidden !important;
     }
     body.aesthetic-login-page.theme-light .aesthetic-monolith-card {
       background: rgba(255, 255, 255, 0.94) !important;
@@ -288,44 +298,48 @@
     }
 
     /* Brand Crown */
-    .amc-crown { text-align: center !important; margin-bottom: 22px !important; }
+    .amc-crown {
+      text-align: center !important;
+      margin-bottom: 12px !important;
+      flex-shrink: 0 !important;
+    }
     .amc-emblem-halo {
       position: relative !important;
-      width: 66px !important;
-      height: 66px !important;
-      margin: 0 auto 12px auto !important;
+      width: 58px !important;
+      height: 58px !important;
+      margin: 0 auto 8px auto !important;
       display: flex !important;
       align-items: center !important;
       justify-content: center !important;
     }
     .amc-emblem-box {
-      width: 58px !important;
-      height: 58px !important;
-      border-radius: 16px !important;
+      width: 52px !important;
+      height: 52px !important;
+      border-radius: 14px !important;
       background: linear-gradient(135deg, #0f172a 0%, #070b14 100%) !important;
       border: 1px solid rgba(255, 255, 255, 0.18) !important;
       display: flex !important;
       align-items: center !important;
       justify-content: center !important;
-      padding: 8px !important;
-      box-shadow: 0 8px 24px rgba(0, 117, 235, 0.35) !important;
+      padding: 6px !important;
+      box-shadow: 0 6px 20px rgba(0, 117, 235, 0.35) !important;
       box-sizing: border-box !important;
     }
     .amc-brand-img {
       width: 100% !important;
       height: 100% !important;
-      max-width: 44px !important;
-      max-height: 44px !important;
+      max-width: 38px !important;
+      max-height: 38px !important;
       object-fit: contain !important;
     }
     .amc-brand-lockup {
       display: flex !important;
       flex-direction: column !important;
       align-items: center !important;
-      gap: 4px !important;
+      gap: 3px !important;
     }
     .amc-brand-title {
-      font-size: 24px !important;
+      font-size: 22px !important;
       font-weight: 900 !important;
       letter-spacing: -0.02em !important;
       color: #ffffff !important;
@@ -333,21 +347,21 @@
     }
     body.aesthetic-login-page.theme-light .amc-brand-title { color: #0f172a !important; }
     .amc-badge-pill {
-      font-size: 9.5px !important;
+      font-size: 9px !important;
       font-weight: 800 !important;
       letter-spacing: 0.08em !important;
       color: #38bdf8 !important;
       background: rgba(56, 189, 248, 0.12) !important;
       border: 1px solid rgba(56, 189, 248, 0.3) !important;
-      padding: 3px 9px !important;
+      padding: 2px 8px !important;
       border-radius: 9999px !important;
       display: inline-block !important;
     }
     .amc-tagline {
-      font-size: 13px !important;
+      font-size: 12.5px !important;
       color: #94a3b8 !important;
-      margin: 8px 0 0 0 !important;
-      line-height: 1.5 !important;
+      margin: 6px 0 0 0 !important;
+      line-height: 1.4 !important;
       font-weight: 500 !important;
       text-align: center !important;
     }
@@ -361,7 +375,8 @@
       border-radius: 14px !important;
       padding: 4px !important;
       gap: 4px !important;
-      margin: 20px 0 20px 0 !important;
+      margin: 0 0 14px 0 !important;
+      flex-shrink: 0 !important;
     }
     body.aesthetic-login-page.theme-light .aesthetic-tab-switcher {
       background: #f1f5f9 !important;
@@ -369,17 +384,17 @@
     }
     .at-tab-btn {
       flex: 1 !important;
-      height: 38px !important;
+      height: 36px !important;
       border: none !important;
       background: transparent !important;
       border-radius: 10px !important;
       color: #94a3b8 !important;
-      font-size: 12px !important;
+      font-size: 11.5px !important;
       font-weight: 700 !important;
       display: flex !important;
       align-items: center !important;
       justify-content: center !important;
-      gap: 6px !important;
+      gap: 5px !important;
       cursor: pointer !important;
       transition: all 0.2s ease !important;
     }
@@ -397,29 +412,50 @@
       box-shadow: 0 2px 8px rgba(0, 117, 235, 0.15) !important;
     }
 
-    /* Tab Contents */
-    .aesthetic-tab-content { display: none !important; }
-    .aesthetic-tab-content.active { display: block !important; animation: tabFadeIn 0.25s ease !important; }
+    /* 🔒 STATIC FIXED-HEIGHT TAB VIEWPORT (Rock Solid: 250px) */
+    .aesthetic-tab-body-viewport {
+      width: 100% !important;
+      height: 250px !important;
+      min-height: 250px !important;
+      max-height: 250px !important;
+      position: relative !important;
+      display: block !important;
+      flex-shrink: 0 !important;
+      overflow: hidden !important;
+    }
+
+    .aesthetic-tab-content {
+      width: 100% !important;
+      height: 100% !important;
+      display: none !important;
+      flex-direction: column !important;
+      justify-content: space-between !important;
+      box-sizing: border-box !important;
+    }
+    .aesthetic-tab-content.active {
+      display: flex !important;
+      animation: tabFadeIn 0.2s ease !important;
+    }
     @keyframes tabFadeIn {
-      from { opacity: 0; transform: translateY(6px); }
+      from { opacity: 0; transform: translateY(4px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
     /* Google Button */
-    .aesthetic-google-hero-wrap { margin-bottom: 12px !important; }
+    .aesthetic-google-hero-wrap { margin-bottom: 0 !important; width: 100% !important; }
     .btn-aesthetic-google {
       width: 100% !important;
-      height: 56px !important;
-      border-radius: 16px !important;
+      height: 52px !important;
+      border-radius: 14px !important;
       background: rgba(255, 255, 255, 0.07) !important;
       border: 1px solid rgba(255, 255, 255, 0.16) !important;
       display: flex !important;
       align-items: center !important;
       justify-content: space-between !important;
-      padding: 0 18px !important;
+      padding: 0 16px !important;
       cursor: pointer !important;
       transition: all 0.25s ease !important;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2) !important;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.2) !important;
     }
     body.aesthetic-login-page.theme-light .btn-aesthetic-google {
       background: #ffffff !important;
@@ -430,7 +466,7 @@
       background: rgba(255, 255, 255, 0.12) !important;
       border-color: rgba(56, 189, 248, 0.5) !important;
       transform: translateY(-2px) !important;
-      box-shadow: 0 8px 28px rgba(0, 117, 235, 0.3) !important;
+      box-shadow: 0 8px 26px rgba(0, 117, 235, 0.3) !important;
     }
     .btn-google-text-col {
       display: flex !important;
@@ -440,13 +476,13 @@
       margin-left: 12px !important;
     }
     .btn-google-label {
-      font-size: 14.5px !important;
+      font-size: 14px !important;
       font-weight: 800 !important;
       color: #ffffff !important;
     }
     body.aesthetic-login-page.theme-light .btn-google-label { color: #0f172a !important; }
     .btn-google-sub {
-      font-size: 11px !important;
+      font-size: 10.5px !important;
       font-weight: 500 !important;
       color: #94a3b8 !important;
     }
@@ -454,58 +490,92 @@
     .aesthetic-glow-badge {
       background: linear-gradient(135deg, #0075eb, #00a896) !important;
       color: #ffffff !important;
-      font-size: 10px !important;
+      font-size: 9.5px !important;
       font-weight: 800 !important;
-      padding: 3px 8px !important;
+      padding: 3px 7px !important;
       border-radius: 6px !important;
       box-shadow: 0 0 10px rgba(0, 168, 255, 0.4) !important;
     }
+
+    /* Switch Helper */
+    .aesthetic-tab-switch-helper {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 6px !important;
+      font-size: 11.5px !important;
+      color: #94a3b8 !important;
+      padding: 6px 10px !important;
+      background: rgba(255, 255, 255, 0.03) !important;
+      border: 1px dashed rgba(255, 255, 255, 0.12) !important;
+      border-radius: 10px !important;
+      cursor: pointer !important;
+      transition: all 0.2s ease !important;
+    }
+    body.aesthetic-login-page.theme-light .aesthetic-tab-switch-helper {
+      background: #f8fafc !important;
+      border-color: #cbd5e1 !important;
+      color: #64748b !important;
+    }
+    .aesthetic-tab-switch-helper:hover {
+      background: rgba(0, 117, 235, 0.1) !important;
+      border-color: #0075eb !important;
+      color: #0075eb !important;
+    }
+    .atsh-icon { font-size: 15px !important; }
 
     /* Quick Demo Callout */
     .aesthetic-quick-demo-callout {
       background: rgba(16, 185, 129, 0.07) !important;
       border: 1px solid rgba(16, 185, 129, 0.22) !important;
       border-radius: 14px !important;
-      padding: 12px 16px !important;
+      padding: 10px 14px !important;
       display: flex !important;
       align-items: center !important;
       justify-content: space-between !important;
       cursor: pointer !important;
       transition: all 0.2s ease !important;
+      width: 100% !important;
     }
     .aesthetic-quick-demo-callout:hover {
       background: rgba(16, 185, 129, 0.14) !important;
       border-color: rgba(16, 185, 129, 0.4) !important;
       transform: translateY(-1px) !important;
     }
-    .aqd-left { display: flex !important; align-items: center !important; gap: 12px !important; }
+    .aqd-left { display: flex !important; align-items: center !important; gap: 10px !important; }
     .aqd-icon { font-size: 20px !important; color: #10b981 !important; }
     .aqd-info { display: flex !important; flex-direction: column !important; text-align: left !important; }
-    .aqd-info strong { font-size: 12.5px !important; font-weight: 700 !important; color: #f8fafc !important; }
+    .aqd-info strong { font-size: 12px !important; font-weight: 700 !important; color: #f8fafc !important; }
     body.aesthetic-login-page.theme-light .aqd-info strong { color: #0f172a !important; }
-    .aqd-info span { font-size: 11px !important; color: #94a3b8 !important; }
-    .aqd-arrow { color: #10b981 !important; font-weight: 800 !important; font-size: 16px !important; }
+    .aqd-info span { font-size: 10.5px !important; color: #94a3b8 !important; }
+    .aqd-arrow { color: #10b981 !important; font-weight: 800 !important; font-size: 15px !important; }
 
     /* Form */
-    .aesthetic-form { display: flex !important; flex-direction: column !important; gap: 14px !important; }
-    .aesthetic-field-wrap { display: flex !important; flex-direction: column !important; gap: 5px !important; }
+    .aesthetic-form {
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: space-between !important;
+      height: 100% !important;
+      width: 100% !important;
+    }
+    .aesthetic-field-wrap { display: flex !important; flex-direction: column !important; gap: 4px !important; }
     .afw-header { display: flex !important; align-items: center !important; justify-content: space-between !important; }
-    .afw-label { font-size: 10.5px !important; font-weight: 800 !important; letter-spacing: 0.06em !important; color: #94a3b8 !important; }
+    .afw-label { font-size: 10px !important; font-weight: 800 !important; letter-spacing: 0.06em !important; color: #94a3b8 !important; }
     body.aesthetic-login-page.theme-light .afw-label { color: #475569 !important; }
-    .afw-helper-link { font-size: 11px !important; font-weight: 700 !important; color: #38bdf8 !important; text-decoration: none !important; }
+    .afw-helper-link { font-size: 10.5px !important; font-weight: 700 !important; color: #38bdf8 !important; text-decoration: none !important; }
     body.aesthetic-login-page.theme-light .afw-helper-link { color: #0075eb !important; }
     .afw-helper-link:hover { text-decoration: underline !important; }
 
     .afw-input-box { position: relative !important; width: 100% !important; }
     .aesthetic-input {
       width: 100% !important;
-      height: 48px !important;
+      height: 44px !important;
       border-radius: 12px !important;
       background: rgba(0, 0, 0, 0.3) !important;
       border: 1px solid rgba(255, 255, 255, 0.12) !important;
-      padding: 0 16px 0 44px !important;
+      padding: 0 16px 0 42px !important;
       color: #ffffff !important;
-      font-size: 14px !important;
+      font-size: 13.5px !important;
       font-weight: 600 !important;
       outline: none !important;
       transition: all 0.2s ease !important;
@@ -532,12 +602,12 @@
       top: 50% !important;
       transform: translateY(-50%) !important;
       color: #94a3b8 !important;
-      font-size: 20px !important;
+      font-size: 18px !important;
       pointer-events: none !important;
     }
     .afw-eye-toggle {
       position: absolute !important;
-      right: 14px !important;
+      right: 12px !important;
       top: 50% !important;
       transform: translateY(-50%) !important;
       background: none !important;
@@ -553,12 +623,12 @@
       display: flex !important;
       align-items: center !important;
       justify-content: space-between !important;
-      font-size: 12px !important;
+      font-size: 11.5px !important;
     }
     .aesthetic-checkbox-label {
       display: inline-flex !important;
       align-items: center !important;
-      gap: 8px !important;
+      gap: 7px !important;
       color: #94a3b8 !important;
       font-weight: 500 !important;
       cursor: pointer !important;
@@ -566,9 +636,9 @@
     body.aesthetic-login-page.theme-light .aesthetic-checkbox-label { color: #64748b !important; }
     .aesthetic-checkbox-label input { display: none !important; }
     .aesthetic-custom-checkbox {
-      width: 18px !important;
-      height: 18px !important;
-      border-radius: 5px !important;
+      width: 16px !important;
+      height: 16px !important;
+      border-radius: 4px !important;
       border: 1.5px solid rgba(255, 255, 255, 0.25) !important;
       display: flex !important;
       align-items: center !important;
@@ -580,7 +650,7 @@
       border-color: #cbd5e1 !important;
       background: #f8fafc !important;
     }
-    .aesthetic-custom-checkbox span { font-size: 13px !important; color: #ffffff !important; display: none !important; }
+    .aesthetic-custom-checkbox span { font-size: 12px !important; color: #ffffff !important; display: none !important; }
     .aesthetic-checkbox-label input:checked + .aesthetic-custom-checkbox {
       background: #0075eb !important;
       border-color: #0075eb !important;
@@ -590,11 +660,11 @@
     /* Primary Submit Button */
     .btn-aesthetic-primary {
       width: 100% !important;
-      height: 50px !important;
-      border-radius: 14px !important;
+      height: 46px !important;
+      border-radius: 12px !important;
       background: linear-gradient(135deg, #0075eb 0%, #0050b5 100%) !important;
       color: #ffffff !important;
-      font-size: 15px !important;
+      font-size: 14.5px !important;
       font-weight: 800 !important;
       border: 1px solid rgba(255, 255, 255, 0.2) !important;
       cursor: pointer !important;
@@ -602,13 +672,12 @@
       align-items: center !important;
       justify-content: center !important;
       gap: 8px !important;
-      box-shadow: 0 8px 24px rgba(0, 117, 235, 0.4) !important;
+      box-shadow: 0 6px 20px rgba(0, 117, 235, 0.4) !important;
       transition: all 0.25s ease !important;
-      margin-top: 4px !important;
     }
     .btn-aesthetic-primary:hover {
       transform: translateY(-2px) !important;
-      box-shadow: 0 12px 30px rgba(0, 117, 235, 0.55) !important;
+      box-shadow: 0 10px 26px rgba(0, 117, 235, 0.55) !important;
       filter: brightness(1.08) !important;
     }
 
@@ -616,91 +685,90 @@
     .aesthetic-demo-showcase-box {
       background: rgba(0, 0, 0, 0.25) !important;
       border: 1px solid rgba(255, 255, 255, 0.1) !important;
-      border-radius: 18px !important;
-      padding: 20px !important;
+      border-radius: 16px !important;
+      padding: 16px !important;
       display: flex !important;
       flex-direction: column !important;
-      gap: 12px !important;
+      justify-content: space-between !important;
+      height: 100% !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
     }
     body.aesthetic-login-page.theme-light .aesthetic-demo-showcase-box {
       background: #f8fafc !important;
       border-color: #e2e8f0 !important;
     }
-    .adsb-badge-row { display: flex !important; align-items: center !important; gap: 8px !important; }
+    .adsb-badge-row { display: flex !important; align-items: center !important; justify-content: space-between !important; }
     .adsb-live-chip {
-      font-size: 10px !important;
+      font-size: 9.5px !important;
       font-weight: 800 !important;
       color: #10b981 !important;
       background: rgba(16, 185, 129, 0.12) !important;
-      padding: 2px 8px !important;
+      padding: 2px 7px !important;
       border-radius: 9999px !important;
     }
     .adsb-capital-chip {
-      font-size: 10px !important;
+      font-size: 9.5px !important;
       font-weight: 800 !important;
       color: #38bdf8 !important;
       background: rgba(56, 189, 248, 0.12) !important;
-      padding: 2px 8px !important;
+      padding: 2px 7px !important;
       border-radius: 9999px !important;
     }
     .adsb-title {
-      font-size: 16px !important;
+      font-size: 14.5px !important;
       font-weight: 800 !important;
       color: #ffffff !important;
       margin: 0 !important;
     }
     body.aesthetic-login-page.theme-light .adsb-title { color: #0f172a !important; }
-    .adsb-desc {
-      font-size: 12px !important;
-      line-height: 1.5 !important;
-      color: #94a3b8 !important;
-      margin: 0 !important;
-    }
-    body.aesthetic-login-page.theme-light .adsb-desc { color: #64748b !important; }
     .adsb-params-grid {
       display: grid !important;
       grid-template-columns: 1fr 1fr 1fr !important;
-      gap: 8px !important;
+      gap: 6px !important;
       background: rgba(0, 0, 0, 0.2) !important;
-      border-radius: 12px !important;
-      padding: 10px !important;
-      margin: 4px 0 !important;
+      border-radius: 10px !important;
+      padding: 8px !important;
+      margin: 2px 0 !important;
     }
     body.aesthetic-login-page.theme-light .adsb-params-grid {
       background: #ffffff !important;
       border: 1px solid #e2e8f0 !important;
     }
     .adsb-param { display: flex !important; flex-direction: column !important; align-items: center !important; }
-    .adsb-param-lbl { font-size: 9.5px !important; font-weight: 700 !important; color: #94a3b8 !important; }
-    .adsb-param-val { font-size: 11.5px !important; font-weight: 800 !important; color: #38bdf8 !important; margin-top: 2px !important; }
+    .adsb-param-lbl { font-size: 9px !important; font-weight: 700 !important; color: #94a3b8 !important; }
+    .adsb-param-val { font-size: 11px !important; font-weight: 800 !important; color: #38bdf8 !important; margin-top: 2px !important; }
     body.aesthetic-login-page.theme-light .adsb-param-val { color: #0075eb !important; }
     .btn-demo-launch {
       background: linear-gradient(135deg, #059669 0%, #047857 100%) !important;
-      box-shadow: 0 8px 24px rgba(16, 185, 129, 0.35) !important;
+      box-shadow: 0 6px 20px rgba(16, 185, 129, 0.35) !important;
+      height: 44px !important;
     }
     .btn-demo-launch:hover {
-      box-shadow: 0 12px 30px rgba(16, 185, 129, 0.5) !important;
+      box-shadow: 0 10px 26px rgba(16, 185, 129, 0.5) !important;
     }
 
     /* Monolith Card Footer */
     .amc-footer {
-      margin-top: 22px !important;
+      width: 100% !important;
+      flex-shrink: 0 !important;
+      margin-top: 14px !important;
       display: flex !important;
       flex-direction: column !important;
       align-items: center !important;
-      gap: 12px !important;
+      gap: 10px !important;
       text-align: center !important;
     }
     .amc-security-strip {
       display: inline-flex !important;
       align-items: center !important;
       gap: 6px !important;
-      font-size: 11px !important;
+      font-size: 10.5px !important;
       font-weight: 600 !important;
       color: #94a3b8 !important;
       background: rgba(255, 255, 255, 0.04) !important;
       border: 1px solid rgba(255, 255, 255, 0.08) !important;
-      padding: 5px 12px !important;
+      padding: 4px 10px !important;
       border-radius: 9999px !important;
     }
     body.aesthetic-login-page.theme-light .amc-security-strip {
@@ -708,12 +776,12 @@
       border-color: #e2e8f0 !important;
       color: #64748b !important;
     }
-    .amc-sec-icon { font-size: 14px !important; color: #10b981 !important; }
+    .amc-sec-icon { font-size: 13px !important; color: #10b981 !important; }
     .amc-links-row {
       display: flex !important;
       align-items: center !important;
       gap: 8px !important;
-      font-size: 12px !important;
+      font-size: 11.5px !important;
     }
     .amc-link {
       color: #94a3b8 !important;
@@ -735,8 +803,8 @@
       border: 1px solid rgba(255, 255, 255, 0.08) !important;
       backdrop-filter: blur(20px) !important;
       border-radius: 9999px !important;
-      padding: 10px 24px !important;
-      margin-top: 24px !important;
+      padding: 8px 22px !important;
+      margin-top: 20px !important;
     }
     body.aesthetic-login-page.theme-light .aesthetic-telemetry-strip {
       background: #ffffff !important;
@@ -746,13 +814,13 @@
     .ats-item { display: flex !important; flex-direction: column !important; align-items: center !important; }
     .ats-val {
       font-family: 'JetBrains Mono', monospace !important;
-      font-size: 15px !important;
+      font-size: 14.5px !important;
       font-weight: 800 !important;
       color: #38bdf8 !important;
     }
     body.aesthetic-login-page.theme-light .ats-val { color: #0075eb !important; }
     .ats-lbl {
-      font-size: 10px !important;
+      font-size: 9.5px !important;
       font-weight: 600 !important;
       color: #94a3b8 !important;
       margin-top: 1px !important;
@@ -760,7 +828,7 @@
     body.aesthetic-login-page.theme-light .ats-lbl { color: #64748b !important; }
     .ats-divider {
       width: 1px !important;
-      height: 22px !important;
+      height: 20px !important;
       background: rgba(255, 255, 255, 0.1) !important;
     }
     body.aesthetic-login-page.theme-light .ats-divider { background: #e2e8f0 !important; }
@@ -768,25 +836,38 @@
     /* Page Footer */
     .aesthetic-page-footer {
       text-align: center !important;
-      font-size: 11.5px !important;
+      font-size: 11px !important;
       color: #64748b !important;
-      padding-top: 16px !important;
+      padding-top: 12px !important;
     }
 
     @media (max-width: 640px) {
       .aesthetic-login-viewport { padding: 16px 16px !important; }
       .atn-center { display: none !important; }
-      .aesthetic-monolith-card { padding: 28px 20px 22px 20px !important; border-radius: 24px !important; }
+      .aesthetic-monolith-card {
+        padding: 24px 20px 18px 20px !important;
+        border-radius: 24px !important;
+        min-height: 560px !important;
+        height: 560px !important;
+      }
+      .aesthetic-tab-body-viewport {
+        height: 240px !important;
+        min-height: 240px !important;
+        max-height: 240px !important;
+      }
       .aesthetic-telemetry-strip {
         display: grid !important;
         grid-template-columns: 1fr 1fr !important;
-        gap: 12px !important;
-        border-radius: 18px !important;
-        padding: 14px 16px !important;
+        gap: 10px !important;
+        border-radius: 16px !important;
+        padding: 12px 14px !important;
+        margin-top: 14px !important;
       }
       .ats-divider { display: none !important; }
     }
   </style>
+</head>
+<body class="aesthetic-login-page theme-dark">
 
   <!-- Luminous Ambient Space Background -->
   <div class="aesthetic-ambient-canvas">
@@ -846,144 +927,157 @@
     <!-- Main Aesthetic Monolith Stage -->
     <main class="aesthetic-monolith-stage">
 
+      <!-- 🔒 STATIC-SIZED MONOLITH WINDOW -->
       <div class="aesthetic-monolith-card">
         
-        <!-- Radiant Brand Crown -->
-        <div class="amc-crown">
-          <div class="amc-emblem-halo">
-            <div class="amc-emblem-box">
-              <img src="/images/b-magnet-logo.png" alt="B-Magnet" class="amc-brand-img">
-            </div>
-          </div>
-          <div class="amc-brand-lockup">
-            <h1 class="amc-brand-title">B-MAGNET</h1>
-            <span class="amc-badge-pill">INSTITUTIONAL QUANT SUITE</span>
-          </div>
-          <p class="amc-tagline">Autonomous algorithmic execution for Spot Gold, FX & Indices.</p>
-        </div>
-
-        <!-- Interactive Mode Switcher Tabs -->
-        <div class="aesthetic-tab-switcher">
-          <button type="button" class="at-tab-btn active" id="tabBtnGoogle" onclick="switchLoginTab('google')">
-            <span class="material-symbols-rounded">bolt</span>
-            <span>1-Click Access</span>
-          </button>
-          <button type="button" class="at-tab-btn" id="tabBtnTraderId" onclick="switchLoginTab('traderId')">
-            <span class="material-symbols-rounded">badge</span>
-            <span>Trader ID / PIN</span>
-          </button>
-          <button type="button" class="at-tab-btn" id="tabBtnDemo" onclick="switchLoginTab('demo')">
-            <span class="material-symbols-rounded">smart_toy</span>
-            <span>Demo Terminal</span>
-          </button>
-        </div>
-
-        <!-- TAB 1: 1-Click Access (Default) -->
-        <div class="aesthetic-tab-content active" id="tabContentGoogle">
-          <div class="aesthetic-google-hero-wrap">
-            <button type="button" class="btn-aesthetic-google" id="btnGoogleLogin" onclick="if(window.botHubApp) window.botHubApp.handleGoogleLogin();">
-              <svg class="google-svg-icon" viewBox="0 0 24 24" width="22" height="22">
-                <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-                <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-                <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"/>
-                <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"/>
-              </svg>
-              <div class="btn-google-text-col">
-                <span class="btn-google-label">Continue with Google</span>
-                <span class="btn-google-sub">Fast & Secure Non-Custodial Login</span>
+        <!-- Top Section: Crown & Segmented Switcher -->
+        <div class="amc-top-section">
+          <!-- Radiant Brand Crown -->
+          <div class="amc-crown">
+            <div class="amc-emblem-halo">
+              <div class="amc-emblem-box">
+                <img src="/images/b-magnet-logo.png" alt="B-Magnet" class="amc-brand-img">
               </div>
-              <span class="aesthetic-glow-badge">1-CLICK</span>
+            </div>
+            <div class="amc-brand-lockup">
+              <h1 class="amc-brand-title">B-MAGNET</h1>
+              <span class="amc-badge-pill">INSTITUTIONAL QUANT SUITE</span>
+            </div>
+            <p class="amc-tagline">Autonomous algorithmic execution for Spot Gold, FX & Indices.</p>
+          </div>
+
+          <!-- Interactive Mode Switcher Tabs -->
+          <div class="aesthetic-tab-switcher">
+            <button type="button" class="at-tab-btn active" id="tabBtnGoogle" onclick="switchLoginTab('google')">
+              <span class="material-symbols-rounded">bolt</span>
+              <span>1-Click Access</span>
+            </button>
+            <button type="button" class="at-tab-btn" id="tabBtnTraderId" onclick="switchLoginTab('traderId')">
+              <span class="material-symbols-rounded">badge</span>
+              <span>Trader ID / PIN</span>
+            </button>
+            <button type="button" class="at-tab-btn" id="tabBtnDemo" onclick="switchLoginTab('demo')">
+              <span class="material-symbols-rounded">smart_toy</span>
+              <span>Demo Terminal</span>
             </button>
           </div>
-
-          <div class="aesthetic-quick-demo-callout" onclick="switchLoginTab('demo')">
-            <div class="aqd-left">
-              <span class="material-symbols-rounded aqd-icon">candlestick_chart</span>
-              <div class="aqd-info">
-                <strong>Explore Live Demo Sandbox</strong>
-                <span>Experience Gold Hunter Pro EA with $100k test liquidity</span>
-              </div>
-            </div>
-            <span class="aqd-arrow">→</span>
-          </div>
         </div>
 
-        <!-- TAB 2: Trader ID / PIN Credentials -->
-        <div class="aesthetic-tab-content" id="tabContentTraderId">
-          <form class="aesthetic-form" onsubmit="event.preventDefault(); if(window.botHubApp) window.botHubApp.handleCleanSignIn();">
-            
-            <div class="aesthetic-field-wrap">
-              <div class="afw-header">
-                <label for="loginEmailInput" class="afw-label">TRADER ACCOUNT ID / EMAIL</label>
-              </div>
-              <div class="afw-input-box">
-                <span class="material-symbols-rounded afw-icon">account_circle</span>
-                <input type="text" id="loginEmailInput" class="aesthetic-input" placeholder="e.g. hanaan.trader@gmail.com" value="hanaan.trader@gmail.com" autocomplete="username" required>
-              </div>
+        <!-- 🔒 STATIC FIXED-HEIGHT TAB VIEWPORT (Rock Solid: 250px) -->
+        <div class="aesthetic-tab-body-viewport">
+          
+          <!-- TAB 1: 1-Click Access (Default) -->
+          <div class="aesthetic-tab-content active" id="tabContentGoogle">
+            <div class="aesthetic-google-hero-wrap">
+              <button type="button" class="btn-aesthetic-google" id="btnGoogleLogin" onclick="if(window.botHubApp) window.botHubApp.handleGoogleLogin();">
+                <svg class="google-svg-icon" viewBox="0 0 24 24" width="20" height="20">
+                  <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                  <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                  <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"/>
+                  <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"/>
+                </svg>
+                <div class="btn-google-text-col">
+                  <span class="btn-google-label">Continue with Google</span>
+                  <span class="btn-google-sub">Fast & Secure Non-Custodial Login</span>
+                </div>
+                <span class="aesthetic-glow-badge">1-CLICK</span>
+              </button>
             </div>
 
-            <div class="aesthetic-field-wrap">
-              <div class="afw-header">
-                <label for="loginOtpInput" class="afw-label">PASSCODE PIN / PASSWORD</label>
-                <a href="#" class="afw-helper-link" onclick="event.preventDefault(); fillDemoPIN();">Autofill Demo PIN: 8492</a>
-              </div>
-              <div class="afw-input-box">
-                <span class="material-symbols-rounded afw-icon">lock</span>
-                <input type="password" id="loginOtpInput" class="aesthetic-input" placeholder="Enter 4-Digit PIN or Password" value="8492" autocomplete="current-password" required>
-                <button type="button" class="afw-eye-toggle" onclick="togglePassVisibility('loginOtpInput')" title="Toggle Password Visibility">
-                  <span class="material-symbols-rounded">visibility</span>
-                </button>
-              </div>
+            <div class="aesthetic-tab-switch-helper" onclick="switchLoginTab('traderId')">
+              <span class="material-symbols-rounded atsh-icon">key</span>
+              <span>Prefer manual credentials? <strong>Use Trader ID / PIN →</strong></span>
             </div>
 
-            <div class="aesthetic-options-row">
-              <label class="aesthetic-checkbox-label">
-                <input type="checkbox" id="chkRememberMe" checked>
-                <span class="aesthetic-custom-checkbox">
-                  <span class="material-symbols-rounded">check</span>
-                </span>
-                <span>Keep terminal authenticated on this device</span>
-              </label>
-            </div>
-
-            <button type="submit" class="btn-aesthetic-primary" id="loginMainSubmitBtn">
-              <span>Authorize & Launch Terminal</span>
-              <span class="material-symbols-rounded">arrow_forward</span>
-            </button>
-
-          </form>
-        </div>
-
-        <!-- TAB 3: Demo Terminal -->
-        <div class="aesthetic-tab-content" id="tabContentDemo">
-          <div class="aesthetic-demo-showcase-box">
-            <div class="adsb-badge-row">
-              <span class="adsb-live-chip">● SIMULATED MT5 FEED</span>
-              <span class="adsb-capital-chip">$100,000 DEMO BALANCE</span>
-            </div>
-            <h3 class="adsb-title">Gold Hunter Pro EA v0.8 Sandbox</h3>
-            <p class="adsb-desc">Instant read-only terminal access to view real-time algorithmic trades, liquidity sweeps, and dynamic risk management in action.</p>
-            
-            <div class="adsb-params-grid">
-              <div class="adsb-param">
-                <span class="adsb-param-lbl">Target Pair</span>
-                <span class="adsb-param-val">Spot Gold (XAUUSD)</span>
+            <div class="aesthetic-quick-demo-callout" onclick="switchLoginTab('demo')">
+              <div class="aqd-left">
+                <span class="material-symbols-rounded aqd-icon">candlestick_chart</span>
+                <div class="aqd-info">
+                  <strong>Explore Live Demo Sandbox</strong>
+                  <span>Experience Gold Hunter Pro EA with $100k test liquidity</span>
+                </div>
               </div>
-              <div class="adsb-param">
-                <span class="adsb-param-lbl">Execution Mode</span>
-                <span class="adsb-param-val">100% Automated</span>
-              </div>
-              <div class="adsb-param">
-                <span class="adsb-param-lbl">Demo PIN</span>
-                <span class="adsb-param-val">8492</span>
-              </div>
+              <span class="aqd-arrow">→</span>
             </div>
-
-            <button type="button" class="btn-aesthetic-primary btn-demo-launch" onclick="launchDemoDirectly()">
-              <span class="material-symbols-rounded">rocket_launch</span>
-              <span>Launch Demo Terminal (PIN: 8492)</span>
-            </button>
           </div>
+
+          <!-- TAB 2: Trader ID / PIN Credentials -->
+          <div class="aesthetic-tab-content" id="tabContentTraderId">
+            <form class="aesthetic-form" onsubmit="event.preventDefault(); if(window.botHubApp) window.botHubApp.handleCleanSignIn();">
+              
+              <div class="aesthetic-field-wrap">
+                <div class="afw-header">
+                  <label for="loginEmailInput" class="afw-label">TRADER ACCOUNT ID / EMAIL</label>
+                </div>
+                <div class="afw-input-box">
+                  <span class="material-symbols-rounded afw-icon">account_circle</span>
+                  <input type="text" id="loginEmailInput" class="aesthetic-input" placeholder="e.g. hanaan.trader@gmail.com" value="hanaan.trader@gmail.com" autocomplete="username" required>
+                </div>
+              </div>
+
+              <div class="aesthetic-field-wrap">
+                <div class="afw-header">
+                  <label for="loginOtpInput" class="afw-label">PASSCODE PIN / PASSWORD</label>
+                  <a href="#" class="afw-helper-link" onclick="event.preventDefault(); fillDemoPIN();">Demo PIN: 8492</a>
+                </div>
+                <div class="afw-input-box">
+                  <span class="material-symbols-rounded afw-icon">lock</span>
+                  <input type="password" id="loginOtpInput" class="aesthetic-input" placeholder="Enter 4-Digit PIN or Password" value="8492" autocomplete="current-password" required>
+                  <button type="button" class="afw-eye-toggle" onclick="togglePassVisibility('loginOtpInput')" title="Toggle Password Visibility">
+                    <span class="material-symbols-rounded">visibility</span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="aesthetic-options-row">
+                <label class="aesthetic-checkbox-label">
+                  <input type="checkbox" id="chkRememberMe" checked>
+                  <span class="aesthetic-custom-checkbox">
+                    <span class="material-symbols-rounded">check</span>
+                  </span>
+                  <span>Remember this device</span>
+                </label>
+              </div>
+
+              <button type="submit" class="btn-aesthetic-primary" id="loginMainSubmitBtn">
+                <span>Authorize & Launch Terminal</span>
+                <span class="material-symbols-rounded">arrow_forward</span>
+              </button>
+
+            </form>
+          </div>
+
+          <!-- TAB 3: Demo Terminal -->
+          <div class="aesthetic-tab-content" id="tabContentDemo">
+            <div class="aesthetic-demo-showcase-box">
+              <div class="adsb-badge-row">
+                <span class="adsb-live-chip">● SIMULATED MT5 FEED</span>
+                <span class="adsb-capital-chip">$100,000 DEMO BALANCE</span>
+              </div>
+              <h3 class="adsb-title">Gold Hunter Pro EA v0.8 Sandbox</h3>
+              
+              <div class="adsb-params-grid">
+                <div class="adsb-param">
+                  <span class="adsb-param-lbl">Target Pair</span>
+                  <span class="adsb-param-val">Spot Gold (XAUUSD)</span>
+                </div>
+                <div class="adsb-param">
+                  <span class="adsb-param-lbl">Execution Mode</span>
+                  <span class="adsb-param-val">100% Automated</span>
+                </div>
+                <div class="adsb-param">
+                  <span class="adsb-param-lbl">Demo PIN</span>
+                  <span class="adsb-param-val">8492</span>
+                </div>
+              </div>
+
+              <button type="button" class="btn-aesthetic-primary btn-demo-launch" onclick="launchDemoDirectly()">
+                <span class="material-symbols-rounded">rocket_launch</span>
+                <span>Launch Demo Terminal (PIN: 8492)</span>
+              </button>
+            </div>
+          </div>
+
         </div>
 
         <!-- Monolith Card Bottom Security Badges -->
@@ -1080,7 +1174,7 @@
   </script>
 
   <!-- App Core JavaScript Bundle -->
-  <script src="/app.js?v=3850"></script>
+  <script src="/app.js?v=3950"></script>
 
 </body>
 </html>
