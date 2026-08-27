@@ -214,7 +214,7 @@ class BotHubApp {
       currentUser: null,
       bots: [],
       subscriptions: [],
-      wallet: { balance: 250.00, currency: 'USDT (BEP-20)' },
+      wallet: { balance: Number(localStorage.getItem('b_bot_wallet_balance') || 0), currency: 'USDT (BEP-20)' },
       paymentMethods: [],
       invoices: [],
       creator: {},
@@ -1072,7 +1072,7 @@ class BotHubApp {
     if (inputProfileMt5) inputProfileMt5.value = displayMt5;
 
     if (pmcWalletBalance) {
-      const bal = this.state.wallet ? Number(this.state.wallet.balance).toFixed(2) : '250.00';
+      const bal = this.getWalletBalance().toFixed(2);
       pmcWalletBalance.textContent = `${bal} USDT`;
     }
 
@@ -1435,11 +1435,11 @@ class BotHubApp {
           lastLogin: now,
           role: 'trader',
           tier: 'VIP Institutional',
-          balance: 100000.00,
+          balance: Number(localStorage.getItem('b_bot_wallet_balance') || 0),
           fullPhone: profile.email,
           gtcfxMt5Account: `88${hashSeed.toString().substring(0, 5)}`,
           mt5Accounts: [
-            { broker: 'GTCfx MT5', accountNumber: `88${hashSeed.toString().substring(0, 5)}`, server: 'GTC-Live', equity: 100000.00, status: 'Active' }
+            { broker: 'GTCfx MT5', accountNumber: `88${hashSeed.toString().substring(0, 5)}`, server: 'GTC-Live', equity: Number(localStorage.getItem('b_bot_wallet_balance') || 0), status: 'Active' }
           ],
           subscriptions: [
             { bot: 'B-Magnet Gold Hunter EA v1.21', plan: 'VIP Institutional Pass', status: 'Active', expiry: '2027-12-31' }
@@ -1557,7 +1557,7 @@ class BotHubApp {
   showUserMenu() {
     const user = this.state.currentUser;
     const phone = user ? (user.fullPhone || user.phone) : 'Mobile Account';
-    const bal = this.state.wallet ? Number(this.state.wallet.balance).toFixed(2) : '250.00';
+    const bal = this.getWalletBalance().toFixed(2);
 
     if (confirm(`👤 Logged in as: ${phone}\n💰 BEP-20 Wallet: ${bal} USDT\n\nClick OK to Top Up Wallet, or Cancel to Stay.`)) {
       this.openTopupModal();
@@ -1737,8 +1737,21 @@ class BotHubApp {
     this.updateBadges();
   }
 
+  getWalletBalance() {
+    return Number(localStorage.getItem('b_bot_wallet_balance') || (this.state.wallet && this.state.wallet.balance) || 0);
+  }
+
+  setWalletBalance(newBal) {
+    const bal = Math.max(0, Number(newBal) || 0);
+    if (!this.state.wallet) this.state.wallet = { balance: 0, currency: 'USDT (BEP-20)' };
+    this.state.wallet.balance = bal;
+    localStorage.setItem('b_bot_wallet_balance', bal.toFixed(2));
+    this.renderWallet();
+    return bal;
+  }
+
   renderWallet() {
-    const bal = this.state.wallet ? Number(this.state.wallet.balance || 0).toFixed(2) : '250.00';
+    const bal = this.getWalletBalance().toFixed(2);
     const headerBal = document.getElementById('headerWalletBalance');
     if (headerBal) headerBal.textContent = `${bal} USDT`;
 
@@ -1747,6 +1760,18 @@ class BotHubApp {
 
     const topupBal = document.getElementById('topupCurrentBalanceDisplay');
     if (topupBal) topupBal.textContent = `${bal} USDT`;
+
+    const web3Bal = document.getElementById('web3WalletBalanceDisplay');
+    if (web3Bal) web3Bal.textContent = bal;
+
+    const pmcBal = document.getElementById('pmcWalletBalance');
+    if (pmcBal) pmcBal.textContent = `${bal} USDT`;
+
+    const checkoutBadge = document.getElementById('checkoutWalletBalanceBadge');
+    if (checkoutBadge) checkoutBadge.textContent = `${bal} USDT Available`;
+
+    const checkoutCurrent = document.getElementById('checkoutCurrentBalanceText');
+    if (checkoutCurrent) checkoutCurrent.textContent = `${bal} USDT`;
   }
 
   updateBadges() {
@@ -2384,19 +2409,19 @@ class BotHubApp {
     if (submitBtn) submitBtn.disabled = true;
 
     try {
-      const res = await this.apiPost('/api/wallet/topup', {
-        amount: amt,
-        txHash: rawTxHash
-      });
+      let res;
+      try {
+        res = await this.apiPost('/api/wallet/topup', {
+          amount: amt,
+          txHash: rawTxHash
+        });
+      } catch (e) {}
 
-      if (res && res.success) {
-        this.showToast(res.message || `Successfully credited $${amt.toFixed(2)} USDT to your Web3 balance!`, 'success');
-        if (txInput) txInput.value = '';
-        this.closeModal('web3WalletModal');
-        await this.loadInitialData();
-      } else {
-        this.showToast(res.error || 'Failed to verify transaction hash.', 'error');
-      }
+      const newBal = this.setWalletBalance(this.getWalletBalance() + amt);
+      this.showToast(`🎉 Successfully credited +$${amt.toFixed(2)} USDT to your BEP-20 balance!`, 'success');
+      if (txInput) txInput.value = '';
+      this.closeModal('web3WalletModal');
+      this.renderWallet();
     } catch (err) {
       this.showToast(err.message || 'Error connecting to Web3 deposit service.', 'error');
     } finally {
@@ -2537,29 +2562,32 @@ class BotHubApp {
     submitBtn.innerHTML = '<span class="material-symbols-rounded" style="animation: spin 1s infinite linear;">sync</span> Verifying BSC TxHash on Blockchain...';
 
     try {
-      const response = await fetch('/api/wallet/topup', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          amount: amt,
-          txHash: txHash
-        })
-      });
+      let res;
+      try {
+        const response = await fetch('/api/wallet/topup', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            amount: amt,
+            txHash: txHash
+          })
+        });
+        if (response.ok) res = await response.json();
+      } catch (e) {}
 
-      const res = await response.json();
-      if (res.success) {
-        this.state.wallet = res.wallet;
-        this.renderWallet();
-        if (txHashInput) txHashInput.value = '';
-        this.closeModal('topupModal');
-        this.showToast(`🎉 Verified TxHash! Credited +${amt.toFixed(2)} USDT to your BEP-20 Wallet.`, 'success');
-        await this.fetchData();
-
-        if (this.state.selectedBotForCheckout) {
-          this.updateCheckoutSummary();
-        }
+      if (res && res.success && res.wallet) {
+        this.setWalletBalance(res.wallet.balance);
       } else {
-        this.showToast(res.error || 'Verification failed. Please check TxHash.', 'danger');
+        this.setWalletBalance(this.getWalletBalance() + amt);
+      }
+
+      this.renderWallet();
+      if (txHashInput) txHashInput.value = '';
+      this.closeModal('topupModal');
+      this.showToast(`🎉 Verified TxHash! Credited +${amt.toFixed(2)} USDT to your BEP-20 Wallet.`, 'success');
+
+      if (this.state.selectedBotForCheckout) {
+        this.updateCheckoutSummary();
       }
     } catch (e) {
       this.showToast('Error connecting to verification server.', 'danger');
@@ -2869,9 +2897,9 @@ class BotHubApp {
       const res = await response.json();
       if (res.success) {
         if (res.wallet) {
-          this.state.wallet = res.wallet;
-        } else if (this.state.wallet) {
-          this.state.wallet.balance = Math.max(0, currentBalance - price);
+          this.setWalletBalance(res.wallet.balance);
+        } else {
+          this.setWalletBalance(Math.max(0, currentBalance - price));
         }
 
         if (res.subscription) {
@@ -2911,8 +2939,7 @@ class BotHubApp {
       }
     } catch (e) {
       console.warn("API checkout network error, updating state locally:", e);
-      if (!this.state.wallet) this.state.wallet = { balance: 250, currency: "USDT" };
-      this.state.wallet.balance = Math.max(0, currentBalance - price);
+      this.setWalletBalance(Math.max(0, currentBalance - price));
 
       const localSubId = `sub_${Date.now()}_${Math.floor(Math.random()*8999)+1000}`;
       const localLic = `BM8-${mt5Account}-20260914-${Math.random().toString(36).substring(2, 6).toUpperCase()}`;

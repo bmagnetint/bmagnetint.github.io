@@ -1,0 +1,593 @@
+{
+  "bots": [
+    {
+      "id": "bot_bmagnet_1m",
+      "name": "B-Magnet Gold Hunter EA (1 Month Pass)",
+      "tagline": "Full MT5 Automated Gold Trading Algorithm (30 Days Pass)",
+      "creator": "B-Magnet Labs",
+      "category": "1 Month",
+      "icon": "radar",
+      "color": "#00A896",
+      "badge": "\ud83d\udd25 Most Popular Plan",
+      "winRate": 89.4,
+      "monthlyRoi": "18 - 23",
+      "maxDrawdown": 30.0,
+      "profitFactor": 3.5,
+      "riskLevel": "Low-Medium",
+      "totalSubscribers": 1840,
+      "description": "Full institutional MT5 Gold EA license valid for 30 days. Automated XAUUSD trend following, magnetic order-flow imbalance detection, and dynamic recovery.",
+      "plans": {
+        "1month": {
+          "name": "1 Month Pass",
+          "price": 100,
+          "durationDays": 30
+        },
+        "3month": {
+          "name": "3 Months Pass (Save $50)",
+          "price": 250,
+          "durationDays": 90
+        },
+        "1year": {
+          "name": "1 Year VIP Pass (Save $300)",
+          "price": 900,
+          "durationDays": 365
+        },
+        "trial": {
+          "name": "2-Day Starter Trial",
+          "price": 10,
+          "durationDays": 2
+        }
+      },
+      "platforms": [
+        "MetaTrader 5",
+        "Windows VPS",
+        "macOS"
+      ],
+      "pairs": [
+        "XAUUSD (Gold)"
+      ],
+      "rating": 4.95,
+      "reviewsCount": 312
+    },
+    {
+      "id": "bot_bmagnet_3m",
+      "name": "B-Magnet Gold Hunter EA (3 Months Pass)",
+      "tagline": "Quarterly MT5 Gold Trading Pass with 90-Day Whitelist (Save $50)",
+      "creator": "B-Magnet Labs",
+      "category": "3 Months",
+      "icon": "shield",
+      "color": "#0284C7",
+      "badge": "3 Months (Save $50)",
+      "winRate": 89.4,
+      "monthlyRoi": "18 - 23",
+      "maxDrawdown": 30.0,
+      "profitFactor": 3.5,
+      "riskLevel": "Low-Medium",
+      "totalSubscribers": 1420,
+      "description": "Quarterly 90-day MT5 automated trading pass. Extended institutional gold trading algorithm access with dedicated VIP server support and automatic parameter updates.",
+      "plans": {
+        "3month": {
+          "name": "3 Months Pass (Save $50)",
+          "price": 250,
+          "durationDays": 90
+        },
+        "1month": {
+          "name": "1 Month Pass",
+          "price": 100,
+          "durationDays": 30
+        },
+        "1year": {
+          "name": "1 Year VIP Pass (Save $300)",
+          "price": 900,
+          "durationDays": 365
+        },
+        "trial": {
+          "name": "2-Day Starter Trial",
+          "price": 10,
+          "durationDays": 2
+        }
+      },
+      "platforms": [
+        "MetaTrader 5",
+        "Windows VPS",
+        "macOS"
+      ],
+      "pairs": [
+        "XAUUSD (Gold)"
+      ],
+      "rating": 4.96,
+      "reviewsCount": 248
+    },
+    {
+      "id": "bot_bmagnet_1y",
+      "name": "B-Magnet Gold Hunter EA (1 Year VIP Pass)",
+      "tagline": "Annual Institutional VIP Pass with 365-Day Uninterrupted Whitelist (Save $300)",
+      "creator": "B-Magnet Labs",
+      "category": "1 Year VIP",
+      "icon": "bolt",
+      "color": "#F59E0B",
+      "badge": "1 Year VIP (Save $300)",
+      "winRate": 89.4,
+      "monthlyRoi": "18 - 23",
+      "maxDrawdown": 30.0,
+      "profitFactor": 3.5,
+      "riskLevel": "Low-Medium",
+      "totalSubscribers": 2860,
+      "description": "Annual 365-day institutional VIP pass for MetaTrader 5. Complete year of continuous automated gold trading, priority license server routing, and unlimited broker account migrations.",
+      "plans": {
+        "1year": {
+          "name": "1 Year VIP Pass (Save $300)",
+          "price": 900,
+          "durationDays": 365
+        },
+        "3month": {
+          "name": "3 Months Pass (Save $50)",
+          "price": 250,
+          "durationDays": 90
+        },
+        "1month": {
+          "name": "1 Month Pass",
+          "price": 100,
+          "durationDays": 30
+        },
+        "trial": {
+          "name": "2-Day Starter Trial",
+          "price": 10,
+          "durationDays": 2
+        }
+      },
+      "platforms": [
+        "MetaTrader 5",
+        "Windows VPS",
+        "macOS"
+      ],
+      "pairs": [
+        "XAUUSD (Gold)"
+      ],
+      "rating": 4.98,
+      "reviewsCount": 512
+    },
+    {
+      "id": "bot_bmagnet_trial",
+      "name": "B-Magnet Gold Hunter EA (2-Day Starter Trial)",
+      "tagline": "Instant 2-Day Live Test Pass on MT5 Demo or Live Account",
+      "creator": "B-Magnet Labs",
+      "category": "Starter Trial",
+      "icon": "bolt",
+      "color": "#00A896",
+      "badge": "Starter Trial ($10)",
+      "winRate": 89.4,
+      "monthlyRoi": "18 - 23",
+      "maxDrawdown": 30.0,
+      "profitFactor": 3.5,
+      "riskLevel": "Low",
+      "totalSubscribers": 3450,
+      "description": "Instant 2-day live test pass to verify live execution, spreads, and automated TP/SL trade fills on your MT5 personal demo or live account before full pass activation.",
+      "plans": {
+        "trial": {
+          "name": "2-Day Starter Trial",
+          "price": 10,
+          "durationDays": 2
+        },
+        "1month": {
+          "name": "1 Month Pass",
+          "price": 100,
+          "durationDays": 30
+        },
+        "3month": {
+          "name": "3 Months Pass (Save $50)",
+          "price": 250,
+          "durationDays": 90
+        },
+        "1year": {
+          "name": "1 Year VIP Pass (Save $300)",
+          "price": 900,
+          "durationDays": 365
+        }
+      },
+      "platforms": [
+        "MetaTrader 5",
+        "Windows VPS",
+        "macOS"
+      ],
+      "pairs": [
+        "XAUUSD (Gold)"
+      ],
+      "rating": 4.92,
+      "reviewsCount": 612
+    }
+  ],
+  "userSubscriptions": [
+    {
+      "id": "sub_bmagnet_1m",
+      "customerPhone": "+919495097786",
+      "botId": "bot_bmagnet_1m",
+      "botName": "B-Magnet Gold Hunter EA (1 Month Pass)",
+      "planKey": "1month",
+      "planName": "1 Month Pass",
+      "price": 100,
+      "status": "Active",
+      "startDate": "2026-08-15T12:00:00Z",
+      "expiresDate": "2026-09-14T23:59:59Z",
+      "licenseKey": "BM8-8849201-20260914-0F7C0A67",
+      "broker": "GTCfx",
+      "gtcfxMt5Account": "8849201",
+      "mt5Account": "8849201",
+      "autoRenew": true,
+      "paymentMethod": "USDT (BEP-20 Wallet)",
+      "lastSignal": "XAUUSD Buy 0.20 Lot @ 2,488.20 (+42.0 pips)"
+    }
+  ],
+  "paymentMethods": [
+    {
+      "id": "pm_bep20",
+      "type": "crypto",
+      "currency": "USDT (BEP-20)",
+      "network": "BNB Smart Chain (BEP20)",
+      "address": "0x26B5E776b4e3f40378b440Dfb2ACD675938B480b",
+      "isDefault": true
+    }
+  ],
+  "invoices": [
+    {
+      "id": "INV-2026-0891",
+      "date": "2026-08-01T10:00:00Z",
+      "botName": "B-Magnet Gold Hunter EA Pro",
+      "plan": "1 Month Pro Pass",
+      "amount": 100.0,
+      "currency": "USDT",
+      "status": "Paid",
+      "paymentMethod": "USDT (BEP-20 BSC)"
+    },
+    {
+      "id": "TOPUP-2026-0042",
+      "date": "2026-08-01T09:45:00Z",
+      "botName": "BEP-20 Wallet Deposit",
+      "plan": "+250.00 USDT (BEP-20)",
+      "amount": 250.0,
+      "currency": "USDT",
+      "status": "Paid",
+      "paymentMethod": "USDT (BEP-20 BSC)"
+    }
+  ],
+  "creator": {
+    "mrr": 4820.0,
+    "totalSubscribers": 64,
+    "activeBots": 2,
+    "payoutBalance": 3480.0,
+    "affiliateReferrals": 18,
+    "publishedBots": [
+      {
+        "id": "bot_bmagnet_pro",
+        "name": "B-Magnet Gold Hunter EA Pro",
+        "subscribers": 42,
+        "monthlyRevenue": 3738.0,
+        "status": "Published"
+      },
+      {
+        "id": "bot_bmagnet_lite",
+        "name": "B-Magnet Gold Hunter EA Lite",
+        "subscribers": 22,
+        "monthlyRevenue": 1078.0,
+        "status": "Published"
+      }
+    ]
+  },
+  "wallet": {
+    "balance": 0.0,
+    "currency": "USD"
+  },
+  "currentUser": {
+    "id": "goog_563574",
+    "fullPhone": "+91 94950 63574",
+    "phone": "+91 94950 63574",
+    "email": "hanaan.trader@gmail.com",
+    "name": "Hanaan Junaid",
+    "picture": "https://lh3.googleusercontent.com/a/default-user=s96-c",
+    "authProvider": "google",
+    "isLoggedIn": true,
+    "token": "tok_goog_b1decc8572d33db8863bf862dfa580d3",
+    "loginTime": "2026-08-26T19:07:20Z"
+  },
+  "customers": {
+    "hanaan.trader@gmail.com": {
+      "id": "cust_8d1d32d2",
+      "phone": "+91 94950 94809",
+      "email": "hanaan.trader@gmail.com",
+      "name": "Hanaan.trader",
+      "authProvider": "gmail_otp",
+      "walletBalance": 0.0,
+      "totalSpent": 0.0,
+      "activeBots": 0,
+      "gtcfxMt5Account": "8849201",
+      "subscriptions": [],
+      "registeredAt": "2026-08-19T20:28:55Z",
+      "lastLoginAt": "2026-08-26T19:07:20Z",
+      "loginCount": 28,
+      "googleEmail": "hanaan.trader@gmail.com",
+      "picture": "https://lh3.googleusercontent.com/a/default-user=s96-c"
+    }
+  },
+  "notifications": [
+    {
+      "id": "notif_1787771240_348",
+      "type": "GOOGLE_LOGIN",
+      "title": "\ud83d\udd11 Google Sign-In",
+      "message": "User: Hanaan Junaid (hanaan.trader@gmail.com) signed in with Google. Wallet: 250.00 USDT",
+      "customerPhone": "+91 94950 63574",
+      "customerEmail": "hanaan.trader@gmail.com",
+      "timestamp": "2026-08-26T19:07:20Z",
+      "unread": true
+    },
+    {
+      "id": "notif_1787771210_624",
+      "type": "GOOGLE_LOGIN",
+      "title": "\ud83d\udd11 Google Sign-In",
+      "message": "User: Hanaan Junaid (hanaan.trader@gmail.com) signed in with Google. Wallet: 250.00 USDT",
+      "customerPhone": "+91 94950 63574",
+      "customerEmail": "hanaan.trader@gmail.com",
+      "timestamp": "2026-08-26T19:06:50Z",
+      "unread": true
+    },
+    {
+      "id": "notif_1787770680_105",
+      "type": "GOOGLE_LOGIN",
+      "title": "\ud83d\udd11 Google Sign-In",
+      "message": "User: Hanaan Junaid (hanaan.trader@gmail.com) signed in with Google. Wallet: 250.00 USDT",
+      "customerPhone": "+91 94950 63574",
+      "customerEmail": "hanaan.trader@gmail.com",
+      "timestamp": "2026-08-26T18:58:00Z",
+      "unread": true
+    },
+    {
+      "id": "notif_1787744171_940",
+      "type": "GMAIL_LOGIN",
+      "title": "\ud83d\udd11 Gmail Login",
+      "message": "Customer: Hanaan.trader (hanaan.trader@gmail.com) signed in via Gmail OTP. Wallet: 250.00 USDT",
+      "customerPhone": "+91 94950 76677",
+      "customerEmail": "hanaan.trader@gmail.com",
+      "timestamp": "2026-08-26T11:36:11Z",
+      "unread": true
+    },
+    {
+      "id": "notif_1787730917_523",
+      "type": "GMAIL_LOGIN",
+      "title": "\ud83d\udd11 Gmail Login",
+      "message": "Customer: Hanaan.trader (hanaan.trader@gmail.com) signed in via Gmail OTP. Wallet: 250.00 USDT",
+      "customerPhone": "+91 94950 38125",
+      "customerEmail": "hanaan.trader@gmail.com",
+      "timestamp": "2026-08-26T07:55:17Z",
+      "unread": true
+    },
+    {
+      "id": "notif_1787463234_348",
+      "type": "GMAIL_LOGIN",
+      "title": "\ud83d\udd11 Gmail Login",
+      "message": "Customer: Hanaan.trader (hanaan.trader@gmail.com) signed in via Gmail OTP. Wallet: 250.00 USDT",
+      "customerPhone": "+91 94950 86186",
+      "customerEmail": "hanaan.trader@gmail.com",
+      "timestamp": "2026-08-23T05:33:54Z",
+      "unread": true
+    },
+    {
+      "id": "notif_1787418876_118",
+      "type": "GMAIL_LOGIN",
+      "title": "\ud83d\udd11 Gmail Login",
+      "message": "Customer: Hanaan.trader (hanaan.trader@gmail.com) signed in via Gmail OTP. Wallet: 250.00 USDT",
+      "customerPhone": "+91 94950 82995",
+      "customerEmail": "hanaan.trader@gmail.com",
+      "timestamp": "2026-08-22T17:14:36Z",
+      "unread": true
+    },
+    {
+      "id": "notif_1787418572_653",
+      "type": "GMAIL_LOGIN",
+      "title": "\ud83d\udd11 Gmail Login",
+      "message": "Customer: Hanaan.trader (hanaan.trader@gmail.com) signed in via Gmail OTP. Wallet: 250.00 USDT",
+      "customerPhone": "+91 94950 14178",
+      "customerEmail": "hanaan.trader@gmail.com",
+      "timestamp": "2026-08-22T17:09:32Z",
+      "unread": true
+    },
+    {
+      "id": "notif_1787418261_392",
+      "type": "GMAIL_LOGIN",
+      "title": "\ud83d\udd11 Gmail Login",
+      "message": "Customer: Hanaan.trader (hanaan.trader@gmail.com) signed in via Gmail OTP. Wallet: 250.00 USDT",
+      "customerPhone": "+91 94950 14178",
+      "customerEmail": "hanaan.trader@gmail.com",
+      "timestamp": "2026-08-22T17:04:21Z",
+      "unread": true
+    },
+    {
+      "id": "notif_1787417644_571",
+      "type": "GMAIL_LOGIN",
+      "title": "\ud83d\udd11 Gmail Login",
+      "message": "Customer: Hanaan.trader (hanaan.trader@gmail.com) signed in via Gmail OTP. Wallet: 250.00 USDT",
+      "customerPhone": "+91 94950 04318",
+      "customerEmail": "hanaan.trader@gmail.com",
+      "timestamp": "2026-08-22T16:54:04Z",
+      "unread": true
+    },
+    {
+      "id": "notif_1787417616_535",
+      "type": "GMAIL_LOGIN",
+      "title": "\ud83d\udd11 Gmail Login",
+      "message": "Customer: Hanaan.trader (hanaan.trader@gmail.com) signed in via Gmail OTP. Wallet: 250.00 USDT",
+      "customerPhone": "+91 94950 04318",
+      "customerEmail": "hanaan.trader@gmail.com",
+      "timestamp": "2026-08-22T16:53:36Z",
+      "unread": true
+    },
+    {
+      "id": "notif_1787417395_604",
+      "type": "GMAIL_LOGIN",
+      "title": "\ud83d\udd11 Gmail Login",
+      "message": "Customer: Hanaan.trader (hanaan.trader@gmail.com) signed in via Gmail OTP. Wallet: 250.00 USDT",
+      "customerPhone": "+91 94950 45605",
+      "customerEmail": "hanaan.trader@gmail.com",
+      "timestamp": "2026-08-22T16:49:55Z",
+      "unread": true
+    },
+    {
+      "id": "notif_1787416731_269",
+      "type": "GMAIL_LOGIN",
+      "title": "\ud83d\udd11 Gmail Login",
+      "message": "Customer: Hanaan.trader (hanaan.trader@gmail.com) signed in via Gmail OTP. Wallet: 250.00 USDT",
+      "customerPhone": "+91 94950 41925",
+      "customerEmail": "hanaan.trader@gmail.com",
+      "timestamp": "2026-08-22T16:38:51Z",
+      "unread": true
+    },
+    {
+      "id": "notif_1787416434_785",
+      "type": "GMAIL_LOGIN",
+      "title": "\ud83d\udd11 Gmail Login",
+      "message": "Customer: Hanaan.trader (hanaan.trader@gmail.com) signed in via Gmail OTP. Wallet: 250.00 USDT",
+      "customerPhone": "+91 94950 14002",
+      "customerEmail": "hanaan.trader@gmail.com",
+      "timestamp": "2026-08-22T16:33:54Z",
+      "unread": true
+    },
+    {
+      "id": "notif_1787305285_18",
+      "type": "GMAIL_LOGIN",
+      "title": "\ud83d\udd11 Gmail Login",
+      "message": "Customer: Hanaan.trader (hanaan.trader@gmail.com) signed in via Gmail OTP. Wallet: 250.00 USDT",
+      "customerPhone": "+91 94950 02361",
+      "customerEmail": "hanaan.trader@gmail.com",
+      "timestamp": "2026-08-21T09:41:25Z",
+      "unread": true
+    },
+    {
+      "id": "notif_1787198011_915",
+      "type": "GMAIL_LOGIN",
+      "title": "\ud83d\udd11 Gmail Login",
+      "message": "Customer: Hanaan.trader (hanaan.trader@gmail.com) signed in via Gmail OTP. Wallet: 250.00 USDT",
+      "customerPhone": "+91 94950 62555",
+      "customerEmail": "hanaan.trader@gmail.com",
+      "timestamp": "2026-08-20T03:53:31Z",
+      "unread": true
+    },
+    {
+      "id": "notif_1787197856_402",
+      "type": "GMAIL_LOGIN",
+      "title": "\ud83d\udd11 Gmail Login",
+      "message": "Customer: Hanaan.trader (hanaan.trader@gmail.com) signed in via Gmail OTP. Wallet: 250.00 USDT",
+      "customerPhone": "+91 94950 74630",
+      "customerEmail": "hanaan.trader@gmail.com",
+      "timestamp": "2026-08-20T03:50:56Z",
+      "unread": true
+    },
+    {
+      "id": "notif_1787197843_610",
+      "type": "GMAIL_LOGIN",
+      "title": "\ud83d\udd11 Gmail Login",
+      "message": "Customer: Hanaan.trader (hanaan.trader@gmail.com) signed in via Gmail OTP. Wallet: 250.00 USDT",
+      "customerPhone": "+91 94950 74630",
+      "customerEmail": "hanaan.trader@gmail.com",
+      "timestamp": "2026-08-20T03:50:43Z",
+      "unread": true
+    },
+    {
+      "id": "notif_1787194234_1",
+      "type": "GMAIL_LOGIN",
+      "title": "\ud83d\udd11 Gmail Login",
+      "message": "Customer: Hanaan.trader (hanaan.trader@gmail.com) signed in via Gmail OTP. Wallet: 250.00 USDT",
+      "customerPhone": "+91 94950 75104",
+      "customerEmail": "hanaan.trader@gmail.com",
+      "timestamp": "2026-08-20T02:50:34Z",
+      "unread": true
+    },
+    {
+      "id": "notif_1787181574_403",
+      "type": "GMAIL_LOGIN",
+      "title": "\ud83d\udd11 Gmail Login",
+      "message": "Customer: Hanaan.trader (hanaan.trader@gmail.com) signed in via Gmail OTP. Wallet: 250.00 USDT",
+      "customerPhone": "+91 94950 24837",
+      "customerEmail": "hanaan.trader@gmail.com",
+      "timestamp": "2026-08-19T23:19:34Z",
+      "unread": true
+    },
+    {
+      "id": "notif_1787177581_476",
+      "type": "GMAIL_LOGIN",
+      "title": "\ud83d\udd11 Gmail Login",
+      "message": "Customer: Hanaan.trader (hanaan.trader@gmail.com) signed in via Gmail OTP. Wallet: 250.00 USDT",
+      "customerPhone": "+91 94950 05467",
+      "customerEmail": "hanaan.trader@gmail.com",
+      "timestamp": "2026-08-19T22:13:01Z",
+      "unread": true
+    },
+    {
+      "id": "notif_1787177107_801",
+      "type": "GMAIL_LOGIN",
+      "title": "\ud83d\udd11 Gmail Login",
+      "message": "Customer: Hanaan.trader (hanaan.trader@gmail.com) signed in via Gmail OTP. Wallet: 250.00 USDT",
+      "customerPhone": "+91 94950 14538",
+      "customerEmail": "hanaan.trader@gmail.com",
+      "timestamp": "2026-08-19T22:05:07Z",
+      "unread": true
+    },
+    {
+      "id": "notif_1787176853_661",
+      "type": "GMAIL_LOGIN",
+      "title": "\ud83d\udd11 Gmail Login",
+      "message": "Customer: Hanaan.trader (hanaan.trader@gmail.com) signed in via Gmail OTP. Wallet: 250.00 USDT",
+      "customerPhone": "+91 94950 92641",
+      "customerEmail": "hanaan.trader@gmail.com",
+      "timestamp": "2026-08-19T22:00:53Z",
+      "unread": true
+    },
+    {
+      "id": "notif_1787176028_463",
+      "type": "GMAIL_LOGIN",
+      "title": "\ud83d\udd11 Gmail Login",
+      "message": "Customer: Hanaan.trader (hanaan.trader@gmail.com) signed in via Gmail OTP. Wallet: 250.00 USDT",
+      "customerPhone": "+91 94950 88881",
+      "customerEmail": "hanaan.trader@gmail.com",
+      "timestamp": "2026-08-19T21:47:08Z",
+      "unread": true
+    },
+    {
+      "id": "notif_1787175816_896",
+      "type": "GMAIL_LOGIN",
+      "title": "\ud83d\udd11 Gmail Login",
+      "message": "Customer: Hanaan.trader (hanaan.trader@gmail.com) signed in via Gmail OTP. Wallet: 250.00 USDT",
+      "customerPhone": "+91 94950 83742",
+      "customerEmail": "hanaan.trader@gmail.com",
+      "timestamp": "2026-08-19T21:43:36Z",
+      "unread": true
+    },
+    {
+      "id": "notif_1787172235_840",
+      "type": "GMAIL_LOGIN",
+      "title": "\ud83d\udd11 Gmail Login",
+      "message": "Customer: Hanaan.trader (hanaan.trader@gmail.com) signed in via Gmail OTP. Wallet: 250.00 USDT",
+      "customerPhone": "+91 94950 29548",
+      "customerEmail": "hanaan.trader@gmail.com",
+      "timestamp": "2026-08-19T20:43:55Z",
+      "unread": true
+    },
+    {
+      "id": "notif_1787172206_717",
+      "type": "GMAIL_LOGIN",
+      "title": "\ud83d\udd11 Gmail Login",
+      "message": "Customer: Hanaan.trader (hanaan.trader@gmail.com) signed in via Gmail OTP. Wallet: 250.00 USDT",
+      "customerPhone": "+91 94950 29548",
+      "customerEmail": "hanaan.trader@gmail.com",
+      "timestamp": "2026-08-19T20:43:26Z",
+      "unread": true
+    },
+    {
+      "id": "notif_1787171335_825",
+      "type": "NEW_GMAIL_CUSTOMER",
+      "title": "\ud83c\udf89 New Gmail Customer",
+      "message": "Customer: Hanaan.trader (hanaan.trader@gmail.com) signed in via Gmail OTP. Wallet: 250.00 USDT",
+      "customerPhone": "+91 94950 94809",
+      "customerEmail": "hanaan.trader@gmail.com",
+      "timestamp": "2026-08-19T20:28:55Z",
+      "unread": true
+    }
+  ]
+}
