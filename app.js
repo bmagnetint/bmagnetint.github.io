@@ -242,7 +242,7 @@ class BotHubApp {
     this.initThemeAndLanguage();
     await this.initAuth();
 
-    const isStandaloneSignIn = window.location.pathname.includes('signinpage') || document.body.classList.contains('standalone-signin-page');
+    const isStandaloneSignIn = window.location.pathname.includes('signinpage') || window.location.pathname.includes('login') || document.body.classList.contains('standalone-signin-page') || document.body.classList.contains('aesthetic-login-page');
     if (isStandaloneSignIn) {
       const emailInput = document.getElementById('loginEmailInput');
       if (emailInput) {
@@ -724,7 +724,7 @@ class BotHubApp {
       this.state.currentUser = user;
     }
 
-    const isStandaloneSignIn = window.location.pathname.includes('signinpage') || document.body.classList.contains('standalone-signin-page');
+    const isStandaloneSignIn = window.location.pathname.includes('signinpage') || window.location.pathname.includes('login') || document.body.classList.contains('standalone-signin-page') || document.body.classList.contains('aesthetic-login-page');
     if (!isStandaloneSignIn) {
       if (user && user.isLoggedIn && urlParams.has('logged_in')) {
         this.applyLoggedInUI(user);
@@ -852,7 +852,7 @@ class BotHubApp {
   }
 
   applyLoggedInUI(user) {
-    if (window.location.pathname.includes('signinpage') || document.body.classList.contains('standalone-signin-page')) {
+    if (window.location.pathname.includes('signinpage') || window.location.pathname.includes('login') || document.body.classList.contains('standalone-signin-page') || document.body.classList.contains('aesthetic-login-page')) {
       setTimeout(() => {
         window.location.href = '/?logged_in=1';
       }, 350);
@@ -1343,8 +1343,8 @@ class BotHubApp {
   }
 
   showSignInPage() {
-    if (!window.location.pathname.includes('signinpage')) {
-      window.location.href = '/signinpage/';
+    if (!window.location.pathname.includes('login')) {
+      window.location.href = '/login/';
     } else {
       this.showSignInScreen();
     }
