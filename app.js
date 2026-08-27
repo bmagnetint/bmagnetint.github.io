@@ -1548,18 +1548,78 @@ class BotHubApp {
         usersDb.push(savedUser);
       }
 
+      const displayUid = this.formatShortUserId(savedUser.userId || savedUser.id, savedUser.email, savedUser.googleId);
+      savedUser.id = displayUid;
+      savedUser.userId = displayUid;
+
+      // 3. Sync to Google Cloud Firestore (Live Registration & Real-Time Sync to Admin Panel)
+      try {
+        if (typeof firebase !== 'undefined') {
+          if (!firebase.apps.length) {
+            firebase.initializeApp({
+              projectId: "bmagnetint-8f2c9",
+              authDomain: "bmagnetint-8f2c9.firebaseapp.com",
+              storageBucket: "bmagnetint-8f2c9.appspot.com"
+            });
+          }
+          const fs = firebase.firestore();
+          const docRef = fs.collection("customers").doc(displayUid);
+          const docSnap = await docRef.get();
+
+          if (docSnap.exists) {
+            const cloudData = docSnap.data();
+            if (typeof cloudData.balance !== 'undefined') {
+              savedUser.balance = parseFloat(cloudData.balance);
+              localStorage.setItem('b_bot_wallet_balance', savedUser.balance.toFixed(2));
+            }
+            if (cloudData.gtcfxMt5Account) savedUser.gtcfxMt5Account = cloudData.gtcfxMt5Account;
+            if (cloudData.tier) savedUser.tier = cloudData.tier;
+
+            await docRef.set({
+              name: savedUser.name,
+              email: savedUser.email,
+              lastLogin: now,
+              isLoggedIn: true,
+              picture: savedUser.picture || ''
+            }, { merge: true });
+          } else {
+            // Register New User in Cloud Database with initial balance
+            const initialBalance = parseFloat(localStorage.getItem('b_bot_wallet_balance') || '0');
+            savedUser.balance = initialBalance;
+
+            await docRef.set({
+              id: displayUid,
+              userId: displayUid,
+              name: savedUser.name,
+              email: savedUser.email,
+              phone: savedUser.phone || '',
+              whatsapp: savedUser.phone || '',
+              gtcfxMt5Account: savedUser.gtcfxMt5Account || '',
+              balance: initialBalance,
+              tier: savedUser.tier || 'Verified Trader',
+              status: 'Active',
+              joinedDate: now,
+              lastLogin: now,
+              authProvider: 'google',
+              picture: savedUser.picture || '',
+              notes: `Google Verified Account (${savedUser.email})`
+            }, { merge: true });
+          }
+        }
+      } catch (fsErr) {
+        console.warn('Firestore Registration Sync:', fsErr);
+      }
+
+      // Update local storage arrays
+      const userIndex = usersDb.findIndex(u => (u.id === displayUid || (u.email && u.email.toLowerCase() === savedUser.email.toLowerCase())));
+      if (userIndex >= 0) {
+        usersDb[userIndex] = savedUser;
+      } else {
+        usersDb.push(savedUser);
+      }
       localStorage.setItem('b_bot_users_db', JSON.stringify(usersDb));
       localStorage.setItem('b_bot_auth_user', JSON.stringify(savedUser));
       this.state.currentUser = savedUser;
-
-      // 3. Attempt API sync if backend exists
-      try {
-        await fetch('/api/auth/google', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(savedUser)
-        });
-      } catch (apiErr) {}
 
       this.applyLoggedInUI(savedUser);
       this.showToast(`🎉 Signed in with Google as ${savedUser.name}!`, 'success');
