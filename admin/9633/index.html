@@ -1469,11 +1469,9 @@
 
       exportCsv() {
         const users = this.getStoredUsers();
-        let csv = 'TraderID,CustomerName,Email,Phone,GTCfxMT5Account,WalletBalanceUSDT,CustomerTier,Status,JoinedDate,Notes
-';
+        let csv = 'TraderID,CustomerName,Email,Phone,GTCfxMT5Account,WalletBalanceUSDT,CustomerTier,Status,JoinedDate,Notes\n';
         users.forEach(u => {
-          csv += `"${u.id || u.userId || ''}","${u.name || ''}","${u.email || ''}","${u.phone || u.whatsapp || ''}","${u.gtcfxMt5Account || ''}","${u.balance || 0}","${u.tier || ''}","${u.status || 'Active'}","${u.joinedDate || ''}","${(u.notes || '').replace(/"/g, '""')}"
-`;
+          csv += `"${u.id || u.userId || ''}","${u.name || ''}","${u.email || ''}","${u.phone || u.whatsapp || ''}","${u.gtcfxMt5Account || ''}","${u.balance || 0}","${u.tier || ''}","${u.status || 'Active'}","${u.joinedDate || ''}","${(u.notes || '').replace(/"/g, '""')}"\n`;
         });
         const blob = new Blob([csv], { type: 'text/csv' });
         const a = document.createElement('a');
