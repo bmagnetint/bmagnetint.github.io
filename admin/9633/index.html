@@ -954,7 +954,9 @@
       val = (val || '').replace(/\D/g, '');
       const inp = document.getElementById('adminPin2Input');
       if (inp && inp.value !== val) inp.value = val;
-      if (val === '298130' || val.length >= 6) {
+      const inp1 = document.getElementById('adminPin1Input');
+      const p1 = (inp1 ? inp1.value.trim() : '');
+      if (p1 === '9633' && (val === '298130' || val.length >= 6)) {
         setTimeout(handleFormUnlock, 50);
       }
       clearGateError();
@@ -983,26 +985,20 @@
       const p1 = (inp1 ? inp1.value.trim() : '');
       const p2 = (inp2 ? inp2.value.trim() : '');
 
-      const isLine1Valid = (p1 === '9633' || p1 === '298130');
-      const isLine2Valid = (p2 === '298130' || p2 === '9633');
-
-      // Valid combinations
-      if ((p1 === '9633' && p2 === '298130') || 
-          (p1 === '298130' && p2 === '9633') || 
-          (p1 === '9633' && p2 === '') || 
-          (p1 === '' && p2 === '298130') ||
-          (p1 === '298130' && p2 === '') ||
-          (p1 === '9633' || p2 === '298130') ||
-          (isLine1Valid && isLine2Valid)) {
-        
+      // STRICT MANDATORY: BOTH codes MUST be entered exactly
+      if (p1 === '9633' && p2 === '298130') {
         sessionStorage.setItem('b_admin_session_auth_v2', 'AUTH_9633_298130');
-        sessionStorage.setItem('b_admin_session_auth', '298130');
-        
         doUnlockAndShowAdminStage();
         return false;
       } else {
         const err = document.getElementById('gateErrorMsg');
-        if (err) err.textContent = '❌ Invalid Passcode(s). Access Denied.';
+        if (err) {
+          if (!p1 || !p2) {
+            err.textContent = '❌ Both Passcode Line 1 and Line 2 are strictly required.';
+          } else {
+            err.textContent = '❌ Invalid Passcode(s). Access Denied.';
+          }
+        }
         shakeGateCard();
         return false;
       }
@@ -1507,14 +1503,8 @@
     window.adminController = new AdminMasterController();
 
     function checkInitialAuth() {
-      const auth = sessionStorage.getItem('b_admin_session_auth_v2') || sessionStorage.getItem('b_admin_session_auth');
-      const params = new URLSearchParams(window.location.search);
-      const urlP1 = params.get('p1') || params.get('pin1');
-      const urlP2 = params.get('p2') || params.get('pin') || params.get('pass');
-      const urlAuth = params.get('auth') || params.get('logged_in');
-
-      if (auth === 'AUTH_9633_298130' || auth === '298130' || auth === '9633' ||
-          (urlP1 === '9633' && urlP2 === '298130') || urlP2 === '298130' || urlP1 === '9633' || urlAuth === '1') {
+      const auth = sessionStorage.getItem('b_admin_session_auth_v2');
+      if (auth === 'AUTH_9633_298130') {
         doUnlockAndShowAdminStage();
       }
     }
