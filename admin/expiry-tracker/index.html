@@ -7,7 +7,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate, max-age=0">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <title>Admin Command Hub | B-MAGNET PRO Admin</title>
+  <title>License Expiry Tracker | B-MAGNET PRO Admin</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -404,7 +404,7 @@
           <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap; margin-top:2px;">
             <span style="display: inline-flex; align-items: center; gap: 4px; font-size: 11px; color: #10b981; font-weight: 800;">
               <span style="width:6px; height:6px; border-radius:50%; background:#10b981; display:inline-block;"></span>
-              COMMAND HUB
+              EXPIRY TRACKER
             </span>
           </div>
         </div>
@@ -412,7 +412,7 @@
 
       <!-- Quick Switcher Tabs -->
       <nav class="admin-nav-tabs-bar">
-        <a href="/admin/" class="admin-nav-tab-link active">
+        <a href="/admin/" class="admin-nav-tab-link ">
           <span class="material-symbols-rounded" style="font-size: 16px;">dashboard</span>
           <span>Hub</span>
         </a>
@@ -424,7 +424,7 @@
           <span class="material-symbols-rounded" style="font-size: 16px;">group</span>
           <span>Customer Ledger</span>
         </a>
-        <a href="/admin/expiry-tracker/" class="admin-nav-tab-link ">
+        <a href="/admin/expiry-tracker/" class="admin-nav-tab-link active">
           <span class="material-symbols-rounded" style="font-size: 16px;">hourglass_top</span>
           <span>Expiry Tracker</span>
         </a>
@@ -448,111 +448,78 @@
 
     <main class="admin-main-container">
       
-      <!-- Welcome Ribbon -->
-      <div style="margin-bottom: 24px;">
-        <h2 style="font-size: 24px; font-weight: 800; color: #ffffff; margin-bottom: 6px;">Admin Command Hub</h2>
-        <p style="font-size: 14px; color: #94a3b8;">Select an administration module below to manage platform operations:</p>
+      <!-- Back Navigation & Title -->
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; flex-wrap: wrap; gap: 12px;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <a href="/admin/" style="display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 12px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); color: #fff; text-decoration: none;">
+            <span class="material-symbols-rounded">arrow_back</span>
+          </a>
+          <div>
+            <h2 style="font-size: 22px; font-weight: 800; color: #ffffff; margin: 0;">License Expiry Tracker</h2>
+            <p style="font-size: 13px; color: #94a3b8; margin: 2px 0 0 0;">Monitor active bot passes, countdown days remaining, and hardware licenses</p>
+          </div>
+        </div>
+        <a href="/admin/keygenerator/" style="height: 38px; padding: 0 16px; border-radius: 10px; background: #00A896; color: #fff; text-decoration: none; font-weight: 800; font-size: 12px; display: inline-flex; align-items: center; gap: 6px;">
+          <span class="material-symbols-rounded" style="font-size: 16px;">add</span>
+          <span>Generate New Key</span>
+        </a>
       </div>
 
-      <!-- KPI Summary Ribbon -->
-      <div class="db-kpi-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 24px;">
-        <div class="admin-card" style="padding: 16px 20px; margin: 0;">
-          <span style="font-size: 11px; font-weight: 800; color: #94a3b8; text-transform: uppercase;">Registered Traders</span>
-          <div style="font-size: 24px; font-weight: 800; color: #fff; margin-top: 4px;" class="font-mono">1</div>
-          <span style="font-size: 11px; color: #10b981;">Google OAuth Verified</span>
+      <!-- Expiry Table Card -->
+      <div class="admin-card">
+        <div class="table-responsive">
+          <table class="crm-table">
+            <thead>
+              <tr>
+                <th>Customer</th>
+                <th>Bot Name</th>
+                <th>Plan Tier</th>
+                <th>License Key</th>
+                <th>MT5 Account</th>
+                <th>Expiry Date</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="subpageExpiryTbody">
+              <tr>
+                <td><strong>Hanaan Junaid (b-102246)</strong></td>
+                <td>B-Magnet Gold Hunter EA Pro v1.21</td>
+                <td>1 Month Pass</td>
+                <td><span class="font-mono" style="color:#00f2fe;">BM8-8849201-20260927-0F7C0A67</span></td>
+                <td><span class="font-mono" style="color:#10b981;">#8849201</span></td>
+                <td>2026-09-27</td>
+                <td><span style="background:rgba(16,185,129,0.15); color:#10b981; padding:2px 8px; border-radius:99px; font-size:11px; font-weight:800;">🟢 Active (30 Days Left)</span></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-
-        <div class="admin-card" style="padding: 16px 20px; margin: 0;">
-          <span style="font-size: 11px; font-weight: 800; color: #94a3b8; text-transform: uppercase;">Total Platform Balance</span>
-          <div style="font-size: 24px; font-weight: 800; color: #10b981; margin-top: 4px;" class="font-mono" id="hubTotalBal">0.00 USDT</div>
-          <span style="font-size: 11px; color: #10b981;">Single PIN Controlled</span>
-        </div>
-
-        <div class="admin-card" style="padding: 16px 20px; margin: 0;">
-          <span style="font-size: 11px; font-weight: 800; color: #94a3b8; text-transform: uppercase;">Active Bot Licenses</span>
-          <div style="font-size: 24px; font-weight: 800; color: #00f2fe; margin-top: 4px;" class="font-mono">1 Active</div>
-          <span style="font-size: 11px; color: #00f2fe;">Gold Hunter Pro v1.21</span>
-        </div>
-
-        <div class="admin-card" style="padding: 16px 20px; margin: 0;">
-          <span style="font-size: 11px; font-weight: 800; color: #94a3b8; text-transform: uppercase;">Cloud Database Sync</span>
-          <div style="font-size: 24px; font-weight: 800; color: #10b981; margin-top: 4px;" class="font-mono">ONLINE</div>
-          <span style="font-size: 11px; color: #10b981;">Firebase Firestore Realtime</span>
-        </div>
-      </div>
-
-      <!-- 4 High-Profile Modular Option Cards / Buttons -->
-      <div class="admin-hub-grid">
-
-        <!-- Option 1: Wallet Top-Up Suite -->
-        <a href="/admin/wallet-topup/" class="admin-option-card" style="border-color: rgba(16, 185, 129, 0.4);">
-          <div>
-            <div class="aoc-icon-box" style="background: rgba(16, 185, 129, 0.15); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.3);">
-              <span class="material-symbols-rounded" style="font-size: 28px;">account_balance_wallet</span>
-            </div>
-            <h3 class="aoc-title">Wallet Top-Up Suite</h3>
-            <p class="aoc-desc">Credit, deduct, or set exact BEP-20 USDT wallet balances for any trader with single passcode authorization.</p>
-          </div>
-          <div class="aoc-btn" style="background: linear-gradient(135deg, #10b981, #059669);">
-            <span>Open Wallet Top-Up</span>
-            <span class="material-symbols-rounded">arrow_forward</span>
-          </div>
-        </a>
-
-        <!-- Option 2: Customer Ledger & CRM -->
-        <a href="/admin/customer-ledger/" class="admin-option-card" style="border-color: rgba(0, 242, 254, 0.35);">
-          <div>
-            <div class="aoc-icon-box" style="background: rgba(0, 242, 254, 0.15); color: #00f2fe; border: 1px solid rgba(0, 242, 254, 0.3);">
-              <span class="material-symbols-rounded" style="font-size: 28px;">group</span>
-            </div>
-            <h3 class="aoc-title">Customer Ledger & CRM</h3>
-            <p class="aoc-desc">View all registered traders, search accounts, export Excel CSV / JSON backups, and manage customer records.</p>
-          </div>
-          <div class="aoc-btn" style="background: linear-gradient(135deg, #00f2fe, #00a896); color: #0e141b;">
-            <span>Open Customer Ledger</span>
-            <span class="material-symbols-rounded">arrow_forward</span>
-          </div>
-        </a>
-
-        <!-- Option 3: License Expiry Tracker -->
-        <a href="/admin/expiry-tracker/" class="admin-option-card" style="border-color: rgba(245, 158, 11, 0.35);">
-          <div>
-            <div class="aoc-icon-box" style="background: rgba(245, 158, 11, 0.15); color: #f59e0b; border: 1px solid rgba(245, 158, 11, 0.3);">
-              <span class="material-symbols-rounded" style="font-size: 28px;">hourglass_top</span>
-            </div>
-            <h3 class="aoc-title">License Expiry Tracker</h3>
-            <p class="aoc-desc">Monitor bot passes, countdown days remaining, active subscriptions, and view hardware MT5 licenses.</p>
-          </div>
-          <div class="aoc-btn" style="background: linear-gradient(135deg, #f59e0b, #d97706);">
-            <span>Open Expiry Tracker</span>
-            <span class="material-symbols-rounded">arrow_forward</span>
-          </div>
-        </a>
-
-        <!-- Option 4: Hardware Key Generator -->
-        <a href="/admin/keygenerator/" class="admin-option-card" style="border-color: rgba(147, 51, 234, 0.35);">
-          <div>
-            <div class="aoc-icon-box" style="background: rgba(147, 51, 234, 0.15); color: #c084fc; border: 1px solid rgba(147, 51, 234, 0.3);">
-              <span class="material-symbols-rounded" style="font-size: 28px;">key</span>
-            </div>
-            <h3 class="aoc-title">Hardware Key Generator</h3>
-            <p class="aoc-desc">Generate official SHA-256 encrypted activation keys for MT5 EA bots and send directly via WhatsApp.</p>
-          </div>
-          <div class="aoc-btn" style="background: linear-gradient(135deg, #a855f7, #7c3aed);">
-            <span>Open Key Generator</span>
-            <span class="material-symbols-rounded">arrow_forward</span>
-          </div>
-        </a>
-
       </div>
 
       <script>
-        function updateHubStats() {
-          const bal = parseFloat(localStorage.getItem('b_bot_wallet_balance') || '0').toFixed(2);
-          const el = document.getElementById('hubTotalBal');
-          if (el) el.textContent = `${bal} USDT`;
+        function loadExpiryTracker() {
+          if (cloudDb) {
+            cloudDb.collection("subscriptions").onSnapshot(snapshot => {
+              const tbody = document.getElementById('subpageExpiryTbody');
+              if (!tbody || snapshot.empty) return;
+              tbody.innerHTML = '';
+              snapshot.forEach(doc => {
+                const s = doc.data();
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                  <td><strong>${s.traderId || s.customerPhone || 'Trader'}</strong></td>
+                  <td>${s.botName || 'Gold Hunter EA'}</td>
+                  <td>${s.tier || 'Pro Pass'}</td>
+                  <td><span class="font-mono" style="color:#00f2fe;">${s.licenseKey || ''}</span></td>
+                  <td><span class="font-mono" style="color:#10b981;">#${s.mt5Account || s.gtcfxMt5Account || '8849201'}</span></td>
+                  <td>${s.expiresDate ? s.expiresDate.split('T')[0] : '2026-09-27'}</td>
+                  <td><span style="background:rgba(16,185,129,0.15); color:#10b981; padding:2px 8px; border-radius:99px; font-size:11px; font-weight:800;">🟢 ${s.status || 'Active'}</span></td>
+                `;
+                tbody.appendChild(tr);
+              });
+            });
+          }
         }
-        window.onAdminUnlocked = updateHubStats;
+        window.onAdminUnlocked = loadExpiryTracker;
       </script>
 
     </main>
