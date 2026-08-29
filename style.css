@@ -16808,12 +16808,17 @@ body.logged-in .view-panel {
   left: 0 !important;
   right: 0 !important;
   width: 100% !important;
+  height: 68px !important;
   z-index: 10005 !important;
   background: rgba(255, 255, 255, 0.94) !important;
   backdrop-filter: blur(28px) saturate(180%) !important;
   -webkit-backdrop-filter: blur(28px) saturate(180%) !important;
   border-bottom: 1px solid rgba(226, 232, 240, 0.8) !important;
   box-shadow: 0 4px 20px -4px rgba(15, 23, 42, 0.04) !important;
+  display: flex !important;
+  align-items: center !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
 }
 
 body.theme-dark .landing-header,
@@ -16824,12 +16829,320 @@ body.theme-dark .desktop-company-landing .landing-header {
   box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.5) !important;
 }
 
+.landing-header-inner {
+  max-width: 1400px !important;
+  margin: 0 auto !important;
+  width: 100% !important;
+  height: 100% !important;
+  padding: 0 24px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 16px !important;
+  box-sizing: border-box !important;
+}
+
+.landing-brand-col {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  flex-shrink: 0 !important;
+}
+
+/* Back to POS Navigation Pill Button */
+.header-back-pos-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  background: rgba(0, 168, 150, 0.08) !important;
+  border: 1px solid rgba(0, 168, 150, 0.22) !important;
+  padding: 6px 12px !important;
+  border-radius: 99px !important;
+  color: #0f172a !important;
+  text-decoration: none !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  transition: all 0.2s ease !important;
+  white-space: nowrap !important;
+}
+
+body.theme-dark .header-back-pos-btn {
+  background: rgba(0, 242, 254, 0.08) !important;
+  border-color: rgba(0, 242, 254, 0.25) !important;
+  color: #e2e8f0 !important;
+}
+
+.header-back-pos-btn:hover {
+  background: rgba(0, 168, 150, 0.18) !important;
+  border-color: #00a896 !important;
+  color: #00a896 !important;
+  transform: translateY(-1px) !important;
+}
+
+body.theme-dark .header-back-pos-btn:hover {
+  background: rgba(0, 242, 254, 0.18) !important;
+  border-color: #00f2fe !important;
+  color: #00f2fe !important;
+}
+
+.pos-btn-text-short {
+  display: none !important;
+}
+
+.landing-brand-identity {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  text-decoration: none !important;
+  color: inherit !important;
+}
+
+.landing-brand-logo {
+  height: 34px !important;
+  width: auto !important;
+  object-fit: contain !important;
+  filter: drop-shadow(0 2px 8px rgba(0, 168, 150, 0.25)) !important;
+}
+
+.landing-brand-text {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.landing-brand-title {
+  font-family: var(--font-logo), 'Space Grotesk', -apple-system, sans-serif !important;
+  font-size: 16px !important;
+  font-weight: 800 !important;
+  color: #0f172a !important;
+  line-height: 1.2 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  white-space: nowrap !important;
+}
+
+body.theme-dark .landing-brand-title {
+  color: #ffffff !important;
+}
+
+.landing-brand-badge {
+  background: linear-gradient(135deg, #00a896, #0284c7) !important;
+  color: #ffffff !important;
+  font-size: 9.5px !important;
+  font-weight: 800 !important;
+  padding: 2px 6px !important;
+  border-radius: 5px !important;
+  letter-spacing: 0.5px !important;
+  text-transform: uppercase !important;
+}
+
+.landing-brand-sub {
+  font-size: 11px !important;
+  color: #64748b !important;
+  font-weight: 600 !important;
+  white-space: nowrap !important;
+}
+
+body.theme-dark .landing-brand-sub {
+  color: #94a3b8 !important;
+}
+
+/* Center Nav Links */
+.landing-nav-links {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+.landing-nav-link {
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  color: #475569 !important;
+  text-decoration: none !important;
+  padding: 6px 14px !important;
+  border-radius: 99px !important;
+  transition: all 0.18s ease !important;
+  white-space: nowrap !important;
+}
+
+body.theme-dark .landing-nav-link {
+  color: #cbd5e1 !important;
+}
+
+.landing-nav-link:hover {
+  color: #00a896 !important;
+  background: rgba(0, 168, 150, 0.08) !important;
+}
+
+body.theme-dark .landing-nav-link:hover {
+  color: #00f2fe !important;
+  background: rgba(0, 242, 254, 0.1) !important;
+}
+
+/* Header Actions */
+.landing-header-actions {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  flex-shrink: 0 !important;
+}
+
+.lang-globe-btn,
+.theme-toggle-pill {
+  width: 38px !important;
+  height: 38px !important;
+  min-width: 38px !important;
+  min-height: 38px !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: rgba(255, 255, 255, 0.8) !important;
+  border: 1px solid rgba(226, 232, 240, 0.9) !important;
+  color: #334155 !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  padding: 0 !important;
+}
+
+body.theme-dark .lang-globe-btn,
+body.theme-dark .theme-toggle-pill {
+  background: rgba(30, 41, 59, 0.6) !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+  color: #cbd5e1 !important;
+}
+
+.lang-globe-btn:hover,
+.theme-toggle-pill:hover {
+  border-color: #00a896 !important;
+  color: #00a896 !important;
+  transform: translateY(-1px) !important;
+}
+
+body.theme-dark .lang-globe-btn:hover,
+body.theme-dark .theme-toggle-pill:hover {
+  border-color: #00f2fe !important;
+  color: #00f2fe !important;
+}
+
+.btn-landing-corner-login {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  padding: 8px 18px !important;
+  background: linear-gradient(135deg, #00a896 0%, #0284c7 100%) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.4) !important;
+  border-radius: 99px !important;
+  font-size: 13px !important;
+  font-weight: 800 !important;
+  cursor: pointer !important;
+  box-shadow: 0 4px 14px rgba(0, 168, 150, 0.3) !important;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  white-space: nowrap !important;
+}
+
+.btn-landing-corner-login:hover {
+  transform: translateY(-1px) scale(1.02) !important;
+  box-shadow: 0 6px 20px rgba(0, 168, 150, 0.45) !important;
+}
+
+/* Tablet & Mobile Adaptive Behavior (< 920px) */
+@media (max-width: 920px) {
+  .landing-nav-links {
+    display: none !important;
+  }
+  .landing-brand-sub {
+    display: none !important;
+  }
+}
+
+/* Mobile Devices (< 640px) */
+@media (max-width: 640px) {
+  .landing-header,
+  #authScreenOverlay .landing-header,
+  .desktop-company-landing .landing-header {
+    height: 58px !important;
+  }
+
+  .landing-header-inner {
+    padding: 0 12px !important;
+    gap: 8px !important;
+  }
+
+  .landing-brand-col {
+    gap: 8px !important;
+  }
+
+  .header-back-pos-btn {
+    padding: 5px 8px !important;
+    font-size: 11px !important;
+  }
+
+  .pos-btn-text-full {
+    display: none !important;
+  }
+
+  .pos-btn-text-short {
+    display: inline !important;
+  }
+
+  .landing-brand-logo {
+    height: 28px !important;
+  }
+
+  .landing-brand-title {
+    font-size: 14px !important;
+  }
+
+  .landing-brand-badge {
+    font-size: 8px !important;
+    padding: 1px 4px !important;
+  }
+
+  .landing-header-actions {
+    gap: 6px !important;
+  }
+
+  .lang-globe-btn,
+  .theme-toggle-pill {
+    width: 34px !important;
+    height: 34px !important;
+    min-width: 34px !important;
+    min-height: 34px !important;
+  }
+
+  .btn-landing-corner-login {
+    padding: 6px 12px !important;
+    font-size: 12px !important;
+  }
+}
+
+/* Tiny Mobile Screens (< 380px) */
+@media (max-width: 380px) {
+  .header-back-pos-btn .pos-btn-text-short {
+    display: none !important;
+  }
+
+  .landing-brand-title {
+    font-size: 13px !important;
+  }
+
+  .btn-landing-corner-login .login-btn-text {
+    display: none !important;
+  }
+  
+  .btn-landing-corner-login {
+    padding: 6px 8px !important;
+  }
+}
+
 /* Offset for Frozen Landing Header on Welcome/Landing */
 .desktop-company-landing,
 .landing-scroll-body,
 #authWelcomeScreen,
 #authSignInScreen {
-  padding-top: calc(72px + env(safe-area-inset-top, 0px)) !important;
+  padding-top: calc(68px + env(safe-area-inset-top, 0px)) !important;
 }
 
 @media (max-width: 768px) {
@@ -16837,7 +17150,7 @@ body.theme-dark .desktop-company-landing .landing-header {
   .landing-scroll-body,
   #authWelcomeScreen,
   #authSignInScreen {
-    padding-top: calc(64px + env(safe-area-inset-top, 44px)) !important;
+    padding-top: calc(58px + env(safe-area-inset-top, 0px)) !important;
   }
 }
 

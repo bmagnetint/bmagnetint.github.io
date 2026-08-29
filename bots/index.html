@@ -109,20 +109,24 @@
           <header class="landing-header">
             <div class="landing-header-inner">
               <div class="landing-brand-col">
-                <a href="/" style="display:inline-flex; align-items:center; gap:6px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); padding:6px 12px; border-radius:99px; color:#cbd5e1; text-decoration:none; font-size:12px; font-weight:700; margin-right:8px;">
-                  <span class="material-symbols-rounded" style="font-size:15px;">arrow_back</span>
-                  <span>B-Magnet POS</span>
+                <a href="/" class="header-back-pos-btn" title="Back to B-Magnet POS & Retail Hub">
+                  <span class="material-symbols-rounded" style="font-size: 16px;">arrow_back</span>
+                  <span class="pos-btn-text-full">B-Magnet POS</span>
+                  <span class="pos-btn-text-short">POS</span>
                 </a>
-                <img src="/images/b-magnet-emblem.png" alt="B-Magnet Logo" class="landing-brand-logo">
-                <div class="landing-brand-text">
-                  <div class="landing-brand-title">B-Magnet <span class="landing-brand-badge">PRO</span></div>
-                  <span class="landing-brand-sub">Algorithmic Trading Systems</span>
-                </div>
+                
+                <a href="/bot" class="landing-brand-identity" title="B-Magnet Algorithmic Trading Systems">
+                  <img src="/images/b-magnet-emblem.png" alt="B-Magnet Logo" class="landing-brand-logo">
+                  <div class="landing-brand-text">
+                    <div class="landing-brand-title">B-Magnet <span class="landing-brand-badge">MT5 EA</span></div>
+                    <span class="landing-brand-sub">Algorithmic Trading Systems</span>
+                  </div>
+                </a>
               </div>
 
-              <!-- Center Nav Links -->
+              <!-- Center Nav Links (Desktop) -->
               <nav class="landing-nav-links">
-                <a href="#aboutProgramSection" class="landing-nav-link">About Program</a>
+                <a href="#aboutProgramSection" class="landing-nav-link">About System</a>
                 <a href="#plansSection" class="landing-nav-link">Bot Plans</a>
                 <a href="#gtcfxSection" class="landing-nav-link">GTCfx Broker</a>
                 <a href="#faqSection" class="landing-nav-link">Security & FAQ</a>
@@ -132,7 +136,7 @@
               <div class="landing-header-actions">
                 <!-- 🌐 Globe Icon Language Selector Dropdown (Icon Only) -->
                 <div class="lang-globe-dropdown-wrapper">
-                  <button type="button" class="lang-globe-btn" onclick="window.botHubApp.toggleLanguageDropdown(event)" title="Select Language / اختر اللغة">
+                  <button type="button" class="lang-globe-btn" onclick="window.botHubApp.toggleLanguageDropdown(event)" title="Select Language / اختر اللغة" aria-label="Select Language">
                     <span class="material-symbols-rounded globe-icon">language</span>
                   </button>
                   <div class="lang-dropdown-menu">
@@ -142,21 +146,21 @@
                       <span class="material-symbols-rounded check-icon">check</span>
                     </div>
                     <div class="lang-option-item" data-lang="ar" onclick="window.botHubApp.selectAppLanguage('ar')">
-                      <span class="flag-icon">🇦🇪</span>
+                      <span class="flag-icon">🇸🇦</span>
                       <span>العربية</span>
                       <span class="material-symbols-rounded check-icon">check</span>
                     </div>
                   </div>
                 </div>
 
-                <button type="button" class="theme-toggle-pill" onclick="window.botHubApp.toggleTheme()" title="Toggle Dark / Light Mode">
+                <button type="button" class="theme-toggle-pill" onclick="window.botHubApp.toggleTheme()" title="Toggle Dark / Light Mode" aria-label="Toggle Theme">
                   <span class="material-symbols-rounded theme-icon">dark_mode</span>
                 </button>
 
                 <!-- 🌟 Corner Access Button -->
-                <button type="button" class="btn-landing-corner-login" onclick="window.botHubApp.showSignInPage()">
+                <button type="button" class="btn-landing-corner-login" onclick="window.botHubApp.showSignInPage()" title="Launch Platform / Sign In">
                   <span class="material-symbols-rounded">login</span>
-                  <span>Access</span>
+                  <span class="login-btn-text">Access</span>
                 </button>
               </div>
             </div>
