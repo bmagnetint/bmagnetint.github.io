@@ -992,12 +992,6 @@
 </head>
 <body class="theme-dark">
 
-  <!-- Top ZATCA Compliance Bar -->
-  <div class="zatca-top-banner" id="txt_topBanner">
-    <span class="zatca-badge-pill" id="txt_zatcaBadge">ZATCA APPROVED</span>
-    <span id="txt_zatcaText">🟢 Fully Certified for ZATCA Phase 2 E-Invoicing (Fatoora) & 15% Saudi VAT Compliance (معتمد من هيئة الزكاة والضريبة والجمارك)</span>
-  </div>
-
   <!-- Header Navigation -->
   <header class="sq-header">
     <div class="sq-header-container">
@@ -2120,9 +2114,6 @@
       document.documentElement.lang = isAr ? 'ar' : 'en';
 
       const t = translations[lang] || translations.en;
-
-      // Top banner
-      setHtml('txt_topBanner', `<span class="zatca-badge-pill" id="txt_zatcaBadge">${t.topBannerBadge}</span><span id="txt_zatcaText">${t.topBannerText}</span>`);
 
       // Nav
       setText('txt_brandTagline', t.brandTagline);
