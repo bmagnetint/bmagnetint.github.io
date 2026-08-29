@@ -433,13 +433,19 @@
     .pos-app-body {
       flex: 1;
       display: grid;
-      grid-template-columns: 1fr 380px;
-      min-height: 570px;
+      grid-template-columns: 1fr 370px;
+      height: 580px;
+      min-height: 580px;
+      max-height: 580px;
       background: #f8fafc;
+      overflow: hidden;
     }
     @media (max-width: 900px) {
       .pos-app-body {
         grid-template-columns: 1fr;
+        height: auto;
+        min-height: auto;
+        max-height: none;
       }
     }
 
@@ -450,6 +456,7 @@
       border-right: 1px solid var(--pos-border);
       background: #f8fafc;
       overflow-y: auto;
+      height: 100%;
     }
     html[dir="rtl"] .pos-catalog-pane {
       border-right: none;
@@ -540,18 +547,23 @@
 
     /* Menu Items Grid */
     .pos-items-grid {
-      padding: 12px 14px;
+      padding: 14px;
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      grid-template-columns: repeat(4, 1fr);
       gap: 12px;
       flex: 1;
       align-content: start;
     }
-    @media (max-width: 600px) {
+    @media (max-width: 1100px) {
+      .pos-items-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    @media (max-width: 680px) {
       .pos-items-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 8px;
-        padding: 8px;
+        gap: 10px;
+        padding: 10px;
       }
     }
     
@@ -559,7 +571,7 @@
       background: #ffffff;
       border: 1px solid #e2e8f0;
       border-radius: 14px;
-      padding: 12px;
+      padding: 8px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -568,6 +580,9 @@
       position: relative;
       user-select: none;
       box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+      height: 184px;
+      min-height: 184px;
+      max-height: 184px;
     }
     .pos-item-card:hover {
       transform: translateY(-2px);
@@ -577,30 +592,43 @@
     .pos-item-card:active {
       transform: scale(0.97);
     }
-    .item-icon-box {
-      width: 44px;
-      height: 44px;
+    .item-img-wrap {
+      width: 100%;
+      height: 92px;
       border-radius: 10px;
-      background: #e0f2f1;
-      color: #004d40;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 8px;
-      font-size: 24px;
+      overflow: hidden;
+      background: #f1f5f9;
+      margin-bottom: 6px;
+      position: relative;
+    }
+    .item-thumb-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+    .pos-item-card:hover .item-thumb-img {
+      transform: scale(1.06);
     }
     .item-title-ar {
-      font-size: 13.5px;
+      font-size: 12px;
       font-weight: 800;
       color: #0f172a;
-      line-height: 1.3;
-      margin-bottom: 2px;
+      line-height: 1.25;
+      margin-bottom: 1px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
     .item-title-en {
-      font-size: 11.5px;
+      font-size: 10.5px;
       color: #64748b;
-      font-weight: 500;
-      margin-bottom: 8px;
+      font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-bottom: 4px;
     }
     .item-card-bottom {
       display: flex;
@@ -608,22 +636,22 @@
       justify-content: space-between;
       margin-top: auto;
       border-top: 1px dashed #f1f5f9;
-      padding-top: 6px;
+      padding-top: 4px;
     }
     .item-price {
-      font-size: 14.5px;
+      font-size: 13.5px;
       font-weight: 900;
       color: #004d40;
       font-family: var(--font-mono);
     }
     .item-price span {
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 700;
       color: #64748b;
     }
     .btn-add-item {
-      width: 28px;
-      height: 28px;
+      width: 26px;
+      height: 26px;
       border-radius: 8px;
       background: #00875a;
       color: #ffffff;
@@ -632,7 +660,7 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      font-size: 16px;
+      font-size: 15px;
       transition: background 0.15s;
     }
     .btn-add-item:hover {
@@ -645,6 +673,8 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      height: 100%;
+      overflow: hidden;
     }
     .cart-header {
       padding: 12px 16px;
@@ -1270,7 +1300,7 @@
             <div class="pos-categories-bar">
               <button type="button" class="cat-tab active" onclick="filterCategory('all', this)">
                 <span class="material-symbols-rounded" style="font-size: 16px;">apps</span>
-                <span id="cat_all">All Items (18)</span>
+                <span id="cat_all">All Items (8)</span>
               </button>
               <button type="button" class="cat-tab" onclick="filterCategory('hot_coffee', this)">
                 <span class="material-symbols-rounded" style="font-size: 16px;">coffee</span>
@@ -1346,7 +1376,7 @@
 
               <button type="button" class="btn-checkout-pay" id="btnPay" onclick="openPaymentModal()" disabled>
                 <span class="material-symbols-rounded">credit_card</span>
-                <span id="txt_btnPay">Charge & Issue ZATCA Invoice (0.00 SAR)</span>
+                <span id="txt_btnPay">Charge 0.00 SAR</span>
               </button>
             </div>
 
@@ -1459,7 +1489,7 @@
 
         <button type="button" class="btn-checkout-pay" onclick="processPaymentAndInvoice()" id="btnConfirmPayment">
           <span class="material-symbols-rounded">verified</span>
-          <span id="txt_btnConfirmPay">Authorize Payment & Clear ZATCA Invoice</span>
+          <span id="txt_btnConfirmPay">Confirm Payment</span>
         </button>
       </div>
     </div>
@@ -1540,36 +1570,24 @@
   <!-- JavaScript Application Logic -->
   <script>
     // ==========================================================
-    // MENU CATALOG DATA (Saudi Specialty Cafe & Retail)
+    // MENU CATALOG DATA (Curated Saudi Specialty Cafe & Retail)
     // ==========================================================
     const MENU_ITEMS = [
       // Hot Coffee
-      { id: 'saudi_qahwa', cat: 'hot_coffee', icon: 'local_cafe', price: 25.00, name_ar: 'دلة قهوة سعودية ملكية', name_en: 'Royal Saudi Qahwa Pot' },
-      { id: 'spanish_latte', cat: 'hot_coffee', icon: 'coffee', price: 18.00, name_ar: 'سبانش لاتيه حار', name_en: 'Signature Spanish Latte' },
-      { id: 'flat_white', cat: 'hot_coffee', icon: 'emoji_food_beverage', price: 16.00, name_ar: 'فلات وايت دبل شوت', name_en: 'Flat White (Double Ristretto)' },
-      { id: 'v60_chemex', cat: 'hot_coffee', icon: 'filter_vintage', price: 22.00, name_ar: 'قهوة مقطرة V60 إثيوبيا', name_en: 'V60 Ethiopian Single Origin' },
-      { id: 'cortado', cat: 'hot_coffee', icon: 'coffee', price: 15.00, name_ar: 'كورتادو', name_en: 'Classic Cortado' },
-      { id: 'cappuccino', cat: 'hot_coffee', icon: 'local_cafe', price: 17.00, name_ar: 'كابتشينو إيطالي', name_en: 'Italian Cappuccino' },
+      { id: 'saudi_qahwa', cat: 'hot_coffee', img: '/images/menu/saudi_qahwa.jpg', price: 25.00, name_ar: 'دلة قهوة سعودية ملكية', name_en: 'Royal Saudi Qahwa' },
+      { id: 'spanish_latte', cat: 'hot_coffee', img: '/images/menu/spanish_latte.jpg', price: 18.00, name_ar: 'سبانش لاتيه فاخر', name_en: 'Spanish Latte' },
+      { id: 'flat_white', cat: 'hot_coffee', img: '/images/menu/flat_white.jpg', price: 16.00, name_ar: 'فلات وايت دبل', name_en: 'Double Flat White' },
       
       // Cold Brew & Iced
-      { id: 'iced_spanish', cat: 'cold_brew', icon: 'ac_unit', price: 20.00, name_ar: 'آيس سبانش لاتيه', name_en: 'Iced Spanish Latte' },
-      { id: 'cold_brew_24h', cat: 'cold_brew', icon: 'water_drop', price: 22.00, name_ar: 'كولد برو منقوع ٢٤ ساعة', name_en: '24h Cold Brew Reserve' },
-      { id: 'iced_matcha', cat: 'cold_brew', icon: 'eco', price: 24.00, name_ar: 'آيس ماتشا لاتيه ياباني', name_en: 'Japanese Ceremonial Matcha' },
-      { id: 'hibiscus_tea', cat: 'cold_brew', icon: 'local_florist', price: 16.00, name_ar: 'كركديه مثلج منعش', name_en: 'Sparkling Iced Hibiscus' },
-      { id: 'fresh_orange', cat: 'cold_brew', icon: 'nutrition', price: 15.00, name_ar: 'عصير برتقال طازج', name_en: 'Fresh Squeezed Orange Juice' },
+      { id: 'cold_brew', cat: 'cold_brew', img: '/images/menu/cold_brew.jpg', price: 20.00, name_ar: 'كولد برو منعش', name_en: 'Cold Brew Reserve' },
+      { id: 'iced_matcha', cat: 'cold_brew', img: '/images/menu/iced_matcha.jpg', price: 24.00, name_ar: 'آيس ماتشا لاتيه', name_en: 'Iced Matcha Latte' },
 
       // Bakery & Sweets
-      { id: 'pistachio_croissant', cat: 'bakery', icon: 'bakery_dining', price: 18.00, name_ar: 'كرواسون الفستق المقرمش', name_en: 'Pistachio Creme Croissant' },
-      { id: 'san_sebastian', cat: 'bakery', icon: 'cake', price: 26.00, name_ar: 'تشيز كيك سان سيباستيان', name_en: 'San Sebastian Cheesecake' },
-      { id: 'dates_pudding', cat: 'bakery', icon: 'cookie', price: 22.00, name_ar: 'بودينغ التمر الدافئ مع الكراميل', name_en: 'Warm Saudi Dates Pudding' },
-      { id: 'cardamom_bun', cat: 'bakery', icon: 'radio_button_checked', price: 14.00, name_ar: 'لفائف الهيل والقرفة', name_en: 'Cardamom Cinnamon Bun' },
-      { id: 'almond_croissant', cat: 'bakery', icon: 'bakery_dining', price: 16.00, name_ar: 'كرواسون اللوز المحمص', name_en: 'Roasted Almond Croissant' },
+      { id: 'dates_pudding', cat: 'bakery', img: '/images/menu/dates_pudding.jpg', price: 22.00, name_ar: 'كيكة التمر بالكراميل', name_en: 'Saudi Date Pudding' },
+      { id: 'croissant', cat: 'bakery', img: '/images/menu/croissant.jpg', price: 18.00, name_ar: 'كرواسون الزبدة المقرمش', name_en: 'Butter Croissant' },
 
       // Food & Toast
-      { id: 'truffle_halloumi', cat: 'food', icon: 'lunch_dining', price: 28.00, name_ar: 'توست الحلومي بالترفل', name_en: 'Truffle Grilled Halloumi Toast' },
-      { id: 'smoked_turkey', cat: 'food', icon: 'breakfast_dining', price: 26.00, name_ar: 'بريوش الديك الرومي المدخن', name_en: 'Smoked Turkey Brioche' },
-      { id: 'falafel_wrap', cat: 'food', icon: 'dinner_dining', price: 18.00, name_ar: 'ساندوتش فلافل مقرمشة مع الطحينة', name_en: 'Artisan Falafel Tahini Wrap' },
-      { id: 'caesar_salad', cat: 'food', icon: 'restaurant', price: 22.00, name_ar: 'سلطة سيزر مع الدجاج المشوي', name_en: 'Grilled Chicken Caesar Salad' }
+      { id: 'halloumi_toast', cat: 'food', img: '/images/menu/halloumi_toast.jpg', price: 28.00, name_ar: 'توست الحلوم والترفل', name_en: 'Truffle Halloumi Toast' }
     ];
 
     // State
@@ -1659,8 +1677,8 @@
 
         card.innerHTML = `
           <div>
-            <div class="item-icon-box">
-              <span class="material-symbols-rounded">${item.icon}</span>
+            <div class="item-img-wrap">
+              <img src="${item.img}" alt="${item.name_en}" class="item-thumb-img" loading="lazy" onerror="this.src='/images/b-magnet-emblem.png'">
             </div>
             <div class="item-title-ar">${item.name_ar}</div>
             <div class="item-title-en">${item.name_en}</div>
@@ -1778,7 +1796,7 @@
         valVat.innerText = '0.00 SAR';
         valTotal.innerText = '0.00 SAR';
         btnPay.disabled = true;
-        btnPay.innerHTML = `<span class="material-symbols-rounded">credit_card</span> <span>${currentLanguage === 'ar' ? 'الدفع وإصدار الفاتورة (0.00 ر.س)' : 'Charge & Issue ZATCA Invoice (0.00 SAR)'}</span>`;
+        btnPay.innerHTML = `<span class="material-symbols-rounded">credit_card</span> <span>${currentLanguage === 'ar' ? 'دفع (0.00 ر.س)' : 'Charge 0.00 SAR'}</span>`;
 
         poleTotal.innerText = '0.00 SAR';
         poleLast.innerText = currentLanguage === 'ar' ? 'في انتظار الطلب...' : 'Awaiting order...';
@@ -1821,7 +1839,7 @@
       btnPay.disabled = false;
       btnPay.innerHTML = `
         <span class="material-symbols-rounded">credit_card</span>
-        <span>${currentLanguage === 'ar' ? `الدفع وإصدار الفاتورة (${totalAmountGross.toFixed(2)} ر.س)` : `Charge & Issue ZATCA Invoice (${totalAmountGross.toFixed(2)} SAR)`}</span>
+        <span>${currentLanguage === 'ar' ? `دفع ${totalAmountGross.toFixed(2)} ر.س` : `Charge ${totalAmountGross.toFixed(2)} SAR`}</span>
       `;
 
       // Sync customer pole screen
@@ -2017,7 +2035,7 @@
         document.getElementById('txt_typeDineIn').innerText = 'محلي (طاولة ٠٤)';
         document.getElementById('txt_typeTakeaway').innerText = 'سفري';
         document.getElementById('txt_zatcaLive').innerText = 'الربط مع زاتكا نشط';
-        document.getElementById('cat_all').innerText = 'جميع الأصناف (١٨)';
+        document.getElementById('cat_all').innerText = 'جميع الأصناف (٨)';
         document.getElementById('cat_hot').innerText = 'قهوة ساخنة';
         document.getElementById('cat_cold').innerText = 'مشروبات مثلجة';
         document.getElementById('cat_bakery').innerText = 'مخبوزات وحلويات';
@@ -2033,7 +2051,7 @@
         document.getElementById('madaPrompt').innerText = 'مرر البطاقة أو الجوال للدفع';
         document.getElementById('txt_modalPayTitle').innerText = 'إتمام عملية الدفع';
         document.getElementById('txt_amountDue').innerText = 'المبلغ الإجمالي المستحق (شامل الضريبة ١٥٪)';
-        document.getElementById('txt_btnConfirmPay').innerText = 'اعتماد الدفع وإصدار فاتورة زاتكا';
+        document.getElementById('txt_btnConfirmPay').innerText = 'تأكيد الدفع';
         document.getElementById('txt_printBtn').innerText = 'طباعة الإيصال';
         document.getElementById('txt_newOrderBtn').innerText = 'طلب جديد';
       } else {
@@ -2049,7 +2067,7 @@
         document.getElementById('txt_typeDineIn').innerText = 'Dine-In (Table 04)';
         document.getElementById('txt_typeTakeaway').innerText = 'Takeaway';
         document.getElementById('txt_zatcaLive').innerText = 'ZATCA Clearance Active';
-        document.getElementById('cat_all').innerText = 'All Items (18)';
+        document.getElementById('cat_all').innerText = 'All Items (8)';
         document.getElementById('cat_hot').innerText = 'Hot Coffee';
         document.getElementById('cat_cold').innerText = 'Cold & Iced';
         document.getElementById('cat_bakery').innerText = 'Bakery & Sweets';
@@ -2065,7 +2083,7 @@
         document.getElementById('madaPrompt').innerText = 'Tap Card / Phone to Pay';
         document.getElementById('txt_modalPayTitle').innerText = 'Complete Payment';
         document.getElementById('txt_amountDue').innerText = 'Total Amount Due (Incl. 15% VAT)';
-        document.getElementById('txt_btnConfirmPay').innerText = 'Authorize Payment & Clear ZATCA Invoice';
+        document.getElementById('txt_btnConfirmPay').innerText = 'Confirm Payment';
         document.getElementById('txt_printBtn').innerText = 'Print Receipt';
         document.getElementById('txt_newOrderBtn').innerText = 'New Order';
       }
