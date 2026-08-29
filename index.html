@@ -56,7 +56,13 @@
     }
 
     body {
-      background-color: var(--sq-white);
+      background-color: #fafcfb;
+      background-image: 
+        radial-gradient(at 15% 15%, rgba(0, 135, 90, 0.035) 0px, transparent 60%),
+        radial-gradient(at 85% 85%, rgba(0, 77, 64, 0.03) 0px, transparent 60%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cpath d='M80 15 L95 55 L135 40 L120 80 L160 95 L120 110 L135 150 L95 135 L80 175 L65 135 L25 150 L40 110 L0 95 L40 80 L25 40 L65 55 Z' fill='none' stroke='rgba(0,100,80,0.035)' stroke-width='1.1' stroke-linejoin='round'/%3E%3Ccircle cx='80' cy='80' r='28' fill='none' stroke='rgba(0,100,80,0.03)' stroke-width='0.8'/%3E%3Ccircle cx='80' cy='80' r='52' fill='none' stroke='rgba(0,100,80,0.025)' stroke-dasharray='3,3' stroke-width='0.8'/%3E%3Cpath d='M62 76 C65 68, 74 64, 82 66 C92 68, 98 78, 96 88 C94 96, 84 100, 75 96 C68 92, 66 84, 70 78 C74 72, 84 72, 88 77' fill='none' stroke='rgba(0,100,80,0.045)' stroke-width='1.5' stroke-linecap='round'/%3E%3Cpath d='M72 62 C76 56, 86 54, 92 59' fill='none' stroke='rgba(0,100,80,0.04)' stroke-width='1.2' stroke-linecap='round'/%3E%3Ccircle cx='84' cy='58' r='1.5' fill='rgba(0,100,80,0.04)'/%3E%3Ccircle cx='90' cy='54' r='1.5' fill='rgba(0,100,80,0.04)'/%3E%3Cpath d='M0 20 C15 22, 24 12, 28 0 M160 20 C145 22, 136 12, 132 0' fill='none' stroke='rgba(0,100,80,0.035)' stroke-width='1.2' stroke-linecap='round'/%3E%3Cpath d='M0 140 C15 138, 24 148, 28 160 M160 140 C145 138, 136 148, 132 160' fill='none' stroke='rgba(0,100,80,0.035)' stroke-width='1.2' stroke-linecap='round'/%3E%3Cpath d='M15 80 Q35 65 55 80 T95 80 T135 80 T165 80' fill='none' stroke='rgba(0,100,80,0.02)' stroke-width='0.7'/%3E%3Cpath d='M80 15 Q65 35 80 55 T80 95 T80 135 T80 165' fill='none' stroke='rgba(0,100,80,0.02)' stroke-width='0.7'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: auto, auto, 160px 160px;
       color: var(--sq-black);
       font-family: var(--sq-font);
       line-height: 1.5;
@@ -64,6 +70,27 @@
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Ambient Calligraphy Background Watermark Overlay */
+    .arabic-pattern-hero-watermark {
+      position: absolute;
+      top: -60px;
+      right: -80px;
+      width: 480px;
+      height: 480px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Cg fill='none' stroke='rgba(0,135,90,0.045)' stroke-width='1.5'%3E%3Ccircle cx='200' cy='200' r='180' stroke-dasharray='4 4'/%3E%3Ccircle cx='200' cy='200' r='140'/%3E%3Ccircle cx='200' cy='200' r='100'/%3E%3Cpath d='M200 20 L200 380 M20 200 L380 200 M72 72 L328 328 M72 328 L328 72' stroke-width='0.8' stroke='rgba(0,135,90,0.03)'/%3E%3Cpath d='M150 190 C160 170, 185 160, 210 165 C235 170, 250 195, 245 220 C240 240, 215 250, 190 240 C175 230, 170 210, 180 195 C190 180, 215 180, 225 190' stroke='rgba(0,135,90,0.06)' stroke-width='3' stroke-linecap='round'/%3E%3C/g%3E%3C/svg%3E");
+      background-size: contain;
+      background-repeat: no-repeat;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.85;
+    }
+
+    html[dir="rtl"] .arabic-pattern-hero-watermark {
+      right: auto;
+      left: -80px;
+      transform: scaleX(-1);
     }
 
     h1, h2, h3, h4, h5, h6 {
@@ -344,13 +371,17 @@
     /* ======================================================== */
     .sq-hero {
       padding: clamp(36px, 6vw, 65px) 0 clamp(40px, 7vw, 70px) 0;
-      background: #ffffff;
+      background: rgba(255, 255, 255, 0.75);
+      position: relative;
+      overflow: hidden;
     }
     .sq-hero-grid {
       display: grid;
       grid-template-columns: 1.05fr 0.95fr;
       gap: clamp(24px, 4vw, 46px);
       align-items: center;
+      position: relative;
+      z-index: 1;
     }
     @media (max-width: 960px) {
       .sq-hero-grid {
@@ -461,7 +492,7 @@
     /* ======================================================== */
     .sq-about-section {
       padding: clamp(50px, 7vw, 85px) 0;
-      background: #ffffff;
+      background: rgba(255, 255, 255, 0.82);
       border-top: 1px solid var(--sq-border);
     }
     .about-grid {
@@ -1043,6 +1074,7 @@
   <!-- 1. HERO SECTION WITH CUSTOMER PAYMENT PHOTO              -->
   <!-- ======================================================== -->
   <section class="sq-hero" id="overview">
+    <div class="arabic-pattern-hero-watermark" aria-hidden="true"></div>
     <div class="sq-container">
       <div class="sq-hero-grid">
         
