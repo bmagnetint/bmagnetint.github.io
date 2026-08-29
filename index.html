@@ -9,10 +9,10 @@
   <meta http-equiv="Expires" content="0">
   <title>B-Magnet POS | Point of Sale & ZATCA Phase 2 E-Invoicing (Saudi Arabia)</title>
   
-  <!-- Fonts: Inter (English) & Almarai / Alexandria / Noto Sans Arabic (Modern Arabic) -->
+  <!-- Fonts: Inter (English) & IBM Plex Sans Arabic / Readex Pro / Alexandria (Aesthetic Modern Arabic) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;600;700;800&family=Almarai:wght@300;400;700;800&family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+Arabic:wght@400;500;600;700;800&family=Tajawal:wght@400;500;700;800&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;600;700;800;900&family=Almarai:wght@300;400;700;800&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700;800&family=Readex+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
   
   <link rel="icon" type="image/png" sizes="64x64" href="/favicon.png">
@@ -40,13 +40,19 @@
       --sq-zatca: #00875a;
       --sq-border: #e6e8eb;
       --sq-font: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-      --sq-font-ar: 'Almarai', 'Alexandria', 'Noto Sans Arabic', 'Tajawal', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --sq-font-ar: 'IBM Plex Sans Arabic', 'Readex Pro', 'Alexandria', 'Almarai', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --sq-font-ar-heading: 'Readex Pro', 'Alexandria', 'IBM Plex Sans Arabic', 'Almarai', sans-serif;
+    }
+
+    html[dir="rtl"] {
+      font-family: var(--sq-font-ar);
     }
 
     html[dir="rtl"] body {
       font-family: var(--sq-font-ar);
-      letter-spacing: 0;
-      line-height: 1.65;
+      letter-spacing: -0.01em;
+      line-height: 1.7;
+      text-rendering: optimizeLegibility;
     }
 
     body {
@@ -68,11 +74,36 @@
     html[dir="rtl"] h3, 
     html[dir="rtl"] h4, 
     html[dir="rtl"] h5, 
-    html[dir="rtl"] h6 {
-      font-family: 'Almarai', 'Alexandria', sans-serif;
-      letter-spacing: 0;
-      line-height: 1.35;
-      font-weight: 800;
+    html[dir="rtl"] h6,
+    html[dir="rtl"] .sq-hero-title,
+    html[dir="rtl"] .sq-section-title,
+    html[dir="rtl"] .hw-title,
+    html[dir="rtl"] .sq-card-title {
+      font-family: var(--sq-font-ar-heading);
+      letter-spacing: -0.015em;
+      line-height: 1.38;
+      font-weight: 700;
+    }
+
+    html[dir="rtl"] .sq-hero-lead,
+    html[dir="rtl"] .sq-section-sub,
+    html[dir="rtl"] .pos-deep-card p,
+    html[dir="rtl"] .sq-card-desc,
+    html[dir="rtl"] .about-lead,
+    html[dir="rtl"] .sq-faq-a {
+      font-family: var(--sq-font-ar);
+      line-height: 1.75;
+    }
+
+    html[dir="rtl"] .btn-sq-primary,
+    html[dir="rtl"] .btn-sq-secondary,
+    html[dir="rtl"] .btn-lang-toggle,
+    html[dir="rtl"] .sq-nav-link,
+    html[dir="rtl"] .mq-pill,
+    html[dir="rtl"] .sq-eyebrow,
+    html[dir="rtl"] .hw-badge {
+      font-family: var(--sq-font-ar);
+      font-weight: 600;
     }
 
     /* Top Announcement Ribbon for Saudi Merchants & ZATCA */
@@ -1766,7 +1797,7 @@
         aboutEyebrow: "About B-Magnet",
         aboutTitle: "Perfect business solutions engineered for high performance.",
         aboutP1: "B-Magnet (بي-ماجنت) is a modern technology and commercial solutions enterprise dedicated to empowering retail businesses, food & beverage chains, service enterprises, and financial systems across the Kingdom of Saudi Arabia and the GCC.",
-        aboutP2: "Under our core ethos of "Perfect business solutions", we bridge hardware reliability, cloud intelligence, seamless ZATCA tax clearance, and unified merchant banking to turn checkout counters into powerful growth engines.",
+        aboutP2: "Under our core ethos of \"Perfect business solutions\", we bridge hardware reliability, cloud intelligence, seamless ZATCA tax clearance, and unified merchant banking to turn checkout counters into powerful growth engines.",
         af1Title: "⚡ Ultra-Fast Speed",
         af1Desc: "Instant barcode scanning, sub-2.4s payment settlements, and rapid thermal receipt printing.",
         af2Title: "🛡️ 100% Tax Compliant",
@@ -2070,6 +2101,16 @@
       }
     };
 
+    function setText(id, val) {
+      const el = document.getElementById(id);
+      if (el && val !== undefined) el.textContent = val;
+    }
+
+    function setHtml(id, val) {
+      const el = document.getElementById(id);
+      if (el && val !== undefined) el.innerHTML = val;
+    }
+
     function applyLanguage(lang) {
       currentLang = lang;
       localStorage.setItem('b_pos_lang', lang);
@@ -2078,197 +2119,197 @@
       document.documentElement.dir = isAr ? 'rtl' : 'ltr';
       document.documentElement.lang = isAr ? 'ar' : 'en';
 
-      const t = translations[lang];
+      const t = translations[lang] || translations.en;
 
       // Top banner
-      document.getElementById('txt_topBanner').innerHTML = `<span class="zatca-badge-pill" id="txt_zatcaBadge">${t.topBannerBadge}</span><span id="txt_zatcaText">${t.topBannerText}</span>`;
+      setHtml('txt_topBanner', `<span class="zatca-badge-pill" id="txt_zatcaBadge">${t.topBannerBadge}</span><span id="txt_zatcaText">${t.topBannerText}</span>`);
 
       // Nav
-      document.getElementById('txt_brandTagline').textContent = t.brandTagline;
-      document.getElementById('txt_navAbout').textContent = t.navAbout;
-      document.getElementById('txt_navPos').textContent = t.navPos;
-      document.getElementById('txt_navShowcase').textContent = t.navShowcase;
-      document.getElementById('txt_navZatca').textContent = t.navZatca;
-      document.getElementById('txt_navHardware').textContent = t.navHardware;
-      document.getElementById('txt_navPricing').textContent = t.navPricing;
-      document.getElementById('txt_navContact').textContent = t.navContact;
-      document.getElementById('txt_navFaq').textContent = t.navFaq;
-      document.getElementById('langToggleBtn').innerHTML = `<span>${t.langToggle}</span>`;
-      document.getElementById('txt_btnGetStarted').innerHTML = `<span>${t.btnGetStarted}</span>`;
+      setText('txt_brandTagline', t.brandTagline);
+      setText('txt_navAbout', t.navAbout);
+      setText('txt_navPos', t.navPos);
+      setText('txt_navShowcase', t.navShowcase);
+      setText('txt_navZatca', t.navZatca);
+      setText('txt_navHardware', t.navHardware);
+      setText('txt_navPricing', t.navPricing);
+      setText('txt_navContact', t.navContact);
+      setText('txt_navFaq', t.navFaq);
+      setHtml('langToggleBtn', `<span>${t.langToggle}</span>`);
+      setHtml('txt_btnGetStarted', `<span>${t.btnGetStarted}</span>`);
 
       // Mobile Quick Nav
-      document.getElementById('mq_about').textContent = t.mqAbout;
-      document.getElementById('mq_pos').textContent = t.mqPos;
-      document.getElementById('mq_showcase').textContent = t.mqShowcase;
-      document.getElementById('mq_zatca').textContent = t.mqZatca;
-      document.getElementById('mq_hardware').textContent = t.mqHardware;
-      document.getElementById('mq_pricing').textContent = t.mqPricing;
-      document.getElementById('mq_contact').textContent = t.mqContact;
-      document.getElementById('mq_faq').textContent = t.mqFaq;
+      setText('mq_about', t.mqAbout);
+      setText('mq_pos', t.mqPos);
+      setText('mq_showcase', t.mqShowcase);
+      setText('mq_zatca', t.mqZatca);
+      setText('mq_hardware', t.mqHardware);
+      setText('mq_pricing', t.mqPricing);
+      setText('mq_contact', t.mqContact);
+      setText('mq_faq', t.mqFaq);
 
       // Hero
-      document.getElementById('txt_heroEyebrow').textContent = t.heroEyebrow;
-      document.getElementById('txt_heroTitle').textContent = t.heroTitle;
-      document.getElementById('txt_heroLead').textContent = t.heroLead;
-      document.getElementById('txt_heroStartFree').innerHTML = `<span>${t.heroStartFree}</span><span class="material-symbols-rounded" style="font-size:18px;">${isAr ? 'arrow_backward' : 'arrow_forward'}</span>`;
-      document.getElementById('txt_heroContactSales').innerHTML = `<span>${t.heroContactSales}</span><span class="material-symbols-rounded" style="font-size:18px;">call</span>`;
-      document.getElementById('txt_trust1').textContent = t.trust1;
-      document.getElementById('txt_trust2').textContent = t.trust2;
-      document.getElementById('txt_trust3').textContent = t.trust3;
-      document.getElementById('txt_badgeTitle').textContent = t.badgeTitle;
-      document.getElementById('txt_badgeSub').textContent = t.badgeSub;
-      document.getElementById('txt_badgeStatus').textContent = t.badgeStatus;
+      setText('txt_heroEyebrow', t.heroEyebrow);
+      setText('txt_heroTitle', t.heroTitle);
+      setText('txt_heroLead', t.heroLead);
+      setHtml('txt_heroStartFree', `<span>${t.heroStartFree}</span><span class="material-symbols-rounded" style="font-size:18px;">${isAr ? 'arrow_backward' : 'arrow_forward'}</span>`);
+      setHtml('txt_heroContactSales', `<span class="material-symbols-rounded" style="font-size:18px;">call</span><span>${t.heroContactSales}</span>`);
+      setText('txt_trust1', t.trust1);
+      setText('txt_trust2', t.trust2);
+      setText('txt_trust3', t.trust3);
+      setText('txt_badgeTitle', t.badgeTitle);
+      setText('txt_badgeSub', t.badgeSub);
+      setText('txt_badgeStatus', t.badgeStatus);
 
       // About
-      document.getElementById('txt_aboutEyebrow').textContent = t.aboutEyebrow;
-      document.getElementById('txt_aboutTitle').textContent = t.aboutTitle;
-      document.getElementById('txt_aboutP1').innerHTML = t.aboutP1;
-      document.getElementById('txt_aboutP2').innerHTML = t.aboutP2;
-      document.getElementById('txt_af1Title').innerHTML = `<span class="material-symbols-rounded" style="color:#00875a; font-size:20px;">speed</span> ${t.af1Title}`;
-      document.getElementById('txt_af1Desc').textContent = t.af1Desc;
-      document.getElementById('txt_af2Title').innerHTML = `<span class="material-symbols-rounded" style="color:#00875a; font-size:20px;">shield</span> ${t.af2Title}`;
-      document.getElementById('txt_af2Desc').textContent = t.af2Desc;
-      document.getElementById('txt_af3Title').innerHTML = `<span class="material-symbols-rounded" style="color:#00875a; font-size:20px;">hub</span> ${t.af3Title}`;
-      document.getElementById('txt_af3Desc').textContent = t.af3Desc;
-      document.getElementById('txt_af4Title').innerHTML = `<span class="material-symbols-rounded" style="color:#00875a; font-size:20px;">support_agent</span> ${t.af4Title}`;
-      document.getElementById('txt_af4Desc').textContent = t.af4Desc;
+      setText('txt_aboutEyebrow', t.aboutEyebrow);
+      setText('txt_aboutTitle', t.aboutTitle);
+      setHtml('txt_aboutP1', t.aboutP1);
+      setHtml('txt_aboutP2', t.aboutP2);
+      setHtml('txt_af1Title', `<span class="material-symbols-rounded" style="color:#00875a; font-size:20px;">speed</span> ${t.af1Title}`);
+      setText('txt_af1Desc', t.af1Desc);
+      setHtml('txt_af2Title', `<span class="material-symbols-rounded" style="color:#00875a; font-size:20px;">shield</span> ${t.af2Title}`);
+      setText('txt_af2Desc', t.af2Desc);
+      setHtml('txt_af3Title', `<span class="material-symbols-rounded" style="color:#00875a; font-size:20px;">hub</span> ${t.af3Title}`);
+      setText('txt_af3Desc', t.af3Desc);
+      setHtml('txt_af4Title', `<span class="material-symbols-rounded" style="color:#00875a; font-size:20px;">support_agent</span> ${t.af4Title}`);
+      setText('txt_af4Desc', t.af4Desc);
 
       // POS Features
-      document.getElementById('txt_posEyebrow').textContent = t.posEyebrow;
-      document.getElementById('txt_posTitle').textContent = t.posTitle;
-      document.getElementById('txt_posSub').textContent = t.posSub;
-      document.getElementById('txt_pf1Title').textContent = t.pf1Title;
-      document.getElementById('txt_pf1Desc').textContent = t.pf1Desc;
-      document.getElementById('txt_pf2Title').textContent = t.pf2Title;
-      document.getElementById('txt_pf2Desc').textContent = t.pf2Desc;
-      document.getElementById('txt_pf3Title').textContent = t.pf3Title;
-      document.getElementById('txt_pf3Desc').textContent = t.pf3Desc;
-      document.getElementById('txt_pf4Title').textContent = t.pf4Title;
-      document.getElementById('txt_pf4Desc').textContent = t.pf4Desc;
-      document.getElementById('txt_pf5Title').textContent = t.pf5Title;
-      document.getElementById('txt_pf5Desc').textContent = t.pf5Desc;
-      document.getElementById('txt_pf6Title').textContent = t.pf6Title;
-      document.getElementById('txt_pf6Desc').textContent = t.pf6Desc;
+      setText('txt_posEyebrow', t.posEyebrow);
+      setText('txt_posTitle', t.posTitle);
+      setText('txt_posSub', t.posSub);
+      setText('txt_pf1Title', t.pf1Title);
+      setText('txt_pf1Desc', t.pf1Desc);
+      setText('txt_pf2Title', t.pf2Title);
+      setText('txt_pf2Desc', t.pf2Desc);
+      setText('txt_pf3Title', t.pf3Title);
+      setText('txt_pf3Desc', t.pf3Desc);
+      setText('txt_pf4Title', t.pf4Title);
+      setText('txt_pf4Desc', t.pf4Desc);
+      setText('txt_pf5Title', t.pf5Title);
+      setText('txt_pf5Desc', t.pf5Desc);
+      setText('txt_pf6Title', t.pf6Title);
+      setText('txt_pf6Desc', t.pf6Desc);
 
       // Showcase
-      document.getElementById('txt_scEyebrow').textContent = t.scEyebrow;
-      document.getElementById('txt_scTitle').textContent = t.scTitle;
-      document.getElementById('txt_scSub').textContent = t.scSub;
-      document.getElementById('txt_sc1Tag').textContent = t.sc1Tag;
-      document.getElementById('txt_sc1Title').textContent = t.sc1Title;
-      document.getElementById('txt_sc1Desc').textContent = t.sc1Desc;
-      document.getElementById('txt_sc1Link').textContent = t.sc1Link;
-      document.getElementById('txt_sc2Tag').textContent = t.sc2Tag;
-      document.getElementById('txt_sc2Title').textContent = t.sc2Title;
-      document.getElementById('txt_sc2Desc').textContent = t.sc2Desc;
-      document.getElementById('txt_sc2Link').textContent = t.sc2Link;
-      document.getElementById('txt_sc3Tag').textContent = t.sc3Tag;
-      document.getElementById('txt_sc3Title').textContent = t.sc3Title;
-      document.getElementById('txt_sc3Desc').textContent = t.sc3Desc;
-      document.getElementById('txt_sc3Link').textContent = t.sc3Link;
+      setText('txt_scEyebrow', t.scEyebrow);
+      setText('txt_scTitle', t.scTitle);
+      setText('txt_scSub', t.scSub);
+      setText('txt_sc1Tag', t.sc1Tag);
+      setText('txt_sc1Title', t.sc1Title);
+      setText('txt_sc1Desc', t.sc1Desc);
+      setText('txt_sc1Link', t.sc1Link);
+      setText('txt_sc2Tag', t.sc2Tag);
+      setText('txt_sc2Title', t.sc2Title);
+      setText('txt_sc2Desc', t.sc2Desc);
+      setText('txt_sc2Link', t.sc2Link);
+      setText('txt_sc3Tag', t.sc3Tag);
+      setText('txt_sc3Title', t.sc3Title);
+      setText('txt_sc3Desc', t.sc3Desc);
+      setText('txt_sc3Link', t.sc3Link);
 
       // ZATCA Section
-      document.getElementById('txt_zatcaEyebrow').textContent = t.zatcaEyebrow;
-      document.getElementById('txt_zatcaTitle').textContent = t.zatcaTitle;
-      document.getElementById('txt_zatcaSub').textContent = t.zatcaSub;
-      document.getElementById('txt_zc1Title').textContent = t.zc1Title;
-      document.getElementById('txt_zc1Desc').textContent = t.zc1Desc;
-      document.getElementById('txt_zc2Title').textContent = t.zc2Title;
-      document.getElementById('txt_zc2Desc').textContent = t.zc2Desc;
-      document.getElementById('txt_zc3Title').textContent = t.zc3Title;
-      document.getElementById('txt_zc3Desc').textContent = t.zc3Desc;
-      document.getElementById('txt_zc4Title').textContent = t.zc4Title;
-      document.getElementById('txt_zc4Desc').textContent = t.zc4Desc;
+      setText('txt_zatcaEyebrow', t.zatcaEyebrow);
+      setText('txt_zatcaTitle', t.zatcaTitle);
+      setText('txt_zatcaSub', t.zatcaSub);
+      setText('txt_zc1Title', t.zc1Title);
+      setText('txt_zc1Desc', t.zc1Desc);
+      setText('txt_zc2Title', t.zc2Title);
+      setText('txt_zc2Desc', t.zc2Desc);
+      setText('txt_zc3Title', t.zc3Title);
+      setText('txt_zc3Desc', t.zc3Desc);
+      setText('txt_zc4Title', t.zc4Title);
+      setText('txt_zc4Desc', t.zc4Desc);
 
       // Hardware
-      document.getElementById('txt_hwEyebrow').textContent = t.hwEyebrow;
-      document.getElementById('txt_hwTitle').textContent = t.hwTitle;
-      document.getElementById('txt_hwSub').textContent = t.hwSub;
-      document.getElementById('txt_hw1Badge').textContent = t.hw1Badge;
-      document.getElementById('txt_hw1Title').textContent = t.hw1Title;
-      document.getElementById('txt_hw1Desc').textContent = t.hw1Desc;
-      document.getElementById('txt_hw1Price').innerHTML = `${t.hw1Price}<span id="txt_hw1PriceSub">${t.hw1PriceSub}</span>`;
-      document.getElementById('txt_hw1Btn').innerHTML = `<span>${t.hw1Btn}</span>`;
+      setText('txt_hwEyebrow', t.hwEyebrow);
+      setText('txt_hwTitle', t.hwTitle);
+      setText('txt_hwSub', t.hwSub);
+      setText('txt_hw1Badge', t.hw1Badge);
+      setText('txt_hw1Title', t.hw1Title);
+      setText('txt_hw1Desc', t.hw1Desc);
+      setHtml('txt_hw1Price', `${t.hw1Price}<span id="txt_hw1PriceSub">${t.hw1PriceSub}</span>`);
+      setHtml('txt_hw1Btn', `<span>${t.hw1Btn}</span>`);
       
-      document.getElementById('txt_hw2Badge').textContent = t.hw2Badge;
-      document.getElementById('txt_hw2Title').textContent = t.hw2Title;
-      document.getElementById('txt_hw2Desc').textContent = t.hw2Desc;
-      document.getElementById('txt_hw2Price').innerHTML = `${t.hw2Price}<span id="txt_hw2PriceSub">${t.hw2PriceSub}</span>`;
-      document.getElementById('txt_hw2Btn').innerHTML = `<span>${t.hw2Btn}</span>`;
+      setText('txt_hw2Badge', t.hw2Badge);
+      setText('txt_hw2Title', t.hw2Title);
+      setText('txt_hw2Desc', t.hw2Desc);
+      setHtml('txt_hw2Price', `${t.hw2Price}<span id="txt_hw2PriceSub">${t.hw2PriceSub}</span>`);
+      setHtml('txt_hw2Btn', `<span>${t.hw2Btn}</span>`);
 
-      document.getElementById('txt_hw3Badge').textContent = t.hw3Badge;
-      document.getElementById('txt_hw3Title').textContent = t.hw3Title;
-      document.getElementById('txt_hw3Desc').textContent = t.hw3Desc;
-      document.getElementById('txt_hw3Price').innerHTML = `${t.hw3Price}<span id="txt_hw3PriceSub">${t.hw3PriceSub}</span>`;
-      document.getElementById('txt_hw3Btn').innerHTML = `<span>${t.hw3Btn}</span>`;
+      setText('txt_hw3Badge', t.hw3Badge);
+      setText('txt_hw3Title', t.hw3Title);
+      setText('txt_hw3Desc', t.hw3Desc);
+      setHtml('txt_hw3Price', `${t.hw3Price}<span id="txt_hw3PriceSub">${t.hw3PriceSub}</span>`);
+      setHtml('txt_hw3Btn', `<span>${t.hw3Btn}</span>`);
 
       // Pricing
-      document.getElementById('txt_prEyebrow').textContent = t.prEyebrow;
-      document.getElementById('txt_prTitle').textContent = t.prTitle;
-      document.getElementById('txt_prSub').textContent = t.prSub;
-      document.getElementById('txt_pr1Tag').textContent = t.pr1Tag;
-      document.getElementById('txt_pr1Title').textContent = t.pr1Title;
-      document.getElementById('txt_pr1Price').innerHTML = `${t.pr1Price}<span id="txt_pr1Unit">${t.pr1Unit}</span>`;
-      document.getElementById('txt_pr1Btn').textContent = t.pr1Btn;
+      setText('txt_prEyebrow', t.prEyebrow);
+      setText('txt_prTitle', t.prTitle);
+      setText('txt_prSub', t.prSub);
+      setText('txt_pr1Tag', t.pr1Tag);
+      setText('txt_pr1Title', t.pr1Title);
+      setHtml('txt_pr1Price', `${t.pr1Price}<span id="txt_pr1Unit">${t.pr1Unit}</span>`);
+      setText('txt_pr1Btn', t.pr1Btn);
       
-      document.getElementById('txt_pr2Badge').textContent = t.pr2Badge;
-      document.getElementById('txt_pr2Tag').textContent = t.pr2Tag;
-      document.getElementById('txt_pr2Title').textContent = t.pr2Title;
-      document.getElementById('txt_pr2Price').innerHTML = `${t.pr2Price}<span id="txt_pr2Unit">${t.pr2Unit}</span>`;
-      document.getElementById('txt_pr2Btn').textContent = t.pr2Btn;
+      setText('txt_pr2Badge', t.pr2Badge);
+      setText('txt_pr2Tag', t.pr2Tag);
+      setText('txt_pr2Title', t.pr2Title);
+      setHtml('txt_pr2Price', `${t.pr2Price}<span id="txt_pr2Unit">${t.pr2Unit}</span>`);
+      setText('txt_pr2Btn', t.pr2Btn);
 
-      document.getElementById('txt_pr3Tag').textContent = t.pr3Tag;
-      document.getElementById('txt_pr3Title').textContent = t.pr3Title;
-      document.getElementById('txt_pr3Price').innerHTML = `${t.pr3Price}<span id="txt_pr3Unit">${t.pr3Unit}</span>`;
-      document.getElementById('txt_pr3Btn').textContent = t.pr3Btn;
+      setText('txt_pr3Tag', t.pr3Tag);
+      setText('txt_pr3Title', t.pr3Title);
+      setHtml('txt_pr3Price', `${t.pr3Price}<span id="txt_pr3Unit">${t.pr3Unit}</span>`);
+      setText('txt_pr3Btn', t.pr3Btn);
 
       // Contact Us
-      document.getElementById('txt_ctEyebrow').textContent = t.ctEyebrow;
-      document.getElementById('txt_ctTitle').textContent = t.ctTitle;
-      document.getElementById('txt_ctSub').textContent = t.ctSub;
-      document.getElementById('txt_c1Label').textContent = t.c1Label;
-      document.getElementById('txt_c2Label').textContent = t.c2Label;
-      document.getElementById('txt_c3Label').textContent = t.c3Label;
-      if (document.getElementById('txt_cDubaiLabel')) document.getElementById('txt_cDubaiLabel').textContent = t.cDubaiLabel;
-      if (document.getElementById('txt_btnCallKSA')) document.getElementById('txt_btnCallKSA').innerHTML = `<span class="material-symbols-rounded" style="font-size:16px;">call</span><span>${t.btnCallKSA}</span>`;
-      if (document.getElementById('txt_btnCallDubai')) document.getElementById('txt_btnCallDubai').innerHTML = `<span class="material-symbols-rounded" style="font-size:16px;">call</span><span>${t.btnCallDubai}</span>`;
-      if (document.getElementById('txt_btnChatWA')) document.getElementById('txt_btnChatWA').innerHTML = `<span class="material-symbols-rounded" style="font-size:16px;">chat</span><span>${t.btnChatWA}</span>`;
-      if (document.getElementById('txt_btnEmail')) document.getElementById('txt_btnEmail').innerHTML = `<span class="material-symbols-rounded" style="font-size:16px;">send</span><span>${t.btnEmail}</span>`;
-      if (document.getElementById('txt_c4Label')) document.getElementById('txt_c4Label').textContent = t.c4Label;
-      if (document.getElementById('txt_c4Val')) document.getElementById('txt_c4Val').textContent = t.c4Val;
-      document.getElementById('txt_inqBadge').textContent = t.inqBadge;
-      document.getElementById('txt_inqTitle').textContent = t.inqTitle;
-      document.getElementById('txt_inqDesc').textContent = t.inqDesc;
-      if (document.getElementById('txt_inqCallKSA')) document.getElementById('txt_inqCallKSA').innerHTML = `<span>${t.inqCallKSA}</span><span class="material-symbols-rounded">call</span>`;
-      if (document.getElementById('txt_inqCallDubai')) document.getElementById('txt_inqCallDubai').innerHTML = `<span>${t.inqCallDubai}</span><span class="material-symbols-rounded">call</span>`;
-      document.getElementById('txt_inqBtn1').innerHTML = `<span>${t.inqBtn1}</span><span class="material-symbols-rounded">chat</span>`;
+      setText('txt_ctEyebrow', t.ctEyebrow);
+      setText('txt_ctTitle', t.ctTitle);
+      setText('txt_ctSub', t.ctSub);
+      setText('txt_c1Label', t.c1Label);
+      setText('txt_c2Label', t.c2Label);
+      setText('txt_c3Label', t.c3Label);
+      setText('txt_cDubaiLabel', t.cDubaiLabel);
+      setHtml('txt_btnCallKSA', `<span class="material-symbols-rounded" style="font-size:16px;">call</span><span>${t.btnCallKSA}</span>`);
+      setHtml('txt_btnCallDubai', `<span class="material-symbols-rounded" style="font-size:16px;">call</span><span>${t.btnCallDubai}</span>`);
+      setHtml('txt_btnChatWA', `<span class="material-symbols-rounded" style="font-size:16px;">chat</span><span>${t.btnChatWA}</span>`);
+      setHtml('txt_btnEmail', `<span class="material-symbols-rounded" style="font-size:16px;">send</span><span>${t.btnEmail}</span>`);
+      setText('txt_c4Label', t.c4Label);
+      setText('txt_c4Val', t.c4Val);
+      setText('txt_inqBadge', t.inqBadge);
+      setText('txt_inqTitle', t.inqTitle);
+      setText('txt_inqDesc', t.inqDesc);
+      setHtml('txt_inqCallKSA', `<span>${t.inqCallKSA}</span><span class="material-symbols-rounded">call</span>`);
+      setHtml('txt_inqCallDubai', `<span>${t.inqCallDubai}</span><span class="material-symbols-rounded">call</span>`);
+      setHtml('txt_inqBtn1', `<span>${t.inqBtn1}</span><span class="material-symbols-rounded">chat</span>`);
 
       // Bot Gateway
-      document.getElementById('txt_botEyebrow').textContent = t.botEyebrow;
-      document.getElementById('txt_botTitle').textContent = t.botTitle;
-      document.getElementById('txt_botDesc').textContent = t.botDesc;
-      document.getElementById('txt_botBtn').innerHTML = `<span>${t.botBtn}</span>`;
+      setText('txt_botEyebrow', t.botEyebrow);
+      setText('txt_botTitle', t.botTitle);
+      setText('txt_botDesc', t.botDesc);
+      setHtml('txt_botBtn', `<span>${t.botBtn}</span>`);
 
       // FAQ
-      document.getElementById('txt_faqEyebrow').textContent = t.faqEyebrow;
-      document.getElementById('txt_faqTitle').textContent = t.faqTitle;
-      document.getElementById('txt_q1').textContent = t.q1;
-      document.getElementById('txt_a1').textContent = t.a1;
-      document.getElementById('txt_q2').textContent = t.q2;
-      document.getElementById('txt_a2').textContent = t.a2;
-      document.getElementById('txt_q3').textContent = t.q3;
-      document.getElementById('txt_a3').textContent = t.a3;
-      document.getElementById('txt_q4').textContent = t.q4;
-      document.getElementById('txt_a4').textContent = t.a4;
+      setText('txt_faqEyebrow', t.faqEyebrow);
+      setText('txt_faqTitle', t.faqTitle);
+      setText('txt_q1', t.q1);
+      setText('txt_a1', t.a1);
+      setText('txt_q2', t.q2);
+      setText('txt_a2', t.a2);
+      setText('txt_q3', t.q3);
+      setText('txt_a3', t.a3);
+      setText('txt_q4', t.q4);
+      setText('txt_a4', t.a4);
 
       // Footer
-      document.getElementById('txt_ftDesc').textContent = t.ftDesc;
-      document.getElementById('txt_ftBadge').textContent = t.ftBadge;
-      document.getElementById('txt_ftCol1').textContent = t.ftCol1;
-      document.getElementById('txt_ftCol2').textContent = t.ftCol2;
-      document.getElementById('txt_ftCol3').textContent = t.ftCol3;
-      document.getElementById('txt_ftCopy').textContent = t.ftCopy;
-      document.getElementById('txt_ftPhase').textContent = t.ftPhase;
+      setText('txt_ftDesc', t.ftDesc);
+      setText('txt_ftBadge', t.ftBadge);
+      setText('txt_ftCol1', t.ftCol1);
+      setText('txt_ftCol2', t.ftCol2);
+      setText('txt_ftCol3', t.ftCol3);
+      setText('txt_ftCopy', t.ftCopy);
+      setText('txt_ftPhase', t.ftPhase);
     }
 
     function toggleLanguage() {
