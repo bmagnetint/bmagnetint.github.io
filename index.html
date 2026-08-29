@@ -84,7 +84,7 @@
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--sq-border);
-      padding: 16px 24px;
+      padding: 14px 24px;
     }
     .sq-header-container {
       max-width: 1240px;
@@ -124,7 +124,7 @@
     .sq-nav-links {
       display: flex;
       align-items: center;
-      gap: 28px;
+      gap: 26px;
     }
     .sq-nav-link {
       color: var(--sq-gray-70);
@@ -214,22 +214,22 @@
     }
 
     /* ======================================================== */
-    /* 1. SQUARE HERO SECTION                                   */
+    /* 1. SQUARE HERO SECTION WITH CUSTOMER IMAGE               */
     /* ======================================================== */
     .sq-hero {
-      padding: 70px 0 60px 0;
+      padding: 60px 0 70px 0;
       background: #ffffff;
     }
     .sq-hero-grid {
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 50px;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 46px;
       align-items: center;
     }
     @media (max-width: 960px) {
       .sq-hero-grid {
         grid-template-columns: 1fr;
-        gap: 40px;
+        gap: 36px;
       }
       .sq-nav-links {
         display: none;
@@ -240,7 +240,7 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      font-size: 13px;
+      font-size: 12.5px;
       font-weight: 800;
       text-transform: uppercase;
       color: #004d40;
@@ -252,24 +252,24 @@
     }
 
     .sq-hero-title {
-      font-size: 54px;
+      font-size: 52px;
       font-weight: 900;
-      line-height: 1.08;
-      letter-spacing: -1.5px;
+      line-height: 1.1;
+      letter-spacing: -1.4px;
       color: var(--sq-black);
-      margin-bottom: 22px;
+      margin-bottom: 20px;
     }
     @media (max-width: 600px) {
       .sq-hero-title {
-        font-size: 38px;
+        font-size: 36px;
       }
     }
 
     .sq-hero-lead {
-      font-size: 19px;
+      font-size: 18.5px;
       color: var(--sq-gray-70);
       line-height: 1.55;
-      margin-bottom: 34px;
+      margin-bottom: 32px;
       max-width: 560px;
     }
 
@@ -278,7 +278,7 @@
       align-items: center;
       gap: 14px;
       flex-wrap: wrap;
-      margin-bottom: 36px;
+      margin-bottom: 34px;
     }
 
     .sq-trust-pills {
@@ -298,60 +298,119 @@
       gap: 6px;
     }
 
-    /* Hero Interactive Terminal Graphic */
-    .sq-terminal-visual {
-      background: var(--sq-gray-05);
-      border: 1px solid var(--sq-border);
+    /* Hero Visual Card */
+    .sq-hero-media-card {
+      position: relative;
       border-radius: 24px;
-      padding: 32px;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.06);
-    }
-    .terminal-card-screen {
-      background: #ffffff;
+      overflow: hidden;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.12);
       border: 1px solid var(--sq-border);
-      border-radius: 16px;
-      padding: 24px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
     }
-    .pos-total-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      margin-bottom: 6px;
+    .sq-hero-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
     }
-    .pos-total-amt {
-      font-size: 42px;
-      font-weight: 900;
-      color: var(--sq-black);
-      font-family: 'JetBrains Mono', monospace;
-    }
-    .pos-tax-pill {
-      font-size: 12px;
-      color: #004d40;
-      background: #e0f2f1;
-      padding: 3px 8px;
-      border-radius: 6px;
-      font-weight: 800;
-    }
-
-    .mada-pay-banner {
-      background: #f8f9fa;
-      border: 1px solid var(--sq-border);
-      border-radius: 12px;
-      padding: 14px;
-      margin: 16px 0;
+    .hero-floating-badge {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      right: 20px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 14px;
+      padding: 14px 18px;
+      border: 1px solid rgba(0,0,0,0.08);
       display: flex;
       align-items: center;
       justify-content: space-between;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
     }
 
     /* ======================================================== */
-    /* 2. ZATCA PHASE 2 COMPLIANCE SECTION                      */
+    /* 2. CUSTOMER & POS UI SHOWCASE SECTION                    */
+    /* ======================================================== */
+    .sq-ui-showcase {
+      padding: 80px 0;
+      background: var(--sq-gray-05);
+      border-top: 1px solid var(--sq-border);
+      border-bottom: 1px solid var(--sq-border);
+    }
+    .sq-showcase-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+    .sq-showcase-card {
+      background: #ffffff;
+      border: 1px solid var(--sq-border);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .sq-showcase-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 45px rgba(0,0,0,0.09);
+      border-color: #000;
+    }
+    .sq-card-img-wrap {
+      width: 100%;
+      height: 260px;
+      overflow: hidden;
+      position: relative;
+    }
+    .sq-card-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+    .sq-showcase-card:hover .sq-card-img {
+      transform: scale(1.03);
+    }
+    .sq-card-body {
+      padding: 26px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .sq-card-tag {
+      font-size: 11.5px;
+      font-weight: 800;
+      color: #004d40;
+      background: #e0f2f1;
+      padding: 3px 10px;
+      border-radius: 6px;
+      display: inline-block;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+    .sq-card-title {
+      font-size: 20px;
+      font-weight: 800;
+      margin-bottom: 8px;
+      color: var(--sq-black);
+    }
+    .sq-card-desc {
+      font-size: 14px;
+      color: var(--sq-gray-70);
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    /* ======================================================== */
+    /* 3. ZATCA PHASE 2 COMPLIANCE SECTION                      */
     /* ======================================================== */
     .sq-zatca-section {
-      padding: 80px 0;
+      padding: 85px 0;
       background: #f0fdf4;
-      border-top: 1px solid #dcfce7;
       border-bottom: 1px solid #dcfce7;
     }
     .zatca-grid {
@@ -385,7 +444,7 @@
     }
 
     /* ======================================================== */
-    /* 3. HARDWARE & SOFTWARE ECOSYSTEM                         */
+    /* 4. HARDWARE & SOFTWARE ECOSYSTEM                         */
     /* ======================================================== */
     .sq-section {
       padding: 90px 0;
@@ -417,7 +476,7 @@
       background: #ffffff;
       border: 1px solid var(--sq-border);
       border-radius: 20px;
-      padding: 36px;
+      padding: 34px;
       transition: all 0.2s ease;
       display: flex;
       flex-direction: column;
@@ -468,35 +527,6 @@
       display: flex;
       align-items: center;
       gap: 8px;
-    }
-
-    /* ======================================================== */
-    /* 4. INDUSTRY SOLUTIONS                                    */
-    /* ======================================================== */
-    .sq-industry-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
-    }
-    .sq-industry-card {
-      background: var(--sq-gray-05);
-      border: 1px solid var(--sq-border);
-      border-radius: 16px;
-      padding: 28px;
-    }
-    .sq-ind-icon {
-      font-size: 32px;
-      margin-bottom: 14px;
-    }
-    .sq-industry-card h3 {
-      font-size: 18px;
-      font-weight: 800;
-      margin-bottom: 8px;
-    }
-    .sq-industry-card p {
-      font-size: 14px;
-      color: var(--sq-gray-70);
-      line-height: 1.6;
     }
 
     /* ======================================================== */
@@ -666,9 +696,9 @@
 
       <nav class="sq-nav-links">
         <a href="#overview" class="sq-nav-link">Overview</a>
+        <a href="#showcase" class="sq-nav-link">Customer UI</a>
         <a href="#zatca" class="sq-nav-link">ZATCA Phase 2</a>
         <a href="#hardware" class="sq-nav-link">Hardware</a>
-        <a href="#industries" class="sq-nav-link">Solutions</a>
         <a href="#pricing" class="sq-nav-link">Pricing (SAR)</a>
         <a href="#faq" class="sq-nav-link">FAQ</a>
       </nav>
@@ -688,7 +718,7 @@
   </header>
 
   <!-- ======================================================== -->
-  <!-- 1. SQUARE HERO SECTION                                   -->
+  <!-- 1. SQUARE HERO SECTION WITH CUSTOMER PAYMENT PHOTO       -->
   <!-- ======================================================== -->
   <section class="sq-hero" id="overview">
     <div class="sq-container">
@@ -705,7 +735,7 @@
           </h1>
 
           <p class="sq-hero-lead">
-            B-Magnet POS is built to run retail stores, restaurants, services, and e-commerce across Saudi Arabia. Complete with ZATCA Phase 2 e-invoicing clearance, 15% VAT calculation, mada contactless payments, and instant settlement.
+            B-Magnet POS is built to run retail stores, restaurants, cafes, and e-commerce across Saudi Arabia. Complete with ZATCA Phase 2 e-invoicing clearance, 15% VAT calculation, mada contactless payments, and instant settlement.
           </p>
 
           <div class="sq-hero-ctas">
@@ -735,47 +765,19 @@
           </div>
         </div>
 
-        <!-- Terminal Showcase -->
-        <div class="sq-terminal-visual">
-          <div class="terminal-card-screen">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-              <span style="font-size: 12px; font-weight: 800; color: var(--sq-gray-70); text-transform: uppercase;">TAX INVOICE (فاتورة ضريبية)</span>
-              <span class="pos-tax-pill">ZATCA QR READY</span>
-            </div>
-
-            <div class="pos-total-row">
-              <span style="font-size: 14px; font-weight: 700; color: var(--sq-gray-70);">Total with 15% VAT:</span>
-              <div class="pos-total-amt">230.00 <span style="font-size: 16px; font-weight: 700; color: var(--sq-gray-50);">SAR</span></div>
-            </div>
-
-            <div style="font-size: 12px; color: var(--sq-gray-70); display: flex; justify-content: space-between; border-bottom: 1px solid var(--sq-border); padding-bottom: 10px;">
-              <span>Subtotal: <strong>200.00 SAR</strong></span>
-              <span>VAT (15% ضريبة): <strong style="color: #004d40;">30.00 SAR</strong></span>
-            </div>
-
-            <!-- Payment Methods Banner -->
-            <div class="mada-pay-banner">
-              <div style="display: flex; align-items: center; gap: 10px;">
-                <span class="material-symbols-rounded" style="font-size: 24px; color: #004d40;">contactless</span>
-                <div>
-                  <strong style="font-size: 13px; color: var(--sq-black); display: block;">Tap to Pay • مدى & Apple Pay</strong>
-                  <span style="font-size: 11.5px; color: var(--sq-gray-70);">Sub-2.4s Contactless NFC Transaction</span>
-                </div>
-              </div>
-              <span style="font-size: 12px; font-weight: 800; color: #166534;" class="font-mono">APPROVED</span>
-            </div>
-
-            <!-- Instant Receipt Preview -->
-            <div style="background: var(--sq-gray-05); border-radius: 8px; padding: 12px; font-size: 11.5px; color: var(--sq-gray-70);">
-              <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
-                <span>ZATCA UUID:</span>
-                <span class="font-mono">8f2c-4921-992a</span>
-              </div>
-              <div style="display: flex; justify-content: space-between;">
-                <span>Seller VAT #:</span>
-                <span class="font-mono">310123456700003</span>
+        <!-- Hero Customer Photo with ZATCA Overlay -->
+        <div class="sq-hero-media-card">
+          <img src="/images/saudi_pos_handheld_customer.jpg" alt="Saudi Customer paying with mada NFC on B-Magnet POS Terminal" class="sq-hero-img">
+          
+          <div class="hero-floating-badge">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <span class="material-symbols-rounded" style="color: #166534; font-size: 24px;">contactless</span>
+              <div>
+                <strong style="font-size: 13.5px; color: var(--sq-black); display: block;">mada & Apple Pay NFC Tap</strong>
+                <span style="font-size: 11.5px; color: var(--sq-gray-70);">Sub-2.4s Instant Settlement • 15% VAT Included</span>
               </div>
             </div>
+            <span style="font-size: 12px; font-weight: 800; color: #166534; background: #e0f2f1; padding: 4px 8px; border-radius: 6px;" class="font-mono">APPROVED</span>
           </div>
         </div>
 
@@ -784,7 +786,81 @@
   </section>
 
   <!-- ======================================================== -->
-  <!-- 2. ZATCA PHASE 2 E-INVOICING CERTIFICATION               -->
+  <!-- 2. REAL-WORLD CUSTOMER UI & HARDWARE IN ACTION           -->
+  <!-- ======================================================== -->
+  <section class="sq-ui-showcase" id="showcase">
+    <div class="sq-container">
+      <div class="sq-section-header">
+        <span class="sq-eyebrow">Customer Experience & Interfaces</span>
+        <h2 class="sq-section-title">See B-Magnet POS in action across Saudi businesses.</h2>
+        <p class="sq-section-sub">From luxury boutiques in Riyadh to bustling cafes in Jeddah and commercial distributors in Dammam.</p>
+      </div>
+
+      <div class="sq-showcase-grid">
+        
+        <!-- Card 1: Retail Handheld Tap -->
+        <div class="sq-showcase-card">
+          <div class="sq-card-img-wrap">
+            <img src="/images/saudi_pos_handheld_customer.jpg" alt="Handheld POS checkout with Arab customer" class="sq-card-img">
+          </div>
+          <div class="sq-card-body">
+            <div>
+              <span class="sq-card-tag">Retail & Fashion Stores</span>
+              <h3 class="sq-card-title">Handheld Mobility & Instant Tap</h3>
+              <p class="sq-card-desc">
+                Accept mada, Apple Pay, and credit cards directly on the sales floor. High-speed thermal receipt printing with compliant ZATCA Phase 2 QR codes.
+              </p>
+            </div>
+            <a href="#hardware" style="font-size: 13.5px; font-weight: 700; color: var(--sq-black); text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">
+              Explore B-Magnet Terminal (599 SAR) →
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 2: Countertop Dual-Screen Register -->
+        <div class="sq-showcase-card">
+          <div class="sq-card-img-wrap">
+            <img src="/images/saudi_pos_countertop_register.jpg" alt="Dual screen POS register at Saudi coffee shop" class="sq-card-img">
+          </div>
+          <div class="sq-card-body">
+            <div>
+              <span class="sq-card-tag" style="background: #fef3c7; color: #92400e;">Cafes, Dining & Restaurants</span>
+              <h3 class="sq-card-title">Dual-Screen Customer Clarity</h3>
+              <p class="sq-card-desc">
+                Customers view their itemized order, 15% VAT, and dynamic Fatoora QR code in Arabic & English on a dedicated customer-facing touchscreen.
+              </p>
+            </div>
+            <a href="#hardware" style="font-size: 13.5px; font-weight: 700; color: var(--sq-black); text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">
+              Explore B-Magnet Register (1,899 SAR) →
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 3: Cloud Merchant Dashboard -->
+        <div class="sq-showcase-card">
+          <div class="sq-card-img-wrap">
+            <img src="/images/saudi_pos_mobile_merchant_app.jpg" alt="Saudi merchant holding iPad with B-Magnet POS sales analytics" class="sq-card-img">
+          </div>
+          <div class="sq-card-body">
+            <div>
+              <span class="sq-card-tag" style="background: #dbeafe; color: #1e40af;">Merchant Intelligence</span>
+              <h3 class="sq-card-title">Real-Time SAR Sales & Inventory</h3>
+              <p class="sq-card-desc">
+                Monitor live revenue in Saudi Riyal, manage multi-category inventory, track VAT liabilities, and sync automated accounting reports from any device.
+              </p>
+            </div>
+            <a href="/login/" style="font-size: 13.5px; font-weight: 700; color: var(--sq-black); text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">
+              Launch Free Web Dashboard →
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- 3. ZATCA PHASE 2 E-INVOICING CERTIFICATION               -->
   <!-- ======================================================== -->
   <section class="sq-zatca-section" id="zatca">
     <div class="sq-container">
@@ -835,7 +911,7 @@
   </section>
 
   <!-- ======================================================== -->
-  <!-- 3. HARDWARE TERMINALS (PRICED IN SAR)                    -->
+  <!-- 4. HARDWARE TERMINALS (PRICED IN SAR)                    -->
   <!-- ======================================================== -->
   <section class="sq-section" id="hardware">
     <div class="sq-container">
@@ -904,47 +980,6 @@
           <a href="/login/" class="btn-sq-secondary">
             <span>Launch Web POS (Free)</span>
           </a>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ======================================================== -->
-  <!-- 4. INDUSTRY SOLUTIONS                                    -->
-  <!-- ======================================================== -->
-  <section class="sq-section" id="industries" style="background: var(--sq-gray-05); border-top: 1px solid var(--sq-border);">
-    <div class="sq-container">
-      <div class="sq-section-header">
-        <span class="sq-eyebrow">Tailored For Saudi Businesses</span>
-        <h2 class="sq-section-title">Built for every industry in the Kingdom.</h2>
-        <p class="sq-section-sub">From boutique retail stores in Riyadh to cafes in Jeddah and service companies in Dammam.</p>
-      </div>
-
-      <div class="sq-industry-grid">
-        
-        <div class="sq-industry-card">
-          <div class="sq-ind-icon">🛍️</div>
-          <h3>Retail & Fashion</h3>
-          <p>Barcode scanning, multi-variant inventory (size/color), stock level alerts, and instant ZATCA compliant customer receipts.</p>
-        </div>
-
-        <div class="sq-industry-card">
-          <div class="sq-ind-icon">☕</div>
-          <h3>Cafes & Restaurants</h3>
-          <p>Fast table management, kitchen order tickets (KOT), item modifiers, tip management, and split-bill payments.</p>
-        </div>
-
-        <div class="sq-industry-card">
-          <div class="sq-ind-icon">💈</div>
-          <h3>Salons & Services</h3>
-          <p>Staff scheduling, customer booking history, service itemization, and direct mada contactless payment at the counter.</p>
-        </div>
-
-        <div class="sq-industry-card">
-          <div class="sq-ind-icon">📦</div>
-          <h3>Wholesale & B2B</h3>
-          <p>Standard B2B tax invoices with buyer VAT numbers, credit memo processing, and automated ZATCA XML clearance.</p>
         </div>
 
       </div>
@@ -1130,9 +1165,8 @@
         <div class="sq-footer-col">
           <h4>Solutions</h4>
           <ul>
-            <li><a href="#industries">Retail & Stores</a></li>
-            <li><a href="#industries">Cafes & Restaurants</a></li>
-            <li><a href="#industries">Services & Salons</a></li>
+            <li><a href="#showcase">Customer UI Showcase</a></li>
+            <li><a href="#hardware">Handheld Terminal</a></li>
             <li><a href="#pricing">Pricing in SAR</a></li>
             <li><a href="/bot">Trading Bots Suite ➔</a></li>
           </ul>
