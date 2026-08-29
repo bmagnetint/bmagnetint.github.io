@@ -56,7 +56,7 @@
     }
 
     body {
-      background-color: #fafcfb;
+      background-color: #fcfdfd;
       color: var(--sq-black);
       font-family: var(--sq-font);
       line-height: 1.5;
@@ -64,9 +64,10 @@
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+      position: relative;
     }
 
-    /* Universal Site-Wide Arabic Calligraphy & Arabesque Pattern Layer (Across ALL Areas) */
+    /* Universal Background Arabic Calligraphy & Arabesque Pattern (Strictly in Background - Slight Show) */
     body::before {
       content: "";
       position: fixed;
@@ -76,27 +77,27 @@
       bottom: 0;
       width: 100vw;
       height: 100vh;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cpath d='M80 15 L95 55 L135 40 L120 80 L160 95 L120 110 L135 150 L95 135 L80 175 L65 135 L25 150 L40 110 L0 95 L40 80 L25 40 L65 55 Z' fill='none' stroke='rgba(0,100,80,0.065)' stroke-width='1.2' stroke-linejoin='round'/%3E%3Ccircle cx='80' cy='80' r='28' fill='none' stroke='rgba(0,100,80,0.05)' stroke-width='1'/%3E%3Ccircle cx='80' cy='80' r='52' fill='none' stroke='rgba(0,100,80,0.04)' stroke-dasharray='3,3' stroke-width='0.9'/%3E%3Cpath d='M62 76 C65 68, 74 64, 82 66 C92 68, 98 78, 96 88 C94 96, 84 100, 75 96 C68 92, 66 84, 70 78 C74 72, 84 72, 88 77' fill='none' stroke='rgba(0,100,80,0.08)' stroke-width='1.8' stroke-linecap='round'/%3E%3Cpath d='M72 62 C76 56, 86 54, 92 59' fill='none' stroke='rgba(0,100,80,0.07)' stroke-width='1.4' stroke-linecap='round'/%3E%3Ccircle cx='84' cy='58' r='2' fill='rgba(0,100,80,0.07)'/%3E%3Ccircle cx='90' cy='54' r='2' fill='rgba(0,100,80,0.07)'/%3E%3Cpath d='M0 20 C15 22, 24 12, 28 0 M160 20 C145 22, 136 12, 132 0' fill='none' stroke='rgba(0,100,80,0.065)' stroke-width='1.3' stroke-linecap='round'/%3E%3Cpath d='M0 140 C15 138, 24 148, 28 160 M160 140 C145 138, 136 148, 132 160' fill='none' stroke='rgba(0,100,80,0.065)' stroke-width='1.3' stroke-linecap='round'/%3E%3Cpath d='M15 80 Q35 65 55 80 T95 80 T135 80 T165 80' fill='none' stroke='rgba(0,100,80,0.04)' stroke-width='0.8'/%3E%3Cpath d='M80 15 Q65 35 80 55 T80 95 T80 135 T80 165' fill='none' stroke='rgba(0,100,80,0.04)' stroke-width='0.8'/%3E%3C/svg%3E");
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cg fill='none' stroke='rgba(0,100,75,0.028)' stroke-width='0.8'%3E%3Cpath d='M70 12 L84 48 L118 35 L105 70 L140 84 L105 98 L118 133 L84 120 L70 156 L56 120 L22 133 L35 98 L0 84 L35 70 L22 35 L56 48 Z' stroke-linejoin='round'/%3E%3Ccircle cx='70' cy='70' r='24' stroke='rgba(0,100,75,0.022)' stroke-width='0.7'/%3E%3Ccircle cx='70' cy='70' r='46' stroke='rgba(0,100,75,0.018)' stroke-dasharray='2 2' stroke-width='0.6'/%3E%3Cpath d='M54 66 C57 60, 65 56, 72 58 C80 60, 86 68, 84 77 C82 84, 74 88, 66 84 C60 80, 58 74, 61 68 C65 63, 74 63, 77 67' stroke='rgba(0,100,75,0.038)' stroke-width='1.1' stroke-linecap='round'/%3E%3Cpath d='M63 54 C67 49, 75 47, 80 51' stroke='rgba(0,100,75,0.032)' stroke-width='0.9' stroke-linecap='round'/%3E%3Ccircle cx='74' cy='51' r='1' fill='rgba(0,100,75,0.032)'/%3E%3Ccircle cx='79' cy='48' r='1' fill='rgba(0,100,75,0.032)'/%3E%3Cpath d='M0 18 C13 20, 21 10, 25 0 M140 18 C127 20, 119 10, 115 0' stroke='rgba(0,100,75,0.028)' stroke-width='0.8' stroke-linecap='round'/%3E%3Cpath d='M0 122 C13 120, 21 130, 25 140 M140 122 C127 120, 119 130, 115 140' stroke='rgba(0,100,75,0.028)' stroke-width='0.8' stroke-linecap='round'/%3E%3C/g%3E%3C/svg%3E");
       background-repeat: repeat;
-      background-size: 160px 160px;
+      background-size: 140px 140px;
       pointer-events: none;
-      z-index: 9999;
-      opacity: 0.92;
+      z-index: -1;
+      opacity: 0.75;
     }
 
-    /* Ambient Calligraphy Background Watermark Overlay */
+    /* Ambient Calligraphy Background Watermark Overlay (Hero Background) */
     .arabic-pattern-hero-watermark {
       position: absolute;
       top: -60px;
       right: -80px;
       width: 480px;
       height: 480px;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Cg fill='none' stroke='rgba(0,135,90,0.055)' stroke-width='1.5'%3E%3Ccircle cx='200' cy='200' r='180' stroke-dasharray='4 4'/%3E%3Ccircle cx='200' cy='200' r='140'/%3E%3Ccircle cx='200' cy='200' r='100'/%3E%3Cpath d='M200 20 L200 380 M20 200 L380 200 M72 72 L328 328 M72 328 L328 72' stroke-width='0.8' stroke='rgba(0,135,90,0.035)'/%3E%3Cpath d='M150 190 C160 170, 185 160, 210 165 C235 170, 250 195, 245 220 C240 240, 215 250, 190 240 C175 230, 170 210, 180 195 C190 180, 215 180, 225 190' stroke='rgba(0,135,90,0.07)' stroke-width='3' stroke-linecap='round'/%3E%3C/g%3E%3C/svg%3E");
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Cg fill='none' stroke='rgba(0,135,90,0.03)' stroke-width='1.2'%3E%3Ccircle cx='200' cy='200' r='180' stroke-dasharray='4 4'/%3E%3Ccircle cx='200' cy='200' r='140'/%3E%3Ccircle cx='200' cy='200' r='100'/%3E%3Cpath d='M200 20 L200 380 M20 200 L380 200 M72 72 L328 328 M72 328 L328 72' stroke-width='0.6' stroke='rgba(0,135,90,0.02)'/%3E%3Cpath d='M150 190 C160 170, 185 160, 210 165 C235 170, 250 195, 245 220 C240 240, 215 250, 190 240 C175 230, 170 210, 180 195 C190 180, 215 180, 225 190' stroke='rgba(0,135,90,0.04)' stroke-width='2.2' stroke-linecap='round'/%3E%3C/g%3E%3C/svg%3E");
       background-size: contain;
       background-repeat: no-repeat;
       pointer-events: none;
       z-index: 0;
-      opacity: 0.85;
+      opacity: 0.7;
     }
 
     html[dir="rtl"] .arabic-pattern-hero-watermark {
