@@ -40,7 +40,11 @@
       --sq-zatca: #00875a;
       --sq-border: #e6e8eb;
       --sq-font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      --sq-font-ar: 'Cairo', sans-serif;
+      --sq-font-ar: 'Cairo', 'Plus Jakarta Sans', sans-serif;
+    }
+
+    html[dir="rtl"] body {
+      font-family: var(--sq-font-ar);
     }
 
     body {
@@ -143,25 +147,25 @@
       gap: 12px;
     }
 
-    /* Trading Bot Platform Link Button */
-    .btn-bot-link {
+    /* Language Switcher Button */
+    .btn-lang-toggle {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 9px 16px;
+      padding: 8px 14px;
       border-radius: 8px;
-      background: var(--sq-gray-05);
-      border: 1px solid var(--sq-border);
-      color: var(--sq-dark);
-      font-size: 13.5px;
-      font-weight: 700;
-      text-decoration: none;
-      transition: all 0.2s ease;
-    }
-    .btn-bot-link:hover {
       background: var(--sq-gray-10);
-      border-color: #000;
-      color: #000;
+      border: 1px solid var(--sq-border);
+      color: var(--sq-black);
+      font-size: 13px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+    .btn-lang-toggle:hover {
+      background: var(--sq-gray-20);
+      border-color: var(--sq-black);
     }
 
     .btn-sq-primary {
@@ -569,6 +573,10 @@
       border-radius: 99px;
       text-transform: uppercase;
     }
+    html[dir="rtl"] .featured-tag {
+      left: auto;
+      right: 32px;
+    }
 
     /* ======================================================== */
     /* 6. SINGLE CLEAR GATEWAY TO TRADING BOTS                  */
@@ -680,9 +688,9 @@
 <body class="theme-dark">
 
   <!-- Top ZATCA Compliance Bar -->
-  <div class="zatca-top-banner">
-    <span class="zatca-badge-pill">ZATCA APPROVED</span>
-    <span>🟢 Fully Certified for ZATCA Phase 2 E-Invoicing (Fatoora) & 15% Saudi VAT Compliance (معتمد من هيئة الزكاة والضريبة والجمارك)</span>
+  <div class="zatca-top-banner" id="txt_topBanner">
+    <span class="zatca-badge-pill" id="txt_zatcaBadge">ZATCA APPROVED</span>
+    <span id="txt_zatcaText">🟢 Fully Certified for ZATCA Phase 2 E-Invoicing (Fatoora) & 15% Saudi VAT Compliance (معتمد من هيئة الزكاة والضريبة والجمارك)</span>
   </div>
 
   <!-- Header Navigation -->
@@ -691,20 +699,25 @@
       <a href="/" class="sq-brand">
         <img src="/images/b-magnet-emblem.png" alt="B-Magnet POS" class="sq-logo">
         <span class="sq-brand-name">B-Magnet</span>
-        <span class="sq-brand-badge">Point of Sale</span>
+        <span class="sq-brand-badge" id="txt_brandBadge">Point of Sale</span>
       </a>
 
       <nav class="sq-nav-links">
-        <a href="#overview" class="sq-nav-link">Overview</a>
-        <a href="#showcase" class="sq-nav-link">Customer UI</a>
-        <a href="#zatca" class="sq-nav-link">ZATCA Phase 2</a>
-        <a href="#hardware" class="sq-nav-link">Hardware</a>
-        <a href="#pricing" class="sq-nav-link">Pricing (SAR)</a>
-        <a href="#faq" class="sq-nav-link">FAQ</a>
+        <a href="#overview" class="sq-nav-link" id="txt_navOverview">Overview</a>
+        <a href="#showcase" class="sq-nav-link" id="txt_navShowcase">Customer UI</a>
+        <a href="#zatca" class="sq-nav-link" id="txt_navZatca">ZATCA Phase 2</a>
+        <a href="#hardware" class="sq-nav-link" id="txt_navHardware">Hardware</a>
+        <a href="#pricing" class="sq-nav-link" id="txt_navPricing">Pricing (SAR)</a>
+        <a href="#faq" class="sq-nav-link" id="txt_navFaq">FAQ</a>
       </nav>
 
       <div class="sq-nav-actions">
-        <a href="https://wa.me/919495097786?text=Hello%20B-Magnet%20POS%20Team%2C%20I%20want%20to%20get%20started%20with%20B-Magnet%20POS%20for%20my%20business%20in%20Saudi%20Arabia." target="_blank" rel="noopener noreferrer" class="btn-sq-primary">
+        <!-- Language Switcher Button -->
+        <button type="button" id="langToggleBtn" onclick="toggleLanguage()" class="btn-lang-toggle" title="Switch Language / تغيير اللغة">
+          <span>🇸🇦 العربية</span>
+        </button>
+
+        <a href="https://wa.me/919495097786?text=Hello%20B-Magnet%20POS%20Team%2C%20I%20want%20to%20get%20started%20with%20B-Magnet%20POS%20for%20my%20business%20in%20Saudi%20Arabia." target="_blank" rel="noopener noreferrer" class="btn-sq-primary" id="txt_btnGetStarted">
           <span>Get Started</span>
         </a>
       </div>
@@ -721,23 +734,23 @@
         <div>
           <div class="sq-eyebrow">
             <span class="material-symbols-rounded" style="font-size: 16px;">verified</span>
-            <span>Kingdom of Saudi Arabia • ZATCA Certified</span>
+            <span id="txt_heroEyebrow">Kingdom of Saudi Arabia • ZATCA Certified</span>
           </div>
 
-          <h1 class="sq-hero-title">
+          <h1 class="sq-hero-title" id="txt_heroTitle">
             The point of sale that powers every kind of business.
           </h1>
 
-          <p class="sq-hero-lead">
+          <p class="sq-hero-lead" id="txt_heroLead">
             B-Magnet POS is built to run retail stores, restaurants, cafes, and e-commerce across Saudi Arabia. Complete with ZATCA Phase 2 e-invoicing clearance, 15% VAT calculation, mada contactless payments, and instant settlement.
           </p>
 
           <div class="sq-hero-ctas">
-            <a href="https://wa.me/919495097786?text=Hello%20B-Magnet%20POS%20Team%2C%20I%20want%20to%20start%20free%20with%20B-Magnet%20POS%20for%20my%20business%20in%20Saudi%20Arabia." target="_blank" rel="noopener noreferrer" class="btn-sq-primary" style="padding: 14px 30px; font-size: 15px;">
+            <a href="https://wa.me/919495097786?text=Hello%20B-Magnet%20POS%20Team%2C%20I%20want%20to%20start%20free%20with%20B-Magnet%20POS%20for%20my%20business%20in%20Saudi%20Arabia." target="_blank" rel="noopener noreferrer" class="btn-sq-primary" style="padding: 14px 30px; font-size: 15px;" id="txt_heroStartFree">
               <span>Start Free with B-Magnet POS</span>
               <span class="material-symbols-rounded" style="font-size: 18px;">arrow_forward</span>
             </a>
-            <a href="https://wa.me/919495097786?text=Hello%20B-Magnet%20POS%20Team%2C%20I%20want%20to%20setup%20ZATCA%20Phase%202%20POS%20for%20my%20business%20in%20Saudi%20Arabia." target="_blank" rel="noopener noreferrer" class="btn-sq-secondary" style="padding: 14px 26px; font-size: 15px;">
+            <a href="https://wa.me/919495097786?text=Hello%20B-Magnet%20POS%20Team%2C%20I%20want%20to%20setup%20ZATCA%20Phase%202%20POS%20for%20my%20business%20in%20Saudi%20Arabia." target="_blank" rel="noopener noreferrer" class="btn-sq-secondary" style="padding: 14px 26px; font-size: 15px;" id="txt_heroContactSales">
               <span>Contact Sales (WhatsApp)</span>
               <span class="material-symbols-rounded" style="font-size: 18px;">chat</span>
             </a>
@@ -746,15 +759,15 @@
           <div class="sq-trust-pills">
             <div class="sq-trust-item">
               <span class="material-symbols-rounded" style="color: #166534; font-size: 18px;">check_circle</span>
-              <span>ZATCA Phase 2 Integrated</span>
+              <span id="txt_trust1">ZATCA Phase 2 Integrated</span>
             </div>
             <div class="sq-trust-item">
               <span class="material-symbols-rounded" style="color: #166534; font-size: 18px;">check_circle</span>
-              <span>mada & Apple Pay Ready</span>
+              <span id="txt_trust2">mada & Apple Pay Ready</span>
             </div>
             <div class="sq-trust-item">
               <span class="material-symbols-rounded" style="color: #166534; font-size: 18px;">check_circle</span>
-              <span>No Monthly Subscription</span>
+              <span id="txt_trust3">No Monthly Subscription</span>
             </div>
           </div>
         </div>
@@ -767,11 +780,11 @@
             <div style="display: flex; align-items: center; gap: 10px;">
               <span class="material-symbols-rounded" style="color: #166534; font-size: 24px;">contactless</span>
               <div>
-                <strong style="font-size: 13.5px; color: var(--sq-black); display: block;">mada & Apple Pay NFC Tap</strong>
-                <span style="font-size: 11.5px; color: var(--sq-gray-70);">Sub-2.4s Instant Settlement • 15% VAT Included</span>
+                <strong style="font-size: 13.5px; color: var(--sq-black); display: block;" id="txt_badgeTitle">mada & Apple Pay NFC Tap</strong>
+                <span style="font-size: 11.5px; color: var(--sq-gray-70);" id="txt_badgeSub">Sub-2.4s Instant Settlement • 15% VAT Included</span>
               </div>
             </div>
-            <span style="font-size: 12px; font-weight: 800; color: #166534; background: #e0f2f1; padding: 4px 8px; border-radius: 6px;" class="font-mono">APPROVED</span>
+            <span style="font-size: 12px; font-weight: 800; color: #166534; background: #e0f2f1; padding: 4px 8px; border-radius: 6px;" class="font-mono" id="txt_badgeStatus">APPROVED</span>
           </div>
         </div>
 
@@ -785,9 +798,9 @@
   <section class="sq-ui-showcase" id="showcase">
     <div class="sq-container">
       <div class="sq-section-header">
-        <span class="sq-eyebrow">Customer Experience & Interfaces</span>
-        <h2 class="sq-section-title">See B-Magnet POS in action across Saudi businesses.</h2>
-        <p class="sq-section-sub">From luxury boutiques in Riyadh to bustling cafes in Jeddah and commercial distributors in Dammam.</p>
+        <span class="sq-eyebrow" id="txt_scEyebrow">Customer Experience & Interfaces</span>
+        <h2 class="sq-section-title" id="txt_scTitle">See B-Magnet POS in action across Saudi businesses.</h2>
+        <p class="sq-section-sub" id="txt_scSub">From luxury boutiques in Riyadh to bustling cafes in Jeddah and commercial distributors in Dammam.</p>
       </div>
 
       <div class="sq-showcase-grid">
@@ -799,13 +812,13 @@
           </div>
           <div class="sq-card-body">
             <div>
-              <span class="sq-card-tag">Retail & Fashion Stores</span>
-              <h3 class="sq-card-title">Handheld Mobility & Instant Tap</h3>
-              <p class="sq-card-desc">
+              <span class="sq-card-tag" id="txt_sc1Tag">Retail & Fashion Stores</span>
+              <h3 class="sq-card-title" id="txt_sc1Title">Handheld Mobility & Instant Tap</h3>
+              <p class="sq-card-desc" id="txt_sc1Desc">
                 Accept mada, Apple Pay, and credit cards directly on the sales floor. High-speed thermal receipt printing with compliant ZATCA Phase 2 QR codes.
               </p>
             </div>
-            <a href="#hardware" style="font-size: 13.5px; font-weight: 700; color: var(--sq-black); text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">
+            <a href="#hardware" style="font-size: 13.5px; font-weight: 700; color: var(--sq-black); text-decoration: none; display: inline-flex; align-items: center; gap: 4px;" id="txt_sc1Link">
               Explore B-Magnet Terminal (599 SAR) →
             </a>
           </div>
@@ -818,13 +831,13 @@
           </div>
           <div class="sq-card-body">
             <div>
-              <span class="sq-card-tag" style="background: #fef3c7; color: #92400e;">Cafes, Dining & Restaurants</span>
-              <h3 class="sq-card-title">Dual-Screen Customer Clarity</h3>
-              <p class="sq-card-desc">
+              <span class="sq-card-tag" style="background: #fef3c7; color: #92400e;" id="txt_sc2Tag">Cafes, Dining & Restaurants</span>
+              <h3 class="sq-card-title" id="txt_sc2Title">Dual-Screen Customer Clarity</h3>
+              <p class="sq-card-desc" id="txt_sc2Desc">
                 Customers view their itemized order, 15% VAT, and dynamic Fatoora QR code in Arabic & English on a dedicated customer-facing touchscreen.
               </p>
             </div>
-            <a href="#hardware" style="font-size: 13.5px; font-weight: 700; color: var(--sq-black); text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">
+            <a href="#hardware" style="font-size: 13.5px; font-weight: 700; color: var(--sq-black); text-decoration: none; display: inline-flex; align-items: center; gap: 4px;" id="txt_sc2Link">
               Explore B-Magnet Register (1,899 SAR) →
             </a>
           </div>
@@ -837,13 +850,13 @@
           </div>
           <div class="sq-card-body">
             <div>
-              <span class="sq-card-tag" style="background: #dbeafe; color: #1e40af;">Merchant Intelligence</span>
-              <h3 class="sq-card-title">Real-Time SAR Sales & Inventory</h3>
-              <p class="sq-card-desc">
+              <span class="sq-card-tag" style="background: #dbeafe; color: #1e40af;" id="txt_sc3Tag">Merchant Intelligence</span>
+              <h3 class="sq-card-title" id="txt_sc3Title">Real-Time SAR Sales & Inventory</h3>
+              <p class="sq-card-desc" id="txt_sc3Desc">
                 Monitor live revenue in Saudi Riyal, manage multi-category inventory, track VAT liabilities, and sync automated accounting reports from any device.
               </p>
             </div>
-            <a href="https://wa.me/919495097786?text=Hello%20B-Magnet%20POS%20Team%2C%20I%20want%20to%20setup%20the%20Free%20Web%20POS%20Dashboard%20for%20my%20business." target="_blank" rel="noopener noreferrer" style="font-size: 13.5px; font-weight: 700; color: var(--sq-black); text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">
+            <a href="https://wa.me/919495097786?text=Hello%20B-Magnet%20POS%20Team%2C%20I%20want%20to%20setup%20the%20Free%20Web%20POS%20Dashboard%20for%20my%20business." target="_blank" rel="noopener noreferrer" style="font-size: 13.5px; font-weight: 700; color: var(--sq-black); text-decoration: none; display: inline-flex; align-items: center; gap: 4px;" id="txt_sc3Link">
               Get Free Web POS on WhatsApp →
             </a>
           </div>
@@ -859,9 +872,9 @@
   <section class="sq-zatca-section" id="zatca">
     <div class="sq-container">
       <div class="sq-section-header">
-        <span class="sq-eyebrow">Tax Authority Compliance</span>
-        <h2 class="sq-section-title">Approved for ZATCA Phase 2 E-Invoicing</h2>
-        <p class="sq-section-sub">
+        <span class="sq-eyebrow" id="txt_zatcaEyebrow">Tax Authority Compliance</span>
+        <h2 class="sq-section-title" id="txt_zatcaTitle">Approved for ZATCA Phase 2 E-Invoicing</h2>
+        <p class="sq-section-sub" id="txt_zatcaSub">
           B-Magnet POS is engineered in full alignment with the Zakat, Tax and Customs Authority (ZATCA / هيئة الزكاة والضريبة والجمارك) regulations for Phase 1 (Generation) and Phase 2 (Integration / الربط والتكامل).
         </p>
       </div>
@@ -872,32 +885,32 @@
           <div class="zatca-icon">
             <span class="material-symbols-rounded">qr_code_2</span>
           </div>
-          <h3>Compliant Phase 2 QR Codes</h3>
-          <p>Generates cryptographic Base64 TLV encoded QR codes containing Seller Name, VAT Number, Timestamp, Total, and VAT total on every customer receipt.</p>
+          <h3 id="txt_zc1Title">Compliant Phase 2 QR Codes</h3>
+          <p id="txt_zc1Desc">Generates cryptographic Base64 TLV encoded QR codes containing Seller Name, VAT Number, Timestamp, Total, and VAT total on every customer receipt.</p>
         </div>
 
         <div class="zatca-card">
           <div class="zatca-icon">
             <span class="material-symbols-rounded">key</span>
           </div>
-          <h3>Cryptographic Stamp & UUID</h3>
-          <p>Every invoice is cryptographically stamped with SHA-256 digital hashes, sequential counters, and unique 128-bit UUIDs preventing alteration.</p>
+          <h3 id="txt_zc2Title">Cryptographic Stamp & UUID</h3>
+          <p id="txt_zc2Desc">Every invoice is cryptographically stamped with SHA-256 digital hashes, sequential counters, and unique 128-bit UUIDs preventing alteration.</p>
         </div>
 
         <div class="zatca-card">
           <div class="zatca-icon">
             <span class="material-symbols-rounded">cloud_sync</span>
           </div>
-          <h3>Automated Fatoora Portal Sync</h3>
-          <p>Direct API integration with ZATCA’s Fatoora platform for real-time clearance of standard tax invoices (B2B) and reporting of simplified invoices (B2C).</p>
+          <h3 id="txt_zc3Title">Automated Fatoora Portal Sync</h3>
+          <p id="txt_zc3Desc">Direct API integration with ZATCA’s Fatoora platform for real-time clearance of standard tax invoices (B2B) and reporting of simplified invoices (B2C).</p>
         </div>
 
         <div class="zatca-card">
           <div class="zatca-icon">
             <span class="material-symbols-rounded">percent</span>
           </div>
-          <h3>15% VAT Automatic Calculation</h3>
-          <p>Automatically calculates 15% Saudi VAT across all product catalogs with multi-tax category support and 1-click accounting reports.</p>
+          <h3 id="txt_zc4Title">15% VAT Automatic Calculation</h3>
+          <p id="txt_zc4Desc">Automatically calculates 15% Saudi VAT across all product catalogs with multi-tax category support and 1-click accounting reports.</p>
         </div>
 
       </div>
@@ -910,9 +923,9 @@
   <section class="sq-section" id="hardware">
     <div class="sq-container">
       <div class="sq-section-header">
-        <span class="sq-eyebrow">Purpose-Built POS Devices</span>
-        <h2 class="sq-section-title">Hardware designed for speed and reliability.</h2>
-        <p class="sq-section-sub">
+        <span class="sq-eyebrow" id="txt_hwEyebrow">Purpose-Built POS Devices</span>
+        <h2 class="sq-section-title" id="txt_hwTitle">Hardware designed for speed and reliability.</h2>
+        <p class="sq-section-sub" id="txt_hwSub">
           Choose from sleek handheld mobile terminals, tabletop dual-screen registers, or run B-Magnet POS on your existing tablet or phone.
         </p>
       </div>
@@ -922,18 +935,18 @@
         <!-- Hardware 1: Mobile Terminal -->
         <div class="sq-hw-card">
           <div>
-            <span class="hw-badge">Handheld & Portable</span>
-            <h3 class="hw-title">B-Magnet Terminal</h3>
-            <p style="font-size: 14px; color: var(--sq-gray-70); margin-bottom: 16px;">All-in-one handheld POS with built-in thermal printer, NFC mada tap, and 4G / Wi-Fi connectivity.</p>
-            <div class="hw-price">599 SAR <span>(ر.س ٥٩٩)</span></div>
-            <ul class="hw-features">
+            <span class="hw-badge" id="txt_hw1Badge">Handheld & Portable</span>
+            <h3 class="hw-title" id="txt_hw1Title">B-Magnet Terminal</h3>
+            <p style="font-size: 14px; color: var(--sq-gray-70); margin-bottom: 16px;" id="txt_hw1Desc">All-in-one handheld POS with built-in thermal printer, NFC mada tap, and 4G / Wi-Fi connectivity.</p>
+            <div class="hw-price" id="txt_hw1Price">599 SAR <span id="txt_hw1PriceSub">(ر.س ٥٩٩)</span></div>
+            <ul class="hw-features" id="txt_hw1Feats">
               <li><span class="material-symbols-rounded" style="color: #166534; font-size: 18px;">check</span> 5.5" HD Touchscreen</li>
               <li><span class="material-symbols-rounded" style="color: #166534; font-size: 18px;">check</span> Built-in High-Speed Receipt Printer</li>
               <li><span class="material-symbols-rounded" style="color: #166534; font-size: 18px;">check</span> Contactless mada, Apple Pay & Chip</li>
               <li><span class="material-symbols-rounded" style="color: #166534; font-size: 18px;">check</span> ZATCA Phase 2 Instant QR Printing</li>
             </ul>
           </div>
-          <a href="https://wa.me/919495097786?text=I%20want%20to%20order%20B-Magnet%20Terminal%20(599%20SAR)." target="_blank" rel="noopener noreferrer" class="btn-sq-primary">
+          <a href="https://wa.me/919495097786?text=I%20want%20to%20order%20B-Magnet%20Terminal%20(599%20SAR)." target="_blank" rel="noopener noreferrer" class="btn-sq-primary" id="txt_hw1Btn">
             <span>Order Terminal (599 SAR)</span>
           </a>
         </div>
@@ -941,18 +954,18 @@
         <!-- Hardware 2: Dual Screen Register -->
         <div class="sq-hw-card">
           <div>
-            <span class="hw-badge" style="background: #e0f2f1; color: #004d40;">Flagship Countertop</span>
-            <h3 class="hw-title">B-Magnet Register</h3>
-            <p style="font-size: 14px; color: var(--sq-gray-70); margin-bottom: 16px;">Dual-screen complete countertop solution with dedicated customer-facing display and cash drawer support.</p>
-            <div class="hw-price">1,899 SAR <span>(ر.س ١,٨٩٩)</span></div>
-            <ul class="hw-features">
+            <span class="hw-badge" style="background: #e0f2f1; color: #004d40;" id="txt_hw2Badge">Flagship Countertop</span>
+            <h3 class="hw-title" id="txt_hw2Title">B-Magnet Register</h3>
+            <p style="font-size: 14px; color: var(--sq-gray-70); margin-bottom: 16px;" id="txt_hw2Desc">Dual-screen complete countertop solution with dedicated customer-facing display and cash drawer support.</p>
+            <div class="hw-price" id="txt_hw2Price">1,899 SAR <span id="txt_hw2PriceSub">(ر.س ١,٨٩٩)</span></div>
+            <ul class="hw-features" id="txt_hw2Feats">
               <li><span class="material-symbols-rounded" style="color: #166534; font-size: 18px;">check</span> Dual 15.6" + 10.1" Customer Screens</li>
               <li><span class="material-symbols-rounded" style="color: #166534; font-size: 18px;">check</span> USB & Bluetooth Barcode Scanner Ready</li>
               <li><span class="material-symbols-rounded" style="color: #166534; font-size: 18px;">check</span> Full ZATCA Enterprise Fatoora Integration</li>
               <li><span class="material-symbols-rounded" style="color: #166534; font-size: 18px;">check</span> Heavy-Duty Cash Drawer Connectivity</li>
             </ul>
           </div>
-          <a href="https://wa.me/919495097786?text=I%20want%20to%20order%20B-Magnet%20Register%20(1899%20SAR)." target="_blank" rel="noopener noreferrer" class="btn-sq-primary">
+          <a href="https://wa.me/919495097786?text=I%20want%20to%20order%20B-Magnet%20Register%20(1899%20SAR)." target="_blank" rel="noopener noreferrer" class="btn-sq-primary" id="txt_hw2Btn">
             <span>Order Register (1,899 SAR)</span>
           </a>
         </div>
@@ -960,18 +973,18 @@
         <!-- Hardware 3: Free Web POS -->
         <div class="sq-hw-card">
           <div>
-            <span class="hw-badge">Zero Hardware Cost</span>
-            <h3 class="hw-title">B-Magnet Web POS</h3>
-            <p style="font-size: 14px; color: var(--sq-gray-70); margin-bottom: 16px;">Run B-Magnet POS directly inside your smartphone or PC browser with digital SMS/WhatsApp e-invoices.</p>
-            <div class="hw-price">0 SAR <span>(FREE)</span></div>
-            <ul class="hw-features">
+            <span class="hw-badge" id="txt_hw3Badge">Zero Hardware Cost</span>
+            <h3 class="hw-title" id="txt_hw3Title">B-Magnet Web POS</h3>
+            <p style="font-size: 14px; color: var(--sq-gray-70); margin-bottom: 16px;" id="txt_hw3Desc">Run B-Magnet POS directly inside your smartphone or PC browser with digital SMS/WhatsApp e-invoices.</p>
+            <div class="hw-price" id="txt_hw3Price">0 SAR <span id="txt_hw3PriceSub">(FREE)</span></div>
+            <ul class="hw-features" id="txt_hw3Feats">
               <li><span class="material-symbols-rounded" style="color: #166534; font-size: 18px;">check</span> Works on iPhone, Android, iPad & PC</li>
               <li><span class="material-symbols-rounded" style="color: #166534; font-size: 18px;">check</span> WhatsApp & Email E-Invoicing</li>
               <li><span class="material-symbols-rounded" style="color: #166534; font-size: 18px;">check</span> Instant Cloud Inventory Management</li>
               <li><span class="material-symbols-rounded" style="color: #166534; font-size: 18px;">check</span> Real-time Sales Analytics Dashboard</li>
             </ul>
           </div>
-          <a href="https://wa.me/919495097786?text=Hello%20B-Magnet%20POS%20Team%2C%20I%20want%20to%20activate%20the%20Free%20Web%20POS%20(0%20SAR)%20for%20my%20business." target="_blank" rel="noopener noreferrer" class="btn-sq-secondary">
+          <a href="https://wa.me/919495097786?text=Hello%20B-Magnet%20POS%20Team%2C%20I%20want%20to%20activate%20the%20Free%20Web%20POS%20(0%20SAR)%20for%20my%20business." target="_blank" rel="noopener noreferrer" class="btn-sq-secondary" id="txt_hw3Btn">
             <span>Activate Web POS (Free)</span>
           </a>
         </div>
@@ -986,9 +999,9 @@
   <section class="sq-pricing-section" id="pricing">
     <div class="sq-container">
       <div class="sq-section-header">
-        <span class="sq-eyebrow">Transparent Saudi Pricing</span>
-        <h2 class="sq-section-title">Simple, transparent pricing. No surprises.</h2>
-        <p class="sq-section-sub">Pay only when you make a sale. Zero monthly software fees for standard accounts.</p>
+        <span class="sq-eyebrow" id="txt_prEyebrow">Transparent Saudi Pricing</span>
+        <h2 class="sq-section-title" id="txt_prTitle">Simple, transparent pricing. No surprises.</h2>
+        <p class="sq-section-sub" id="txt_prSub">Pay only when you make a sale. Zero monthly software fees for standard accounts.</p>
       </div>
 
       <div class="sq-pricing-grid">
@@ -996,56 +1009,56 @@
         <!-- Plan 1: Pay As You Go -->
         <div class="sq-price-card">
           <div>
-            <span style="font-size: 13px; font-weight: 800; color: var(--sq-gray-70); text-transform: uppercase;">Standard Account</span>
-            <h3 style="font-size: 24px; font-weight: 800; margin: 6px 0 14px 0;">Pay As You Go</h3>
-            <div style="font-size: 38px; font-weight: 900; font-family: 'JetBrains Mono'; margin-bottom: 20px;">
-              0 SAR <span style="font-size: 14px; color: var(--sq-gray-70); font-weight: 600;">/ month</span>
+            <span style="font-size: 13px; font-weight: 800; color: var(--sq-gray-70); text-transform: uppercase;" id="txt_pr1Tag">Standard Account</span>
+            <h3 style="font-size: 24px; font-weight: 800; margin: 6px 0 14px 0;" id="txt_pr1Title">Pay As You Go</h3>
+            <div style="font-size: 38px; font-weight: 900; font-family: 'JetBrains Mono'; margin-bottom: 20px;" id="txt_pr1Price">
+              0 SAR <span style="font-size: 14px; color: var(--sq-gray-70); font-weight: 600;" id="txt_pr1Unit">/ month</span>
             </div>
-            <ul style="list-style: none; padding: 0; margin: 0 0 28px 0; font-size: 14px; color: var(--sq-gray-70); line-height: 1.9;">
+            <ul style="list-style: none; padding: 0; margin: 0 0 28px 0; font-size: 14px; color: var(--sq-gray-70); line-height: 1.9;" id="txt_pr1Feats">
               <li>✓ <strong>0.8% + 0.50 SAR</strong> per mada transaction</li>
               <li>✓ Free ZATCA Phase 2 E-Invoicing</li>
               <li>✓ Unlimited Products & Items</li>
               <li>✓ Digital Receipts & Invoices</li>
             </ul>
           </div>
-          <a href="https://wa.me/919495097786?text=Hello%20B-Magnet%20POS%20Team%2C%20I%20want%20to%20start%20with%20the%20Standard%20Pay-As-You-Go%20(0%20SAR/mo)%20Plan." target="_blank" rel="noopener noreferrer" class="btn-sq-secondary">Start Free on WhatsApp</a>
+          <a href="https://wa.me/919495097786?text=Hello%20B-Magnet%20POS%20Team%2C%20I%20want%20to%20start%20with%20the%20Standard%20Pay-As-You-Go%20(0%20SAR/mo)%20Plan." target="_blank" rel="noopener noreferrer" class="btn-sq-secondary" id="txt_pr1Btn">Start Free on WhatsApp</a>
         </div>
 
         <!-- Plan 2: Retail Plus -->
         <div class="sq-price-card featured">
-          <span class="featured-tag">MOST POPULAR</span>
+          <span class="featured-tag" id="txt_pr2Badge">MOST POPULAR</span>
           <div>
-            <span style="font-size: 13px; font-weight: 800; color: #004d40; text-transform: uppercase;">Retail & Dining Plus</span>
-            <h3 style="font-size: 24px; font-weight: 800; margin: 6px 0 14px 0;">B-Magnet Plus</h3>
-            <div style="font-size: 38px; font-weight: 900; font-family: 'JetBrains Mono'; margin-bottom: 20px;">
-              149 SAR <span style="font-size: 14px; color: var(--sq-gray-70); font-weight: 600;">/ month</span>
+            <span style="font-size: 13px; font-weight: 800; color: #004d40; text-transform: uppercase;" id="txt_pr2Tag">Retail & Dining Plus</span>
+            <h3 style="font-size: 24px; font-weight: 800; margin: 6px 0 14px 0;" id="txt_pr2Title">B-Magnet Plus</h3>
+            <div style="font-size: 38px; font-weight: 900; font-family: 'JetBrains Mono'; margin-bottom: 20px;" id="txt_pr2Price">
+              149 SAR <span style="font-size: 14px; color: var(--sq-gray-70); font-weight: 600;" id="txt_pr2Unit">/ month</span>
             </div>
-            <ul style="list-style: none; padding: 0; margin: 0 0 28px 0; font-size: 14px; color: var(--sq-gray-70); line-height: 1.9;">
+            <ul style="list-style: none; padding: 0; margin: 0 0 28px 0; font-size: 14px; color: var(--sq-gray-70); line-height: 1.9;" id="txt_pr2Feats">
               <li>✓ <strong>0.6% + 0.35 SAR</strong> reduced transaction fee</li>
               <li>✓ Multi-Branch & Warehouse Inventory</li>
               <li>✓ Advanced ZATCA B2B & B2C Reporting</li>
               <li>✓ Priority 24/7 Saudi Phone & WhatsApp Support</li>
             </ul>
           </div>
-          <a href="https://wa.me/919495097786?text=Hello%20B-Magnet%20POS%20Team%2C%20I%20want%20to%20subscribe%20to%20the%20B-Magnet%20Plus%20(149%20SAR/mo)%20Plan." target="_blank" rel="noopener noreferrer" class="btn-sq-primary">Get Plus on WhatsApp</a>
+          <a href="https://wa.me/919495097786?text=Hello%20B-Magnet%20POS%20Team%2C%20I%20want%20to%20subscribe%20to%20the%20B-Magnet%20Plus%20(149%20SAR/mo)%20Plan." target="_blank" rel="noopener noreferrer" class="btn-sq-primary" id="txt_pr2Btn">Get Plus on WhatsApp</a>
         </div>
 
         <!-- Plan 3: Enterprise -->
         <div class="sq-price-card">
           <div>
-            <span style="font-size: 13px; font-weight: 800; color: var(--sq-gray-70); text-transform: uppercase;">Multi-Store Chains</span>
-            <h3 style="font-size: 24px; font-weight: 800; margin: 6px 0 14px 0;">Enterprise Custom</h3>
-            <div style="font-size: 38px; font-weight: 900; font-family: 'JetBrains Mono'; margin-bottom: 20px;">
-              Custom <span style="font-size: 14px; color: var(--sq-gray-70); font-weight: 600;">rates</span>
+            <span style="font-size: 13px; font-weight: 800; color: var(--sq-gray-70); text-transform: uppercase;" id="txt_pr3Tag">Multi-Store Chains</span>
+            <h3 style="font-size: 24px; font-weight: 800; margin: 6px 0 14px 0;" id="txt_pr3Title">Enterprise Custom</h3>
+            <div style="font-size: 38px; font-weight: 900; font-family: 'JetBrains Mono'; margin-bottom: 20px;" id="txt_pr3Price">
+              Custom <span style="font-size: 14px; color: var(--sq-gray-70); font-weight: 600;" id="txt_pr3Unit">rates</span>
             </div>
-            <ul style="list-style: none; padding: 0; margin: 0 0 28px 0; font-size: 14px; color: var(--sq-gray-70); line-height: 1.9;">
+            <ul style="list-style: none; padding: 0; margin: 0 0 28px 0; font-size: 14px; color: var(--sq-gray-70); line-height: 1.9;" id="txt_pr3Feats">
               <li>✓ Custom Interchange Plus Fee Structure</li>
               <li>✓ Dedicated ERP (SAP / Odoo / Oracle) API</li>
               <li>✓ Custom Hardware Deployment for 10+ Stores</li>
               <li>✓ Dedicated Saudi Account Manager</li>
             </ul>
           </div>
-          <a href="https://wa.me/919495097786?text=Inquiring%20about%20Enterprise%20Custom%20POS%20rates." target="_blank" rel="noopener noreferrer" class="btn-sq-secondary">Contact Enterprise</a>
+          <a href="https://wa.me/919495097786?text=Inquiring%20about%20Enterprise%20Custom%20POS%20rates." target="_blank" rel="noopener noreferrer" class="btn-sq-secondary" id="txt_pr3Btn">Contact Enterprise</a>
         </div>
 
       </div>
@@ -1060,14 +1073,14 @@
       <div class="sq-bot-left">
         <span style="font-size: 12px; font-weight: 800; color: #00f2fe; text-transform: uppercase; display: inline-flex; align-items: center; gap: 6px; margin-bottom: 8px;">
           <span class="material-symbols-rounded" style="font-size: 18px;">smart_toy</span>
-          <span>B-Magnet Labs Algorithmic Trading</span>
+          <span id="txt_botEyebrow">B-Magnet Labs Algorithmic Trading</span>
         </span>
-        <h2>Looking for our Algorithmic Trading Systems?</h2>
-        <p>Access our institutional MetaTrader 5 Expert Advisors, Gold Hunter EA Pro v1.21 live trading feeds, and verified performance statistics on our dedicated trading bots platform.</p>
+        <h2 id="txt_botTitle">Looking for our Algorithmic Trading Systems?</h2>
+        <p id="txt_botDesc">Access our institutional MetaTrader 5 Expert Advisors, Gold Hunter EA Pro v1.21 live trading feeds, and verified performance statistics on our dedicated trading bots platform.</p>
       </div>
 
       <div>
-        <a href="/bot" class="btn-sq-secondary" style="background: #ffffff; color: #000000; font-size: 15px; font-weight: 800; padding: 14px 28px;">
+        <a href="/bot" class="btn-sq-secondary" style="background: #ffffff; color: #000000; font-size: 15px; font-weight: 800; padding: 14px 28px;" id="txt_botBtn">
           <span>Explore Trading Bots Platform →</span>
         </a>
       </div>
@@ -1080,46 +1093,46 @@
   <section class="sq-section" id="faq">
     <div class="sq-container" style="max-width: 860px;">
       <div class="sq-section-header">
-        <span class="sq-eyebrow">Got Questions?</span>
-        <h2 class="sq-section-title">Frequently Asked Questions</h2>
+        <span class="sq-eyebrow" id="txt_faqEyebrow">Got Questions?</span>
+        <h2 class="sq-section-title" id="txt_faqTitle">Frequently Asked Questions</h2>
       </div>
 
       <div class="sq-faq-item active" onclick="toggleFaq(this)">
         <div class="sq-faq-q">
-          <span>Is B-Magnet POS certified for ZATCA Phase 2 E-Invoicing in Saudi Arabia?</span>
+          <span id="txt_q1">Is B-Magnet POS certified for ZATCA Phase 2 E-Invoicing in Saudi Arabia?</span>
           <span class="material-symbols-rounded faq-chevron">expand_more</span>
         </div>
-        <div class="sq-faq-a">
+        <div class="sq-faq-a" id="txt_a1">
           Yes. B-Magnet POS is 100% compliant with ZATCA Phase 1 and Phase 2 (Fatoora) requirements. It generates compliant TLV Base64 QR codes, UUIDs, cryptographic invoice hashes, and integrates directly with ZATCA's portal for B2B clearance and B2C reporting.
         </div>
       </div>
 
       <div class="sq-faq-item" onclick="toggleFaq(this)">
         <div class="sq-faq-q">
-          <span>What payment cards are accepted in Saudi Arabia?</span>
+          <span id="txt_q2">What payment cards are accepted in Saudi Arabia?</span>
           <span class="material-symbols-rounded faq-chevron">expand_more</span>
         </div>
-        <div class="sq-faq-a">
+        <div class="sq-faq-a" id="txt_a2">
           B-Magnet POS accepts all local mada (مدى) debit cards, Apple Pay, Visa, Mastercard, and Web3 crypto settlement on BNB Smart Chain.
         </div>
       </div>
 
       <div class="sq-faq-item" onclick="toggleFaq(this)">
         <div class="sq-faq-q">
-          <span>How fast are funds deposited into my Saudi bank account?</span>
+          <span id="txt_q3">How fast are funds deposited into my Saudi bank account?</span>
           <span class="material-symbols-rounded faq-chevron">expand_more</span>
         </div>
-        <div class="sq-faq-a">
+        <div class="sq-faq-a" id="txt_a3">
           Card payments settle next business day directly into any registered Saudi bank account (Al Rajhi, SNB, Riyad Bank, etc.). Web3 crypto payments settle instantly within 2.4 seconds with zero hold periods.
         </div>
       </div>
 
       <div class="sq-faq-item" onclick="toggleFaq(this)">
         <div class="sq-faq-q">
-          <span>How can I order the physical POS terminal hardware?</span>
+          <span id="txt_q4">How can I order the physical POS terminal hardware?</span>
           <span class="material-symbols-rounded faq-chevron">expand_more</span>
         </div>
-        <div class="sq-faq-a">
+        <div class="sq-faq-a" id="txt_a4">
           You can order the B-Magnet Terminal (599 SAR) or B-Magnet Register (1,899 SAR) directly by clicking the order button or contacting our team on WhatsApp at +91 94950 97786. We deliver across Riyadh, Jeddah, Dammam, and all GCC regions within 2-3 business days.
         </div>
       </div>
@@ -1139,56 +1152,431 @@
             <img src="/images/b-magnet-emblem.png" alt="B-Magnet Logo" style="height: 28px;">
             <strong style="font-size: 18px; color: var(--sq-black);">B-Magnet POS</strong>
           </div>
-          <p style="font-size: 13.5px; color: var(--sq-gray-70); line-height: 1.6; max-width: 320px; margin-bottom: 16px;">
+          <p style="font-size: 13.5px; color: var(--sq-gray-70); line-height: 1.6; max-width: 320px; margin-bottom: 16px;" id="txt_ftDesc">
             Next-generation Point-of-Sale, ZATCA Phase 2 E-Invoicing & Merchant Settlement Systems for the Kingdom of Saudi Arabia.
           </p>
-          <span style="font-size: 12px; color: #166534; font-weight: 700;">🟢 ZATCA Phase 2 Fatoora Certified</span>
+          <span style="font-size: 12px; color: #166534; font-weight: 700;" id="txt_ftBadge">🟢 ZATCA Phase 2 Fatoora Certified</span>
         </div>
 
         <div class="sq-footer-col">
-          <h4>Products</h4>
+          <h4 id="txt_ftCol1">Products</h4>
           <ul>
-            <li><a href="#overview">Point of Sale</a></li>
-            <li><a href="#hardware">B-Magnet Terminal</a></li>
-            <li><a href="#hardware">B-Magnet Register</a></li>
-            <li><a href="#hardware">Free Web POS</a></li>
-            <li><a href="#zatca">ZATCA E-Invoicing</a></li>
+            <li><a href="#overview" id="txt_ftL1">Point of Sale</a></li>
+            <li><a href="#hardware" id="txt_ftL2">B-Magnet Terminal</a></li>
+            <li><a href="#hardware" id="txt_ftL3">B-Magnet Register</a></li>
+            <li><a href="#hardware" id="txt_ftL4">Free Web POS</a></li>
+            <li><a href="#zatca" id="txt_ftL5">ZATCA E-Invoicing</a></li>
           </ul>
         </div>
 
         <div class="sq-footer-col">
-          <h4>Solutions</h4>
+          <h4 id="txt_ftCol2">Solutions</h4>
           <ul>
-            <li><a href="#showcase">Customer UI Showcase</a></li>
-            <li><a href="#hardware">Handheld Terminal</a></li>
-            <li><a href="#pricing">Pricing in SAR</a></li>
-            <li><a href="/bot">Trading Bots Suite ➔</a></li>
+            <li><a href="#showcase" id="txt_ftL6">Customer UI Showcase</a></li>
+            <li><a href="#hardware" id="txt_ftL7">Handheld Terminal</a></li>
+            <li><a href="#pricing" id="txt_ftL8">Pricing in SAR</a></li>
+            <li><a href="/bot" id="txt_ftL9">Trading Bots Suite ➔</a></li>
           </ul>
         </div>
 
         <div class="sq-footer-col">
-          <h4>Support & Admin</h4>
+          <h4 id="txt_ftCol3">Support & Admin</h4>
           <ul>
-            <li><a href="/admin/">Admin Console</a></li>
-            <li><a href="https://wa.me/919495097786" target="_blank" rel="noopener noreferrer">WhatsApp Support</a></li>
-            <li><a href="/privacy/">Privacy Policy</a></li>
-            <li><a href="/terms/">Terms of Service</a></li>
+            <li><a href="/admin/" id="txt_ftL10">Admin Console</a></li>
+            <li><a href="https://wa.me/919495097786" target="_blank" rel="noopener noreferrer" id="txt_ftL11">WhatsApp Support</a></li>
+            <li><a href="/privacy/" id="txt_ftL12">Privacy Policy</a></li>
+            <li><a href="/terms/" id="txt_ftL13">Terms of Service</a></li>
           </ul>
         </div>
 
       </div>
 
       <div style="border-top: 1px solid var(--sq-border); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; font-size: 12.5px;">
-        <span>&copy; 2026 B-Magnet POS Systems Inc. All rights reserved. Kingdom of Saudi Arabia.</span>
-        <span>ZATCA Compliant E-Invoicing Platform (مرحلة الربط والتكامل)</span>
+        <span id="txt_ftCopy">&copy; 2026 B-Magnet POS Systems Inc. All rights reserved. Kingdom of Saudi Arabia.</span>
+        <span id="txt_ftPhase">ZATCA Compliant E-Invoicing Platform (مرحلة الربط والتكامل)</span>
       </div>
     </div>
   </footer>
 
   <script>
+    let currentLang = localStorage.getItem('b_pos_lang') || 'en';
+
+    const translations = {
+      en: {
+        topBannerBadge: "ZATCA APPROVED",
+        topBannerText: "🟢 Fully Certified for ZATCA Phase 2 E-Invoicing (Fatoora) & 15% Saudi VAT Compliance (معتمد من هيئة الزكاة والضريبة والجمارك)",
+        brandBadge: "Point of Sale",
+        navOverview: "Overview",
+        navShowcase: "Customer UI",
+        navZatca: "ZATCA Phase 2",
+        navHardware: "Hardware",
+        navPricing: "Pricing (SAR)",
+        navFaq: "FAQ",
+        langToggle: "🇸🇦 العربية",
+        btnGetStarted: "Get Started",
+        heroEyebrow: "Kingdom of Saudi Arabia • ZATCA Certified",
+        heroTitle: "The point of sale that powers every kind of business.",
+        heroLead: "B-Magnet POS is built to run retail stores, restaurants, cafes, and e-commerce across Saudi Arabia. Complete with ZATCA Phase 2 e-invoicing clearance, 15% VAT calculation, mada contactless payments, and instant settlement.",
+        heroStartFree: "Start Free with B-Magnet POS",
+        heroContactSales: "Contact Sales (WhatsApp)",
+        trust1: "ZATCA Phase 2 Integrated",
+        trust2: "mada & Apple Pay Ready",
+        trust3: "No Monthly Subscription",
+        badgeTitle: "mada & Apple Pay NFC Tap",
+        badgeSub: "Sub-2.4s Instant Settlement • 15% VAT Included",
+        badgeStatus: "APPROVED",
+        scEyebrow: "Customer Experience & Interfaces",
+        scTitle: "See B-Magnet POS in action across Saudi businesses.",
+        scSub: "From luxury boutiques in Riyadh to bustling cafes in Jeddah and commercial distributors in Dammam.",
+        sc1Tag: "Retail & Fashion Stores",
+        sc1Title: "Handheld Mobility & Instant Tap",
+        sc1Desc: "Accept mada, Apple Pay, and credit cards directly on the sales floor. High-speed thermal receipt printing with compliant ZATCA Phase 2 QR codes.",
+        sc1Link: "Explore B-Magnet Terminal (599 SAR) →",
+        sc2Tag: "Cafes, Dining & Restaurants",
+        sc2Title: "Dual-Screen Customer Clarity",
+        sc2Desc: "Customers view their itemized order, 15% VAT, and dynamic Fatoora QR code in Arabic & English on a dedicated customer-facing touchscreen.",
+        sc2Link: "Explore B-Magnet Register (1,899 SAR) →",
+        sc3Tag: "Merchant Intelligence",
+        sc3Title: "Real-Time SAR Sales & Inventory",
+        sc3Desc: "Monitor live revenue in Saudi Riyal, manage multi-category inventory, track VAT liabilities, and sync automated accounting reports from any device.",
+        sc3Link: "Get Free Web POS on WhatsApp →",
+        zatcaEyebrow: "Tax Authority Compliance",
+        zatcaTitle: "Approved for ZATCA Phase 2 E-Invoicing",
+        zatcaSub: "B-Magnet POS is engineered in full alignment with the Zakat, Tax and Customs Authority (ZATCA / هيئة الزكاة والضريبة والجمارك) regulations for Phase 1 (Generation) and Phase 2 (Integration / الربط والتكامل).",
+        zc1Title: "Compliant Phase 2 QR Codes",
+        zc1Desc: "Generates cryptographic Base64 TLV encoded QR codes containing Seller Name, VAT Number, Timestamp, Total, and VAT total on every customer receipt.",
+        zc2Title: "Cryptographic Stamp & UUID",
+        zc2Desc: "Every invoice is cryptographically stamped with SHA-256 digital hashes, sequential counters, and unique 128-bit UUIDs preventing alteration.",
+        zc3Title: "Automated Fatoora Portal Sync",
+        zc3Desc: "Direct API integration with ZATCA’s Fatoora platform for real-time clearance of standard tax invoices (B2B) and reporting of simplified invoices (B2C).",
+        zc4Title: "15% VAT Automatic Calculation",
+        zc4Desc: "Automatically calculates 15% Saudi VAT across all product catalogs with multi-tax category support and 1-click accounting reports.",
+        hwEyebrow: "Purpose-Built POS Devices",
+        hwTitle: "Hardware designed for speed and reliability.",
+        hwSub: "Choose from sleek handheld mobile terminals, tabletop dual-screen registers, or run B-Magnet POS on your existing tablet or phone.",
+        hw1Badge: "Handheld & Portable",
+        hw1Title: "B-Magnet Terminal",
+        hw1Desc: "All-in-one handheld POS with built-in thermal printer, NFC mada tap, and 4G / Wi-Fi connectivity.",
+        hw1Price: "599 SAR ",
+        hw1PriceSub: "(ر.س ٥٩٩)",
+        hw1Btn: "Order Terminal (599 SAR)",
+        hw2Badge: "Flagship Countertop",
+        hw2Title: "B-Magnet Register",
+        hw2Desc: "Dual-screen complete countertop solution with dedicated customer-facing display and cash drawer support.",
+        hw2Price: "1,899 SAR ",
+        hw2PriceSub: "(ر.س ١,٨٩٩)",
+        hw2Btn: "Order Register (1,899 SAR)",
+        hw3Badge: "Zero Hardware Cost",
+        hw3Title: "B-Magnet Web POS",
+        hw3Desc: "Run B-Magnet POS directly inside your smartphone or PC browser with digital SMS/WhatsApp e-invoices.",
+        hw3Price: "0 SAR ",
+        hw3PriceSub: "(FREE)",
+        hw3Btn: "Activate Web POS (Free)",
+        prEyebrow: "Transparent Saudi Pricing",
+        prTitle: "Simple, transparent pricing. No surprises.",
+        prSub: "Pay only when you make a sale. Zero monthly software fees for standard accounts.",
+        pr1Tag: "Standard Account",
+        pr1Title: "Pay As You Go",
+        pr1Price: "0 SAR ",
+        pr1Unit: "/ month",
+        pr1Btn: "Start Free on WhatsApp",
+        pr2Badge: "MOST POPULAR",
+        pr2Tag: "Retail & Dining Plus",
+        pr2Title: "B-Magnet Plus",
+        pr2Price: "149 SAR ",
+        pr2Unit: "/ month",
+        pr2Btn: "Get Plus on WhatsApp",
+        pr3Tag: "Multi-Store Chains",
+        pr3Title: "Enterprise Custom",
+        pr3Price: "Custom ",
+        pr3Unit: "rates",
+        pr3Btn: "Contact Enterprise",
+        botEyebrow: "B-Magnet Labs Algorithmic Trading",
+        botTitle: "Looking for our Algorithmic Trading Systems?",
+        botDesc: "Access our institutional MetaTrader 5 Expert Advisors, Gold Hunter EA Pro v1.21 live trading feeds, and verified performance statistics on our dedicated trading bots platform.",
+        botBtn: "Explore Trading Bots Platform →",
+        faqEyebrow: "Got Questions?",
+        faqTitle: "Frequently Asked Questions",
+        q1: "Is B-Magnet POS certified for ZATCA Phase 2 E-Invoicing in Saudi Arabia?",
+        a1: "Yes. B-Magnet POS is 100% compliant with ZATCA Phase 1 and Phase 2 (Fatoora) requirements. It generates compliant TLV Base64 QR codes, UUIDs, cryptographic invoice hashes, and integrates directly with ZATCA's portal for B2B clearance and B2C reporting.",
+        q2: "What payment cards are accepted in Saudi Arabia?",
+        a2: "B-Magnet POS accepts all local mada (مدى) debit cards, Apple Pay, Visa, Mastercard, and Web3 crypto settlement on BNB Smart Chain.",
+        q3: "How fast are funds deposited into my Saudi bank account?",
+        a3: "Card payments settle next business day directly into any registered Saudi bank account (Al Rajhi, SNB, Riyad Bank, etc.). Web3 crypto payments settle instantly within 2.4 seconds with zero hold periods.",
+        q4: "How can I order the physical POS terminal hardware?",
+        a4: "You can order the B-Magnet Terminal (599 SAR) or B-Magnet Register (1,899 SAR) directly by clicking the order button or contacting our team on WhatsApp at +91 94950 97786. We deliver across Riyadh, Jeddah, Dammam, and all GCC regions within 2-3 business days.",
+        ftDesc: "Next-generation Point-of-Sale, ZATCA Phase 2 E-Invoicing & Merchant Settlement Systems for the Kingdom of Saudi Arabia.",
+        ftBadge: "🟢 ZATCA Phase 2 Fatoora Certified",
+        ftCol1: "Products",
+        ftCol2: "Solutions",
+        ftCol3: "Support & Admin",
+        ftCopy: "© 2026 B-Magnet POS Systems Inc. All rights reserved. Kingdom of Saudi Arabia.",
+        ftPhase: "ZATCA Compliant E-Invoicing Platform (مرحلة الربط والتكامل)"
+      },
+      ar: {
+        topBannerBadge: "معتمد من زاتكا",
+        topBannerText: "🟢 نظام معتمد رسمياً للربط والتكامل مع الفوترة الإلكترونية (المرحلة الثانية - فاتورة) وضريبة القيمة المضافة 15% - هيئة الزكاة والضريبة والجمارك",
+        brandBadge: "نقاط البيع",
+        navOverview: "نظرة عامة",
+        navShowcase: "واجهات العملاء",
+        navZatca: "المرحلة الثانية (زاتكا)",
+        navHardware: "الأجهزة",
+        navPricing: "الأسعار (ريال)",
+        navFaq: "الأسئلة الشائعة",
+        langToggle: "🇺🇸 English",
+        btnGetStarted: "ابدأ الآن",
+        heroEyebrow: "المملكة العربية السعودية • معتمد من هيئة الزكاة والضريبة والجمارك",
+        heroTitle: "نظام نقاط البيع والفوترة الذكي لكل أنواع الأعمال والأنشطة.",
+        heroLead: "تم تصميم بي ماجنت POS لإدارة المتاجر والمطاعم والمقاهي والشركات في المملكة العربية السعودية بكل سهولة. متكامل تماماً مع الفوترة الإلكترونية المرحلة الثانية (فاتورة)، واحتساب الضريبة 15%، ومدفوعات مدى وآبل باي بدون تأخير.",
+        heroStartFree: "ابدأ مجاناً مع بي ماجنت POS",
+        heroContactSales: "تواصل مع المبيعات (واتساب)",
+        trust1: "متكامل مع المرحلة الثانية (زاتكا)",
+        trust2: "جاهز لمدى وآبل باي بدون تلامس",
+        trust3: "بدون أي رسوم اشتراك شهرية إجبارية",
+        badgeTitle: "دفع سريع بدون تلامس (مدى & Apple Pay)",
+        badgeSub: "تسوية فورية في أقل من 2.4 ثانية • شامل 15% ضريبة",
+        badgeStatus: "عملية مقبولة",
+        scEyebrow: "تجربة العملاء والواجهات",
+        scTitle: "شاهد نظام بي ماجنت POS يعمل في مختلف المتاجر السعودية.",
+        scSub: "من أفخم المتاجر في الرياض إلى أشهر المقاهي في جدة ومستودعات التوزيع في الدمام.",
+        sc1Tag: "متاجر التجزئة والأزياء",
+        sc1Title: "مرونة الدفع اللاسلكي الفوري",
+        sc1Desc: "استقبل مدفوعات مدى وآبل باي والبطاقات البنكية في أي مكان داخل المتجر، مع طباعة سريعة للفواتير المتوافقة مع باركود زاتكا المرحلة الثانية.",
+        sc1Link: "اكتشف جهاز بي ماجنت اليدوي (599 ريال) ←",
+        sc2Tag: "المقاهي والمطاعم والكافيهات",
+        sc2Title: "وضوح تام للعميل بشاشة مزدوجة",
+        sc2Desc: "يشاهد العميل تفاصيل طلبه باللغتين العربية والإنجليزية مع احتساب الضريبة 15% ورمز الاستجابة السريعة (QR) لمنصة فاتورة على شاشة مخصصة.",
+        sc2Link: "اكتشف جهاز بي ماجنت الكاونتر المزدوج (1,899 ريال) ←",
+        sc3Tag: "لوحة تحكم التاجر الذكية",
+        sc3Title: "متابعة المبيعات والمخزون بالريال السعودي",
+        sc3Desc: "تابع أرباحك ومبيعاتك لحظة بلحظة، وأدر أصناف المخزون، وتتبع التزاماتك الضريبية واستخرج تقارير المحاسبة المعتمدة بنقرة واحدة ومن أي جهاز.",
+        sc3Link: "فعّل لوحة التحكم المجانية عبر واتساب ←",
+        zatcaEyebrow: "الامتثال لهيئة الزكاة والضريبة والجمارك",
+        zatcaTitle: "معتمد ومطابق لمتطلبات الفوترة الإلكترونية (المرحلة الثانية)",
+        zatcaSub: "تم تطوير نظام بي ماجنت POS ليتوافق 100% مع لوائح هيئة الزكاة والضريبة والجمارك (ZATCA) لمرحلة الإصدار (المرحلة الأولى) ومرحلة الربط والتكامل (المرحلة الثانية).",
+        zc1Title: "رمز استجابة سريع (QR) مشفر ومعتمد",
+        zc1Desc: "توليد تلقائي لرموز QR المشفرة بصيغة Base64 TLV تشمل اسم المورد، الرقم الضريبي، الطابع الزمني، الإجمالي ومبلغ الضريبة على كل فاتورة.",
+        zc2Title: "ختم رقمي وتشفير UUID فريد",
+        zc2Desc: "يتم ختم كل فاتورة رقمياً باستخدام تجزئة SHA-256 وعداد تسلسلي ومعرف رقمي 128-بت يمنع أي تعديل أو تلاعب في الفواتير.",
+        zc3Title: "ربط وتكامل سحابي مع منصة فاتورة",
+        zc3Desc: "ربط برمجي مباشر (API) مع منصة فاتورة لاعتماد الفواتير الضريبية (B2B) والإبلاغ عن الفواتير المبسطة (B2C) بشكل آلي وفوري.",
+        zc4Title: "احتساب تلقائي لضريبة القيمة المضافة 15%",
+        zc4Desc: "حساب دقيق لضريبة القيمة المضافة 15% لجميع قوائم المنتجات مع تقارير الإقرار الضريبي الجاهزة للتقديم بضغطة زر.",
+        hwEyebrow: "أجهزة متطورة مصممة للمستقبل",
+        hwTitle: "أجهزة نقاط بيع مصممة لأقصى درجات السرعة والاعتمادية.",
+        hwSub: "اختر من بين الأجهزة اليدوية المحمولة، أو أجهزة الكاونتر المزدوجة، أو شغّل النظام مباشرة على هاتفك أو جهازك اللوحي.",
+        hw1Badge: "يدوي ومحمول بالكامل",
+        hw1Title: "جهاز بي ماجنت المحمول (Terminal)",
+        hw1Desc: "جهاز نقاط بيع متكامل مزود بطابعة فواتير حرارية مدمجة، ودعم الدفع بدون تلامس (NFC) لمدى، واتصال 4G و Wi-Fi.",
+        hw1Price: "599 ريال ",
+        hw1PriceSub: "(ر.س ٥٩٩)",
+        hw1Btn: "اطلب الجهاز المحمول (599 ريال)",
+        hw2Badge: "الكاونتر الرائد شاشة مزدوجة",
+        hw2Title: "كاشير بي ماجنت المزدوج (Register)",
+        hw2Desc: "حل كاونتر متكامل بشاشتين لمس فائقتي الوضوح مع شاشة خاصة للعميل ودعم درج النقد وقارئ الباركود.",
+        hw2Price: "1,899 ريال ",
+        hw2PriceSub: "(ر.س ١,٨٩٩)",
+        hw2Btn: "اطلب كاشير الكاونتر (1,899 ريال)",
+        hw3Badge: "بدون أي تكلفة أجهزة",
+        hw3Title: "بي ماجنت ويب POS (السحابي)",
+        hw3Desc: "شغّل النظام مباشرة عبر متصفح الجوال أو الكمبيوتر وأرسل الفواتير الإلكترونية المعتمدة عبر الواتساب والإيميل.",
+        hw3Price: "0 ريال ",
+        hw3PriceSub: "(مجاني بالكامل)",
+        hw3Btn: "تفعيل ويب POS مجاناً",
+        prEyebrow: "أسعار واضحة وشفافة بالريال",
+        prTitle: "باقات واضحة بدون أي رسوم خفية.",
+        prSub: "ادفع فقط عندما تبيع. بدون أي رسوم اشتراك شهرية للباقات الأساسية.",
+        pr1Tag: "الحساب القياسي",
+        pr1Title: "ادفع مع كل عملية",
+        pr1Price: "0 ريال ",
+        pr1Unit: "/ شهرياً",
+        pr1Btn: "ابدأ مجاناً عبر واتساب",
+        pr2Badge: "الأكثر طلباً",
+        pr2Tag: "المتاجر والمطاعم بلس",
+        pr2Title: "بي ماجنت بلس",
+        pr2Price: "149 ريال ",
+        pr2Unit: "/ شهرياً",
+        pr2Btn: "اشترك في بلس عبر واتساب",
+        pr3Tag: "سلاسل الفروع والشركات",
+        pr3Title: "مخصص للشركات",
+        pr3Price: "أسعار ",
+        pr3Unit: "خاصة",
+        pr3Btn: "تواصل مع المبيعات",
+        botEyebrow: "مختبرات بي ماجنت للتداول الخوارزمي",
+        botTitle: "هل تبحث عن أنظمة التداول الخوارزمي وروبوتات MT5؟",
+        botDesc: "تفضل بزيارة منصتنا المخصصة للروبوتات البرمجية، واطلع على إشارات Gold Hunter EA Pro v1.21 المباشرة وإحصائيات الأداء الموثقة وتراخيص MetaTrader 5.",
+        botBtn: "الدخول إلى منصة روبوتات التداول ←",
+        faqEyebrow: "لديك استفسار؟",
+        faqTitle: "الأسئلة الأكثر شيوعاً",
+        q1: "هل نظام بي ماجنت معتمد لدى هيئة الزكاة والضريبة والجمارك (المرحلة الثانية)؟",
+        a1: "نعم، نظام بي ماجنت POS متوافق 100% مع متطلبات المرحلة الأولى والمرحلة الثانية (الربط والتكامل - فاتورة). يقوم النظام بتوليد رموز QR مشفرة Base64 TLV، ومعرفات UUID، والأختام الرقمية المشفرة، والربط المباشر مع منصة زاتكا للفواتير القياسية (B2B) والفواتير المبسطة (B2C).",
+        q2: "ما هي بطاقات الدفع المقبولة في المملكة العربية السعودية؟",
+        a2: "يقبل النظام جميع بطاقات مدى (mada) المحلية، وApple Pay، وVisa، وMastercard، بالإضافة إلى تسويات العملات الرقمية المستقرة على شبكة BNB Chain.",
+        q3: "كم من الوقت تستغرق إيداعات المبيعات في الحساب البنكي السعودي؟",
+        a3: "تتم تسوية مدفوعات البطاقات ومدى في يوم العمل التالي مباشرة إلى أي حساب بنكي سعودي مسجل (الراجحي، الأهلي، بنك الرياض، إلخ). أما التسويات الرقمية فتتم فورياً خلال 2.4 ثانية.",
+        q4: "كيف يمكنني طلب أجهزة نقاط البيع المادية؟",
+        a4: "يمكنك طلب جهاز بي ماجنت المحمول (599 ريال) أو كاشير الكاونتر المزدوج (1,899 ريال) مباشرة عبر النقر على زر الطلب أو مراسلتنا عبر الواتساب على 919495097786+. التوصيل متاح لكافة مناطق المملكة (الرياض، جدة، الدمام وجميع المدن) خلال 2-3 أيام عمل.",
+        ftDesc: "الجيل الجديد من أنظمة نقاط البيع والفوترة الإلكترونية المتوافقة مع المرحلة الثانية لهيئة الزكاة والضريبة والجمارك في المملكة العربية السعودية.",
+        ftBadge: "🟢 معتمد لمنظومة الفوترة الإلكترونية (فاتورة - المرحلة الثانية)",
+        ftCol1: "المنتجات",
+        ftCol2: "الحلول",
+        ftCol3: "الدعم والإدارة",
+        ftCopy: "© 2026 شركة بي ماجنت لأنظمة نقاط البيع المحدودة. جميع الحقوق محفوظة. المملكة العربية السعودية.",
+        ftPhase: "نظام فوترة إلكترونية معتمد (مرحلة الربط والتكامل - زاتكا)"
+      }
+    };
+
+    function applyLanguage(lang) {
+      currentLang = lang;
+      localStorage.setItem('b_pos_lang', lang);
+      const isAr = (lang === 'ar');
+      
+      document.documentElement.dir = isAr ? 'rtl' : 'ltr';
+      document.documentElement.lang = isAr ? 'ar' : 'en';
+
+      const t = translations[lang];
+
+      // Top banner
+      document.getElementById('txt_zatcaBadge').textContent = t.topBannerBadge;
+      document.getElementById('txt_zatcaText').textContent = t.topBannerText;
+
+      // Nav
+      document.getElementById('txt_brandBadge').textContent = t.brandBadge;
+      document.getElementById('txt_navOverview').textContent = t.navOverview;
+      document.getElementById('txt_navShowcase').textContent = t.navShowcase;
+      document.getElementById('txt_navZatca').textContent = t.navZatca;
+      document.getElementById('txt_navHardware').textContent = t.navHardware;
+      document.getElementById('txt_navPricing').textContent = t.navPricing;
+      document.getElementById('txt_navFaq').textContent = t.navFaq;
+      document.getElementById('langToggleBtn').innerHTML = `<span>${t.langToggle}</span>`;
+      document.getElementById('txt_btnGetStarted').innerHTML = `<span>${t.btnGetStarted}</span>`;
+
+      // Hero
+      document.getElementById('txt_heroEyebrow').textContent = t.heroEyebrow;
+      document.getElementById('txt_heroTitle').textContent = t.heroTitle;
+      document.getElementById('txt_heroLead').textContent = t.heroLead;
+      document.getElementById('txt_heroStartFree').innerHTML = `<span>${t.heroStartFree}</span><span class="material-symbols-rounded" style="font-size:18px;">${isAr ? 'arrow_backward' : 'arrow_forward'}</span>`;
+      document.getElementById('txt_heroContactSales').innerHTML = `<span>${t.heroContactSales}</span><span class="material-symbols-rounded" style="font-size:18px;">chat</span>`;
+      document.getElementById('txt_trust1').textContent = t.trust1;
+      document.getElementById('txt_trust2').textContent = t.trust2;
+      document.getElementById('txt_trust3').textContent = t.trust3;
+      document.getElementById('txt_badgeTitle').textContent = t.badgeTitle;
+      document.getElementById('txt_badgeSub').textContent = t.badgeSub;
+      document.getElementById('txt_badgeStatus').textContent = t.badgeStatus;
+
+      // Showcase
+      document.getElementById('txt_scEyebrow').textContent = t.scEyebrow;
+      document.getElementById('txt_scTitle').textContent = t.scTitle;
+      document.getElementById('txt_scSub').textContent = t.scSub;
+      document.getElementById('txt_sc1Tag').textContent = t.sc1Tag;
+      document.getElementById('txt_sc1Title').textContent = t.sc1Title;
+      document.getElementById('txt_sc1Desc').textContent = t.sc1Desc;
+      document.getElementById('txt_sc1Link').textContent = t.sc1Link;
+      document.getElementById('txt_sc2Tag').textContent = t.sc2Tag;
+      document.getElementById('txt_sc2Title').textContent = t.sc2Title;
+      document.getElementById('txt_sc2Desc').textContent = t.sc2Desc;
+      document.getElementById('txt_sc2Link').textContent = t.sc2Link;
+      document.getElementById('txt_sc3Tag').textContent = t.sc3Tag;
+      document.getElementById('txt_sc3Title').textContent = t.sc3Title;
+      document.getElementById('txt_sc3Desc').textContent = t.sc3Desc;
+      document.getElementById('txt_sc3Link').textContent = t.sc3Link;
+
+      // ZATCA Section
+      document.getElementById('txt_zatcaEyebrow').textContent = t.zatcaEyebrow;
+      document.getElementById('txt_zatcaTitle').textContent = t.zatcaTitle;
+      document.getElementById('txt_zatcaSub').textContent = t.zatcaSub;
+      document.getElementById('txt_zc1Title').textContent = t.zc1Title;
+      document.getElementById('txt_zc1Desc').textContent = t.zc1Desc;
+      document.getElementById('txt_zc2Title').textContent = t.zc2Title;
+      document.getElementById('txt_zc2Desc').textContent = t.zc2Desc;
+      document.getElementById('txt_zc3Title').textContent = t.zc3Title;
+      document.getElementById('txt_zc3Desc').textContent = t.zc3Desc;
+      document.getElementById('txt_zc4Title').textContent = t.zc4Title;
+      document.getElementById('txt_zc4Desc').textContent = t.zc4Desc;
+
+      // Hardware
+      document.getElementById('txt_hwEyebrow').textContent = t.hwEyebrow;
+      document.getElementById('txt_hwTitle').textContent = t.hwTitle;
+      document.getElementById('txt_hwSub').textContent = t.hwSub;
+      document.getElementById('txt_hw1Badge').textContent = t.hw1Badge;
+      document.getElementById('txt_hw1Title').textContent = t.hw1Title;
+      document.getElementById('txt_hw1Desc').textContent = t.hw1Desc;
+      document.getElementById('txt_hw1Price').innerHTML = `${t.hw1Price}<span id="txt_hw1PriceSub">${t.hw1PriceSub}</span>`;
+      document.getElementById('txt_hw1Btn').innerHTML = `<span>${t.hw1Btn}</span>`;
+      
+      document.getElementById('txt_hw2Badge').textContent = t.hw2Badge;
+      document.getElementById('txt_hw2Title').textContent = t.hw2Title;
+      document.getElementById('txt_hw2Desc').textContent = t.hw2Desc;
+      document.getElementById('txt_hw2Price').innerHTML = `${t.hw2Price}<span id="txt_hw2PriceSub">${t.hw2PriceSub}</span>`;
+      document.getElementById('txt_hw2Btn').innerHTML = `<span>${t.hw2Btn}</span>`;
+
+      document.getElementById('txt_hw3Badge').textContent = t.hw3Badge;
+      document.getElementById('txt_hw3Title').textContent = t.hw3Title;
+      document.getElementById('txt_hw3Desc').textContent = t.hw3Desc;
+      document.getElementById('txt_hw3Price').innerHTML = `${t.hw3Price}<span id="txt_hw3PriceSub">${t.hw3PriceSub}</span>`;
+      document.getElementById('txt_hw3Btn').innerHTML = `<span>${t.hw3Btn}</span>`;
+
+      // Pricing
+      document.getElementById('txt_prEyebrow').textContent = t.prEyebrow;
+      document.getElementById('txt_prTitle').textContent = t.prTitle;
+      document.getElementById('txt_prSub').textContent = t.prSub;
+      document.getElementById('txt_pr1Tag').textContent = t.pr1Tag;
+      document.getElementById('txt_pr1Title').textContent = t.pr1Title;
+      document.getElementById('txt_pr1Price').innerHTML = `${t.pr1Price}<span id="txt_pr1Unit">${t.pr1Unit}</span>`;
+      document.getElementById('txt_pr1Btn').textContent = t.pr1Btn;
+      
+      document.getElementById('txt_pr2Badge').textContent = t.pr2Badge;
+      document.getElementById('txt_pr2Tag').textContent = t.pr2Tag;
+      document.getElementById('txt_pr2Title').textContent = t.pr2Title;
+      document.getElementById('txt_pr2Price').innerHTML = `${t.pr2Price}<span id="txt_pr2Unit">${t.pr2Unit}</span>`;
+      document.getElementById('txt_pr2Btn').textContent = t.pr2Btn;
+
+      document.getElementById('txt_pr3Tag').textContent = t.pr3Tag;
+      document.getElementById('txt_pr3Title').textContent = t.pr3Title;
+      document.getElementById('txt_pr3Price').innerHTML = `${t.pr3Price}<span id="txt_pr3Unit">${t.pr3Unit}</span>`;
+      document.getElementById('txt_pr3Btn').textContent = t.pr3Btn;
+
+      // Bot Gateway
+      document.getElementById('txt_botEyebrow').textContent = t.botEyebrow;
+      document.getElementById('txt_botTitle').textContent = t.botTitle;
+      document.getElementById('txt_botDesc').textContent = t.botDesc;
+      document.getElementById('txt_botBtn').innerHTML = `<span>${t.botBtn}</span>`;
+
+      // FAQ
+      document.getElementById('txt_faqEyebrow').textContent = t.faqEyebrow;
+      document.getElementById('txt_faqTitle').textContent = t.faqTitle;
+      document.getElementById('txt_q1').textContent = t.q1;
+      document.getElementById('txt_a1').textContent = t.a1;
+      document.getElementById('txt_q2').textContent = t.q2;
+      document.getElementById('txt_a2').textContent = t.a2;
+      document.getElementById('txt_q3').textContent = t.q3;
+      document.getElementById('txt_a3').textContent = t.a3;
+      document.getElementById('txt_q4').textContent = t.q4;
+      document.getElementById('txt_a4').textContent = t.a4;
+
+      // Footer
+      document.getElementById('txt_ftDesc').textContent = t.ftDesc;
+      document.getElementById('txt_ftBadge').textContent = t.ftBadge;
+      document.getElementById('txt_ftCol1').textContent = t.ftCol1;
+      document.getElementById('txt_ftCol2').textContent = t.ftCol2;
+      document.getElementById('txt_ftCol3').textContent = t.ftCol3;
+      document.getElementById('txt_ftCopy').textContent = t.ftCopy;
+      document.getElementById('txt_ftPhase').textContent = t.ftPhase;
+    }
+
+    function toggleLanguage() {
+      const nextLang = (currentLang === 'ar') ? 'en' : 'ar';
+      applyLanguage(nextLang);
+    }
+
     function toggleFaq(el) {
       el.classList.toggle('active');
     }
+
+    // Apply saved language on load
+    document.addEventListener('DOMContentLoaded', () => {
+      applyLanguage(currentLang);
+    });
   </script>
 </body>
 </html>
