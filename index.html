@@ -107,7 +107,7 @@
       white-space: nowrap;
     }
 
-    /* Main Square-Style Navigation Bar */
+    /* Main Navigation Bar */
     .sq-header {
       position: sticky;
       top: 0;
@@ -135,51 +135,43 @@
     .sq-brand {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
       text-decoration: none;
       color: var(--sq-black);
     }
     .sq-logo {
-      height: 32px;
+      height: 34px;
       width: auto;
     }
     @media (min-width: 768px) {
       .sq-logo {
-        height: 36px;
+        height: 38px;
       }
     }
+    .sq-brand-text-col {
+      display: flex;
+      flex-direction: column;
+    }
     .sq-brand-name {
-      font-size: 18px;
+      font-size: 17.5px;
       font-weight: 900;
       letter-spacing: -0.5px;
       color: var(--sq-black);
+      line-height: 1.1;
     }
-    @media (max-width: 480px) {
-      .sq-brand-name {
-        font-size: 16px;
-      }
-    }
-    .sq-brand-badge {
+    .sq-brand-tagline {
       font-size: 10px;
-      background: var(--sq-gray-10);
       color: var(--sq-gray-70);
-      padding: 2px 6px;
-      border-radius: 4px;
-      font-weight: 700;
-      border: 1px solid var(--sq-border);
-    }
-    @media (max-width: 520px) {
-      .sq-brand-badge {
-        display: none;
-      }
+      font-weight: 600;
+      letter-spacing: 0.2px;
     }
 
     .sq-nav-links {
       display: flex;
       align-items: center;
-      gap: 22px;
+      gap: 20px;
     }
-    @media (max-width: 990px) {
+    @media (max-width: 1020px) {
       .sq-nav-links {
         display: none;
       }
@@ -187,7 +179,7 @@
     .sq-nav-link {
       color: var(--sq-gray-70);
       text-decoration: none;
-      font-size: 14px;
+      font-size: 13.5px;
       font-weight: 600;
       transition: color 0.15s ease;
     }
@@ -201,7 +193,7 @@
       gap: 8px;
     }
 
-    /* Mobile Quick Navigation Bar (Horizontal Scrollable Pills) */
+    /* Mobile Quick Navigation Bar */
     .mobile-quick-nav {
       display: none;
       background: #ffffff;
@@ -215,7 +207,7 @@
     .mobile-quick-nav::-webkit-scrollbar {
       display: none;
     }
-    @media (max-width: 990px) {
+    @media (max-width: 1020px) {
       .mobile-quick-nav {
         display: flex;
         gap: 8px;
@@ -223,7 +215,7 @@
     }
     .mq-pill {
       display: inline-block;
-      font-size: 12.5px;
+      font-size: 12px;
       font-weight: 700;
       color: var(--sq-gray-70);
       background: var(--sq-gray-05);
@@ -309,7 +301,7 @@
       border-color: var(--sq-gray-50);
     }
 
-    /* Container with Fluid Margins */
+    /* Container */
     .sq-container {
       max-width: 1240px;
       margin: 0 auto;
@@ -317,7 +309,7 @@
     }
 
     /* ======================================================== */
-    /* 1. SQUARE HERO SECTION WITH CUSTOMER IMAGE               */
+    /* 1. HERO SECTION                                          */
     /* ======================================================== */
     .sq-hero {
       padding: clamp(36px, 6vw, 65px) 0 clamp(40px, 7vw, 70px) 0;
@@ -401,7 +393,7 @@
       gap: 6px;
     }
 
-    /* Hero Visual Card */
+    /* Hero Media */
     .sq-hero-media-card {
       position: relative;
       border-radius: clamp(16px, 3vw, 24px);
@@ -434,12 +426,115 @@
     }
 
     /* ======================================================== */
-    /* 2. CUSTOMER & POS UI SHOWCASE SECTION                    */
+    /* 2. ABOUT B-MAGNET COMPANY SECTION                        */
+    /* ======================================================== */
+    .sq-about-section {
+      padding: clamp(50px, 7vw, 85px) 0;
+      background: #ffffff;
+      border-top: 1px solid var(--sq-border);
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+    @media (max-width: 880px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+    }
+    .about-feature-box {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 24px;
+    }
+    @media (max-width: 540px) {
+      .about-feature-box {
+        grid-template-columns: 1fr;
+      }
+    }
+    .af-card {
+      background: var(--sq-gray-05);
+      border: 1px solid var(--sq-border);
+      border-radius: 14px;
+      padding: 18px;
+    }
+    .af-card h4 {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--sq-black);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .af-card p {
+      font-size: 13px;
+      color: var(--sq-gray-70);
+      line-height: 1.55;
+    }
+
+    /* ======================================================== */
+    /* 3. EXPLAINING POS IN DETAIL (DEEP DIVE)                  */
+    /* ======================================================== */
+    .sq-pos-deepdive {
+      padding: clamp(50px, 7vw, 90px) 0;
+      background: var(--sq-gray-05);
+      border-top: 1px solid var(--sq-border);
+      border-bottom: 1px solid var(--sq-border);
+    }
+    .pos-deep-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(clamp(280px, 30vw, 360px), 1fr));
+      gap: 24px;
+      margin-top: 36px;
+    }
+    .pos-deep-card {
+      background: #ffffff;
+      border: 1px solid var(--sq-border);
+      border-radius: 18px;
+      padding: 28px;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.03);
+      transition: all 0.2s ease;
+    }
+    .pos-deep-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.07);
+      border-color: #111;
+    }
+    .pos-icon-circle {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: #e0f2f1;
+      color: #004d40;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+      font-size: 24px;
+    }
+    .pos-deep-card h3 {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--sq-black);
+      margin-bottom: 10px;
+    }
+    .pos-deep-card p {
+      font-size: 13.5px;
+      color: var(--sq-gray-70);
+      line-height: 1.65;
+    }
+
+    /* ======================================================== */
+    /* 4. CUSTOMER & POS UI SHOWCASE SECTION                    */
     /* ======================================================== */
     .sq-ui-showcase {
       padding: clamp(50px, 7vw, 80px) 0;
-      background: var(--sq-gray-05);
-      border-top: 1px solid var(--sq-border);
+      background: #ffffff;
       border-bottom: 1px solid var(--sq-border);
     }
     .sq-showcase-grid {
@@ -510,7 +605,7 @@
     }
 
     /* ======================================================== */
-    /* 3. ZATCA PHASE 2 COMPLIANCE SECTION                      */
+    /* 5. ZATCA PHASE 2 COMPLIANCE SECTION                      */
     /* ======================================================== */
     .sq-zatca-section {
       padding: clamp(50px, 7vw, 85px) 0;
@@ -548,7 +643,7 @@
     }
 
     /* ======================================================== */
-    /* 4. HARDWARE & SOFTWARE ECOSYSTEM                         */
+    /* 6. HARDWARE TERMINALS (PRICED IN SAR)                    */
     /* ======================================================== */
     .sq-section {
       padding: clamp(50px, 7vw, 90px) 0;
@@ -634,7 +729,7 @@
     }
 
     /* ======================================================== */
-    /* 5. PRICING IN SAUDI RIYAL (SAR / ر.س)                     */
+    /* 7. PRICING IN SAUDI RIYAL (SAR / ر.س)                     */
     /* ======================================================== */
     .sq-pricing-section {
       background: var(--sq-gray-05);
@@ -679,7 +774,68 @@
     }
 
     /* ======================================================== */
-    /* 6. SINGLE CLEAR GATEWAY TO TRADING BOTS                  */
+    /* 8. CONTACT US SECTION (DIRECT FROM B-MAGNET POSTER)      */
+    /* ======================================================== */
+    .sq-contact-section {
+      padding: clamp(50px, 7vw, 85px) 0;
+      background: #ffffff;
+      border-top: 1px solid var(--sq-border);
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+      margin-top: 36px;
+    }
+    @media (max-width: 860px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .contact-card {
+      background: var(--sq-gray-05);
+      border: 1px solid var(--sq-border);
+      border-radius: 18px;
+      padding: 32px;
+    }
+    .contact-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 22px;
+    }
+    .contact-icon-box {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: var(--sq-black);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+    .contact-row-text h4 {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--sq-gray-70);
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+    .contact-row-text a, .contact-row-text p {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--sq-black);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .contact-row-text a:hover {
+      color: var(--sq-blue);
+    }
+
+    /* ======================================================== */
+    /* 9. SINGLE CLEAR GATEWAY TO TRADING BOTS                  */
     /* ======================================================== */
     .sq-bot-gateway {
       background: var(--sq-black);
@@ -719,7 +875,7 @@
     }
 
     /* ======================================================== */
-    /* 7. FAQ ACCORDION                                         */
+    /* 10. FAQ ACCORDION                                        */
     /* ======================================================== */
     .sq-faq-item {
       border-bottom: 1px solid var(--sq-border);
@@ -815,17 +971,21 @@
   <header class="sq-header">
     <div class="sq-header-container">
       <a href="/" class="sq-brand">
-        <img src="/images/b-magnet-emblem.png" alt="B-Magnet POS" class="sq-logo">
-        <span class="sq-brand-name">B-Magnet</span>
-        <span class="sq-brand-badge" id="txt_brandBadge">Point of Sale</span>
+        <img src="/images/b-magnet-emblem.png" alt="B-Magnet" class="sq-logo">
+        <div class="sq-brand-text-col">
+          <span class="sq-brand-name">B-Magnet</span>
+          <span class="sq-brand-tagline" id="txt_brandTagline">Perfect business solutions</span>
+        </div>
       </a>
 
       <nav class="sq-nav-links">
-        <a href="#overview" class="sq-nav-link" id="txt_navOverview">Overview</a>
+        <a href="#about" class="sq-nav-link" id="txt_navAbout">About Us</a>
+        <a href="#pos-features" class="sq-nav-link" id="txt_navPos">POS System</a>
         <a href="#showcase" class="sq-nav-link" id="txt_navShowcase">Customer UI</a>
         <a href="#zatca" class="sq-nav-link" id="txt_navZatca">ZATCA Phase 2</a>
         <a href="#hardware" class="sq-nav-link" id="txt_navHardware">Hardware</a>
         <a href="#pricing" class="sq-nav-link" id="txt_navPricing">Pricing (SAR)</a>
+        <a href="#contact" class="sq-nav-link" id="txt_navContact">Contact Us</a>
         <a href="#faq" class="sq-nav-link" id="txt_navFaq">FAQ</a>
       </nav>
 
@@ -844,16 +1004,18 @@
 
   <!-- Mobile Quick Jump Bar -->
   <div class="mobile-quick-nav">
-    <a href="#overview" class="mq-pill" id="mq_overview">Overview</a>
+    <a href="#about" class="mq-pill" id="mq_about">About B-Magnet</a>
+    <a href="#pos-features" class="mq-pill" id="mq_pos">POS System</a>
     <a href="#showcase" class="mq-pill" id="mq_showcase">Customer UI</a>
     <a href="#zatca" class="mq-pill" id="mq_zatca">ZATCA Phase 2</a>
     <a href="#hardware" class="mq-pill" id="mq_hardware">Hardware (SAR)</a>
     <a href="#pricing" class="mq-pill" id="mq_pricing">Pricing</a>
+    <a href="#contact" class="mq-pill" id="mq_contact">Contact Us</a>
     <a href="#faq" class="mq-pill" id="mq_faq">FAQ</a>
   </div>
 
   <!-- ======================================================== -->
-  <!-- 1. SQUARE HERO SECTION WITH CUSTOMER PAYMENT PHOTO       -->
+  <!-- 1. HERO SECTION WITH CUSTOMER PAYMENT PHOTO              -->
   <!-- ======================================================== -->
   <section class="sq-hero" id="overview">
     <div class="sq-container">
@@ -878,9 +1040,9 @@
               <span>Start Free with B-Magnet POS</span>
               <span class="material-symbols-rounded" style="font-size: 18px;">arrow_forward</span>
             </a>
-            <a href="https://wa.me/919495097786?text=Hello%20B-Magnet%20POS%20Team%2C%20I%20want%20to%20setup%20ZATCA%20Phase%202%20POS%20for%20my%20business%20in%20Saudi%20Arabia." target="_blank" rel="noopener noreferrer" class="btn-sq-secondary" id="txt_heroContactSales">
-              <span>Contact Sales (WhatsApp)</span>
-              <span class="material-symbols-rounded" style="font-size: 18px;">chat</span>
+            <a href="#contact" class="btn-sq-secondary" id="txt_heroContactSales">
+              <span>Contact Us & Inquire</span>
+              <span class="material-symbols-rounded" style="font-size: 18px;">call</span>
             </a>
           </div>
 
@@ -921,7 +1083,121 @@
   </section>
 
   <!-- ======================================================== -->
-  <!-- 2. REAL-WORLD CUSTOMER UI & HARDWARE IN ACTION           -->
+  <!-- 2. ABOUT B-MAGNET COMPANY (PERFECT BUSINESS SOLUTIONS)   -->
+  <!-- ======================================================== -->
+  <section class="sq-about-section" id="about">
+    <div class="sq-container">
+      <div class="about-grid">
+        <div>
+          <span class="sq-eyebrow" id="txt_aboutEyebrow">About B-Magnet</span>
+          <h2 class="sq-section-title" id="txt_aboutTitle" style="text-align: left;">Perfect business solutions engineered for high performance.</h2>
+          <p style="font-size: 15px; color: var(--sq-gray-70); line-height: 1.7; margin-bottom: 16px;" id="txt_aboutP1">
+            <strong>B-Magnet</strong> (بي-ماجنت) is a modern technology and commercial solutions enterprise dedicated to empowering retail businesses, food & beverage chains, service enterprises, and financial systems across the Kingdom of Saudi Arabia and the GCC.
+          </p>
+          <p style="font-size: 14.5px; color: var(--sq-gray-70); line-height: 1.7;" id="txt_aboutP2">
+            Under our core ethos of <em>"Perfect business solutions"</em>, we bridge hardware reliability, cloud intelligence, seamless ZATCA tax clearance, and unified merchant banking to turn checkout counters into powerful growth engines.
+          </p>
+        </div>
+
+        <div>
+          <div class="about-feature-box">
+            <div class="af-card">
+              <h4 id="txt_af1Title"><span class="material-symbols-rounded" style="color: #00875a; font-size: 20px;">speed</span> Ultra-Fast Speed</h4>
+              <p id="txt_af1Desc">Instant barcode scanning, sub-2.4s payment settlements, and rapid thermal receipt printing.</p>
+            </div>
+            <div class="af-card">
+              <h4 id="txt_af2Title"><span class="material-symbols-rounded" style="color: #00875a; font-size: 20px;">shield</span> 100% Tax Compliant</h4>
+              <p id="txt_af2Desc">Fully certified for ZATCA Phase 1 & Phase 2 Fatoora integration with automatic 15% VAT.</p>
+            </div>
+            <div class="af-card">
+              <h4 id="txt_af3Title"><span class="material-symbols-rounded" style="color: #00875a; font-size: 20px;">hub</span> Cloud Synchronized</h4>
+              <p id="txt_af3Desc">Multi-branch inventory sync, offline checkout mode, and live mobile sales dashboards.</p>
+            </div>
+            <div class="af-card">
+              <h4 id="txt_af4Title"><span class="material-symbols-rounded" style="color: #00875a; font-size: 20px;">support_agent</span> Dedicated Support</h4>
+              <p id="txt_af4Desc">24/7 dedicated customer assistance via direct phone, WhatsApp hotline, and on-site support.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- 3. EXPLAINING POS IN DETAIL (DEEP DIVE)                  -->
+  <!-- ======================================================== -->
+  <section class="sq-pos-deepdive" id="pos-features">
+    <div class="sq-container">
+      <div class="sq-section-header">
+        <span class="sq-eyebrow" id="txt_posEyebrow">Complete POS Architecture</span>
+        <h2 class="sq-section-title" id="txt_posTitle">Everything your business needs to sell, track, and scale.</h2>
+        <p class="sq-section-sub" id="txt_posSub">
+          Discover how B-Magnet POS integrates every facet of modern business operations into one seamless ecosystem.
+        </p>
+      </div>
+
+      <div class="pos-deep-grid">
+        
+        <!-- Pillar 1: Smart Checkout & Register -->
+        <div class="pos-deep-card">
+          <div class="pos-icon-circle">
+            <span class="material-symbols-rounded">point_of_sale</span>
+          </div>
+          <h3 id="txt_pf1Title">High-Speed Checkout</h3>
+          <p id="txt_pf1Desc">Lightning-fast billing with touchscreen product grids, barcode scanner integration, customized discounts, item modifiers, and split payments.</p>
+        </div>
+
+        <!-- Pillar 2: ZATCA Phase 2 Fatoora -->
+        <div class="pos-deep-card">
+          <div class="pos-icon-circle">
+            <span class="material-symbols-rounded">verified_user</span>
+          </div>
+          <h3 id="txt_pf2Title">ZATCA Phase 2 Fatoora</h3>
+          <p id="txt_pf2Desc">Direct automated clearance and reporting to the ZATCA portal. Embedded cryptographic Base64 TLV QR codes, UUIDs, and digital SHA-256 signatures.</p>
+        </div>
+
+        <!-- Pillar 3: Inventory & Warehouse Matrix -->
+        <div class="pos-deep-card">
+          <div class="pos-icon-circle">
+            <span class="material-symbols-rounded">inventory_2</span>
+          </div>
+          <h3 id="txt_pf3Title">Multi-Branch Inventory</h3>
+          <p id="txt_pf3Desc">Track stock levels across multiple branches and warehouses in real-time. Automated low-stock alerts, purchase orders, and supplier management.</p>
+        </div>
+
+        <!-- Pillar 4: Universal Saudi Payments -->
+        <div class="pos-deep-card">
+          <div class="pos-icon-circle">
+            <span class="material-symbols-rounded">credit_card</span>
+          </div>
+          <h3 id="txt_pf4Title">mada, Apple Pay & NFC</h3>
+          <p id="txt_pf4Desc">Full compatibility with local mada debit cards, Apple Pay contactless tap, Visa, Mastercard, and Web3 crypto settlement on BNB Chain.</p>
+        </div>
+
+        <!-- Pillar 5: Real-Time SAR Analytics -->
+        <div class="pos-deep-card">
+          <div class="pos-icon-circle">
+            <span class="material-symbols-rounded">analytics</span>
+          </div>
+          <h3 id="txt_pf5Title">Live SAR Analytics & Reports</h3>
+          <p id="txt_pf5Desc">Instant revenue insights, gross profit margins, top-selling items, employee performance metrics, and 1-click 15% VAT tax return summaries.</p>
+        </div>
+
+        <!-- Pillar 6: Staff & Permission Control -->
+        <div class="pos-deep-card">
+          <div class="pos-icon-circle">
+            <span class="material-symbols-rounded">badge</span>
+          </div>
+          <h3 id="txt_pf6Title">Staff Roles & Shift Tracking</h3>
+          <p id="txt_pf6Desc">Secure PIN-based cashier logins, shift opening & cash drawer closing balances (X/Z Reports), and granular permission controls for cashiers and managers.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- 4. REAL-WORLD CUSTOMER UI & HARDWARE IN ACTION           -->
   <!-- ======================================================== -->
   <section class="sq-ui-showcase" id="showcase">
     <div class="sq-container">
@@ -995,7 +1271,7 @@
   </section>
 
   <!-- ======================================================== -->
-  <!-- 3. ZATCA PHASE 2 E-INVOICING CERTIFICATION               -->
+  <!-- 5. ZATCA PHASE 2 E-INVOICING CERTIFICATION               -->
   <!-- ======================================================== -->
   <section class="sq-zatca-section" id="zatca">
     <div class="sq-container">
@@ -1046,7 +1322,7 @@
   </section>
 
   <!-- ======================================================== -->
-  <!-- 4. HARDWARE TERMINALS (PRICED IN SAR)                    -->
+  <!-- 6. HARDWARE TERMINALS (PRICED IN SAR)                    -->
   <!-- ======================================================== -->
   <section class="sq-section" id="hardware">
     <div class="sq-container">
@@ -1122,7 +1398,7 @@
   </section>
 
   <!-- ======================================================== -->
-  <!-- 5. PRICING IN SAUDI RIYAL (SAR / ر.س)                     -->
+  <!-- 7. PRICING IN SAUDI RIYAL (SAR / ر.س)                     -->
   <!-- ======================================================== -->
   <section class="sq-pricing-section" id="pricing">
     <div class="sq-container">
@@ -1194,7 +1470,89 @@
   </section>
 
   <!-- ======================================================== -->
-  <!-- 6. SINGLE CLEAR GATEWAY TO TRADING BOTS                  -->
+  <!-- 8. CONTACT US SECTION (DIRECT FROM B-MAGNET POSTER)      -->
+  <!-- ======================================================== -->
+  <section class="sq-contact-section" id="contact">
+    <div class="sq-container">
+      <div class="sq-section-header">
+        <span class="sq-eyebrow" id="txt_ctEyebrow">Get in Touch</span>
+        <h2 class="sq-section-title" id="txt_ctTitle">Contact B-Magnet Headquarters</h2>
+        <p class="sq-section-sub" id="txt_ctSub">
+          Have questions about B-Magnet POS, custom enterprise hardware, or ZATCA integration? Reach our team directly.
+        </p>
+      </div>
+
+      <div class="contact-grid">
+        
+        <div class="contact-card">
+          <div class="contact-row">
+            <div class="contact-icon-box" style="background: #25D366;">
+              <span class="material-symbols-rounded">chat</span>
+            </div>
+            <div class="contact-row-text">
+              <h4 id="txt_c1Label">WhatsApp Hotline</h4>
+              <a href="https://wa.me/919495097786?text=Hello%20B-Magnet%20Team%2C%20I%20am%20reaching%20out%20from%20the%20website%20regarding%20POS%20solutions." target="_blank" rel="noopener noreferrer" class="font-mono">+91 94950 97786</a>
+            </div>
+          </div>
+
+          <div class="contact-row">
+            <div class="contact-icon-box" style="background: #006aff;">
+              <span class="material-symbols-rounded">mail</span>
+            </div>
+            <div class="contact-row-text">
+              <h4 id="txt_c2Label">Official Email</h4>
+              <a href="mailto:bmagnet.int@gmail.com" class="font-mono">bmagnet.int@gmail.com</a>
+            </div>
+          </div>
+
+          <div class="contact-row">
+            <div class="contact-icon-box" style="background: #111111;">
+              <span class="material-symbols-rounded">call</span>
+            </div>
+            <div class="contact-row-text">
+              <h4 id="txt_c3Label">Direct Phone</h4>
+              <a href="tel:+919495097786" class="font-mono">+91 94950 97786</a>
+            </div>
+          </div>
+
+          <div class="contact-row" style="margin-bottom: 0;">
+            <div class="contact-icon-box" style="background: #004d40;">
+              <span class="material-symbols-rounded">location_on</span>
+            </div>
+            <div class="contact-row-text">
+              <h4 id="txt_c4Label">Regional Coverage</h4>
+              <p id="txt_c4Val">Kingdom of Saudi Arabia (Riyadh, Jeddah, Dammam) & GCC</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fast Inquiry Card -->
+        <div class="contact-card" style="background: #ffffff; border: 2px solid var(--sq-black); display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <span class="hw-badge" style="background: #e0f2f1; color: #004d40;" id="txt_inqBadge">Direct Merchant Inquiry</span>
+            <h3 style="font-size: 22px; font-weight: 800; margin: 8px 0 12px 0;" id="txt_inqTitle">Start Your Setup Today</h3>
+            <p style="font-size: 14px; color: var(--sq-gray-70); line-height: 1.6; margin-bottom: 20px;" id="txt_inqDesc">
+              Our Saudi deployment specialists assist you with complete ZATCA onboarding, hardware delivery within 48 hours, and merchant staff training.
+            </p>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <a href="https://wa.me/919495097786?text=Hello%20B-Magnet%20Team%2C%20I%20would%20like%20to%20inquire%20about%20a%20full%20POS%20setup%20for%20my%20business." target="_blank" rel="noopener noreferrer" class="btn-sq-primary" style="padding: 14px; font-size: 15px;" id="txt_inqBtn1">
+              <span>Chat with Us on WhatsApp</span>
+              <span class="material-symbols-rounded">arrow_forward</span>
+            </a>
+            <a href="mailto:bmagnet.int@gmail.com?subject=B-Magnet%20POS%20Inquiry" class="btn-sq-secondary" style="padding: 14px; font-size: 15px;" id="txt_inqBtn2">
+              <span>Send Official Email</span>
+              <span class="material-symbols-rounded">send</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- 9. SINGLE CLEAR GATEWAY TO TRADING BOTS                  -->
   <!-- ======================================================== -->
   <div class="sq-container">
     <div class="sq-bot-gateway">
@@ -1216,7 +1574,7 @@
   </div>
 
   <!-- ======================================================== -->
-  <!-- 7. FREQUENTLY ASKED QUESTIONS                            -->
+  <!-- 10. FREQUENTLY ASKED QUESTIONS                           -->
   <!-- ======================================================== -->
   <section class="sq-section" id="faq">
     <div class="sq-container" style="max-width: 860px;">
@@ -1261,7 +1619,7 @@
           <span class="material-symbols-rounded faq-chevron">expand_more</span>
         </div>
         <div class="sq-faq-a" id="txt_a4">
-          You can order the B-Magnet Terminal (599 SAR) or B-Magnet Register (1,899 SAR) directly by clicking the order button or contacting our team on WhatsApp at +91 94950 97786. We deliver across Riyadh, Jeddah, Dammam, and all GCC regions within 2-3 business days.
+          You can order the B-Magnet Terminal (599 SAR) or B-Magnet Register (1,899 SAR) directly by clicking the order button or contacting our team on WhatsApp at +91 94950 97786 or emailing bmagnet.int@gmail.com. We deliver across Riyadh, Jeddah, Dammam, and all GCC regions within 2-3 business days.
         </div>
       </div>
 
@@ -1269,7 +1627,7 @@
   </section>
 
   <!-- ======================================================== -->
-  <!-- 8. CORPORATE SQUARE-STYLE FOOTER                         -->
+  <!-- 11. CORPORATE SQUARE-STYLE FOOTER                        -->
   <!-- ======================================================== -->
   <footer class="sq-footer">
     <div class="sq-container">
@@ -1278,18 +1636,23 @@
         <div>
           <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
             <img src="/images/b-magnet-emblem.png" alt="B-Magnet Logo" style="height: 28px;">
-            <strong style="font-size: 18px; color: var(--sq-black);">B-Magnet POS</strong>
+            <strong style="font-size: 18px; color: var(--sq-black);">B-Magnet</strong>
           </div>
           <p style="font-size: 13.5px; color: var(--sq-gray-70); line-height: 1.6; max-width: 320px; margin-bottom: 14px;" id="txt_ftDesc">
-            Next-generation Point-of-Sale, ZATCA Phase 2 E-Invoicing & Merchant Settlement Systems for the Kingdom of Saudi Arabia.
+            Perfect business solutions: Next-generation Point-of-Sale, ZATCA Phase 2 E-Invoicing & Merchant Settlement Systems for the Kingdom of Saudi Arabia.
           </p>
+          <div style="margin-bottom: 12px; font-size: 12.5px;">
+            <span style="color: var(--sq-black); font-weight: 700;">Email:</span> <a href="mailto:bmagnet.int@gmail.com" style="color: var(--sq-blue); text-decoration: none;">bmagnet.int@gmail.com</a><br>
+            <span style="color: var(--sq-black); font-weight: 700;">Phone / WhatsApp:</span> <a href="https://wa.me/919495097786" style="color: var(--sq-black); text-decoration: none;">+91 94950 97786</a>
+          </div>
           <span style="font-size: 12px; color: #166534; font-weight: 700;" id="txt_ftBadge">🟢 ZATCA Phase 2 Fatoora Certified</span>
         </div>
 
         <div class="sq-footer-col">
           <h4 id="txt_ftCol1">Products</h4>
           <ul>
-            <li><a href="#overview" id="txt_ftL1">Point of Sale</a></li>
+            <li><a href="#about" id="txt_ftL0">About B-Magnet</a></li>
+            <li><a href="#pos-features" id="txt_ftL1">Point of Sale (POS)</a></li>
             <li><a href="#hardware" id="txt_ftL2">B-Magnet Terminal</a></li>
             <li><a href="#hardware" id="txt_ftL3">B-Magnet Register</a></li>
             <li><a href="#hardware" id="txt_ftL4">Free Web POS</a></li>
@@ -1310,6 +1673,7 @@
         <div class="sq-footer-col">
           <h4 id="txt_ftCol3">Support & Admin</h4>
           <ul>
+            <li><a href="#contact" id="txt_ftL14">Contact Us</a></li>
             <li><a href="/admin/" id="txt_ftL10">Admin Console</a></li>
             <li><a href="https://wa.me/919495097786" target="_blank" rel="noopener noreferrer" id="txt_ftL11">WhatsApp Support</a></li>
             <li><a href="/privacy/" id="txt_ftL12">Privacy Policy</a></li>
@@ -1320,7 +1684,7 @@
       </div>
 
       <div style="border-top: 1px solid var(--sq-border); padding-top: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; font-size: 12px;">
-        <span id="txt_ftCopy">&copy; 2026 B-Magnet POS Systems Inc. All rights reserved. Kingdom of Saudi Arabia.</span>
+        <span id="txt_ftCopy">&copy; 2026 B-Magnet (بي-ماجنت). Perfect business solutions. All rights reserved. Kingdom of Saudi Arabia.</span>
         <span id="txt_ftPhase">ZATCA Compliant E-Invoicing Platform (مرحلة الربط والتكامل)</span>
       </div>
     </div>
@@ -1333,32 +1697,65 @@
       en: {
         topBannerBadge: "ZATCA APPROVED",
         topBannerText: "🟢 Fully Certified for ZATCA Phase 2 E-Invoicing (Fatoora) & 15% Saudi VAT Compliance (معتمد من هيئة الزكاة والضريبة والجمارك)",
-        brandBadge: "Point of Sale",
+        brandTagline: "Perfect business solutions",
+        navAbout: "About Us",
+        navPos: "POS System",
         navOverview: "Overview",
         navShowcase: "Customer UI",
         navZatca: "ZATCA Phase 2",
         navHardware: "Hardware",
         navPricing: "Pricing (SAR)",
+        navContact: "Contact Us",
         navFaq: "FAQ",
         langToggle: "🇸🇦 العربية",
         btnGetStarted: "Get Started",
+        mqAbout: "About B-Magnet",
+        mqPos: "POS System",
         mqOverview: "Overview",
         mqShowcase: "Customer UI",
         mqZatca: "ZATCA Phase 2",
         mqHardware: "Hardware (SAR)",
         mqPricing: "Pricing",
+        mqContact: "Contact Us",
         mqFaq: "FAQ",
         heroEyebrow: "Kingdom of Saudi Arabia • ZATCA Certified",
         heroTitle: "The point of sale that powers every kind of business.",
         heroLead: "B-Magnet POS is built to run retail stores, restaurants, cafes, and e-commerce across Saudi Arabia. Complete with ZATCA Phase 2 e-invoicing clearance, 15% VAT calculation, mada contactless payments, and instant settlement.",
         heroStartFree: "Start Free with B-Magnet POS",
-        heroContactSales: "Contact Sales (WhatsApp)",
+        heroContactSales: "Contact Us & Inquire",
         trust1: "ZATCA Phase 2 Integrated",
         trust2: "mada & Apple Pay Ready",
         trust3: "No Monthly Subscription",
         badgeTitle: "mada & Apple Pay NFC Tap",
         badgeSub: "Sub-2.4s Instant Settlement • 15% VAT Included",
         badgeStatus: "APPROVED",
+        aboutEyebrow: "About B-Magnet",
+        aboutTitle: "Perfect business solutions engineered for high performance.",
+        aboutP1: "B-Magnet (بي-ماجنت) is a modern technology and commercial solutions enterprise dedicated to empowering retail businesses, food & beverage chains, service enterprises, and financial systems across the Kingdom of Saudi Arabia and the GCC.",
+        aboutP2: "Under our core ethos of "Perfect business solutions", we bridge hardware reliability, cloud intelligence, seamless ZATCA tax clearance, and unified merchant banking to turn checkout counters into powerful growth engines.",
+        af1Title: "⚡ Ultra-Fast Speed",
+        af1Desc: "Instant barcode scanning, sub-2.4s payment settlements, and rapid thermal receipt printing.",
+        af2Title: "🛡️ 100% Tax Compliant",
+        af2Desc: "Fully certified for ZATCA Phase 1 & Phase 2 Fatoora integration with automatic 15% VAT.",
+        af3Title: "☁️ Cloud Synchronized",
+        af3Desc: "Multi-branch inventory sync, offline checkout mode, and live mobile sales dashboards.",
+        af4Title: "🎧 Dedicated Support",
+        af4Desc: "24/7 dedicated customer assistance via direct phone, WhatsApp hotline, and on-site support.",
+        posEyebrow: "Complete POS Architecture",
+        posTitle: "Everything your business needs to sell, track, and scale.",
+        posSub: "Discover how B-Magnet POS integrates every facet of modern business operations into one seamless ecosystem.",
+        pf1Title: "High-Speed Checkout",
+        pf1Desc: "Lightning-fast billing with touchscreen product grids, barcode scanner integration, customized discounts, item modifiers, and split payments.",
+        pf2Title: "ZATCA Phase 2 Fatoora",
+        pf2Desc: "Direct automated clearance and reporting to the ZATCA portal. Embedded cryptographic Base64 TLV QR codes, UUIDs, and digital SHA-256 signatures.",
+        pf3Title: "Multi-Branch Inventory",
+        pf3Desc: "Track stock levels across multiple branches and warehouses in real-time. Automated low-stock alerts, purchase orders, and supplier management.",
+        pf4Title: "mada, Apple Pay & NFC",
+        pf4Desc: "Full compatibility with local mada debit cards, Apple Pay contactless tap, Visa, Mastercard, and Web3 crypto settlement on BNB Chain.",
+        pf5Title: "Live SAR Analytics & Reports",
+        pf5Desc: "Instant revenue insights, gross profit margins, top-selling items, employee performance metrics, and 1-click 15% VAT tax return summaries.",
+        pf6Title: "Staff Roles & Shift Tracking",
+        pf6Desc: "Secure PIN-based cashier logins, shift opening & cash drawer closing balances (X/Z Reports), and granular permission controls for cashiers and managers.",
         scEyebrow: "Customer Experience & Interfaces",
         scTitle: "See B-Magnet POS in action across Saudi businesses.",
         scSub: "From luxury boutiques in Riyadh to bustling cafes in Jeddah and commercial distributors in Dammam.",
@@ -1425,6 +1822,19 @@
         pr3Price: "Custom ",
         pr3Unit: "rates",
         pr3Btn: "Contact Enterprise",
+        ctEyebrow: "Get in Touch",
+        ctTitle: "Contact B-Magnet Headquarters",
+        ctSub: "Have questions about B-Magnet POS, custom enterprise hardware, or ZATCA integration? Reach our team directly.",
+        c1Label: "WhatsApp Hotline",
+        c2Label: "Official Email",
+        c3Label: "Direct Phone",
+        c4Label: "Regional Coverage",
+        c4Val: "Kingdom of Saudi Arabia (Riyadh, Jeddah, Dammam) & GCC",
+        inqBadge: "Direct Merchant Inquiry",
+        inqTitle: "Start Your Setup Today",
+        inqDesc: "Our Saudi deployment specialists assist you with complete ZATCA onboarding, hardware delivery within 48 hours, and merchant staff training.",
+        inqBtn1: "Chat with Us on WhatsApp",
+        inqBtn2: "Send Official Email",
         botEyebrow: "B-Magnet Labs Algorithmic Trading",
         botTitle: "Looking for our Algorithmic Trading Systems?",
         botDesc: "Access our institutional MetaTrader 5 Expert Advisors, Gold Hunter EA Pro v1.21 live trading feeds, and verified performance statistics on our dedicated trading bots platform.",
@@ -1438,44 +1848,77 @@
         q3: "How fast are funds deposited into my Saudi bank account?",
         a3: "Card payments settle next business day directly into any registered Saudi bank account (Al Rajhi, SNB, Riyad Bank, etc.). Web3 crypto payments settle instantly within 2.4 seconds with zero hold periods.",
         q4: "How can I order the physical POS terminal hardware?",
-        a4: "You can order the B-Magnet Terminal (599 SAR) or B-Magnet Register (1,899 SAR) directly by clicking the order button or contacting our team on WhatsApp at +91 94950 97786. We deliver across Riyadh, Jeddah, Dammam, and all GCC regions within 2-3 business days.",
-        ftDesc: "Next-generation Point-of-Sale, ZATCA Phase 2 E-Invoicing & Merchant Settlement Systems for the Kingdom of Saudi Arabia.",
+        a4: "You can order the B-Magnet Terminal (599 SAR) or B-Magnet Register (1,899 SAR) directly by clicking the order button or contacting our team on WhatsApp at +91 94950 97786 or emailing bmagnet.int@gmail.com. We deliver across Riyadh, Jeddah, Dammam, and all GCC regions within 2-3 business days.",
+        ftDesc: "Perfect business solutions: Next-generation Point-of-Sale, ZATCA Phase 2 E-Invoicing & Merchant Settlement Systems for the Kingdom of Saudi Arabia.",
         ftBadge: "🟢 ZATCA Phase 2 Fatoora Certified",
         ftCol1: "Products",
         ftCol2: "Solutions",
         ftCol3: "Support & Admin",
-        ftCopy: "© 2026 B-Magnet POS Systems Inc. All rights reserved. Kingdom of Saudi Arabia.",
+        ftCopy: "© 2026 B-Magnet (بي-ماجنت). Perfect business solutions. All rights reserved. Kingdom of Saudi Arabia.",
         ftPhase: "ZATCA Compliant E-Invoicing Platform (مرحلة الربط والتكامل)"
       },
       ar: {
         topBannerBadge: "معتمد من زاتكا",
         topBannerText: "🟢 نظام معتمد رسمياً للربط والتكامل مع الفوترة الإلكترونية (المرحلة الثانية - فاتورة) وضريبة القيمة المضافة 15% - هيئة الزكاة والضريبة والجمارك",
-        brandBadge: "نقاط البيع",
+        brandTagline: "حلول الأعمال المثالية",
+        navAbout: "عن الشركة",
+        navPos: "نظام نقاط البيع",
         navOverview: "نظرة عامة",
         navShowcase: "واجهات العملاء",
         navZatca: "المرحلة الثانية (زاتكا)",
         navHardware: "الأجهزة",
         navPricing: "الأسعار (ريال)",
+        navContact: "اتصل بنا",
         navFaq: "الأسئلة الشائعة",
         langToggle: "🇺🇸 English",
         btnGetStarted: "ابدأ الآن",
+        mqAbout: "عن بي-ماجنت",
+        mqPos: "نظام POS",
         mqOverview: "نظرة عامة",
         mqShowcase: "واجهات العملاء",
         mqZatca: "المرحلة الثانية",
         mqHardware: "الأجهزة (ريال)",
         mqPricing: "الأسعار",
+        mqContact: "اتصل بنا",
         mqFaq: "الأسئلة الشائعة",
         heroEyebrow: "المملكة العربية السعودية • معتمد من هيئة الزكاة والضريبة والجمارك",
         heroTitle: "نظام نقاط البيع والفوترة الذكي لكل أنواع الأعمال والأنشطة.",
         heroLead: "تم تصميم بي ماجنت POS لإدارة المتاجر والمطاعم والمقاهي والشركات في المملكة العربية السعودية بكل سهولة. متكامل تماماً مع الفوترة الإلكترونية المرحلة الثانية (فاتورة)، واحتساب الضريبة 15%، ومدفوعات مدى وآبل باي بدون تأخير.",
         heroStartFree: "ابدأ مجاناً مع بي ماجنت POS",
-        heroContactSales: "تواصل مع المبيعات (واتساب)",
+        heroContactSales: "تواصل معنا واطلب النظام",
         trust1: "متكامل مع المرحلة الثانية (زاتكا)",
         trust2: "جاهز لمدى وآبل باي بدون تلامس",
         trust3: "بدون أي رسوم اشتراك شهرية إجبارية",
         badgeTitle: "دفع سريع بدون تلامس (مدى & Apple Pay)",
         badgeSub: "تسوية فورية في أقل من 2.4 ثانية • شامل 15% ضريبة",
         badgeStatus: "عملية مقبولة",
+        aboutEyebrow: "عن شركة بي-ماجنت",
+        aboutTitle: "حلول الأعمال المتكاملة والمصممة لأعلى مستويات الأداء التجاري.",
+        aboutP1: "تعد شركة **بي-ماجنت** (B-Magnet) من الرواد في تقديم الحلول التقنية وأنظمة إدارة الأعمال المتطورة للمتاجر، وسلاسل المطاعم والمقاهي، والشركات التجارية في المملكة العربية السعودية ودول الخليج العربي.",
+        aboutP2: "انطلاقاً من شعارنا الراسخ *"Perfect business solutions / حلول الأعمال المثالية"*، ندمج بين أحدث الأجهزة الذكية والأنظمة السحابية والامتثال التام لمنظومة الفوترة الإلكترونية (زاتكا) والمدفوعات البنكية المباشرة لتطوير أعمالك وتوسيع مبيعاتك.",
+        af1Title: "⚡ سرعة استثنائية",
+        af1Desc: "مسح فوري للباركود، تسوية مالية في أقل من 2.4 ثانية، وطباعة فائقة السرعة للفواتير الحرارية.",
+        af2Title: "🛡️ معتمد ضريبياً 100%",
+        af2Desc: "مطابق كلياً لمتطلبات المرحلة الأولى والثانية (فاتورة) مع احتساب آلي لضريبة 15%.",
+        af3Title: "☁️ ربط سحابي فوري",
+        af3Desc: "مزامنة لحظية للمخزون عبر الفروع، مع إمكانية البيع بدون إنترنت ولوحة تحكم مباشرة عبر الجوال.",
+        af4Title: "🎧 دعم فني مخصص 24/7",
+        af4Desc: "فريق دعم فني متواجد على مدار الساعة عبر الهاتف المباشر، والواتساب، والدعم الميداني.",
+        posEyebrow: "هيكلية نظام نقاط البيع المتكامل",
+        posTitle: "كل ما يحتاجه مشروعك للبيع والمتابعة والتوسع.",
+        posSub: "اكتشف كيف يجمع نظام بي ماجنت POS كل متطلبات إدارة المتجر في منصة واحدة سهلة الاستخدام.",
+        pf1Title: "كاشير ونقاط بيع فائقة السرعة",
+        pf1Desc: "إتمام الفواتير في ثوانٍ معدودة عبر شاشات لمس سريعة، ودعم قارئ الباركود، والخصومات المخصصة، وتعديل الأصناف، وتقسيم الفواتير بين العملاء.",
+        pf2Title: "الفوترة الإلكترونية (المرحلة الثانية)",
+        pf2Desc: "اعتماد وربط فوري ومباشر مع منصة فاتورة (ZATCA)، مع توليد رمز الاستجابة السريعة (QR) المشفر Base64 TLV والختم الرقمي والمعرف الفريد UUID.",
+        pf3Title: "إدارة المخزون وتعدد الفروع",
+        pf3Desc: "متابعة كميات المنتجات بدقة عبر الفروع والمستودعات المتعددة، مع تنبيهات عند قرب نفاد الكميات وأوامر الشراء التلقائية وإدارة الموردين.",
+        pf4Title: "مدفوعات شاملة (مدى، آبل باي، فيزا)",
+        pf4Desc: "توافق كامل مع بطاقات مدى البنكية، وخاصية الدفع بالتمرير السريع (NFC) عبر Apple Pay، وبطاقات الائتمان، بالإضافة لتسويات العملات الرقمية.",
+        pf5Title: "تقارير وأرباح بالريال السعودي",
+        pf5Desc: "لوحة تحكم ذكية توضح الأرباح الصافية، والمنتجات الأكثر مبيعاً، وتقارير أداء الموظفين، واستخراج تقرير الإقرار الضريبي 15% بنقرة واحدة.",
+        pf6Title: "إدارة الموظفين والورديات (شفتات)",
+        pf6Desc: "تسجيل دخول آمن برقم سري (PIN) لكل كاشير، مع تقارير افتتاح وإغلاق الصندوق اليومية (X/Z Reports)، وصلاحيات محددة للمشرفين والموظفين.",
         scEyebrow: "تجربة العملاء والواجهات",
         scTitle: "شاهد نظام بي ماجنت POS يعمل في مختلف المتاجر السعودية.",
         scSub: "من أفخم المتاجر في الرياض إلى أشهر المقاهي في جدة ومستودعات التوزيع في الدمام.",
@@ -1542,6 +1985,19 @@
         pr3Price: "أسعار ",
         pr3Unit: "خاصة",
         pr3Btn: "تواصل مع المبيعات",
+        ctEyebrow: "تواصل معنا",
+        ctTitle: "المقر الرئيسي لشركة بي-ماجنت",
+        ctSub: "هل لديك أي استفسار حول نظام نقاط البيع بي ماجنت أو الأجهزة أو الربط مع زاتكا؟ فريقنا جاهز لخدمتك فوراً.",
+        c1Label: "الواتساب المباشر",
+        c2Label: "البريد الإلكتروني الرسمي",
+        c3Label: "الاتصال الهاتفي",
+        c4Label: "نطاق التغطية والخدمة",
+        c4Val: "المملكة العربية السعودية (الرياض، جدة، الدمام) وكافة دول الخليج العربي",
+        inqBadge: "طلب مباشر للتجار والشركات",
+        inqTitle: "ابدأ تشغيل نظامك اليوم",
+        inqDesc: "يقوم فريقنا بمساعدتك في إتمام إجراءات الربط مع زاتكا، وتوصيل الأجهزة لنشاطك خلال 48 ساعة، وتدريب الموظفين بالكامل.",
+        inqBtn1: "تواصل معنا عبر واتساب",
+        inqBtn2: "إرسال بريد إلكتروني رسمي",
         botEyebrow: "مختبرات بي ماجنت للتداول الخوارزمي",
         botTitle: "هل تبحث عن أنظمة التداول الخوارزمي وروبوتات MT5؟",
         botDesc: "تفضل بزيارة منصتنا المخصصة للروبوتات البرمجية، واطلع على إشارات Gold Hunter EA Pro v1.21 المباشرة وإحصائيات الأداء الموثقة وتراخيص MetaTrader 5.",
@@ -1554,14 +2010,14 @@
         a2: "يقبل النظام جميع بطاقات مدى (mada) المحلية، وApple Pay، وVisa، وMastercard، بالإضافة إلى تسويات العملات الرقمية المستقرة على شبكة BNB Chain.",
         q3: "كم من الوقت تستغرق إيداعات المبيعات في الحساب البنكي السعودي؟",
         a3: "تتم تسوية مدفوعات البطاقات ومدى في يوم العمل التالي مباشرة إلى أي حساب بنكي سعودي مسجل (الراجحي، الأهلي، بنك الرياض، إلخ). أما التسويات الرقمية فتتم فورياً خلال 2.4 ثانية.",
-        q4: "كيف يمكنني طلب أجهزة نقاط البيع المادية؟",
-        a4: "يمكنك طلب جهاز بي ماجنت المحمول (599 ريال) أو كاشير الكاونتر المزدوج (1,899 ريال) مباشرة عبر النقر على زر الطلب أو مراسلتنا عبر الواتساب على 919495097786+. التوصيل متاح لكافة مناطق المملكة (الرياض، جدة، الدمام وجميع المدن) خلال 2-3 أيام عمل.",
-        ftDesc: "الجيل الجديد من أنظمة نقاط البيع والفوترة الإلكترونية المتوافقة مع المرحلة الثانية لهيئة الزكاة والضريبة والجمارك في المملكة العربية السعودية.",
+        q4: "كيف يمكنني طلب أجهزة نقاط البيع المادية والتواصل معكم؟",
+        a4: "يمكنك طلب جهاز بي ماجنت المحمول (599 ريال) أو كاشير الكاونتر المزدوج (1,899 ريال) مباشرة عبر الواتساب على الرقم 919495097786+ أو البريد الإلكتروني bmagnet.int@gmail.com. التوصيل متاح لكافة مناطق المملكة خلال 2-3 أيام عمل.",
+        ftDesc: "حلول الأعمال المثالية: الجيل الجديد من أنظمة نقاط البيع والفوترة الإلكترونية المتوافقة مع المرحلة الثانية لهيئة الزكاة والضريبة والجمارك في المملكة العربية السعودية.",
         ftBadge: "🟢 معتمد لمنظومة الفوترة الإلكترونية (فاتورة - المرحلة الثانية)",
         ftCol1: "المنتجات",
         ftCol2: "الحلول",
         ftCol3: "الدعم والإدارة",
-        ftCopy: "© 2026 شركة بي ماجنت لأنظمة نقاط البيع المحدودة. جميع الحقوق محفوظة. المملكة العربية السعودية.",
+        ftCopy: "© 2026 شركة بي-ماجنت (B-Magnet). حلول الأعمال المثالية. جميع الحقوق محفوظة. المملكة العربية السعودية.",
         ftPhase: "نظام فوترة إلكترونية معتمد (مرحلة الربط والتكامل - زاتكا)"
       }
     };
@@ -1577,26 +2033,29 @@
       const t = translations[lang];
 
       // Top banner
-      document.getElementById('txt_zatcaBadge').textContent = t.topBannerBadge;
-      document.getElementById('txt_zatcaText').textContent = t.topBannerText;
+      document.getElementById('txt_topBanner').innerHTML = `<span class="zatca-badge-pill" id="txt_zatcaBadge">${t.topBannerBadge}</span><span id="txt_zatcaText">${t.topBannerText}</span>`;
 
       // Nav
-      document.getElementById('txt_brandBadge').textContent = t.brandBadge;
-      document.getElementById('txt_navOverview').textContent = t.navOverview;
+      document.getElementById('txt_brandTagline').textContent = t.brandTagline;
+      document.getElementById('txt_navAbout').textContent = t.navAbout;
+      document.getElementById('txt_navPos').textContent = t.navPos;
       document.getElementById('txt_navShowcase').textContent = t.navShowcase;
       document.getElementById('txt_navZatca').textContent = t.navZatca;
       document.getElementById('txt_navHardware').textContent = t.navHardware;
       document.getElementById('txt_navPricing').textContent = t.navPricing;
+      document.getElementById('txt_navContact').textContent = t.navContact;
       document.getElementById('txt_navFaq').textContent = t.navFaq;
       document.getElementById('langToggleBtn').innerHTML = `<span>${t.langToggle}</span>`;
       document.getElementById('txt_btnGetStarted').innerHTML = `<span>${t.btnGetStarted}</span>`;
 
       // Mobile Quick Nav
-      document.getElementById('mq_overview').textContent = t.mqOverview;
+      document.getElementById('mq_about').textContent = t.mqAbout;
+      document.getElementById('mq_pos').textContent = t.mqPos;
       document.getElementById('mq_showcase').textContent = t.mqShowcase;
       document.getElementById('mq_zatca').textContent = t.mqZatca;
       document.getElementById('mq_hardware').textContent = t.mqHardware;
       document.getElementById('mq_pricing').textContent = t.mqPricing;
+      document.getElementById('mq_contact').textContent = t.mqContact;
       document.getElementById('mq_faq').textContent = t.mqFaq;
 
       // Hero
@@ -1604,13 +2063,44 @@
       document.getElementById('txt_heroTitle').textContent = t.heroTitle;
       document.getElementById('txt_heroLead').textContent = t.heroLead;
       document.getElementById('txt_heroStartFree').innerHTML = `<span>${t.heroStartFree}</span><span class="material-symbols-rounded" style="font-size:18px;">${isAr ? 'arrow_backward' : 'arrow_forward'}</span>`;
-      document.getElementById('txt_heroContactSales').innerHTML = `<span>${t.heroContactSales}</span><span class="material-symbols-rounded" style="font-size:18px;">chat</span>`;
+      document.getElementById('txt_heroContactSales').innerHTML = `<span>${t.heroContactSales}</span><span class="material-symbols-rounded" style="font-size:18px;">call</span>`;
       document.getElementById('txt_trust1').textContent = t.trust1;
       document.getElementById('txt_trust2').textContent = t.trust2;
       document.getElementById('txt_trust3').textContent = t.trust3;
       document.getElementById('txt_badgeTitle').textContent = t.badgeTitle;
       document.getElementById('txt_badgeSub').textContent = t.badgeSub;
       document.getElementById('txt_badgeStatus').textContent = t.badgeStatus;
+
+      // About
+      document.getElementById('txt_aboutEyebrow').textContent = t.aboutEyebrow;
+      document.getElementById('txt_aboutTitle').textContent = t.aboutTitle;
+      document.getElementById('txt_aboutP1').innerHTML = t.aboutP1;
+      document.getElementById('txt_aboutP2').innerHTML = t.aboutP2;
+      document.getElementById('txt_af1Title').innerHTML = `<span class="material-symbols-rounded" style="color:#00875a; font-size:20px;">speed</span> ${t.af1Title}`;
+      document.getElementById('txt_af1Desc').textContent = t.af1Desc;
+      document.getElementById('txt_af2Title').innerHTML = `<span class="material-symbols-rounded" style="color:#00875a; font-size:20px;">shield</span> ${t.af2Title}`;
+      document.getElementById('txt_af2Desc').textContent = t.af2Desc;
+      document.getElementById('txt_af3Title').innerHTML = `<span class="material-symbols-rounded" style="color:#00875a; font-size:20px;">hub</span> ${t.af3Title}`;
+      document.getElementById('txt_af3Desc').textContent = t.af3Desc;
+      document.getElementById('txt_af4Title').innerHTML = `<span class="material-symbols-rounded" style="color:#00875a; font-size:20px;">support_agent</span> ${t.af4Title}`;
+      document.getElementById('txt_af4Desc').textContent = t.af4Desc;
+
+      // POS Features
+      document.getElementById('txt_posEyebrow').textContent = t.posEyebrow;
+      document.getElementById('txt_posTitle').textContent = t.posTitle;
+      document.getElementById('txt_posSub').textContent = t.posSub;
+      document.getElementById('txt_pf1Title').textContent = t.pf1Title;
+      document.getElementById('txt_pf1Desc').textContent = t.pf1Desc;
+      document.getElementById('txt_pf2Title').textContent = t.pf2Title;
+      document.getElementById('txt_pf2Desc').textContent = t.pf2Desc;
+      document.getElementById('txt_pf3Title').textContent = t.pf3Title;
+      document.getElementById('txt_pf3Desc').textContent = t.pf3Desc;
+      document.getElementById('txt_pf4Title').textContent = t.pf4Title;
+      document.getElementById('txt_pf4Desc').textContent = t.pf4Desc;
+      document.getElementById('txt_pf5Title').textContent = t.pf5Title;
+      document.getElementById('txt_pf5Desc').textContent = t.pf5Desc;
+      document.getElementById('txt_pf6Title').textContent = t.pf6Title;
+      document.getElementById('txt_pf6Desc').textContent = t.pf6Desc;
 
       // Showcase
       document.getElementById('txt_scEyebrow').textContent = t.scEyebrow;
@@ -1683,6 +2173,21 @@
       document.getElementById('txt_pr3Title').textContent = t.pr3Title;
       document.getElementById('txt_pr3Price').innerHTML = `${t.pr3Price}<span id="txt_pr3Unit">${t.pr3Unit}</span>`;
       document.getElementById('txt_pr3Btn').textContent = t.pr3Btn;
+
+      // Contact Us
+      document.getElementById('txt_ctEyebrow').textContent = t.ctEyebrow;
+      document.getElementById('txt_ctTitle').textContent = t.ctTitle;
+      document.getElementById('txt_ctSub').textContent = t.ctSub;
+      document.getElementById('txt_c1Label').textContent = t.c1Label;
+      document.getElementById('txt_c2Label').textContent = t.c2Label;
+      document.getElementById('txt_c3Label').textContent = t.c3Label;
+      document.getElementById('txt_c4Label').textContent = t.c4Label;
+      document.getElementById('txt_c4Val').textContent = t.c4Val;
+      document.getElementById('txt_inqBadge').textContent = t.inqBadge;
+      document.getElementById('txt_inqTitle').textContent = t.inqTitle;
+      document.getElementById('txt_inqDesc').textContent = t.inqDesc;
+      document.getElementById('txt_inqBtn1').innerHTML = `<span>${t.inqBtn1}</span><span class="material-symbols-rounded">${isAr ? 'arrow_backward' : 'arrow_forward'}</span>`;
+      document.getElementById('txt_inqBtn2').innerHTML = `<span>${t.inqBtn2}</span><span class="material-symbols-rounded">send</span>`;
 
       // Bot Gateway
       document.getElementById('txt_botEyebrow').textContent = t.botEyebrow;
