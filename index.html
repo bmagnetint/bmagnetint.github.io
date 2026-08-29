@@ -60,23 +60,32 @@
     .zatca-top-banner {
       background: #004d40;
       color: #ffffff;
-      padding: 10px 20px;
-      font-size: 13px;
+      padding: 8px 16px;
+      font-size: 12.5px;
       font-weight: 700;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 12px;
+      gap: 10px;
       text-align: center;
+      line-height: 1.4;
+    }
+    @media (max-width: 600px) {
+      .zatca-top-banner {
+        font-size: 11px;
+        padding: 6px 12px;
+        gap: 6px;
+      }
     }
     .zatca-badge-pill {
       background: #00bfa5;
       color: #004d40;
       padding: 2px 8px;
       border-radius: 99px;
-      font-size: 11px;
+      font-size: 10.5px;
       font-weight: 800;
       text-transform: uppercase;
+      white-space: nowrap;
     }
 
     /* Main Square-Style Navigation Bar */
@@ -84,11 +93,17 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: rgba(255, 255, 255, 0.96);
+      background: rgba(255, 255, 255, 0.98);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--sq-border);
-      padding: 14px 24px;
+      padding: 12px 20px;
+      transition: all 0.2s ease;
+    }
+    @media (max-width: 600px) {
+      .sq-header {
+        padding: 10px 14px;
+      }
     }
     .sq-header-container {
       max-width: 1240px;
@@ -96,44 +111,64 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 20px;
+      gap: 12px;
     }
     .sq-brand {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
       text-decoration: none;
       color: var(--sq-black);
     }
     .sq-logo {
-      height: 36px;
+      height: 32px;
       width: auto;
     }
+    @media (min-width: 768px) {
+      .sq-logo {
+        height: 36px;
+      }
+    }
     .sq-brand-name {
-      font-size: 19px;
+      font-size: 18px;
       font-weight: 900;
       letter-spacing: -0.5px;
       color: var(--sq-black);
     }
+    @media (max-width: 480px) {
+      .sq-brand-name {
+        font-size: 16px;
+      }
+    }
     .sq-brand-badge {
-      font-size: 11px;
+      font-size: 10px;
       background: var(--sq-gray-10);
       color: var(--sq-gray-70);
-      padding: 2px 8px;
-      border-radius: 6px;
+      padding: 2px 6px;
+      border-radius: 4px;
       font-weight: 700;
       border: 1px solid var(--sq-border);
+    }
+    @media (max-width: 520px) {
+      .sq-brand-badge {
+        display: none;
+      }
     }
 
     .sq-nav-links {
       display: flex;
       align-items: center;
-      gap: 26px;
+      gap: 22px;
+    }
+    @media (max-width: 990px) {
+      .sq-nav-links {
+        display: none;
+      }
     }
     .sq-nav-link {
       color: var(--sq-gray-70);
       text-decoration: none;
-      font-size: 14.5px;
+      font-size: 14px;
       font-weight: 600;
       transition: color 0.15s ease;
     }
@@ -144,24 +179,65 @@
     .sq-nav-actions {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 8px;
+    }
+
+    /* Mobile Quick Navigation Bar (Horizontal Scrollable Pills) */
+    .mobile-quick-nav {
+      display: none;
+      background: #ffffff;
+      border-bottom: 1px solid var(--sq-border);
+      padding: 8px 14px;
+      overflow-x: auto;
+      white-space: nowrap;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .mobile-quick-nav::-webkit-scrollbar {
+      display: none;
+    }
+    @media (max-width: 990px) {
+      .mobile-quick-nav {
+        display: flex;
+        gap: 8px;
+      }
+    }
+    .mq-pill {
+      display: inline-block;
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--sq-gray-70);
+      background: var(--sq-gray-05);
+      border: 1px solid var(--sq-border);
+      padding: 5px 12px;
+      border-radius: 99px;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .mq-pill:hover,
+    .mq-pill:active {
+      background: var(--sq-black);
+      color: #ffffff;
+      border-color: var(--sq-black);
     }
 
     /* Language Switcher Button */
     .btn-lang-toggle {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      padding: 8px 14px;
+      gap: 4px;
+      padding: 7px 12px;
       border-radius: 8px;
       background: var(--sq-gray-10);
       border: 1px solid var(--sq-border);
       color: var(--sq-black);
-      font-size: 13px;
+      font-size: 12.5px;
       font-weight: 800;
       cursor: pointer;
       transition: all 0.2s ease;
       font-family: inherit;
+      white-space: nowrap;
+      min-height: 38px;
     }
     .btn-lang-toggle:hover {
       background: var(--sq-gray-20);
@@ -172,17 +248,19 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      padding: 10px 22px;
+      gap: 6px;
+      padding: 9px 18px;
       border-radius: 8px;
       background: var(--sq-black);
       color: var(--sq-white);
-      font-size: 14px;
+      font-size: 13.5px;
       font-weight: 700;
       text-decoration: none;
       border: 1px solid var(--sq-black);
       transition: all 0.15s ease;
       cursor: pointer;
+      white-space: nowrap;
+      min-height: 38px;
     }
     .btn-sq-primary:hover {
       background: #333333;
@@ -193,50 +271,49 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      padding: 10px 22px;
+      gap: 6px;
+      padding: 9px 18px;
       border-radius: 8px;
       background: var(--sq-white);
       color: var(--sq-black);
-      font-size: 14px;
+      font-size: 13.5px;
       font-weight: 700;
       text-decoration: none;
       border: 1px solid var(--sq-border);
       transition: all 0.15s ease;
       cursor: pointer;
+      white-space: nowrap;
+      min-height: 38px;
     }
     .btn-sq-secondary:hover {
       background: var(--sq-gray-05);
       border-color: var(--sq-gray-50);
     }
 
-    /* Container */
+    /* Container with Fluid Margins */
     .sq-container {
       max-width: 1240px;
       margin: 0 auto;
-      padding: 0 24px;
+      padding: 0 clamp(16px, 3.5vw, 24px);
     }
 
     /* ======================================================== */
     /* 1. SQUARE HERO SECTION WITH CUSTOMER IMAGE               */
     /* ======================================================== */
     .sq-hero {
-      padding: 60px 0 70px 0;
+      padding: clamp(36px, 6vw, 65px) 0 clamp(40px, 7vw, 70px) 0;
       background: #ffffff;
     }
     .sq-hero-grid {
       display: grid;
       grid-template-columns: 1.05fr 0.95fr;
-      gap: 46px;
+      gap: clamp(24px, 4vw, 46px);
       align-items: center;
     }
     @media (max-width: 960px) {
       .sq-hero-grid {
         grid-template-columns: 1fr;
-        gap: 36px;
-      }
-      .sq-nav-links {
-        display: none;
+        gap: 32px;
       }
     }
 
@@ -244,57 +321,60 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      font-size: 12.5px;
+      font-size: 12px;
       font-weight: 800;
       text-transform: uppercase;
       color: #004d40;
       letter-spacing: 0.5px;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
       background: #e0f2f1;
-      padding: 4px 12px;
+      padding: 4px 10px;
       border-radius: 6px;
     }
 
     .sq-hero-title {
-      font-size: 52px;
+      font-size: clamp(30px, 5.5vw, 52px);
       font-weight: 900;
-      line-height: 1.1;
-      letter-spacing: -1.4px;
+      line-height: 1.12;
+      letter-spacing: -1.2px;
       color: var(--sq-black);
-      margin-bottom: 20px;
-    }
-    @media (max-width: 600px) {
-      .sq-hero-title {
-        font-size: 36px;
-      }
+      margin-bottom: 16px;
     }
 
     .sq-hero-lead {
-      font-size: 18.5px;
+      font-size: clamp(15.5px, 2.2vw, 18.5px);
       color: var(--sq-gray-70);
       line-height: 1.55;
-      margin-bottom: 32px;
+      margin-bottom: 26px;
       max-width: 560px;
     }
 
     .sq-hero-ctas {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 12px;
       flex-wrap: wrap;
-      margin-bottom: 34px;
+      margin-bottom: 28px;
+    }
+    @media (max-width: 600px) {
+      .sq-hero-ctas .btn-sq-primary,
+      .sq-hero-ctas .btn-sq-secondary {
+        width: 100%;
+        min-height: 48px;
+        font-size: 15px;
+      }
     }
 
     .sq-trust-pills {
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 16px;
       flex-wrap: wrap;
-      font-size: 13px;
+      font-size: 12.5px;
       color: var(--sq-gray-70);
       font-weight: 600;
       border-top: 1px solid var(--sq-border);
-      padding-top: 20px;
+      padding-top: 18px;
     }
     .sq-trust-item {
       display: flex;
@@ -305,9 +385,9 @@
     /* Hero Visual Card */
     .sq-hero-media-card {
       position: relative;
-      border-radius: 24px;
+      border-radius: clamp(16px, 3vw, 24px);
       overflow: hidden;
-      box-shadow: 0 25px 60px rgba(0,0,0,0.12);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.1);
       border: 1px solid var(--sq-border);
     }
     .sq-hero-img {
@@ -318,54 +398,55 @@
     }
     .hero-floating-badge {
       position: absolute;
-      bottom: 20px;
-      left: 20px;
-      right: 20px;
-      background: rgba(255, 255, 255, 0.95);
+      bottom: clamp(10px, 2.5vw, 20px);
+      left: clamp(10px, 2.5vw, 20px);
+      right: clamp(10px, 2.5vw, 20px);
+      background: rgba(255, 255, 255, 0.96);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
-      border-radius: 14px;
-      padding: 14px 18px;
+      border-radius: 12px;
+      padding: clamp(10px, 2vw, 14px) clamp(12px, 2.5vw, 18px);
       border: 1px solid rgba(0,0,0,0.08);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      gap: 8px;
     }
 
     /* ======================================================== */
     /* 2. CUSTOMER & POS UI SHOWCASE SECTION                    */
     /* ======================================================== */
     .sq-ui-showcase {
-      padding: 80px 0;
+      padding: clamp(50px, 7vw, 80px) 0;
       background: var(--sq-gray-05);
       border-top: 1px solid var(--sq-border);
       border-bottom: 1px solid var(--sq-border);
     }
     .sq-showcase-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-      gap: 30px;
-      margin-top: 40px;
+      grid-template-columns: repeat(auto-fit, minmax(clamp(280px, 30vw, 360px), 1fr));
+      gap: clamp(18px, 3vw, 30px);
+      margin-top: 32px;
     }
     .sq-showcase-card {
       background: #ffffff;
       border: 1px solid var(--sq-border);
-      border-radius: 20px;
+      border-radius: 18px;
       overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.04);
       transition: all 0.25s ease;
       display: flex;
       flex-direction: column;
     }
     .sq-showcase-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 20px 45px rgba(0,0,0,0.09);
+      transform: translateY(-3px);
+      box-shadow: 0 16px 36px rgba(0,0,0,0.08);
       border-color: #000;
     }
     .sq-card-img-wrap {
       width: 100%;
-      height: 260px;
+      height: clamp(200px, 28vw, 260px);
       overflow: hidden;
       position: relative;
     }
@@ -379,70 +460,70 @@
       transform: scale(1.03);
     }
     .sq-card-body {
-      padding: 26px;
+      padding: clamp(18px, 2.5vw, 26px);
       flex: 1;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
     }
     .sq-card-tag {
-      font-size: 11.5px;
+      font-size: 11px;
       font-weight: 800;
       color: #004d40;
       background: #e0f2f1;
-      padding: 3px 10px;
-      border-radius: 6px;
+      padding: 3px 8px;
+      border-radius: 4px;
       display: inline-block;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       text-transform: uppercase;
     }
     .sq-card-title {
-      font-size: 20px;
+      font-size: clamp(18px, 2.5vw, 20px);
       font-weight: 800;
       margin-bottom: 8px;
       color: var(--sq-black);
     }
     .sq-card-desc {
-      font-size: 14px;
+      font-size: 13.5px;
       color: var(--sq-gray-70);
       line-height: 1.6;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
 
     /* ======================================================== */
     /* 3. ZATCA PHASE 2 COMPLIANCE SECTION                      */
     /* ======================================================== */
     .sq-zatca-section {
-      padding: 85px 0;
+      padding: clamp(50px, 7vw, 85px) 0;
       background: #f0fdf4;
       border-bottom: 1px solid #dcfce7;
     }
     .zatca-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 24px;
-      margin-top: 40px;
+      grid-template-columns: repeat(auto-fit, minmax(clamp(250px, 28vw, 280px), 1fr));
+      gap: clamp(16px, 2.5vw, 24px);
+      margin-top: 32px;
     }
     .zatca-card {
       background: #ffffff;
       border: 1px solid #bbf7d0;
       border-radius: 16px;
-      padding: 28px;
+      padding: clamp(20px, 2.5vw, 28px);
       box-shadow: 0 4px 15px rgba(0,0,0,0.03);
     }
     .zatca-icon {
-      font-size: 28px;
-      margin-bottom: 14px;
+      font-size: 26px;
+      margin-bottom: 12px;
       color: #166534;
     }
     .zatca-card h3 {
-      font-size: 18px;
+      font-size: 17px;
       font-weight: 800;
       color: #14532d;
       margin-bottom: 8px;
     }
     .zatca-card p {
-      font-size: 14px;
+      font-size: 13.5px;
       color: #374151;
       line-height: 1.6;
     }
@@ -451,43 +532,43 @@
     /* 4. HARDWARE & SOFTWARE ECOSYSTEM                         */
     /* ======================================================== */
     .sq-section {
-      padding: 90px 0;
+      padding: clamp(50px, 7vw, 90px) 0;
     }
     .sq-section-header {
       text-align: center;
       max-width: 720px;
-      margin: 0 auto 50px auto;
+      margin: 0 auto clamp(30px, 4vw, 50px) auto;
     }
     .sq-section-title {
-      font-size: 38px;
+      font-size: clamp(26px, 4.5vw, 38px);
       font-weight: 900;
-      letter-spacing: -0.8px;
+      letter-spacing: -0.6px;
       color: var(--sq-black);
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
     .sq-section-sub {
-      font-size: 17px;
+      font-size: clamp(14.5px, 2vw, 17px);
       color: var(--sq-gray-70);
       line-height: 1.6;
     }
 
     .sq-hardware-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(clamp(280px, 30vw, 320px), 1fr));
+      gap: clamp(20px, 3vw, 30px);
     }
     .sq-hw-card {
       background: #ffffff;
       border: 1px solid var(--sq-border);
-      border-radius: 20px;
-      padding: 34px;
+      border-radius: 18px;
+      padding: clamp(22px, 3vw, 34px);
       transition: all 0.2s ease;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
     }
     .sq-hw-card:hover {
-      box-shadow: 0 16px 40px rgba(0,0,0,0.08);
+      box-shadow: 0 14px 35px rgba(0,0,0,0.07);
       border-color: #000;
       transform: translateY(-3px);
     }
@@ -497,40 +578,40 @@
       font-weight: 800;
       background: var(--sq-gray-10);
       color: var(--sq-gray-70);
-      padding: 3px 10px;
-      border-radius: 6px;
-      margin-bottom: 14px;
+      padding: 3px 8px;
+      border-radius: 4px;
+      margin-bottom: 12px;
       text-transform: uppercase;
     }
     .hw-title {
-      font-size: 24px;
+      font-size: clamp(20px, 2.5vw, 24px);
       font-weight: 800;
       margin-bottom: 8px;
     }
     .hw-price {
-      font-size: 32px;
+      font-size: clamp(26px, 3.5vw, 32px);
       font-weight: 900;
       font-family: 'JetBrains Mono', monospace;
       color: var(--sq-black);
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
     .hw-price span {
-      font-size: 14px;
+      font-size: 13.5px;
       color: var(--sq-gray-70);
       font-weight: 600;
     }
     .hw-features {
       list-style: none;
-      margin: 0 0 24px 0;
+      margin: 0 0 20px 0;
       padding: 0;
-      font-size: 14px;
+      font-size: 13.5px;
       color: var(--sq-gray-70);
       line-height: 1.8;
     }
     .hw-features li {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
     }
 
     /* ======================================================== */
@@ -538,44 +619,44 @@
     /* ======================================================== */
     .sq-pricing-section {
       background: var(--sq-gray-05);
-      padding: 90px 0;
+      padding: clamp(50px, 7vw, 90px) 0;
       border-top: 1px solid var(--sq-border);
       border-bottom: 1px solid var(--sq-border);
     }
     .sq-pricing-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 28px;
+      grid-template-columns: repeat(auto-fit, minmax(clamp(280px, 30vw, 300px), 1fr));
+      gap: clamp(20px, 3vw, 28px);
     }
     .sq-price-card {
       background: #ffffff;
       border: 1px solid var(--sq-border);
-      border-radius: 20px;
-      padding: 36px;
+      border-radius: 18px;
+      padding: clamp(24px, 3vw, 36px);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
     }
     .sq-price-card.featured {
       border: 2px solid var(--sq-black);
-      box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.08);
       position: relative;
     }
     .featured-tag {
       position: absolute;
       top: -12px;
-      left: 32px;
+      left: 24px;
       background: var(--sq-black);
       color: #fff;
-      font-size: 11px;
+      font-size: 10.5px;
       font-weight: 800;
-      padding: 4px 12px;
+      padding: 4px 10px;
       border-radius: 99px;
       text-transform: uppercase;
     }
     html[dir="rtl"] .featured-tag {
       left: auto;
-      right: 32px;
+      right: 24px;
     }
 
     /* ======================================================== */
@@ -584,25 +665,36 @@
     .sq-bot-gateway {
       background: var(--sq-black);
       color: #ffffff;
-      border-radius: 24px;
-      padding: 48px;
-      margin: 60px 0;
+      border-radius: clamp(16px, 3vw, 24px);
+      padding: clamp(28px, 4vw, 48px);
+      margin: clamp(40px, 5vw, 60px) 0;
       display: flex;
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
-      gap: 30px;
+      gap: 24px;
+    }
+    @media (max-width: 768px) {
+      .sq-bot-gateway {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 28px 20px;
+      }
+      .sq-bot-gateway .btn-sq-secondary {
+        width: 100%;
+        min-height: 48px;
+      }
     }
     .sq-bot-left {
       max-width: 650px;
     }
     .sq-bot-left h2 {
-      font-size: 30px;
+      font-size: clamp(22px, 3.5vw, 30px);
       font-weight: 900;
       margin-bottom: 10px;
     }
     .sq-bot-left p {
-      font-size: 15px;
+      font-size: 14.5px;
       color: #a3a3a3;
       line-height: 1.6;
     }
@@ -612,22 +704,23 @@
     /* ======================================================== */
     .sq-faq-item {
       border-bottom: 1px solid var(--sq-border);
-      padding: 22px 0;
+      padding: 18px 0;
     }
     .sq-faq-q {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 17px;
+      font-size: clamp(15px, 2.2vw, 17px);
       font-weight: 800;
       cursor: pointer;
       color: var(--sq-black);
+      gap: 12px;
     }
     .sq-faq-a {
-      font-size: 15px;
+      font-size: 14px;
       color: var(--sq-gray-70);
       line-height: 1.65;
-      margin-top: 12px;
+      margin-top: 10px;
       display: none;
     }
     .sq-faq-item.active .sq-faq-a {
@@ -644,26 +737,32 @@
     .sq-footer {
       background: #ffffff;
       border-top: 1px solid var(--sq-border);
-      padding: 60px 0 30px 0;
-      font-size: 13.5px;
+      padding: clamp(40px, 5vw, 60px) 0 30px 0;
+      font-size: 13px;
       color: var(--sq-gray-70);
     }
     .sq-footer-grid {
       display: grid;
       grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 40px;
-      margin-bottom: 40px;
+      gap: clamp(24px, 3vw, 40px);
+      margin-bottom: 36px;
     }
-    @media (max-width: 800px) {
+    @media (max-width: 860px) {
       .sq-footer-grid {
         grid-template-columns: 1fr 1fr;
       }
     }
+    @media (max-width: 520px) {
+      .sq-footer-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+    }
     .sq-footer-col h4 {
-      font-size: 14px;
+      font-size: 13.5px;
       font-weight: 800;
       color: var(--sq-black);
-      margin-bottom: 16px;
+      margin-bottom: 14px;
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
@@ -673,7 +772,7 @@
       margin: 0;
     }
     .sq-footer-col li {
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
     .sq-footer-col a {
       color: var(--sq-gray-70);
@@ -724,6 +823,16 @@
     </div>
   </header>
 
+  <!-- Mobile Quick Jump Bar -->
+  <div class="mobile-quick-nav">
+    <a href="#overview" class="mq-pill" id="mq_overview">Overview</a>
+    <a href="#showcase" class="mq-pill" id="mq_showcase">Customer UI</a>
+    <a href="#zatca" class="mq-pill" id="mq_zatca">ZATCA Phase 2</a>
+    <a href="#hardware" class="mq-pill" id="mq_hardware">Hardware (SAR)</a>
+    <a href="#pricing" class="mq-pill" id="mq_pricing">Pricing</a>
+    <a href="#faq" class="mq-pill" id="mq_faq">FAQ</a>
+  </div>
+
   <!-- ======================================================== -->
   <!-- 1. SQUARE HERO SECTION WITH CUSTOMER PAYMENT PHOTO       -->
   <!-- ======================================================== -->
@@ -746,11 +855,11 @@
           </p>
 
           <div class="sq-hero-ctas">
-            <a href="https://wa.me/919495097786?text=Hello%20B-Magnet%20POS%20Team%2C%20I%20want%20to%20start%20free%20with%20B-Magnet%20POS%20for%20my%20business%20in%20Saudi%20Arabia." target="_blank" rel="noopener noreferrer" class="btn-sq-primary" style="padding: 14px 30px; font-size: 15px;" id="txt_heroStartFree">
+            <a href="https://wa.me/919495097786?text=Hello%20B-Magnet%20POS%20Team%2C%20I%20want%20to%20start%20free%20with%20B-Magnet%20POS%20for%20my%20business%20in%20Saudi%20Arabia." target="_blank" rel="noopener noreferrer" class="btn-sq-primary" id="txt_heroStartFree">
               <span>Start Free with B-Magnet POS</span>
               <span class="material-symbols-rounded" style="font-size: 18px;">arrow_forward</span>
             </a>
-            <a href="https://wa.me/919495097786?text=Hello%20B-Magnet%20POS%20Team%2C%20I%20want%20to%20setup%20ZATCA%20Phase%202%20POS%20for%20my%20business%20in%20Saudi%20Arabia." target="_blank" rel="noopener noreferrer" class="btn-sq-secondary" style="padding: 14px 26px; font-size: 15px;" id="txt_heroContactSales">
+            <a href="https://wa.me/919495097786?text=Hello%20B-Magnet%20POS%20Team%2C%20I%20want%20to%20setup%20ZATCA%20Phase%202%20POS%20for%20my%20business%20in%20Saudi%20Arabia." target="_blank" rel="noopener noreferrer" class="btn-sq-secondary" id="txt_heroContactSales">
               <span>Contact Sales (WhatsApp)</span>
               <span class="material-symbols-rounded" style="font-size: 18px;">chat</span>
             </a>
@@ -777,14 +886,14 @@
           <img src="/images/saudi_pos_handheld_customer.jpg" alt="Saudi Customer paying with mada NFC on B-Magnet POS Terminal" class="sq-hero-img">
           
           <div class="hero-floating-badge">
-            <div style="display: flex; align-items: center; gap: 10px;">
-              <span class="material-symbols-rounded" style="color: #166534; font-size: 24px;">contactless</span>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span class="material-symbols-rounded" style="color: #166534; font-size: 22px;">contactless</span>
               <div>
-                <strong style="font-size: 13.5px; color: var(--sq-black); display: block;" id="txt_badgeTitle">mada & Apple Pay NFC Tap</strong>
-                <span style="font-size: 11.5px; color: var(--sq-gray-70);" id="txt_badgeSub">Sub-2.4s Instant Settlement • 15% VAT Included</span>
+                <strong style="font-size: 12.5px; color: var(--sq-black); display: block;" id="txt_badgeTitle">mada & Apple Pay NFC Tap</strong>
+                <span style="font-size: 11px; color: var(--sq-gray-70);" id="txt_badgeSub">Sub-2.4s Instant Settlement • 15% VAT</span>
               </div>
             </div>
-            <span style="font-size: 12px; font-weight: 800; color: #166534; background: #e0f2f1; padding: 4px 8px; border-radius: 6px;" class="font-mono" id="txt_badgeStatus">APPROVED</span>
+            <span style="font-size: 11.5px; font-weight: 800; color: #166534; background: #e0f2f1; padding: 4px 8px; border-radius: 6px;" class="font-mono" id="txt_badgeStatus">APPROVED</span>
           </div>
         </div>
 
@@ -937,7 +1046,7 @@
           <div>
             <span class="hw-badge" id="txt_hw1Badge">Handheld & Portable</span>
             <h3 class="hw-title" id="txt_hw1Title">B-Magnet Terminal</h3>
-            <p style="font-size: 14px; color: var(--sq-gray-70); margin-bottom: 16px;" id="txt_hw1Desc">All-in-one handheld POS with built-in thermal printer, NFC mada tap, and 4G / Wi-Fi connectivity.</p>
+            <p style="font-size: 13.5px; color: var(--sq-gray-70); margin-bottom: 14px;" id="txt_hw1Desc">All-in-one handheld POS with built-in thermal printer, NFC mada tap, and 4G / Wi-Fi connectivity.</p>
             <div class="hw-price" id="txt_hw1Price">599 SAR <span id="txt_hw1PriceSub">(ر.س ٥٩٩)</span></div>
             <ul class="hw-features" id="txt_hw1Feats">
               <li><span class="material-symbols-rounded" style="color: #166534; font-size: 18px;">check</span> 5.5" HD Touchscreen</li>
@@ -956,7 +1065,7 @@
           <div>
             <span class="hw-badge" style="background: #e0f2f1; color: #004d40;" id="txt_hw2Badge">Flagship Countertop</span>
             <h3 class="hw-title" id="txt_hw2Title">B-Magnet Register</h3>
-            <p style="font-size: 14px; color: var(--sq-gray-70); margin-bottom: 16px;" id="txt_hw2Desc">Dual-screen complete countertop solution with dedicated customer-facing display and cash drawer support.</p>
+            <p style="font-size: 13.5px; color: var(--sq-gray-70); margin-bottom: 14px;" id="txt_hw2Desc">Dual-screen complete countertop solution with dedicated customer-facing display and cash drawer support.</p>
             <div class="hw-price" id="txt_hw2Price">1,899 SAR <span id="txt_hw2PriceSub">(ر.س ١,٨٩٩)</span></div>
             <ul class="hw-features" id="txt_hw2Feats">
               <li><span class="material-symbols-rounded" style="color: #166534; font-size: 18px;">check</span> Dual 15.6" + 10.1" Customer Screens</li>
@@ -975,7 +1084,7 @@
           <div>
             <span class="hw-badge" id="txt_hw3Badge">Zero Hardware Cost</span>
             <h3 class="hw-title" id="txt_hw3Title">B-Magnet Web POS</h3>
-            <p style="font-size: 14px; color: var(--sq-gray-70); margin-bottom: 16px;" id="txt_hw3Desc">Run B-Magnet POS directly inside your smartphone or PC browser with digital SMS/WhatsApp e-invoices.</p>
+            <p style="font-size: 13.5px; color: var(--sq-gray-70); margin-bottom: 14px;" id="txt_hw3Desc">Run B-Magnet POS directly inside your smartphone or PC browser with digital SMS/WhatsApp e-invoices.</p>
             <div class="hw-price" id="txt_hw3Price">0 SAR <span id="txt_hw3PriceSub">(FREE)</span></div>
             <ul class="hw-features" id="txt_hw3Feats">
               <li><span class="material-symbols-rounded" style="color: #166534; font-size: 18px;">check</span> Works on iPhone, Android, iPad & PC</li>
@@ -1009,12 +1118,12 @@
         <!-- Plan 1: Pay As You Go -->
         <div class="sq-price-card">
           <div>
-            <span style="font-size: 13px; font-weight: 800; color: var(--sq-gray-70); text-transform: uppercase;" id="txt_pr1Tag">Standard Account</span>
-            <h3 style="font-size: 24px; font-weight: 800; margin: 6px 0 14px 0;" id="txt_pr1Title">Pay As You Go</h3>
-            <div style="font-size: 38px; font-weight: 900; font-family: 'JetBrains Mono'; margin-bottom: 20px;" id="txt_pr1Price">
-              0 SAR <span style="font-size: 14px; color: var(--sq-gray-70); font-weight: 600;" id="txt_pr1Unit">/ month</span>
+            <span style="font-size: 12.5px; font-weight: 800; color: var(--sq-gray-70); text-transform: uppercase;" id="txt_pr1Tag">Standard Account</span>
+            <h3 style="font-size: 22px; font-weight: 800; margin: 6px 0 12px 0;" id="txt_pr1Title">Pay As You Go</h3>
+            <div style="font-size: 34px; font-weight: 900; font-family: 'JetBrains Mono'; margin-bottom: 18px;" id="txt_pr1Price">
+              0 SAR <span style="font-size: 13.5px; color: var(--sq-gray-70); font-weight: 600;" id="txt_pr1Unit">/ month</span>
             </div>
-            <ul style="list-style: none; padding: 0; margin: 0 0 28px 0; font-size: 14px; color: var(--sq-gray-70); line-height: 1.9;" id="txt_pr1Feats">
+            <ul style="list-style: none; padding: 0; margin: 0 0 24px 0; font-size: 13.5px; color: var(--sq-gray-70); line-height: 1.8;" id="txt_pr1Feats">
               <li>✓ <strong>0.8% + 0.50 SAR</strong> per mada transaction</li>
               <li>✓ Free ZATCA Phase 2 E-Invoicing</li>
               <li>✓ Unlimited Products & Items</li>
@@ -1028,12 +1137,12 @@
         <div class="sq-price-card featured">
           <span class="featured-tag" id="txt_pr2Badge">MOST POPULAR</span>
           <div>
-            <span style="font-size: 13px; font-weight: 800; color: #004d40; text-transform: uppercase;" id="txt_pr2Tag">Retail & Dining Plus</span>
-            <h3 style="font-size: 24px; font-weight: 800; margin: 6px 0 14px 0;" id="txt_pr2Title">B-Magnet Plus</h3>
-            <div style="font-size: 38px; font-weight: 900; font-family: 'JetBrains Mono'; margin-bottom: 20px;" id="txt_pr2Price">
-              149 SAR <span style="font-size: 14px; color: var(--sq-gray-70); font-weight: 600;" id="txt_pr2Unit">/ month</span>
+            <span style="font-size: 12.5px; font-weight: 800; color: #004d40; text-transform: uppercase;" id="txt_pr2Tag">Retail & Dining Plus</span>
+            <h3 style="font-size: 22px; font-weight: 800; margin: 6px 0 12px 0;" id="txt_pr2Title">B-Magnet Plus</h3>
+            <div style="font-size: 34px; font-weight: 900; font-family: 'JetBrains Mono'; margin-bottom: 18px;" id="txt_pr2Price">
+              149 SAR <span style="font-size: 13.5px; color: var(--sq-gray-70); font-weight: 600;" id="txt_pr2Unit">/ month</span>
             </div>
-            <ul style="list-style: none; padding: 0; margin: 0 0 28px 0; font-size: 14px; color: var(--sq-gray-70); line-height: 1.9;" id="txt_pr2Feats">
+            <ul style="list-style: none; padding: 0; margin: 0 0 24px 0; font-size: 13.5px; color: var(--sq-gray-70); line-height: 1.8;" id="txt_pr2Feats">
               <li>✓ <strong>0.6% + 0.35 SAR</strong> reduced transaction fee</li>
               <li>✓ Multi-Branch & Warehouse Inventory</li>
               <li>✓ Advanced ZATCA B2B & B2C Reporting</li>
@@ -1046,12 +1155,12 @@
         <!-- Plan 3: Enterprise -->
         <div class="sq-price-card">
           <div>
-            <span style="font-size: 13px; font-weight: 800; color: var(--sq-gray-70); text-transform: uppercase;" id="txt_pr3Tag">Multi-Store Chains</span>
-            <h3 style="font-size: 24px; font-weight: 800; margin: 6px 0 14px 0;" id="txt_pr3Title">Enterprise Custom</h3>
-            <div style="font-size: 38px; font-weight: 900; font-family: 'JetBrains Mono'; margin-bottom: 20px;" id="txt_pr3Price">
-              Custom <span style="font-size: 14px; color: var(--sq-gray-70); font-weight: 600;" id="txt_pr3Unit">rates</span>
+            <span style="font-size: 12.5px; font-weight: 800; color: var(--sq-gray-70); text-transform: uppercase;" id="txt_pr3Tag">Multi-Store Chains</span>
+            <h3 style="font-size: 22px; font-weight: 800; margin: 6px 0 12px 0;" id="txt_pr3Title">Enterprise Custom</h3>
+            <div style="font-size: 34px; font-weight: 900; font-family: 'JetBrains Mono'; margin-bottom: 18px;" id="txt_pr3Price">
+              Custom <span style="font-size: 13.5px; color: var(--sq-gray-70); font-weight: 600;" id="txt_pr3Unit">rates</span>
             </div>
-            <ul style="list-style: none; padding: 0; margin: 0 0 28px 0; font-size: 14px; color: var(--sq-gray-70); line-height: 1.9;" id="txt_pr3Feats">
+            <ul style="list-style: none; padding: 0; margin: 0 0 24px 0; font-size: 13.5px; color: var(--sq-gray-70); line-height: 1.8;" id="txt_pr3Feats">
               <li>✓ Custom Interchange Plus Fee Structure</li>
               <li>✓ Dedicated ERP (SAP / Odoo / Oracle) API</li>
               <li>✓ Custom Hardware Deployment for 10+ Stores</li>
@@ -1071,16 +1180,16 @@
   <div class="sq-container">
     <div class="sq-bot-gateway">
       <div class="sq-bot-left">
-        <span style="font-size: 12px; font-weight: 800; color: #00f2fe; text-transform: uppercase; display: inline-flex; align-items: center; gap: 6px; margin-bottom: 8px;">
-          <span class="material-symbols-rounded" style="font-size: 18px;">smart_toy</span>
+        <span style="font-size: 11.5px; font-weight: 800; color: #00f2fe; text-transform: uppercase; display: inline-flex; align-items: center; gap: 6px; margin-bottom: 6px;">
+          <span class="material-symbols-rounded" style="font-size: 16px;">smart_toy</span>
           <span id="txt_botEyebrow">B-Magnet Labs Algorithmic Trading</span>
         </span>
         <h2 id="txt_botTitle">Looking for our Algorithmic Trading Systems?</h2>
         <p id="txt_botDesc">Access our institutional MetaTrader 5 Expert Advisors, Gold Hunter EA Pro v1.21 live trading feeds, and verified performance statistics on our dedicated trading bots platform.</p>
       </div>
 
-      <div>
-        <a href="/bot" class="btn-sq-secondary" style="background: #ffffff; color: #000000; font-size: 15px; font-weight: 800; padding: 14px 28px;" id="txt_botBtn">
+      <div style="width: 100%; max-width: 320px;">
+        <a href="/bot" class="btn-sq-secondary" style="background: #ffffff; color: #000000; font-size: 14.5px; font-weight: 800; padding: 12px 24px; width: 100%;" id="txt_botBtn">
           <span>Explore Trading Bots Platform →</span>
         </a>
       </div>
@@ -1152,7 +1261,7 @@
             <img src="/images/b-magnet-emblem.png" alt="B-Magnet Logo" style="height: 28px;">
             <strong style="font-size: 18px; color: var(--sq-black);">B-Magnet POS</strong>
           </div>
-          <p style="font-size: 13.5px; color: var(--sq-gray-70); line-height: 1.6; max-width: 320px; margin-bottom: 16px;" id="txt_ftDesc">
+          <p style="font-size: 13.5px; color: var(--sq-gray-70); line-height: 1.6; max-width: 320px; margin-bottom: 14px;" id="txt_ftDesc">
             Next-generation Point-of-Sale, ZATCA Phase 2 E-Invoicing & Merchant Settlement Systems for the Kingdom of Saudi Arabia.
           </p>
           <span style="font-size: 12px; color: #166534; font-weight: 700;" id="txt_ftBadge">🟢 ZATCA Phase 2 Fatoora Certified</span>
@@ -1191,7 +1300,7 @@
 
       </div>
 
-      <div style="border-top: 1px solid var(--sq-border); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; font-size: 12.5px;">
+      <div style="border-top: 1px solid var(--sq-border); padding-top: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; font-size: 12px;">
         <span id="txt_ftCopy">&copy; 2026 B-Magnet POS Systems Inc. All rights reserved. Kingdom of Saudi Arabia.</span>
         <span id="txt_ftPhase">ZATCA Compliant E-Invoicing Platform (مرحلة الربط والتكامل)</span>
       </div>
@@ -1214,6 +1323,12 @@
         navFaq: "FAQ",
         langToggle: "🇸🇦 العربية",
         btnGetStarted: "Get Started",
+        mqOverview: "Overview",
+        mqShowcase: "Customer UI",
+        mqZatca: "ZATCA Phase 2",
+        mqHardware: "Hardware (SAR)",
+        mqPricing: "Pricing",
+        mqFaq: "FAQ",
         heroEyebrow: "Kingdom of Saudi Arabia • ZATCA Certified",
         heroTitle: "The point of sale that powers every kind of business.",
         heroLead: "B-Magnet POS is built to run retail stores, restaurants, cafes, and e-commerce across Saudi Arabia. Complete with ZATCA Phase 2 e-invoicing clearance, 15% VAT calculation, mada contactless payments, and instant settlement.",
@@ -1325,6 +1440,12 @@
         navFaq: "الأسئلة الشائعة",
         langToggle: "🇺🇸 English",
         btnGetStarted: "ابدأ الآن",
+        mqOverview: "نظرة عامة",
+        mqShowcase: "واجهات العملاء",
+        mqZatca: "المرحلة الثانية",
+        mqHardware: "الأجهزة (ريال)",
+        mqPricing: "الأسعار",
+        mqFaq: "الأسئلة الشائعة",
         heroEyebrow: "المملكة العربية السعودية • معتمد من هيئة الزكاة والضريبة والجمارك",
         heroTitle: "نظام نقاط البيع والفوترة الذكي لكل أنواع الأعمال والأنشطة.",
         heroLead: "تم تصميم بي ماجنت POS لإدارة المتاجر والمطاعم والمقاهي والشركات في المملكة العربية السعودية بكل سهولة. متكامل تماماً مع الفوترة الإلكترونية المرحلة الثانية (فاتورة)، واحتساب الضريبة 15%، ومدفوعات مدى وآبل باي بدون تأخير.",
@@ -1450,6 +1571,14 @@
       document.getElementById('txt_navFaq').textContent = t.navFaq;
       document.getElementById('langToggleBtn').innerHTML = `<span>${t.langToggle}</span>`;
       document.getElementById('txt_btnGetStarted').innerHTML = `<span>${t.btnGetStarted}</span>`;
+
+      // Mobile Quick Nav
+      document.getElementById('mq_overview').textContent = t.mqOverview;
+      document.getElementById('mq_showcase').textContent = t.mqShowcase;
+      document.getElementById('mq_zatca').textContent = t.mqZatca;
+      document.getElementById('mq_hardware').textContent = t.mqHardware;
+      document.getElementById('mq_pricing').textContent = t.mqPricing;
+      document.getElementById('mq_faq').textContent = t.mqFaq;
 
       // Hero
       document.getElementById('txt_heroEyebrow').textContent = t.heroEyebrow;
