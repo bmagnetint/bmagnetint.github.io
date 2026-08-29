@@ -806,6 +806,119 @@
     }
 
     /* ======================================================== */
+    /* 4.5. COMPACT DETAILED CAFE POS EXPERIENCE PANEL          */
+    /* ======================================================== */
+    .sq-cafe-experience-panel {
+      background: linear-gradient(135deg, #022c22 0%, #064e3b 50%, #022c22 100%);
+      border: 1.5px solid rgba(0, 220, 130, 0.35);
+      border-radius: 24px;
+      padding: clamp(24px, 4vw, 38px);
+      box-shadow: 0 20px 50px rgba(2, 44, 34, 0.35), inset 0 1px 2px rgba(255, 255, 255, 0.15);
+      color: #ffffff;
+      margin: clamp(28px, 4vw, 50px) auto;
+      position: relative;
+      overflow: hidden;
+    }
+    .sq-cafe-exp-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: clamp(20px, 3.5vw, 36px);
+      align-items: center;
+    }
+    @media (max-width: 900px) {
+      .sq-cafe-exp-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .cafe-feature-pills {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin: 18px 0;
+    }
+    @media (max-width: 580px) {
+      .cafe-feature-pills {
+        grid-template-columns: 1fr;
+      }
+    }
+    .cafe-pill-item {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(0, 220, 130, 0.22);
+      border-radius: 12px;
+      padding: 10px 12px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    .cafe-pill-icon {
+      color: #00ffa2;
+      font-size: 20px;
+      margin-top: 1px;
+      flex-shrink: 0;
+    }
+    .cafe-pill-title {
+      font-size: 13px;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 2px;
+    }
+    .cafe-pill-desc {
+      font-size: 11.5px;
+      color: #cbd5e1;
+      line-height: 1.4;
+    }
+    .cafe-preview-wrap {
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.5);
+      border: 1.5px solid rgba(0, 220, 130, 0.35);
+      background: #000;
+      transition: transform 0.25s ease, border-color 0.25s ease;
+    }
+    .cafe-preview-wrap:hover {
+      transform: translateY(-2px);
+      border-color: #00ffa2;
+    }
+    .cafe-preview-wrap img {
+      width: 100%;
+      height: 100%;
+      max-height: 250px;
+      object-fit: cover;
+      display: block;
+    }
+    .cafe-preview-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.8) 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 16px;
+    }
+    .btn-launch-cafe {
+      background: #00dc82;
+      color: #022c22;
+      font-weight: 800;
+      font-size: 14px;
+      padding: 11px 22px;
+      border-radius: 10px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      box-shadow: 0 6px 20px rgba(0, 220, 130, 0.35);
+    }
+    .btn-launch-cafe:hover {
+      background: #00ffa2;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0, 220, 130, 0.5);
+    }
+
+    /* ======================================================== */
     /* 7. PRICING IN SAUDI RIYAL (SAR / ر.س)                     */
     /* ======================================================== */
     .sq-pricing-section {
@@ -1050,7 +1163,6 @@
       </a>
 
       <nav class="sq-nav-links">
-        <a href="/experience/" class="sq-nav-link" id="txt_navExperience" style="color: #00875a; font-weight: 800;"><span class="pulse-dot" style="display:inline-block; width:6px; height:6px; margin-right:4px; vertical-align:middle;"></span>Live Cafe Demo</a>
         <a href="#about" class="sq-nav-link" id="txt_navAbout">About Us</a>
         <a href="#pos-features" class="sq-nav-link" id="txt_navPos">POS System</a>
         <a href="#showcase" class="sq-nav-link" id="txt_navShowcase">Customer UI</a>
@@ -1067,10 +1179,6 @@
           <span>🇸🇦 العربية</span>
         </button>
 
-        <a href="/experience/" class="btn-sq-secondary" id="txt_navDemoBtn" style="border-color: #00875a; color: #00875a; background: #e0f2f1; font-weight: 800;">
-          <span>☕ Live Demo</span>
-        </a>
-
         <a href="https://wa.me/919495097786?text=Hello%20B-Magnet%20POS%20Team%2C%20I%20want%20to%20get%20started%20with%20B-Magnet%20POS%20for%20my%20business%20in%20Saudi%20Arabia." target="_blank" rel="noopener noreferrer" class="btn-sq-primary" id="txt_btnGetStarted">
           <span>Get Started</span>
         </a>
@@ -1080,7 +1188,6 @@
 
   <!-- Mobile Quick Jump Bar -->
   <div class="mobile-quick-nav">
-    <a href="/experience/" class="mq-pill" id="mq_experience" style="background:#e0f2f1; color:#004d40; font-weight:800;">☕ Live Cafe Demo</a>
     <a href="#about" class="mq-pill" id="mq_about">About B-Magnet</a>
     <a href="#pos-features" class="mq-pill" id="mq_pos">POS System</a>
     <a href="#showcase" class="mq-pill" id="mq_showcase">Customer UI</a>
@@ -1352,53 +1459,89 @@
   </section>
 
   <!-- ======================================================== -->
-  <!-- 4.5. INTERACTIVE LIVE CAFE POS DEMO BANNER               -->
+  <!-- 4.5. DETAILED INTERACTIVE CAFE POS EXPERIENCE PANEL      -->
   <!-- ======================================================== -->
-  <section class="sq-section" style="background: linear-gradient(135deg, #00362c 0%, #001f18 100%); color: #ffffff; padding: clamp(44px, 6vw, 75px) 0; border-top: 1px solid rgba(0, 191, 165, 0.25); border-bottom: 1px solid rgba(0, 191, 165, 0.25); position: relative; overflow: hidden;" id="experience">
-    <div class="arabic-pattern-hero-watermark" style="opacity: 0.35;" aria-hidden="true"></div>
-    <div class="sq-container" style="position: relative; z-index: 1;">
-      <div style="display: grid; grid-template-columns: 1.15fr 0.85fr; gap: clamp(24px, 4vw, 48px); align-items: center;">
-        
-        <div>
-          <div class="sq-eyebrow" style="background: rgba(0, 191, 165, 0.2); color: #00ffa2; border: 1px solid rgba(0, 191, 165, 0.4); margin-bottom: 14px;">
-            <span class="pulse-dot" style="background: #00ffa2; box-shadow: 0 0 8px #00ffa2;"></span>
-            <span id="txt_expBannerBadge">INTERACTIVE LIVE CAFE SIMULATOR</span>
-          </div>
+  <section class="sq-section" style="padding: 10px 0 35px 0;" id="experience">
+    <div class="sq-container">
+      <div class="sq-cafe-experience-panel">
+        <div class="arabic-pattern-hero-watermark" style="opacity: 0.25;" aria-hidden="true"></div>
+        <div class="sq-cafe-exp-grid" style="position: relative; z-index: 1;">
+          
+          <div>
+            <div class="sq-eyebrow" style="background: rgba(0, 220, 130, 0.18); color: #00ffa2; border: 1px solid rgba(0, 220, 130, 0.35); margin-bottom: 10px;">
+              <span class="pulse-dot" style="background: #00ffa2; box-shadow: 0 0 8px #00ffa2;"></span>
+              <span id="txt_expPanelBadge">LIVE CAFE POS SIMULATOR</span>
+            </div>
 
-          <h2 class="sq-section-title" style="color: #ffffff; font-size: clamp(26px, 4.5vw, 42px); line-height: 1.15; margin-bottom: 16px;" id="txt_expBannerTitle">
-            Experience Our POS Software Inside a Live Cafe.
-          </h2>
+            <h3 style="color: #ffffff; font-size: clamp(20px, 3vw, 28px); font-weight: 800; line-height: 1.25; margin-bottom: 8px;" id="txt_expPanelTitle">
+              Experience Our POS Software in a Live Saudi Cafe Setting
+            </h3>
 
-          <p style="font-size: clamp(14.5px, 2vw, 17px); color: #cbd5e1; line-height: 1.65; margin-bottom: 26px;" id="txt_expBannerDesc">
-            Try our fully functional, locally hosted Point of Sale software running on a virtual countertop register in a modern Saudi coffee shop. Add specialty coffee items, calculate 15% VAT, simulate mada contactless card taps, and generate compliant ZATCA Phase 2 Fatoora QR receipts in real time.
-          </p>
+            <p style="font-size: 13.5px; color: #cbd5e1; line-height: 1.55; margin-bottom: 14px;" id="txt_expPanelDesc">
+              Try our locally hosted cloud Point of Sale running in a realistic cafe countertop register. Test full orders, fast modifiers, mada NFC card taps, and authentic ZATCA Phase 2 Fatoora QR receipts.
+            </p>
 
-          <div style="display: flex; gap: 14px; flex-wrap: wrap;">
-            <a href="/experience/" class="btn-sq-primary" style="background: #00bfa5; color: #004d40; font-weight: 800; font-size: 15.5px; padding: 14px 28px; box-shadow: 0 8px 25px rgba(0, 191, 165, 0.4);" id="txt_expBannerBtn">
-              <span class="material-symbols-rounded" style="font-size: 22px;">point_of_sale</span>
-              <span>Launch Live Cafe POS Demo →</span>
-            </a>
-            <a href="/experience/" class="btn-sq-secondary" style="border-color: rgba(255,255,255,0.3); color: #ffffff; background: rgba(255,255,255,0.08);" id="txt_expBannerSubBtn">
-              <span>Full Screen Terminal View</span>
-            </a>
-          </div>
-        </div>
-
-        <div style="position: relative; border-radius: 20px; overflow: hidden; box-shadow: 0 25px 60px rgba(0,0,0,0.6); border: 2px solid rgba(0, 191, 165, 0.4);">
-          <a href="/experience/" style="display: block; text-decoration: none;">
-            <img src="/images/saudi_pos_countertop_register.jpg" alt="Interactive Cafe POS Machine Simulator" style="width: 100%; height: auto; display: block; transition: transform 0.3s ease;">
-            <div style="position: absolute; inset: 0; background: linear-gradient(180deg, transparent 35%, rgba(0,0,0,0.85) 100%); display: flex; align-items: flex-end; padding: clamp(14px, 2.5vw, 22px);">
-              <div style="background: rgba(0, 54, 44, 0.95); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-radius: 14px; padding: 12px 18px; border: 1px solid rgba(0, 191, 165, 0.5); display: flex; align-items: center; gap: 12px; width: 100%;">
-                <span class="material-symbols-rounded" style="color: #00ffa2; font-size: 32px;">play_circle</span>
+            <div class="cafe-feature-pills">
+              <div class="cafe-pill-item">
+                <span class="material-symbols-rounded cafe-pill-icon">coffee</span>
                 <div>
-                  <div style="color: #ffffff; font-weight: 800; font-size: 14px;" id="txt_expBannerPreviewTitle">Interactive Cafe Register Stand</div>
-                  <div style="color: #cbd5e1; font-size: 11.5px;" id="txt_expBannerPreviewSub">Click to open & test live software on screen (ZATCA QR)</div>
+                  <div class="cafe-pill-title" id="txt_expPill1Title">Specialty Coffee & Bakery</div>
+                  <div class="cafe-pill-desc" id="txt_expPill1Desc">Saudi Qahwa, Spanish Latte, Croissants & Toast</div>
+                </div>
+              </div>
+
+              <div class="cafe-pill-item">
+                <span class="material-symbols-rounded cafe-pill-icon">qr_code_scanner</span>
+                <div>
+                  <div class="cafe-pill-title" id="txt_expPill2Title">15% ZATCA Phase 2 QR</div>
+                  <div class="cafe-pill-desc" id="txt_expPill2Desc">Instant Base64 TLV encrypted Fatoora receipts</div>
+                </div>
+              </div>
+
+              <div class="cafe-pill-item">
+                <span class="material-symbols-rounded cafe-pill-icon">contactless</span>
+                <div>
+                  <div class="cafe-pill-title" id="txt_expPill3Title">mada & Apple Pay NFC</div>
+                  <div class="cafe-pill-desc" id="txt_expPill3Desc">Sub-2.4s contactless tap simulation with sound</div>
+                </div>
+              </div>
+
+              <div class="cafe-pill-item">
+                <span class="material-symbols-rounded cafe-pill-icon">receipt_long</span>
+                <div>
+                  <div class="cafe-pill-title" id="txt_expPill4Title">Thermal Paper Printer</div>
+                  <div class="cafe-pill-desc" id="txt_expPill4Desc">Interactive customer receipt with itemized VAT</div>
                 </div>
               </div>
             </div>
-          </a>
-        </div>
 
+            <div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap;">
+              <a href="/experience/" class="btn-launch-cafe" id="txt_expPanelBtn">
+                <span class="material-symbols-rounded" style="font-size: 20px;">play_circle</span>
+                <span id="txt_expPanelBtnText">Launch Cafe POS Simulator →</span>
+              </a>
+              <span style="font-size: 11.5px; color: #a7f3d0;" id="txt_expPanelNote">⚡ 100% Free Web App • No login needed</span>
+            </div>
+          </div>
+
+          <div>
+            <div class="cafe-preview-wrap">
+              <a href="/experience/" style="display: block; text-decoration: none;">
+                <img src="/images/saudi_pos_countertop_register.jpg" alt="Interactive Cafe POS Register Stand">
+                <div class="cafe-preview-overlay">
+                  <div style="display: flex; align-items: center; justify-content: space-between; gap: 10px;">
+                    <div>
+                      <div style="color: #ffffff; font-weight: 800; font-size: 13px;" id="txt_expCardTitle">Cafe Countertop Simulator</div>
+                      <div style="color: #cbd5e1; font-size: 11px;" id="txt_expCardSub">Click to launch & test live screen</div>
+                    </div>
+                    <span class="material-symbols-rounded" style="color: #00ffa2; font-size: 30px;">open_in_new</span>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+
+        </div>
       </div>
     </div>
   </section>
@@ -1942,13 +2085,21 @@
         sc3Title: "Real-Time SAR Sales & Inventory",
         sc3Desc: "Monitor live revenue in Saudi Riyal, manage multi-category inventory, track VAT liabilities, and sync automated accounting reports from any device.",
         sc3Link: "Get Free Web POS on WhatsApp →",
-        expBannerBadge: "INTERACTIVE LIVE CAFE SIMULATOR",
-        expBannerTitle: "Experience Our POS Software Inside a Live Cafe.",
-        expBannerDesc: "Try our fully functional, locally hosted Point of Sale software running on a virtual countertop register in a modern Saudi coffee shop. Add specialty coffee items, calculate 15% VAT, simulate mada contactless card taps, and generate compliant ZATCA Phase 2 Fatoora QR receipts in real time.",
-        expBannerBtn: "Launch Live Cafe POS Demo →",
-        expBannerSubBtn: "Full Screen Terminal View",
-        expBannerPreviewTitle: "Interactive Cafe Register Stand",
-        expBannerPreviewSub: "Click to open & test live software on screen (ZATCA QR)",
+        expPanelBadge: "LIVE CAFE POS SIMULATOR",
+        expPanelTitle: "Experience Our POS Software in a Live Saudi Cafe Setting",
+        expPanelDesc: "Try our locally hosted cloud Point of Sale running in a realistic cafe countertop register. Test full orders, fast modifiers, mada NFC card taps, and authentic ZATCA Phase 2 Fatoora QR receipts.",
+        expPill1Title: "Specialty Coffee & Bakery",
+        expPill1Desc: "Saudi Qahwa, Spanish Latte, Croissants & Toast",
+        expPill2Title: "15% ZATCA Phase 2 QR",
+        expPill2Desc: "Instant Base64 TLV encrypted Fatoora receipts",
+        expPill3Title: "mada & Apple Pay NFC",
+        expPill3Desc: "Sub-2.4s contactless tap simulation with sound",
+        expPill4Title: "Thermal Paper Printer",
+        expPill4Desc: "Interactive customer receipt with itemized VAT",
+        expPanelBtnText: "Launch Cafe POS Simulator →",
+        expPanelNote: "⚡ 100% Free Web App • No login needed",
+        expCardTitle: "Cafe Countertop Simulator",
+        expCardSub: "Click to launch & test live screen",
         zatcaEyebrow: "Tax Authority Compliance",
         zatcaTitle: "Approved for ZATCA Phase 2 E-Invoicing",
         zatcaSub: "B-Magnet POS is engineered in full alignment with the Zakat, Tax and Customs Authority (ZATCA / هيئة الزكاة والضريبة والجمارك) regulations for Phase 1 (Generation) and Phase 2 (Integration / الربط والتكامل).",
@@ -2123,13 +2274,21 @@
         sc3Title: "متابعة المبيعات والمخزون بالريال السعودي",
         sc3Desc: "تابع أرباحك ومبيعاتك لحظة بلحظة، وأدر أصناف المخزون، وتتبع التزاماتك الضريبية واستخرج تقارير المحاسبة المعتمدة بنقرة واحدة ومن أي جهاز.",
         sc3Link: "فعّل لوحة التحكم المجانية عبر واتساب ←",
-        expBannerBadge: "محاكي نقطة بيع المقهى المباشر",
-        expBannerTitle: "جرّب برنامج نقاط البيع التفاعلي داخل مقهى حي.",
-        expBannerDesc: "جرّب تطبيق نقاط البيع السحابي المتكامل لبي ماجنت يعمل مباشرة على شاشة كاشير كاونتر داخل مقهى سعودي عصري. أضف طلبات القهوة والمخبوزات، واحتسب ضريبة 15%، وحاكي الدفع بمدى وآبل باي بدون تلامس، وأصدر فواتير إلكترونية معتمدة برمز QR زاتكا فوري.",
-        expBannerBtn: "تشغيل تجربة كاشير المقهى ←",
-        expBannerSubBtn: "عرض الشاشة بالكامل",
-        expBannerPreviewTitle: "محطة كاشير الكاونتر التفاعلية",
-        expBannerPreviewSub: "انقر لفتح وتجربة البرنامج الفعلي على الشاشة (فاتورة زاتكا)",
+        expPanelBadge: "محاكي كاشير المقهى المباشر",
+        expPanelTitle: "جرّب برنامج نقاط البيع التفاعلي داخل مقهى سعودي حي",
+        expPanelDesc: "جرّب تطبيق نقاط البيع السحابي المتكامل لبي-ماجنت يعمل مباشرة على شاشة كاشير كاونتر داخل مقهى عصري. أضف الطلبات والمعدلات، وحاكي دفع مدى وApple Pay بدون تلامس، وأصدر فواتير إلكترونية معتمدة برمز QR زاتكا فوري.",
+        expPill1Title: "قائمة القهوة والمخبوزات",
+        expPill1Desc: "دلة قهوة سعودية، سبانش لاتيه، كرواسون وتوست",
+        expPill2Title: "باركود زاتكا المرحلة الثانية",
+        expPill2Desc: "توليد فوري لرمز QR المشفر Base64 TLV المعتمد",
+        expPill3Title: "مدى وآبل باي بدون تلامس",
+        expPill3Desc: "محاكاة دفع سريع في أقل من 2.4 ثانية مع تأثير صوتي",
+        expPill4Title: "طباعة الفواتير الحرارية",
+        expPill4Desc: "إيصال عميل تفاعلي برقم تسلسلي وحساب الضريبة 15%",
+        expPanelBtnText: "تشغيل تجربة كاشير المقهى ←",
+        expPanelNote: "⚡ تطبيق ويب مجاني 100% • بدون تسجيل دخول",
+        expCardTitle: "محطة كاشير الكاونتر التفاعلية",
+        expCardSub: "انقر لفتح وتجربة الشاشة الحية",
         zatcaEyebrow: "الامتثال لهيئة الزكاة والضريبة والجمارك",
         zatcaTitle: "معتمد ومطابق لمتطلبات الفوترة الإلكترونية (المرحلة الثانية)",
         zatcaSub: "تم تطوير نظام بي ماجنت POS ليتوافق 100% مع لوائح هيئة الزكاة والضريبة والجمارك (ZATCA) لمرحلة الإصدار (المرحلة الأولى) ومرحلة الربط والتكامل (المرحلة الثانية).",
@@ -2247,8 +2406,6 @@
 
       // Nav
       setText('txt_brandTagline', t.brandTagline);
-      setText('txt_navExperience', t.navExperience);
-      setHtml('txt_navDemoBtn', `<span>${t.navDemoBtn}</span>`);
       setText('txt_navAbout', t.navAbout);
       setText('txt_navPos', t.navPos);
       setText('txt_navShowcase', t.navShowcase);
@@ -2261,7 +2418,6 @@
       setHtml('txt_btnGetStarted', `<span>${t.btnGetStarted}</span>`);
 
       // Mobile Quick Nav
-      setText('mq_experience', t.mqExperience);
       setText('mq_about', t.mqAbout);
       setText('mq_pos', t.mqPos);
       setText('mq_showcase', t.mqShowcase);
@@ -2333,14 +2489,22 @@
       setText('txt_sc3Desc', t.sc3Desc);
       setText('txt_sc3Link', t.sc3Link);
 
-      // Interactive Cafe Banner
-      setText('txt_expBannerBadge', t.expBannerBadge);
-      setText('txt_expBannerTitle', t.expBannerTitle);
-      setText('txt_expBannerDesc', t.expBannerDesc);
-      setHtml('txt_expBannerBtn', `<span class="material-symbols-rounded" style="font-size:22px;">point_of_sale</span><span>${t.expBannerBtn}</span>`);
-      setText('txt_expBannerSubBtn', t.expBannerSubBtn);
-      setText('txt_expBannerPreviewTitle', t.expBannerPreviewTitle);
-      setText('txt_expBannerPreviewSub', t.expBannerPreviewSub);
+      // Detailed Cafe Experience Panel
+      setText('txt_expPanelBadge', t.expPanelBadge);
+      setText('txt_expPanelTitle', t.expPanelTitle);
+      setText('txt_expPanelDesc', t.expPanelDesc);
+      setText('txt_expPill1Title', t.expPill1Title);
+      setText('txt_expPill1Desc', t.expPill1Desc);
+      setText('txt_expPill2Title', t.expPill2Title);
+      setText('txt_expPill2Desc', t.expPill2Desc);
+      setText('txt_expPill3Title', t.expPill3Title);
+      setText('txt_expPill3Desc', t.expPill3Desc);
+      setText('txt_expPill4Title', t.expPill4Title);
+      setText('txt_expPill4Desc', t.expPill4Desc);
+      setHtml('txt_expPanelBtn', `<span class="material-symbols-rounded" style="font-size:20px;">play_circle</span><span id="txt_expPanelBtnText">${t.expPanelBtnText}</span>`);
+      setText('txt_expPanelNote', t.expPanelNote);
+      setText('txt_expCardTitle', t.expCardTitle);
+      setText('txt_expCardSub', t.expCardSub);
 
       // ZATCA Section
       setText('txt_zatcaEyebrow', t.zatcaEyebrow);
