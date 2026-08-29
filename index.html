@@ -54,7 +54,7 @@
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
   
-  <link rel="stylesheet" href="style.css?v=3685">
+  <link rel="stylesheet" href="style.css?v=2989">
 </head>
 <body class="theme-light">
   <!-- Google One-Tap Automatic Credentials Container -->
@@ -118,10 +118,11 @@
 
               <!-- Center Nav Links -->
               <nav class="landing-nav-links">
-                <a href="#aboutProgramSection" class="landing-nav-link">About Program</a>
-                <a href="#plansSection" class="landing-nav-link">Bot Plans</a>
+                <a href="#posHero" class="landing-nav-link">B-Magnet POS</a>
+                <a href="#posArchitecture" class="landing-nav-link">POS Architecture</a>
+                <a href="#posWorkflow" class="landing-nav-link">How It Works</a>
+                <a href="/bots/" class="landing-nav-link" style="color: #00f2fe; font-weight: 800;">Trading Bots Suite 🤖</a>
                 <a href="#gtcfxSection" class="landing-nav-link">GTCfx Broker</a>
-                <a href="#faqSection" class="landing-nav-link">Security & FAQ</a>
               </nav>
 
               <!-- Top Right Controls: Globe Language Switcher, Theme & Corner Access -->
@@ -161,344 +162,331 @@
           <!-- Landing Page Scroll Container -->
           <div class="landing-scroll-body">
             
-            <!-- HERO SECTION (FIRST ON PAGE) -->
-            <section class="landing-hero-section" id="heroSection">
+            
+            <!-- ======================================================== -->
+            <!-- 1. B-MAGNET POS HERO SECTION (FLAGSHIP ECOSYSTEM)        -->
+            <!-- ======================================================== -->
+            <section class="landing-hero-section" id="posHero">
               <div class="landing-hero-inner">
                 <div class="landing-hero-left">
                   <div class="landing-hero-badge">
                     <span class="pulse-dot" style="background:#10b981;"></span>
-                    <span>Institutional MT5 Trading Automation</span>
+                    <span>High-Speed Web3 POS & Settlement Terminal</span>
                   </div>
                   <h1 class="landing-hero-title">
-                    Automated Gold Trading Bots <br><span class="landing-text-highlight">Engineered for Maximum Precision</span>
+                    B-Magnet POS <br><span class="landing-text-highlight">Decentralized Point-of-Sale & Yield Network</span>
                   </h1>
                   <p class="landing-hero-desc">
-                    Fully automated Expert Advisor (EA) built for MetaTrader 5 (MT5). Powered by multi-timeframe liquidity confluence, real-time risk controls, and hands-off 24/5 cloud reliability on Gold (XAUUSD).
+                    The next-generation Web3 Point-of-Sale (POS) and Proof-of-Stake settlement engine. Enabling global merchants and institutional traders to accept instant USDT (BEP-20) payments, eliminate chargebacks, settle in under 2.4 seconds, and earn continuous PoS network yields.
                   </p>
 
                   <div class="landing-hero-cta-row">
                     <button type="button" class="btn-hero-primary" onclick="window.botHubApp.showSignInPage()">
-                      <span>Launch Trading App / Sign In</span>
+                      <span>Launch POS Terminal / Sign In</span>
                       <span class="material-symbols-rounded">arrow_forward</span>
                     </button>
-                    <a href="https://web.mygtc.app/login/register?ref=Y8JMgpna" target="_blank" rel="noopener noreferrer" class="btn-hero-secondary">
-                      <span>Register GTCfx MT5 Account</span>
-                      <span class="material-symbols-rounded">open_in_new</span>
+                    <a href="/bots/" class="btn-hero-secondary" style="border-color: rgba(0, 242, 254, 0.4); color: #00f2fe;">
+                      <span>Explore Trading Bots Suite →</span>
+                      <span class="material-symbols-rounded">smart_toy</span>
                     </a>
                   </div>
 
-                  <!-- 4 Live Proof Metrics -->
+                  <!-- 4 Live Proof POS Metrics -->
                   <div class="landing-metrics-grid">
                     <div class="landing-metric-card">
-                      <span class="lmc-val">89.4%</span>
-                      <span class="lmc-lbl">Verified Win Rate</span>
+                      <span class="lmc-val">&lt; 2.4s</span>
+                      <span class="lmc-lbl">Instant Settlement</span>
                     </div>
                     <div class="landing-metric-card">
-                      <span class="lmc-val">24/5</span>
-                      <span class="lmc-lbl">Continuous Auto Execution</span>
-                    </div>
-                    <div class="landing-metric-card">
-                      <span class="lmc-val">0.0 Pip</span>
-                      <span class="lmc-lbl">Raw ECN Spread (GTCfx)</span>
+                      <span class="lmc-val">~$0.03</span>
+                      <span class="lmc-lbl">Ultra-Low BSC Gas</span>
                     </div>
                     <div class="landing-metric-card">
                       <span class="lmc-val">100%</span>
-                      <span class="lmc-lbl">Direct Client Fund Control</span>
+                      <span class="lmc-lbl">Non-Custodial Control</span>
+                    </div>
+                    <div class="landing-metric-card">
+                      <span class="lmc-val">0%</span>
+                      <span class="lmc-lbl">Zero Chargeback Risk</span>
                     </div>
                   </div>
                 </div>
 
                 <div class="landing-hero-right">
-                  <!-- Interactive Glass Trading Card -->
-                  <div class="landing-showcase-card">
+                  <!-- Interactive Glass POS Terminal Showcase -->
+                  <div class="landing-showcase-card pos-terminal-card" style="border: 1.5px solid rgba(0, 242, 254, 0.35); box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 40px rgba(0, 168, 150, 0.15);">
                     <div class="lsc-header">
                       <div class="lsc-header-left">
                         <span class="bot-status-dot-live"></span>
-                        <span class="lsc-bot-tag">B-MAGNET GOLD HUNTER PRO EA</span>
+                        <span class="lsc-bot-tag" style="color: #00f2fe;">B-MAGNET SMART POS TERMINAL</span>
                       </div>
-                      <span class="lsc-badge-live">LIVE MT5</span>
-                    </div>
-                    <div class="lsc-price-row">
-                      <div class="lsc-asset">XAUUSD <span class="sub-text">Spot Gold</span></div>
-                      <div class="lsc-price font-mono">2,488.50 <span class="profit-chip">+1.42%</span></div>
+                      <span class="lsc-badge-live" style="background: rgba(16, 185, 129, 0.15); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.3);">ONLINE & READY</span>
                     </div>
                     
-                    <!-- Live Trade Triggers Feed -->
+                    <div class="pos-screen-box" style="background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(45, 155, 136, 0.3); border-radius: 16px; padding: 18px; margin: 16px 0;">
+                      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                        <span style="font-size: 11px; font-weight: 800; color: #94a3b8; text-transform: uppercase;">MERCHANT CHECKOUT</span>
+                        <span style="font-size: 11px; color: #F0B90B; font-weight: 800;">BNB Smart Chain (BEP-20)</span>
+                      </div>
+                      <div style="font-size: 32px; font-weight: 800; color: #10b981; font-family: 'JetBrains Mono', monospace; display: flex; align-items: baseline; gap: 6px;">
+                        100.00 <span style="font-size: 14px; color: #94a3b8;">USDT</span>
+                      </div>
+                      <div style="font-size: 12px; color: #cbd5e1; margin-top: 4px;">
+                        Equivalent: <strong class="font-mono">367.25 AED</strong> / <strong class="font-mono">8,340.00 INR</strong>
+                      </div>
+
+                      <div style="margin-top: 14px; display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.04); border-radius: 10px; padding: 10px 12px;">
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                          <span class="material-symbols-rounded" style="color: #10b981; font-size: 20px;">contactless</span>
+                          <span style="font-size: 12px; font-weight: 700; color: #fff;">NFC Tap & QR Ready</span>
+                        </div>
+                        <span style="font-size: 11px; color: #00f2fe; font-weight: 800;" class="font-mono">TX: VERIFIED</span>
+                      </div>
+                    </div>
+
+                    <!-- Live POS Activity Log -->
                     <div class="lsc-signal-box">
-                      <div class="lsc-sb-title">Recent Automated Algorithmic Trades</div>
+                      <div class="lsc-sb-title">Recent Point-of-Sale Transactions</div>
                       <div class="lsc-trade-item">
-                        <span class="trade-side buy">BUY</span>
-                        <span class="trade-info">XAUUSD 0.20 Lot @ 2,482.10</span>
-                        <span class="trade-profit font-mono">+$185.00</span>
+                        <span class="trade-side buy" style="background: rgba(16, 185, 129, 0.2); color: #10b981;">PAID</span>
+                        <span class="trade-info">Retail POS #4892 - 250.00 USDT</span>
+                        <span class="trade-profit font-mono" style="color: #10b981;">1.8s Settlement</span>
                       </div>
                       <div class="lsc-trade-item">
-                        <span class="trade-side buy">BUY</span>
-                        <span class="trade-info">XAUUSD 0.15 Lot @ 2,476.40</span>
-                        <span class="trade-profit font-mono">+$142.50</span>
+                        <span class="trade-side buy" style="background: rgba(16, 185, 129, 0.2); color: #10b981;">PAID</span>
+                        <span class="trade-info">E-Commerce Gateway - 900.00 USDT</span>
+                        <span class="trade-profit font-mono" style="color: #10b981;">2.1s Settlement</span>
                       </div>
                       <div class="lsc-trade-item">
-                        <span class="trade-side buy">BUY</span>
-                        <span class="trade-info">XAUUSD 0.10 Lot @ 2,471.80</span>
-                        <span class="trade-profit font-mono">+$94.20</span>
+                        <span class="trade-side buy" style="background: rgba(16, 185, 129, 0.2); color: #10b981;">PAID</span>
+                        <span class="trade-info">Staking Yield Pool - +48.50 USDT</span>
+                        <span class="trade-profit font-mono" style="color: #00f2fe;">PoS Reward</span>
                       </div>
                     </div>
 
                     <div class="lsc-bottom-features">
-                      <span class="lsc-chip">🛡️ Low Drawdown Protection</span>
-                      <span class="lsc-chip">⚡ Instant MT5 License Sync</span>
+                      <span class="lsc-chip">💳 Contactless & QR Checkout</span>
+                      <span class="lsc-chip">⚡ Sub-3s Finality</span>
                     </div>
                   </div>
                 </div>
               </div>
             </section>
 
-            <!-- INSTITUTIONAL OVERVIEW SECTION (SAME AS ALL FRAMES) -->
-            <section class="landing-section" id="companyProfileBox">
+            <!-- ======================================================== -->
+            <!-- 2. B-MAGNET POS DEEP-DIVE ARCHITECTURE & FEATURES        -->
+            <!-- ======================================================== -->
+            <section class="landing-section" id="posArchitecture">
               
-              <!-- GREEN LIVE MOVING BADGE: XAUUSD REAL NEWS, RUNNING POSITION & TREND -->
+              <!-- Real-time POS Ticker Tag -->
               <div class="cmp-header-tag xauusd-moving-badge-container" style="margin-bottom: 28px;">
                 <span class="pulse-dot" style="background:#10b981;"></span>
                 <div class="xauusd-marquee-wrapper">
                   <div class="xauusd-marquee-track">
-                    <span class="xauusd-badge-item">📅 <strong>NEXT NEWS TIME:</strong> US Flash PMIs & Powell Speech Today 13:30 UTC (High Volatility)</span>
+                    <span class="xauusd-badge-item">⚡ <strong>B-MAGNET POS TERMINAL:</strong> Instant Multi-Currency QR & NFC Crypto Settlements Live</span>
                     <span class="badge-separator">|</span>
-                    <span class="xauusd-badge-item">🟢 <strong>RUNNING POSITION:</strong> BUY 1.50 LOTS XAUUSD @ 2648.50 (Floating: +$420.50)</span>
+                    <span class="xauusd-badge-item">🟢 <strong>PROOF OF STAKE:</strong> Validator Yield Pool Distributing Daily Liquidity Rewards (BEP-20)</span>
                     <span class="badge-separator">|</span>
-                    <span class="xauusd-badge-item">🔥 <strong>GOLD MOVING TREND:</strong> Bullish Momentum Above 2640.00 Support (Target: 2665.00)</span>
+                    <span class="xauusd-badge-item">🔒 <strong>ENTERPRISE SECURITY:</strong> 100% Non-Custodial Merchant Cold Vault Settlement Architecture</span>
                     <span class="badge-separator">|</span>
-                    <span class="xauusd-badge-item">📅 <strong>NEXT NEWS TIME:</strong> US Flash PMIs & Powell Speech Today 13:30 UTC (High Volatility)</span>
+                    <span class="xauusd-badge-item">⚡ <strong>B-MAGNET POS TERMINAL:</strong> Instant Multi-Currency QR & NFC Crypto Settlements Live</span>
                     <span class="badge-separator">|</span>
-                    <span class="xauusd-badge-item">🟢 <strong>RUNNING POSITION:</strong> BUY 1.50 LOTS XAUUSD @ 2648.50 (Floating: +$420.50)</span>
-                    <span class="badge-separator">|</span>
-                    <span class="xauusd-badge-item">🔥 <strong>GOLD MOVING TREND:</strong> Bullish Momentum Above 2640.00 Support (Target: 2665.00)</span>
+                    <span class="xauusd-badge-item">🟢 <strong>PROOF OF STAKE:</strong> Validator Yield Pool Distributing Daily Liquidity Rewards (BEP-20)</span>
                   </div>
                 </div>
               </div>
 
               <div class="landing-section-header">
-                <span class="landing-section-badge">Institutional Algorithm</span>
-                <h2 class="landing-section-title">
-                  B-Magnet Gold Hunter EA v1.21
-                </h2>
+                <span class="landing-section-badge">Next-Gen Payment Technology</span>
+                <h2 class="landing-section-title">Comprehensive B-Magnet POS Details</h2>
                 <p class="landing-section-desc">
-                  Welcome to <strong>B-Magnet Labs</strong>. We are an institutional quantitative software engineering firm creating high-performance Expert Advisors (EA) for MetaTrader 5. Designed specifically for Gold (XAUUSD) trading, our proprietary algorithms deploy multi-timeframe order-flow magnetics, SHA-256 cryptographic license security, and sub-15ms execution.
+                  B-Magnet POS unites enterprise Point-of-Sale hardware, decentralized Web3 payment gateways, and high-yield Proof of Stake (PoS) consensus to provide a seamless payment infrastructure for businesses and crypto traders worldwide.
                 </p>
               </div>
 
-              <!-- 4 EXPLANATORY CARDS FOR NEW CLIENTS -->
-              <div class="cmp-features-grid">
-                <div class="cmp-card">
-                  <div class="cmp-card-icon">🏛️</div>
-                  <h4>100% Client Fund Custody</h4>
-                  <p>Your trading capital remains 100% safe in your own verified MetaTrader 5 broker account (e.g. GTCfx). We never take deposits or manage client funds directly.</p>
-                </div>
-
-                <div class="cmp-card">
-                  <div class="cmp-card-icon">🛡️</div>
-                  <h4>SHA-256 License Security</h4>
-                  <p>Each access pass generates a unique cryptographic SHA-256 license key bound directly to your specific MT5 account ID for maximum security.</p>
-                </div>
-
-                <div class="cmp-card">
-                  <div class="cmp-card-icon">⚡</div>
-                  <h4>Sub-15ms Execution Speed</h4>
-                  <p>Pre-tuned for GTCfx raw ECN liquidity servers, executing trades within sub-15ms latency with dynamic drawdown risk buffers.</p>
-                </div>
-
-                <div class="cmp-card">
-                  <div class="cmp-card-icon">📱</div>
-                  <h4>24/7 Vendor Setup Hotline</h4>
-                  <p>Direct 1-on-1 technical setup support on WhatsApp at <strong>+91 94950 97786</strong>.</p>
-                </div>
-              </div>
-
-              <!-- 🛡️ VERIFIED ORGANIZATION SSL SECURITY CERTIFICATE & BADGES -->
-              <div class="org-security-cert-banner" id="orgSecurityCertBanner">
-                <div class="org-cert-header">
-                  <div class="org-cert-badge-pulse">
-                    <span class="material-symbols-rounded cert-shield-icon">verified_user</span>
-                    <span class="cert-status-tag">VERIFIED ORGANIZATION SSL CERTIFICATE</span>
-                  </div>
-                  <div class="org-cert-issuer">Issued to: <strong>B-Magnet Labs Inc. (SHA-256 ECC CA v2)</strong></div>
-                </div>
-                <div class="org-cert-badges-grid">
-                  <div class="org-badge-item">
-                    <span class="org-badge-icon">🔒</span>
-                    <div class="org-badge-text">
-                      <strong>TLS 1.3 256-Bit Encrypted</strong>
-                      <span>Sub-15ms Secure Transport</span>
-                    </div>
-                  </div>
-                  <div class="org-badge-item">
-                    <span class="org-badge-icon">🏛️</span>
-                    <div class="org-badge-text">
-                      <strong>100% Non-Custodial Certified</strong>
-                      <span>GTCfx Capital Custody Verified</span>
-                    </div>
-                  </div>
-                  <div class="org-badge-item">
-                    <span class="org-badge-icon">🛡️</span>
-                    <div class="org-badge-text">
-                      <strong>SHA-256 License Validation</strong>
-                      <span>Strict 1-Bot Per MT5 ID</span>
-                    </div>
-                  </div>
-                  <div class="org-badge-item">
-                    <span class="org-badge-icon">✅</span>
-                    <div class="org-badge-text">
-                      <strong>Zero Security Bugs Found</strong>
-                      <span>Passed 2026 Audit (68/68 Methods)</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-            </section>
-
-            <!-- ABOUT THE PROGRAM SECTION -->
-            <section class="landing-section" id="aboutProgramSection">
-              <div class="landing-section-header">
-                <span class="landing-section-badge">Architecture & Strategy</span>
-                <h2 class="landing-section-title">All About the B-Magnet EA Program</h2>
-                <p class="landing-section-desc">
-                  Engineered with complete algorithmic transparency. You maintain 100% custody of your funds with your broker while our EA executes algorithmically on your MetaTrader 5 terminal.
-                </p>
-              </div>
-
-              <div class="landing-features-grid">
+              <!-- 6 Detailed Explanatory Cards -->
+              <div class="landing-features-grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px;">
+                
                 <div class="landing-feature-card">
-                  <div class="lfc-icon-box text-cyan">
-                    <span class="material-symbols-rounded">psychology</span>
+                  <div class="lfc-icon-box text-emerald" style="background: rgba(16, 185, 129, 0.15); color: #10b981;">
+                    <span class="material-symbols-rounded">point_of_sale</span>
                   </div>
-                  <h3 class="lfc-title">1. Institutional Order Flow</h3>
+                  <h3 class="lfc-title">1. Smart Point-of-Sale Terminal</h3>
                   <p class="lfc-desc">
-                    Identifies institutional order blocks and liquidity pools on Gold (XAUUSD), entering trades when smart money enters the market.
+                    Accept USDT (BEP-20) at any physical store, restaurant, or online business. Generates real-time dynamic QR codes, NFC contactless payments, and instant cashier confirmation screens in less than 3 seconds.
                   </p>
                 </div>
 
                 <div class="landing-feature-card">
-                  <div class="lfc-icon-box text-emerald">
-                    <span class="material-symbols-rounded">hub</span>
+                  <div class="lfc-icon-box text-cyan" style="background: rgba(0, 242, 254, 0.15); color: #00f2fe;">
+                    <span class="material-symbols-rounded">savings</span>
                   </div>
-                  <h3 class="lfc-title">2. Multi-Timeframe Confluence</h3>
+                  <h3 class="lfc-title">2. Proof of Stake (PoS) Yield Engine</h3>
                   <p class="lfc-desc">
-                    Scans M1, M5, M15, and H1 timeframes in milliseconds to verify high-probability confluence before opening a position.
+                    Merchants and traders who hold funds in the B-Magnet POS ledger automatically participate in decentralized validator fee distribution, generating daily passive staking yield without locking up capital.
                   </p>
                 </div>
 
                 <div class="landing-feature-card">
-                  <div class="lfc-icon-box text-warning">
+                  <div class="lfc-icon-box text-warning" style="background: rgba(245, 158, 11, 0.15); color: #f59e0b;">
+                    <span class="material-symbols-rounded">currency_exchange</span>
+                  </div>
+                  <h3 class="lfc-title">3. Instant Fiat & Multi-Currency Conversion</h3>
+                  <p class="lfc-desc">
+                    Display prices in USD, AED, EUR, or INR while settling natively in USDT on BNB Smart Chain. Real-time institutional forex feeds eliminate currency slippage and market volatility during checkout.
+                  </p>
+                </div>
+
+                <div class="landing-feature-card">
+                  <div class="lfc-icon-box text-blue" style="background: rgba(59, 130, 246, 0.15); color: #3b82f6;">
                     <span class="material-symbols-rounded">security</span>
                   </div>
-                  <h3 class="lfc-title">3. Dynamic Risk & Smart Scaling</h3>
+                  <h3 class="lfc-title">4. Non-Custodial Multi-Signature Security</h3>
                   <p class="lfc-desc">
-                    Micro-lot sizing calibrated to your exact balance, coupled with strict stop-losses, trailing stops, and profit locking.
+                    100% non-custodial capital protection. All payments flow directly into the merchant's private Web3 wallet address with zero intermediary hold periods, zero rolling reserves, and zero chargeback vulnerability.
                   </p>
                 </div>
 
                 <div class="landing-feature-card">
-                  <div class="lfc-icon-box text-blue">
-                    <span class="material-symbols-rounded">sync_saved_locally</span>
+                  <div class="lfc-icon-box text-emerald" style="background: rgba(16, 185, 129, 0.15); color: #10b981;">
+                    <span class="material-symbols-rounded">receipt_long</span>
                   </div>
-                  <h3 class="lfc-title">4. Instant MT5 Cloud Sync</h3>
+                  <h3 class="lfc-title">5. Automated Cloud Accounting & CRM</h3>
                   <p class="lfc-desc">
-                    Direct integration with your MetaTrader 5 account number. Validated with military-grade SHA-256 Secret Salt license security.
+                    Every transaction automatically syncs with your B-Magnet Admin Portal, Google Sheets cloud backups, and downloadable CSV financial ledgers for effortless bookkeeping and tax auditing.
                   </p>
                 </div>
+
+                <div class="landing-feature-card">
+                  <div class="lfc-icon-box text-cyan" style="background: rgba(0, 242, 254, 0.15); color: #00f2fe;">
+                    <span class="material-symbols-rounded">candlestick_chart</span>
+                  </div>
+                  <h3 class="lfc-title">6. Direct Bridge to MT5 Trading Capital</h3>
+                  <p class="lfc-desc">
+                    Transfer POS merchant balances directly into your MetaTrader 5 trading accounts with GTCfx in a single click, empowering you to automate profits with B-Magnet Gold Hunter EA bots.
+                  </p>
+                </div>
+
               </div>
             </section>
 
-            <!-- BOT PLANS & PRICING SECTION -->
-            <section class="landing-section" id="plansSection">
+            <!-- ======================================================== -->
+            <!-- 3. HOW THE B-MAGNET POS WORKFLOW OPERATES (3 STEPS)      -->
+            <!-- ======================================================== -->
+            <section class="landing-section" id="posWorkflow">
               <div class="landing-section-header">
-                <span class="landing-section-badge">Licensing & Passes</span>
-                <h2 class="landing-section-title">Select Your Trading Bot Pass</h2>
-                <p class="landing-section-desc">Transparent pricing with instant activation. Connect to live or demo MT5 accounts.</p>
+                <span class="landing-section-badge">Effortless Settlement</span>
+                <h2 class="landing-section-title">How B-Magnet POS Works</h2>
+                <p class="landing-section-desc">From payment scanning to instant settlement and staking yield in 3 straightforward steps:</p>
               </div>
 
-              <div class="landing-plans-grid">
-                <!-- 1 Month Plan -->
-                <div class="landing-plan-card popular">
-                  <div class="lpc-popular-badge">MOST POPULAR</div>
-                  <div class="lpc-header">
-                    <div class="lpc-icon-circle">🌟</div>
-                    <div>
-                      <h4 class="lpc-name">Standard Pass</h4>
-                    </div>
+              <div class="landing-features-grid" style="grid-template-columns: repeat(3, 1fr);">
+                
+                <div class="landing-feature-card" style="position: relative;">
+                  <div style="position: absolute; top: 16px; right: 20px; font-size: 32px; font-weight: 900; color: rgba(255,255,255,0.06); font-family: 'JetBrains Mono';">01</div>
+                  <div class="lfc-icon-box text-cyan">
+                    <span class="material-symbols-rounded">qr_code_scanner</span>
                   </div>
-                  <div class="lpc-price-row">
-                    <span class="lpc-price font-mono">$100</span>
-                  </div>
-                  <ul class="lpc-features-list">
-                    <li><span class="material-symbols-rounded check">check_circle</span> Full Gold EA MT5 Engine</li>
-                    <li><span class="material-symbols-rounded check">check_circle</span> 1 MT5 Live or Demo Account</li>
-                    <li><span class="material-symbols-rounded check">check_circle</span> 24/5 Automated Gold Scalping</li>
-                    <li><span class="material-symbols-rounded check">check_circle</span> Telegram Instant Trade Alerts</li>
-                  </ul>
-                  <button type="button" class="btn-plan-select btn-popular" onclick="window.botHubApp.showSignInPage()">Subscribe</button>
+                  <h3 class="lfc-title">1. Generate & Scan</h3>
+                  <p class="lfc-desc">
+                    Merchant inputs purchase amount. POS terminal generates a dynamic BEP-20 QR code or activates NFC contactless tap for customer's mobile wallet.
+                  </p>
                 </div>
 
-                <!-- 3 Months Plan -->
-                <div class="landing-plan-card">
-                  <div class="lpc-header">
-                    <div class="lpc-icon-circle">⚡</div>
-                    <div>
-                      <h4 class="lpc-name">Pro Pass</h4>
-                    </div>
+                <div class="landing-feature-card" style="position: relative;">
+                  <div style="position: absolute; top: 16px; right: 20px; font-size: 32px; font-weight: 900; color: rgba(255,255,255,0.06); font-family: 'JetBrains Mono';">02</div>
+                  <div class="lfc-icon-box text-emerald">
+                    <span class="material-symbols-rounded">verified</span>
                   </div>
-                  <div class="lpc-price-row">
-                    <span class="lpc-price font-mono">$250</span>
-                  </div>
-                  <ul class="lpc-features-list">
-                    <li><span class="material-symbols-rounded check">check_circle</span> Full MT5 Algorithm Access</li>
-                    <li><span class="material-symbols-rounded check">check_circle</span> 1 MT5 Account Binding</li>
-                    <li><span class="material-symbols-rounded check">check_circle</span> Dedicated VIP Server Routing</li>
-                    <li><span class="material-symbols-rounded check">check_circle</span> Priority Strategy & Parameter Updates</li>
-                  </ul>
-                  <button type="button" class="btn-plan-select" onclick="window.botHubApp.showSignInPage()">Subscribe</button>
+                  <h3 class="lfc-title">2. Sub-3s Blockchain Settlement</h3>
+                  <p class="lfc-desc">
+                    Payment is broadcast to the BNB Smart Chain network with sub-$0.03 gas fees. The POS screen instantly turns green with transaction confirmation.
+                  </p>
                 </div>
 
-                <!-- 1 Year Plan -->
-                <div class="landing-plan-card">
-                  <div class="lpc-header">
-                    <div class="lpc-icon-circle">👑</div>
-                    <div>
-                      <h4 class="lpc-name">VIP Institutional Pass</h4>
-                    </div>
+                <div class="landing-feature-card" style="position: relative;">
+                  <div style="position: absolute; top: 16px; right: 20px; font-size: 32px; font-weight: 900; color: rgba(255,255,255,0.06); font-family: 'JetBrains Mono';">03</div>
+                  <div class="lfc-icon-box text-warning">
+                    <span class="material-symbols-rounded">account_balance_wallet</span>
                   </div>
-                  <div class="lpc-price-row">
-                    <span class="lpc-price font-mono">$900</span>
-                  </div>
-                  <ul class="lpc-features-list">
-                    <li><span class="material-symbols-rounded check">check_circle</span> Full Institutional EA Access</li>
-                    <li><span class="material-symbols-rounded check">check_circle</span> Up to 2 MT5 Account Connections</li>
-                    <li><span class="material-symbols-rounded check">check_circle</span> Unlimited Free Broker Migrations</li>
-                    <li><span class="material-symbols-rounded check">check_circle</span> 1-on-1 Dedicated Setup & VPS Support</li>
-                  </ul>
-                  <button type="button" class="btn-plan-select" onclick="window.botHubApp.showSignInPage()">Subscribe</button>
+                  <h3 class="lfc-title">3. Instant Custody & Staking</h3>
+                  <p class="lfc-desc">
+                    Funds land directly into your secure wallet. You can immediately earn Proof-of-Stake yields, withdraw, or route liquidity to GTCfx MT5 trading bots.
+                  </p>
                 </div>
 
-                <!-- Starter Trial -->
-                <div class="landing-plan-card">
-                  <div class="lpc-header">
-                    <div class="lpc-icon-circle">🎁</div>
-                    <div>
-                      <h4 class="lpc-name">Starter Trial Pass</h4>
-                    </div>
-                  </div>
-                  <div class="lpc-price-row">
-                    <span class="lpc-price font-mono">$10</span>
-                  </div>
-                  <ul class="lpc-features-list">
-                    <li><span class="material-symbols-rounded check">check_circle</span> Test EA on Live or Demo MT5</li>
-                    <li><span class="material-symbols-rounded check">check_circle</span> 1 MT5 Account Access</li>
-                    <li><span class="material-symbols-rounded check">check_circle</span> Live Spreads & TP/SL Trade Fills</li>
-                    <li><span class="material-symbols-rounded check">check_circle</span> Instant Secret Salt License Generation</li>
-                  </ul>
-                  <button type="button" class="btn-plan-select" onclick="window.botHubApp.showSignInPage()">Subscribe</button>
-                </div>
               </div>
             </section>
+
+            <!-- ======================================================== -->
+            <!-- 4. GATEWAY SECTION: EXPLORE TRADING BOTS (DEDICATED PAGE)-->
+            <!-- ======================================================== -->
+            <section class="landing-section" id="botGatewaySection" style="background: radial-gradient(circle at 50% 50%, rgba(0, 168, 150, 0.12) 0%, rgba(14, 20, 27, 0.8) 100%); border: 1.5px solid rgba(0, 242, 254, 0.35); border-radius: 28px; padding: 40px 32px; margin-top: 40px; box-shadow: 0 20px 60px rgba(0,0,0,0.5);">
+              <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px;">
+                
+                <div style="flex: 1; min-width: 300px;">
+                  <div class="landing-hero-badge" style="margin-bottom: 14px;">
+                    <span class="pulse-dot" style="background:#00f2fe;"></span>
+                    <span>Algorithmic MetaTrader 5 Expert Advisors</span>
+                  </div>
+                  <h2 style="font-size: 28px; font-weight: 800; color: #ffffff; margin-bottom: 12px; line-height: 1.25;">
+                    Automate Your Trading with <br><span class="landing-text-highlight">B-Magnet Institutional Gold Bots</span>
+                  </h2>
+                  <p style="font-size: 14.5px; color: #94a3b8; line-height: 1.6; margin-bottom: 20px; max-width: 620px;">
+                    Looking for automated algorithmic trading systems? We have engineered proprietary MetaTrader 5 Expert Advisors (EA) including the flagship <strong>B-Magnet Gold Hunter EA Pro v1.21</strong> with verified 89.4% win rates, sub-15ms GTCfx execution, and SHA-256 license security.
+                  </p>
+
+                  <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+                    <a href="/bots/" class="btn-hero-primary" style="background: linear-gradient(135deg, #00f2fe, #00a896); color: #0e141b; text-decoration: none; font-size: 15px; font-weight: 800;">
+                      <span>Explore All Trading Bots & Passes</span>
+                      <span class="material-symbols-rounded">arrow_forward</span>
+                    </a>
+                    <a href="https://web.mygtc.app/login/register?ref=Y8JMgpna" target="_blank" rel="noopener noreferrer" class="btn-hero-secondary">
+                      <span>Register GTCfx MT5 Account</span>
+                      <span class="material-symbols-rounded">open_in_new</span>
+                    </a>
+                  </div>
+                </div>
+
+                <!-- Bot Quick Preview Pill Cards -->
+                <div style="display: flex; flex-direction: column; gap: 12px; min-width: 280px;">
+                  <a href="/bots/" style="text-decoration: none; display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; background: rgba(20, 29, 41, 0.85); border: 1px solid rgba(45, 155, 136, 0.3); border-radius: 16px; transition: transform 0.2s ease;">
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                      <span style="font-size: 24px;">🏆</span>
+                      <div>
+                        <strong style="color: #fff; font-size: 13.5px; display: block;">Gold Hunter EA Pro v1.21</strong>
+                        <span style="font-size: 11.5px; color: #10b981;">89.4% Win Rate • XAUUSD</span>
+                      </div>
+                    </div>
+                    <span class="material-symbols-rounded" style="color: #00f2fe; font-size: 20px;">chevron_right</span>
+                  </a>
+
+                  <a href="/bots/" style="text-decoration: none; display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; background: rgba(20, 29, 41, 0.85); border: 1px solid rgba(45, 155, 136, 0.3); border-radius: 16px; transition: transform 0.2s ease;">
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                      <span style="font-size: 24px;">⚡</span>
+                      <div>
+                        <strong style="color: #fff; font-size: 13.5px; display: block;">Trend Scalper AI Multi-Asset</strong>
+                        <span style="font-size: 11.5px; color: #00f2fe;">Millisecond Confluence</span>
+                      </div>
+                    </div>
+                    <span class="material-symbols-rounded" style="color: #00f2fe; font-size: 20px;">chevron_right</span>
+                  </a>
+
+                  <a href="/bots/" style="text-decoration: none; display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; background: rgba(20, 29, 41, 0.85); border: 1px solid rgba(45, 155, 136, 0.3); border-radius: 16px; transition: transform 0.2s ease;">
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                      <span style="font-size: 24px;">🛡️</span>
+                      <div>
+                        <strong style="color: #fff; font-size: 13.5px; display: block;">Institutional Grid Pro EA</strong>
+                        <span style="font-size: 11.5px; color: #f59e0b;">Low Drawdown Architecture</span>
+                      </div>
+                    </div>
+                    <span class="material-symbols-rounded" style="color: #00f2fe; font-size: 20px;">chevron_right</span>
+                  </a>
+                </div>
+
+              </div>
+            </section>
+
 
             <!-- GTCFX BROKER PARTNERSHIP SECTION -->
             <section class="landing-section" id="gtcfxSection">
@@ -2368,6 +2356,6 @@
 
   <!-- App Scripts -->
   <script src="qrcode.js"></script>
-  <script src="app.js?v=3685"></script>
+  <script src="app.js?v=2989"></script>
 </body>
 </html>

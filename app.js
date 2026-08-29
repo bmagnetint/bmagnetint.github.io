@@ -2172,9 +2172,9 @@ class BotHubApp {
   // VIEW SWITCHER & ADMIN CRM LOCK GATE (PASSCODE: 9633)
   // -------------------------------------------------------------
   switchView(viewName) {
-    // 🔐 Security Gate: Require Master Admin Passcode 9633 for CRM Database
-    if (viewName === 'database' && !this.state.isAdminUnlocked) {
-      this.promptAdminCrmLock();
+    // 🔐 Security Gate: Require Master Admin Passcodes (9633 & 298130) for Admin Portal
+    if ((viewName === 'admin' || viewName === 'database') && !this.adminUnlocked && !this.state.isAdminUnlocked) {
+      this.openAdminPasscodeModal();
       return;
     }
 
@@ -2184,7 +2184,8 @@ class BotHubApp {
       'database': 'viewDatabase',
       'creator': 'viewCreator',
       'billing': 'viewBilling',
-      'settings': 'viewSettings'
+      'settings': 'viewSettings',
+      'admin': 'viewAdmin'
     };
 
     document.querySelectorAll('.view-panel').forEach(p => p.classList.remove('active'));
@@ -2209,55 +2210,246 @@ class BotHubApp {
   }
 
   // -------------------------------------------------------------
-  // MASTER ADMIN CRM PASSCODE LOCK METHODS (CODE: 298130)
+  // MASTER ADMIN SECURITY PORTAL & OPTIONS HUB (PASSCODES: 9633 & 298130)
   // -------------------------------------------------------------
   openAdminPanelFromSettings() {
-    window.location.href = '/admin/';
+    this.openAdminPasscodeModal();
   }
 
   promptAdminCrmLock() {
-    window.location.href = '/admin/';
+    this.openAdminPasscodeModal();
   }
 
-  appendAdminPin(digit) {
-    const input = document.getElementById('crmAdminPinInput');
-    if (input && input.value.length < 6) {
-      input.value += digit;
-      if (input.value.length === 6) {
-        setTimeout(() => this.verifyAdminLockCode(), 120);
+  openAdminPasscodeModal() {
+    const p1 = document.getElementById('adminPasscode1');
+    const p2 = document.getElementById('adminPasscode2');
+    if (p1) p1.value = '';
+    if (p2) p2.value = '';
+    this.openModal('adminAuthModal');
+    if (p1) setTimeout(() => p1.focus(), 150);
+  }
+
+  async unlockAdminPortal() {
+    const p1 = document.getElementById('adminPasscode1')?.value.trim() || '';
+    const p2 = document.getElementById('adminPasscode2')?.value.trim() || '';
+
+    if (!p1 || !p2) {
+      this.showToast('Please enter both passcode lines', 'danger');
+      return;
+    }
+
+    try {
+      const res = await fetch('/api/admin/verify-passcodes', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ code1: p1, code2: p2 })
+      }).then(r => r.json());
+
+      if (res.success) {
+        this.state.isAdminUnlocked = true;
+        this.adminUnlocked = true;
+        this.closeModal('adminAuthModal');
+        this.showToast('🔓 Admin Portal Unlocked!', 'success');
+        this.startAdminLockTimer();
+        this.switchView('admin');
+        this.openAdminOption('customerledger');
+      } else {
+        this.showToast('❌ Invalid Passcodes. Access Denied.', 'danger');
+      }
+    } catch (e) {
+      if (p1 === '9633' && p2 === '298130') {
+        this.state.isAdminUnlocked = true;
+        this.adminUnlocked = true;
+        this.closeModal('adminAuthModal');
+        this.showToast('🔓 Admin Portal Unlocked!', 'success');
+        this.startAdminLockTimer();
+        this.switchView('admin');
+        this.openAdminOption('customerledger');
+      } else {
+        this.showToast('❌ Invalid Passcodes. Access Denied.', 'danger');
       }
     }
   }
 
-  clearAdminPin() {
-    const input = document.getElementById('crmAdminPinInput');
-    if (input) input.value = '';
+  startAdminLockTimer() {
+    if (this.adminLockTimer) clearTimeout(this.adminLockTimer);
+    // Lock automatically after 10 minutes (600,000 ms)
+    this.adminLockTimer = setTimeout(() => {
+      this.lockAdminPortal();
+      this.showToast('🔒 Admin session locked after 10 minutes of inactivity', 'info');
+    }, 600000);
   }
 
-  backspaceAdminPin() {
-    const input = document.getElementById('crmAdminPinInput');
-    if (input && input.value.length > 0) {
-      input.value = input.value.slice(0, -1);
+  lockAdminPortal() {
+    this.state.isAdminUnlocked = false;
+    this.adminUnlocked = false;
+    if (this.adminLockTimer) clearTimeout(this.adminLockTimer);
+    this.switchView('explore');
+    this.showToast('🔒 Admin panel locked', 'info');
+  }
+
+  async openAdminOption(option) {
+    if (!this.adminUnlocked && !this.state.isAdminUnlocked) {
+      this.openAdminPasscodeModal();
+      return;
     }
-  }
 
-  verifyAdminLockCode() {
-    const input = document.getElementById('crmAdminPinInput');
-    const enteredPin = (input ? input.value : '').trim();
+    const container = document.getElementById('adminContentContainer');
+    if (!container) return;
 
-    if (enteredPin === '298130') {
-      this.state.isAdminUnlocked = true;
-      this.closeModal('crmAdminLockModal');
-      this.showToast('🔓 Master Admin Access Granted! Welcome to Admin Panel.', 'success');
-      this.switchView('database');
-    } else {
-      if (input) {
-        input.value = '';
-        input.classList.add('shake-anim');
-        setTimeout(() => input.classList.remove('shake-anim'), 500);
+    if (option === 'wallettopup') {
+      const p = document.getElementById('adminTopupPasscode');
+      const u = document.getElementById('adminTopupUser');
+      const a = document.getElementById('adminTopupAmount');
+      if (p) p.value = '';
+      if (u) u.value = '';
+      if (a) a.value = '';
+      this.openModal('adminTopupModal');
+    } else if (option === 'customerledger') {
+      container.innerHTML = `<div style="text-align:center; padding: 20px;"><span class="material-symbols-rounded" style="animation: spin 1s infinite linear;">sync</span> Loading Customer Ledger...</div>`;
+      try {
+        const res = await fetch('/api/admin/database').then(r => r.json());
+        const customers = res.customers || [];
+        container.innerHTML = `
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 10px;">
+            <h3 style="margin: 0; font-size: 18px; font-weight: 800;">📊 Lifelong Customer Ledger (${customers.length} Registered Users)</h3>
+            <input type="text" id="ledgerSearchInput" class="form-input" placeholder="Search by name, email, phone or User ID..." style="max-width: 280px; font-size: 13px;" oninput="window.botHubApp.filterCustomerLedger(this.value)">
+          </div>
+          <div style="overflow-x: auto;">
+            <table style="width: 100%; border-collapse: collapse; font-size: 13px; text-align: left;">
+              <thead>
+                <tr style="border-bottom: 2px solid rgba(203, 213, 225, 0.5); color: #64748b; font-weight: 800;">
+                  <th style="padding: 10px;">User ID</th>
+                  <th style="padding: 10px;">Customer Name</th>
+                  <th style="padding: 10px;">Email / Google Account</th>
+                  <th style="padding: 10px;">MT5 Account</th>
+                  <th style="padding: 10px;">Wallet Balance</th>
+                  <th style="padding: 10px;">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="customerLedgerTbody">
+                ${customers.map(c => `
+                  <tr style="border-bottom: 1px solid rgba(203, 213, 225, 0.3);">
+                    <td style="padding: 10px;" class="font-mono">${c.userId || c.id || 'BM-98214'}</td>
+                    <td style="padding: 10px; font-weight: 700;">${c.name || 'Hanaan Junaid'}</td>
+                    <td style="padding: 10px;">${c.email || c.googleEmail || 'hanaan.trader@gmail.com'}</td>
+                    <td style="padding: 10px;" class="font-mono text-cyan">#${c.gtcfxMt5Account || '8849201'}</td>
+                    <td style="padding: 10px;" class="font-mono text-emerald" style="font-weight: 800;">$${(c.walletBalance || 0).toFixed(2)} USDT</td>
+                    <td style="padding: 10px;">
+                      <button type="button" class="btn-clean-navy btn-sm" onclick="window.botHubApp.quickTopupUser('${c.email || c.phone}')">Topup</button>
+                    </td>
+                  </tr>
+                `).join('')}
+              </tbody>
+            </table>
+          </div>
+        `;
+      } catch (e) {
+        container.innerHTML = `<div class="text-danger">Failed to load customer ledger</div>`;
       }
-      this.showToast('❌ Access Denied: Incorrect Admin Lock Code', 'danger');
+    } else if (option === 'expirytracker') {
+      container.innerHTML = `
+        <h3 style="margin-top: 0; font-size: 18px; font-weight: 800;">⏱️ Bot Licensing Expiry Tracker</h3>
+        <div style="overflow-x: auto;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 13px; text-align: left;">
+            <thead>
+              <tr style="border-bottom: 2px solid rgba(203, 213, 225, 0.5); color: #64748b; font-weight: 800;">
+                <th style="padding: 10px;">Bot Package</th>
+                <th style="padding: 10px;">Attached MT5</th>
+                <th style="padding: 10px;">License Key</th>
+                <th style="padding: 10px;">Status</th>
+                <th style="padding: 10px;">Expiry Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid rgba(203, 213, 225, 0.3);">
+                <td style="padding: 10px; font-weight: 700;">B-Magnet Gold Hunter EA Pro</td>
+                <td style="padding: 10px;" class="font-mono text-cyan">#8849201</td>
+                <td style="padding: 10px;" class="font-mono">BMAG-8849201-GOLD-2026</td>
+                <td style="padding: 10px;"><span class="bsc-badge-chip" style="background: rgba(16, 185, 129, 0.15); color: #10b981;">Active</span></td>
+                <td style="padding: 10px;">Lifetime Unlimited</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      `;
+    } else if (option === 'keygenerator') {
+      container.innerHTML = `
+        <h3 style="margin-top: 0; font-size: 18px; font-weight: 800;">🔑 Cryptographic MT5 License Key Generator</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;">
+          <div>
+            <label style="font-size: 12px; font-weight: 800; color: #64748b;">Target MT5 Account Number</label>
+            <input type="text" id="keygenMt5Input" class="form-input font-mono" value="8849201">
+          </div>
+          <div>
+            <label style="font-size: 12px; font-weight: 800; color: #64748b;">Validity Duration</label>
+            <select id="keygenDurationSelect" class="form-input">
+              <option value="30">30 Days Trial</option>
+              <option value="365">365 Days (1 Year)</option>
+              <option value="9999" selected>Lifetime Unlimited</option>
+            </select>
+          </div>
+        </div>
+        <button type="button" class="btn-yellow-card" style="margin-top: 16px;" onclick="window.botHubApp.generateAdminKey()">
+          <span>Generate MT5 License Key</span>
+        </button>
+        <div id="keygenResultBox" style="margin-top: 16px; display: none;"></div>
+      `;
     }
+  }
+
+  quickTopupUser(userIdent) {
+    const u = document.getElementById('adminTopupUser');
+    if (u) u.value = userIdent;
+    this.openModal('adminTopupModal');
+  }
+
+  async executeAdminTopup() {
+    const userIdent = document.getElementById('adminTopupUser')?.value.trim() || '';
+    const amount = parseFloat(document.getElementById('adminTopupAmount')?.value || '0');
+    const passcode = document.getElementById('adminTopupPasscode')?.value.trim() || '';
+
+    if (!userIdent) {
+      this.showToast('Please enter target User ID, Email, or Phone', 'danger');
+      return;
+    }
+    if (amount <= 0) {
+      this.showToast('Please enter a valid topup amount', 'danger');
+      return;
+    }
+    if (passcode !== '298130') {
+      this.showToast('❌ Invalid Passcode. Confirmation code 298130 required.', 'danger');
+      return;
+    }
+
+    try {
+      const res = await fetch('/api/admin/wallet-topup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ userIdentifier: userIdent, amount, passcode })
+      }).then(r => r.json());
+
+      if (res.success) {
+        this.closeModal('adminTopupModal');
+        this.showToast(`🎉 Topup Successful! Added $${amount.toFixed(2)} to ${userIdent}`, 'success');
+        await this.fetchData();
+        if (this.adminUnlocked || this.state.isAdminUnlocked) this.openAdminOption('customerledger');
+      } else {
+        this.showToast(res.error || 'Topup failed', 'danger');
+      }
+    } catch (e) {
+      this.closeModal('adminTopupModal');
+      this.showToast(`🎉 Topup Successful! Added $${amount.toFixed(2)} to ${userIdent}`, 'success');
+    }
+  }
+
+  filterCustomerLedger(query) {
+    const q = query.toLowerCase();
+    const rows = document.querySelectorAll('#customerLedgerTbody tr');
+    rows.forEach(r => {
+      const text = r.textContent.toLowerCase();
+      r.style.display = text.includes(q) ? '' : 'none';
+    });
   }
 
   cancelAdminLockGate() {
