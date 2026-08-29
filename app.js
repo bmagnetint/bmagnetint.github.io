@@ -103,7 +103,11 @@ const TRANSLATIONS = {
     iosStep2Desc: 'Scroll down the action list and tap Add to Home Screen.',
     iosStep3Title: 'Tap "Add" in Top Right',
     iosStep3Desc: 'Confirm and tap Add to place the official B-Bot Pro icon on your home screen!',
-    btnGotIt: 'Got It, Thanks!'
+    btnGotIt: 'Got It, Thanks!',
+    posGateBadge: 'RETAIL & RESTAURANT POS HUB',
+    posGateTitle: 'Looking for B-Magnet Point of Sale (POS) & ZATCA E-Invoicing?',
+    posGateDesc: 'Explore our all-in-one Point of Sale hardware, cloud inventory, and certified ZATCA Phase 2 Fatoora tax clearance platform for stores, cafes, and restaurants across Saudi Arabia.',
+    posGateBtn: 'Explore B-Magnet POS Hub'
   },
   ar: {
     welcomeTitle: 'مرحباً بك',
@@ -203,7 +207,11 @@ const TRANSLATIONS = {
     iosStep2Desc: 'مرر للأسفل واضغط على خيار إضافة إلى الصفحة الرئيسية.',
     iosStep3Title: 'اضغط على "إضافة" في الأعلى',
     iosStep3Desc: 'أكّد التثبيت لتظهر أيقونة B-Bot Pro الرسمية على شاشتك الرئيسية فوراً!',
-    btnGotIt: 'تم، شكراً!'
+    btnGotIt: 'تم، شكراً!',
+    posGateBadge: 'منصة نقاط البيع والفوترة الإلكترونية',
+    posGateTitle: 'هل تبحث عن نظام نقاط البيع (POS) والفوترة الإلكترونية (زاتكا)؟',
+    posGateDesc: 'اكتشف منصة نقاط البيع المعتمدة من هيئة الزكاة والضريبة والجمارك (المرحلة الثانية)، مع دعم كامل لمدفوعات مدى وآبل باي وأجهزة الكاشير الذكية في السعودية.',
+    posGateBtn: 'الانتقال إلى منصة نقاط البيع (B-Magnet POS)'
   }
 };
 
@@ -594,6 +602,18 @@ class BotHubApp {
     if (loginOtpInput) loginOtpInput.placeholder = t.passwordPlaceholder;
     if (brandTitle) brandTitle.textContent = t.brandTitle;
     if (brandSub) brandSub.textContent = t.brandSub;
+
+    // POS Gateway Panel
+    const txtPosGateBadge = document.getElementById('txt_posGateBadge');
+    const txtPosGateTitle = document.getElementById('txt_posGateTitle');
+    const txtPosGateDesc = document.getElementById('txt_posGateDesc');
+    const txtPosGateBtn = document.getElementById('txt_posGateBtn');
+    if (txtPosGateBadge && t.posGateBadge) txtPosGateBadge.textContent = t.posGateBadge;
+    if (txtPosGateTitle && t.posGateTitle) txtPosGateTitle.textContent = t.posGateTitle;
+    if (txtPosGateDesc && t.posGateDesc) txtPosGateDesc.textContent = t.posGateDesc;
+    if (txtPosGateBtn && t.posGateBtn) {
+      txtPosGateBtn.innerHTML = `<span class="material-symbols-rounded">storefront</span><span>${t.posGateBtn}</span><span class="material-symbols-rounded" style="font-size:18px;">${lang === 'ar' ? 'arrow_backward' : 'arrow_forward'}</span>`;
+    }
 
     // Bottom Navigation Dock
     const navItems = document.querySelectorAll('.bottom-nav .nav-item');
