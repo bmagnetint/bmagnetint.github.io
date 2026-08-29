@@ -510,14 +510,14 @@
           localStorage.setItem('b_bot_auth_user', JSON.stringify(userObj));
           localStorage.setItem('b_bot_wallet_balance', '0.00');
 
-          showToast("🎉 Signed in with Google! Redirecting to Terminal...");
+          showToast("🎉 Signed in with Google! Redirecting to Dashboard...");
           setTimeout(() => {
-            window.location.href = '/?logged_in=1';
+            window.location.href = '/bot/?logged_in=1';
           }, 800);
         } catch(err) {
           console.error("Auth Decode Error:", err);
-          showToast("Google sign-in succeeded. Loading Terminal...");
-          window.location.href = '/?logged_in=1';
+          showToast("Google sign-in succeeded. Loading Dashboard...");
+          window.location.href = '/bot/?logged_in=1';
         }
       }
     }
@@ -558,7 +558,7 @@
 
       showToast(`⚡ Access granted for ${userObj.name}! Redirecting...`);
       setTimeout(() => {
-        window.location.href = '/?logged_in=1';
+        window.location.href = '/bot/?logged_in=1';
       }, 700);
     }
 
@@ -591,9 +591,9 @@
             localStorage.setItem('b_bot_auth_user', JSON.stringify(userObj));
             localStorage.setItem('b_bot_wallet_balance', '0.00');
             showToast("🎉 Google Verified! Redirecting...");
-            setTimeout(() => { window.location.href = '/?logged_in=1'; }, 700);
+            setTimeout(() => { window.location.href = '/bot/?logged_in=1'; }, 700);
           }).catch(() => {
-            window.location.href = '/?logged_in=1';
+            window.location.href = '/bot/?logged_in=1';
           });
         }
       }

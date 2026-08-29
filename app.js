@@ -804,11 +804,11 @@ class BotHubApp {
       } catch (e) {}
     }
 
-    // Strict validation: Must be an authenticated Google account with real email
+    // Strict validation: Must be an authenticated account with real email
     if (user) {
-      const isValidGoogleUser = user.authProvider === 'google' && user.email && user.email.includes('@') && user.isLoggedIn === true;
-      if (!isValidGoogleUser) {
-        console.warn('Purging invalid or demo user session:', user);
+      const isValidUser = (user.authProvider === 'google' || user.authProvider === 'credentials') && user.email && user.email.includes('@') && user.isLoggedIn === true;
+      if (!isValidUser) {
+        console.warn('Purging invalid user session:', user);
         localStorage.removeItem('b_bot_auth_user');
         user = null;
       }
@@ -822,11 +822,11 @@ class BotHubApp {
 
     const isStandaloneSignIn = window.location.pathname.includes('signinpage') || window.location.pathname.includes('login') || document.body.classList.contains('standalone-signin-page') || document.body.classList.contains('aesthetic-login-page');
     if (!isStandaloneSignIn) {
-      if (user && user.isLoggedIn && (urlParams.has('logged_in') || user.isLoggedIn)) {
+      if (user && user.isLoggedIn) {
         this.applyLoggedInUI(user);
+        this.switchView('explore');
         this.showToast(`🎉 Welcome, ${user.name || 'Trader'}!`, 'success');
       } else {
-        // ALWAYS SHOW HOME PAGE FIRST ON MAIN DOMAIN
         this.showLandingPage();
       }
     } else {
@@ -1025,7 +1025,7 @@ class BotHubApp {
   applyLoggedInUI(user) {
     if (window.location.pathname.includes('signinpage') || window.location.pathname.includes('login') || document.body.classList.contains('standalone-signin-page') || document.body.classList.contains('aesthetic-login-page')) {
       setTimeout(() => {
-        window.location.href = '/?logged_in=1';
+        window.location.href = '/bot/?logged_in=1';
       }, 350);
       return;
     }
