@@ -85,8 +85,9 @@
     }
     @media (max-width: 768px) {
       .exp-topbar {
-        padding: 0 12px;
-        height: 56px;
+        padding: 0 10px;
+        height: 52px;
+        gap: 6px;
       }
     }
 
@@ -94,6 +95,11 @@
       display: flex;
       align-items: center;
       gap: 12px;
+    }
+    @media (max-width: 768px) {
+      .exp-brand-col {
+        gap: 6px;
+      }
     }
     .exp-back-btn {
       display: inline-flex;
@@ -108,6 +114,14 @@
       font-weight: 600;
       text-decoration: none;
       transition: all 0.2s;
+      white-space: nowrap;
+    }
+    @media (max-width: 768px) {
+      .exp-back-btn {
+        padding: 4px 8px;
+        font-size: 11px;
+        gap: 3px;
+      }
     }
     .exp-back-btn:hover {
       background: rgba(255, 255, 255, 0.16);
@@ -123,7 +137,7 @@
       color: #ffffff;
     }
     @media (max-width: 600px) {
-      .exp-title-badge span.desktop-only {
+      .exp-title-badge span.station-title {
         display: none;
       }
     }
@@ -139,6 +153,14 @@
       padding: 3px 9px;
       border-radius: 99px;
       text-transform: uppercase;
+      white-space: nowrap;
+    }
+    @media (max-width: 768px) {
+      .live-indicator-pill {
+        padding: 2px 6px;
+        font-size: 9.5px;
+        gap: 4px;
+      }
     }
     .pulse-dot {
       width: 7px;
@@ -159,6 +181,11 @@
       align-items: center;
       gap: 10px;
     }
+    @media (max-width: 768px) {
+      .exp-actions-col {
+        gap: 5px;
+      }
+    }
     .mode-toggle-group {
       display: flex;
       align-items: center;
@@ -166,6 +193,11 @@
       border: 1px solid var(--border-subtle);
       border-radius: 10px;
       padding: 3px;
+    }
+    @media (max-width: 768px) {
+      .mode-toggle-group {
+        padding: 2px;
+      }
     }
     .mode-btn {
       background: transparent;
@@ -180,6 +212,16 @@
       align-items: center;
       gap: 6px;
       transition: all 0.2s;
+    }
+    @media (max-width: 768px) {
+      .mode-btn {
+        padding: 4px 6px;
+        font-size: 11px;
+        gap: 0;
+      }
+      .mode-btn span.mode-label {
+        display: none;
+      }
     }
     .mode-btn.active {
       background: var(--accent-emerald);
@@ -198,6 +240,13 @@
       justify-content: center;
       cursor: pointer;
       transition: all 0.2s;
+    }
+    @media (max-width: 768px) {
+      .exp-icon-btn {
+        width: 30px;
+        height: 30px;
+        border-radius: 8px;
+      }
     }
     .exp-icon-btn:hover {
       background: rgba(255, 255, 255, 0.16);
@@ -263,6 +312,22 @@
       margin-bottom: 12px;
       padding: 0 8px;
     }
+    @media (max-width: 768px) {
+      .pos-hardware-mockup {
+        border-radius: 18px;
+        padding: 8px;
+      }
+      .pos-bezel-header {
+        margin-bottom: 8px;
+        padding: 0 4px;
+      }
+      .pos-hardware-branding {
+        font-size: 11px;
+      }
+      .pos-hardware-specs {
+        display: none;
+      }
+    }
     .pos-hardware-branding {
       display: flex;
       align-items: center;
@@ -313,6 +378,12 @@
       color: var(--text-dark);
       position: relative;
     }
+    @media (max-width: 768px) {
+      .pos-screen-viewport {
+        border-radius: 12px;
+        min-height: auto;
+      }
+    }
 
     /* Fullscreen Mode override */
     body.is-fullscreen .cafe-stage {
@@ -348,16 +419,36 @@
       align-items: center;
       justify-content: space-between;
       gap: 12px;
-      flex-wrap: wrap;
+    }
+    @media (max-width: 768px) {
+      .pos-app-header {
+        padding: 8px 10px;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        grid-template-rows: auto auto;
+        gap: 8px 6px;
+      }
     }
     .pos-brand-tag {
       display: flex;
       align-items: center;
       gap: 10px;
     }
+    @media (max-width: 768px) {
+      .pos-brand-tag {
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+        gap: 6px;
+      }
+    }
     .pos-brand-tag img {
       height: 28px;
       width: auto;
+    }
+    @media (max-width: 768px) {
+      .pos-brand-tag img {
+        height: 22px;
+      }
     }
     .pos-station-name {
       font-size: 14px;
@@ -365,10 +456,21 @@
       color: var(--pos-primary);
       line-height: 1.2;
     }
+    @media (max-width: 768px) {
+      .pos-station-name {
+        font-size: 12px;
+        white-space: nowrap;
+      }
+    }
     .pos-station-sub {
       font-size: 11px;
       color: #64748b;
       font-weight: 600;
+    }
+    @media (max-width: 768px) {
+      .pos-station-sub {
+        display: none;
+      }
     }
 
     .pos-header-center {
@@ -376,12 +478,25 @@
       align-items: center;
       gap: 10px;
     }
+    @media (max-width: 768px) {
+      .pos-header-center {
+        grid-column: 1 / 3;
+        grid-row: 2 / 3;
+        width: 100%;
+      }
+    }
     .pos-order-type-switch {
       display: flex;
       background: #f1f5f9;
       border: 1px solid #e2e8f0;
       border-radius: 10px;
       padding: 3px;
+    }
+    @media (max-width: 768px) {
+      .pos-order-type-switch {
+        width: 100%;
+        padding: 2px;
+      }
     }
     .type-pill {
       background: transparent;
@@ -396,6 +511,16 @@
       align-items: center;
       gap: 5px;
       transition: all 0.15s;
+      white-space: nowrap;
+    }
+    @media (max-width: 768px) {
+      .type-pill {
+        flex: 1;
+        justify-content: center;
+        padding: 6px 8px;
+        font-size: 11.5px;
+        gap: 4px;
+      }
     }
     .type-pill.active {
       background: #004d40;
@@ -408,6 +533,14 @@
       align-items: center;
       gap: 10px;
     }
+    @media (max-width: 768px) {
+      .pos-header-right {
+        grid-column: 2 / 3;
+        grid-row: 1 / 2;
+        gap: 6px;
+        justify-content: flex-end;
+      }
+    }
     .zatca-status-badge {
       display: inline-flex;
       align-items: center;
@@ -419,12 +552,26 @@
       border-radius: 99px;
       font-size: 11px;
       font-weight: 800;
+      white-space: nowrap;
+    }
+    @media (max-width: 768px) {
+      .zatca-status-badge {
+        padding: 2px 6px;
+        font-size: 9.5px;
+        gap: 4px;
+      }
     }
     .pos-live-time {
       font-family: var(--font-mono);
       font-size: 12.5px;
       font-weight: 700;
       color: #475569;
+      white-space: nowrap;
+    }
+    @media (max-width: 768px) {
+      .pos-live-time {
+        font-size: 11px;
+      }
     }
 
     /* ======================================================== */
@@ -1197,7 +1344,7 @@
         <span id="txt_back">B-Magnet POS</span>
       </a>
       <div class="exp-title-badge">
-        <span>B-Magnet Cafe Station</span>
+        <span class="station-title">B-Magnet Cafe Station</span>
         <span class="live-indicator-pill">
           <span class="pulse-dot"></span>
           <span id="txt_liveDemo">Live Interactive Demo</span>
@@ -1210,11 +1357,11 @@
       <div class="mode-toggle-group">
         <button type="button" class="mode-btn active" id="btnModeHardware" onclick="setExperienceMode('hardware')" title="Cafe POS Machine Hardware View">
           <span class="material-symbols-rounded" style="font-size: 16px;">point_of_sale</span>
-          <span id="txt_modeHardware">Cafe Register</span>
+          <span class="mode-label" id="txt_modeHardware">Cafe Register</span>
         </button>
         <button type="button" class="mode-btn" id="btnModeFullscreen" onclick="setExperienceMode('fullscreen')" title="Fullscreen POS App View">
           <span class="material-symbols-rounded" style="font-size: 16px;">fullscreen</span>
-          <span id="txt_modeFullscreen">Full App</span>
+          <span class="mode-label" id="txt_modeFullscreen">Full App</span>
         </button>
       </div>
 
