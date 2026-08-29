@@ -1,221 +1,279 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <meta name="theme-color" content="#0e141b">
+  <meta name="theme-color" content="#ffffff">
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate, max-age=0">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <title>B-Magnet POS | Next-Gen Web3 Point-of-Sale & Yield Network</title>
+  <title>B-Magnet POS | Point of Sale & ZATCA Phase 2 E-Invoicing (Saudi Arabia)</title>
   
-  <!-- Fonts & Icons -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,700;1,800&family=Space+Grotesk:wght@500;600;700;800&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
   
   <link rel="icon" type="image/png" sizes="64x64" href="/favicon.png">
-  <link rel="stylesheet" href="/style.css?v=4183">
 
   <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     :root {
-      --pos-teal: #00a896;
-      --pos-cyan: #00f2fe;
-      --pos-emerald: #10b981;
-      --pos-emerald-dark: #059669;
-      --pos-dark: #0e141b;
-      --pos-surface: #141d29;
-      --pos-card: #182230;
-      --pos-border: rgba(45, 155, 136, 0.28);
+      --sq-black: #111111;
+      --sq-dark: #1f1f1f;
+      --sq-gray-90: #2b2b2b;
+      --sq-gray-70: #555555;
+      --sq-gray-50: #777777;
+      --sq-gray-20: #e5e5e5;
+      --sq-gray-10: #f4f5f6;
+      --sq-gray-05: #f8f9fa;
+      --sq-white: #ffffff;
+      --sq-blue: #006aff;
+      --sq-blue-hover: #0056cc;
+      --sq-green: #00a859;
+      --sq-zatca: #00875a;
+      --sq-border: #e6e8eb;
+      --sq-font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --sq-font-ar: 'Cairo', sans-serif;
     }
 
     body {
-      background-color: var(--pos-dark);
-      color: #f8fafc;
-      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--sq-white);
+      color: var(--sq-black);
+      font-family: var(--sq-font);
+      line-height: 1.5;
       overflow-x: hidden;
-      margin: 0;
-      padding: 0;
       -webkit-font-smoothing: antialiased;
     }
 
-    /* Master Navbar */
-    .pos-navbar {
-      background: rgba(14, 20, 27, 0.92);
-      border-bottom: 1px solid var(--pos-border);
+    /* Top Announcement Ribbon for Saudi Merchants & ZATCA */
+    .zatca-top-banner {
+      background: #004d40;
+      color: #ffffff;
+      padding: 10px 20px;
+      font-size: 13px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      text-align: center;
+    }
+    .zatca-badge-pill {
+      background: #00bfa5;
+      color: #004d40;
+      padding: 2px 8px;
+      border-radius: 99px;
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    /* Main Square-Style Navigation Bar */
+    .sq-header {
       position: sticky;
       top: 0;
-      z-index: 10000;
-      backdrop-filter: blur(28px);
-      -webkit-backdrop-filter: blur(28px);
-      padding: 12px 24px;
-      transition: all 0.2s ease;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--sq-border);
+      padding: 16px 24px;
     }
-    .pos-nav-container {
-      max-width: 1260px;
+    .sq-header-container {
+      max-width: 1240px;
       margin: 0 auto;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
+      gap: 20px;
     }
-    .pos-brand-group {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-    }
-    .pos-brand-logo {
-      height: 38px;
-      width: auto;
-    }
-    .pos-brand-title {
-      font-size: 17px;
-      font-weight: 800;
-      color: #ffffff;
-      letter-spacing: -0.2px;
-    }
-    .pos-brand-sub {
-      font-size: 10.5px;
-      color: #00f2fe;
-      font-weight: 700;
-      display: block;
-      letter-spacing: 0.6px;
-      text-transform: uppercase;
-    }
-
-    .pos-nav-links {
-      display: flex;
-      align-items: center;
-      gap: 22px;
-    }
-    .pos-nav-link {
-      color: #94a3b8;
-      text-decoration: none;
-      font-size: 13.5px;
-      font-weight: 700;
-      transition: all 0.2s ease;
-    }
-    .pos-nav-link:hover {
-      color: #00f2fe;
-    }
-
-    .pos-nav-actions {
+    .sq-brand {
       display: flex;
       align-items: center;
       gap: 10px;
+      text-decoration: none;
+      color: var(--sq-black);
+    }
+    .sq-logo {
+      height: 36px;
+      width: auto;
+    }
+    .sq-brand-name {
+      font-size: 19px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      color: var(--sq-black);
+    }
+    .sq-brand-badge {
+      font-size: 11px;
+      background: var(--sq-gray-10);
+      color: var(--sq-gray-70);
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-weight: 700;
+      border: 1px solid var(--sq-border);
     }
 
-    /* Single High-Visibility Button to Bots Platform */
-    .btn-bot-switch {
+    .sq-nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+    .sq-nav-link {
+      color: var(--sq-gray-70);
+      text-decoration: none;
+      font-size: 14.5px;
+      font-weight: 600;
+      transition: color 0.15s ease;
+    }
+    .sq-nav-link:hover {
+      color: var(--sq-black);
+    }
+
+    .sq-nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    /* Trading Bot Platform Link Button */
+    .btn-bot-link {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 8px 16px;
-      border-radius: 99px;
-      background: rgba(0, 242, 254, 0.12);
-      border: 1.5px solid rgba(0, 242, 254, 0.4);
-      color: #00f2fe;
-      font-size: 12.5px;
-      font-weight: 800;
+      padding: 9px 16px;
+      border-radius: 8px;
+      background: var(--sq-gray-05);
+      border: 1px solid var(--sq-border);
+      color: var(--sq-dark);
+      font-size: 13.5px;
+      font-weight: 700;
       text-decoration: none;
-      box-shadow: 0 0 15px rgba(0, 242, 254, 0.15);
-      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .btn-bot-switch:hover {
-      background: rgba(0, 242, 254, 0.22);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 20px rgba(0, 242, 254, 0.3);
-    }
-
-    .btn-pos-access {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 9px 18px;
-      border-radius: 99px;
-      background: linear-gradient(135deg, #10b981, #059669);
-      color: #ffffff;
-      font-size: 13px;
-      font-weight: 800;
-      text-decoration: none;
-      box-shadow: 0 4px 15px rgba(16, 185, 129, 0.35);
       transition: all 0.2s ease;
     }
-    .btn-pos-access:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 22px rgba(16, 185, 129, 0.55);
+    .btn-bot-link:hover {
+      background: var(--sq-gray-10);
+      border-color: #000;
+      color: #000;
     }
 
-    /* Main Container */
-    .pos-main-container {
-      max-width: 1260px;
-      margin: 0 auto;
-      padding: 32px 20px 80px 20px;
-    }
-
-    /* Hero Section */
-    .pos-hero-grid {
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 44px;
+    .btn-sq-primary {
+      display: inline-flex;
       align-items: center;
-      margin-bottom: 50px;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 22px;
+      border-radius: 8px;
+      background: var(--sq-black);
+      color: var(--sq-white);
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      border: 1px solid var(--sq-black);
+      transition: all 0.15s ease;
+      cursor: pointer;
+    }
+    .btn-sq-primary:hover {
+      background: #333333;
+      border-color: #333333;
+    }
+
+    .btn-sq-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 22px;
+      border-radius: 8px;
+      background: var(--sq-white);
+      color: var(--sq-black);
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      border: 1px solid var(--sq-border);
+      transition: all 0.15s ease;
+      cursor: pointer;
+    }
+    .btn-sq-secondary:hover {
+      background: var(--sq-gray-05);
+      border-color: var(--sq-gray-50);
+    }
+
+    /* Container */
+    .sq-container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ======================================================== */
+    /* 1. SQUARE HERO SECTION                                   */
+    /* ======================================================== */
+    .sq-hero {
+      padding: 70px 0 60px 0;
+      background: #ffffff;
+    }
+    .sq-hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 50px;
+      align-items: center;
     }
     @media (max-width: 960px) {
-      .pos-hero-grid {
+      .sq-hero-grid {
         grid-template-columns: 1fr;
-        gap: 32px;
+        gap: 40px;
       }
-      .pos-nav-links {
+      .sq-nav-links {
         display: none;
       }
     }
 
-    .pos-hero-badge {
+    .sq-eyebrow {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      background: rgba(16, 185, 129, 0.12);
-      border: 1px solid rgba(16, 185, 129, 0.35);
-      color: #10b981;
-      padding: 5px 14px;
-      border-radius: 99px;
-      font-size: 12px;
+      gap: 6px;
+      font-size: 13px;
       font-weight: 800;
-      margin-bottom: 18px;
+      text-transform: uppercase;
+      color: #004d40;
+      letter-spacing: 0.5px;
+      margin-bottom: 16px;
+      background: #e0f2f1;
+      padding: 4px 12px;
+      border-radius: 6px;
     }
 
-    .pos-hero-title {
-      font-size: 44px;
+    .sq-hero-title {
+      font-size: 54px;
       font-weight: 900;
-      line-height: 1.14;
-      color: #ffffff;
-      margin-bottom: 18px;
-      letter-spacing: -0.8px;
+      line-height: 1.08;
+      letter-spacing: -1.5px;
+      color: var(--sq-black);
+      margin-bottom: 22px;
     }
     @media (max-width: 600px) {
-      .pos-hero-title {
-        font-size: 32px;
+      .sq-hero-title {
+        font-size: 38px;
       }
     }
 
-    .pos-text-gradient {
-      background: linear-gradient(90deg, #00f2fe 0%, #10b981 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+    .sq-hero-lead {
+      font-size: 19px;
+      color: var(--sq-gray-70);
+      line-height: 1.55;
+      margin-bottom: 34px;
+      max-width: 560px;
     }
 
-    .pos-hero-desc {
-      font-size: 16px;
-      color: #94a3b8;
-      line-height: 1.65;
-      margin-bottom: 30px;
-      max-width: 590px;
-    }
-
-    .pos-hero-btn-row {
+    .sq-hero-ctas {
       display: flex;
       align-items: center;
       gap: 14px;
@@ -223,744 +281,883 @@
       margin-bottom: 36px;
     }
 
-    .btn-pos-primary {
-      display: inline-flex;
+    .sq-trust-pills {
+      display: flex;
       align-items: center;
-      gap: 8px;
-      padding: 14px 30px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-      color: #ffffff;
-      font-size: 15px;
-      font-weight: 800;
-      text-decoration: none;
-      box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
-      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      gap: 20px;
+      flex-wrap: wrap;
+      font-size: 13px;
+      color: var(--sq-gray-70);
+      font-weight: 600;
+      border-top: 1px solid var(--sq-border);
+      padding-top: 20px;
     }
-    .btn-pos-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 32px rgba(16, 185, 129, 0.6);
-    }
-
-    .btn-pos-secondary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 13px 26px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      color: #cbd5e1;
-      font-size: 14.5px;
-      font-weight: 800;
-      text-decoration: none;
-      transition: all 0.2s ease;
-    }
-    .btn-pos-secondary:hover {
-      background: rgba(255, 255, 255, 0.12);
-      color: #ffffff;
-      transform: translateY(-2px);
-    }
-
-    .pos-metrics-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
-    }
-    @media (max-width: 600px) {
-      .pos-metrics-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-    .pos-metric-card {
-      background: #141d29;
-      border: 1px solid var(--pos-border);
-      border-radius: 18px;
-      padding: 16px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-    }
-    .pos-metric-val {
-      font-size: 22px;
-      font-weight: 800;
-      color: #10b981;
-      font-family: 'JetBrains Mono', monospace;
-      display: block;
-      margin-bottom: 2px;
-    }
-    .pos-metric-lbl {
-      font-size: 11.5px;
-      color: #94a3b8;
-      font-weight: 700;
-    }
-
-    /* Photorealistic POS Terminal Box */
-    .pos-terminal-showcase {
-      background: #141d29;
-      border: 1.5px solid rgba(0, 242, 254, 0.4);
-      border-radius: 28px;
-      padding: 24px;
-      box-shadow: 0 25px 70px rgba(0,0,0,0.7), 0 0 40px rgba(0, 168, 150, 0.18);
-      position: relative;
-    }
-    .terminal-screen {
-      background: #090e15;
-      border: 1px solid rgba(45, 155, 136, 0.35);
-      border-radius: 20px;
-      padding: 20px;
-      margin: 16px 0;
-    }
-
-    .pos-amount-preset-chip {
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      color: #cbd5e1;
-      padding: 6px 12px;
-      border-radius: 8px;
-      font-size: 12px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .pos-amount-preset-chip:hover,
-    .pos-amount-preset-chip.active {
-      background: rgba(16, 185, 129, 0.2);
-      border-color: #10b981;
-      color: #10b981;
-    }
-
-    /* Section Global Headers */
-    .pos-section {
-      margin-bottom: 64px;
-    }
-    .pos-section-header {
-      text-align: center;
-      max-width: 760px;
-      margin: 0 auto 38px auto;
-    }
-    .pos-section-badge {
-      display: inline-flex;
+    .sq-trust-item {
+      display: flex;
       align-items: center;
       gap: 6px;
-      background: rgba(0, 242, 254, 0.12);
-      border: 1px solid rgba(0, 242, 254, 0.35);
-      color: #00f2fe;
-      padding: 4px 14px;
-      border-radius: 99px;
-      font-size: 11.5px;
-      font-weight: 800;
-      margin-bottom: 12px;
     }
-    .pos-section-title {
-      font-size: 32px;
-      font-weight: 800;
-      color: #ffffff;
-      margin-bottom: 12px;
-      letter-spacing: -0.4px;
+
+    /* Hero Interactive Terminal Graphic */
+    .sq-terminal-visual {
+      background: var(--sq-gray-05);
+      border: 1px solid var(--sq-border);
+      border-radius: 24px;
+      padding: 32px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.06);
     }
-    .pos-section-desc {
-      font-size: 15px;
-      color: #94a3b8;
+    .terminal-card-screen {
+      background: #ffffff;
+      border: 1px solid var(--sq-border);
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+    }
+    .pos-total-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 6px;
+    }
+    .pos-total-amt {
+      font-size: 42px;
+      font-weight: 900;
+      color: var(--sq-black);
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .pos-tax-pill {
+      font-size: 12px;
+      color: #004d40;
+      background: #e0f2f1;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-weight: 800;
+    }
+
+    .mada-pay-banner {
+      background: #f8f9fa;
+      border: 1px solid var(--sq-border);
+      border-radius: 12px;
+      padding: 14px;
+      margin: 16px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* ======================================================== */
+    /* 2. ZATCA PHASE 2 COMPLIANCE SECTION                      */
+    /* ======================================================== */
+    .sq-zatca-section {
+      padding: 80px 0;
+      background: #f0fdf4;
+      border-top: 1px solid #dcfce7;
+      border-bottom: 1px solid #dcfce7;
+    }
+    .zatca-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      margin-top: 40px;
+    }
+    .zatca-card {
+      background: #ffffff;
+      border: 1px solid #bbf7d0;
+      border-radius: 16px;
+      padding: 28px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    }
+    .zatca-icon {
+      font-size: 28px;
+      margin-bottom: 14px;
+      color: #166534;
+    }
+    .zatca-card h3 {
+      font-size: 18px;
+      font-weight: 800;
+      color: #14532d;
+      margin-bottom: 8px;
+    }
+    .zatca-card p {
+      font-size: 14px;
+      color: #374151;
       line-height: 1.6;
     }
 
-    .pos-features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 22px;
+    /* ======================================================== */
+    /* 3. HARDWARE & SOFTWARE ECOSYSTEM                         */
+    /* ======================================================== */
+    .sq-section {
+      padding: 90px 0;
     }
-    .pos-feature-card {
-      background: var(--pos-surface);
-      border: 1px solid var(--pos-border);
-      border-radius: 22px;
-      padding: 28px;
-      transition: all 0.25s ease;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    .sq-section-header {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 50px auto;
     }
-    .pos-feature-card:hover {
-      border-color: #00f2fe;
-      transform: translateY(-4px);
-      box-shadow: 0 16px 45px rgba(0, 242, 254, 0.12);
+    .sq-section-title {
+      font-size: 38px;
+      font-weight: 900;
+      letter-spacing: -0.8px;
+      color: var(--sq-black);
+      margin-bottom: 14px;
     }
-    .pfc-icon {
-      width: 50px;
-      height: 50px;
-      border-radius: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 26px;
-      margin-bottom: 18px;
-    }
-    .pfc-title {
-      font-size: 19px;
-      font-weight: 800;
-      color: #ffffff;
-      margin-bottom: 8px;
-    }
-    .pfc-desc {
-      font-size: 14px;
-      color: #94a3b8;
-      line-height: 1.65;
+    .sq-section-sub {
+      font-size: 17px;
+      color: var(--sq-gray-70);
+      line-height: 1.6;
     }
 
-    /* Single Access Gateway Banner to Bots */
-    .bot-gateway-banner {
-      background: radial-gradient(circle at 50% 50%, rgba(0, 168, 150, 0.18) 0%, #141d29 100%);
-      border: 1.5px solid rgba(0, 242, 254, 0.4);
-      border-radius: 28px;
-      padding: 38px 34px;
+    .sq-hardware-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+    }
+    .sq-hw-card {
+      background: #ffffff;
+      border: 1px solid var(--sq-border);
+      border-radius: 20px;
+      padding: 36px;
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .sq-hw-card:hover {
+      box-shadow: 0 16px 40px rgba(0,0,0,0.08);
+      border-color: #000;
+      transform: translateY(-3px);
+    }
+    .hw-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 800;
+      background: var(--sq-gray-10);
+      color: var(--sq-gray-70);
+      padding: 3px 10px;
+      border-radius: 6px;
+      margin-bottom: 14px;
+      text-transform: uppercase;
+    }
+    .hw-title {
+      font-size: 24px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+    .hw-price {
+      font-size: 32px;
+      font-weight: 900;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--sq-black);
+      margin-bottom: 16px;
+    }
+    .hw-price span {
+      font-size: 14px;
+      color: var(--sq-gray-70);
+      font-weight: 600;
+    }
+    .hw-features {
+      list-style: none;
+      margin: 0 0 24px 0;
+      padding: 0;
+      font-size: 14px;
+      color: var(--sq-gray-70);
+      line-height: 1.8;
+    }
+    .hw-features li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* ======================================================== */
+    /* 4. INDUSTRY SOLUTIONS                                    */
+    /* ======================================================== */
+    .sq-industry-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    .sq-industry-card {
+      background: var(--sq-gray-05);
+      border: 1px solid var(--sq-border);
+      border-radius: 16px;
+      padding: 28px;
+    }
+    .sq-ind-icon {
+      font-size: 32px;
+      margin-bottom: 14px;
+    }
+    .sq-industry-card h3 {
+      font-size: 18px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+    .sq-industry-card p {
+      font-size: 14px;
+      color: var(--sq-gray-70);
+      line-height: 1.6;
+    }
+
+    /* ======================================================== */
+    /* 5. PRICING IN SAUDI RIYAL (SAR / ر.س)                     */
+    /* ======================================================== */
+    .sq-pricing-section {
+      background: var(--sq-gray-05);
+      padding: 90px 0;
+      border-top: 1px solid var(--sq-border);
+      border-bottom: 1px solid var(--sq-border);
+    }
+    .sq-pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 28px;
+    }
+    .sq-price-card {
+      background: #ffffff;
+      border: 1px solid var(--sq-border);
+      border-radius: 20px;
+      padding: 36px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .sq-price-card.featured {
+      border: 2px solid var(--sq-black);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+      position: relative;
+    }
+    .featured-tag {
+      position: absolute;
+      top: -12px;
+      left: 32px;
+      background: var(--sq-black);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 4px 12px;
+      border-radius: 99px;
+      text-transform: uppercase;
+    }
+
+    /* ======================================================== */
+    /* 6. SINGLE CLEAR GATEWAY TO TRADING BOTS                  */
+    /* ======================================================== */
+    .sq-bot-gateway {
+      background: var(--sq-black);
+      color: #ffffff;
+      border-radius: 24px;
+      padding: 48px;
+      margin: 60px 0;
       display: flex;
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
-      gap: 24px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-      margin-top: 40px;
+      gap: 30px;
+    }
+    .sq-bot-left {
+      max-width: 650px;
+    }
+    .sq-bot-left h2 {
+      font-size: 30px;
+      font-weight: 900;
+      margin-bottom: 10px;
+    }
+    .sq-bot-left p {
+      font-size: 15px;
+      color: #a3a3a3;
+      line-height: 1.6;
     }
 
-    /* FAQ Item */
-    .pos-faq-item {
-      background: #141d29;
-      border: 1px solid var(--pos-border);
-      border-radius: 16px;
-      margin-bottom: 12px;
-      overflow: hidden;
+    /* ======================================================== */
+    /* 7. FAQ ACCORDION                                         */
+    /* ======================================================== */
+    .sq-faq-item {
+      border-bottom: 1px solid var(--sq-border);
+      padding: 22px 0;
     }
-    .pos-faq-question {
-      padding: 18px 22px;
-      cursor: pointer;
+    .sq-faq-q {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 15px;
+      font-size: 17px;
       font-weight: 800;
-      color: #fff;
+      cursor: pointer;
+      color: var(--sq-black);
     }
-    .pos-faq-answer {
-      padding: 0 22px 18px 22px;
-      font-size: 13.5px;
-      color: #94a3b8;
-      line-height: 1.6;
+    .sq-faq-a {
+      font-size: 15px;
+      color: var(--sq-gray-70);
+      line-height: 1.65;
+      margin-top: 12px;
       display: none;
     }
-    .pos-faq-item.active .pos-faq-answer {
+    .sq-faq-item.active .sq-faq-a {
       display: block;
     }
-    .pos-faq-item.active .faq-chevron {
+    .sq-faq-item.active .faq-chevron {
       transform: rotate(180deg);
     }
     .faq-chevron {
       transition: transform 0.2s;
     }
 
-    /* Corporate Footer */
-    .pos-footer {
-      background: #090e15;
-      border-top: 1px solid rgba(255,255,255,0.08);
-      padding: 44px 20px;
-      font-size: 13px;
-      color: #64748b;
+    /* Footer */
+    .sq-footer {
+      background: #ffffff;
+      border-top: 1px solid var(--sq-border);
+      padding: 60px 0 30px 0;
+      font-size: 13.5px;
+      color: var(--sq-gray-70);
+    }
+    .sq-footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    @media (max-width: 800px) {
+      .sq-footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    .sq-footer-col h4 {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--sq-black);
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .sq-footer-col ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .sq-footer-col li {
+      margin-bottom: 10px;
+    }
+    .sq-footer-col a {
+      color: var(--sq-gray-70);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .sq-footer-col a:hover {
+      color: var(--sq-black);
     }
   </style>
 </head>
 <body class="theme-dark">
 
-  <!-- ======================================================== -->
-  <!-- 1. MASTER POS NAVBAR                                     -->
-  <!-- ======================================================== -->
-  <header class="pos-navbar">
-    <div class="pos-nav-container">
-      <a href="/" class="pos-brand-group">
-        <img src="/images/b-magnet-emblem.png" alt="B-Magnet Emblem" class="pos-brand-logo">
-        <div>
-          <span class="pos-brand-title">B-MAGNET <span style="color: #00f2fe;">POS</span></span>
-          <span class="pos-brand-sub">Web3 Point-of-Sale & Yield</span>
-        </div>
+  <!-- Top ZATCA Compliance Bar -->
+  <div class="zatca-top-banner">
+    <span class="zatca-badge-pill">ZATCA APPROVED</span>
+    <span>🟢 Fully Certified for ZATCA Phase 2 E-Invoicing (Fatoora) & 15% Saudi VAT Compliance (معتمد من هيئة الزكاة والضريبة والجمارك)</span>
+  </div>
+
+  <!-- Header Navigation -->
+  <header class="sq-header">
+    <div class="sq-header-container">
+      <a href="/" class="sq-brand">
+        <img src="/images/b-magnet-emblem.png" alt="B-Magnet POS" class="sq-logo">
+        <span class="sq-brand-name">B-Magnet</span>
+        <span class="sq-brand-badge">Point of Sale</span>
       </a>
 
-      <nav class="pos-nav-links">
-        <a href="#posHero" class="pos-nav-link">Overview</a>
-        <a href="#posHardware" class="pos-nav-link">Smart Hardware</a>
-        <a href="#posStaking" class="pos-nav-link">PoS Yield Staking</a>
-        <a href="#posPricing" class="pos-nav-link">Tiers & Pricing</a>
-        <a href="#posFaq" class="pos-nav-link">Merchant FAQ</a>
+      <nav class="sq-nav-links">
+        <a href="#overview" class="sq-nav-link">Overview</a>
+        <a href="#zatca" class="sq-nav-link">ZATCA Phase 2</a>
+        <a href="#hardware" class="sq-nav-link">Hardware</a>
+        <a href="#industries" class="sq-nav-link">Solutions</a>
+        <a href="#pricing" class="sq-nav-link">Pricing (SAR)</a>
+        <a href="#faq" class="sq-nav-link">FAQ</a>
       </nav>
 
-      <div class="pos-nav-actions">
-        <!-- ONLY BUTTON TO ACCESS TRADING BOTS -->
-        <a href="/bot" class="btn-bot-switch" title="Access Algorithmic Trading Bots & EA Systems">
+      <div class="sq-nav-actions">
+        <!-- Gateway to Bots Platform -->
+        <a href="/bot" class="btn-bot-link" title="Explore Algorithmic Trading Systems">
           <span class="material-symbols-rounded" style="font-size: 16px;">smart_toy</span>
-          <span>Trading Bots Suite ➔</span>
+          <span>Trading Bots ➔</span>
         </a>
 
-        <a href="/login/" class="btn-pos-access">
-          <span class="material-symbols-rounded" style="font-size: 16px;">terminal</span>
-          <span>POS Login</span>
+        <a href="/login/" class="btn-sq-primary">
+          <span>Get Started</span>
         </a>
       </div>
     </div>
   </header>
 
-  <main class="pos-main-container">
-    
-    <!-- ======================================================== -->
-    <!-- 2. POS HERO SECTION (FLAGSHIP ECOSYSTEM)                 -->
-    <!-- ======================================================== -->
-    <section class="pos-hero-grid" id="posHero">
-      <div>
-        <div class="pos-hero-badge">
-          <span class="pulse-dot" style="background:#10b981;"></span>
-          <span>Next-Generation Web3 Crypto Point-of-Sale</span>
-        </div>
-        <h1 class="pos-hero-title">
-          B-Magnet POS <br><span class="pos-text-gradient">Instant Web3 Point-of-Sale & Yield Network</span>
-        </h1>
-        <p class="pos-hero-desc">
-          Empowering physical storefronts and e-commerce merchants worldwide to accept instant USDT (BEP-20) payments. Settle transactions in under 2.4 seconds with sub-$0.03 gas fees, zero chargebacks, and automated Proof-of-Stake validator yield rewards.
-        </p>
-
-        <div class="pos-hero-btn-row">
-          <a href="/login/" class="btn-pos-primary">
-            <span>Launch Web3 POS Terminal</span>
-            <span class="material-symbols-rounded">arrow_forward</span>
-          </a>
-          <a href="https://wa.me/919495097786?text=Hello%20B-Magnet%20POS%20Team%2C%20I%20want%20to%20onboard%20my%20business%20to%20accept%20crypto%20payments." target="_blank" rel="noopener noreferrer" class="btn-pos-secondary">
-            <span>Merchant Onboarding (WhatsApp)</span>
-            <span class="material-symbols-rounded">chat</span>
-          </a>
-        </div>
-
-        <div class="pos-metrics-grid">
-          <div class="pos-metric-card">
-            <span class="pos-metric-val">&lt; 2.4s</span>
-            <span class="pos-metric-lbl">Settlement Finality</span>
-          </div>
-          <div class="pos-metric-card">
-            <span class="pos-metric-val">~$0.03</span>
-            <span class="pos-metric-lbl">BSC Network Gas Fee</span>
-          </div>
-          <div class="pos-metric-card">
-            <span class="pos-metric-val">100%</span>
-            <span class="pos-metric-lbl">Non-Custodial Direct Pay</span>
-          </div>
-          <div class="pos-metric-card">
-            <span class="pos-metric-val">0.0%</span>
-            <span class="pos-metric-lbl">Zero Chargeback Risk</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Live Interactive POS Terminal Showcase -->
-      <div class="pos-terminal-showcase">
-        <div style="display: flex; align-items: center; justify-content: space-between;">
-          <div style="display: flex; align-items: center; gap: 8px;">
-            <span class="pulse-dot" style="background:#00f2fe;"></span>
-            <strong style="color: #00f2fe; font-size: 13px;">B-MAGNET SMART POS #8492</strong>
-          </div>
-          <span style="background: rgba(16,185,129,0.15); color: #10b981; border: 1px solid rgba(16,185,129,0.3); font-size: 10.5px; font-weight: 800; padding: 2px 8px; border-radius: 99px;">
-            BNB SMART CHAIN (BEP-20)
-          </span>
-        </div>
-
-        <!-- Terminal Screen -->
-        <div class="terminal-screen" id="simTerminalScreen">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-            <span style="font-size: 11px; color: #94a3b8; font-weight: 700; text-transform: uppercase;">MERCHANT CASHIER TOTAL</span>
-            <select id="simCurrencySelect" onchange="updateSimFiat()" style="background: #141d29; border: 1px solid rgba(45,155,136,0.3); color:#fff; font-size:11px; font-weight:700; border-radius:6px; padding:2px 6px; cursor:pointer;">
-              <option value="AED">🇦🇪 AED (Dirham)</option>
-              <option value="INR">🇮🇳 INR (Rupee)</option>
-              <option value="USD">🇺🇸 USD (Dollar)</option>
-              <option value="EUR">🇪🇺 EUR (Euro)</option>
-              <option value="SAR">🇸🇦 SAR (Riyal)</option>
-            </select>
-          </div>
-
-          <div style="font-size: 34px; font-weight: 900; color: #10b981; font-family: 'JetBrains Mono'; margin: 4px 0;" id="simAmountDisplay">
-            100.00 <span style="font-size: 16px; color: #94a3b8;">USDT</span>
-          </div>
-
-          <div style="font-size: 12.5px; color: #cbd5e1;" id="simFiatDisplay">
-            Equivalent: <strong class="font-mono" style="color: #00f2fe;">367.25 AED</strong>
-          </div>
-
-          <!-- Quick Presets -->
-          <div style="display: flex; gap: 6px; margin-top: 12px; flex-wrap: wrap;">
-            <button type="button" class="pos-amount-preset-chip" onclick="setSimAmount(25)">$25</button>
-            <button type="button" class="pos-amount-preset-chip" onclick="setSimAmount(50)">$50</button>
-            <button type="button" class="pos-amount-preset-chip active" onclick="setSimAmount(100)">$100</button>
-            <button type="button" class="pos-amount-preset-chip" onclick="setSimAmount(250)">$250</button>
-            <button type="button" class="pos-amount-preset-chip" onclick="setSimAmount(500)">$500</button>
-          </div>
-
-          <!-- NFC / QR Simulator Button -->
-          <div style="margin-top: 16px;">
-            <button type="button" id="simPayBtn" onclick="triggerSimPayment()" style="width: 100%; height: 44px; border-radius: 12px; background: linear-gradient(135deg, #00f2fe, #00a896); color: #0e141b; border: none; font-weight: 800; font-size: 13.5px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 15px rgba(0, 242, 254, 0.3);">
-              <span class="material-symbols-rounded" style="font-size: 20px;">contactless</span>
-              <span>Simulate Contactless NFC / QR Payment</span>
-            </button>
-          </div>
-        </div>
-
-        <!-- Recent Settlements Feed -->
-        <div style="font-size: 11.5px; font-weight: 700; color: #94a3b8; text-transform: uppercase; margin-bottom: 8px;">Recent Live Settlements</div>
-        <div style="display: flex; flex-direction: column; gap: 6px;" id="simFeedList">
-          <div style="display: flex; justify-content: space-between; font-size: 12px; padding: 7px 10px; background: rgba(0,0,0,0.3); border-radius: 8px;">
-            <span style="color:#cbd5e1;">Retail Cashier #4829</span>
-            <span class="font-mono" style="color:#10b981; font-weight:800;">+250.00 USDT (1.8s)</span>
-          </div>
-          <div style="display: flex; justify-content: space-between; font-size: 12px; padding: 7px 10px; background: rgba(0,0,0,0.3); border-radius: 8px;">
-            <span style="color:#cbd5e1;">E-Commerce Payment</span>
-            <span class="font-mono" style="color:#10b981; font-weight:800;">+900.00 USDT (2.1s)</span>
-          </div>
-          <div style="display: flex; justify-content: space-between; font-size: 12px; padding: 7px 10px; background: rgba(0,0,0,0.3); border-radius: 8px;">
-            <span style="color:#cbd5e1;">PoS Validator Staking Yield</span>
-            <span class="font-mono" style="color:#00f2fe; font-weight:800;">+48.50 USDT (Daily)</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ======================================================== -->
-    <!-- 3. COMPREHENSIVE POS CAPABILITIES & HARDWARE             -->
-    <!-- ======================================================== -->
-    <section class="pos-section" id="posHardware">
-      <div class="pos-section-header">
-        <span class="pos-section-badge">Enterprise Ecosystem</span>
-        <h2 class="pos-section-title">B-Magnet POS Hardware & Software Capabilities</h2>
-        <p class="pos-section-desc">
-          Engineered for physical storefronts, e-commerce checkouts, and multi-location franchises requiring high-speed multi-currency crypto processing.
-        </p>
-      </div>
-
-      <div class="pos-features-grid">
+  <!-- ======================================================== -->
+  <!-- 1. SQUARE HERO SECTION                                   -->
+  <!-- ======================================================== -->
+  <section class="sq-hero" id="overview">
+    <div class="sq-container">
+      <div class="sq-hero-grid">
         
-        <div class="pos-feature-card">
-          <div class="pfc-icon" style="background: rgba(16, 185, 129, 0.15); color: #10b981;">
-            <span class="material-symbols-rounded">point_of_sale</span>
+        <div>
+          <div class="sq-eyebrow">
+            <span class="material-symbols-rounded" style="font-size: 16px;">verified</span>
+            <span>Kingdom of Saudi Arabia • ZATCA Certified</span>
           </div>
-          <h3 class="pfc-title">1. Smart Handheld POS Terminals</h3>
-          <p class="pfc-desc">
-            Physical smart terminals with integrated high-definition touchscreens, high-speed thermal receipt printing, NFC contactless chip readers, and camera QR scanning.
+
+          <h1 class="sq-hero-title">
+            The point of sale that powers every kind of business.
+          </h1>
+
+          <p class="sq-hero-lead">
+            B-Magnet POS is built to run retail stores, restaurants, services, and e-commerce across Saudi Arabia. Complete with ZATCA Phase 2 e-invoicing clearance, 15% VAT calculation, mada contactless payments, and instant settlement.
           </p>
+
+          <div class="sq-hero-ctas">
+            <a href="/login/" class="btn-sq-primary" style="padding: 14px 30px; font-size: 15px;">
+              <span>Start Free with B-Magnet POS</span>
+              <span class="material-symbols-rounded" style="font-size: 18px;">arrow_forward</span>
+            </a>
+            <a href="https://wa.me/919495097786?text=Hello%20B-Magnet%20POS%20Team%2C%20I%20want%20to%20setup%20ZATCA%20Phase%202%20POS%20for%20my%20business%20in%20Saudi%20Arabia." target="_blank" rel="noopener noreferrer" class="btn-sq-secondary" style="padding: 14px 26px; font-size: 15px;">
+              <span>Contact Sales (WhatsApp)</span>
+              <span class="material-symbols-rounded" style="font-size: 18px;">chat</span>
+            </a>
+          </div>
+
+          <div class="sq-trust-pills">
+            <div class="sq-trust-item">
+              <span class="material-symbols-rounded" style="color: #166534; font-size: 18px;">check_circle</span>
+              <span>ZATCA Phase 2 Integrated</span>
+            </div>
+            <div class="sq-trust-item">
+              <span class="material-symbols-rounded" style="color: #166534; font-size: 18px;">check_circle</span>
+              <span>mada & Apple Pay Ready</span>
+            </div>
+            <div class="sq-trust-item">
+              <span class="material-symbols-rounded" style="color: #166534; font-size: 18px;">check_circle</span>
+              <span>No Monthly Subscription</span>
+            </div>
+          </div>
         </div>
 
-        <div class="pos-feature-card">
-          <div class="pfc-icon" style="background: rgba(0, 242, 254, 0.15); color: #00f2fe;">
-            <span class="material-symbols-rounded">cloud</span>
-          </div>
-          <h3 class="pfc-title">2. Web3 Cloud Merchant Gateway</h3>
-          <p class="pfc-desc">
-            No physical hardware required. Turn any iPhone, Android phone, iPad, or desktop computer into an enterprise crypto POS cashier terminal in under 60 seconds.
-          </p>
-        </div>
+        <!-- Terminal Showcase -->
+        <div class="sq-terminal-visual">
+          <div class="terminal-card-screen">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <span style="font-size: 12px; font-weight: 800; color: var(--sq-gray-70); text-transform: uppercase;">TAX INVOICE (فاتورة ضريبية)</span>
+              <span class="pos-tax-pill">ZATCA QR READY</span>
+            </div>
 
-        <div class="pos-feature-card">
-          <div class="pfc-icon" style="background: rgba(245, 158, 11, 0.15); color: #f59e0b;">
-            <span class="material-symbols-rounded">currency_exchange</span>
-          </div>
-          <h3 class="pfc-title">3. Real-Time Forex Rate Locking</h3>
-          <p class="pfc-desc">
-            Display billing in AED, INR, USD, SAR, or EUR while receiving exact settled USDT (BEP-20). Real-time price locks protect your business from crypto volatility.
-          </p>
-        </div>
+            <div class="pos-total-row">
+              <span style="font-size: 14px; font-weight: 700; color: var(--sq-gray-70);">Total with 15% VAT:</span>
+              <div class="pos-total-amt">230.00 <span style="font-size: 16px; font-weight: 700; color: var(--sq-gray-50);">SAR</span></div>
+            </div>
 
-        <div class="pos-feature-card">
-          <div class="pfc-icon" style="background: rgba(59, 130, 246, 0.15); color: #3b82f6;">
-            <span class="material-symbols-rounded">lock</span>
-          </div>
-          <h3 class="pfc-title">4. Non-Custodial Multi-Signature</h3>
-          <p class="pfc-desc">
-            Zero central wallet holding. All customer payments transfer directly from the customer's wallet into your designated business Web3 vault address.
-          </p>
-        </div>
+            <div style="font-size: 12px; color: var(--sq-gray-70); display: flex; justify-content: space-between; border-bottom: 1px solid var(--sq-border); padding-bottom: 10px;">
+              <span>Subtotal: <strong>200.00 SAR</strong></span>
+              <span>VAT (15% ضريبة): <strong style="color: #004d40;">30.00 SAR</strong></span>
+            </div>
 
-        <div class="pos-feature-card">
-          <div class="pfc-icon" style="background: rgba(168, 85, 247, 0.15); color: #a855f7;">
-            <span class="material-symbols-rounded">receipt_long</span>
-          </div>
-          <h3 class="pfc-title">5. Automated Accounting & Cloud Ledgers</h3>
-          <p class="pfc-desc">
-            Every transaction is recorded with blockchain transaction hashes (TxHash), timestamp, customer reference, and automated Google Sheets live webhooks.
-          </p>
-        </div>
+            <!-- Payment Methods Banner -->
+            <div class="mada-pay-banner">
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <span class="material-symbols-rounded" style="font-size: 24px; color: #004d40;">contactless</span>
+                <div>
+                  <strong style="font-size: 13px; color: var(--sq-black); display: block;">Tap to Pay • مدى & Apple Pay</strong>
+                  <span style="font-size: 11.5px; color: var(--sq-gray-70);">Sub-2.4s Contactless NFC Transaction</span>
+                </div>
+              </div>
+              <span style="font-size: 12px; font-weight: 800; color: #166534;" class="font-mono">APPROVED</span>
+            </div>
 
-        <div class="pos-feature-card">
-          <div class="pfc-icon" style="background: rgba(16, 185, 129, 0.15); color: #10b981;">
-            <span class="material-symbols-rounded">verified_user</span>
+            <!-- Instant Receipt Preview -->
+            <div style="background: var(--sq-gray-05); border-radius: 8px; padding: 12px; font-size: 11.5px; color: var(--sq-gray-70);">
+              <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                <span>ZATCA UUID:</span>
+                <span class="font-mono">8f2c-4921-992a</span>
+              </div>
+              <div style="display: flex; justify-content: space-between;">
+                <span>Seller VAT #:</span>
+                <span class="font-mono">310123456700003</span>
+              </div>
+            </div>
           </div>
-          <h3 class="pfc-title">6. Zero Chargebacks & Instant Finality</h3>
-          <p class="pfc-desc">
-            Eliminate fraudulent credit card chargebacks and disputes forever. Blockchain settlements are cryptographically final and irreversible upon confirmation.
-          </p>
         </div>
 
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ======================================================== -->
-    <!-- 4. PROOF OF STAKE (PoS) STAKING & YIELD CALCULATOR       -->
-    <!-- ======================================================== -->
-    <section class="pos-section" id="posStaking" style="background: #141d29; border: 1px solid var(--pos-border); border-radius: 28px; padding: 40px 32px; box-shadow: 0 15px 45px rgba(0,0,0,0.4);">
-      <div class="pos-section-header" style="margin-bottom: 30px;">
-        <span class="pos-section-badge" style="background: rgba(16,185,129,0.15); color: #10b981; border-color: rgba(16,185,129,0.3);">Daily Merchant Staking Yield</span>
-        <h2 class="pos-section-title">Proof-of-Stake (PoS) Validator Yield Protocol</h2>
-        <p class="pos-section-desc">
-          Unlike legacy card processors that charge 3% fees and hold funds for weeks, B-Magnet POS distributes daily network validator staking yields to merchant ledgers.
+  <!-- ======================================================== -->
+  <!-- 2. ZATCA PHASE 2 E-INVOICING CERTIFICATION               -->
+  <!-- ======================================================== -->
+  <section class="sq-zatca-section" id="zatca">
+    <div class="sq-container">
+      <div class="sq-section-header">
+        <span class="sq-eyebrow">Tax Authority Compliance</span>
+        <h2 class="sq-section-title">Approved for ZATCA Phase 2 E-Invoicing</h2>
+        <p class="sq-section-sub">
+          B-Magnet POS is engineered in full alignment with the Zakat, Tax and Customs Authority (ZATCA / هيئة الزكاة والضريبة والجمارك) regulations for Phase 1 (Generation) and Phase 2 (Integration / الربط والتكامل).
         </p>
       </div>
 
-      <!-- Interactive Yield Simulator -->
-      <div style="max-width: 720px; margin: 0 auto; background: #090e15; border: 1px solid rgba(45,155,136,0.3); border-radius: 20px; padding: 28px;">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-          <span style="font-size: 13px; font-weight: 700; color: #cbd5e1;">Monthly Merchant Volume:</span>
-          <span class="font-mono" style="font-size: 20px; font-weight: 800; color: #00f2fe;" id="calcVolumeDisplay">$50,000 USDT</span>
-        </div>
-
-        <input type="range" id="calcSlider" min="5000" max="500000" step="5000" value="50000" oninput="updateYieldCalc(this.value)" style="width: 100%; height: 8px; border-radius: 6px; background: rgba(45,155,136,0.3); outline: none; margin-bottom: 24px; cursor: pointer;">
-
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; text-align: center;">
-          <div style="background: #141d29; border: 1px solid rgba(45,155,136,0.25); border-radius: 14px; padding: 14px;">
-            <span style="font-size: 11px; color: #94a3b8; font-weight: 700; text-transform: uppercase;">Estimated Annual APY</span>
-            <div style="font-size: 22px; font-weight: 800; color: #10b981; margin-top: 4px;" class="font-mono">14.8%</div>
-          </div>
-
-          <div style="background: #141d29; border: 1px solid rgba(45,155,136,0.25); border-radius: 14px; padding: 14px;">
-            <span style="font-size: 11px; color: #94a3b8; font-weight: 700; text-transform: uppercase;">Monthly PoS Yield</span>
-            <div style="font-size: 22px; font-weight: 800; color: #00f2fe; margin-top: 4px;" class="font-mono" id="calcMonthlyYield">+$616.67</div>
-          </div>
-
-          <div style="background: #141d29; border: 1px solid rgba(45,155,136,0.25); border-radius: 14px; padding: 14px;">
-            <span style="font-size: 11px; color: #94a3b8; font-weight: 700; text-transform: uppercase;">Saved vs Credit Cards (3%)</span>
-            <div style="font-size: 22px; font-weight: 800; color: #f59e0b; margin-top: 4px;" class="font-mono" id="calcSavedFees">+$1,400.00</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ======================================================== -->
-    <!-- 5. MERCHANT TIERS & PRICING                              -->
-    <!-- ======================================================== -->
-    <section class="pos-section" id="posPricing">
-      <div class="pos-section-header">
-        <span class="pos-section-badge">Transparent Pricing</span>
-        <h2 class="pos-section-title">Select Your B-Magnet POS Tier</h2>
-        <p class="pos-section-desc">Zero hidden monthly gateway fees. Settle globally with ultra-low transaction costs.</p>
-      </div>
-
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 22px;">
+      <div class="zatca-grid">
         
-        <!-- Starter Web3 POS -->
-        <div style="background: #141d29; border: 1px solid var(--pos-border); border-radius: 24px; padding: 30px; display: flex; flex-direction: column; justify-content: space-between;">
-          <div>
-            <span style="font-size: 12px; font-weight: 800; color: #00f2fe; text-transform: uppercase;">Software Only</span>
-            <h3 style="font-size: 22px; font-weight: 800; color: #fff; margin: 6px 0 10px 0;">Starter Web3 POS</h3>
-            <div style="font-size: 34px; font-weight: 900; color: #10b981; font-family: 'JetBrains Mono'; margin-bottom: 16px;">FREE <span style="font-size: 13px; color: #94a3b8;">/ Forever</span></div>
-            <ul style="list-style: none; padding: 0; margin: 0 0 24px 0; font-size: 13.5px; color: #cbd5e1; line-height: 1.8;">
-              <li>✓ Web POS on any Smartphone or PC</li>
-              <li>✓ Dynamic QR Code Payments</li>
-              <li>✓ 0.20% Flat Processing Fee</li>
-              <li>✓ Direct Wallet Settlement</li>
-            </ul>
+        <div class="zatca-card">
+          <div class="zatca-icon">
+            <span class="material-symbols-rounded">qr_code_2</span>
           </div>
-          <a href="/login/" style="height: 46px; border-radius: 12px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); color: #fff; text-decoration: none; font-weight: 800; font-size: 14px; display: flex; align-items: center; justify-content: center;">Start Free Now</a>
+          <h3>Compliant Phase 2 QR Codes</h3>
+          <p>Generates cryptographic Base64 TLV encoded QR codes containing Seller Name, VAT Number, Timestamp, Total, and VAT total on every customer receipt.</p>
         </div>
 
-        <!-- Retail Smart Terminal -->
-        <div style="background: radial-gradient(circle at 50% 0%, rgba(16, 185, 129, 0.2) 0%, #141d29 100%); border: 1.5px solid #10b981; border-radius: 24px; padding: 30px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 16px 45px rgba(16, 185, 129, 0.25);">
-          <div>
-            <span style="background: #10b981; color: #0e141b; font-size: 11px; font-weight: 800; padding: 3px 12px; border-radius: 99px; display: inline-block; margin-bottom: 6px;">RECOMMENDED</span>
-            <h3 style="font-size: 22px; font-weight: 800; color: #fff; margin: 6px 0 10px 0;">Retail Smart Terminal</h3>
-            <div style="font-size: 34px; font-weight: 900; color: #10b981; font-family: 'JetBrains Mono'; margin-bottom: 16px;">$149 <span style="font-size: 13px; color: #94a3b8;">/ Hardware Unit</span></div>
-            <ul style="list-style: none; padding: 0; margin: 0 0 24px 0; font-size: 13.5px; color: #cbd5e1; line-height: 1.8;">
-              <li>✓ Handheld Smart Touchscreen POS</li>
-              <li>✓ Contactless NFC Tap & Thermal Printer</li>
-              <li>✓ 0.15% Reduced Processing Fee</li>
-              <li>✓ Daily Proof-of-Stake Staking Yield</li>
-            </ul>
+        <div class="zatca-card">
+          <div class="zatca-icon">
+            <span class="material-symbols-rounded">key</span>
           </div>
-          <a href="https://wa.me/919495097786?text=I%20want%20to%20order%20the%20B-Magnet%20Retail%20Smart%20POS%20Terminal%20($149)." target="_blank" rel="noopener noreferrer" style="height: 46px; border-radius: 12px; background: #10b981; color: #fff; text-decoration: none; font-weight: 800; font-size: 14px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(16, 185, 129, 0.35);">Order POS Terminal</a>
+          <h3>Cryptographic Stamp & UUID</h3>
+          <p>Every invoice is cryptographically stamped with SHA-256 digital hashes, sequential counters, and unique 128-bit UUIDs preventing alteration.</p>
         </div>
 
-        <!-- Enterprise Gateway -->
-        <div style="background: #141d29; border: 1px solid var(--pos-border); border-radius: 24px; padding: 30px; display: flex; flex-direction: column; justify-content: space-between;">
-          <div>
-            <span style="font-size: 12px; font-weight: 800; color: #f59e0b; text-transform: uppercase;">Multi-Store Chain</span>
-            <h3 style="font-size: 22px; font-weight: 800; color: #fff; margin: 6px 0 10px 0;">Enterprise Multi-Store</h3>
-            <div style="font-size: 34px; font-weight: 900; color: #f59e0b; font-family: 'JetBrains Mono'; margin-bottom: 16px;">$499 <span style="font-size: 13px; color: #94a3b8;">/ Complete Setup</span></div>
-            <ul style="list-style: none; padding: 0; margin: 0 0 24px 0; font-size: 13.5px; color: #cbd5e1; line-height: 1.8;">
-              <li>✓ Unlimited Cashier Terminal Instances</li>
-              <li>✓ Custom ERP & E-Commerce Webhook API</li>
-              <li>✓ 0.08% Lowest Institutional Fee</li>
-              <li>✓ 1-on-1 Dedicated Technical Manager</li>
-            </ul>
+        <div class="zatca-card">
+          <div class="zatca-icon">
+            <span class="material-symbols-rounded">cloud_sync</span>
           </div>
-          <a href="https://wa.me/919495097786?text=I%20want%20to%20inquire%20about%20the%20Enterprise%20Multi-Store%20POS%20Solution." target="_blank" rel="noopener noreferrer" style="height: 46px; border-radius: 12px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); color: #fff; text-decoration: none; font-weight: 800; font-size: 14px; display: flex; align-items: center; justify-content: center;">Inquire Enterprise</a>
+          <h3>Automated Fatoora Portal Sync</h3>
+          <p>Direct API integration with ZATCA’s Fatoora platform for real-time clearance of standard tax invoices (B2B) and reporting of simplified invoices (B2C).</p>
+        </div>
+
+        <div class="zatca-card">
+          <div class="zatca-icon">
+            <span class="material-symbols-rounded">percent</span>
+          </div>
+          <h3>15% VAT Automatic Calculation</h3>
+          <p>Automatically calculates 15% Saudi VAT across all product catalogs with multi-tax category support and 1-click accounting reports.</p>
         </div>
 
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ======================================================== -->
-    <!-- 6. SINGLE ACCESS BUTTON GATEWAY TO TRADING BOTS          -->
-    <!-- ======================================================== -->
-    <section class="bot-gateway-banner" id="botGateway">
-      <div style="flex: 1; min-width: 320px;">
-        <span style="font-size: 11.5px; font-weight: 800; color: #00f2fe; text-transform: uppercase; display: flex; align-items: center; gap: 6px; margin-bottom: 8px;">
+  <!-- ======================================================== -->
+  <!-- 3. HARDWARE TERMINALS (PRICED IN SAR)                    -->
+  <!-- ======================================================== -->
+  <section class="sq-section" id="hardware">
+    <div class="sq-container">
+      <div class="sq-section-header">
+        <span class="sq-eyebrow">Purpose-Built POS Devices</span>
+        <h2 class="sq-section-title">Hardware designed for speed and reliability.</h2>
+        <p class="sq-section-sub">
+          Choose from sleek handheld mobile terminals, tabletop dual-screen registers, or run B-Magnet POS on your existing tablet or phone.
+        </p>
+      </div>
+
+      <div class="sq-hardware-grid">
+        
+        <!-- Hardware 1: Mobile Terminal -->
+        <div class="sq-hw-card">
+          <div>
+            <span class="hw-badge">Handheld & Portable</span>
+            <h3 class="hw-title">B-Magnet Terminal</h3>
+            <p style="font-size: 14px; color: var(--sq-gray-70); margin-bottom: 16px;">All-in-one handheld POS with built-in thermal printer, NFC mada tap, and 4G / Wi-Fi connectivity.</p>
+            <div class="hw-price">599 SAR <span>(ر.س ٥٩٩)</span></div>
+            <ul class="hw-features">
+              <li><span class="material-symbols-rounded" style="color: #166534; font-size: 18px;">check</span> 5.5" HD Touchscreen</li>
+              <li><span class="material-symbols-rounded" style="color: #166534; font-size: 18px;">check</span> Built-in High-Speed Receipt Printer</li>
+              <li><span class="material-symbols-rounded" style="color: #166534; font-size: 18px;">check</span> Contactless mada, Apple Pay & Chip</li>
+              <li><span class="material-symbols-rounded" style="color: #166534; font-size: 18px;">check</span> ZATCA Phase 2 Instant QR Printing</li>
+            </ul>
+          </div>
+          <a href="https://wa.me/919495097786?text=I%20want%20to%20order%20B-Magnet%20Terminal%20(599%20SAR)." target="_blank" rel="noopener noreferrer" class="btn-sq-primary">
+            <span>Order Terminal (599 SAR)</span>
+          </a>
+        </div>
+
+        <!-- Hardware 2: Dual Screen Register -->
+        <div class="sq-hw-card">
+          <div>
+            <span class="hw-badge" style="background: #e0f2f1; color: #004d40;">Flagship Countertop</span>
+            <h3 class="hw-title">B-Magnet Register</h3>
+            <p style="font-size: 14px; color: var(--sq-gray-70); margin-bottom: 16px;">Dual-screen complete countertop solution with dedicated customer-facing display and cash drawer support.</p>
+            <div class="hw-price">1,899 SAR <span>(ر.س ١,٨٩٩)</span></div>
+            <ul class="hw-features">
+              <li><span class="material-symbols-rounded" style="color: #166534; font-size: 18px;">check</span> Dual 15.6" + 10.1" Customer Screens</li>
+              <li><span class="material-symbols-rounded" style="color: #166534; font-size: 18px;">check</span> USB & Bluetooth Barcode Scanner Ready</li>
+              <li><span class="material-symbols-rounded" style="color: #166534; font-size: 18px;">check</span> Full ZATCA Enterprise Fatoora Integration</li>
+              <li><span class="material-symbols-rounded" style="color: #166534; font-size: 18px;">check</span> Heavy-Duty Cash Drawer Connectivity</li>
+            </ul>
+          </div>
+          <a href="https://wa.me/919495097786?text=I%20want%20to%20order%20B-Magnet%20Register%20(1899%20SAR)." target="_blank" rel="noopener noreferrer" class="btn-sq-primary">
+            <span>Order Register (1,899 SAR)</span>
+          </a>
+        </div>
+
+        <!-- Hardware 3: Free Web POS -->
+        <div class="sq-hw-card">
+          <div>
+            <span class="hw-badge">Zero Hardware Cost</span>
+            <h3 class="hw-title">B-Magnet Web POS</h3>
+            <p style="font-size: 14px; color: var(--sq-gray-70); margin-bottom: 16px;">Run B-Magnet POS directly inside your smartphone or PC browser with digital SMS/WhatsApp e-invoices.</p>
+            <div class="hw-price">0 SAR <span>(FREE)</span></div>
+            <ul class="hw-features">
+              <li><span class="material-symbols-rounded" style="color: #166534; font-size: 18px;">check</span> Works on iPhone, Android, iPad & PC</li>
+              <li><span class="material-symbols-rounded" style="color: #166534; font-size: 18px;">check</span> WhatsApp & Email E-Invoicing</li>
+              <li><span class="material-symbols-rounded" style="color: #166534; font-size: 18px;">check</span> Instant Cloud Inventory Management</li>
+              <li><span class="material-symbols-rounded" style="color: #166534; font-size: 18px;">check</span> Real-time Sales Analytics Dashboard</li>
+            </ul>
+          </div>
+          <a href="/login/" class="btn-sq-secondary">
+            <span>Launch Web POS (Free)</span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- 4. INDUSTRY SOLUTIONS                                    -->
+  <!-- ======================================================== -->
+  <section class="sq-section" id="industries" style="background: var(--sq-gray-05); border-top: 1px solid var(--sq-border);">
+    <div class="sq-container">
+      <div class="sq-section-header">
+        <span class="sq-eyebrow">Tailored For Saudi Businesses</span>
+        <h2 class="sq-section-title">Built for every industry in the Kingdom.</h2>
+        <p class="sq-section-sub">From boutique retail stores in Riyadh to cafes in Jeddah and service companies in Dammam.</p>
+      </div>
+
+      <div class="sq-industry-grid">
+        
+        <div class="sq-industry-card">
+          <div class="sq-ind-icon">🛍️</div>
+          <h3>Retail & Fashion</h3>
+          <p>Barcode scanning, multi-variant inventory (size/color), stock level alerts, and instant ZATCA compliant customer receipts.</p>
+        </div>
+
+        <div class="sq-industry-card">
+          <div class="sq-ind-icon">☕</div>
+          <h3>Cafes & Restaurants</h3>
+          <p>Fast table management, kitchen order tickets (KOT), item modifiers, tip management, and split-bill payments.</p>
+        </div>
+
+        <div class="sq-industry-card">
+          <div class="sq-ind-icon">💈</div>
+          <h3>Salons & Services</h3>
+          <p>Staff scheduling, customer booking history, service itemization, and direct mada contactless payment at the counter.</p>
+        </div>
+
+        <div class="sq-industry-card">
+          <div class="sq-ind-icon">📦</div>
+          <h3>Wholesale & B2B</h3>
+          <p>Standard B2B tax invoices with buyer VAT numbers, credit memo processing, and automated ZATCA XML clearance.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- 5. PRICING IN SAUDI RIYAL (SAR / ر.س)                     -->
+  <!-- ======================================================== -->
+  <section class="sq-pricing-section" id="pricing">
+    <div class="sq-container">
+      <div class="sq-section-header">
+        <span class="sq-eyebrow">Transparent Saudi Pricing</span>
+        <h2 class="sq-section-title">Simple, transparent pricing. No surprises.</h2>
+        <p class="sq-section-sub">Pay only when you make a sale. Zero monthly software fees for standard accounts.</p>
+      </div>
+
+      <div class="sq-pricing-grid">
+        
+        <!-- Plan 1: Pay As You Go -->
+        <div class="sq-price-card">
+          <div>
+            <span style="font-size: 13px; font-weight: 800; color: var(--sq-gray-70); text-transform: uppercase;">Standard Account</span>
+            <h3 style="font-size: 24px; font-weight: 800; margin: 6px 0 14px 0;">Pay As You Go</h3>
+            <div style="font-size: 38px; font-weight: 900; font-family: 'JetBrains Mono'; margin-bottom: 20px;">
+              0 SAR <span style="font-size: 14px; color: var(--sq-gray-70); font-weight: 600;">/ month</span>
+            </div>
+            <ul style="list-style: none; padding: 0; margin: 0 0 28px 0; font-size: 14px; color: var(--sq-gray-70); line-height: 1.9;">
+              <li>✓ <strong>0.8% + 0.50 SAR</strong> per mada transaction</li>
+              <li>✓ Free ZATCA Phase 2 E-Invoicing</li>
+              <li>✓ Unlimited Products & Items</li>
+              <li>✓ Digital Receipts & Invoices</li>
+            </ul>
+          </div>
+          <a href="/login/" class="btn-sq-secondary">Start Free</a>
+        </div>
+
+        <!-- Plan 2: Retail Plus -->
+        <div class="sq-price-card featured">
+          <span class="featured-tag">MOST POPULAR</span>
+          <div>
+            <span style="font-size: 13px; font-weight: 800; color: #004d40; text-transform: uppercase;">Retail & Dining Plus</span>
+            <h3 style="font-size: 24px; font-weight: 800; margin: 6px 0 14px 0;">B-Magnet Plus</h3>
+            <div style="font-size: 38px; font-weight: 900; font-family: 'JetBrains Mono'; margin-bottom: 20px;">
+              149 SAR <span style="font-size: 14px; color: var(--sq-gray-70); font-weight: 600;">/ month</span>
+            </div>
+            <ul style="list-style: none; padding: 0; margin: 0 0 28px 0; font-size: 14px; color: var(--sq-gray-70); line-height: 1.9;">
+              <li>✓ <strong>0.6% + 0.35 SAR</strong> reduced transaction fee</li>
+              <li>✓ Multi-Branch & Warehouse Inventory</li>
+              <li>✓ Advanced ZATCA B2B & B2C Reporting</li>
+              <li>✓ Priority 24/7 Saudi Phone & WhatsApp Support</li>
+            </ul>
+          </div>
+          <a href="/login/" class="btn-sq-primary">Get Plus</a>
+        </div>
+
+        <!-- Plan 3: Enterprise -->
+        <div class="sq-price-card">
+          <div>
+            <span style="font-size: 13px; font-weight: 800; color: var(--sq-gray-70); text-transform: uppercase;">Multi-Store Chains</span>
+            <h3 style="font-size: 24px; font-weight: 800; margin: 6px 0 14px 0;">Enterprise Custom</h3>
+            <div style="font-size: 38px; font-weight: 900; font-family: 'JetBrains Mono'; margin-bottom: 20px;">
+              Custom <span style="font-size: 14px; color: var(--sq-gray-70); font-weight: 600;">rates</span>
+            </div>
+            <ul style="list-style: none; padding: 0; margin: 0 0 28px 0; font-size: 14px; color: var(--sq-gray-70); line-height: 1.9;">
+              <li>✓ Custom Interchange Plus Fee Structure</li>
+              <li>✓ Dedicated ERP (SAP / Odoo / Oracle) API</li>
+              <li>✓ Custom Hardware Deployment for 10+ Stores</li>
+              <li>✓ Dedicated Saudi Account Manager</li>
+            </ul>
+          </div>
+          <a href="https://wa.me/919495097786?text=Inquiring%20about%20Enterprise%20Custom%20POS%20rates." target="_blank" rel="noopener noreferrer" class="btn-sq-secondary">Contact Enterprise</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- 6. SINGLE CLEAR GATEWAY TO TRADING BOTS                  -->
+  <!-- ======================================================== -->
+  <div class="sq-container">
+    <div class="sq-bot-gateway">
+      <div class="sq-bot-left">
+        <span style="font-size: 12px; font-weight: 800; color: #00f2fe; text-transform: uppercase; display: inline-flex; align-items: center; gap: 6px; margin-bottom: 8px;">
           <span class="material-symbols-rounded" style="font-size: 18px;">smart_toy</span>
-          <span>B-Magnet Labs Algorithmic Trading Systems</span>
+          <span>B-Magnet Labs Algorithmic Trading</span>
         </span>
-        <h2 style="font-size: 26px; font-weight: 800; color: #ffffff; margin: 0 0 10px 0; line-height: 1.25;">
-          Looking for B-Magnet Algorithmic Trading Bots?
-        </h2>
-        <p style="font-size: 14px; color: #94a3b8; margin: 0; line-height: 1.6; max-width: 620px;">
-          Access the full MetaTrader 5 Expert Advisor marketplace, Gold Hunter Pro v1.21 live trading signals, verified 89.4% win-rate statistics, and SHA-256 license passes on our dedicated trading bots platform.
-        </p>
+        <h2>Looking for our Algorithmic Trading Systems?</h2>
+        <p>Access our institutional MetaTrader 5 Expert Advisors, Gold Hunter EA Pro v1.21 live trading feeds, and verified performance statistics on our dedicated trading bots platform.</p>
       </div>
 
-      <!-- Single Action Button -->
       <div>
-        <a href="/bot" class="btn-pos-primary" style="background: linear-gradient(135deg, #00f2fe, #00a896); color: #0e141b; font-size: 15px; font-weight: 800; box-shadow: 0 8px 25px rgba(0, 242, 254, 0.35); text-decoration: none;">
-          <span>Access Algorithmic Trading Bots →</span>
-          <span class="material-symbols-rounded">open_in_new</span>
+        <a href="/bot" class="btn-sq-secondary" style="background: #ffffff; color: #000000; font-size: 15px; font-weight: 800; padding: 14px 28px;">
+          <span>Explore Trading Bots Platform →</span>
         </a>
       </div>
-    </section>
+    </div>
+  </div>
 
-    <!-- ======================================================== -->
-    <!-- 7. MERCHANT FAQ ACCORDION                                -->
-    <!-- ======================================================== -->
-    <section class="pos-section" id="posFaq" style="margin-top: 60px;">
-      <div class="pos-section-header">
-        <span class="pos-section-badge">Help & Verification</span>
-        <h2 class="pos-section-title">Frequently Asked Questions</h2>
-        <p class="pos-section-desc">Everything you need to know about B-Magnet POS and non-custodial crypto processing.</p>
+  <!-- ======================================================== -->
+  <!-- 7. FREQUENTLY ASKED QUESTIONS                            -->
+  <!-- ======================================================== -->
+  <section class="sq-section" id="faq">
+    <div class="sq-container" style="max-width: 860px;">
+      <div class="sq-section-header">
+        <span class="sq-eyebrow">Got Questions?</span>
+        <h2 class="sq-section-title">Frequently Asked Questions</h2>
       </div>
 
-      <div style="max-width: 820px; margin: 0 auto;">
-        <div class="pos-faq-item active" onclick="toggleFaq(this)">
-          <div class="pos-faq-question">
-            <span>How do payments settle directly into my bank or crypto wallet?</span>
-            <span class="material-symbols-rounded faq-chevron">expand_more</span>
-          </div>
-          <div class="pos-faq-answer">
-            B-Magnet POS is 100% non-custodial. When a customer scans or taps to pay, funds are broadcast on BNB Smart Chain (BEP-20) and settle directly into your designated private Web3 wallet address within 2.4 seconds. You can convert to fiat anytime.
-          </div>
+      <div class="sq-faq-item active" onclick="toggleFaq(this)">
+        <div class="sq-faq-q">
+          <span>Is B-Magnet POS certified for ZATCA Phase 2 E-Invoicing in Saudi Arabia?</span>
+          <span class="material-symbols-rounded faq-chevron">expand_more</span>
         </div>
-
-        <div class="pos-faq-item" onclick="toggleFaq(this)">
-          <div class="pos-faq-question">
-            <span>Are there chargeback risks with B-Magnet POS?</span>
-            <span class="material-symbols-rounded faq-chevron">expand_more</span>
-          </div>
-          <div class="pos-faq-answer">
-            Zero chargeback risk. Unlike credit card networks where customers can reverse transactions months later, blockchain transactions on BNB Smart Chain are cryptographically final and irreversible.
-          </div>
-        </div>
-
-        <div class="pos-faq-item" onclick="toggleFaq(this)">
-          <div class="pos-faq-question">
-            <span>How does the Proof-of-Stake (PoS) merchant yield work?</span>
-            <span class="material-symbols-rounded faq-chevron">expand_more</span>
-          </div>
-          <div class="pos-faq-answer">
-            Merchant balances held in the B-Magnet POS network participate in decentralized network validation pools, generating daily staking distributions (estimated 14.8% APY) with zero capital lockup.
-          </div>
-        </div>
-
-        <div class="pos-faq-item" onclick="toggleFaq(this)">
-          <div class="pos-faq-question">
-            <span>Do I need to buy physical POS hardware to start?</span>
-            <span class="material-symbols-rounded faq-chevron">expand_more</span>
-          </div>
-          <div class="pos-faq-answer">
-            No. Our Starter Web3 POS works immediately on any smartphone, tablet, or desktop computer with zero hardware purchase. If you require physical thermal receipt printing and NFC hardware, our Retail Smart Terminal is available for $149.
-          </div>
+        <div class="sq-faq-a">
+          Yes. B-Magnet POS is 100% compliant with ZATCA Phase 1 and Phase 2 (Fatoora) requirements. It generates compliant TLV Base64 QR codes, UUIDs, cryptographic invoice hashes, and integrates directly with ZATCA's portal for B2B clearance and B2C reporting.
         </div>
       </div>
-    </section>
 
-  </main>
-
-  <!-- Corporate Footer -->
-  <footer class="pos-footer">
-    <div style="max-width: 1260px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
-      <div style="display: flex; align-items: center; gap: 10px;">
-        <img src="/images/b-magnet-emblem.png" alt="B-Magnet Logo" style="height: 26px;">
-        <span style="color: #fff; font-weight: 800;">B-MAGNET POS SYSTEMS INC.</span>
+      <div class="sq-faq-item" onclick="toggleFaq(this)">
+        <div class="sq-faq-q">
+          <span>What payment cards are accepted in Saudi Arabia?</span>
+          <span class="material-symbols-rounded faq-chevron">expand_more</span>
+        </div>
+        <div class="sq-faq-a">
+          B-Magnet POS accepts all local mada (مدى) debit cards, Apple Pay, Visa, Mastercard, and Web3 crypto settlement on BNB Smart Chain.
+        </div>
       </div>
 
-      <div style="display: flex; gap: 20px; flex-wrap: wrap;">
-        <a href="#posHero" style="color: #94a3b8; text-decoration: none;">POS Overview</a>
-        <a href="#posHardware" style="color: #94a3b8; text-decoration: none;">Hardware</a>
-        <a href="#posStaking" style="color: #94a3b8; text-decoration: none;">PoS Staking</a>
-        <a href="/bot" style="color: #00f2fe; text-decoration: none; font-weight: 800;">Trading Bots Suite ➔</a>
-        <a href="/admin/" style="color: #94a3b8; text-decoration: none;">Admin Panel</a>
-        <a href="/privacy/" style="color: #94a3b8; text-decoration: none;">Privacy Policy</a>
-        <a href="/terms/" style="color: #94a3b8; text-decoration: none;">Terms of Service</a>
+      <div class="sq-faq-item" onclick="toggleFaq(this)">
+        <div class="sq-faq-q">
+          <span>How fast are funds deposited into my Saudi bank account?</span>
+          <span class="material-symbols-rounded faq-chevron">expand_more</span>
+        </div>
+        <div class="sq-faq-a">
+          Card payments settle next business day directly into any registered Saudi bank account (Al Rajhi, SNB, Riyad Bank, etc.). Web3 crypto payments settle instantly within 2.4 seconds with zero hold periods.
+        </div>
       </div>
 
-      <span>&copy; 2026 B-Magnet PRO. All rights reserved.</span>
+      <div class="sq-faq-item" onclick="toggleFaq(this)">
+        <div class="sq-faq-q">
+          <span>How can I order the physical POS terminal hardware?</span>
+          <span class="material-symbols-rounded faq-chevron">expand_more</span>
+        </div>
+        <div class="sq-faq-a">
+          You can order the B-Magnet Terminal (599 SAR) or B-Magnet Register (1,899 SAR) directly by clicking the order button or contacting our team on WhatsApp at +91 94950 97786. We deliver across Riyadh, Jeddah, Dammam, and all GCC regions within 2-3 business days.
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- 8. CORPORATE SQUARE-STYLE FOOTER                         -->
+  <!-- ======================================================== -->
+  <footer class="sq-footer">
+    <div class="sq-container">
+      <div class="sq-footer-grid">
+        
+        <div>
+          <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+            <img src="/images/b-magnet-emblem.png" alt="B-Magnet Logo" style="height: 28px;">
+            <strong style="font-size: 18px; color: var(--sq-black);">B-Magnet POS</strong>
+          </div>
+          <p style="font-size: 13.5px; color: var(--sq-gray-70); line-height: 1.6; max-width: 320px; margin-bottom: 16px;">
+            Next-generation Point-of-Sale, ZATCA Phase 2 E-Invoicing & Merchant Settlement Systems for the Kingdom of Saudi Arabia.
+          </p>
+          <span style="font-size: 12px; color: #166534; font-weight: 700;">🟢 ZATCA Phase 2 Fatoora Certified</span>
+        </div>
+
+        <div class="sq-footer-col">
+          <h4>Products</h4>
+          <ul>
+            <li><a href="#overview">Point of Sale</a></li>
+            <li><a href="#hardware">B-Magnet Terminal</a></li>
+            <li><a href="#hardware">B-Magnet Register</a></li>
+            <li><a href="#hardware">Free Web POS</a></li>
+            <li><a href="#zatca">ZATCA E-Invoicing</a></li>
+          </ul>
+        </div>
+
+        <div class="sq-footer-col">
+          <h4>Solutions</h4>
+          <ul>
+            <li><a href="#industries">Retail & Stores</a></li>
+            <li><a href="#industries">Cafes & Restaurants</a></li>
+            <li><a href="#industries">Services & Salons</a></li>
+            <li><a href="#pricing">Pricing in SAR</a></li>
+            <li><a href="/bot">Trading Bots Suite ➔</a></li>
+          </ul>
+        </div>
+
+        <div class="sq-footer-col">
+          <h4>Support & Admin</h4>
+          <ul>
+            <li><a href="/admin/">Admin Console</a></li>
+            <li><a href="https://wa.me/919495097786" target="_blank" rel="noopener noreferrer">WhatsApp Support</a></li>
+            <li><a href="/privacy/">Privacy Policy</a></li>
+            <li><a href="/terms/">Terms of Service</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div style="border-top: 1px solid var(--sq-border); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; font-size: 12.5px;">
+        <span>&copy; 2026 B-Magnet POS Systems Inc. All rights reserved. Kingdom of Saudi Arabia.</span>
+        <span>ZATCA Compliant E-Invoicing Platform (مرحلة الربط والتكامل)</span>
+      </div>
     </div>
   </footer>
 
   <script>
-    let simCurrentAmount = 100;
-    const fiatRates = {
-      AED: 3.6725,
-      INR: 83.40,
-      USD: 1.00,
-      EUR: 0.92,
-      SAR: 3.75
-    };
-
-    function setSimAmount(amt) {
-      simCurrentAmount = amt;
-      document.querySelectorAll('.pos-amount-preset-chip').forEach(btn => {
-        btn.classList.toggle('active', btn.textContent === `$${amt}`);
-      });
-      document.getElementById('simAmountDisplay').innerHTML = `${amt.toFixed(2)} <span style="font-size: 16px; color: #94a3b8;">USDT</span>`;
-      updateSimFiat();
-    }
-
-    function updateSimFiat() {
-      const curr = document.getElementById('simCurrencySelect').value;
-      const rate = fiatRates[curr] || 3.6725;
-      const converted = (simCurrentAmount * rate).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-      document.getElementById('simFiatDisplay').innerHTML = `Equivalent: <strong class="font-mono" style="color: #00f2fe;">${converted} ${curr}</strong>`;
-    }
-
-    function triggerSimPayment() {
-      const btn = document.getElementById('simPayBtn');
-      btn.innerHTML = '<span class="material-symbols-rounded" style="animation: spin 1s linear infinite;">sync</span><span>Verifying Blockchain Finality...</span>';
-      btn.style.background = '#10b981';
-      btn.style.color = '#fff';
-
-      setTimeout(() => {
-        btn.innerHTML = '<span class="material-symbols-rounded">check_circle</span><span>PAID & VERIFIED (Sub-2.4s)</span>';
-        
-        const feed = document.getElementById('simFeedList');
-        const newItem = document.createElement('div');
-        newItem.style.css?v=4183Text = 'display: flex; justify-content: space-between; font-size: 12px; padding: 7px 10px; background: rgba(16,185,129,0.15); border: 1px solid rgba(16,185,129,0.3); border-radius: 8px; animation: fadeIn 0.3s;';
-        newItem.innerHTML = `<span style="color:#fff;">Simulated NFC Payment</span><span class="font-mono" style="color:#10b981; font-weight:800;">+${simCurrentAmount.toFixed(2)} USDT (Verified)</span>`;
-        if (feed) feed.insertBefore(newItem, feed.firstChild);
-
-        setTimeout(() => {
-          btn.innerHTML = '<span class="material-symbols-rounded">contactless</span><span>Simulate Contactless NFC / QR Payment</span>';
-          btn.style.background = 'linear-gradient(135deg, #00f2fe, #00a896)';
-          btn.style.color = '#0e141b';
-        }, 3500);
-      }, 1200);
-    }
-
-    function updateYieldCalc(val) {
-      const numVal = parseFloat(val);
-      document.getElementById('calcVolumeDisplay').textContent = `$${numVal.toLocaleString('en-US')} USDT`;
-      const monthly = (numVal * 0.148) / 12;
-      const saved = numVal * 0.028; // 2.8% savings vs legacy cards
-      document.getElementById('calcMonthlyYield').textContent = `+$${monthly.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
-      document.getElementById('calcSavedFees').textContent = `+$${saved.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
-    }
-
     function toggleFaq(el) {
       el.classList.toggle('active');
     }
