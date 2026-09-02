@@ -1081,10 +1081,408 @@
       font-weight: 900;
       margin-bottom: 10px;
     }
-    .sq-bot-left p {
+    /* ======================================================== */
+    /* 8B. BESPOKE APP DEVELOPMENT ADVERTISEMENT SECTION        */
+    /* ======================================================== */
+    .sq-adv-spotlight-banner {
+      background: linear-gradient(135deg, #09131d 0%, #112030 100%);
+      border: 1px solid rgba(0, 191, 165, 0.35);
+      border-radius: 16px;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      margin-top: 20px;
+      margin-bottom: 25px;
+    }
+    .adv-spotlight-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .adv-spotlight-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(0, 191, 165, 0.15);
+      border: 1px solid rgba(0, 191, 165, 0.35);
+      color: #00bfa5;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 99px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+    }
+    .adv-spotlight-text strong {
+      display: block;
+      color: #ffffff;
       font-size: 14.5px;
-      color: #a3a3a3;
+      font-weight: 800;
+      line-height: 1.3;
+    }
+    .adv-spotlight-text span {
+      display: block;
+      color: #94a3b8;
+      font-size: 12px;
+      margin-top: 2px;
+    }
+    .adv-spotlight-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .btn-adv-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #e2e8f0;
+      padding: 8px 16px;
+      border-radius: 10px;
+      font-size: 12.5px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .btn-adv-outline:hover {
+      background: rgba(255, 255, 255, 0.16);
+      color: #ffffff;
+      border-color: rgba(255, 255, 255, 0.35);
+    }
+    .btn-adv-whatsapp {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+      color: #ffffff;
+      padding: 8px 16px;
+      border-radius: 10px;
+      font-size: 12.5px;
+      font-weight: 800;
+      text-decoration: none;
+      box-shadow: 0 4px 14px rgba(37, 211, 102, 0.3);
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .btn-adv-whatsapp:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(37, 211, 102, 0.45);
+      filter: brightness(1.06);
+    }
+
+    /* Full Advertisement Showcase Section */
+    .sq-custom-apps-adv {
+      padding: clamp(60px, 8vw, 95px) 0;
+      background: 
+        radial-gradient(circle at 85% 15%, rgba(0, 191, 165, 0.1) 0%, transparent 45%),
+        radial-gradient(circle at 15% 85%, rgba(56, 189, 248, 0.08) 0%, transparent 50%),
+        linear-gradient(180deg, #09121a 0%, #050b10 100%);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      position: relative;
+      overflow: hidden;
+    }
+    .adv-section-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0, 191, 165, 0.12);
+      border: 1px solid rgba(0, 191, 165, 0.3);
+      color: #00bfa5;
+      padding: 6px 16px;
+      border-radius: 99px;
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      margin-bottom: 18px;
+    }
+    .adv-main-title {
+      font-size: clamp(28px, 4.5vw, 42px);
+      font-weight: 900;
+      color: #ffffff;
+      line-height: 1.18;
+      margin-bottom: 16px;
+      letter-spacing: -0.5px;
+    }
+    .adv-main-sub {
+      font-size: clamp(15px, 2vw, 17px);
+      color: #94a3b8;
       line-height: 1.6;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    .custom-apps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+      margin-bottom: 48px;
+    }
+    @media (max-width: 1024px) {
+      .custom-apps-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 680px) {
+      .custom-apps-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .custom-app-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      position: relative;
+    }
+    .custom-app-card:hover {
+      transform: translateY(-6px);
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(0, 191, 165, 0.4);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45);
+    }
+    .ca-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 18px;
+    }
+    .ca-icon-box {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+    }
+    .ca-icon-fintech {
+      background: linear-gradient(135deg, rgba(0, 200, 83, 0.18), rgba(0, 105, 92, 0.28));
+      color: #00e676;
+      border: 1px solid rgba(0, 230, 118, 0.3);
+    }
+    .ca-icon-edtech {
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.18), rgba(67, 56, 202, 0.28));
+      color: #818cf8;
+      border: 1px solid rgba(129, 140, 248, 0.3);
+    }
+    .ca-icon-vansale {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.18), rgba(180, 83, 9, 0.28));
+      color: #fbbf24;
+      border: 1px solid rgba(251, 191, 36, 0.3);
+    }
+    .ca-icon-retail {
+      background: linear-gradient(135deg, rgba(14, 165, 233, 0.18), rgba(3, 105, 161, 0.28));
+      color: #38bdf8;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+    }
+    .ca-icon-logistics {
+      background: linear-gradient(135deg, rgba(168, 85, 247, 0.18), rgba(126, 34, 206, 0.28));
+      color: #c084fc;
+      border: 1px solid rgba(192, 132, 252, 0.3);
+    }
+    .ca-icon-enterprise {
+      background: linear-gradient(135deg, rgba(236, 72, 153, 0.18), rgba(190, 24, 93, 0.28));
+      color: #f472b6;
+      border: 1px solid rgba(244, 114, 182, 0.3);
+    }
+    .ca-tag {
+      font-size: 10.5px;
+      font-weight: 800;
+      color: #94a3b8;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 4px 8px;
+      border-radius: 6px;
+      letter-spacing: 0.5px;
+    }
+    .ca-card-title {
+      font-size: 19px;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+    .ca-card-desc {
+      font-size: 13.5px;
+      color: #cbd5e1;
+      line-height: 1.6;
+      margin-bottom: 18px;
+    }
+    .ca-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: auto;
+    }
+    .ca-badges span {
+      font-size: 11px;
+      font-weight: 700;
+      color: #94a3b8;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 3px 8px;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    /* Process Bar */
+    .adv-why-bar {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 18px;
+      padding: 24px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+    @media (max-width: 900px) {
+      .adv-why-bar {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 540px) {
+      .adv-why-bar {
+        grid-template-columns: 1fr;
+      }
+    }
+    .why-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .why-icon {
+      font-size: 22px;
+      color: #00bfa5;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .why-item h4 {
+      font-size: 13.5px;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 4px;
+    }
+    .why-item p {
+      font-size: 12px;
+      color: #94a3b8;
+      line-height: 1.5;
+    }
+
+    /* Action Box */
+    .adv-cta-box {
+      background: linear-gradient(135deg, rgba(0, 77, 64, 0.6) 0%, rgba(9, 25, 37, 0.9) 100%);
+      border: 1px solid rgba(0, 191, 165, 0.35);
+      border-radius: 22px;
+      padding: clamp(28px, 4vw, 42px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      flex-wrap: wrap;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+    }
+    .adv-cta-left {
+      max-width: 640px;
+    }
+    .adv-cta-badge {
+      display: inline-block;
+      font-size: 11.5px;
+      font-weight: 800;
+      color: #5eead4;
+      letter-spacing: 0.5px;
+      margin-bottom: 10px;
+    }
+    .adv-cta-title {
+      font-size: clamp(20px, 3vw, 26px);
+      font-weight: 900;
+      color: #ffffff;
+      margin-bottom: 10px;
+      line-height: 1.25;
+    }
+    .adv-cta-desc {
+      font-size: 14px;
+      color: #cbd5e1;
+      line-height: 1.6;
+    }
+    .adv-cta-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+    @media (max-width: 800px) {
+      .adv-cta-actions {
+        width: 100%;
+      }
+    }
+    .btn-adv-cta-wa {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+      color: #ffffff !important;
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 800;
+      text-decoration: none;
+      box-shadow: 0 8px 24px rgba(37, 211, 102, 0.35);
+      transition: all 0.2s;
+    }
+    .btn-adv-cta-wa:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(37, 211, 102, 0.5);
+      filter: brightness(1.06);
+    }
+    .adv-cta-phones {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .btn-adv-cta-tel {
+      flex: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      color: #ffffff;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      font-family: var(--font-mono);
+      text-decoration: none;
+      transition: all 0.2s;
+      white-space: nowrap;
+      direction: ltr;
+      unicode-bidi: isolate;
+    }
+    .btn-adv-cta-tel:hover {
+      background: rgba(255, 255, 255, 0.16);
+      border-color: rgba(255, 255, 255, 0.3);
     }
 
     /* ======================================================== */
@@ -1324,6 +1722,34 @@
       </div>
     </div>
   </section>
+
+  <!-- ======================================================== -->
+  <!-- 2B. CUSTOM APPS ADVERTISEMENT SPOTLIGHT BANNER           -->
+  <!-- ======================================================== -->
+  <div class="sq-container" style="position: relative; z-index: 5;">
+    <div class="sq-adv-spotlight-banner">
+      <div class="adv-spotlight-left">
+        <span class="adv-spotlight-badge">
+          <span class="pulse-dot"></span>
+          <span id="txt_advBadge">B-MAGNET SOFTWARE LABS</span>
+        </span>
+        <div class="adv-spotlight-text">
+          <strong id="txt_advSpotlightTitle">Custom Business Apps Developed to Your Exact Requirements</strong>
+          <span id="txt_advSpotlightSub">Fintech, Educational, Van Sales, Retail, Logistics & Custom ERP Solutions</span>
+        </div>
+      </div>
+      <div class="adv-spotlight-actions">
+        <a href="#custom-apps" class="btn-adv-outline" id="txt_advSpotlightExplore">
+          <span>Explore Services</span>
+          <span class="material-symbols-rounded" style="font-size: 16px;">arrow_downward</span>
+        </a>
+        <a href="https://wa.me/919495097786?text=Hello%20B-Magnet%20Software%20Team%2C%20I%20want%20to%20develop%20a%20custom%20business%20application%20(Fintech%20%2F%20Educational%20%2F%20Van%20Sale%20%2F%20Custom%20App)." target="_blank" rel="noopener noreferrer" class="btn-adv-whatsapp" id="txt_advSpotlightWa">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0;"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.698c.97.549 1.83.813 2.796.813 3.183 0 5.77-2.587 5.77-5.766-.001-3.182-2.588-5.766-5.77-5.766zm9.969 5.766c0 5.514-4.486 10-10 10-1.758 0-3.4-.455-4.839-1.25l-4.711 1.233 1.258-4.598c-.968-1.554-1.508-3.376-1.508-5.385 0-5.514 4.486-10 10-10s10 4.486 10 10z"/></svg>
+          <span id="txt_advSpotlightWaText">Request Custom App</span>
+        </a>
+      </div>
+    </div>
+  </div>
 
   <!-- ======================================================== -->
   <!-- 3. EXPLAINING POS IN DETAIL (DEEP DIVE)                  -->
@@ -1760,6 +2186,225 @@
   </section>
 
   <!-- ======================================================== -->
+  <!-- 7B. CUSTOM BUSINESS APPS & ENTERPRISE SOFTWARE (ADV)      -->
+  <!-- ======================================================== -->
+  <section class="sq-custom-apps-adv" id="custom-apps">
+    <div class="sq-container">
+      
+      <!-- Section Header -->
+      <div class="sq-section-header" style="text-align: center; max-width: 880px; margin: 0 auto 45px auto;">
+        <div class="adv-section-eyebrow">
+          <span class="material-symbols-rounded" style="font-size: 18px; color: #00bfa5;">developer_mode</span>
+          <span id="txt_caEyebrow">Bespoke Software & Mobile App Development</span>
+        </div>
+        <h2 class="adv-main-title" id="txt_caTitle">
+          We Build All Kinds of Custom Business Apps to Your Exact Requirements
+        </h2>
+        <p class="adv-main-sub" id="txt_caSub">
+          Beyond our signature POS systems, B-Magnet architects, designs, and engineers full-stack, enterprise-grade mobile and web applications customized to your operational workflow, compliance standards, and commercial brand.
+        </p>
+      </div>
+
+      <!-- 6 Category Cards Grid -->
+      <div class="custom-apps-grid">
+        
+        <!-- Card 1: Fintech Apps -->
+        <div class="custom-app-card">
+          <div>
+            <div class="ca-card-top">
+              <div class="ca-icon-box ca-icon-fintech">
+                <span class="material-symbols-rounded">account_balance_wallet</span>
+              </div>
+              <span class="ca-tag" id="txt_ca1Tag">FINTECH & PAYMENTS</span>
+            </div>
+            <h3 class="ca-card-title" id="txt_ca1Title">Fintech & Digital Payment Apps</h3>
+            <p class="ca-card-desc" id="txt_ca1Desc">
+              Custom digital wallets, peer-to-peer transfers, payment gateway integration (mada, Apple Pay, Visa/Mastercard), instant settlement ledgers, automated reconciliations, and ZATCA tax-ready accounting engines.
+            </p>
+          </div>
+          <div class="ca-badges" id="txt_ca1Badges">
+            <span>mada & Apple Pay SDK</span>
+            <span>Digital Wallets</span>
+            <span>Instant Settlement</span>
+            <span>Bank-Grade Security</span>
+          </div>
+        </div>
+
+        <!-- Card 2: Educational Apps -->
+        <div class="custom-app-card">
+          <div>
+            <div class="ca-card-top">
+              <div class="ca-icon-box ca-icon-edtech">
+                <span class="material-symbols-rounded">school</span>
+              </div>
+              <span class="ca-tag" id="txt_ca2Tag">EDUCATION & TRAINING</span>
+            </div>
+            <h3 class="ca-card-title" id="txt_ca2Title">Educational & E-Learning Platforms</h3>
+            <p class="ca-card-desc" id="txt_ca2Desc">
+              Interactive student and teacher portals, video course streaming, automated quizzes, homework submissions, virtual live classes, certificate generation, and integrated subscription monetization.
+            </p>
+          </div>
+          <div class="ca-badges" id="txt_ca2Badges">
+            <span>Virtual Classrooms</span>
+            <span>Video Courses</span>
+            <span>Quiz Engine</span>
+            <span>Student Portals</span>
+          </div>
+        </div>
+
+        <!-- Card 3: Van Sale & Field Distribution -->
+        <div class="custom-app-card">
+          <div>
+            <div class="ca-card-top">
+              <div class="ca-icon-box ca-icon-vansale">
+                <span class="material-symbols-rounded">local_shipping</span>
+              </div>
+              <span class="ca-tag" id="txt_ca3Tag">VAN SALES & DISTRIBUTION</span>
+            </div>
+            <h3 class="ca-card-title" id="txt_ca3Title">Van Sales & Mobile Distribution Apps</h3>
+            <p class="ca-card-desc" id="txt_ca3Desc">
+              High-speed mobile app for delivery vans and sales reps. Operates 100% offline with instant Bluetooth thermal printing, customer route tracking, van stock load/unload inventory, and real-time head office sync.
+            </p>
+          </div>
+          <div class="ca-badges" id="txt_ca3Badges">
+            <span>Offline-First Mode</span>
+            <span>Bluetooth Thermal Print</span>
+            <span>Route GPS Tracking</span>
+            <span>Van Stock Sync</span>
+          </div>
+        </div>
+
+        <!-- Card 4: Custom Retail & F&B POS -->
+        <div class="custom-app-card">
+          <div>
+            <div class="ca-card-top">
+              <div class="ca-icon-box ca-icon-retail">
+                <span class="material-symbols-rounded">storefront</span>
+              </div>
+              <span class="ca-tag" id="txt_ca4Tag">RETAIL & HOSPITALITY</span>
+            </div>
+            <h3 class="ca-card-title" id="txt_ca4Title">Specialized Retail & Restaurant Apps</h3>
+            <p class="ca-card-desc" id="txt_ca4Desc">
+              Tailored multi-branch retail POS, kitchen display systems (KDS), waiter tablets, QR table ordering, dynamic customer loyalty points, and automated supplier inventory purchase orders.
+            </p>
+          </div>
+          <div class="ca-badges" id="txt_ca4Badges">
+            <span>Kitchen Display (KDS)</span>
+            <span>Table QR Ordering</span>
+            <span>Loyalty Programs</span>
+            <span>Inventory Automation</span>
+          </div>
+        </div>
+
+        <!-- Card 5: Logistics & Delivery Apps -->
+        <div class="custom-app-card">
+          <div>
+            <div class="ca-card-top">
+              <div class="ca-icon-box ca-icon-logistics">
+                <span class="material-symbols-rounded">package_2</span>
+              </div>
+              <span class="ca-tag" id="txt_ca5Tag">LOGISTICS & DISPATCH</span>
+            </div>
+            <h3 class="ca-card-title" id="txt_ca5Title">Logistics, Courier & Fleet Tracking</h3>
+            <p class="ca-card-desc" id="txt_ca5Desc">
+              Driver dispatch applications with turn-by-turn navigation, live customer tracking map, electronic proof of delivery (e-POD) with signature capture, barcode parcel sorting, and fleet telematics.
+            </p>
+          </div>
+          <div class="ca-badges" id="txt_ca5Badges">
+            <span>Live Map Telematics</span>
+            <span>Signature e-POD</span>
+            <span>Barcode Scanning</span>
+            <span>Dynamic Dispatch</span>
+          </div>
+        </div>
+
+        <!-- Card 6: Custom Enterprise ERP & Portals -->
+        <div class="custom-app-card">
+          <div>
+            <div class="ca-card-top">
+              <div class="ca-icon-box ca-icon-enterprise">
+                <span class="material-symbols-rounded">hub</span>
+              </div>
+              <span class="ca-tag" id="txt_ca6Tag">ENTERPRISE & CRM</span>
+            </div>
+            <h3 class="ca-card-title" id="txt_ca6Title">Custom Enterprise Portals & ERP Integrations</h3>
+            <p class="ca-card-desc" id="txt_ca6Desc">
+              Bespoke internal dashboards, staff role-based permissions, automated WhatsApp order bots, and seamless bi-directional API bridges to SAP, Odoo, Oracle, and government e-services.
+            </p>
+          </div>
+          <div class="ca-badges" id="txt_ca6Badges">
+            <span>SAP / Odoo / Oracle API</span>
+            <span>WhatsApp Bot Automation</span>
+            <span>Custom Dashboards</span>
+            <span>RBAC Security</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Why Partner With B-Magnet -->
+      <div class="adv-why-bar">
+        <div class="why-item">
+          <span class="material-symbols-rounded why-icon">verified_user</span>
+          <div>
+            <h4 id="txt_why1Title">Engineered to Your Exact Specs</h4>
+            <p id="txt_why1Desc">No rigid templates. We build each feature to fit your unique operational workflows.</p>
+          </div>
+        </div>
+        <div class="why-item">
+          <span class="material-symbols-rounded why-icon">security</span>
+          <div>
+            <h4 id="txt_why2Title">Saudi & GCC Native Compliance</h4>
+            <p id="txt_why2Desc">Fully certified for ZATCA, 15% VAT, mada, local data residency, and Arabic/English UI.</p>
+          </div>
+        </div>
+        <div class="why-item">
+          <span class="material-symbols-rounded why-icon">devices</span>
+          <div>
+            <h4 id="txt_why3Title">Full-Stack Cross Platform</h4>
+            <p id="txt_why3Desc">Native iOS & Android, responsive web portals, robust cloud microservices, and desktop apps.</p>
+          </div>
+        </div>
+        <div class="why-item">
+          <span class="material-symbols-rounded why-icon">support_agent</span>
+          <div>
+            <h4 id="txt_why4Title">Direct SLA & Source Code</h4>
+            <p id="txt_why4Desc">Full ownership, IP protection (NDA), deployment on your cloud, and 24/7 technical support.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- High Conversion Call to Action Banner -->
+      <div class="adv-cta-box">
+        <div class="adv-cta-left">
+          <div class="adv-cta-badge" id="txt_ctaBadge">🚀 FAST TURNAROUND • FIXED-PRICE ESTIMATES</div>
+          <h3 class="adv-cta-title" id="txt_ctaTitle">Have an App Idea or Custom Business System Requirement?</h3>
+          <p class="adv-cta-desc" id="txt_ctaDesc">
+            Talk directly with our lead software architects. We analyze your requirements, design interactive prototypes, and provide a clear timeline and fixed-price quotation.
+          </p>
+        </div>
+        <div class="adv-cta-actions">
+          <a href="https://wa.me/919495097786?text=Hello%20B-Magnet%20Software%20Team%2C%20I%20am%20interested%20in%20developing%20a%20custom%20business%20application%20(Fintech%20%2F%20Educational%20%2F%20Van%20Sale%20%2F%20Custom%20App)." target="_blank" rel="noopener noreferrer" class="btn-adv-cta-wa" id="txt_btnCtaWa">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0;"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.698c.97.549 1.83.813 2.796.813 3.183 0 5.77-2.587 5.77-5.766-.001-3.182-2.588-5.766-5.77-5.766zm9.969 5.766c0 5.514-4.486 10-10 10-1.758 0-3.4-.455-4.839-1.25l-4.711 1.233 1.258-4.598c-.968-1.554-1.508-3.376-1.508-5.385 0-5.514 4.486-10 10-10s10 4.486 10 10z"/></svg>
+            <span id="txt_btnCtaWaText">Discuss on WhatsApp</span>
+          </a>
+          <div class="adv-cta-phones">
+            <a href="tel:+966572230058" class="btn-adv-cta-tel" title="Direct Phone Call Saudi Arabia">
+              <span class="material-symbols-rounded" style="font-size: 18px; color: #00ffa2;">call</span>
+              <span>🇸🇦 +966 572230058</span>
+            </a>
+            <a href="tel:+971582786561" class="btn-adv-cta-tel" title="Direct Phone Call Dubai / UAE">
+              <span class="material-symbols-rounded" style="font-size: 18px; color: #38bdf8;">call</span>
+              <span>🇦🇪 +971 582786561</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
   <!-- 8. CONTACT US SECTION (DIRECT FROM B-MAGNET POSTER)      -->
   <!-- ======================================================== -->
   <section class="sq-contact-section" id="contact">
@@ -1987,6 +2632,7 @@
         <div class="sq-footer-col">
           <h4 id="txt_ftCol2">Solutions</h4>
           <ul>
+            <li><a href="#custom-apps" id="txt_ftCustomApps">Custom App Development (Fintech, EdTech, Van Sales)</a></li>
             <li><a href="#showcase" id="txt_ftL6">Customer UI Showcase</a></li>
             <li><a href="#hardware" id="txt_ftL7">Handheld Terminal</a></li>
             <li><a href="#pricing" id="txt_ftL8">Pricing in SAR</a></li>
@@ -2198,6 +2844,45 @@
         a3: "Card payments settle next business day directly into any registered Saudi bank account (Al Rajhi, SNB, Riyad Bank, etc.). Web3 crypto payments settle instantly within 2.4 seconds with zero hold periods.",
         q4: "How can I order the physical POS terminal hardware?",
         a4: "You can order the B-Magnet Terminal (599 SAR) or B-Magnet Register (1,899 SAR) directly by calling our direct Saudi hotline at +966 572230058, contacting us on WhatsApp at +91 94950 97786, or emailing bmagnet.int@gmail.com. We deliver across Riyadh, Jeddah, Dammam, and all GCC regions within 2-3 business days.",
+        advBadge: "B-MAGNET SOFTWARE LABS",
+        advSpotlightTitle: "Custom Business Apps Developed to Your Exact Requirements",
+        advSpotlightSub: "Fintech, Educational, Van Sales, Retail, Logistics & Custom ERP Solutions",
+        advSpotlightExplore: "Explore Services",
+        advSpotlightWaText: "Request Custom App",
+        caEyebrow: "Bespoke Software & Mobile App Development",
+        caTitle: "We Build All Kinds of Custom Business Apps to Your Exact Requirements",
+        caSub: "Beyond our signature POS systems, B-Magnet architects, designs, and engineers full-stack, enterprise-grade mobile and web applications customized to your operational workflow, compliance standards, and commercial brand.",
+        ca1Tag: "FINTECH & PAYMENTS",
+        ca1Title: "Fintech & Digital Payment Apps",
+        ca1Desc: "Custom digital wallets, peer-to-peer transfers, payment gateway integration (mada, Apple Pay, Visa/Mastercard), instant settlement ledgers, automated reconciliations, and ZATCA tax-ready accounting engines.",
+        ca2Tag: "EDUCATION & TRAINING",
+        ca2Title: "Educational & E-Learning Platforms",
+        ca2Desc: "Interactive student and teacher portals, video course streaming, automated quizzes, homework submissions, virtual live classes, certificate generation, and integrated subscription monetization.",
+        ca3Tag: "VAN SALES & DISTRIBUTION",
+        ca3Title: "Van Sales & Mobile Distribution Apps",
+        ca3Desc: "High-speed mobile app for delivery vans and sales reps. Operates 100% offline with instant Bluetooth thermal printing, customer route tracking, van stock load/unload inventory, and real-time head office sync.",
+        ca4Tag: "RETAIL & HOSPITALITY",
+        ca4Title: "Specialized Retail & Restaurant Apps",
+        ca4Desc: "Tailored multi-branch retail POS, kitchen display systems (KDS), waiter tablets, QR table ordering, dynamic customer loyalty points, and automated supplier inventory purchase orders.",
+        ca5Tag: "LOGISTICS & DISPATCH",
+        ca5Title: "Logistics, Courier & Fleet Tracking",
+        ca5Desc: "Driver dispatch applications with turn-by-turn navigation, live customer tracking map, electronic proof of delivery (e-POD) with signature capture, barcode parcel sorting, and fleet telematics.",
+        ca6Tag: "ENTERPRISE & CRM",
+        ca6Title: "Custom Enterprise Portals & ERP Integrations",
+        ca6Desc: "Bespoke internal dashboards, staff role-based permissions, automated WhatsApp order bots, and seamless bi-directional API bridges to SAP, Odoo, Oracle, and government e-services.",
+        why1Title: "Engineered to Your Exact Specs",
+        why1Desc: "No rigid templates. We build each feature to fit your unique operational workflows.",
+        why2Title: "Saudi & GCC Native Compliance",
+        why2Desc: "Fully certified for ZATCA, 15% VAT, mada, local data residency, and Arabic/English UI.",
+        why3Title: "Full-Stack Cross Platform",
+        why3Desc: "Native iOS & Android, responsive web portals, robust cloud microservices, and desktop apps.",
+        why4Title: "Direct SLA & Source Code",
+        why4Desc: "Full ownership, IP protection (NDA), deployment on your cloud, and 24/7 technical support.",
+        ctaBadge: "🚀 FAST TURNAROUND • FIXED-PRICE ESTIMATES",
+        ctaTitle: "Have an App Idea or Custom Business System Requirement?",
+        ctaDesc: "Talk directly with our lead software architects. We analyze your requirements, design interactive prototypes, and provide a clear timeline and fixed-price quotation.",
+        btnCtaWaText: "Discuss on WhatsApp",
+        ftCustomApps: "Custom App Development (Fintech, EdTech, Van Sales)",
         ftDesc: "Perfect business solutions: Next-generation Point-of-Sale, ZATCA Phase 2 E-Invoicing & Merchant Settlement Systems for the Kingdom of Saudi Arabia.",
         ftBadge: "🟢 ZATCA Phase 2 Fatoora Certified",
         ftCol1: "Products",
@@ -2386,6 +3071,45 @@
         a3: "تتم تسوية مدفوعات البطاقات ومدى في يوم العمل التالي مباشرة إلى أي حساب بنكي سعودي مسجل (الراجحي، الأهلي، بنك الرياض، إلخ). أما التسويات الرقمية فتتم فورياً خلال 2.4 ثانية.",
         q4: "كيف يمكنني طلب أجهزة نقاط البيع المادية والتواصل معكم؟",
         a4: "يمكنك طلب جهاز بي ماجنت المحمول (599 ريال) أو كاشير الكاونتر المزدوج (1,899 ريال) مباشرة عبر الواتساب على الرقم 919495097786+ أو البريد الإلكتروني bmagnet.int@gmail.com. التوصيل متاح لكافة مناطق المملكة خلال 2-3 أيام عمل.",
+        advBadge: "مختبر بي-ماجنت للبرمجيات",
+        advSpotlightTitle: "تطوير كافة أنواع تطبيقات الأعمال المخصصة حسب متطلباتك",
+        advSpotlightSub: "حلول الفنتك، التطبيقات التعليمية، مبيعات الفانات، التجزئة، اللوجستيات وأنظمة ERP",
+        advSpotlightExplore: "استكشف الخدمات",
+        advSpotlightWaText: "اطلب تطبيقك المخصص",
+        caEyebrow: "تطوير البرمجيات وتطبيقات الجوال المخصصة",
+        caTitle: "نطوّر كافة أنواع تطبيقات وحلول الأعمال بدقة متناهية وفق متطلباتك",
+        caSub: "إلى جانب أنظمة الكاشير ونقاط البيع، تمتلك بي-ماجنت خبرات هندسية متقدمة لتصميم وتطوير تطبيقات الجوال والويب وحلول الأعمال المؤسسية المتوافقة تماماً مع أنظمتك ومعايير السوق السعودي والخليجي.",
+        ca1Tag: "التقنية المالية والمدفوعات",
+        ca1Title: "تطبيقات الفنتك والمدفوعات الرقمية (Fintech)",
+        ca1Desc: "محافظ رقمية مخصصة، تحويلات مالية فورية، ربط بوابات الدفع (مدى، آبل باي، فيزا وماستركارد)، سجلات تسوية لحظية، ومطابقة بنكية آلية متوافقة مع متطلبات البنك المركزي وهيئة الزكاة.",
+        ca2Tag: "التعليم والتدريب الذكي",
+        ca2Title: "المنصات والتطبيقات التعليمية والتدريبية (EdTech)",
+        ca2Desc: "بوابات متكاملة للطلاب والمعلمين، بث المحاضرات والدورات، اختبارات تفاعلية وتصحيح آلي، تسليم الواجبات، فصول افتراضية، إصدار الشهادات، وبوابات اشتراكات وتحصيل رسوم دراسية.",
+        ca3Tag: "مبيعات الفانات والتوزيع",
+        ca3Title: "تطبيقات مبيعات الفانات والتوزيع الميداني (Van Sales)",
+        ca3Desc: "تطبيق فائق السرعة لمناديب وسيارات التوزيع الميداني. يعمل 100% دون اتصال بالإنترنت (Offline) مع طباعة فورية للفواتير عبر طابعات البلوتوث، تتبع مسارات العملاء، وجرد حمولة السيارة لحظياً.",
+        ca4Tag: "التجزئة والضيافة والمطاعم",
+        ca4Title: "تطبيقات التجزئة والمطاعم المخصصة",
+        ca4Desc: "أنظمة نقاط بيع متطورة متعددة الفروع، شاشات عرض المطبخ (KDS)، أجهزة الندلاء اللوحية، طلبات الطاولات عبر QR، برامج ولاء ومكافآت ذكية، وأتمتة أوامر الشراء من الموردين.",
+        ca5Tag: "الخدمات اللوجستية والتوصيل",
+        ca5Title: "تطبيقات اللوجستيات والتوصيل وتتبع الأساطيل",
+        ca5Desc: "تطبيقات توجيه السائقين والمندوبين مع خرائط ملاحة حية، تتبع مسار الشحنة للعميل مباشرة، إثبات التسليم الإلكتروني (e-POD) مع التوقيع الرقمي، ومسح الباركود السريع للطرود.",
+        ca6Tag: "أنظمة المؤسسات وCRM",
+        ca6Title: "بوابات المؤسسات وتكامل أنظمة ERP المخصصة",
+        ca6Desc: "لوحات تحكم إدارية خاصة، إدارة علاقات العملاء وفرق العمل، روبوتات وتطبيقات واتساب التلقائية لخدمة العملاء، وربط API ثنائي الاتجاه مع أنظمة SAP وOdoo وOracle والخدمات الحكومية.",
+        why1Title: "مصممة وفق أدق مواصفاتك",
+        why1Desc: "لا نستخدم قوالب جاهزة؛ نبني كل ميزة وواجهة لتخدم دورة أعمالك الحقيقية.",
+        why2Title: "امتثال كامل للأنظمة السعودية والخليجية",
+        why2Desc: "جاهزية تامة لمنظومة زاتكا والضريبة 15% ومدفوعات مدى وحماية وتوطين البيانات.",
+        why3Title: "تطوير شامل لكافة المنصات",
+        why3Desc: "تطبيقات أصلية لنظامي iOS وAndroid، وبوابات ويب سحابية مرنة، وأنظمة مكتبية.",
+        why4Title: "تسليم الكود المصدري ودعم SLA",
+        why4Desc: "ملكية فكرية كاملة للعميل مع اتفاقيات عدم إفشاء (NDA)، ونشر على سحابتك ودعم فني مستمر 24/7.",
+        ctaBadge: "🚀 تنفيذ سريع • عروض أسعار وجداول زمنية محددة",
+        ctaTitle: "هل لديك فكرة تطبيق أو متطلبات برمجية خاصة بأعمالك؟",
+        ctaDesc: "تحدث مباشرة مع كبار مهندسي البرمجيات في بي-ماجنت لتحليل متطلباتك وتقديم نموذج تصميمي مبدئي وعرض سعر تفصيلي.",
+        btnCtaWaText: "تواصل وناقش مشروعك عبر واتساب",
+        ftCustomApps: "تطوير تطبيقات الأعمال (فنتك، تعليم، مبيعات فانات)",
         ftDesc: "حلول الأعمال المثالية: الجيل الجديد من أنظمة نقاط البيع والفوترة الإلكترونية المتوافقة مع المرحلة الثانية لهيئة الزكاة والضريبة والجمارك في المملكة العربية السعودية.",
         ftBadge: "🟢 معتمد لمنظومة الفوترة الإلكترونية (فاتورة - المرحلة الثانية)",
         ftCol1: "المنتجات",
@@ -2565,6 +3289,47 @@
       setText('txt_pr3Title', t.pr3Title);
       setHtml('txt_pr3Price', `${t.pr3Price}<span id="txt_pr3Unit">${t.pr3Unit}</span>`);
       setText('txt_pr3Btn', t.pr3Btn);
+
+      // Custom Apps Advertisement Banner & Section
+      setText('txt_advBadge', t.advBadge);
+      setText('txt_advSpotlightTitle', t.advSpotlightTitle);
+      setText('txt_advSpotlightSub', t.advSpotlightSub);
+      setHtml('txt_advSpotlightExplore', `<span>${t.advSpotlightExplore}</span><span class="material-symbols-rounded" style="font-size: 16px;">arrow_downward</span>`);
+      setText('txt_advSpotlightWaText', t.advSpotlightWaText);
+      setText('txt_caEyebrow', t.caEyebrow);
+      setText('txt_caTitle', t.caTitle);
+      setText('txt_caSub', t.caSub);
+      setText('txt_ca1Tag', t.ca1Tag);
+      setText('txt_ca1Title', t.ca1Title);
+      setText('txt_ca1Desc', t.ca1Desc);
+      setText('txt_ca2Tag', t.ca2Tag);
+      setText('txt_ca2Title', t.ca2Title);
+      setText('txt_ca2Desc', t.ca2Desc);
+      setText('txt_ca3Tag', t.ca3Tag);
+      setText('txt_ca3Title', t.ca3Title);
+      setText('txt_ca3Desc', t.ca3Desc);
+      setText('txt_ca4Tag', t.ca4Tag);
+      setText('txt_ca4Title', t.ca4Title);
+      setText('txt_ca4Desc', t.ca4Desc);
+      setText('txt_ca5Tag', t.ca5Tag);
+      setText('txt_ca5Title', t.ca5Title);
+      setText('txt_ca5Desc', t.ca5Desc);
+      setText('txt_ca6Tag', t.ca6Tag);
+      setText('txt_ca6Title', t.ca6Title);
+      setText('txt_ca6Desc', t.ca6Desc);
+      setText('txt_why1Title', t.why1Title);
+      setText('txt_why1Desc', t.why1Desc);
+      setText('txt_why2Title', t.why2Title);
+      setText('txt_why2Desc', t.why2Desc);
+      setText('txt_why3Title', t.why3Title);
+      setText('txt_why3Desc', t.why3Desc);
+      setText('txt_why4Title', t.why4Title);
+      setText('txt_why4Desc', t.why4Desc);
+      setText('txt_ctaBadge', t.ctaBadge);
+      setText('txt_ctaTitle', t.ctaTitle);
+      setText('txt_ctaDesc', t.ctaDesc);
+      setText('txt_btnCtaWaText', t.btnCtaWaText);
+      setText('txt_ftCustomApps', t.ftCustomApps);
 
       // Contact Us
       setText('txt_ctEyebrow', t.ctEyebrow);
